@@ -1,0 +1,77 @@
+{
+	"name": "King Lear (Кароль Лір - Karoĺ Lir)",
+	"differentiator": "4",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "King Lear",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "version by",
+			"entities": [
+				{
+					"name": "Yurka Hauruk"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Lear",
+					"underlyingName": "King Lear"
+				},
+				{
+					"name": "Goneril"
+				},
+				{
+					"name": "Regan"
+				},
+				{
+					"name": "Cordelia"
+				},
+				{
+					"name": "King of France",
+					"differentiator": "King Lear"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Earl of Kent"
+				},
+				{
+					"name": "Earl of Gloucester"
+				},
+				{
+					"name": "Edgar"
+				},
+				{
+					"name": "Edmund"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Oswald"
+				},
+				{
+					"name": "Fool",
+					"differentiator": "King Lear"
+				}
+			]
+		}
+	]
+}

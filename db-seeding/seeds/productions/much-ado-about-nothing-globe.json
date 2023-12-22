@@ -3,7 +3,8 @@
 	"startDate": "2012-06-01",
 	"endDate": "2012-06-02",
 	"material": {
-		"name": "Much Ado About Nothing"
+		"name": "Much Ado About Nothing (Beaucoup de Bruit pour Rien - A lot of noise for nothing)",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -77,8 +78,7 @@
 			"name": "Matthieu Marie",
 			"roles": [
 				{
-					"name": "Don Pedro",
-					"characterName": "Don Pedro, Prince of Arragon"
+					"name": "Don Pedro"
 				}
 			]
 		},
@@ -94,8 +94,7 @@
 			"name": "Alix Poisson",
 			"roles": [
 				{
-					"name": "Béatrice",
-					"characterName": "Beatrice"
+					"name": "Béatrice"
 				}
 			]
 		},
@@ -103,12 +102,10 @@
 			"name": "Julien Villa",
 			"roles": [
 				{
-					"name": "Don Juan",
-					"characterName": "Don John"
+					"name": "Don Juan"
 				},
 				{
-					"name": "Verjus",
-					"characterName": "Verges"
+					"name": "Verjus"
 				}
 			]
 		}

@@ -1,0 +1,110 @@
+{
+	"name": "Troilus and Cressida (A Toroihi raua ko Kahira)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Troilus and Cressida",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Te Haumiata Mason"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Trojans",
+			"characters": [
+				{
+					"name": "Priam, King of Troy"
+				},
+				{
+					"name": "Hector"
+				},
+				{
+					"name": "Paris"
+				},
+				{
+					"name": "Troilus"
+				},
+				{
+					"name": "Aeneas"
+				},
+				{
+					"name": "Pandarus"
+				},
+				{
+					"name": "Calchas"
+				},
+				{
+					"name": "Alexander"
+				},
+				{
+					"name": "Andromache"
+				},
+				{
+					"name": "Cressida"
+				},
+				{
+					"name": "Cassandra"
+				}
+			]
+		},
+		{
+			"name": "The Greeks",
+			"characters": [
+				{
+					"name": "Agamemnon",
+					"underlyingName": "Agamemnon, King of the Greeks"
+				},
+				{
+					"name": "Menelaus"
+				},
+				{
+					"name": "Ulysses"
+				},
+				{
+					"name": "Ajax"
+				},
+				{
+					"name": "Nestor"
+				},
+				{
+					"name": "Diomedes",
+					"differentiator": "Troilus and Cressida"
+				},
+				{
+					"name": "Patroclus"
+				},
+				{
+					"name": "Thersites"
+				},
+				{
+					"name": "Helen",
+					"differentiator": "Troilus and Cressida"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Servant",
+					"differentiator": "Troilus and Cressida"
+				}
+			]
+		}
+	]
+}

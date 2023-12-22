@@ -4,7 +4,8 @@
 	"pressDate": "2015-09-22",
 	"endDate": "2015-10-25",
 	"material": {
-		"name": "Henry V"
+		"name": "Henry V",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Shakespeare Theatre"

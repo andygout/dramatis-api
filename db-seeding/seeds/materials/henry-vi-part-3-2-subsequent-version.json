@@ -1,0 +1,82 @@
+{
+	"name": "Henry VI, Part 3 (Хенри Шестиот дел 3 - Henri Šesti Del 3)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry VI, Part 3",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Dragi Mihajlovski"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The King's party",
+			"characters": [
+				{
+					"name": "King Henry VI"
+				},
+				{
+					"name": "Queen Margaret",
+					"underlyingName": "Margaret of Anjou"
+				},
+				{
+					"name": "Edward, Prince of Wales",
+					"differentiator": "King Henry VI's son"
+				}
+			]
+		},
+		{
+			"name": "The Duke of York's party",
+			"characters": [
+				{
+					"name": "Edward, Earl of March, later Edward IV",
+					"underlyingName": "King Edward IV"
+				},
+				{
+					"name": "Richard, Duke of Gloucester",
+					"underlyingName": "King Richard III"
+				},
+				{
+					"name": "George, Duke of Clarence",
+					"underlyingName": "George Plantagenet, Duke of Clarence"
+				},
+				{
+					"name": "Earl of Warwick",
+					"underlyingName": "Richard Neville, 16th Earl of Warwick"
+				},
+				{
+					"name": "Lady Elizabeth Gray",
+					"underlyingName": "Dame Elizabeth Grey (née Woodville)"
+				},
+				{
+					"name": "Earl Rivers",
+					"underlyingName": "Anthony Woodville, 2nd Earl Rivers"
+				},
+				{
+					"name": "King Louis",
+					"underlyingName": "King Lewis XI of France"
+				},
+				{
+					"name": "Lady Bona",
+					"underlyingName": "Lady Bona of Savoy, Duchess of Milan"
+				}
+			]
+		}
+	]
+}

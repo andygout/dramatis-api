@@ -5,7 +5,8 @@
 	"pressDate": "2007-11-28",
 	"endDate": "2008-01-12",
 	"material": {
-		"name": "King Lear"
+		"name": "King Lear",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "New London Theatre"

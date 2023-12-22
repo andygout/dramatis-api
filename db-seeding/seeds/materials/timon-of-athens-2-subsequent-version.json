@@ -1,0 +1,64 @@
+{
+	"name": "Timon of Athens (Timon aus Athen)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Timon of Athens",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated and adapted by",
+			"entities": [
+				{
+					"name": "Sebastian Kautz"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Timon of Athens"
+				},
+				{
+					"name": "Flaminius"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Apemantus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lucullus"
+				},
+				{
+					"name": "Sempronius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Ventidius",
+					"differentiator": "Timon of Athens"
+				},
+				{
+					"name": "Painter"
+				}
+			]
+		}
+	]
+}

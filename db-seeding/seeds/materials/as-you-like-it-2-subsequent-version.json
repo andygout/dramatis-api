@@ -1,0 +1,83 @@
+{
+	"name": "As You Like It (როგორც შენ მოგწონს - rogorts shen mogts’ons)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "As You Like It",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Lasha Bugadze"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name" : "Exiled court of Duke Senior in the Forest of Arden",
+			"characters": [
+				{
+					"name": "Duke Senior"
+				},
+				{
+					"name": "Jaques"
+				}
+			]
+		},
+		{
+			"name" : "Court of Duke Frederick",
+			"characters": [
+				{
+					"name": "Duke Frederick"
+				},
+				{
+					"name": "Le Beau"
+				},
+				{
+					"name": "Adam",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Rosalind"
+				},
+				{
+					"name": "Celia",
+					"differentiator": "As You Like It"
+				}
+			]
+		},
+		{
+			"name" : "Household of Sir Rowland de Boys",
+			"characters": [
+				{
+					"name": "Oliver",
+					"underlyingName": "Oliver de Boys"
+				},
+				{
+					"name": "Orlando",
+					"underlyingName": "Orlando de Boys"
+				}
+			]
+		},
+		{
+			"name" : "Country folk in the Forest of Arden",
+			"characters": [
+				{
+					"name": "Audrey"
+				}
+			]
+		}
+	]
+}

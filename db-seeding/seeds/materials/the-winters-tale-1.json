@@ -1,0 +1,125 @@
+{
+	"name": "The Winter's Tale",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1611",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Sicilia",
+			"characters": [
+				{
+					"name": "Leontes, King of Sicilia"
+				},
+				{
+					"name": "Hermione"
+				},
+				{
+					"name": "Mamillius"
+				},
+				{
+					"name": "Perdita"
+				},
+				{
+					"name": "Camillo"
+				},
+				{
+					"name": "Antigonus"
+				},
+				{
+					"name": "Cleomenes"
+				},
+				{
+					"name": "Dion"
+				},
+				{
+					"name": "Paulina"
+				},
+				{
+					"name": "Emilia",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Gaoler",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Mariner"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Ladies",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "The Winter's Tale"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "The Winter's Tale"
+				}
+			]
+		},
+		{
+			"name": "Bohemia",
+			"characters": [
+				{
+					"name": "Polixenes"
+				},
+				{
+					"name": "Florizel"
+				},
+				{
+					"name": "Archidamus"
+				},
+				{
+					"name": "Autolycus"
+				},
+				{
+					"name": "Old Shepherd"
+				},
+				{
+					"name": "Young Shepherd"
+				},
+				{
+					"name": "Mopsa"
+				},
+				{
+					"name": "Dorcas"
+				},
+				{
+					"name": "Servant of the Old Shepherd"
+				},
+				{
+					"name": "Shepherds and Shepherdesses"
+				},
+				{
+					"name": "Twelve countrymen disguised as satyrs"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Time"
+				}
+			]
+		}
+	]
+}

@@ -3,7 +3,8 @@
 	"startDate": "2012-05-05",
 	"endDate": "2012-05-06",
 	"material": {
-		"name": "Othello"
+		"name": "Othello: The Remix",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -52,8 +53,7 @@
 			"name": "Jackson Doran",
 			"roles": [
 				{
-					"name": "Michael Cassio",
-					"characterName": "Cassio"
+					"name": "Michael Cassio"
 				},
 				{
 					"name": "Emilia"

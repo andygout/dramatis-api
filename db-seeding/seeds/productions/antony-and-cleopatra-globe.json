@@ -3,7 +3,8 @@
 	"startDate": "2012-05-26",
 	"endDate": "2012-05-27",
 	"material": {
-		"name": "Antony and Cleopatra"
+		"name": "Antony and Cleopatra (Antonıus ile Kleopatra)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -64,8 +65,7 @@
 			"name": "Kevork Malikyan",
 			"roles": [
 				{
-					"name": "Enobarbus",
-					"characterName": "Domitius Enobarbus"
+					"name": "Enobarbus"
 				},
 				{
 					"name": "Peasant"
@@ -73,10 +73,13 @@
 			]
 		},
 		{
-			"name": "Eurim Alasya",
+			"name": "Evrim Alasya",
 			"roles": [
 				{
-					"name": "Octavia"
+					"name": "Oktavia"
+				},
+				{
+					"name": "Alexas"
 				}
 			]
 		},
@@ -127,18 +130,6 @@
 			"roles": [
 				{
 					"name": "Mardian"
-				}
-			]
-		},
-		{
-			"name": "Evrim Alasya",
-			"roles": [
-				{
-					"name": "Oktavia",
-					"characterName": "Octavia"
-				},
-				{
-					"name": "Alexas"
 				}
 			]
 		},

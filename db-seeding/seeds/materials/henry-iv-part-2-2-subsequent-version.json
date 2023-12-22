@@ -1,0 +1,57 @@
+{
+	"name": "Henry IV, Part 2 (Henrique IV, Segunda Parte)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry IV, Part 2",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Lautaro Vilo"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The King's party",
+			"characters": [
+				{
+					"name": "King Henry IV"
+				},
+				{
+					"name": "Prince Henry, later crowned Henry V",
+					"underlyingName": "King Henry V"
+				}
+			]
+		},
+		{
+			"name": "Eastcheap",
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				},
+				{
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
+				},
+				{
+					"name": "Doll Tearsheet",
+					"underlyingName": "Dorothy 'Doll' Tearsheet"
+				}
+			]
+		}
+	]
+}

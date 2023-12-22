@@ -3,7 +3,8 @@
 	"startDate": "2013-08-10",
 	"endDate": "2013-08-13",
 	"material": {
-		"name": "Hamlet"
+		"name": "Hamlet",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Royal Lyceum Theatre"

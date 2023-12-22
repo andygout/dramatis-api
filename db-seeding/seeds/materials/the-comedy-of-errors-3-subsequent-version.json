@@ -1,0 +1,69 @@
+{
+	"name": "The Comedy of Errors (کمدی اشتباهات)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "The Comedy of Errors",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Roy-e-Sabs"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Ehsan",
+					"underlyingName": "Egeon"
+				},
+				{
+					"name": "Arsalan of Kabul",
+					"underlyingName": "Antipholus of Ephesus"
+				},
+				{
+					"name": "Arsalan of Samarkand",
+					"underlyingName": "Antipholus of Syracuse"
+				},
+				{
+					"name": "Bostan of Kabul",
+					"underlyingName": "Dromio of Ephesus"
+				},
+				{
+					"name": "Bostan of Samarkand",
+					"underlyingName": "Dromio of Syracuse"
+				},
+				{
+					"name": "Sodaba",
+					"underlyingName": "Adriana",
+					"differentiator": "The Comedy of Errors"
+				},
+				{
+					"name": "Rodaba",
+					"underlyingName": "Luciana"
+				},
+				{
+					"name": "Luce"
+				},
+				{
+					"name": "Courtesan"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,72 @@
+{
+	"name": "The Tempest",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "The Tempest",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "edited by",
+			"entities": [
+				{
+					"name": "Ben Power"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Alonso",
+					"underlyingName": "Alonso, King of Naples"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Prospero"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Ferdinand",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Gonzala",
+					"underlyingName": "Gonzalo"
+				},
+				{
+					"name": "Caliban"
+				},
+				{
+					"name": "Trinculo"
+				},
+				{
+					"name": "Stephano",
+					"differentiator": "The Tempest"
+				},
+				{
+					"name": "Miranda"
+				},
+				{
+					"name": "Ariel"
+				}
+			]
+		}
+	]
+}

@@ -3,7 +3,8 @@
 	"startDate": "2007-02-01",
 	"endDate": "2007-02-03",
 	"material": {
-		"name": "Henry V"
+		"name": "Henry V (Enrico V)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"

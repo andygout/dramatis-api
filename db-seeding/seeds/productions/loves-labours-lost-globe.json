@@ -3,7 +3,8 @@
 	"startDate": "2012-05-22",
 	"endDate": "2012-05-23",
 	"material": {
-		"name": "Love's Labour's Lost"
+		"name": "Love's Labour's Lost",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Stephen Collins",
 			"roles": [
 				{
-					"name": "Ferdinand, King of Navarre",
-					"characterName": "King Ferdinand of Navarre"
+					"name": "Ferdinand, King of Navarre"
 				}
 		]
 		},
@@ -35,8 +35,7 @@
 			"name": "Matthew Gurney",
 			"roles": [
 				{
-					"name": "Berowne",
-					"characterName": "Lord Berowne"
+					"name": "Berowne"
 				}
 			]
 		},
@@ -52,8 +51,7 @@
 			"name": "Charlotte Arrowsmith",
 			"roles": [
 				{
-					"name": "Rosaline",
-					"characterName": "Lady Rosaline"
+					"name": "Rosaline"
 				}
 			]
 		},
@@ -77,8 +75,7 @@
 			"name": "David Sands",
 			"roles": [
 				{
-					"name": "Longaville",
-					"characterName": "Lord Longaville"
+					"name": "Longaville"
 				},
 				{
 					"name": "Costard"
@@ -92,8 +89,7 @@
 					"name": "Moth"
 				},
 				{
-					"name": "Maria",
-					"characterName": "Lady Maria"
+					"name": "Maria"
 				}
 			]
 		},
@@ -101,8 +97,7 @@
 			"name": "Patricia Gorman",
 			"roles": [
 				{
-					"name": "Katherine",
-					"characterName": "Lady Katharine"
+					"name": "Katharine"
 				},
 				{
 					"name": "Jaquenetta"
@@ -116,8 +111,7 @@
 					"name": "Holofernes"
 				},
 				{
-					"name": "Dumaine",
-					"characterName": "Lord Dumaine"
+					"name": "Dumaine"
 				}
 			]
 		}
@@ -160,6 +154,14 @@
 			"entities": [
 				{
 					"name": "Kate Furby"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Andrew Muir"
 				}
 			]
 		}

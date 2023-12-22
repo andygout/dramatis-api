@@ -4,7 +4,8 @@
 	"pressDate": "2006-08-17",
 	"endDate": "2006-08-26",
 	"material": {
-		"name": "Love's Labour's Lost"
+		"name": "Love's Labour's Lost",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

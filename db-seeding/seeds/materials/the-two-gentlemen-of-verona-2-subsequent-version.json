@@ -1,0 +1,92 @@
+{
+	"name": "The Two Gentlemen of Verona",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "The Two Gentlemen of Verona",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Paulo Mendes Campos"
+				},
+				{
+					"name": "Andre Pink"
+				},
+				{
+					"name": "Chloe Furnival"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Duke of Milan"
+				},
+				{
+					"name": "Sylvia",
+					"underlyingName": "Silvia"
+				},
+				{
+					"name": "Thurio"
+				},
+				{
+					"name": "Eglamour"
+				},
+				{
+					"name": "Proteus"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "The Two Gentlemen of Verona"
+				},
+				{
+					"name": "Julia"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "The Two Gentlemen of Verona"
+				},
+				{
+					"name": "Lucetta"
+				},
+				{
+					"name": "Speed"
+				},
+				{
+					"name": "Launce"
+				},
+				{
+					"name": "Crab"
+				},
+				{
+					"name": "Panthino"
+				},
+				{
+					"name": "Host",
+					"underlyingName": "Host of the inn"
+				},
+				{
+					"name": "Outlaws"
+				},
+				{
+					"name": "Chorus",
+					"differentiator": "The Two Gentlemen of Verona"
+				}
+			]
+		}
+	]
+}

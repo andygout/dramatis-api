@@ -3,7 +3,8 @@
 	"startDate": "2012-05-08",
 	"endDate": "2012-05-10",
 	"material": {
-		"name": "Macbeth"
+		"name": "Macbeth (Makbet)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,7 +27,7 @@
 			"name": "Michał Majnicz",
 			"roles": [
 				{
-					"name": "Macbeth"
+					"name": "Makbet"
 				}
 			]
 		},
@@ -34,7 +35,7 @@
 			"name": "Judyta Paradzińska",
 			"roles": [
 				{
-					"name": "Lady Macbeth"
+					"name": "Lady Makbet"
 				}
 			]
 		},
@@ -74,7 +75,7 @@
 			"name": "Grzegorz Minkiewicz",
 			"roles": [
 				{
-					"name": "King Duncan"
+					"name": "Dunkan"
 				},
 				{
 					"name": "Seyton"
@@ -85,7 +86,7 @@
 			"name": "Leszek Malec",
 			"roles": [
 				{
-					"name": "Ross"
+					"name": "Rosse"
 				}
 			]
 		},
@@ -93,7 +94,7 @@
 			"name": "Michał Świtała",
 			"roles": [
 				{
-					"name": "Lennox"
+					"name": "Lenox"
 				}
 			]
 		}

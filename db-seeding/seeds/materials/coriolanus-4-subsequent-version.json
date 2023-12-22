@@ -1,0 +1,48 @@
+{
+	"name": "The Tragedy of Coriolanus",
+	"differentiator": "4",
+	"format": "play",
+	"year": "2013",
+	"originalVersionMaterial": {
+		"name": "Coriolanus",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Ying Ruocheng"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Caius Martius Coriolanus"
+				},
+				{
+					"name": "Volumnia"
+				}
+			]
+		},
+		{
+			"name": "Volscians",
+			"characters": [
+				{
+					"name": "Tullus Aufidius"
+				}
+			]
+		}
+	]
+}

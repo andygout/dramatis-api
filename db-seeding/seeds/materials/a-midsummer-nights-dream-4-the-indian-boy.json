@@ -1,0 +1,60 @@
+{
+	"name": "The Indian Boy",
+	"format": "play",
+	"year": "2006",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Rona Munro"
+				}
+			]
+		},
+		{
+			"name": "inspired by",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "A Midsummer Night's Dream",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bricks"
+				},
+				{
+					"name": "Chippy"
+				},
+				{
+					"name": "The Indian Boy",
+					"underlyingName": "The Changeling Boy"
+				},
+				{
+					"name": "Julius"
+				},
+				{
+					"name": "June"
+				},
+				{
+					"name": "Nurse",
+					"differentiator": "The Indian Boy"
+				},
+				{
+					"name": "Peter",
+					"differentiator": "The Indian Boy"
+				},
+				{
+					"name": "Sara"
+				},
+				{
+					"name": "Sparks"
+				}
+			]
+		}
+	]
+}

@@ -4,7 +4,8 @@
 	"pressDate": "2005-05-04",
 	"endDate": "2005-08-31",
 	"material": {
-		"name": "Henry IV, Part 2"
+		"name": "Henry IV, Part 2",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Olivier Theatre"

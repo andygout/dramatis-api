@@ -1,0 +1,27 @@
+{
+	"name": "The Comedy of Errors",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "The Comedy of Errors",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "edited by",
+			"entities": [
+				{
+					"name": "Gary Owen"
+				}
+			]
+		}
+	]
+}

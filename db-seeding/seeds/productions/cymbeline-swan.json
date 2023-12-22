@@ -4,7 +4,8 @@
 	"pressDate": "2006-09-21",
 	"endDate": "2006-09-30",
 	"material": {
-		"name": "Cymbeline"
+		"name": "Cymbeline",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

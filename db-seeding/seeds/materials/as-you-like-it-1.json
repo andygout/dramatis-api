@@ -1,0 +1,128 @@
+{
+	"name": "As You Like It",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1599",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name" : "Exiled court of Duke Senior in the Forest of Arden",
+			"characters": [
+				{
+					"name": "Duke Senior"
+				},
+				{
+					"name": "Amiens"
+				},
+				{
+					"name": "Jaques"
+				}
+			]
+		},
+		{
+			"name" : "Court of Duke Frederick",
+			"characters": [
+				{
+					"name": "Duke Frederick"
+				},
+				{
+					"name": "Le Beau"
+				},
+				{
+					"name": "Charles",
+					"differentiator": "As You Like It #1"
+				},
+				{
+					"name": "Adam",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Touchstone"
+				},
+				{
+					"name": "Rosalind"
+				},
+				{
+					"name": "Celia",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Hesperia"
+				}
+			]
+		},
+		{
+			"name" : "Household of Sir Rowland de Boys",
+			"characters": [
+				{
+					"name": "Oliver de Boys"
+				},
+				{
+					"name": "Jaques de Boys"
+				},
+				{
+					"name": "Orlando de Boys"
+				},
+				{
+					"name": "Adam",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Dennis",
+					"differentiator": "As You Like It"
+				}
+			]
+		},
+		{
+			"name" : "Country folk in the Forest of Arden",
+			"characters": [
+				{
+					"name": "Phebe"
+				},
+				{
+					"name": "Silvius"
+				},
+				{
+					"name": "Audrey"
+				},
+				{
+					"name": "Corin"
+				},
+				{
+					"name": "William",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Sir Oliver Martext"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Masquer representing Hymen"
+				},
+				{
+					"name": "Lords",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Pages",
+					"differentiator": "As You Like It"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "As You Like It"
+				}
+			]
+		}
+	]
+}

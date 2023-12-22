@@ -5,7 +5,8 @@
 	"pressDate": "2007-12-04",
 	"endDate": "2008-02-23",
 	"material": {
-		"name": "Othello"
+		"name": "Othello",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Donmar Warehouse"

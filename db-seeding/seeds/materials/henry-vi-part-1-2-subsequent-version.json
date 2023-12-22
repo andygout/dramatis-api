@@ -1,0 +1,85 @@
+{
+	"name": "Henry VI, Part 1 (Хенри Шести први део - Henri Šesti prvi deo)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry VI, Part 1",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Zoran Paunovic"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The English",
+			"characters": [
+				{
+					"name": "King Henry VI"
+				},
+				{
+					"name": "Duke of Gloucester",
+					"underlyingName": "Humphrey of Lancaster, Duke of Gloucester"
+				},
+				{
+					"name": "Bishop of Winchester",
+					"underlyingName": "Cardinal Henry Beaufort, Bishop of Winchester"
+				},
+				{
+					"name": "Duke of Somerset",
+					"underlyingName": "John Beaufort, 1st Duke of Somerset"
+				},
+				{
+					"name": "Richard Plantagenet, later Duke of York",
+					"underlyingName": "Richard Plantagenet, 3rd Duke of York"
+				},
+				{
+					"name": "Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
+				},
+				{
+					"name": "Earl of Suffolk",
+					"underlyingName": "William de la Pole, 1st Duke of Suffolk"
+				},
+				{
+					"name": "Lord Talbot",
+					"underlyingName": "John Talbot, 1st Earl of Shrewsbury"
+				},
+				{
+					"name": "Vernon",
+					"differentiator": "Henry VI, Part 1"
+				},
+				{
+					"name": "Basset"
+				}
+			]
+		},
+		{
+			"name": "The French",
+			"characters": [
+				{
+					"name": "Charles, Dauphin of France",
+					"underlyingName": "King Charles VII of France"
+				},
+				{
+					"name": "Joan la Pucelle",
+					"underlyingName": "Joan of Arc"
+				}
+			]
+		}
+	]
+}

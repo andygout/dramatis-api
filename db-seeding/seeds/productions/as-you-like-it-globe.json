@@ -3,7 +3,8 @@
 	"startDate": "2012-05-18",
 	"endDate": "2012-05-19",
 	"material": {
-		"name": "As You Like It"
+		"name": "As You Like It (როგორც შენ მოგწონს - rogorts shen mogts’ons)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -42,8 +43,7 @@
 			"name": "Nika Kuchava",
 			"roles": [
 				{
-					"name": "Orlando",
-					"characterName": "Orlando de Boys"
+					"name": "Orlando"
 				}
 			]
 		},
@@ -86,8 +86,7 @@
 			"name": "Nikoloz Tavadze",
 			"roles": [
 				{
-					"name": "Oliver",
-					"characterName": "Oliver de Boys"
+					"name": "Oliver"
 				}
 			]
 		},

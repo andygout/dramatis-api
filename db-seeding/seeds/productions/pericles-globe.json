@@ -3,7 +3,8 @@
 	"startDate": "2012-04-26",
 	"endDate": "2012-04-27",
 	"material": {
-		"name": "Pericles, Prince of Tyre"
+		"name": "Pericles (Περικλής - Periklís)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -34,8 +35,7 @@
 			"name": "Dimitris Paitas",
 			"roles": [
 				{
-					"name": "Gower",
-					"characterName": "John Gower"
+					"name": "Gower"
 				}
 			]
 		},
@@ -77,7 +77,7 @@
 				},
 				{
 					"name": "Fisherman",
-					"characterName": "Three fisherman of Pentapolis"
+					"characterName": "Fishermen"
 				},
 				{
 					"name": "Lysimachus"
@@ -99,15 +99,14 @@
 			"name": "Minas Hatzisavvas",
 			"roles": [
 				{
-					"name": "Cleon",
-					"characterName": "Cleon, governor of Tarsus"
+					"name": "Cleon"
 				},
 				{
 					"name": "Thaliard"
 				},
 				{
 					"name": "Fisherman",
-					"characterName": "Three fisherman of Pentapolis"
+					"characterName": "Fishermen"
 				}
 			]
 		},
@@ -130,7 +129,7 @@
 				},
 				{
 					"name": "Fisherman",
-					"characterName": "Three fisherman of Pentapolis"
+					"characterName": "Fishermen"
 				}
 			]
 		},
@@ -138,8 +137,7 @@
 			"name": "Yorgos Kotanidis",
 			"roles": [
 				{
-					"name": "Antiochus",
-					"characterName": "Antiochus, King of Antioch"
+					"name": "Antiochus"
 				},
 				{
 					"name": "Cerimon"

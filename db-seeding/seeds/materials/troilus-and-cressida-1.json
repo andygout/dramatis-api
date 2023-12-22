@@ -1,0 +1,142 @@
+{
+	"name": "Troilus and Cressida",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1602",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The Trojans",
+			"characters": [
+				{
+					"name": "Priam, King of Troy"
+				},
+				{
+					"name": "Hector"
+				},
+				{
+					"name": "Paris"
+				},
+				{
+					"name": "Deiphobus"
+				},
+				{
+					"name": "Helenus"
+				},
+				{
+					"name": "Troilus"
+				},
+				{
+					"name": "Margarelon"
+				},
+				{
+					"name": "Aeneas"
+				},
+				{
+					"name": "Antenor"
+				},
+				{
+					"name": "Pandarus"
+				},
+				{
+					"name": "Calchas"
+				},
+				{
+					"name": "Alexander"
+				},
+				{
+					"name": "Andromache"
+				},
+				{
+					"name": "Cressida"
+				},
+				{
+					"name": "Cassandra"
+				},
+				{
+					"name": "Boy",
+					"differentiator": "Troilus and Cressida"
+				},
+				{
+					"name": "Man",
+					"differentiator": "Troilus and Cressida"
+				},
+				{
+					"name": "Paris's servant"
+				},
+				{
+					"name": "Trojan soldiers"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Troilus and Cressida"
+				}
+			]
+		},
+		{
+			"name": "The Greeks",
+			"characters": [
+				{
+					"name": "Agamemnon, King of the Greeks"
+				},
+				{
+					"name": "Menelaus"
+				},
+				{
+					"name": "Ulysses"
+				},
+				{
+					"name": "Achilles"
+				},
+				{
+					"name": "Ajax"
+				},
+				{
+					"name": "Nestor"
+				},
+				{
+					"name": "Diomedes",
+					"differentiator": "Troilus and Cressida"
+				},
+				{
+					"name": "Patroclus"
+				},
+				{
+					"name": "Thersites"
+				},
+				{
+					"name": "Helen",
+					"differentiator": "Troilus and Cressida"
+				},
+				{
+					"name": "Diomedes' servant"
+				},
+				{
+					"name": "Greek soldiers"
+				},
+				{
+					"name": "Myrmidons"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Troilus and Cressida"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Speaker of the prologue"
+				}
+			]
+		}
+	]
+}

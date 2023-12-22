@@ -1,0 +1,51 @@
+{
+	"name": "Richard III (理查三世 - Lǐ chá sānshì)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Richard III",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Wang Xiaoying"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "House of York",
+			"characters": [
+				{
+					"name": "Richard, Duke of Gloucester, later King Richard",
+					"underlyingName": "King Richard III"
+				}
+			]
+		},
+		{
+			"name": "House of Lancaster",
+			"characters": [
+				{
+					"name": "Lady Anne",
+					"underlyingName": "Lady Anne Neville"
+				},
+				{
+					"name": "Queen Margaret",
+					"underlyingName": "Margaret of Anjou"
+				}
+			]
+		}
+	]
+}

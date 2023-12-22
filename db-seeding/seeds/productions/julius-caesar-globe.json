@@ -3,7 +3,8 @@
 	"startDate": "2012-05-01",
 	"endDate": "2012-05-02",
 	"material": {
-		"name": "Julius Caesar"
+		"name": "Julius Caesar",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"

@@ -1,0 +1,80 @@
+{
+	"name": "King John (Թագավոր Ջոն - T’agavor Jon)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "King John",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Gabriel Sundukyan National Academic Theatre"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The English Party",
+			"characters": [
+				{
+					"name": "King John"
+				},
+				{
+					"name": "Philip the Bastard",
+					"underlyingName": "Philip of Cognac"
+				},
+				{
+					"name": "Hubert",
+					"underlyingName": "Hubert de Burgh, Earl of Kent"
+				},
+				{
+					"name": "Queen Eleanor",
+					"underlyingName": "Eleanor of Aquitaine"
+				},
+				{
+					"name": "Blanche",
+					"underlyingName": "Blanche of Castile"
+				}
+			]
+		},
+		{
+			"name": "The French Party",
+			"characters": [
+				{
+					"name": "Louis the Dauphin",
+					"underlyingName": "King Louis VIII of France"
+				},
+				{
+					"name": "Arthur, Duke of Brittaine",
+					"underlyingName": "Arthur I"
+				},
+				{
+					"name": "Lady Constance",
+					"underlyingName": "Constance, Duchess of Brittany"
+				}
+			]
+		},
+		{
+			"name": "The Pope's Legate",
+			"characters": [
+				{
+					"name": "Cardinal Pandulph",
+					"underlyingName": "Pandulf Verraccio"
+				}
+			]
+		}
+	]
+}

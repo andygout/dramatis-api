@@ -3,7 +3,8 @@
 	"startDate": "2012-05-15",
 	"endDate": "2012-05-16",
 	"material": {
-		"name": "Henry IV, Part 2"
+		"name": "Henry IV, Part 2 (Henrique IV, Segunda Parte)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -34,8 +35,7 @@
 			"name": "Lautaro Vilo",
 			"roles": [
 				{
-					"name": "Prince Henry, later crowned Henry V",
-					"characterName": "Prince Henry"
+					"name": "Prince Henry, later crowned Henry V"
 				}
 			]
 		},

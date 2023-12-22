@@ -1,0 +1,85 @@
+{
+	"name": "Titus Andronicus (泰特斯 - Tài tè sī)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Titus Andronicus",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Tang Shu-wing"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Rupert Chan"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Titus Andronicus"
+				},
+				{
+					"name": "Lucius Andronicus"
+				},
+				{
+					"name": "Quintus Andronicus"
+				},
+				{
+					"name": "Martius Andronicus"
+				},
+				{
+					"name": "Lavinia"
+				},
+				{
+					"name": "Marcus Andronicus"
+				},
+				{
+					"name": "Saturninus"
+				},
+				{
+					"name": "Bassianus"
+				}
+			]
+		},
+		{
+			"name": "Goths",
+			"characters": [
+				{
+					"name": "Tamora"
+				},
+				{
+					"name": "Aaron",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Demetrius",
+					"differentiator": "Titus Andronicus"
+				},
+				{
+					"name": "Chiron"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,80 @@
+{
+	"name": "Henry VI, Part 2 (Henri i Gjashtë 2)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Henry VI, Part 2",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Shpresa Qatipi"
+				},
+				{
+					"name": "Piro Tanku"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "The King's party",
+			"characters": [
+				{
+					"name": "King Henry VI"
+				},
+				{
+					"name": "Queen Margaret",
+					"underlyingName": "Margaret of Anjou"
+				},
+				{
+					"name": "Humphrey, Duke of Gloucester",
+					"underlyingName": "Humphrey of Lancaster, Duke of Gloucester"
+				},
+				{
+					"name": "Eleanor, Duchess of Gloucester",
+					"underlyingName": "Eleanor Cobham, Duchess of Gloucester"
+				},
+				{
+					"name": "Duke of Suffolk (William de la Pole)",
+					"underlyingName": "William de la Pole, 1st Duke of Suffolk"
+				}
+			]
+		},
+		{
+			"name": "The Duke of York's party",
+			"characters": [
+				{
+					"name": "Richard Plantagenet, Duke of York",
+					"underlyingName": "Richard Plantagenet, 3rd Duke of York"
+				},
+				{
+					"name": "Richard, son of Duke of York",
+					"underlyingName": "King Richard III"
+				}
+			]
+		},
+		{
+			"name": "The Cade Rebellion",
+			"characters": [
+				{
+					"name": "Jack Cade"
+				},
+				{
+					"name": "Dick the Butcher"
+				}
+			]
+		}
+	]
+}

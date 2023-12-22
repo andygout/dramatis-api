@@ -4,7 +4,8 @@
 	"pressDate": "2006-05-18",
 	"endDate": "2006-10-12",
 	"material": {
-		"name": "Much Ado About Nothing"
+		"name": "Much Ado About Nothing",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

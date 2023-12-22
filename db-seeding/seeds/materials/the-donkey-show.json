@@ -19,7 +19,8 @@
 			"entities": [
 				{
 					"model": "MATERIAL",
-					"name": "A Midsummer Night's Dream"
+					"name": "A Midsummer Night's Dream",
+					"differentiator": "1"
 				}
 			]
 		}

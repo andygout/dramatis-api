@@ -3,7 +3,8 @@
 	"startDate": "2012-04-23",
 	"endDate": "2012-04-24",
 	"material": {
-		"name": "Troilus and Cressida"
+		"name": "Troilus and Cressida (A Toroihi raua ko Kahira)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -115,8 +116,7 @@
 			"name": "Scotty Morrison",
 			"roles": [
 				{
-					"name": "Agamemnon",
-					"characterName": "Agamemnon, King of the Greeks"
+					"name": "Agamemnon"
 				}
 			]
 		},

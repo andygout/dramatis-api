@@ -5,7 +5,8 @@
 	"pressDate": "2007-09-27",
 	"endDate": "2007-12-01",
 	"material": {
-		"name": "Macbeth"
+		"name": "Macbeth",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Gielgud Theatre"

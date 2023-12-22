@@ -4,7 +4,8 @@
 	"pressDate": "2010-10-07",
 	"endDate": "2011-01-26",
 	"material": {
-		"name": "Hamlet"
+		"name": "Hamlet",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Olivier Theatre"

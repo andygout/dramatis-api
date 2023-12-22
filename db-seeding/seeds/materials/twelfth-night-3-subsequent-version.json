@@ -1,0 +1,70 @@
+{
+	"name": "Twelfth Night (पिया बहरूपिया - Piya Behrupiya)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Twelfth Night",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Amitosh Nagpal"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Orsino, Duke of Illyria"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Viola"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "Twelfth Night"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Olivia",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Maria"
+				},
+				{
+					"name": "Sir Toby Belch"
+				},
+				{
+					"name": "Sir Andrew Aguecheek"
+				},
+				{
+					"name": "Malvolio"
+				},
+				{
+					"name": "Feste"
+				}
+			]
+		}
+	]
+}

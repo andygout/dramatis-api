@@ -1,0 +1,73 @@
+{
+	"name": "A Midsummer Night's Dream (한여름밤의 꿈 - han-yeoleumbam-ui kkum - The dream of a summer night)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "A Midsummer Night's Dream",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Jung-Ung Yang"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Alyssa Kim"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Ajumi",
+					"underlyingName": "Nick Bottom"
+				},
+				{
+					"name": "Dot",
+					"underlyingName": "Titania, Queen of the Fairies"
+				},
+				{
+					"name": "Gabbi",
+					"underlyingName": "Oberon, King of the Fairies"
+				},
+				{
+					"name": "Duduri",
+					"underlyingName": "Puck"
+				},
+				{
+					"name": "Hang",
+					"underlyingName": "Lysander"
+				},
+				{
+					"name": "Beok",
+					"underlyingName": "Hermia"
+				},
+				{
+					"name": "Loo",
+					"underlyingName": "Demetrius"
+				},
+				{
+					"name": "Ik",
+					"underlyingName": "Helena"
+				}
+			]
+		}
+	]
+}

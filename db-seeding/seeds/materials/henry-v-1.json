@@ -1,0 +1,239 @@
+{
+	"name": "Henry V",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1599",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Chorus",
+					"differentiator": "Henry V"
+				}
+			]
+		},
+		{
+			"name": "The English",
+			"characters": [
+				{
+					"name": "King Henry V"
+				},
+				{
+					"name": "Humphrey of Lancaster, Duke of Gloucester"
+				},
+				{
+					"name": "John of Lancaster, Duke of Bedford"
+				},
+				{
+					"name": "Thomas of Lancaster, Duke of Clarence"
+				},
+				{
+					"name": "Thomas Beaufort, Duke of Exeter"
+				},
+				{
+					"name": "Duke of York",
+					"underlyingName": "Edward, 2nd Duke of York"
+				},
+				{
+					"name": "Thomas Montagu, Earl of Salisbury",
+					"underlyingName": "Thomas Montagu, 4th Earl of Salisbury"
+				},
+				{
+					"name": "Ralph Neville, Earl of Westmorland",
+					"underlyingName": "Ralph Neville, 1st Earl of Westmorland"
+				},
+				{
+					"name": "Richard Beauchamp, Earl of Warwick",
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
+				},
+				{
+					"name": "John Holland, Earl of Huntingdon",
+					"underlyingName": "John Holland, 2nd Duke of Exeter, 2nd Earl of Huntingdon"
+				},
+				{
+					"name": "Sir Thomas Erpingham"
+				},
+				{
+					"name": "Captain Gower"
+				},
+				{
+					"name": "Captain Fluellen"
+				},
+				{
+					"name": "Captain Macmorris"
+				},
+				{
+					"name": "Captain Jamy"
+				},
+				{
+					"name": "John Bates"
+				},
+				{
+					"name": "Alexander Court"
+				},
+				{
+					"name": "Michael Williams"
+				},
+				{
+					"name": "Herald",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Pistol",
+					"underlyingName": "Ancient Pistol"
+				},
+				{
+					"name": "Nym",
+					"underlyingName": "Corporal Nym"
+				},
+				{
+					"name": "Bardolph"
+				},
+				{
+					"name": "Boy",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Hostess",
+					"underlyingName": "Mistress Nell Quickly"
+				},
+				{
+					"name": "Archbishop of Canterbury",
+					"underlyingName": "Henry Chichele, Archbishop of Canterbury"
+				},
+				{
+					"name": "Bishop of Ely",
+					"underlyingName": "John Fordham, Bishop of Ely"
+				}
+			]
+		},
+		{
+			"name": "The English (traitors)",
+			"characters": [
+				{
+					"name": "Richard, Earl of Cambridge",
+					"underlyingName": "Richard of Conisburgh, 3rd Earl of Cambridge"
+				},
+				{
+					"name": "Lord Henry Scroop",
+					"underlyingName": "Henry Scrope, 2rd Baron Scrope of Masham"
+				},
+				{
+					"name": "Sir Thomas Grey"
+				}
+			]
+		},
+		{
+			"name": "The French",
+			"characters": [
+				{
+					"name": "King of France",
+					"underlyingName": "King Charles VI of France"
+				},
+				{
+					"name": "Queen Isabel",
+					"underlyingName": "Isabeau of Bavaria"
+				},
+				{
+					"name": "Louis, Duke of Guyenne and Dauphin of France",
+					"underlyingName": "Louis, Duke of Guyenne"
+				},
+				{
+					"name": "Princess Catherine",
+					"underlyingName": "Catherine of Valois"
+				},
+				{
+					"name": "Alice",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Charles Delabreth, Constable of France",
+					"underlyingName": "Charles I d'Albret"
+				},
+				{
+					"name": "Duke of Bourbon",
+					"underlyingName": "John of Bourbon"
+				},
+				{
+					"name": "Duke of Britaine"
+				},
+				{
+					"name": "Duke of Orléans",
+					"underlyingName": "Charles of Orléans"
+				},
+				{
+					"name": "Duke of Berry",
+					"underlyingName": "John of Berry"
+				},
+				{
+					"name": "Duke of Burgundy",
+					"underlyingName": "John I"
+				},
+				{
+					"name": "Lord Rambures",
+					"underlyingName": "David de Rambures"
+				},
+				{
+					"name": "Lord Grandpré"
+				},
+				{
+					"name": "Monsieur le Fer"
+				},
+				{
+					"name": "Montjoy"
+				},
+				{
+					"name": "Governor of Harfleur"
+				},
+				{
+					"name": "French Ambassadors"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lords",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Ladies",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Officers",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Citizens",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Henry V"
+				},
+				{
+					"name": "Servants",
+					"differentiator": "Henry V"
+				}
+			]
+		}
+	]
+}

@@ -3,7 +3,8 @@
 	"startDate": "2006-09-13",
 	"endDate": "2006-09-13",
 	"material": {
-		"name": "The Comedy of Errors"
+		"name": "The Comedy of Errors",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"

@@ -4,7 +4,8 @@
 	"pressDate": "2006-11-15",
 	"endDate": "2007-01-06",
 	"material": {
-		"name": "The Winter's Tale"
+		"name": "The Winter's Tale",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

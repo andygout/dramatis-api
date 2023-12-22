@@ -3,7 +3,8 @@
 	"startDate": "2007-03-15",
 	"endDate": "2007-03-17",
 	"material": {
-		"name": "Venus and Adonis"
+		"name": "Venus and Adonis",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

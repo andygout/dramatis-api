@@ -3,7 +3,8 @@
 	"startDate": "2006-09-04",
 	"endDate": "2006-09-04",
 	"material": {
-		"name": "All's Well That Ends Well"
+		"name": "All's Well That Ends Well",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -34,8 +35,7 @@
 			"name": "Adetunji Kasim",
 			"roles": [
 				{
-					"name": "Bertam",
-					"characterName": "Bertam, Count of Roussillon"
+					"name": "Bertram"
 				}
 			]
 		},
@@ -43,8 +43,7 @@
 			"name": "Joe Arkley",
 			"roles": [
 				{
-					"name": "Lafeu",
-					"characterName": "Lafew"
+					"name": "Lafeu"
 				},
 				{
 					"name": "Soldier",
@@ -64,8 +63,7 @@
 			"name": "Julie Heatherill",
 			"roles": [
 				{
-					"name": "Widow",
-					"characterName": "Widow Capilet of Florence"
+					"name": "Widow"
 				}
 			]
 		},
@@ -81,8 +79,7 @@
 			"name": "Mike Holdsworth",
 			"roles": [
 				{
-					"name": "King",
-					"characterName": "King of France"
+					"name": "King"
 				},
 				{
 					"name": "Soldier",

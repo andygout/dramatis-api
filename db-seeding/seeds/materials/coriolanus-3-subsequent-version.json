@@ -1,0 +1,45 @@
+{
+	"name": "Coriolanus (コリオレーナス - Koriorēnasu)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Coriolanus",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Tsuneari Fukuda"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Caius Martius Coriolanus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Chorus",
+					"differentiator": "Coriolanus"
+				}
+			]
+		}
+	]
+}

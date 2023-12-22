@@ -1,0 +1,86 @@
+{
+	"name": "Twelfth Night (Двенадцатая ночь)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2003",
+	"originalVersionMaterial": {
+		"name": "Twelfth Night",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Chekhov International Theatre Festival"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Orsino",
+					"underlyingName": "Orsino, Duke of Illyria"
+				},
+				{
+					"name": "Valentine",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Curio"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Viola"
+				},
+				{
+					"name": "Sebastian",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Sea Captain"
+				},
+				{
+					"name": "Antonio",
+					"differentiator": "Twelfth Night"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Olivia",
+					"differentiator": "Twelfth Night"
+				},
+				{
+					"name": "Maria"
+				},
+				{
+					"name": "Sir Toby Belch"
+				},
+				{
+					"name": "Sir Andrew Aguecheek"
+				},
+				{
+					"name": "Malvolio"
+				},
+				{
+					"name": "Feste"
+				}
+			]
+		}
+	]
+}

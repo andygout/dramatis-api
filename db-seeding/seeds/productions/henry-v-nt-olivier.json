@@ -4,7 +4,8 @@
 	"pressDate": "2003-05-13",
 	"endDate": "2003-08-20",
 	"material": {
-		"name": "Henry V"
+		"name": "Henry V",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Olivier Theatre"

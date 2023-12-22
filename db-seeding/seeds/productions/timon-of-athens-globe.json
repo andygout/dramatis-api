@@ -3,7 +3,8 @@
 	"startDate": "2012-05-31",
 	"endDate": "2012-06-01",
 	"material": {
-		"name": "Timon of Athens"
+		"name": "Timon of Athens (Timon aus Athen)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"

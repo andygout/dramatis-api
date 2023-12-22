@@ -3,7 +3,8 @@
 	"startDate": "2012-05-16",
 	"endDate": "2012-05-17",
 	"material": {
-		"name": "King John"
+		"name": "King John (Թագավոր Ջոն - T’agavor Jon)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -42,8 +43,7 @@
 			"name": "Alla Vardanyan",
 			"roles": [
 				{
-					"name": "Lady Constance",
-					"characterName": "Constance"
+					"name": "Lady Constance"
 				}
 			]
 		},
@@ -75,8 +75,7 @@
 			"name": "Davit Gasparyan",
 			"roles": [
 				{
-					"name": "Louis the Dauphin",
-					"characterName": "Lewis the Dauphin"
+					"name": "Louis the Dauphin"
 				}
 			]
 		},

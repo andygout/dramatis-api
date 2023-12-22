@@ -4,7 +4,8 @@
 	"pressDate": "2006-08-03",
 	"endDate": "2006-10-10",
 	"material": {
-		"name": "King John"
+		"name": "King John",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

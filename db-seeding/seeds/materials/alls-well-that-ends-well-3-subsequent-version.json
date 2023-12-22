@@ -1,0 +1,72 @@
+{
+	"name": "All's Well That Ends Well (મારો પિયો ગયો રંગૂન - Maro Piyo Gayo Rangoon - My brother went to Rangoon)",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "All's Well That Ends Well",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Mihir Buhta"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Bharatram",
+					"underlyingName": "Bertam, Count of Roussillon"
+				},
+				{
+					"name": "Kunti",
+					"underlyingName": "Countess of Roussillon"
+				},
+				{
+					"name": "Heli",
+					"underlyingName": "Helena",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Parbat",
+					"underlyingName": "Parolles"
+				},
+				{
+					"name": "Gokuldas Gandhi",
+					"underlyingName": "King of France"
+				},
+				{
+					"name": "Laffabhai",
+					"underlyingName": "Lafew"
+				},
+				{
+					"name": "Thuwang",
+					"underlyingName": "Widow Capilet of Florence"
+				},
+				{
+					"name": "Alkini",
+					"underlyingName": "Diana",
+					"differentiator": "All's Well That Ends Well"
+				},
+				{
+					"name": "Pandurang",
+					"underlyingName": "Attendants",
+					"differentiator": "All's Well That Ends Well"
+				}
+			]
+		}
+	]
+}

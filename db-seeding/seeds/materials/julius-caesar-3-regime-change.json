@@ -1,0 +1,55 @@
+{
+	"name": "Regime Change",
+	"format": "play",
+	"year": "2006",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Peter Straughan"
+				}
+			]
+		},
+		{
+			"name": "in response to",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Julius Caesar",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Coiler"
+				},
+				{
+					"name": "Umit"
+				},
+				{
+					"name": "Vlas"
+				},
+				{
+					"name": "Natascha"
+				},
+				{
+					"name": "Lutz"
+				},
+				{
+					"name": "Ahmet"
+				},
+				{
+					"name": "Jean",
+					"differentiator": "Regime Change"
+				},
+				{
+					"name": "Dreyer"
+				}
+			]
+		}
+	]
+}

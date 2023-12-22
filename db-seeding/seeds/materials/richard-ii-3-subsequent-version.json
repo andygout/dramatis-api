@@ -1,0 +1,122 @@
+{
+	"name": "Richard II",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Richard II",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Iman Aoun"
+				},
+				{
+					"name": "Bayan Shbib"
+				}
+			]
+		},
+		{
+			"name": "text edited by",
+			"entities": [
+				{
+					"name": "Gassan Zaqtan"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Richard II"
+				},
+				{
+					"name": "John of Gaunt",
+					"underlyingName": "John of Gaunt, Duke of Lancaster"
+				},
+				{
+					"name": "Edmund of Langley, Duke of York"
+				},
+				{
+					"name": "Duke of Aumerle",
+					"underlyingName": "Edward, 2nd Duke of York"
+				},
+				{
+					"name": "Thomas Mowbray",
+					"underlyingName": "Thomas de Mowbray, 1st Duke of Norfolk"
+				},
+				{
+					"name": "Queen Isabel",
+					"differentiator": "Richard II"
+				},
+				{
+					"name": "Duchess of Gloucester",
+					"underlyingName": "Eleanor de Bohun"
+				}
+			]
+		},
+		{
+			"name": "Rebels",
+			"characters": [
+				{
+					"name": "Bolingbroke",
+					"underlyingName": "King Henry IV"
+				},
+				{
+					"name": "Henry Percy, Earl of Northumberland",
+					"underlyingName": "Henry Percy, 1st Earl of Northumberland"
+				},
+				{
+					"name": "Percy",
+					"underlyingName": "Sir Henry 'Hotspur' Percy"
+				},
+				{
+					"name": "Ross",
+					"underlyingName": "William de Ros, 6th Baron Ros"
+				}
+			]
+		},
+		{
+			"name": "Richard's allies",
+			"characters": [
+				{
+					"name": "Bagot",
+					"underlyingName": "Sir William Bagot"
+				},
+				{
+					"name": "Green",
+					"underlyingName": "Sir Henry Green, JP"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Welsh captain",
+					"underlyingName": "Captain of the Welsh army"
+				},
+				{
+					"name": "Gardener"
+				},
+				{
+					"name": "Gardener's wife"
+				},
+				{
+					"name": "Guard",
+					"differentiator": "Richard II"
+				}
+			]
+		}
+	]
+}

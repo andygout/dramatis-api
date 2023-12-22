@@ -3,7 +3,8 @@
 	"startDate": "2006-11-15",
 	"endDate": "2006-11-18",
 	"material": {
-		"name": "King Lear"
+		"name": "King Lear",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "The Cube"
@@ -65,12 +66,10 @@
 			"name": "David Yip",
 			"roles": [
 				{
-					"name": "Albany",
-					"characterName": "Duke of Albany"
+					"name": "Albany"
 				},
 				{
-					"name": "Gloucester",
-					"characterName": "Earl of Gloucester"
+					"name": "Gloucester"
 				}
 			]
 		},
@@ -78,8 +77,7 @@
 			"name": "Daniel York",
 			"roles": [
 				{
-					"name": "Cornwall",
-					"characterName": "Duke of Cornwall"
+					"name": "Cornwall"
 				},
 				{
 					"name": "Edgar"
@@ -90,8 +88,7 @@
 			"name": "He Ju",
 			"roles": [
 				{
-					"name": "Kent",
-					"characterName": "Earl of Kent"
+					"name": "Kent"
 				}
 			]
 		},

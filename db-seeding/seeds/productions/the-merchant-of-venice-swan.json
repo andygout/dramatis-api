@@ -4,7 +4,8 @@
 	"pressDate": "2007-03-27",
 	"endDate": "2007-03-31",
 	"material": {
-		"name": "The Merchant of Venice"
+		"name": "The Merchant of Venice",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

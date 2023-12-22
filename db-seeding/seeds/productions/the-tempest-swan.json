@@ -3,7 +3,8 @@
 	"startDate": "2006-09-11",
 	"endDate": "2006-09-11",
 	"material": {
-		"name": "The Tempest"
+		"name": "The Tempest",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -50,8 +51,7 @@
 			"name": "Gareth Owen",
 			"roles": [
 				{
-					"name": "Alonso",
-					"characterName": "Alonso, King of Naples"
+					"name": "Alonso"
 				}
 			]
 		},
@@ -75,8 +75,7 @@
 			"name": "Lauren Adamson",
 			"roles": [
 				{
-					"name": "Gonzala",
-					"characterName": "Gonzalo"
+					"name": "Gonzala"
 				}
 			]
 		},

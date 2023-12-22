@@ -4,7 +4,8 @@
 	"pressDate": "2006-02-07",
 	"endDate": "2006-02-25",
 	"material": {
-		"name": "A Midsummer Night's Dream"
+		"name": "A Midsummer Night's Dream",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Novello Theatre"

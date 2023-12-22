@@ -1,0 +1,192 @@
+{
+	"name": "Hamlet",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1602",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Danish royal family",
+			"characters": [
+				{
+					"name": "King Hamlet"
+				},
+				{
+					"name": "Claudius",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Gertrude"
+				},
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Laertes"
+				},
+				{
+					"name": "Ophelia"
+				},
+				{
+					"name": "Reynaldo"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Members of the Danish court",
+			"characters": [
+				{
+					"name": "Voltemand"
+				},
+				{
+					"name": "Cornelius",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Rosencrantz"
+				},
+				{
+					"name": "Guildenstern"
+				},
+				{
+					"name": "Osrick"
+				},
+				{
+					"name": "Lord",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Gentlemen",
+					"differentiator": "Hamlet"
+				}
+			]
+		},
+		{
+			"name": "Soldiers of the Danish court",
+			"characters": [
+				{
+					"name": "Francisco",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Barnardo"
+				},
+				{
+					"name": "Marcellus"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Messenger",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Sailor",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "First Gravedigger"
+				},
+				{
+					"name": "Second Gravedigger"
+				},
+				{
+					"name": "Priest",
+					"differentiator": "Hamlet"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Fortinbras"
+				},
+				{
+					"name": "Captain in Fortinbras' Army"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "English Ambassador"
+				}
+			]
+		},
+		{
+			"name": "Players",
+			"characters": [
+				{
+					"name": "Player King"
+				},
+				{
+					"name": "Player Queen"
+				},
+				{
+					"name": "Player of Lucianus"
+				},
+				{
+					"name": "Player of Prologue"
+				},
+				{
+					"name": "Musician"
+				},
+				{
+					"name": "Players"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Lords",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Guards",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Followers of Laertes",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Sailors",
+					"differentiator": "Hamlet"
+				}
+			]
+		}
+	]
+}

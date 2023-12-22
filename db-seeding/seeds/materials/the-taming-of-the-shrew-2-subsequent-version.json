@@ -1,0 +1,98 @@
+{
+	"name": "The Taming of the Shrew (علاج ضد دستیاب ہے - Treatment is available)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "The Taming of the Shrew",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Maryam Pasha"
+				},
+				{
+					"name": "Zaibun Pasha"
+				},
+				{
+					"name": "Aamna Kaul"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Induction",
+			"characters": [
+				{
+					"name": "Ravi",
+					"underlyingName": "Christopher Sly"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Bashir",
+					"underlyingName": "Baptista Minola"
+				},
+				{
+					"name": "Kiran",
+					"underlyingName": "Katherina Minola"
+				},
+				{
+					"name": "Rustam",
+					"underlyingName": "Petruchio"
+				},
+				{
+					"name": "Safarish",
+					"underlyingName": "Grumio"
+				},
+				{
+					"name": "Curtis"
+				},
+				{
+					"name": "Bina",
+					"underlyingName": "Bianca Minola"
+				},
+				{
+					"name": "Gremio"
+				},
+				{
+					"name": "Hasnat",
+					"underlyingName": "Hortensio"
+				},
+				{
+					"name": "Qazim",
+					"underlyingName": "Lucentio"
+				},
+				{
+					"name": "Tranio"
+				},
+				{
+					"name": "Biru",
+					"underlyingName": "Biondello"
+				},
+				{
+					"name": "Waqaruddin",
+					"underlyingName": "Vincentio",
+					"differentiator": "The Taming of the Shrew"
+				},
+				{
+					"name": "Begum",
+					"underlyingName": "Widow"
+				}
+			]
+		}
+	]
+}

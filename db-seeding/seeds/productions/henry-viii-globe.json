@@ -3,7 +3,8 @@
 	"startDate": "2012-05-29",
 	"endDate": "2012-05-30",
 	"material": {
-		"name": "Henry VIII"
+		"name": "Henry VIII",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -26,8 +27,7 @@
 			"name": "Fernando Gil",
 			"roles": [
 				{
-					"name": "Henry VIII",
-					"characterName": "King Henry VIII"
+					"name": "Henry VIII"
 				}
 			]
 		},
@@ -35,8 +35,7 @@
 			"name": "Julio Hildalgo",
 			"roles": [
 				{
-					"name": "Buckingham",
-					"characterName": "Duke of Buckingham"
+					"name": "Buckingham"
 				}
 			]
 		},
@@ -44,8 +43,7 @@
 			"name": "Rodrigo Arribas",
 			"roles": [
 				{
-					"name": "Norfolk",
-					"characterName": "Duke of Norfolk"
+					"name": "Norfolk"
 				}
 			]
 		},
@@ -53,8 +51,7 @@
 			"name": "Bruno Ciordia",
 			"roles": [
 				{
-					"name": "Suffolk",
-					"characterName": "Duke of Suffolk"
+					"name": "Suffolk"
 				}
 			]
 		},
@@ -62,8 +59,7 @@
 			"name": "Oscar de la Fuente",
 			"roles": [
 				{
-					"name": "Sands-Intendente",
-					"characterName": "Lord Sands"
+					"name": "Sands-Intendente"
 				}
 			]
 		},
@@ -71,8 +67,7 @@
 			"name": "Daniel Moreno",
 			"roles": [
 				{
-					"name": "Chamberlain",
-					"characterName": "Lord Chamberlain"
+					"name": "Chamberlain"
 				}
 			]
 		},
@@ -80,8 +75,7 @@
 			"name": "Jesus Fuente",
 			"roles": [
 				{
-					"name": "Wolsey",
-					"characterName": "Cardinal Wolsey"
+					"name": "Wolsey"
 				}
 			]
 		},
@@ -97,8 +91,7 @@
 			"name": "Jesús Teyssiere",
 			"roles": [
 				{
-					"name": "Cranmer",
-					"characterName": "Thomas Cranmer, Archbishop of Canterbury"
+					"name": "Cranmer"
 				}
 			]
 		},
@@ -106,8 +99,7 @@
 			"name": "Elena González",
 			"roles": [
 				{
-					"name": "Catalina of Aragon",
-					"characterName": "Queen Katherine"
+					"name": "Catalina of Aragon"
 				}
 			]
 		},
@@ -115,8 +107,7 @@
 			"name": "Sara Moraleda",
 			"roles": [
 				{
-					"name": "Ann Boleyn",
-					"characterName": "Anne Bullen"
+					"name": "Ann Boleyn"
 				}
 			]
 		},

@@ -3,7 +3,8 @@
 	"startDate": "2006-08-13",
 	"endDate": "2006-08-16",
 	"material": {
-		"name": "King Lear"
+		"name": "King Lear",
+		"differentiator": "3"
 	},
 	"venue": {
 		"name": "Royal Lyceum Theatre"

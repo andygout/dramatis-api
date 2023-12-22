@@ -3,7 +3,8 @@
 	"startDate": "2006-11-02",
 	"endDate": "2006-11-11",
 	"material": {
-		"name": "The Taming of the Shrew"
+		"name": "The Taming of the Shrew",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Courtyard Theatre"

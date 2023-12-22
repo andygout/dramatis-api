@@ -3,7 +3,8 @@
 	"startDate": "2012-05-14",
 	"endDate": "2012-05-15",
 	"material": {
-		"name": "Henry IV, Part 1"
+		"name": "Henry IV, Part 1 (Enrique IV, Primera Parte)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -34,8 +35,7 @@
 			"name": "Constantino Morán",
 			"roles": [
 				{
-					"name": "Prince Henry (Hal)",
-					"characterName": "Henry, Prince of Wales"
+					"name": "Prince Henry (Hal)"
 				}
 			]
 		},
@@ -51,8 +51,7 @@
 			"name": "David Calderón",
 			"roles": [
 				{
-					"name": "Henry Percy (Hotspur)",
-					"characterName": "Harry Percy"
+					"name": "Henry Percy (Hotspur)"
 				}
 			]
 		},
@@ -74,8 +73,7 @@
 			"name": "Claudio Lafarga",
 			"roles": [
 				{
-					"name": "Poins",
-					"characterName": "Ned Poins"
+					"name": "Poins"
 				}
 			]
 		},

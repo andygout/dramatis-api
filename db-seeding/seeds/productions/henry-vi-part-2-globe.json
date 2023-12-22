@@ -3,7 +3,8 @@
 	"startDate": "2012-05-12",
 	"endDate": "2012-05-13",
 	"material": {
-		"name": "Henry VI, Part 2"
+		"name": "Henry VI, Part 2 (Henri i Gjashtë 2)",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -42,8 +43,7 @@
 			"name": "Roland Saro",
 			"roles": [
 				{
-					"name": "Richard, son of Duke of York",
-					"characterName": "Richard Plantagenet"
+					"name": "Richard, son of Duke of York"
 				},
 				{
 					"name": "Dick the Butcher"
@@ -54,8 +54,7 @@
 			"name": "Kristaq Skrami",
 			"roles": [
 				{
-					"name": "Humphrey, Duke of Gloucester",
-					"characterName": "Humphrey of Lancaster, Duke of Gloucester"
+					"name": "Humphrey, Duke of Gloucester"
 				}
 			]
 		},
@@ -63,8 +62,7 @@
 			"name": "Dritan Boriçi",
 			"roles": [
 				{
-					"name": "Duke of Suffolk (William de la Pole)",
-					"characterName": "William de la Pole, Duke of Suffolk"
+					"name": "Duke of Suffolk (William de la Pole)"
 				}
 			]
 		},
@@ -88,8 +86,7 @@
 			"name": "Yilka Mujo",
 			"roles": [
 				{
-					"name": "Eleanor, Duchess of Gloucester",
-					"characterName": "Eleanor Cobham, Duchess of Gloucester"
+					"name": "Eleanor, Duchess of Gloucester"
 				}
 			]
 		}

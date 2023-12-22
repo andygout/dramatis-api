@@ -4,7 +4,8 @@
 	"pressDate": "2006-05-03",
 	"endDate": "2006-05-06",
 	"material": {
-		"name": "Hamlet"
+		"name": "Hamlet",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

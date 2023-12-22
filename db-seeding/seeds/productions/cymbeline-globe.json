@@ -3,7 +3,8 @@
 	"startDate": "2012-05-02",
 	"endDate": "2012-05-03",
 	"material": {
-		"name": "Cymbeline"
+		"name": "Cymbeline",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Globe Theatre"
@@ -34,8 +35,7 @@
 			"name": "Margaret Kowarto",
 			"roles": [
 				{
-					"name": "Imogen",
-					"characterName": "Princess Imogen"
+					"name": "Imogen"
 				}
 			]
 		},
@@ -59,8 +59,7 @@
 			"name": "Dominic Gorgory",
 			"roles": [
 				{
-					"name": "Cloten",
-					"characterName": "Lord Cloten"
+					"name": "Cloten"
 				}
 			]
 		},

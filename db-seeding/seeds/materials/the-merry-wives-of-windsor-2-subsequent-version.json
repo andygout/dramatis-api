@@ -1,0 +1,70 @@
+{
+	"name": "The Merry Wives of Windsor (Heri Wanawake Wa Windsor - Hail the Ladies of Windsor)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "The Merry Wives of Windsor",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Joshua Ogutu"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Mistress Margaret Page"
+				},
+				{
+					"name": "Anne Page"
+				},
+				{
+					"name": "Frank Ford"
+				},
+				{
+					"name": "Mistress Alice Ford"
+				},
+				{
+					"name": "Mistress Quickly",
+					"underlyingName": "Mistress Nell Quickly"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Fenton"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Sir John Falstaff"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Abraham Slender"
+				}
+			]
+		}
+	]
+}

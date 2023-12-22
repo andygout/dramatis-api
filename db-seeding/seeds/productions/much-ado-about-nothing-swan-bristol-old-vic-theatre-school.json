@@ -3,7 +3,8 @@
 	"startDate": "2006-09-05",
 	"endDate": "2006-09-05",
 	"material": {
-		"name": "Much Ado About Nothing"
+		"name": "Much Ado About Nothing",
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -54,8 +55,7 @@
 			"name": "Oliver Millingham",
 			"roles": [
 				{
-					"name": "Don Pedro",
-					"characterName": "Don Pedro, Prince of Arragon"
+					"name": "Don Pedro"
 				}
 			]
 		},

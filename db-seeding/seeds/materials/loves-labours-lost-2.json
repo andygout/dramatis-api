@@ -1,0 +1,93 @@
+{
+	"name": "Love's Labour's Lost",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Love's Labour's Lost",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Andrew Muir"
+				},
+				{
+					"name": "Kate Furby"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Ferdinand, King of Navarre",
+					"underlyingName": "King Ferdinand of Navarre"
+				},
+				{
+					"name": "Berowne",
+					"underlyingName": "Lord Berowne"
+				},
+				{
+					"name": "Longaville",
+					"underlyingName": "Lord Longaville"
+				},
+				{
+					"name": "Lord Dumaine",
+					"underlyingName": "Dumaine"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Don Adriano de Armado"
+				},
+				{
+					"name": "Moth"
+				},
+				{
+					"name": "Holofernes"
+				},
+				{
+					"name": "Costard"
+				},
+				{
+					"name": "Jaquenetta"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Princess of France"
+				},
+				{
+					"name": "Rosaline",
+					"underlyingName": "Lady Rosaline"
+				},
+				{
+					"name": "Maria",
+					"underlyingName": "Lady Maria"
+				},
+				{
+					"name": "Katharine",
+					"underlyingName": "Lady Katharine"
+				},
+				{
+					"name": "Boyet"
+				}
+			]
+		}
+	]
+}

@@ -5,7 +5,8 @@
 	"pressDate": "2009-06-03",
 	"endDate": "2009-08-22",
 	"material": {
-		"name": "Hamlet"
+		"name": "Hamlet",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Wyndham's Theatre"

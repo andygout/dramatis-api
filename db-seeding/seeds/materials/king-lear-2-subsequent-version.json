@@ -1,0 +1,78 @@
+{
+	"name": "King Lear",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"originalVersionMaterial": {
+		"name": "King Lear",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "David Tse Ka-Shing"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "King Lear"
+				},
+				{
+					"name": "Goneril"
+				},
+				{
+					"name": "Regan"
+				},
+				{
+					"name": "Cordelia"
+				},
+				{
+					"name": "Albany",
+					"underlyingName": "Duke of Albany"
+				},
+				{
+					"name": "Cornwall",
+					"underlyingName": "Duke of Cornwall"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Kent",
+					"underlyingName": "Earl of Kent"
+				},
+				{
+					"name": "Gloucester",
+					"underlyingName": "Earl of Gloucester"
+				},
+				{
+					"name": "Edgar"
+				},
+				{
+					"name": "Edmund"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Oswald"
+				}
+			]
+		}
+	]
+}

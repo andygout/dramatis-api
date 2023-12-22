@@ -1,0 +1,127 @@
+{
+	"name": "Coriolanus",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1608",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Romans",
+			"characters": [
+				{
+					"name": "Caius Martius Coriolanus"
+				},
+				{
+					"name": "Titus Lartius"
+				},
+				{
+					"name": "Cominius"
+				},
+				{
+					"name": "Menenius Agrippa"
+				},
+				{
+					"name": "Sicinius Velutus"
+				},
+				{
+					"name": "Junius Brutus"
+				},
+				{
+					"name": "Roman citizens"
+				},
+				{
+					"name": "Roman herald"
+				},
+				{
+					"name": "Volumnia"
+				},
+				{
+					"name": "Virgilia"
+				},
+				{
+					"name": "Young Martius"
+				},
+				{
+					"name": "Valeria"
+				},
+				{
+					"name": "Roman senators"
+				}
+			]
+		},
+		{
+			"name": "Volscians",
+			"characters": [
+				{
+					"name": "Nicanor"
+				},
+				{
+					"name": "Tullus Aufidius"
+				},
+				{
+					"name": "Lieutenant",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Conspirators"
+				},
+				{
+					"name": "Adrian",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "A Citizen of Antium"
+				},
+				{
+					"name": "Volscian guards"
+				},
+				{
+					"name": "Volscian senators"
+				},
+				{
+					"name": "Volscian citizens"
+				},
+				{
+					"name": "Servants of Aufidius"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Gentlewoman",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Patricians"
+				},
+				{
+					"name": "Aediles"
+				},
+				{
+					"name": "Lictors"
+				},
+				{
+					"name": "Soldiers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Messengers",
+					"differentiator": "Coriolanus"
+				},
+				{
+					"name": "Attendants",
+					"differentiator": "Coriolanus"
+				}
+			]
+		}
+	]
+}

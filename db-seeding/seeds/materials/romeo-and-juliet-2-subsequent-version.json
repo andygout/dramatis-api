@@ -1,0 +1,107 @@
+{
+	"name": "Romeo and Juliet (Romeu e Julieta)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Romeo and Juliet",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Onestaldo de Pennaforte"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Ruling house of Verona",
+			"characters": [
+				{
+					"name": "Príncipe",
+					"underlyingName": "Escalus, Prince of Verona"
+				},
+				{
+					"name": "Mercúcio",
+					"underlyingName": "Mercutio"
+				}
+			]
+		},
+		{
+			"name": "House of Montague",
+			"characters": [
+				{
+					"name": "Romeu",
+					"underlyingName": "Romeo Montague"
+				},
+				{
+					"name": "Benvólio",
+					"underlyingName": "Benvolio"
+				}
+			]
+		},
+		{
+			"name": "House of Capulet",
+			"characters": [
+				{
+					"name": "Senhor Capuleto",
+					"underlyingName": "Lord Capulet"
+				},
+				{
+					"name": "Senhora Capuleto",
+					"underlyingName": "Lady Capulet"
+				},
+				{
+					"name": "Julieta",
+					"underlyingName": "Juliet Capulet"
+				},
+				{
+					"name": "Teobaldo",
+					"underlyingName": "Tybalt"
+				},
+				{
+					"name": "Ama",
+					"underlyingName": "Nurse",
+					"differentiator": "Romeo and Juliet"
+				},
+				{
+					"name": "Sansão",
+					"underlyingName": "Sampson"
+				},
+				{
+					"name": "Criado Capuleto",
+					"underlyingName": "Servingmen",
+					"differentiator": "Romeo and Juliet"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Frei Lourenço",
+					"underlyingName": "Friar Laurence"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Narrador",
+					"underlyingName": "Chorus",
+					"differentiator": "Romeo and Juliet"
+				}
+			]
+		}
+	]
+}

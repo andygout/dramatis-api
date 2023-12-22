@@ -3,7 +3,8 @@
 	"startDate": "2006-11-02",
 	"endDate": "2006-11-04",
 	"material": {
-		"name": "Twelfth Night"
+		"name": "Twelfth Night",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "The Cube"

@@ -4,7 +4,8 @@
 	"pressDate": "2006-07-11",
 	"endDate": "2006-07-15",
 	"material": {
-		"name": "Henry IV, Part 1"
+		"name": "Henry IV, Part 1",
+		"differentiator": "1"
 	},
 	"venue": {
 		"name": "Swan Theatre"

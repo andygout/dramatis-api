@@ -1,0 +1,76 @@
+{
+	"name": "Hamlet (Hamletas)",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2012",
+	"originalVersionMaterial": {
+		"name": "Hamlet",
+		"differentiator": "1"
+	},
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "William Shakespeare"
+				}
+			]
+		},
+		{
+			"name": "translated by",
+			"entities": [
+				{
+					"name": "Aleksys Churginas"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"name": "Danish royal family",
+			"characters": [
+				{
+					"name": "Ghost",
+					"underlyingName": "King Hamlet"
+				},
+				{
+					"name": "Claudius",
+					"differentiator": "Hamlet"
+				},
+				{
+					"name": "Gertrude"
+				},
+				{
+					"name": "Hamlet"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Polonius"
+				},
+				{
+					"name": "Laertes"
+				},
+				{
+					"name": "Ophelia"
+				}
+			]
+		},
+		{
+			"characters": [
+				{
+					"name": "Horatio"
+				}
+			]
+		},
+		{
+			"name": "Players",
+			"characters": [
+				{
+					"name": "Players"
+				}
+			]
+		}
+	]
+}
