@@ -1,5 +1,5 @@
 {
-	"name": "A Midsummer Night's Dream (한여름밤의 꿈 — han-yeoleumbam-ui kkum — The dream of a summer night)",
+	"name": "A Midsummer Night's Dream (한여름밤의 꿈 — Han-yeoleumbam-ui kkum — The Dream of a Summer Night)",
 	"differentiator": "3",
 	"format": "play",
 	"year": "2012",
@@ -34,30 +34,15 @@
 	],
 	"characterGroups": [
 		{
+			"name": "The Lovers",
 			"characters": [
 				{
-					"name": "Ajumi",
-					"underlyingName": "Nick Bottom"
-				},
-				{
-					"name": "Dot",
-					"underlyingName": "Titania, Queen of the Fairies"
-				},
-				{
-					"name": "Gabbi",
-					"underlyingName": "Oberon, King of the Fairies"
-				},
-				{
-					"name": "Duduri",
-					"underlyingName": "Puck"
+					"name": "Beok",
+					"underlyingName": "Hermia"
 				},
 				{
 					"name": "Hang",
 					"underlyingName": "Lysander"
-				},
-				{
-					"name": "Beok",
-					"underlyingName": "Hermia"
 				},
 				{
 					"name": "Loo",
@@ -66,6 +51,32 @@
 				{
 					"name": "Ik",
 					"underlyingName": "Helena"
+				}
+			]
+		},
+		{
+			"name": "The Fairies",
+			"characters": [
+				{
+					"name": "Gabbi",
+					"underlyingName": "Oberon, King of the Fairies"
+				},
+				{
+					"name": "Dot",
+					"underlyingName": "Titania, Queen of the Fairies"
+				},
+				{
+					"name": "Duduri",
+					"underlyingName": "Puck"
+				}
+			]
+		},
+		{
+			"name": "The Mechanicals",
+			"characters": [
+				{
+					"name": "Ajumi",
+					"underlyingName": "Nick Bottom"
 				}
 			]
 		}
