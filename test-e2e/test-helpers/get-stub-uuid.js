@@ -5,7 +5,7 @@ const constructStubUuid = components => {
 			.filter(Boolean)
 			.map(component =>
 				component
-					.replaceAll(' - ', ' ')
+					.replaceAll(' — ', ' ') // Replace whitespace-flanked em dash with single whitespace.
 					.toUpperCase()
 					.split(' ')
 					.join('_')
