@@ -15,7 +15,8 @@
 		{
 			"characters": [
 				{
-					"name": "Johnny"
+					"name": "Johnny",
+					"differentiator": "Socialism is Great"
 				},
 				{
 					"name": "Lotus"
@@ -51,7 +52,8 @@
 					"name": "Zhang's Dad"
 				},
 				{
-					"name": "Ensemble"
+					"name": "Ensemble",
+					"differentiator": "Socialism is Great"
 				}
 			]
 		}
