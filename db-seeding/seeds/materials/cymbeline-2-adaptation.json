@@ -1,0 +1,100 @@
+{
+	"name": "Cymbeline",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2006",
+	"writingCredits": [
+		{
+			"name": "adapted by",
+			"entities": [
+				{
+					"name": "Emma Rice"
+				}
+			]
+		},
+		{
+			"name": "written by",
+			"entities": [
+				{
+					"name": "Carl Grose"
+				}
+			]
+		},
+		{
+			"name": "from",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "Cymbeline",
+					"differentiator": "1"
+				}
+			]
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Cymbeline",
+					"underlyingName": "Cymbeline, King of Britain"
+				},
+				{
+					"name": "Queen"
+				},
+				{
+					"name": "Cloten",
+					"underlyingName": "Lord Cloten"
+				},
+				{
+					"name": "Imogen",
+					"underlyingName": "Princess Imogen"
+				},
+				{
+					"name": "Posthumus",
+					"underlyingName": "Posthumus Leonatus"
+				},
+				{
+					"name": "Joan"
+				},
+				{
+					"name": "Pisanio"
+				},
+				{
+					"name": "Iachimo"
+				},
+				{
+					"name": "Belarius"
+				},
+				{
+					"name": "Two boys",
+					"underlyingName": "Two brothers of Posthumus"
+				},
+				{
+					"name": "Jupiter"
+				},
+				{
+					"name": "Father",
+					"underlyingName": "Sicilius Leonatus"
+				},
+				{
+					"name": "Mother",
+					"underlyingName": "Mother of Posthumus"
+				},
+				{
+					"name": "Parkas"
+				},
+				{
+					"name": "Whores"
+				},
+				{
+					"name": "Musicians",
+					"differentiator": "Cymbeline"
+				},
+				{
+					"name": "Ambassadors",
+					"differentiator": "Cymbeline"
+				}
+			]
+		}
+	]
+}
