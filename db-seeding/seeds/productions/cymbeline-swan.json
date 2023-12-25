@@ -5,7 +5,7 @@
 	"endDate": "2006-09-30",
 	"material": {
 		"name": "Cymbeline",
-		"differentiator": "1"
+		"differentiator": "2"
 	},
 	"venue": {
 		"name": "Swan Theatre"
@@ -28,8 +28,7 @@
 			"name": "Hayley Carmichael",
 			"roles": [
 				{
-					"name": "Imogen",
-					"characterName": "Princess Imogen"
+					"name": "Imogen"
 				}
 			]
 		},
@@ -37,8 +36,7 @@
 			"name": "Carl Grose",
 			"roles": [
 				{
-					"name": "Posthumus",
-					"characterName": "Posthumus Leonatus"
+					"name": "Posthumus"
 				}
 			]
 		},
@@ -46,8 +44,7 @@
 			"name": "Craig Johnson",
 			"roles": [
 				{
-					"name": "Cloten",
-					"characterName": "Lord Cloten"
+					"name": "Cloten"
 				}
 			]
 		},
@@ -56,7 +53,7 @@
 			"roles": [
 				{
 					"name": "Brother",
-					"characterName": "Two brothers of Posthumus"
+					"characterName": "Two boys"
 				}
 			]
 		},
@@ -80,8 +77,7 @@
 			"name": "Mike Shepherd",
 			"roles": [
 				{
-					"name": "Cymbeline",
-					"characterName": "Cymbeline, King of Britain"
+					"name": "Cymbeline"
 				}
 			]
 		},
