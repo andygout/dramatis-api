@@ -21,6 +21,14 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 	const BAILLIE_TOLKIEN_PERSON_UUID = 'BAILLIE_TOLKIEN_PERSON_UUID';
 	const THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_2_MATERIAL_UUID';
 	const TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID = 'TOLKIENS_LEGENDARIUM_2_MATERIAL_UUID';
+	const THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'THE_FELLOWSHIP_OF_THE_RING_PRODUCTION_UUID';
+	const THEATRE_ROYAL_DRURY_LANE_VENUE_UUID = 'THEATRE_ROYAL_DRURY_LANE_VENUE_UUID';
+	const THE_LORD_OF_THE_RINGS_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'THE_LORD_OF_THE_RINGS_PRODUCTION_UUID';
+	const TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'TOLKIENS_LEGENDARIUM_PRODUCTION_UUID';
+	const THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID = 'THE_FELLOWSHIP_OF_THE_RING_2_PRODUCTION_UUID';
+	const WATERMILL_THEATRE_VENUE_UUID = 'WATERMILL_THEATRE_VENUE_UUID';
+	const THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID = 'THE_LORD_OF_THE_RINGS_2_PRODUCTION_UUID';
+	const TOLKIENS_LEGENDARIUM_WATERMILL_THEATRE_PRODUCTION_UUID = 'TOLKIENS_LEGENDARIUM_2_PRODUCTION_UUID';
 
 	let theTolkienEstateCompany;
 	let baillieTolkienPerson;
@@ -210,6 +218,122 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Fellowship of the Ring',
+				startDate: '2007-05-09',
+				pressDate: '2007-06-19',
+				endDate: '2008-07-20',
+				material: {
+					name: 'The Fellowship of the Ring',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Theatre Royal Drury Lane'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Lord of the Rings',
+				startDate: '2007-05-09',
+				pressDate: '2007-06-19',
+				endDate: '2008-07-20',
+				material: {
+					name: 'The Lord of the Rings',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Theatre Royal Drury Lane'
+				},
+				subProductions: [
+					{
+						uuid: THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Tolkien\'s Legendarium',
+				startDate: '2007-05-09',
+				pressDate: '2007-06-19',
+				endDate: '2008-07-20',
+				material: {
+					name: 'Tolkien\'s Legendarium',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Theatre Royal Drury Lane'
+				},
+				subProductions: [
+					{
+						uuid: THE_LORD_OF_THE_RINGS_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Fellowship of the Ring',
+				startDate: '2023-07-25',
+				pressDate: '2023-08-01',
+				endDate: '2023-10-15',
+				material: {
+					name: 'The Fellowship of the Ring',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Watermill Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Lord of the Rings',
+				startDate: '2023-07-25',
+				pressDate: '2023-08-01',
+				endDate: '2023-10-15',
+				material: {
+					name: 'The Lord of the Rings',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Watermill Theatre'
+				},
+				subProductions: [
+					{
+						uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Tolkien\'s Legendarium',
+				startDate: '2023-07-25',
+				pressDate: '2023-08-01',
+				endDate: '2023-10-15',
+				material: {
+					name: 'Tolkien\'s Legendarium',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Watermill Theatre'
+				},
+				subProductions: [
+					{
+						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID
+					}
+				]
+			});
+
 		theTolkienEstateCompany = await chai.request(app)
 			.get(`/companies/${THE_TOLKIEN_ESTATE_COMPANY_UUID}`);
 
@@ -319,6 +443,63 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 		});
 
+		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedRightsGrantorMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID,
+					name: 'The Fellowship of the Ring',
+					startDate: '2023-07-25',
+					endDate: '2023-10-15',
+					venue: {
+						model: 'VENUE',
+						uuid: WATERMILL_THEATRE_VENUE_UUID,
+						name: 'Watermill Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID,
+						name: 'The Lord of the Rings',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_THEATRE_PRODUCTION_UUID,
+							name: 'Tolkien\'s Legendarium'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
+					name: 'The Fellowship of the Ring',
+					startDate: '2007-05-09',
+					endDate: '2008-07-20',
+					venue: {
+						model: 'VENUE',
+						uuid: THEATRE_ROYAL_DRURY_LANE_VENUE_UUID,
+						name: 'Theatre Royal Drury Lane',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_LORD_OF_THE_RINGS_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
+						name: 'The Lord of the Rings',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
+							name: 'Tolkien\'s Legendarium'
+						}
+					}
+				}
+			];
+
+			const { rightsGrantorMaterialProductions } = theTolkienEstateCompany.body;
+
+			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+
+		});
+
 	});
 
 	describe('Baillie Tolkien (person)', () => {
@@ -413,6 +594,63 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const { rightsGrantorMaterials } = baillieTolkienPerson.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+
+		});
+
+		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedRightsGrantorMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID,
+					name: 'The Fellowship of the Ring',
+					startDate: '2023-07-25',
+					endDate: '2023-10-15',
+					venue: {
+						model: 'VENUE',
+						uuid: WATERMILL_THEATRE_VENUE_UUID,
+						name: 'Watermill Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID,
+						name: 'The Lord of the Rings',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_THEATRE_PRODUCTION_UUID,
+							name: 'Tolkien\'s Legendarium'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
+					name: 'The Fellowship of the Ring',
+					startDate: '2007-05-09',
+					endDate: '2008-07-20',
+					venue: {
+						model: 'VENUE',
+						uuid: THEATRE_ROYAL_DRURY_LANE_VENUE_UUID,
+						name: 'Theatre Royal Drury Lane',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_LORD_OF_THE_RINGS_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
+						name: 'The Lord of the Rings',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
+							name: 'Tolkien\'s Legendarium'
+						}
+					}
+				}
+			];
+
+			const { rightsGrantorMaterialProductions } = baillieTolkienPerson.body;
+
+			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
 
 		});
 

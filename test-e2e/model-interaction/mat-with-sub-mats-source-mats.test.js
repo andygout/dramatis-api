@@ -23,6 +23,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_PRODUCTION_UUID';
 	const SWAN_THEATRE_VENUE_UUID = 'SWAN_THEATRE_VENUE_UUID';
 	const THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_PRODUCTION_UUID';
+	const BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_2_PRODUCTION_UUID';
+	const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
+	const THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_2_PRODUCTION_UUID';
 	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_1_MATERIAL_UUID';
 	const CHARLES_DICKENS_PERSON_UUID = 'CHARLES_DICKENS_PERSON_UUID';
 	const DOMBEY_AND_SON_LTD_COMPANY_UUID = 'DOMBEY_AND_SON_LTD_COMPANY_UUID';
@@ -33,6 +36,15 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PRODUCTION_UUID';
 	const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
 	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_THEATRE_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PRODUCTION_UUID';
+	const WALDO_MATERIAL_UUID = 'WALDO_MATERIAL_UUID';
+	const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
+	const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
+	const WIBBLE_MATERIAL_UUID = 'WIBBLE_MATERIAL_UUID';
+	const QUINCY_QUX_PERSON_UUID = 'QUINCY_QUX_PERSON_UUID';
+	const THEATRICALS_LTD_COMPANY_UUID = 'THEATRICALS_LTD_COMPANY_UUID';
+	const SUB_WIBBLE_OLD_VIC_PRODUCTION_UUID = 'SUB_WIBBLE_PRODUCTION_UUID';
+	const OLD_VIC_THEATRE_VENUE_UUID = 'OLD_VIC_THEATRE_VENUE_UUID';
+	const SUR_WIBBLE_OLD_VIC_PRODUCTION_UUID = 'SUR_WIBBLE_PRODUCTION_UUID';
 
 	let bringUpTheBodiesNovelMaterial;
 	let bringUpTheBodiesPlayMaterial;
@@ -43,6 +55,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 	let bringUpTheBodiesSwanTheatreProduction;
 	let thomasCromwellCharacter;
 	let theLifeAndAdventuresOfNicholasNicklebyNovelMaterial;
+	let janeRoePerson;
+	let fictioneersLtdCompany;
 
 	const sandbox = createSandbox();
 
@@ -221,6 +235,43 @@ describe('Material with sub-materials and source materials thereof', () => {
 			});
 
 		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Bring Up the Bodies',
+				startDate: '2014-05-01',
+				pressDate: '2014-05-17',
+				endDate: '2014-09-06',
+				material: {
+					name: 'Bring Up the Bodies',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Aldwych Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Wolf Hall Trilogy',
+				startDate: '2014-05-01',
+				pressDate: '2014-05-17',
+				endDate: '2014-09-06',
+				material: {
+					name: 'The Wolf Hall Trilogy',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Aldwych Theatre'
+				},
+				subProductions: [
+					{
+						uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -348,6 +399,92 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Waldo',
+				format: 'novel',
+				year: '1974',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Jane Roe'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Fictioneers Ltd'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Wibble',
+				format: 'play',
+				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Quincy Qux'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Theatricals Ltd'
+							}
+						]
+					},
+					{
+						name: 'based on',
+						entities: [
+							{
+								model: 'MATERIAL',
+								name: 'Waldo'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sub-Wibble',
+				startDate: '2002-02-26',
+				pressDate: '2002-02-27',
+				endDate: '2002-02-28',
+				material: {
+					name: 'Wibble'
+				},
+				venue: {
+					name: 'Old Vic Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sur-Wibble',
+				startDate: '2002-02-26',
+				pressDate: '2002-02-27',
+				endDate: '2002-02-28',
+				material: {
+					name: 'Wibble'
+				},
+				venue: {
+					name: 'Old Vic Theatre'
+				},
+				subProductions: [
+					{
+						uuid: SUB_WIBBLE_OLD_VIC_PRODUCTION_UUID
+					}
+				]
+			});
+
 		bringUpTheBodiesNovelMaterial = await chai.request(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
 
@@ -374,6 +511,12 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await chai.request(app)
 			.get(`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`);
+
+		janeRoePerson = await chai.request(app)
+			.get(`/people/${JANE_ROE_PERSON_UUID}`);
+
+		fictioneersLtdCompany = await chai.request(app)
+			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
 	});
 
@@ -467,6 +610,25 @@ describe('Material with sub-materials and source materials thereof', () => {
 		it('includes productions of material that used it as source material, including the sur-production', () => {
 
 			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID,
+					name: 'Bring Up the Bodies',
+					startDate: '2014-05-01',
+					endDate: '2014-09-06',
+					venue: {
+						model: 'VENUE',
+						uuid: ALDWYCH_THEATRE_VENUE_UUID,
+						name: 'Aldwych Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surProduction: null
+					}
+				},
 				{
 					model: 'PRODUCTION',
 					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
@@ -714,6 +876,55 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		});
 
+		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID,
+					name: 'Bring Up the Bodies',
+					startDate: '2014-05-01',
+					endDate: '2014-09-06',
+					venue: {
+						model: 'VENUE',
+						uuid: ALDWYCH_THEATRE_VENUE_UUID,
+						name: 'Aldwych Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
+					name: 'Bring Up the Bodies',
+					startDate: '2013-12-19',
+					endDate: '2014-03-29',
+					venue: {
+						model: 'VENUE',
+						uuid: SWAN_THEATRE_VENUE_UUID,
+						name: 'Swan Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surProduction: null
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = hilaryMantelPerson.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
 	});
 
 	describe('The Mantel Group (company)', () => {
@@ -794,6 +1005,55 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theMantelGroupCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID,
+					name: 'Bring Up the Bodies',
+					startDate: '2014-05-01',
+					endDate: '2014-09-06',
+					venue: {
+						model: 'VENUE',
+						uuid: ALDWYCH_THEATRE_VENUE_UUID,
+						name: 'Aldwych Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
+					name: 'Bring Up the Bodies',
+					startDate: '2013-12-19',
+					endDate: '2014-03-29',
+					venue: {
+						model: 'VENUE',
+						uuid: SWAN_THEATRE_VENUE_UUID,
+						name: 'Swan Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surProduction: null
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = theMantelGroupCompany.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
 
 		});
 
@@ -1238,6 +1498,74 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	});
 
+	describe('Jane Roe (person): single material that used their work as source material is attached to multiple tiers of a production', () => {
+
+		it('includes productions of material that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_WIBBLE_OLD_VIC_PRODUCTION_UUID,
+					name: 'Sub-Wibble',
+					startDate: '2002-02-26',
+					endDate: '2002-02-28',
+					venue: {
+						model: 'VENUE',
+						uuid: OLD_VIC_THEATRE_VENUE_UUID,
+						name: 'Old Vic Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_OLD_VIC_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = janeRoePerson.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
+	});
+
+	describe('Fictioneers Ltd (company): single material that used their work as source material is attached to multiple tiers of a production', () => {
+
+		it('includes productions of material that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_WIBBLE_OLD_VIC_PRODUCTION_UUID,
+					name: 'Sub-Wibble',
+					startDate: '2002-02-26',
+					endDate: '2002-02-28',
+					venue: {
+						model: 'VENUE',
+						uuid: OLD_VIC_THEATRE_VENUE_UUID,
+						name: 'Old Vic Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_OLD_VIC_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = fictioneersLtdCompany.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
+	});
+
 	describe('materials list', () => {
 
 		it('includes writers of the materials and their corresponding source material (with corresponding sur-material)', async () => {
@@ -1347,6 +1675,64 @@ describe('Material with sub-materials and source materials thereof', () => {
 				},
 				{
 					model: 'MATERIAL',
+					uuid: WIBBLE_MATERIAL_UUID,
+					name: 'Wibble',
+					format: 'play',
+					year: 2009,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: QUINCY_QUX_PERSON_UUID,
+									name: 'Quincy Qux'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Theatricals Ltd'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: WALDO_MATERIAL_UUID,
+									name: 'Waldo',
+									format: 'novel',
+									year: 1974,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JANE_ROE_PERSON_UUID,
+													name: 'Jane Roe'
+												},
+												{
+													model: 'COMPANY',
+													uuid: FICTIONEERS_LTD_COMPANY_UUID,
+													name: 'Fictioneers Ltd'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
 					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PLAY_MATERIAL_UUID,
 					name: 'The Life and Adventures of Nicholas Nickleby: Part I',
 					format: 'play',
@@ -1403,6 +1789,32 @@ describe('Material with sub-materials and source materials thereof', () => {
 											]
 										}
 									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: WALDO_MATERIAL_UUID,
+					name: 'Waldo',
+					format: 'novel',
+					year: 1974,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
 								}
 							]
 						}

@@ -11,6 +11,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	chai.use(chaiHttp);
 
+	const TRAFALGAR_STUDIOS_VENUE_UUID = 'TRAFALGAR_STUDIOS_VENUE_UUID';
+	const STUDIO_1_VENUE_UUID = 'STUDIO_1_VENUE_UUID';
 	const AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID = 'AGAMEMNON_1_MATERIAL_UUID';
 	const AESCHYLUS_PERSON_UUID = 'AESCHYLUS_PERSON_UUID';
 	const THE_FATHERS_OF_TRAGEDY_COMPANY_UUID = 'THE_FATHERS_OF_TRAGEDY_COMPANY_UUID';
@@ -19,11 +21,24 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 	const ROBERT_ICKE_PERSON_UUID = 'ROBERT_ICKE_PERSON_UUID';
 	const THE_GREAT_HOPE_COMPANY_UUID = 'THE_GREAT_HOPE_COMPANY_COMPANY_UUID';
 	const THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID = 'THE_ORESTEIA_2_MATERIAL_UUID';
+	const AGAMEMNON_ALMEIDA_PRODUCTION_UUID = 'AGAMEMNON_PRODUCTION_UUID';
+	const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_VENUE_UUID';
+	const ORESTEIA_ALMEIDA_PRODUCTION_UUID = 'ORESTEIA_PRODUCTION_UUID';
+	const AGAMEMNON_TRAFALGAR_STUDIOS_PRODUCTION_UUID = 'AGAMEMNON_2_PRODUCTION_UUID';
+	const ORESTEIA_TRAFALGAR_STUDIOS_PRODUCTION_UUID = 'ORESTEIA_2_PRODUCTION_UUID';
 	const PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = 'PLUGH_MATERIAL_UUID';
+	const FRANCIS_FLOB_PERSON_UUID = 'FRANCIS_FLOB_PERSON_UUID';
+	const CURTAIN_UP_LTD_COMPANY_UUID = 'CURTAIN_UP_LTD_COMPANY_UUID';
 	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUB_PLUGH_MATERIAL_UUID';
 	const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
 	const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
 	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUR_PLUGH_MATERIAL_UUID';
+	const PLUGH_REDUX_SUBSEQUENT_VERSION_MATERIAL_UUID = 'PLUGH_REDUX_MATERIAL_UUID';
+	const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
+	const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
+	const SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID = 'SUB_PLUGH_REDUX_PRODUCTION_UUID';
+	const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
+	const SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID = 'SUR_PLUGH_REDUX_PRODUCTION_UUID';
 
 	let agamemnonOriginalVersionMaterial;
 	let agamemnonSubsequentVersionMaterial;
@@ -31,6 +46,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 	let aeschylusPerson;
 	let theFathersOfTragedyCompany;
 	let plughOriginalVersionMaterial;
+	let francisFlobPerson;
+	let curtainUpLtdCompany;
 
 	const sandbox = createSandbox();
 
@@ -41,6 +58,17 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
+
+		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'Trafalgar Studios',
+				subVenues: [
+					{
+						name: 'Studio 1'
+					}
+				]
+			});
 
 		await chai.request(app)
 			.post('/materials')
@@ -175,6 +203,80 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			});
 
 		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Agamemnon',
+				startDate: '2015-05-29',
+				pressDate: '2015-06-05',
+				endDate: '2015-07-18',
+				material: {
+					name: 'Agamemnon',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Almeida Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Oresteia',
+				startDate: '2015-05-29',
+				pressDate: '2015-06-05',
+				endDate: '2015-07-18',
+				material: {
+					name: 'The Oresteia',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Almeida Theatre'
+				},
+				subProductions: [
+					{
+						uuid: AGAMEMNON_ALMEIDA_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Agamemnon',
+				startDate: '2015-08-22',
+				pressDate: '2015-09-07',
+				endDate: '2015-11-07',
+				material: {
+					name: 'Agamemnon',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Studio 1'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Oresteia',
+				startDate: '2015-08-22',
+				pressDate: '2015-09-07',
+				endDate: '2015-11-07',
+				material: {
+					name: 'The Oresteia',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Studio 1'
+				},
+				subProductions: [
+					{
+						uuid: AGAMEMNON_TRAFALGAR_STUDIOS_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -274,6 +376,78 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Plugh Redux',
+				format: 'play',
+				year: '2023',
+				originalVersionMaterial: {
+					name: 'Plugh'
+				},
+				writingCredits: [
+					{
+						name: 'after',
+						entities: [
+							{
+								name: 'Francis Flob'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Curtain Up Ltd'
+							}
+						]
+					},
+					{
+						name: 'version by',
+						entities: [
+							{
+								name: 'Jane Roe'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Fictioneers Ltd'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sub-Plugh Redux',
+				startDate: '2023-10-17',
+				pressDate: '2023-10-26',
+				endDate: '2023-12-23',
+				material: {
+					name: 'Plugh Redux'
+				},
+				venue: {
+					name: 'Gielgud Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sur-Plugh Redux',
+				startDate: '2023-10-17',
+				pressDate: '2023-10-26',
+				endDate: '2023-12-23',
+				material: {
+					name: 'Plugh Redux'
+				},
+				venue: {
+					name: 'Gielgud Theatre'
+				},
+				subProductions: [
+					{
+						uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID
+					}
+				]
+			});
+
 		agamemnonOriginalVersionMaterial = await chai.request(app)
 			.get(`/materials/${AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
@@ -291,6 +465,12 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		plughOriginalVersionMaterial = await chai.request(app)
 			.get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+
+		francisFlobPerson = await chai.request(app)
+			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+
+		curtainUpLtdCompany = await chai.request(app)
+			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 	});
 
@@ -619,6 +799,59 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		});
 
+		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: AGAMEMNON_TRAFALGAR_STUDIOS_PRODUCTION_UUID,
+					name: 'Agamemnon',
+					startDate: '2015-08-22',
+					endDate: '2015-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: STUDIO_1_VENUE_UUID,
+						name: 'Studio 1',
+						surVenue: {
+							model: 'VENUE',
+							uuid: TRAFALGAR_STUDIOS_VENUE_UUID,
+							name: 'Trafalgar Studios'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: ORESTEIA_TRAFALGAR_STUDIOS_PRODUCTION_UUID,
+						name: 'Oresteia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: AGAMEMNON_ALMEIDA_PRODUCTION_UUID,
+					name: 'Agamemnon',
+					startDate: '2015-05-29',
+					endDate: '2015-07-18',
+					venue: {
+						model: 'VENUE',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
+						name: 'Almeida Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: ORESTEIA_ALMEIDA_PRODUCTION_UUID,
+						name: 'Oresteia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = aeschylusPerson.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
 	});
 
 	describe('The Fathers of Tragedy (company)', () => {
@@ -681,6 +914,59 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		});
 
+		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: AGAMEMNON_TRAFALGAR_STUDIOS_PRODUCTION_UUID,
+					name: 'Agamemnon',
+					startDate: '2015-08-22',
+					endDate: '2015-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: STUDIO_1_VENUE_UUID,
+						name: 'Studio 1',
+						surVenue: {
+							model: 'VENUE',
+							uuid: TRAFALGAR_STUDIOS_VENUE_UUID,
+							name: 'Trafalgar Studios'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: ORESTEIA_TRAFALGAR_STUDIOS_PRODUCTION_UUID,
+						name: 'Oresteia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: AGAMEMNON_ALMEIDA_PRODUCTION_UUID,
+					name: 'Agamemnon',
+					startDate: '2015-05-29',
+					endDate: '2015-07-18',
+					venue: {
+						model: 'VENUE',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
+						name: 'Almeida Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: ORESTEIA_ALMEIDA_PRODUCTION_UUID,
+						name: 'Oresteia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = theFathersOfTragedyCompany.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
 	});
 
 	describe('Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version', () => {
@@ -688,6 +974,32 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		it('includes subsequent versions of this material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSubsequentVersionMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_REDUX_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Plugh Redux',
+					format: 'play',
+					year: 2023,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'version by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'MATERIAL',
 					uuid: SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -724,6 +1036,74 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterials } = plughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
+
+		});
+
+	});
+
+	describe('Francis Flob (person): single subsequent version of their work is attached to multiple tiers of a production', () => {
+
+		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
+					name: 'Sub-Plugh Redux',
+					startDate: '2023-10-17',
+					endDate: '2023-12-23',
+					venue: {
+						model: 'VENUE',
+						uuid: GIELGUD_THEATRE_VENUE_UUID,
+						name: 'Gielgud Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
+						name: 'Sur-Plugh Redux',
+						surProduction: null
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = francisFlobPerson.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
+	});
+
+	describe('Curtain Up Ltd (company): single subsequent version of their work is attached to multiple tiers of a production', () => {
+
+		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
+					name: 'Sub-Plugh Redux',
+					startDate: '2023-10-17',
+					endDate: '2023-12-23',
+					venue: {
+						model: 'VENUE',
+						uuid: GIELGUD_THEATRE_VENUE_UUID,
+						name: 'Gielgud Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
+						name: 'Sur-Plugh Redux',
+						surProduction: null
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = curtainUpLtdCompany.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
 
 		});
 

@@ -11,6 +11,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	chai.use(chaiHttp);
 
+	const UNICORN_THEATRE_VENUE_UUID = 'UNICORN_THEATRE_VENUE_UUID';
+	const WESTON_THEATRE_VENUE_UUID = 'WESTON_THEATRE_VENUE_UUID';
 	const RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID = 'RICHARD_II_1_MATERIAL_UUID';
 	const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
 	const THE_KINGS_MEN_COMPANY_UUID = 'THE_KINGS_MEN_COMPANY_UUID';
@@ -21,6 +23,13 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 	const BEGGARS_BELIEF_THEATRE_COMPANY_UUID = 'BEGGARS_BELIEF_THEATRE_COMPANY_COMPANY_UUID';
 	const THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID = 'THE_FIRST_HENRIAD_2_MATERIAL_UUID';
 	const THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID = 'THE_HENRIAD_2_MATERIAL_UUID';
+	const RICHARD_II_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'RICHARD_II_PRODUCTION_UUID';
+	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
+	const THE_FIRST_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'THE_FIRST_HENRIAD_PRODUCTION_UUID';
+	const THE_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'THE_HENRIAD_PRODUCTION_UUID';
+	const RICHARD_II_UNICORN_PRODUCTION_UUID = 'RICHARD_II_2_PRODUCTION_UUID';
+	const THE_FIRST_HENRIAD_UNICORN_PRODUCTION_UUID = 'THE_FIRST_HENRIAD_2_PRODUCTION_UUID';
+	const THE_HENRIAD_UNICORN_PRODUCTION_UUID = 'THE_HENRIAD_2_PRODUCTION_UUID';
 
 	let richardIIOriginalVersionMaterial;
 	let richardIISubsequentVersionMaterial;
@@ -38,6 +47,17 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
+
+		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'Unicorn Theatre',
+				subVenues: [
+					{
+						name: 'Weston Theatre'
+					}
+				]
+			});
 
 		await chai.request(app)
 			.post('/materials')
@@ -239,6 +259,122 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					{
 						name: 'The First Henriad',
 						differentiator: '2'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Richard II',
+				startDate: '2013-10-10',
+				pressDate: '2013-10-17',
+				endDate: '2013-11-16',
+				material: {
+					name: 'Richard II',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Royal Shakespeare Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The First Henriad',
+				startDate: '2013-10-10',
+				pressDate: '2013-10-17',
+				endDate: '2013-11-16',
+				material: {
+					name: 'The First Henriad',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Royal Shakespeare Theatre'
+				},
+				subProductions: [
+					{
+						uuid: RICHARD_II_ROYAL_SHAKESPEARE_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Henriad',
+				startDate: '2013-10-10',
+				pressDate: '2013-10-17',
+				endDate: '2013-11-16',
+				material: {
+					name: 'The Henriad',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Royal Shakespeare Theatre'
+				},
+				subProductions: [
+					{
+						uuid: THE_FIRST_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Richard II',
+				startDate: '2013-08-12',
+				pressDate: '2013-08-19',
+				endDate: '2013-09-28',
+				material: {
+					name: 'Richard II',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Weston Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The First Henriad',
+				startDate: '2013-08-12',
+				pressDate: '2013-08-19',
+				endDate: '2013-09-28',
+				material: {
+					name: 'The First Henriad',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Weston Theatre'
+				},
+				subProductions: [
+					{
+						uuid: RICHARD_II_UNICORN_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Henriad',
+				startDate: '2013-08-12',
+				pressDate: '2013-08-19',
+				endDate: '2013-09-28',
+				material: {
+					name: 'The Henriad',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Weston Theatre'
+				},
+				subProductions: [
+					{
+						uuid: THE_FIRST_HENRIAD_UNICORN_PRODUCTION_UUID
 					}
 				]
 			});
@@ -861,7 +997,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	describe('William Shakespeare (person)', () => {
 
-		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material and  sur-sur-material', () => {
+		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -923,11 +1059,72 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 		});
 
+		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: RICHARD_II_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Richard II',
+					startDate: '2013-10-10',
+					endDate: '2013-11-16',
+					venue: {
+						model: 'VENUE',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+						name: 'Royal Shakespeare Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_FIRST_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+						name: 'The First Henriad',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+							name: 'The Henriad'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: RICHARD_II_UNICORN_PRODUCTION_UUID,
+					name: 'Richard II',
+					startDate: '2013-08-12',
+					endDate: '2013-09-28',
+					venue: {
+						model: 'VENUE',
+						uuid: WESTON_THEATRE_VENUE_UUID,
+						name: 'Weston Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: UNICORN_THEATRE_VENUE_UUID,
+							name: 'Unicorn Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_FIRST_HENRIAD_UNICORN_PRODUCTION_UUID,
+						name: 'The First Henriad',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_HENRIAD_UNICORN_PRODUCTION_UUID,
+							name: 'The Henriad'
+						}
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = williamShakespearePerson.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
 	});
 
 	describe('The King\'s Men (company)', () => {
 
-		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material and sur-sur-material', () => {
+		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -986,6 +1183,67 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterials } = theKingsMenCompany.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
+
+		});
+
+		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: RICHARD_II_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+					name: 'Richard II',
+					startDate: '2013-10-10',
+					endDate: '2013-11-16',
+					venue: {
+						model: 'VENUE',
+						uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+						name: 'Royal Shakespeare Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_FIRST_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+						name: 'The First Henriad',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_HENRIAD_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
+							name: 'The Henriad'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: RICHARD_II_UNICORN_PRODUCTION_UUID,
+					name: 'Richard II',
+					startDate: '2013-08-12',
+					endDate: '2013-09-28',
+					venue: {
+						model: 'VENUE',
+						uuid: WESTON_THEATRE_VENUE_UUID,
+						name: 'Weston Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: UNICORN_THEATRE_VENUE_UUID,
+							name: 'Unicorn Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_FIRST_HENRIAD_UNICORN_PRODUCTION_UUID,
+						name: 'The First Henriad',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_HENRIAD_UNICORN_PRODUCTION_UUID,
+							name: 'The Henriad'
+						}
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = theKingsMenCompany.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
 
 		});
 

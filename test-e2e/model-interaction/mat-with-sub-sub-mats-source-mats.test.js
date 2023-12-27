@@ -26,6 +26,10 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 	const BUSH_THEATRE_VENUE_UUID = 'BUSH_THEATRE_VENUE_UUID';
 	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_UUID';
 	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_PRODUCTION_UUID';
+	const GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'GODBLOG_2_PRODUCTION_UUID';
+	const WESTMINSTER_ABBEY_VENUE_UUID = 'WESTMINSTER_ABBEY_VENUE_UUID';
+	const THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_2_PRODUCTION_UUID';
+	const SIXTY_SIX_BOOKS_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_2_PRODUCTION_UUID';
 
 	let genesisReligiousTextMaterial;
 	let godblogPlayMaterial;
@@ -262,6 +266,61 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Godblog',
+				startDate: '2011-10-29',
+				pressDate: '2011-10-30',
+				endDate: '2011-10-31',
+				material: {
+					name: 'Godblog'
+				},
+				venue: {
+					name: 'Westminster Abbey'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'The Books of the Old Testament',
+				startDate: '2011-10-29',
+				pressDate: '2011-10-30',
+				endDate: '2011-10-31',
+				material: {
+					name: 'The Books of the Old Testament'
+				},
+				venue: {
+					name: 'Westminster Abbey'
+				},
+				subProductions: [
+					{
+						uuid: GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sixty-Six Books',
+				startDate: '2011-10-29',
+				pressDate: '2011-10-30',
+				endDate: '2011-10-31',
+				material: {
+					name: 'Sixty-Six Books'
+				},
+				venue: {
+					name: 'Westminster Abbey'
+				},
+				subProductions: [
+					{
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID
+					}
+				]
+			});
+
 		genesisReligiousTextMaterial = await chai.request(app)
 			.get(`/materials/${GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID}`);
 
@@ -389,6 +448,29 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 		it('includes productions of material that used it as source material, including the sur-production and sur-sur-production', () => {
 
 			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+					name: 'Godblog',
+					startDate: '2011-10-29',
+					endDate: '2011-10-31',
+					venue: {
+						model: 'VENUE',
+						uuid: WESTMINSTER_ABBEY_VENUE_UUID,
+						name: 'Westminster Abbey',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+						name: 'The Books of the Old Testament',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: SIXTY_SIX_BOOKS_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+							name: 'Sixty-Six Books'
+						}
+					}
+				},
 				{
 					model: 'PRODUCTION',
 					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
@@ -740,6 +822,63 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 
 		});
 
+		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+					name: 'Godblog',
+					startDate: '2011-10-29',
+					endDate: '2011-10-31',
+					venue: {
+						model: 'VENUE',
+						uuid: WESTMINSTER_ABBEY_VENUE_UUID,
+						name: 'Westminster Abbey',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+						name: 'The Books of the Old Testament',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: SIXTY_SIX_BOOKS_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+							name: 'Sixty-Six Books'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
+					name: 'Godblog',
+					startDate: '2011-10-10',
+					endDate: '2011-10-28',
+					venue: {
+						model: 'VENUE',
+						uuid: BUSH_THEATRE_VENUE_UUID,
+						name: 'Bush Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID,
+						name: 'The Books of the Old Testament',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID,
+							name: 'Sixty-Six Books'
+						}
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = richardBancroftPerson.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
 	});
 
 	describe('The Canterbury Editors (company)', () => {
@@ -828,6 +967,63 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theCanterburyEditorsCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+					name: 'Godblog',
+					startDate: '2011-10-29',
+					endDate: '2011-10-31',
+					venue: {
+						model: 'VENUE',
+						uuid: WESTMINSTER_ABBEY_VENUE_UUID,
+						name: 'Westminster Abbey',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+						name: 'The Books of the Old Testament',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: SIXTY_SIX_BOOKS_WESTMINSTER_ABBEY_PRODUCTION_UUID,
+							name: 'Sixty-Six Books'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
+					name: 'Godblog',
+					startDate: '2011-10-10',
+					endDate: '2011-10-28',
+					venue: {
+						model: 'VENUE',
+						uuid: BUSH_THEATRE_VENUE_UUID,
+						name: 'Bush Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID,
+						name: 'The Books of the Old Testament',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID,
+							name: 'Sixty-Six Books'
+						}
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = richardBancroftPerson.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
 
 		});
 

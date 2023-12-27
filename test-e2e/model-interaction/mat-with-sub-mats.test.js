@@ -21,6 +21,12 @@ describe('Material with sub-materials', () => {
 	const IVAN_TURGENEV_CHARACTER_UUID = 'IVAN_TURGENEV_CHARACTER_UUID';
 	const VOYAGE_OLIVIER_PRODUCTION_UUID = 'VOYAGE_PRODUCTION_UUID';
 	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = 'THE_COAST_OF_UTOPIA_PRODUCTION_UUID';
+	const GARPLY_MATERIAL_UUID = 'GARPLY_MATERIAL_UUID';
+	const CONOR_CORGE_PERSON_UUID = 'CONOR_CORGE_PERSON_UUID';
+	const SCRIBES_LTD_COMPANY_UUID = 'SCRIBES_LTD_COMPANY_UUID';
+	const SUB_GARPLY_WYNDHAMS_PRODUCTION_UUID = 'SUB_GARPLY_PRODUCTION_UUID';
+	const WYNDHAMS_THEATRE_VENUE_UUID = 'WYNDHAMS_THEATRE_VENUE_UUID';
+	const SUR_GARPLY_WYNDHAMS_PRODUCTION_UUID = 'SUR_GARPLY_PRODUCTION_UUID';
 
 	let theCoastOfUtopiaMaterial;
 	let voyageMaterial;
@@ -30,6 +36,8 @@ describe('Material with sub-materials', () => {
 	let voyageOlivierProduction;
 	let tomStoppardPerson;
 	let theSträusslerGroupCompany;
+	let conorCorgePerson;
+	let scribesLtdCompany;
 
 	const sandbox = createSandbox();
 
@@ -207,6 +215,60 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Garply',
+				format: 'play',
+				year: '2019',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Conor Corge'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Scribes Ltd'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sub-Garply',
+				startDate: '2007-11-01',
+				endDate: '2007-11-30',
+				material: {
+					name: 'Garply'
+				},
+				venue: {
+					name: 'Wyndham\'s Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Sur-Garply',
+				startDate: '2007-11-01',
+				endDate: '2007-11-30',
+				material: {
+					name: 'Garply'
+				},
+				venue: {
+					name: 'Wyndham\'s Theatre'
+				},
+				subProductions: [
+					{
+						uuid: SUB_GARPLY_WYNDHAMS_PRODUCTION_UUID
+					}
+				]
+			});
+
 		theCoastOfUtopiaMaterial = await chai.request(app)
 			.get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
 
@@ -230,6 +292,12 @@ describe('Material with sub-materials', () => {
 
 		theSträusslerGroupCompany = await chai.request(app)
 			.get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
+
+		conorCorgePerson = await chai.request(app)
+			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
+
+		scribesLtdCompany = await chai.request(app)
+			.get(`/companies/${SCRIBES_LTD_COMPANY_UUID}`);
 
 	});
 
@@ -887,6 +955,74 @@ describe('Material with sub-materials', () => {
 
 	});
 
+	describe('Conor Corge (person): single instance of their work is attached to multiple tiers of a production', () => {
+
+		it('includes materials, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_GARPLY_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Sub-Garply',
+					startDate: '2007-11-01',
+					endDate: '2007-11-30',
+					venue: {
+						model: 'VENUE',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_GARPLY_WYNDHAMS_PRODUCTION_UUID,
+						name: 'Sur-Garply',
+						surProduction: null
+					}
+				}
+			];
+
+			const { materialProductions } = conorCorgePerson.body;
+
+			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+
+		});
+
+	});
+
+	describe('Scribes Ltd (company): single instance of their work is attached to multiple tiers of a production', () => {
+
+		it('includes materials, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_GARPLY_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Sub-Garply',
+					startDate: '2007-11-01',
+					endDate: '2007-11-30',
+					venue: {
+						model: 'VENUE',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_GARPLY_WYNDHAMS_PRODUCTION_UUID,
+						name: 'Sur-Garply',
+						surProduction: null
+					}
+				}
+			];
+
+			const { materialProductions } = scribesLtdCompany.body;
+
+			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+
+		});
+
+	});
+
 	describe('materials list', () => {
 
 		it('includes materials and, where applicable, corresponding sur-material; will exclude sur-materials as these will be included via sub-material association', async () => {
@@ -895,6 +1031,32 @@ describe('Material with sub-materials', () => {
 				.get('/materials');
 
 			const expectedResponseBody = [
+				{
+					model: 'MATERIAL',
+					uuid: GARPLY_MATERIAL_UUID,
+					name: 'Garply',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: SCRIBES_LTD_COMPANY_UUID,
+									name: 'Scribes Ltd'
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'MATERIAL',
 					uuid: SALVAGE_MATERIAL_UUID,

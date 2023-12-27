@@ -35,6 +35,7 @@ describe('Materials with source material', () => {
 	const HANOVER_GRAND_VENUE_UUID = 'HANOVER_GRAND_VENUE_UUID';
 	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = 'THE_INDIAN_BOY_PRODUCTION_UUID';
 	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = 'SHAKESPEARES_VILLAINS_PRODUCTION_UUID';
+	const THEATRE_ROYAL_HAYMARKET_VENUE_UUID = 'THEATRE_ROYAL_HAYMARKET_VENUE_UUID';
 	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = 'OTHELLO_PRODUCTION_UUID';
 	const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
 
@@ -1101,6 +1102,77 @@ describe('Materials with source material', () => {
 
 		});
 
+		it('includes productions of materials that used their work as source material (both specific and non-specific)', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID,
+					name: 'Othello',
+					startDate: '2007-11-30',
+					endDate: '2008-02-23',
+					venue: {
+						model: 'VENUE',
+						uuid: DONMAR_WAREHOUSE_VENUE_UUID,
+						name: 'Donmar Warehouse',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					name: 'The Indian Boy',
+					startDate: '2006-11-07',
+					endDate: '2006-11-11',
+					venue: {
+						model: 'VENUE',
+						uuid: THE_CUBE_VENUE_UUID,
+						name: 'The Cube',
+						surVenue: {
+							model: 'VENUE',
+							uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+							name: 'Royal Shakespeare Theatre'
+						}
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID,
+					name: 'The Donkey Show',
+					startDate: '2000-09-12',
+					endDate: '2002-01-02',
+					venue: {
+						model: 'VENUE',
+						uuid: HANOVER_GRAND_VENUE_UUID,
+						name: 'Hanover Grand',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID,
+					name: 'Shakespeare\'s Villains',
+					startDate: '1998-06-30',
+					endDate: '1998-08-08',
+					venue: {
+						model: 'VENUE',
+						uuid: THEATRE_ROYAL_HAYMARKET_VENUE_UUID,
+						name: 'Theatre Royal Haymarket',
+						surVenue: null
+					},
+					surProduction: null
+				}
+			];
+
+			const { sourcingMaterialProductions } = williamShakespearePerson.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
 	});
 
 	describe('The King\'s Men (company)', () => {
@@ -1329,6 +1401,77 @@ describe('Materials with source material', () => {
 			const { sourcingMaterials } = theKingsMenCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of materials that used their work as source material (both specific and non-specific)', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID,
+					name: 'Othello',
+					startDate: '2007-11-30',
+					endDate: '2008-02-23',
+					venue: {
+						model: 'VENUE',
+						uuid: DONMAR_WAREHOUSE_VENUE_UUID,
+						name: 'Donmar Warehouse',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					name: 'The Indian Boy',
+					startDate: '2006-11-07',
+					endDate: '2006-11-11',
+					venue: {
+						model: 'VENUE',
+						uuid: THE_CUBE_VENUE_UUID,
+						name: 'The Cube',
+						surVenue: {
+							model: 'VENUE',
+							uuid: ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID,
+							name: 'Royal Shakespeare Theatre'
+						}
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID,
+					name: 'The Donkey Show',
+					startDate: '2000-09-12',
+					endDate: '2002-01-02',
+					venue: {
+						model: 'VENUE',
+						uuid: HANOVER_GRAND_VENUE_UUID,
+						name: 'Hanover Grand',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID,
+					name: 'Shakespeare\'s Villains',
+					startDate: '1998-06-30',
+					endDate: '1998-08-08',
+					venue: {
+						model: 'VENUE',
+						uuid: THEATRE_ROYAL_HAYMARKET_VENUE_UUID,
+						name: 'Theatre Royal Haymarket',
+						surVenue: null
+					},
+					surProduction: null
+				}
+			];
+
+			const { sourcingMaterialProductions } = theKingsMenCompany.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
 
 		});
 
