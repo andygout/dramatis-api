@@ -329,6 +329,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				writingCredits: [],
 				originalVersionMaterial: null,
 				subsequentVersionMaterials: [],
+				subsequentVersionMaterialProductions: [],
 				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [],
@@ -763,6 +764,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
+				subsequentVersionMaterialProductions: [],
 				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [
@@ -1651,6 +1653,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					writingCredits: []
 				},
 				subsequentVersionMaterials: [],
+				subsequentVersionMaterialProductions: [],
 				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [

@@ -459,6 +459,53 @@ describe('Material with subsequent versions', () => {
 
 		});
 
+		it('includes productions of material\'s subsequent versions', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: PEER_GYNT_BARBICAN_PRODUCTION_UUID,
+					name: 'Peer Gynt',
+					startDate: '2007-02-28',
+					endDate: '2007-03-10',
+					venue: {
+						model: 'VENUE',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
+						name: 'Barbican Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BARBICAN_CENTRE_VENUE_UUID,
+							name: 'Barbican Centre'
+						}
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: PEER_GYNT_OLIVIER_PRODUCTION_UUID,
+					name: 'Peer Gynt',
+					startDate: '2000-10-16',
+					endDate: '2000-12-09',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: null
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = peerGyntOriginalVersionMaterial.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
 	});
 
 	describe('Peer Gynt (subsequent version) (material)', () => {
