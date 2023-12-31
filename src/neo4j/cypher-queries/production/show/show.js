@@ -3,11 +3,15 @@ export default () => `
 
 	OPTIONAL MATCH (production)<-[:HAS_SUB_PRODUCTION*1..2]-(surProduction:Production)
 
+	WITH
+		production,
+		COLLECT(surProduction) AS surProductions
+
 	OPTIONAL MATCH (production)-[:HAS_SUB_PRODUCTION*1..2]->(subProduction:Production)
 
 	WITH
 		production,
-		COLLECT(surProduction) AS surProductions,
+		surProductions,
 		COLLECT(subProduction) AS subProductions
 
 	WITH

@@ -3,11 +3,15 @@ export default () => `
 
 	OPTIONAL MATCH (material)<-[:HAS_SUB_MATERIAL*1..2]-(surMaterial:Material)
 
+	WITH
+		material,
+		COLLECT(surMaterial) AS surMaterials
+
 	OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*1..2]->(subMaterial:Material)
 
 	WITH
 		material,
-		COLLECT(surMaterial) AS surMaterials,
+		surMaterials,
 		COLLECT(subMaterial) AS subMaterials
 
 	WITH
