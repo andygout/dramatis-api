@@ -63,6 +63,8 @@ describe('Production with sub-productions', () => {
 	let voyageVivianBeaumontProduction;
 	let theCoastOfUtopiaMaterial;
 	let voyageMaterial;
+	let tomStoppardJrPerson;
+	let theSubSträusslerGroupCompany;
 	let nationalTheatreVenue;
 	let olivierTheatreVenue;
 	let stoppardSeason;
@@ -698,6 +700,12 @@ describe('Production with sub-productions', () => {
 
 		voyageMaterial = await chai.request(app)
 			.get(`/materials/${VOYAGE_MATERIAL_UUID}`);
+
+		tomStoppardJrPerson = await chai.request(app)
+			.get(`/people/${TOM_STOPPARD_JR_PERSON_UUID}`);
+
+		theSubSträusslerGroupCompany = await chai.request(app)
+			.get(`/companies/${THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID}`);
 
 		nationalTheatreVenue = await chai.request(app)
 			.get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
@@ -1749,6 +1757,288 @@ describe('Production with sub-productions', () => {
 			const { productions } = voyageMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Tom Stoppard Jr (person)', () => {
+
+		it('includes productions of materials they have written, including the sur-production', () => {
+
+			const expectedMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2007-01-31',
+					endDate: '2007-05-13',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2006-12-05',
+					endDate: '2007-05-12',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2006-10-17',
+					endDate: '2007-05-12',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2002-07-08',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { materialProductions } = tomStoppardJrPerson.body;
+
+			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+
+		});
+
+	});
+
+	describe('The Sub-Sträussler Group (company)', () => {
+
+		it('includes productions of materials they have written, including the sur-production', () => {
+
+			const expectedMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2007-01-31',
+					endDate: '2007-05-13',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2006-12-05',
+					endDate: '2007-05-12',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2006-10-17',
+					endDate: '2007-05-12',
+					venue: {
+						model: 'VENUE',
+						uuid: VIVIAN_BEAUMONT_THEATRE_VENUE_UUID,
+						name: 'Vivian Beaumont Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2002-07-08',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { materialProductions } = theSubSträusslerGroupCompany.body;
+
+			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
 
 		});
 

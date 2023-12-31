@@ -106,6 +106,8 @@ describe('Production with sub-sub-productions', () => {
 	let theGreatGameAfghanistanMaterial;
 	let partOneInvasionsAndIndependenceMaterial;
 	let buglesAtTheGatesOfJalalabadMaterial;
+	let ferdinandFooJrPerson;
+	let subInkistsLtdCompany;
 	let berkeleyRepertoryTheatreVenue;
 	let rodaTheatreVenue;
 	let afghanHistorySeason;
@@ -2065,6 +2067,12 @@ describe('Production with sub-sub-productions', () => {
 
 		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
+
+		ferdinandFooJrPerson = await chai.request(app)
+			.get(`/people/${FERDINAND_FOO_JR_PERSON_UUID}`);
+
+		subInkistsLtdCompany = await chai.request(app)
+			.get(`/companies/${SUB_INKISTS_LTD_COMPANY_UUID}`);
 
 		berkeleyRepertoryTheatreVenue = await chai.request(app)
 			.get(`/venues/${BERKELEY_REPERTORY_THEATRE_VENUE_UUID}`);
@@ -6281,6 +6289,936 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = buglesAtTheGatesOfJalalabadMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
+
+		});
+
+	});
+
+	describe('Ferdinand Foo Jr (person)', () => {
+
+		it('includes productions of materials have written, including the sur-production and sur-sur-production', () => {
+
+			const expectedMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_RODA_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_TRICYCLE_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				}
+			];
+
+			const { materialProductions } = ferdinandFooJrPerson.body;
+
+			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+
+		});
+
+	});
+
+	describe('Sub-Inkists Ltd (company)', () => {
+
+		it('includes productions of materials have written, including the sur-production and sur-sur-production', () => {
+
+			const expectedMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_RODA_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_TRICYCLE_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2009-04-17',
+					endDate: '2009-06-14',
+					venue: {
+						model: 'VENUE',
+						uuid: TRICYCLE_THEATRE_VENUE_UUID,
+						name: 'Tricycle Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					}
+				}
+			];
+
+			const { materialProductions } = subInkistsLtdCompany.body;
+
+			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
 
 		});
 

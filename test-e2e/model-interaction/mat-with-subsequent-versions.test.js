@@ -11,6 +11,10 @@ describe('Material with subsequent versions', () => {
 
 	chai.use(chaiHttp);
 
+	const BARBICAN_CENTRE_VENUE_UUID = 'BARBICAN_CENTRE_VENUE_UUID';
+	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
+	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+	const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
 	const PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID = 'PEER_GYNT_1_MATERIAL_UUID';
 	const HENRIK_IBSEN_PERSON_UUID = 'HENRIK_IBSEN_PERSON_UUID';
 	const IBSEN_THEATRE_COMPANY_UUID = 'IBSEN_THEATRE_COMPANY_COMPANY_UUID';
@@ -24,7 +28,10 @@ describe('Material with subsequent versions', () => {
 	const BALTASAR_KORMÁKUR_PERSON_UUID = 'BALTASAR_KORMAKUR_PERSON_UUID';
 	const GHOSTS_ORIGINAL_VERSION_MATERIAL_UUID = 'GHOSTS_1_MATERIAL_UUID';
 	const GHOSTS_SUBSEQUENT_VERSION_MATERIAL_UUID = 'GHOSTS_2_MATERIAL_UUID';
-	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = 'PEER_GYNT_PRODUCTION_UUID';
+	const PEER_GYNT_OLIVIER_PRODUCTION_UUID = 'PEER_GYNT_PRODUCTION_UUID';
+	const PEER_GYNT_BARBICAN_PRODUCTION_UUID = 'PEER_GYNT_2_PRODUCTION_UUID';
+	const GHOSTS_DUCHESS_PRODUCTION_UUID = 'GHOSTS_PRODUCTION_UUID';
+	const DUCHESS_THEATRE_VENUE_UUID = 'DUCHESS_THEATRE_VENUE_UUID';
 
 	let peerGyntOriginalVersionMaterial;
 	let peerGyntSubsequentVersion2Material;
@@ -44,6 +51,28 @@ describe('Material with subsequent versions', () => {
 		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
 
 		await purgeDatabase();
+
+		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'Barbican Centre',
+				subVenues: [
+					{
+						name: 'Barbican Theatre'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/venues')
+			.send({
+				name: 'National Theatre',
+				subVenues: [
+					{
+						name: 'Olivier Theatre'
+					}
+				]
+			});
 
 		await chai.request(app)
 			.post('/materials')
@@ -252,12 +281,46 @@ describe('Material with subsequent versions', () => {
 			.post('/productions')
 			.send({
 				name: 'Peer Gynt',
+				startDate: '2000-10-16',
+				pressDate: '2000-11-13',
+				endDate: '2000-12-09',
+				material: {
+					name: 'Peer Gynt',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Olivier Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Peer Gynt',
+				startDate: '2007-02-28',
+				endDate: '2007-03-10',
 				material: {
 					name: 'Peer Gynt',
 					differentiator: '3'
 				},
 				venue: {
-					name: 'Barbican'
+					name: 'Barbican Theatre'
+				}
+			});
+
+		await chai.request(app)
+			.post('/productions')
+			.send({
+				name: 'Ghosts',
+				startDate: '2010-02-11',
+				pressDate: '2010-02-23',
+				endDate: '2010-03-27',
+				material: {
+					name: 'Ghosts',
+					differentiator: '2'
+				},
+				venue: {
+					name: 'Duchess Theatre'
 				}
 			});
 
@@ -725,6 +788,67 @@ describe('Material with subsequent versions', () => {
 
 		});
 
+		it('includes productions of subsequent versions of materials they originally wrote', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: GHOSTS_DUCHESS_PRODUCTION_UUID,
+					name: 'Ghosts',
+					startDate: '2010-02-11',
+					endDate: '2010-03-27',
+					venue: {
+						model: 'VENUE',
+						uuid: DUCHESS_THEATRE_VENUE_UUID,
+						name: 'Duchess Theatre',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: PEER_GYNT_BARBICAN_PRODUCTION_UUID,
+					name: 'Peer Gynt',
+					startDate: '2007-02-28',
+					endDate: '2007-03-10',
+					venue: {
+						model: 'VENUE',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
+						name: 'Barbican Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BARBICAN_CENTRE_VENUE_UUID,
+							name: 'Barbican Centre'
+						}
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: PEER_GYNT_OLIVIER_PRODUCTION_UUID,
+					name: 'Peer Gynt',
+					startDate: '2000-10-16',
+					endDate: '2000-12-09',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: null
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = henrikIbsenPerson.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
 	});
 
 	describe('Gerry Bamman (person)', () => {
@@ -1084,6 +1208,67 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterials } = ibsenTheatreCompany.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
+
+		});
+
+		it('includes productions of subsequent versions of materials they originally wrote', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: GHOSTS_DUCHESS_PRODUCTION_UUID,
+					name: 'Ghosts',
+					startDate: '2010-02-11',
+					endDate: '2010-03-27',
+					venue: {
+						model: 'VENUE',
+						uuid: DUCHESS_THEATRE_VENUE_UUID,
+						name: 'Duchess Theatre',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: PEER_GYNT_BARBICAN_PRODUCTION_UUID,
+					name: 'Peer Gynt',
+					startDate: '2007-02-28',
+					endDate: '2007-03-10',
+					venue: {
+						model: 'VENUE',
+						uuid: BARBICAN_THEATRE_VENUE_UUID,
+						name: 'Barbican Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BARBICAN_CENTRE_VENUE_UUID,
+							name: 'Barbican Centre'
+						}
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: PEER_GYNT_OLIVIER_PRODUCTION_UUID,
+					name: 'Peer Gynt',
+					startDate: '2000-10-16',
+					endDate: '2000-12-09',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: null
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = ibsenTheatreCompany.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
 
 		});
 
