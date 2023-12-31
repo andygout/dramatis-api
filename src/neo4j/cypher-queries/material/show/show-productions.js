@@ -4,15 +4,36 @@ export default () => `
 	CALL {
 		WITH material
 
-		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)<-[:PRODUCTION_OF]-(production:Production)
+		OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial)
 			WHERE NOT EXISTS(
-				(material)<-[:USES_SOURCE_MATERIAL]-(:Material)
-				<-[:HAS_SUB_MATERIAL*1..2]-(:Material)<-[:PRODUCTION_OF]-(production:Production)
+				(material)<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(subsequentVersionMaterial)
 			)
 
-		WITH material, COLLECT(production) AS productions
+		WITH
+			material,
+			COLLECT(subsequentVersionMaterial) AS subsequentVersionMaterials
 
-		UNWIND (CASE productions WHEN [] THEN [null] ELSE productions END) AS production
+		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
+			WHERE NOT EXISTS(
+				(material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(sourcingMaterial)
+			)
+
+		WITH
+			material,
+			subsequentVersionMaterials,
+			COLLECT(sourcingMaterial) AS sourcingMaterials
+
+		WITH
+			material,
+			[material] + subsequentVersionMaterials + sourcingMaterials AS relatedMaterials
+
+		UNWIND (CASE relatedMaterials WHEN [] THEN [null] ELSE relatedMaterials END) AS relatedMaterial
+
+			OPTIONAL MATCH (relatedMaterial)-[subsequentVersionRel:SUBSEQUENT_VERSION_OF]->(material)
+
+			OPTIONAL MATCH (relatedMaterial)-[sourcingMaterialRel:USES_SOURCE_MATERIAL]->(material)
+
+			OPTIONAL MATCH (relatedMaterial)<-[:PRODUCTION_OF]-(production:Production)
 
 			OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
@@ -22,8 +43,6 @@ export default () => `
 
 			OPTIONAL MATCH (surProduction)<-[surSurProductionRel:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
-			OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[sourcingMaterialRel:PRODUCTION_OF]-(production)
-
 			WITH
 				production,
 				venue,
@@ -32,6 +51,7 @@ export default () => `
 				surProductionRel,
 				surSurProduction,
 				surSurProductionRel,
+				CASE WHEN subsequentVersionRel IS NULL THEN false ELSE true END AS usesSubsequentVersion,
 				CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS usesSourcingMaterial
 				ORDER BY
 					production.startDate DESC,
@@ -51,6 +71,7 @@ export default () => `
 							.name,
 							.startDate,
 							.endDate,
+							usesSubsequentVersion,
 							usesSourcingMaterial,
 							venue: CASE WHEN venue IS NULL
 								THEN null
@@ -82,9 +103,15 @@ export default () => `
 
 		RETURN
 			[
-				production IN productions WHERE NOT production.usesSourcingMaterial |
+				production IN productions WHERE
+					NOT production.usesSubsequentVersion AND
+					NOT production.usesSourcingMaterial |
 				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 			] AS productions,
+			[
+				production IN productions WHERE production.usesSubsequentVersion |
+				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+			] AS subsequentVersionMaterialProductions,
 			[
 				production IN productions WHERE production.usesSourcingMaterial |
 				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
@@ -93,5 +120,6 @@ export default () => `
 
 	RETURN
 		productions,
+		subsequentVersionMaterialProductions,
 		sourcingMaterialProductions
 `;

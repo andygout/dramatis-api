@@ -524,6 +524,59 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		});
 
+		it('includes productions of subsequent versions, including the sur-production', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: AGAMEMNON_TRAFALGAR_STUDIOS_PRODUCTION_UUID,
+					name: 'Agamemnon',
+					startDate: '2015-08-22',
+					endDate: '2015-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: STUDIO_1_VENUE_UUID,
+						name: 'Studio 1',
+						surVenue: {
+							model: 'VENUE',
+							uuid: TRAFALGAR_STUDIOS_VENUE_UUID,
+							name: 'Trafalgar Studios'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: ORESTEIA_TRAFALGAR_STUDIOS_PRODUCTION_UUID,
+						name: 'Oresteia',
+						surProduction: null
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: AGAMEMNON_ALMEIDA_PRODUCTION_UUID,
+					name: 'Agamemnon',
+					startDate: '2015-05-29',
+					endDate: '2015-07-18',
+					venue: {
+						model: 'VENUE',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID,
+						name: 'Almeida Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: ORESTEIA_ALMEIDA_PRODUCTION_UUID,
+						name: 'Oresteia',
+						surProduction: null
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = agamemnonOriginalVersionMaterial.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
+
+		});
+
 	});
 
 	describe('Agamemnon (subsequent version) (material)', () => {
