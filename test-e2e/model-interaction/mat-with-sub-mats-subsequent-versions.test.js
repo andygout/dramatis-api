@@ -30,12 +30,12 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 	const FRANCIS_FLOB_PERSON_UUID = 'FRANCIS_FLOB_PERSON_UUID';
 	const CURTAIN_UP_LTD_COMPANY_UUID = 'CURTAIN_UP_LTD_COMPANY_UUID';
 	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUB_PLUGH_MATERIAL_UUID';
-	const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
-	const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
+	const BEATRICE_BAR_I_PERSON_UUID = 'BEATRICE_BAR_I_PERSON_UUID';
+	const OLD_STAGECRAFT_LTD_COMPANY_UUID = 'OLD_STAGECRAFT_LTD_COMPANY_UUID';
 	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUR_PLUGH_MATERIAL_UUID';
 	const PLUGH_REDUX_SUBSEQUENT_VERSION_MATERIAL_UUID = 'PLUGH_REDUX_MATERIAL_UUID';
-	const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
-	const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
+	const BEATRICE_BAR_II_PERSON_UUID = 'BEATRICE_BAR_II_PERSON_UUID';
+	const NEW_STAGECRAFT_LTD_COMPANY_UUID = 'NEW_STAGECRAFT_LTD_COMPANY_UUID';
 	const SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID = 'SUB_PLUGH_REDUX_PRODUCTION_UUID';
 	const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
 	const SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID = 'SUR_PLUGH_REDUX_PRODUCTION_UUID';
@@ -323,11 +323,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						name: 'version by',
 						entities: [
 							{
-								name: 'Beatrice Bar'
+								name: 'Beatrice Bar I'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Stagecraft Ltd'
+								name: 'Old Stagecraft Ltd'
 							}
 						]
 					}
@@ -360,11 +360,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						name: 'version by',
 						entities: [
 							{
-								name: 'Beatrice Bar Jr'
+								name: 'Beatrice Bar I'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Sub-Stagecraft Ltd'
+								name: 'Old Stagecraft Ltd'
 							}
 						]
 					}
@@ -402,11 +402,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						name: 'version by',
 						entities: [
 							{
-								name: 'Jane Roe'
+								name: 'Beatrice Bar II'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Fictioneers Ltd'
+								name: 'New Stagecraft Ltd'
 							}
 						]
 					}
@@ -1022,7 +1022,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	});
 
-	describe('Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version', () => {
+	describe('Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version, and a separate subsequent version is attached to multiple tiers of a production', () => {
 
 		it('includes subsequent versions of this material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
@@ -1041,13 +1041,13 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: JANE_ROE_PERSON_UUID,
-									name: 'Jane Roe'
+									uuid: BEATRICE_BAR_II_PERSON_UUID,
+									name: 'Beatrice Bar II'
 								},
 								{
 									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
+									uuid: NEW_STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'New Stagecraft Ltd'
 								}
 							]
 						}
@@ -1072,13 +1072,13 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: BEATRICE_BAR_PERSON_UUID,
-									name: 'Beatrice Bar'
+									uuid: BEATRICE_BAR_I_PERSON_UUID,
+									name: 'Beatrice Bar I'
 								},
 								{
 									model: 'COMPANY',
-									uuid: STAGECRAFT_LTD_COMPANY_UUID,
-									name: 'Stagecraft Ltd'
+									uuid: OLD_STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Old Stagecraft Ltd'
 								}
 							]
 						}
@@ -1089,6 +1089,36 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterials } = plughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
+
+		});
+
+		it('includes productions of subsequent versions of material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSubsequentVersionMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
+					name: 'Sub-Plugh Redux',
+					startDate: '2023-10-17',
+					endDate: '2023-12-23',
+					venue: {
+						model: 'VENUE',
+						uuid: GIELGUD_THEATRE_VENUE_UUID,
+						name: 'Gielgud Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
+						name: 'Sur-Plugh Redux',
+						surProduction: null
+					}
+				}
+			];
+
+			const { subsequentVersionMaterialProductions } = plughOriginalVersionMaterial.body;
+
+			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
 
 		});
 

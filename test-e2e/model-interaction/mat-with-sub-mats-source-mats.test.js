@@ -39,10 +39,14 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const WALDO_MATERIAL_UUID = 'WALDO_MATERIAL_UUID';
 	const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
 	const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
-	const WIBBLE_MATERIAL_UUID = 'WIBBLE_MATERIAL_UUID';
-	const QUINCY_QUX_PERSON_UUID = 'QUINCY_QUX_PERSON_UUID';
-	const THEATRICALS_LTD_COMPANY_UUID = 'THEATRICALS_LTD_COMPANY_UUID';
+	const SUB_WIBBLE_MATERIAL_UUID = 'SUB_WIBBLE_MATERIAL_UUID';
+	const QUINCY_QUX_I_PERSON_UUID = 'QUINCY_QUX_I_PERSON_UUID';
+	const OLD_THEATRICALS_LTD_COMPANY_UUID = 'OLD_THEATRICALS_LTD_COMPANY_UUID';
+	const SUR_WIBBLE_MATERIAL_UUID = 'SUR_WIBBLE_MATERIAL_UUID';
 	const SUB_WIBBLE_OLD_VIC_PRODUCTION_UUID = 'SUB_WIBBLE_PRODUCTION_UUID';
+	const WIBBLE_MATERIAL_UUID = 'WIBBLE_MATERIAL_UUID';
+	const QUINCY_QUX_II_PERSON_UUID = 'QUINCY_QUX_II_PERSON_UUID';
+	const NEW_THEATRICALS_LTD_COMPANY_UUID = 'NEW_THEATRICALS_LTD_COMPANY_UUID';
 	const OLD_VIC_THEATRE_VENUE_UUID = 'OLD_VIC_THEATRE_VENUE_UUID';
 	const SUR_WIBBLE_OLD_VIC_PRODUCTION_UUID = 'SUR_WIBBLE_PRODUCTION_UUID';
 
@@ -55,6 +59,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 	let bringUpTheBodiesSwanTheatreProduction;
 	let thomasCromwellCharacter;
 	let theLifeAndAdventuresOfNicholasNicklebyNovelMaterial;
+	let waldoMaterial;
 	let janeRoePerson;
 	let fictioneersLtdCompany;
 
@@ -423,18 +428,83 @@ describe('Material with sub-materials and source materials thereof', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Wibble',
+				name: 'Sub-Wibble',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
 					{
 						entities: [
 							{
-								name: 'Quincy Qux'
+								name: 'Quincy Qux I'
 							},
 							{
 								model: 'COMPANY',
-								name: 'Theatricals Ltd'
+								name: 'Old Theatricals Ltd'
+							}
+						]
+					},
+					{
+						name: 'based on',
+						entities: [
+							{
+								model: 'MATERIAL',
+								name: 'Waldo'
+							}
+						]
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Sur-Wibble',
+				format: 'play',
+				year: '2009',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Quincy Qux I'
+							},
+							{
+								model: 'COMPANY',
+								name: 'Old Theatricals Ltd'
+							}
+						]
+					},
+					{
+						name: 'based on',
+						entities: [
+							{
+								model: 'MATERIAL',
+								name: 'Waldo'
+							}
+						]
+					}
+				],
+				subMaterials: [
+					{
+						name: 'Sub-Wibble'
+					}
+				]
+			});
+
+		await chai.request(app)
+			.post('/materials')
+			.send({
+				name: 'Wibble',
+				format: 'play',
+				year: '2023',
+				writingCredits: [
+					{
+						entities: [
+							{
+								name: 'Quincy Qux II'
+							},
+							{
+								model: 'COMPANY',
+								name: 'New Theatricals Ltd'
 							}
 						]
 					},
@@ -511,6 +581,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await chai.request(app)
 			.get(`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`);
+
+		waldoMaterial = await chai.request(app)
+			.get(`/materials/${WALDO_MATERIAL_UUID}`);
 
 		janeRoePerson = await chai.request(app)
 			.get(`/people/${JANE_ROE_PERSON_UUID}`);
@@ -1498,6 +1571,172 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 	});
 
+	describe('Waldo (novel, 1974) (material): single source material is attached to multiple tiers of sourcing material, and a separate sourcing material is attached to multiple tiers of a production', () => {
+
+		it('includes materials that used it as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+
+			const expectedSourcingMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: WIBBLE_MATERIAL_UUID,
+					name: 'Wibble',
+					format: 'play',
+					year: 2023,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: QUINCY_QUX_II_PERSON_UUID,
+									name: 'Quincy Qux II'
+								},
+								{
+									model: 'COMPANY',
+									uuid: NEW_THEATRICALS_LTD_COMPANY_UUID,
+									name: 'New Theatricals Ltd'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: WALDO_MATERIAL_UUID,
+									name: 'Waldo',
+									format: 'novel',
+									year: 1974,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JANE_ROE_PERSON_UUID,
+													name: 'Jane Roe'
+												},
+												{
+													model: 'COMPANY',
+													uuid: FICTIONEERS_LTD_COMPANY_UUID,
+													name: 'Fictioneers Ltd'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: SUB_WIBBLE_MATERIAL_UUID,
+					name: 'Sub-Wibble',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: SUR_WIBBLE_MATERIAL_UUID,
+						name: 'Sur-Wibble',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: QUINCY_QUX_I_PERSON_UUID,
+									name: 'Quincy Qux I'
+								},
+								{
+									model: 'COMPANY',
+									uuid: OLD_THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Old Theatricals Ltd'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: WALDO_MATERIAL_UUID,
+									name: 'Waldo',
+									format: 'novel',
+									year: 1974,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JANE_ROE_PERSON_UUID,
+													name: 'Jane Roe'
+												},
+												{
+													model: 'COMPANY',
+													uuid: FICTIONEERS_LTD_COMPANY_UUID,
+													name: 'Fictioneers Ltd'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			];
+
+			const { sourcingMaterials } = waldoMaterial.body;
+
+			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+
+		});
+
+		it('includes productions of materials that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedSourcingMaterialProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_WIBBLE_OLD_VIC_PRODUCTION_UUID,
+					name: 'Sub-Wibble',
+					startDate: '2002-02-26',
+					endDate: '2002-02-28',
+					venue: {
+						model: 'VENUE',
+						uuid: OLD_VIC_THEATRE_VENUE_UUID,
+						name: 'Old Vic Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_WIBBLE_OLD_VIC_PRODUCTION_UUID,
+						name: 'Sur-Wibble',
+						surProduction: null
+					}
+				}
+			];
+
+			const { sourcingMaterialProductions } = waldoMaterial.body;
+
+			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+
+		});
+
+	});
+
 	describe('Jane Roe (person): single material that used their work as source material is attached to multiple tiers of a production', () => {
 
 		it('includes productions of material that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -1574,6 +1813,64 @@ describe('Material with sub-materials and source materials thereof', () => {
 				.get('/materials');
 
 			const expectedResponseBody = [
+				{
+					model: 'MATERIAL',
+					uuid: WIBBLE_MATERIAL_UUID,
+					name: 'Wibble',
+					format: 'play',
+					year: 2023,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: QUINCY_QUX_II_PERSON_UUID,
+									name: 'Quincy Qux II'
+								},
+								{
+									model: 'COMPANY',
+									uuid: NEW_THEATRICALS_LTD_COMPANY_UUID,
+									name: 'New Theatricals Ltd'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: WALDO_MATERIAL_UUID,
+									name: 'Waldo',
+									format: 'novel',
+									year: 1974,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: JANE_ROE_PERSON_UUID,
+													name: 'Jane Roe'
+												},
+												{
+													model: 'COMPANY',
+													uuid: FICTIONEERS_LTD_COMPANY_UUID,
+													name: 'Fictioneers Ltd'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
 				{
 					model: 'MATERIAL',
 					uuid: BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID,
@@ -1675,11 +1972,16 @@ describe('Material with sub-materials and source materials thereof', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: WIBBLE_MATERIAL_UUID,
-					name: 'Wibble',
+					uuid: SUB_WIBBLE_MATERIAL_UUID,
+					name: 'Sub-Wibble',
 					format: 'play',
 					year: 2009,
-					surMaterial: null,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: SUR_WIBBLE_MATERIAL_UUID,
+						name: 'Sur-Wibble',
+						surMaterial: null
+					},
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1687,13 +1989,13 @@ describe('Material with sub-materials and source materials thereof', () => {
 							entities: [
 								{
 									model: 'PERSON',
-									uuid: QUINCY_QUX_PERSON_UUID,
-									name: 'Quincy Qux'
+									uuid: QUINCY_QUX_I_PERSON_UUID,
+									name: 'Quincy Qux I'
 								},
 								{
 									model: 'COMPANY',
-									uuid: THEATRICALS_LTD_COMPANY_UUID,
-									name: 'Theatricals Ltd'
+									uuid: OLD_THEATRICALS_LTD_COMPANY_UUID,
+									name: 'Old Theatricals Ltd'
 								}
 							]
 						},

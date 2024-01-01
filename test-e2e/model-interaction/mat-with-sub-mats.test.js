@@ -36,6 +36,7 @@ describe('Material with sub-materials', () => {
 	let voyageOlivierProduction;
 	let tomStoppardPerson;
 	let theSträusslerGroupCompany;
+	let garplyMaterial;
 	let conorCorgePerson;
 	let scribesLtdCompany;
 
@@ -292,6 +293,9 @@ describe('Material with sub-materials', () => {
 
 		theSträusslerGroupCompany = await chai.request(app)
 			.get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
+
+		garplyMaterial = await chai.request(app)
+			.get(`/materials/${GARPLY_MATERIAL_UUID}`);
 
 		conorCorgePerson = await chai.request(app)
 			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
@@ -950,6 +954,40 @@ describe('Material with sub-materials', () => {
 			const { materials } = theSträusslerGroupCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
+
+		});
+
+	});
+
+	describe('Garply (material): single material is attached to multiple tiers of a production', () => {
+
+		it('includes productions of materials that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
+
+			const expectedProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SUB_GARPLY_WYNDHAMS_PRODUCTION_UUID,
+					name: 'Sub-Garply',
+					startDate: '2007-11-01',
+					endDate: '2007-11-30',
+					venue: {
+						model: 'VENUE',
+						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
+						name: 'Wyndham\'s Theatre',
+						surVenue: null
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: SUR_GARPLY_WYNDHAMS_PRODUCTION_UUID,
+						name: 'Sur-Garply',
+						surProduction: null
+					}
+				}
+			];
+
+			const { productions } = garplyMaterial.body;
+
+			expect(productions).to.deep.equal(expectedProductions);
 
 		});
 

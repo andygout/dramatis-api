@@ -34,6 +34,8 @@ export default () => `
 			OPTIONAL MATCH (relatedMaterial)-[sourcingMaterialRel:USES_SOURCE_MATERIAL]->(material)
 
 			OPTIONAL MATCH (relatedMaterial)<-[:PRODUCTION_OF]-(production:Production)
+				WHERE NOT EXISTS((relatedMaterial)<-[:PRODUCTION_OF]-(:Production)
+					<-[:HAS_SUB_PRODUCTION*1..2]-(production))
 
 			OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
@@ -56,9 +58,8 @@ export default () => `
 				ORDER BY
 					production.startDate DESC,
 					COALESCE(surSurProduction.name, surProduction.name, production.name),
-					COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
-					COALESCE(surSurProductionRel.position, -1) DESC,
-					COALESCE(surProductionRel.position, -1) DESC,
+					surSurProductionRel.position DESC,
+					surProductionRel.position DESC,
 					venue.name
 
 			WITH
