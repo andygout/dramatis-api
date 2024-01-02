@@ -5,7 +5,8 @@ export default () => `
 		WITH company
 
 		OPTIONAL MATCH (company)
-			<-[:HAS_WRITING_ENTITY]-(creditingMaterial:Material)-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial:Material)
+			<-[:HAS_WRITING_ENTITY]-(creditingMaterial:Material)
+				-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial:Material)
 			<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
 				-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial:Material)
 			<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)

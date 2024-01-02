@@ -22,7 +22,8 @@ export default () => `
 			OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)
 				<-[sourcingMaterialRel:USES_SOURCE_MATERIAL]-(material)
 
-			OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)
+			OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
+				(entity:Person|Company|Material)
 
 			OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
 

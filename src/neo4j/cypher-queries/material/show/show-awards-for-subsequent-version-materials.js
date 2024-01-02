@@ -32,7 +32,14 @@ export default () => `
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
 
-		WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntityRel,
+		WITH	
+			material,
+			nominatedSubsequentVersionMaterial,
+			nomineeRel,
+			category,
+			categoryRel,
+			ceremony,
+			nominatedEntityRel,
 			COLLECT(nominatedEntity {
 				model: TOUPPER(HEAD(LABELS(nominatedEntity))),
 				.uuid,
@@ -130,7 +137,14 @@ export default () => `
 			surSurProduction
 			ORDER BY nominatedProductionRel.productionPosition
 
-		WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntities,
+		WITH
+			material,
+			nominatedSubsequentVersionMaterial,
+			nomineeRel,
+			category,
+			categoryRel,
+			ceremony,
+			nominatedEntities,
 			COLLECT(
 				CASE WHEN nominatedProduction IS NULL
 					THEN null

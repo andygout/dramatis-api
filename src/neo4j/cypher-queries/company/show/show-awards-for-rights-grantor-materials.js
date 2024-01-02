@@ -205,7 +205,8 @@ export default () => `
 			) AS nominatedMaterials
 			ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
 
-		OPTIONAL MATCH (nominatedRightsGrantorMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurMaterial:Material)
+		OPTIONAL MATCH (nominatedRightsGrantorMaterial)
+			<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurMaterial:Material)
 
 		OPTIONAL MATCH (nominatedRightsGrantorSurMaterial)
 			<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurSurMaterial:Material)
