@@ -1,17 +1,25 @@
 export default () => `
-	MATCH (company:Company { uuid: $uuid })
+	MATCH (material:Material { uuid: $uuid })
 
 	CALL {
-		WITH company
+		WITH material
 
-		OPTIONAL MATCH (company)
-			<-[:HAS_WRITING_ENTITY { creditType: 'RIGHTS_GRANTOR' }]
-			-(material:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
+		OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial:Material)
+			<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
+				-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial:Material)
 			<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 			<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 			WHERE
-				(material)-[:HAS_SUB_MATERIAL*0..2]->(nominatedRightsGrantorMaterial:Material) OR
-				(material)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
+				(
+					(material)-[:HAS_SUB_MATERIAL*0..2]->(originalVersionMaterial) AND
+					(subsequentVersionMaterial)-[:HAS_SUB_MATERIAL*0..2]->(nominatedSubsequentVersionMaterial)
+				) OR (
+					(material)<-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial) AND
+					(subsequentVersionMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial)
+				) OR (
+					(material)-[:HAS_SUB_MATERIAL*0..2]->(originalVersionMaterial) AND
+					(subsequentVersionMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial)
+				)
 
 		OPTIONAL MATCH (category)-[nominatedEntityRel:HAS_NOMINEE]->(nominatedEntity)
 			WHERE
@@ -24,7 +32,14 @@ export default () => `
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
 
-		WITH nominatedRightsGrantorMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntityRel,
+		WITH	
+			material,
+			nominatedSubsequentVersionMaterial,
+			nomineeRel,
+			category,
+			categoryRel,
+			ceremony,
+			nominatedEntityRel,
 			COLLECT(nominatedEntity {
 				model: TOUPPER(HEAD(LABELS(nominatedEntity))),
 				.uuid,
@@ -43,7 +58,8 @@ export default () => `
 						nominatedEntityRel.nominationPosition = nominatedMemberRel.nominationPosition
 
 				WITH
-					nominatedRightsGrantorMaterial,
+					material,
+					nominatedSubsequentVersionMaterial,
 					nomineeRel,
 					category,
 					categoryRel,
@@ -54,7 +70,8 @@ export default () => `
 					ORDER BY nominatedMemberRel.memberPosition
 
 				WITH
-					nominatedRightsGrantorMaterial,
+					material,
+					nominatedSubsequentVersionMaterial,
 					nomineeRel,
 					category,
 					categoryRel,
@@ -64,7 +81,8 @@ export default () => `
 					COLLECT(nominatedMember { model: 'PERSON', .uuid, .name }) AS nominatedMembers
 
 		WITH
-			nominatedRightsGrantorMaterial,
+			material,
+			nominatedSubsequentVersionMaterial,
 			nomineeRel,
 			category,
 			categoryRel,
@@ -74,7 +92,7 @@ export default () => `
 			nominatedMembers
 			ORDER BY nominatedEntityRel.nominationPosition, nominatedEntityRel.entityPosition
 
-		WITH nominatedRightsGrantorMaterial, nomineeRel, category, categoryRel, ceremony,
+		WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony,
 			COLLECT(
 				CASE WHEN nominatedEntity IS NULL
 					THEN null
@@ -82,7 +100,7 @@ export default () => `
 				END
 			) AS nominatedEntities
 
-		WITH nominatedRightsGrantorMaterial, nomineeRel, category, categoryRel, ceremony,
+		WITH material, nominatedSubsequentVersionMaterial, nomineeRel, category, categoryRel, ceremony,
 			[nominatedEntity IN nominatedEntities | CASE nominatedEntity.model WHEN 'COMPANY'
 				THEN nominatedEntity
 				ELSE nominatedEntity { .model, .uuid, .name }
@@ -104,7 +122,8 @@ export default () => `
 		OPTIONAL MATCH (surProduction)<-[:HAS_SUB_PRODUCTION]-(surSurProduction:Production)
 
 		WITH
-			nominatedRightsGrantorMaterial,
+			material,
+			nominatedSubsequentVersionMaterial,
 			nomineeRel,
 			category,
 			categoryRel,
@@ -118,7 +137,14 @@ export default () => `
 			surSurProduction
 			ORDER BY nominatedProductionRel.productionPosition
 
-		WITH nominatedRightsGrantorMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntities,
+		WITH
+			material,
+			nominatedSubsequentVersionMaterial,
+			nomineeRel,
+			category,
+			categoryRel,
+			ceremony,
+			nominatedEntities,
 			COLLECT(
 				CASE WHEN nominatedProduction IS NULL
 					THEN null
@@ -162,12 +188,11 @@ export default () => `
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
 				) AND
-				nominatedMaterialRel.uuid <> nominatedRightsGrantorMaterial.uuid
-
-		OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
+				nominatedMaterial.uuid <> nominatedSubsequentVersionMaterial.uuid AND
+				NOT EXISTS((material)<-[:SUBSEQUENT_VERSION_OF]-(nominatedMaterial))
 
 		WITH
-			nominatedRightsGrantorMaterial,
+			nominatedSubsequentVersionMaterial,
 			nomineeRel,
 			category,
 			categoryRel,
@@ -175,12 +200,11 @@ export default () => `
 			nominatedEntities,
 			nominatedProductions,
 			nominatedMaterialRel,
-			nominatedMaterial,
-			nominatedSurMaterial
+			nominatedMaterial
 			ORDER BY nominatedMaterialRel.materialPosition
 
 		WITH
-			nominatedRightsGrantorMaterial,
+			nominatedSubsequentVersionMaterial,
 			nomineeRel,
 			category,
 			categoryRel,
@@ -190,25 +214,16 @@ export default () => `
 			COLLECT(
 				CASE WHEN nominatedMaterial IS NULL
 					THEN null
-					ELSE nominatedMaterial {
-						model: 'MATERIAL',
-						.uuid,
-						.name,
-						.format,
-						.year,
-						surMaterial: CASE WHEN nominatedSurMaterial IS NULL
-							THEN null
-							ELSE nominatedSurMaterial { model: 'MATERIAL', .uuid, .name }
-						END
-					}
+					ELSE nominatedMaterial { model: 'MATERIAL', .uuid, .name, .format, .year }
 				END
 			) AS nominatedMaterials
 			ORDER BY nomineeRel.nominationPosition, nomineeRel.materialPosition
 
-		OPTIONAL MATCH (nominatedRightsGrantorMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurMaterial:Material)
+		OPTIONAL MATCH (nominatedSubsequentVersionMaterial)
+			<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurMaterial:Material)
 
-		OPTIONAL MATCH (nominatedRightsGrantorSurMaterial)
-			<-[:HAS_SUB_MATERIAL]-(nominatedRightsGrantorSurSurMaterial:Material)
+		OPTIONAL MATCH (nominatedSubsequentVersionSurMaterial)
+			<-[:HAS_SUB_MATERIAL]-(nominatedSubsequentVersionSurSurMaterial:Material)
 
 		WITH
 			nomineeRel.isWinner AS isWinner,
@@ -220,29 +235,29 @@ export default () => `
 			nominatedProductions,
 			nominatedMaterials,
 			COLLECT(
-				CASE WHEN nominatedRightsGrantorMaterial IS NULL
+				CASE WHEN nominatedSubsequentVersionMaterial IS NULL
 					THEN null
-					ELSE nominatedRightsGrantorMaterial {
+					ELSE nominatedSubsequentVersionMaterial {
 						model: 'MATERIAL',
 						.uuid,
 						.name,
 						.format,
 						.year,
-						surMaterial: CASE WHEN nominatedRightsGrantorSurMaterial IS NULL
+						surMaterial: CASE WHEN nominatedSubsequentVersionSurMaterial IS NULL
 							THEN null
-							ELSE nominatedRightsGrantorSurMaterial {
+							ELSE nominatedSubsequentVersionSurMaterial {
 								model: 'MATERIAL',
 								.uuid,
 								.name,
-								surMaterial: CASE WHEN nominatedRightsGrantorSurSurMaterial IS NULL
+								surMaterial: CASE WHEN nominatedSubsequentVersionSurSurMaterial IS NULL
 									THEN null
-									ELSE nominatedRightsGrantorSurSurMaterial { model: 'MATERIAL', .uuid, .name }
+									ELSE nominatedSubsequentVersionSurSurMaterial { model: 'MATERIAL', .uuid, .name }
 								END
 							}
 						END
 					}
 				END
-			) AS nominatedRightsGrantorMaterials
+			) AS nominatedSubsequentVersionMaterials
 
 		WITH category, categoryRel, ceremony,
 			COLLECT({
@@ -252,7 +267,7 @@ export default () => `
 				entities: nominatedEntities,
 				productions: nominatedProductions,
 				materials: nominatedMaterials,
-				recipientRightsGrantorMaterials: nominatedRightsGrantorMaterials
+				recipientSubsequentVersionMaterials: nominatedSubsequentVersionMaterials
 			}) AS nominations
 			ORDER BY categoryRel.position
 
@@ -265,9 +280,9 @@ export default () => `
 			ORDER BY award.name
 
 		RETURN
-			COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS rightsGrantorMaterialAwards
+			COLLECT(award { model: 'AWARD', .uuid, .name, ceremonies }) AS subsequentVersionMaterialAwards
 	}
 
 	RETURN
-		rightsGrantorMaterialAwards
+		subsequentVersionMaterialAwards
 `;

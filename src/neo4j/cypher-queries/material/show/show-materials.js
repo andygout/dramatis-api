@@ -4,7 +4,7 @@ export default () => `
 	CALL {
 		WITH material
 
-		OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial)
+		OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
 			WHERE NOT EXISTS(
 				(material)<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(subsequentVersionMaterial)
 			)
@@ -36,7 +36,8 @@ export default () => `
 			OPTIONAL MATCH (relatedMaterial)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
 				(entity:Person|Company|Material)
 
-			OPTIONAL MATCH (entity)<-[originalVersionWritingEntityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]-(material)
+			OPTIONAL MATCH (entity)
+				<-[originalVersionWritingEntityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]-(material)
 
 			OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->
 				(sourceMaterialWriter:Person|Company)
@@ -54,7 +55,10 @@ export default () => `
 				entity,
 				entitySurMaterial,
 				entitySurSurMaterial,
-				CASE WHEN originalVersionWritingEntityRel IS NULL THEN false ELSE true END AS isOriginalVersionWritingEntity,
+				CASE WHEN originalVersionWritingEntityRel IS NULL
+					THEN false
+					ELSE true
+				END AS isOriginalVersionWritingEntity,
 				sourceMaterialWriterRel,
 				sourceMaterialWriter
 				ORDER BY sourceMaterialWriterRel.creditPosition, sourceMaterialWriterRel.entityPosition

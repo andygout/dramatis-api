@@ -192,7 +192,8 @@ export default () => `
 
 		OPTIONAL MATCH (coNominatedMaterial)<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurMaterial:Material)
 
-		OPTIONAL MATCH (coNominatedMaterialSurMaterial)<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurSurMaterial:Material)
+		OPTIONAL MATCH (coNominatedMaterialSurMaterial)
+			<-[:HAS_SUB_MATERIAL]-(coNominatedMaterialSurSurMaterial:Material)
 
 		WITH recipientMaterial, nomineeRel, category, categoryRel, ceremony, nominatedEntities, nominatedProductions,
 			COLLECT(

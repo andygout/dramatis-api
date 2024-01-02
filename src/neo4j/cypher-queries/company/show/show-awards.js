@@ -219,7 +219,10 @@ export default () => `
 			COLLECT({
 				model: 'NOMINATION',
 				isWinner: COALESCE(nomineeRel.isWinner, false),
-				type: COALESCE(nomineeRel.customType, CASE WHEN nomineeRel.isWinner THEN 'Winner' ELSE 'Nomination' END),
+				type: COALESCE(
+					nomineeRel.customType,
+					CASE WHEN nomineeRel.isWinner THEN 'Winner' ELSE 'Nomination' END
+				),
 				members: nominatedMembers,
 				coEntities: coNominatedEntities,
 				productions: nominatedProductions,
