@@ -9,6 +9,10 @@ export default () => `
 				(material)<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(subsequentVersionMaterial)
 			)
 
+		WITH
+			material,
+			COLLECT(subsequentVersionMaterial) AS subsequentVersionMaterials
+
 		OPTIONAL MATCH (material)<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
 			WHERE NOT EXISTS(
 				(material)<-[:USES_SOURCE_MATERIAL]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(sourcingMaterial)
@@ -16,7 +20,7 @@ export default () => `
 
 		WITH
 			material,
-			COLLECT(subsequentVersionMaterial) AS subsequentVersionMaterials,
+			subsequentVersionMaterials,
 			COLLECT(sourcingMaterial) AS sourcingMaterials
 
 		WITH
