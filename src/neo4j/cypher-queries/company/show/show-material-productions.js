@@ -35,10 +35,10 @@ export default () => `
 
 			WITH
 				material,
-				writerRel.creditType AS creditType,
-				CASE WHEN writerRel IS NULL THEN false ELSE true END AS hasDirectCredit,
-				CASE WHEN subsequentVersionRel IS NULL THEN false ELSE true END AS isSubsequentVersion,
-				CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS isSourcingMaterial,
+				writerRel.creditType AS materialWriterRelCreditType,
+				CASE WHEN writerRel IS NULL THEN false ELSE true END AS hasDirectMaterialWriterCredit,
+				CASE WHEN subsequentVersionRel IS NULL THEN false ELSE true END AS usesSubsequentVersion,
+				CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS usesSourcingMaterial,
 				production,
 				venue,
 				surVenue,
@@ -86,10 +86,10 @@ export default () => `
 									END
 								}
 							END,
-							creditType,
-							hasDirectCredit,
-							isSubsequentVersion,
-							isSourcingMaterial
+							materialWriterRelCreditType,
+							hasDirectMaterialWriterCredit,
+							usesSubsequentVersion,
+							usesSourcingMaterial
 						}
 					END
 				) AS productions
@@ -97,23 +97,23 @@ export default () => `
 		RETURN
 			[
 				production IN productions WHERE
-					production.hasDirectCredit AND
-					NOT production.isSubsequentVersion AND
-					production.creditType IS NULL |
+					production.hasDirectMaterialWriterCredit AND
+					NOT production.usesSubsequentVersion AND
+					production.materialWriterRelCreditType IS NULL |
 				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 			] AS materialProductions,
 			[
-				production IN productions WHERE production.isSubsequentVersion |
+				production IN productions WHERE production.usesSubsequentVersion |
 				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 			] AS subsequentVersionMaterialProductions,
 			[
 				production IN productions WHERE
-					production.isSourcingMaterial OR
-					production.creditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
+					production.usesSourcingMaterial OR
+					production.materialWriterRelCreditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
 				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 			] AS sourcingMaterialProductions,
 			[
-				production IN productions WHERE production.creditType = 'RIGHTS_GRANTOR' |
+				production IN productions WHERE production.materialWriterRelCreditType = 'RIGHTS_GRANTOR' |
 				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 			] AS rightsGrantorMaterialProductions
 	}
