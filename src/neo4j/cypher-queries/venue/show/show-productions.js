@@ -27,8 +27,7 @@ export default () => `
 				production.startDate DESC,
 				COALESCE(surSurProduction.name, surProduction.name, production.name),
 				surSurProductionRel.position DESC,
-				surProductionRel.position DESC,
-				venue.name
+				surProductionRel.position DESC
 
 		RETURN
 			COLLECT(
