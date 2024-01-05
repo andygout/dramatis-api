@@ -16,7 +16,7 @@ export default () => `
 
 			OPTIONAL MATCH (company)<-[writerRel:HAS_WRITING_ENTITY]-(material)
 
-			OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)
+			OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(originalVersionMaterial:Material)
 				<-[subsequentVersionRel:SUBSEQUENT_VERSION_OF]-(material)
 
 			OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)
@@ -24,6 +24,8 @@ export default () => `
 
 			OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
 				(entity:Person|Company|Material)
+
+			OPTIONAL MATCH (entity)<-[originalVersionWritingEntityRel:HAS_WRITING_ENTITY]-(originalVersionMaterial)
 
 			OPTIONAL MATCH (entity:Material)<-[:HAS_SUB_MATERIAL]-(entitySurMaterial:Material)
 
@@ -40,6 +42,10 @@ export default () => `
 				CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS isSourcingMaterial,
 				entityRel,
 				entity,
+				CASE WHEN originalVersionWritingEntityRel IS NULL
+					THEN false
+					ELSE true
+				END AS isOriginalVersionWritingEntity,
 				entitySurMaterial,
 				entitySurSurMaterial,
 				sourceMaterialWriterRel,
@@ -54,6 +60,7 @@ export default () => `
 				isSourcingMaterial,
 				entityRel,
 				entity,
+				isOriginalVersionWritingEntity,
 				entitySurMaterial,
 				entitySurSurMaterial,
 				sourceMaterialWriterRel.credit AS sourceMaterialWritingCreditName,
@@ -72,6 +79,7 @@ export default () => `
 				isSourcingMaterial,
 				entityRel,
 				entity,
+				isOriginalVersionWritingEntity,
 				entitySurMaterial,
 				entitySurSurMaterial,
 				COLLECT(
@@ -94,7 +102,7 @@ export default () => `
 				isSourcingMaterial,
 				entityRel.credit AS writingCreditName,
 				COLLECT(
-					CASE WHEN entity IS NULL
+					CASE WHEN entity IS NULL OR (isSubsequentVersion AND isOriginalVersionWritingEntity)
 						THEN null
 						ELSE entity {
 							model: TOUPPER(HEAD(LABELS(entity))),
