@@ -22,10 +22,10 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 	const GOD_CHARACTER_UUID = 'GOD_CHARACTER_UUID';
 	const THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_MATERIAL_UUID';
 	const SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID = 'SIXTY_SIX_BOOKS_MATERIAL_UUID';
-	const GODBLOG_BUSH_THEATRE_PRODUCTION_UUID = 'GODBLOG_PRODUCTION_UUID';
+	const GODBLOG_BUSH_PRODUCTION_UUID = 'GODBLOG_PRODUCTION_UUID';
 	const BUSH_THEATRE_VENUE_UUID = 'BUSH_THEATRE_VENUE_UUID';
-	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_UUID';
-	const SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_PRODUCTION_UUID';
+	const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_UUID';
+	const SIXTY_SIX_BOOKS_BUSH_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_PRODUCTION_UUID';
 	const GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'GODBLOG_2_PRODUCTION_UUID';
 	const WESTMINSTER_ABBEY_VENUE_UUID = 'WESTMINSTER_ABBEY_VENUE_UUID';
 	const THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_2_PRODUCTION_UUID';
@@ -241,7 +241,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				subProductions: [
 					{
-						uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID
+						uuid: GODBLOG_BUSH_PRODUCTION_UUID
 					}
 				]
 			});
@@ -261,7 +261,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				subProductions: [
 					{
-						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID
 					}
 				]
 			});
@@ -343,7 +343,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			.get(`/companies/${ONLY_FRUITS_COMPANY_UUID}`);
 
 		godblogBushTheatreProduction = await chai.request(app)
-			.get(`/productions/${GODBLOG_BUSH_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${GODBLOG_BUSH_PRODUCTION_UUID}`);
 
 		godCharacter = await chai.request(app)
 			.get(`/characters/${GOD_CHARACTER_UUID}`);
@@ -473,7 +473,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
+					uuid: GODBLOG_BUSH_PRODUCTION_UUID,
 					name: 'Godblog',
 					startDate: '2011-10-10',
 					endDate: '2011-10-28',
@@ -485,11 +485,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID,
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID,
 						name: 'The Books of the Old Testament',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID,
+							uuid: SIXTY_SIX_BOOKS_BUSH_PRODUCTION_UUID,
 							name: 'Sixty-Six Books'
 						}
 					}
@@ -850,7 +850,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
+					uuid: GODBLOG_BUSH_PRODUCTION_UUID,
 					name: 'Godblog',
 					startDate: '2011-10-10',
 					endDate: '2011-10-28',
@@ -862,11 +862,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID,
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID,
 						name: 'The Books of the Old Testament',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID,
+							uuid: SIXTY_SIX_BOOKS_BUSH_PRODUCTION_UUID,
 							name: 'Sixty-Six Books'
 						}
 					}
@@ -998,7 +998,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: GODBLOG_BUSH_THEATRE_PRODUCTION_UUID,
+					uuid: GODBLOG_BUSH_PRODUCTION_UUID,
 					name: 'Godblog',
 					startDate: '2011-10-10',
 					endDate: '2011-10-28',
@@ -1010,11 +1010,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_THEATRE_PRODUCTION_UUID,
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID,
 						name: 'The Books of the Old Testament',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: SIXTY_SIX_BOOKS_BUSH_THEATRE_PRODUCTION_UUID,
+							uuid: SIXTY_SIX_BOOKS_BUSH_PRODUCTION_UUID,
 							name: 'Sixty-Six Books'
 						}
 					}

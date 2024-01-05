@@ -20,12 +20,12 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const ROYAL_SHAKESPEARE_COMPANY_UUID = 'ROYAL_SHAKESPEARE_COMPANY_COMPANY_UUID';
 	const THOMAS_CROMWELL_CHARACTER_UUID = 'THOMAS_CROMWELL_CHARACTER_UUID';
 	const THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID = 'THE_WOLF_HALL_TRILOGY_2_MATERIAL_UUID';
-	const BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_PRODUCTION_UUID';
+	const BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_PRODUCTION_UUID';
 	const SWAN_THEATRE_VENUE_UUID = 'SWAN_THEATRE_VENUE_UUID';
-	const THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_PRODUCTION_UUID';
-	const BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_2_PRODUCTION_UUID';
+	const THE_WOLF_HALL_TRILOGY_SWAN_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_PRODUCTION_UUID';
+	const BRING_UP_THE_BODIES_ALDWYCH_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_2_PRODUCTION_UUID';
 	const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
-	const THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_2_PRODUCTION_UUID';
+	const THE_WOLF_HALL_TRILOGY_ALDWYCH_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_2_PRODUCTION_UUID';
 	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_1_MATERIAL_UUID';
 	const CHARLES_DICKENS_PERSON_UUID = 'CHARLES_DICKENS_PERSON_UUID';
 	const DOMBEY_AND_SON_LTD_COMPANY_UUID = 'DOMBEY_AND_SON_LTD_COMPANY_UUID';
@@ -33,9 +33,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 	const DAVID_EDGAR_PERSON_UUID = 'DAVID_EDGAR_PERSON_UUID';
 	const EDGAR_WORKS_LTD_COMPANY_UUID = 'EDGAR_WORKS_LTD_COMPANY_UUID';
 	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PLAYS_MATERIAL_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_2_MATERIAL_UUID';
-	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PRODUCTION_UUID';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PRODUCTION_UUID';
 	const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
-	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_THEATRE_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PRODUCTION_UUID';
+	const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PRODUCTION_UUID';
 	const WALDO_MATERIAL_UUID = 'WALDO_MATERIAL_UUID';
 	const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
 	const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
@@ -234,7 +234,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				},
 				subProductions: [
 					{
-						uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID
+						uuid: BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID
 					}
 				]
 			});
@@ -271,7 +271,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				},
 				subProductions: [
 					{
-						uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID
+						uuid: BRING_UP_THE_BODIES_ALDWYCH_PRODUCTION_UUID
 					}
 				]
 			});
@@ -399,7 +399,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				},
 				subProductions: [
 					{
-						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID
+						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_PRODUCTION_UUID
 					}
 				]
 			});
@@ -574,7 +574,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 			.get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
 		bringUpTheBodiesSwanTheatreProduction = await chai.request(app)
-			.get(`/productions/${BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID}`);
 
 		thomasCromwellCharacter = await chai.request(app)
 			.get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
@@ -685,7 +685,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID,
+					uuid: BRING_UP_THE_BODIES_ALDWYCH_PRODUCTION_UUID,
 					name: 'Bring Up the Bodies',
 					startDate: '2014-05-01',
 					endDate: '2014-09-06',
@@ -697,14 +697,14 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID,
+						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_PRODUCTION_UUID,
 						name: 'The Wolf Hall Trilogy',
 						surProduction: null
 					}
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
+					uuid: BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID,
 					name: 'Bring Up the Bodies',
 					startDate: '2013-12-19',
 					endDate: '2014-03-29',
@@ -716,7 +716,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
+						uuid: THE_WOLF_HALL_TRILOGY_SWAN_PRODUCTION_UUID,
 						name: 'The Wolf Hall Trilogy',
 						surProduction: null
 					}
@@ -954,7 +954,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID,
+					uuid: BRING_UP_THE_BODIES_ALDWYCH_PRODUCTION_UUID,
 					name: 'Bring Up the Bodies',
 					startDate: '2014-05-01',
 					endDate: '2014-09-06',
@@ -966,14 +966,14 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID,
+						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_PRODUCTION_UUID,
 						name: 'The Wolf Hall Trilogy',
 						surProduction: null
 					}
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
+					uuid: BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID,
 					name: 'Bring Up the Bodies',
 					startDate: '2013-12-19',
 					endDate: '2014-03-29',
@@ -985,7 +985,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
+						uuid: THE_WOLF_HALL_TRILOGY_SWAN_PRODUCTION_UUID,
 						name: 'The Wolf Hall Trilogy',
 						surProduction: null
 					}
@@ -1086,7 +1086,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: BRING_UP_THE_BODIES_ALDWYCH_THEATRE_PRODUCTION_UUID,
+					uuid: BRING_UP_THE_BODIES_ALDWYCH_PRODUCTION_UUID,
 					name: 'Bring Up the Bodies',
 					startDate: '2014-05-01',
 					endDate: '2014-09-06',
@@ -1098,14 +1098,14 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_THEATRE_PRODUCTION_UUID,
+						uuid: THE_WOLF_HALL_TRILOGY_ALDWYCH_PRODUCTION_UUID,
 						name: 'The Wolf Hall Trilogy',
 						surProduction: null
 					}
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: BRING_UP_THE_BODIES_SWAN_THEATRE_PRODUCTION_UUID,
+					uuid: BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID,
 					name: 'Bring Up the Bodies',
 					startDate: '2013-12-19',
 					endDate: '2014-03-29',
@@ -1117,7 +1117,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_WOLF_HALL_TRILOGY_SWAN_THEATRE_PRODUCTION_UUID,
+						uuid: THE_WOLF_HALL_TRILOGY_SWAN_PRODUCTION_UUID,
 						name: 'The Wolf Hall Trilogy',
 						surProduction: null
 					}
@@ -1544,7 +1544,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_THEATRE_PRODUCTION_UUID,
+					uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_PRODUCTION_UUID,
 					name: 'The Life and Adventures of Nicholas Nickleby: Part I',
 					startDate: '2007-12-07',
 					endDate: '2008-01-27',
@@ -1556,7 +1556,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_THEATRE_PRODUCTION_UUID,
+						uuid: THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_PRODUCTION_UUID,
 						name: 'The Life and Adventures of Nicholas Nickleby',
 						surProduction: null
 					}

@@ -25,10 +25,10 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 	const THEATRE_ROYAL_DRURY_LANE_VENUE_UUID = 'THEATRE_ROYAL_DRURY_LANE_VENUE_UUID';
 	const THE_LORD_OF_THE_RINGS_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'THE_LORD_OF_THE_RINGS_PRODUCTION_UUID';
 	const TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'TOLKIENS_LEGENDARIUM_PRODUCTION_UUID';
-	const THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID = 'THE_FELLOWSHIP_OF_THE_RING_2_PRODUCTION_UUID';
+	const THE_FELLOWSHIP_OF_THE_RING_WATERMILL_PRODUCTION_UUID = 'THE_FELLOWSHIP_OF_THE_RING_2_PRODUCTION_UUID';
 	const WATERMILL_THEATRE_VENUE_UUID = 'WATERMILL_THEATRE_VENUE_UUID';
-	const THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID = 'THE_LORD_OF_THE_RINGS_2_PRODUCTION_UUID';
-	const TOLKIENS_LEGENDARIUM_WATERMILL_THEATRE_PRODUCTION_UUID = 'TOLKIENS_LEGENDARIUM_2_PRODUCTION_UUID';
+	const THE_LORD_OF_THE_RINGS_WATERMILL_PRODUCTION_UUID = 'THE_LORD_OF_THE_RINGS_2_PRODUCTION_UUID';
+	const TOLKIENS_LEGENDARIUM_WATERMILL_PRODUCTION_UUID = 'TOLKIENS_LEGENDARIUM_2_PRODUCTION_UUID';
 
 	let theTolkienEstateCompany;
 	let baillieTolkienPerson;
@@ -308,7 +308,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				},
 				subProductions: [
 					{
-						uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID
+						uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_PRODUCTION_UUID
 					}
 				]
 			});
@@ -329,7 +329,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				},
 				subProductions: [
 					{
-						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID
+						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_PRODUCTION_UUID
 					}
 				]
 			});
@@ -448,7 +448,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID,
+					uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_PRODUCTION_UUID,
 					name: 'The Fellowship of the Ring',
 					startDate: '2023-07-25',
 					endDate: '2023-10-15',
@@ -460,11 +460,11 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID,
+						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_PRODUCTION_UUID,
 						name: 'The Lord of the Rings',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_THEATRE_PRODUCTION_UUID,
+							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_PRODUCTION_UUID,
 							name: 'Tolkien\'s Legendarium'
 						}
 					}
@@ -602,7 +602,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_THEATRE_PRODUCTION_UUID,
+					uuid: THE_FELLOWSHIP_OF_THE_RING_WATERMILL_PRODUCTION_UUID,
 					name: 'The Fellowship of the Ring',
 					startDate: '2023-07-25',
 					endDate: '2023-10-15',
@@ -614,11 +614,11 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_THEATRE_PRODUCTION_UUID,
+						uuid: THE_LORD_OF_THE_RINGS_WATERMILL_PRODUCTION_UUID,
 						name: 'The Lord of the Rings',
 						surProduction: {
 							model: 'PRODUCTION',
-							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_THEATRE_PRODUCTION_UUID,
+							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_PRODUCTION_UUID,
 							name: 'Tolkien\'s Legendarium'
 						}
 					}

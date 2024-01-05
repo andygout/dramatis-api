@@ -27,7 +27,7 @@ describe('Different characters with the same name from the same material', () =>
 	const RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID = 'RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID';
 	const JACK_CADE_CHARACTER_UUID = 'JACK_CADE_CHARACTER_UUID';
 	const RICHARD_PLANTAGENET_CHARACTER_UUID = 'RICHARD_PLANTAGENET_CHARACTER_UUID';
-	const HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID = 'HENRY_VI_PART_2_PRODUCTION_UUID';
+	const HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID = 'HENRY_VI_PART_2_PRODUCTION_UUID';
 	const COURTYARD_THEATRE_VENUE_UUID = 'COURTYARD_THEATRE_VENUE_UUID';
 	const CLIVE_WOOD_PERSON_UUID = 'CLIVE_WOOD_PERSON_UUID';
 	const JONATHAN_SLINGER_PERSON_UUID = 'JONATHAN_SLINGER_PERSON_UUID';
@@ -272,7 +272,7 @@ describe('Different characters with the same name from the same material', () =>
 			.get(`/materials/${HENRY_VI_PART_2_MATERIAL_UUID}`);
 
 		henryVIPart2CourtyardProduction = await chai.request(app)
-			.get(`/productions/${HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID}`);
 
 		cliveWoodPerson = await chai.request(app)
 			.get(`/people/${CLIVE_WOOD_PERSON_UUID}`);
@@ -695,7 +695,7 @@ describe('Different characters with the same name from the same material', () =>
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					uuid: HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID,
 					name: 'Henry VI, Part 2',
 					startDate: '2006-07-14',
 					endDate: '2006-10-21',
@@ -743,7 +743,7 @@ describe('Different characters with the same name from the same material', () =>
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					uuid: HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID,
 					name: 'Henry VI, Part 2',
 					startDate: '2006-07-14',
 					endDate: '2006-10-21',
@@ -783,7 +783,7 @@ describe('Different characters with the same name from the same material', () =>
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					uuid: HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID,
 					name: 'Henry VI, Part 2',
 					startDate: '2006-07-14',
 					endDate: '2006-10-21',
@@ -914,7 +914,7 @@ describe('Different characters with the same name from the same material', () =>
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					uuid: HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID,
 					name: 'Henry VI, Part 2',
 					startDate: '2006-07-14',
 					endDate: '2006-10-21',
@@ -959,7 +959,7 @@ describe('Different characters with the same name from the same material', () =>
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: HENRY_VI_PART_2_COURTYARD_THEATRE_PRODUCTION_UUID,
+					uuid: HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID,
 					name: 'Henry VI, Part 2',
 					startDate: '2006-07-14',
 					endDate: '2006-10-21',
