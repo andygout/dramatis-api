@@ -11,15 +11,15 @@ describe('Festival with multiple productions', () => {
 
 	chai.use(chaiHttp);
 
-	const ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = 'ROMEO_AND_JULIET_PRODUCTION_UUID';
+	const ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'ROMEO_AND_JULIET_PRODUCTION_UUID';
 	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
 	const THE_COMPLETE_WORKS_FESTIVAL_UUID = 'THE_COMPLETE_WORKS_FESTIVAL_UUID';
-	const ANTONY_AND_CLEOPATRA_SWAN_THEATRE_PRODUCTION_UUID = 'ANTONY_AND_CLEOPATRA_PRODUCTION_UUID';
+	const ANTONY_AND_CLEOPATRA_SWAN_PRODUCTION_UUID = 'ANTONY_AND_CLEOPATRA_PRODUCTION_UUID';
 	const SWAN_THEATRE_VENUE_UUID = 'SWAN_THEATRE_VENUE_UUID';
-	const JULIUS_CAESAR_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = 'JULIUS_CAESAR_PRODUCTION_UUID';
+	const JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'JULIUS_CAESAR_PRODUCTION_UUID';
 	const EDINBURGH_INTERNATIONAL_FESTIVAL_2006_FESTIVAL_UUID = '2006_FESTIVAL_UUID';
 	const EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID = 'EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID';
-	const TROILUS_AND_CRESSIDA_KINGS_THEATRE_PRODUCTION_UUID = 'TROILUS_AND_CRESSIDA_PRODUCTION_UUID';
+	const TROILUS_AND_CRESSIDA_KINGS_PRODUCTION_UUID = 'TROILUS_AND_CRESSIDA_PRODUCTION_UUID';
 
 	let theCompleteWorksFestival;
 	let romeoAndJulietRoyalShakespeareProduction;
@@ -109,16 +109,16 @@ describe('Festival with multiple productions', () => {
 			.get(`/festivals/${THE_COMPLETE_WORKS_FESTIVAL_UUID}`);
 
 		romeoAndJulietRoyalShakespeareProduction = await chai.request(app)
-			.get(`/productions/${ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
 		antonyAndCleopatraSwanProduction = await chai.request(app)
-			.get(`/productions/${ANTONY_AND_CLEOPATRA_SWAN_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${ANTONY_AND_CLEOPATRA_SWAN_PRODUCTION_UUID}`);
 
 		juliusCaesarRoyalShakespeareProduction = await chai.request(app)
-			.get(`/productions/${JULIUS_CAESAR_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
 		troilusAndCressidaKingsProduction = await chai.request(app)
-			.get(`/productions/${TROILUS_AND_CRESSIDA_KINGS_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${TROILUS_AND_CRESSIDA_KINGS_PRODUCTION_UUID}`);
 
 	});
 
@@ -135,7 +135,7 @@ describe('Festival with multiple productions', () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: JULIUS_CAESAR_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					uuid: JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Julius Caesar',
 					startDate: '2006-05-06',
 					endDate: '2006-10-10',
@@ -149,7 +149,7 @@ describe('Festival with multiple productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ANTONY_AND_CLEOPATRA_SWAN_THEATRE_PRODUCTION_UUID,
+					uuid: ANTONY_AND_CLEOPATRA_SWAN_PRODUCTION_UUID,
 					name: 'Antony and Cleopatra',
 					startDate: '2006-04-12',
 					endDate: '2006-10-14',
@@ -163,7 +163,7 @@ describe('Festival with multiple productions', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					uuid: ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'Romeo and Juliet',
 					startDate: '2006-04-06',
 					endDate: '2006-10-14',

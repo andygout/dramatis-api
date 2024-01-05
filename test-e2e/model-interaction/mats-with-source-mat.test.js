@@ -29,11 +29,11 @@ describe('Materials with source material', () => {
 	const IAGO_CHARACTER_UUID = 'IAGO_CHARACTER_UUID';
 	const A_MOORISH_CAPTAIN_MATERIAL_UUID = 'A_MOORISH_CAPTAIN_MATERIAL_UUID';
 	const OTHELLO_MATERIAL_UUID = 'OTHELLO_MATERIAL_UUID';
-	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_PRODUCTION_UUID';
+	const A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_PRODUCTION_UUID';
 	const NOVELLO_THEATRE_VENUE_UUID = 'NOVELLO_THEATRE_VENUE_UUID';
 	const THE_DONKEY_SHOW_HANOVER_GRAND_PRODUCTION_UUID = 'THE_DONKEY_SHOW_PRODUCTION_UUID';
 	const HANOVER_GRAND_VENUE_UUID = 'HANOVER_GRAND_VENUE_UUID';
-	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID = 'THE_INDIAN_BOY_PRODUCTION_UUID';
+	const THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'THE_INDIAN_BOY_PRODUCTION_UUID';
 	const SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID = 'SHAKESPEARES_VILLAINS_PRODUCTION_UUID';
 	const THEATRE_ROYAL_HAYMARKET_VENUE_UUID = 'THEATRE_ROYAL_HAYMARKET_VENUE_UUID';
 	const OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID = 'OTHELLO_PRODUCTION_UUID';
@@ -381,7 +381,7 @@ describe('Materials with source material', () => {
 			.get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
 
 		theIndianBoyRoyalShakespeareTheatreProduction = await chai.request(app)
-			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID}`);
+			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
 		shakespearesVillainsTheatreRoyalHaymarketProduction = await chai.request(app)
 			.get(`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`);
@@ -537,7 +537,7 @@ describe('Materials with source material', () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_THEATRE_PRODUCTION_UUID,
+					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
 					name: 'A Midsummer Night\'s Dream',
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
@@ -562,7 +562,7 @@ describe('Materials with source material', () => {
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'The Indian Boy',
 					startDate: '2006-11-07',
 					endDate: '2006-11-11',
@@ -1121,7 +1121,7 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'The Indian Boy',
 					startDate: '2006-11-07',
 					endDate: '2006-11-11',
@@ -1423,7 +1423,7 @@ describe('Materials with source material', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_THEATRE_PRODUCTION_UUID,
+					uuid: THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
 					name: 'The Indian Boy',
 					startDate: '2006-11-07',
 					endDate: '2006-11-11',

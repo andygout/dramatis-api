@@ -2046,7 +2046,7 @@ describe('Production with sub-productions', () => {
 
 	describe('National Theatre (venue)', () => {
 
-		it('includes productions at this venue, including the specific sub-venue and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
+		it('includes productions at this venue, including the specific sub-venue and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
 			const expectedProductions = [
 				{
@@ -2115,7 +2115,7 @@ describe('Production with sub-productions', () => {
 
 	describe('Olivier Theatre (venue)', () => {
 
-		it('includes productions at this venue and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
+		it('includes productions at this venue and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
 			const expectedProductions = [
 				{
@@ -2172,7 +2172,7 @@ describe('Production with sub-productions', () => {
 
 	describe('Stoppard Season (season)', () => {
 
-		it('includes productions in this season and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
+		it('includes productions in this season and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
 			const expectedProductions = [
 				{
@@ -2256,7 +2256,7 @@ describe('Production with sub-productions', () => {
 
 	describe('Stoppard Festival 2002 (festival)', () => {
 
-		it('includes productions in this festival and, where applicable, corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
+		it('includes productions in this festival and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
 
 			const expectedProductions = [
 				{
@@ -3908,7 +3908,7 @@ describe('Production with sub-productions', () => {
 
 	describe('productions list', () => {
 
-		it('includes productions and, where applicable, corresponding sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
+		it('includes productions and corresponding sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
 
 			const response = await chai.request(app)
 				.get('/productions');

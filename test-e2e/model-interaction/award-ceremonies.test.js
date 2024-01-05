@@ -80,7 +80,7 @@ describe('Award ceremonies', () => {
 	let laurenceOlivierAwardsAward;
 	let eveningStandardTheatreAwardsAward;
 	let johnDoePerson;
-	let curtainUpCompany;
+	let curtainUpLtdCompany;
 	let conorCorgePerson;
 	let stagecraftLtdCompany;
 	let quincyQuxPerson;
@@ -1582,7 +1582,7 @@ describe('Award ceremonies', () => {
 		johnDoePerson = await chai.request(app)
 			.get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		curtainUpCompany = await chai.request(app)
+		curtainUpLtdCompany = await chai.request(app)
 			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 		conorCorgePerson = await chai.request(app)
@@ -3804,7 +3804,7 @@ describe('Award ceremonies', () => {
 				}
 			];
 
-			const { awards } = curtainUpCompany.body;
+			const { awards } = curtainUpLtdCompany.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
 

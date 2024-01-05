@@ -745,7 +745,7 @@ describe('Material with sub-materials', () => {
 
 	describe('Tom Stoppard (person)', () => {
 
-		it('includes materials and, where applicable, corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+		it('includes materials with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{
@@ -853,7 +853,7 @@ describe('Material with sub-materials', () => {
 
 	describe('The Sträussler Group (company)', () => {
 
-		it('includes materials and, where applicable, corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+		it('includes materials with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedMaterials = [
 				{

@@ -21,9 +21,9 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 	const C_S_LEWIS_SOCIETY_COMPANY_UUID = 'C_S_LEWIS_SOCIETY_COMPANY_UUID';
 	const SARAH_SELDEN_PERSON_UUID = 'SARAH_SELDEN_PERSON_UUID';
 	const THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID = 'THE_CHRONICLES_OF_NARNIA_2_MATERIAL_UUID';
-	const THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_UUID';
+	const THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_UUID';
 	const GILLIAN_LYNNE_THEATRE_VENUE_UUID = 'GILLIAN_LYNNE_THEATRE_VENUE_UUID';
-	const THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID = 'THE_CHRONICLES_OF_NARNIA_PRODUCTION_UUID';
+	const THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_PRODUCTION_UUID = 'THE_CHRONICLES_OF_NARNIA_PRODUCTION_UUID';
 	const THE_LION_THE_WITCH_AND_THE_WARDROBE_THE_HOUSE_PRODUCTION_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_2_PRODUCTION_UUID';
 	const THE_CHRONICLES_OF_NARNIA_THE_HOUSE_PRODUCTION_UUID = 'THE_CHRONICLES_OF_NARNIA_2_PRODUCTION_UUID';
 	const CINERIGHTS_LTD_COMPANY_UUID = 'CINERIGHTS_LTD_COMPANY_UUID';
@@ -207,7 +207,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				},
 				subProductions: [
 					{
-						uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID
+						uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID
 					}
 				]
 			});
@@ -451,7 +451,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID,
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID,
 					name: 'The Lion, the Witch and the Wardrobe',
 					startDate: '2022-07-18',
 					endDate: '2023-01-08',
@@ -463,7 +463,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID,
+						uuid: THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_PRODUCTION_UUID,
 						name: 'The Chronicles of Narnia',
 						surProduction: null
 					}
@@ -593,7 +593,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID,
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID,
 					name: 'The Lion, the Witch and the Wardrobe',
 					startDate: '2022-07-18',
 					endDate: '2023-01-08',
@@ -605,7 +605,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_THEATRE_PRODUCTION_UUID,
+						uuid: THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_PRODUCTION_UUID,
 						name: 'The Chronicles of Narnia',
 						surProduction: null
 					}

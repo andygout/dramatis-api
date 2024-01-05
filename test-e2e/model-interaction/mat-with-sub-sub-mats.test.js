@@ -1179,7 +1179,7 @@ describe('Material with sub-sub-materials', () => {
 
 	describe('Ferdinand Foo (person)', () => {
 
-		it('includes materials and, where applicable, corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
+		it('includes materials with corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
 
 			const expectedMaterials = [
 				{
@@ -1299,7 +1299,7 @@ describe('Material with sub-sub-materials', () => {
 
 	describe('Fictioneers Ltd (company)', () => {
 
-		it('includes materials and, where applicable, corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
+		it('includes materials with corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials when included via sub-material or sub-sub-material associations', () => {
 
 			const expectedMaterials = [
 				{
@@ -1419,7 +1419,7 @@ describe('Material with sub-sub-materials', () => {
 
 	describe('materials list', () => {
 
-		it('includes materials and, where applicable, corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials as these will be included via sub-material and sub-sub-material associations', async () => {
+		it('includes materials with corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials as these will be included via sub-material and sub-sub-material associations', async () => {
 
 			const response = await chai.request(app)
 				.get('/materials');
