@@ -482,7 +482,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	describe('Agamemnon (original version) (material)', () => {
 
-		it('includes subsequent versions of this material, with corresponding sur-material', () => {
+		it('includes subsequent versions of this material, with corresponding sur-material; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -581,7 +581,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	describe('Agamemnon (subsequent version) (material)', () => {
 
-		it('includes original version of this material, with corresponding sur-material', () => {
+		it('includes original version of this material, with corresponding sur-material; will omit original version writers', () => {
 
 			const expectedOriginalVersionMaterial = {
 				model: 'MATERIAL',
@@ -794,7 +794,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	describe('Aeschylus (person)', () => {
 
-		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -810,22 +810,6 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						surMaterial: null
 					},
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: AESCHYLUS_PERSON_UUID,
-									name: 'Aeschylus'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
-									name: 'The Fathers of Tragedy'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'adapted by',
@@ -909,7 +893,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	describe('The Fathers of Tragedy (company)', () => {
 
-		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
+		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -925,22 +909,6 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						surMaterial: null
 					},
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: AESCHYLUS_PERSON_UUID,
-									name: 'Aeschylus'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
-									name: 'The Fathers of Tragedy'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'adapted by',

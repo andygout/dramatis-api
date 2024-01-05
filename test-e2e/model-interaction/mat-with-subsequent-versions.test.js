@@ -358,7 +358,7 @@ describe('Material with subsequent versions', () => {
 
 	describe('Peer Gynt (original version) (material)', () => {
 
-		it('includes subsequent versions of this material, with corresponding writers (version writers only, i.e. excludes original version writers)', () => {
+		it('includes subsequent versions of this material; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -671,7 +671,7 @@ describe('Material with subsequent versions', () => {
 
 		});
 
-		it('includes subsequent versions of materials they originally wrote, with corresponding writers', () => {
+		it('includes subsequent versions of materials they originally wrote; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -682,22 +682,6 @@ describe('Material with subsequent versions', () => {
 					year: 2008,
 					surMaterial: null,
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'COMPANY',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'translated by',
@@ -742,22 +726,6 @@ describe('Material with subsequent versions', () => {
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'COMPANY',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
@@ -798,22 +766,6 @@ describe('Material with subsequent versions', () => {
 					year: 2000,
 					surMaterial: null,
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'COMPANY',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'version by',
@@ -900,7 +852,7 @@ describe('Material with subsequent versions', () => {
 
 	describe('Gerry Bamman (person)', () => {
 
-		it('includes materials they have written, with corresponding writers', () => {
+		it('includes materials they have written', () => {
 
 			const expectedMaterials = [
 				{
@@ -1094,7 +1046,7 @@ describe('Material with subsequent versions', () => {
 
 		});
 
-		it('includes subsequent versions of materials it originally wrote, with corresponding writers', () => {
+		it('includes subsequent versions of materials it originally wrote; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -1105,22 +1057,6 @@ describe('Material with subsequent versions', () => {
 					year: 2008,
 					surMaterial: null,
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'COMPANY',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'translated by',
@@ -1165,22 +1101,6 @@ describe('Material with subsequent versions', () => {
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'COMPANY',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
 							name: 'translated by',
 							entities: [
 								{
@@ -1221,22 +1141,6 @@ describe('Material with subsequent versions', () => {
 					year: 2000,
 					surMaterial: null,
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: HENRIK_IBSEN_PERSON_UUID,
-									name: 'Henrik Ibsen'
-								},
-								{
-									model: 'COMPANY',
-									uuid: IBSEN_THEATRE_COMPANY_UUID,
-									name: 'Ibsen Theatre Company'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'version by',

@@ -407,7 +407,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	describe('Richard II (original version) (material)', () => {
 
-		it('includes subsequent versions of this material, with corresponding sur-material and sur-sur-material', () => {
+		it('includes subsequent versions of this material, with corresponding sur-material and sur-sur-material; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -1058,7 +1058,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	describe('William Shakespeare (person)', () => {
 
-		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
+		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -1078,22 +1078,6 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						}
 					},
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'adapted for young people by',
@@ -1185,7 +1169,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 	describe('The King\'s Men (company)', () => {
 
-		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
+		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
@@ -1205,22 +1189,6 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						}
 					},
 					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
-									name: 'William Shakespeare'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
-								}
-							]
-						},
 						{
 							model: 'WRITING_CREDIT',
 							name: 'adapted for young people by',
