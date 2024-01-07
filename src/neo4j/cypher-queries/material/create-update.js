@@ -9,6 +9,7 @@ const getCreateUpdateQuery = action => {
 				uuid: $uuid,
 				name: $name,
 				differentiator: $differentiator,
+				subtitle: $subtitle,
 				format: $format,
 				year: $year
 			})
@@ -49,6 +50,7 @@ const getCreateUpdateQuery = action => {
 			SET
 				material.name = $name,
 				material.differentiator = $differentiator,
+				material.subtitle = $subtitle,
 				material.format = $format,
 				material.year = $year
 		`

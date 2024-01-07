@@ -54,6 +54,7 @@ describe('Material with sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Voyage',
+				subtitle: 'In the Thrall of German Idealistic Philosophy',
 				format: 'play',
 				year: '2002',
 				writingCredits: [
@@ -84,6 +85,7 @@ describe('Material with sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Shipwreck',
+				subtitle: 'In the Year of European Revolution',
 				format: 'play',
 				year: '2002',
 				writingCredits: [
@@ -114,6 +116,7 @@ describe('Material with sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Salvage',
+				subtitle: 'The Emancipation of the Serfs',
 				format: 'play',
 				year: '2002',
 				writingCredits: [
@@ -144,6 +147,7 @@ describe('Material with sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'The Coast of Utopia',
+				subtitle: 'Romantics and Revolutionaries in an Age of Emperors',
 				format: 'trilogy of plays',
 				year: '2002',
 				writingCredits: [
@@ -320,6 +324,7 @@ describe('Material with sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: VOYAGE_MATERIAL_UUID,
 					name: 'Voyage',
+					subtitle: 'In the Thrall of German Idealistic Philosophy',
 					format: 'play',
 					year: 2002,
 					writingCredits: [
@@ -362,6 +367,7 @@ describe('Material with sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: SHIPWRECK_MATERIAL_UUID,
 					name: 'Shipwreck',
+					subtitle: 'In the Year of European Revolution',
 					format: 'play',
 					year: 2002,
 					writingCredits: [
@@ -404,6 +410,7 @@ describe('Material with sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: SALVAGE_MATERIAL_UUID,
 					name: 'Salvage',
+					subtitle: 'The Emancipation of the Serfs',
 					format: 'play',
 					year: 2002,
 					writingCredits: [
@@ -460,6 +467,7 @@ describe('Material with sub-materials', () => {
 				model: 'MATERIAL',
 				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
 				name: 'The Coast of Utopia',
+				subtitle: 'Romantics and Revolutionaries in an Age of Emperors',
 				format: 'trilogy of plays',
 				year: 2002,
 				writingCredits: [

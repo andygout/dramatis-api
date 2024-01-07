@@ -10,6 +10,7 @@ export default class Material extends MaterialBase {
 		super(props);
 
 		const {
+			subtitle,
 			format,
 			year,
 			originalVersionMaterial,
@@ -17,6 +18,8 @@ export default class Material extends MaterialBase {
 			subMaterials,
 			characterGroups
 		} = props;
+
+		this.subtitle = subtitle?.trim() || '';
 
 		this.format = format?.trim() || '';
 
@@ -43,6 +46,8 @@ export default class Material extends MaterialBase {
 		this.validateName({ isRequired: true });
 
 		this.validateDifferentiator();
+
+		this.validateSubtitle();
 
 		this.validateFormat({ isRequired: false });
 

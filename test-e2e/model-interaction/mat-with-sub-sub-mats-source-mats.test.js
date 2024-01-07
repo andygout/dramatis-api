@@ -580,6 +580,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				model: 'MATERIAL',
 				uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
 				name: 'The Books of the Old Testament',
+				subtitle: null,
 				format: 'sub-collection of plays',
 				year: 2011,
 				writingCredits: [
@@ -626,6 +627,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					model: 'MATERIAL',
 					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
 					name: 'Sixty-Six Books',
+					subtitle: null,
 					format: 'collection of plays',
 					year: 2011,
 					writingCredits: [
@@ -684,6 +686,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				model: 'MATERIAL',
 				uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
 				name: 'Sixty-Six Books',
+				subtitle: null,
 				format: 'collection of plays',
 				year: 2011,
 				writingCredits: [

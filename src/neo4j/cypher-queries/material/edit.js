@@ -68,6 +68,7 @@ export default () => `
 		material.uuid AS uuid,
 		material.name AS name,
 		material.differentiator AS differentiator,
+		material.subtitle AS subtitle,
 		material.format AS format,
 		material.year AS year,
 		{

@@ -233,6 +233,22 @@ describe('Entity model', () => {
 
 	});
 
+	describe('validateSubtitle method', () => {
+
+		it('will call validateStringForProperty method', () => {
+
+			spy(instance, 'validateStringForProperty');
+			instance.validateSubtitle();
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'subtitle', { isRequired: false }
+			);
+
+		});
+
+	});
+
 	describe('validateNoAssociationWithSelf method', () => {
 
 		context('valid data', () => {

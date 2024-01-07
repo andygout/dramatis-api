@@ -54,6 +54,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: '',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -95,6 +96,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -136,11 +138,54 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
 					errors: {
 						differentiator: [
+							'Value is too long'
+						]
+					},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					characterGroups: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('subtitle value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instance = new Material({ name: 'Rosmersholm', subtitle: ABOVE_MAX_LENGTH_STRING });
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: ABOVE_MAX_LENGTH_STRING,
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {
+						subtitle: [
 							'Value is too long'
 						]
 					},
@@ -177,6 +222,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: ABOVE_MAX_LENGTH_STRING,
 					year: '',
 					hasErrors: true,
@@ -218,6 +264,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: INVALID_YEAR_STRING,
 					hasErrors: true,
@@ -266,6 +313,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -315,6 +363,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -363,6 +412,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -416,6 +466,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -476,6 +527,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -547,6 +599,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -616,6 +669,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -685,6 +739,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -755,6 +810,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -824,6 +880,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -894,6 +951,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -972,6 +1030,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1071,6 +1130,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1138,6 +1198,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'The Coast of Utopia',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1196,6 +1257,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'The Coast of Utopia',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1253,6 +1315,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'The Coast of Utopia',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1324,6 +1387,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'The Coast of Utopia',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1409,6 +1473,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1469,6 +1534,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1539,6 +1605,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1609,6 +1676,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1679,6 +1747,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1749,6 +1818,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,
@@ -1829,6 +1899,7 @@ describe('Input validation failures: Material instance', () => {
 					uuid: undefined,
 					name: 'Rosmersholm',
 					differentiator: '',
+					subtitle: '',
 					format: '',
 					year: '',
 					hasErrors: true,

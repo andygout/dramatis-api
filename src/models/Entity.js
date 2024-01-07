@@ -58,6 +58,12 @@ export default class Entity extends Base {
 
 	}
 
+	validateSubtitle () {
+
+		this.validateStringForProperty('subtitle', { isRequired: false });
+
+	}
+
 	validateNoAssociationWithSelf (association) {
 
 		const hasAssociationWithSelf = Object.entries(association).every(([key, value]) =>

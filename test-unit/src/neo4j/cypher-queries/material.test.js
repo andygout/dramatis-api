@@ -18,6 +18,7 @@ describe('Cypher Queries Material module', () => {
 					uuid: $uuid,
 					name: $name,
 					differentiator: $differentiator,
+					subtitle: $subtitle,
 					format: $format,
 					year: $year
 				})
@@ -32,6 +33,7 @@ describe('Cypher Queries Material module', () => {
 					material.uuid AS uuid,
 					material.name AS name,
 					material.differentiator AS differentiator,
+					material.subtitle AS subtitle,
 					material.format AS format,
 					material.year AS year,
 					{
@@ -100,6 +102,7 @@ describe('Cypher Queries Material module', () => {
 				SET
 					material.name = $name,
 					material.differentiator = $differentiator,
+					material.subtitle = $subtitle,
 					material.format = $format,
 					material.year = $year
 			`);
@@ -113,6 +116,7 @@ describe('Cypher Queries Material module', () => {
 					material.uuid AS uuid,
 					material.name AS name,
 					material.differentiator AS differentiator,
+					material.subtitle AS subtitle,
 					material.format AS format,
 					material.year AS year,
 					{

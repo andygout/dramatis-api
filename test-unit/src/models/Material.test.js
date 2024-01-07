@@ -64,6 +64,45 @@ describe('Material model', () => {
 
 	describe('constructor method', () => {
 
+		describe('subtitle property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
+				expect(instance.subtitle).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: '' });
+				expect(instance.subtitle).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' ' });
+				expect(instance.subtitle).to.equal('');
+
+			});
+
+			it('assigns value if included in props and is string with length', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: 'Prince of Denmark' });
+				expect(instance.subtitle).to.equal('Prince of Denmark');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' Prince of Denmark ' });
+				expect(instance.subtitle).to.equal('Prince of Denmark');
+
+			});
+
+		});
+
 		describe('format property', () => {
 
 			it('assigns empty string if absent from props', () => {
@@ -303,8 +342,9 @@ describe('Material model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', () => {
 
 			const props = {
-				name: 'The Tragedy of Hamlet, Prince of Denmark',
+				name: 'The Tragedy of Hamlet',
 				differentiator: '1',
+				subtitle: 'Prince of Denmark',
 				writingCredits: [
 					{
 						name: 'version by'
@@ -324,6 +364,7 @@ describe('Material model', () => {
 			const instance = createInstance(props);
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
+			spy(instance, 'validateSubtitle');
 			spy(instance, 'validateFormat');
 			spy(instance, 'validateYear');
 			spy(instance.originalVersionMaterial, 'validateName');
@@ -332,6 +373,7 @@ describe('Material model', () => {
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
+				instance.validateSubtitle,
 				instance.validateFormat,
 				instance.validateYear,
 				instance.originalVersionMaterial.validateName,
@@ -349,6 +391,8 @@ describe('Material model', () => {
 			assert.calledWithExactly(instance.validateName, { isRequired: true });
 			assert.calledOnce(instance.validateDifferentiator);
 			assert.calledWithExactly(instance.validateDifferentiator);
+			assert.calledOnce(instance.validateSubtitle);
+			assert.calledWithExactly(instance.validateSubtitle);
 			assert.calledOnce(instance.validateFormat);
 			assert.calledWithExactly(instance.validateFormat, { isRequired: false });
 			assert.calledOnce(instance.validateYear);
@@ -368,7 +412,7 @@ describe('Material model', () => {
 				{
 					isDuplicate: false,
 					subject: {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						name: 'The Tragedy of Hamlet',
 						differentiator: '1'
 					}
 				}
@@ -385,7 +429,7 @@ describe('Material model', () => {
 			assert.calledOnce(instance.subMaterials[0].validateNoAssociationWithSelf);
 			assert.calledWithExactly(
 				instance.subMaterials[0].validateNoAssociationWithSelf,
-				{ name: 'The Tragedy of Hamlet, Prince of Denmark', differentiator: '1' }
+				{ name: 'The Tragedy of Hamlet', differentiator: '1' }
 			);
 			assert.calledOnce(instance.subMaterials[0].validateUniquenessInGroup);
 			assert.calledWithExactly(
