@@ -107,35 +107,35 @@ describe('Material model', () => {
 
 			it('assigns empty string if absent from props', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
 				expect(instance.format).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is empty string', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: '' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: '' });
 				expect(instance.format).to.equal('');
 
 			});
 
 			it('assigns empty string if included in props but value is whitespace-only string', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: ' ' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: ' ' });
 				expect(instance.format).to.equal('');
 
 			});
 
 			it('assigns value if included in props and is string with length', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: 'play' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: 'play' });
 				expect(instance.format).to.equal('play');
 
 			});
 
 			it('trims value before assigning', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: ' play ' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: ' play ' });
 				expect(instance.format).to.equal('play');
 
 			});
@@ -234,7 +234,7 @@ describe('Material model', () => {
 
 			it('assigns empty array if absent from props', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
 				expect(instance.writingCredits).to.deep.equal([]);
 
 			});
@@ -242,7 +242,7 @@ describe('Material model', () => {
 			it('assigns array of writingCredits if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					name: 'The Tragedy of Hamlet',
 					writingCredits: [
 						{
 							name: 'version by'
@@ -304,7 +304,7 @@ describe('Material model', () => {
 
 			it('assigns empty array if absent from props', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark' });
+				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
 				expect(instance.characterGroups).to.deep.equal([]);
 
 			});
@@ -312,7 +312,7 @@ describe('Material model', () => {
 			it('assigns array of characterGroups if included in props, retaining those with empty or whitespace-only string names', () => {
 
 				const props = {
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					name: 'The Tragedy of Hamlet',
 					characterGroups: [
 						{
 							name: 'Court of Elsinore'
@@ -447,7 +447,7 @@ describe('Material model', () => {
 
 		it('will call validateStringForProperty method', () => {
 
-			const instance = createInstance({ name: 'The Tragedy of Hamlet, Prince of Denmark', format: 'play' });
+			const instance = createInstance({ name: 'The Tragedy of Hamlet', format: 'play' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateFormat({ isRequired: false });
 			assert.calledOnce(instance.validateStringForProperty);

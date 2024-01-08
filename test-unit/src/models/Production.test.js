@@ -281,7 +281,7 @@ describe('Production model', () => {
 				const instance = createInstance({
 					name: 'Hamlet',
 					material: {
-						name: 'The Tragedy of Hamlet, Prince of Denmark'
+						name: 'The Tragedy of Hamlet'
 					}
 				});
 				expect(instance.material instanceof MaterialBase).to.be.true;
@@ -542,7 +542,7 @@ describe('Production model', () => {
 			const props = {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'Hamlet',
-				subtitle: 'The Prince of Denmark',
+				subtitle: 'Prince of Denmark',
 				subProductions: [
 					{
 						uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
