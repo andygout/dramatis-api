@@ -39,6 +39,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
+					subtitle: '',
 					name: '',
 					startDate: '',
 					pressDate: '',
@@ -108,6 +109,7 @@ describe('Instance validation failures: Productions API', () => {
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
 					name: 'Macbeth',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -185,6 +187,7 @@ describe('Instance validation failures: Productions API', () => {
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
 					name: 'Macbeth',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -277,6 +280,7 @@ describe('Instance validation failures: Productions API', () => {
 					model: 'PRODUCTION',
 					uuid: MACBETH_PRODUCTION_UUID,
 					name: '',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -351,6 +355,7 @@ describe('Instance validation failures: Productions API', () => {
 					model: 'PRODUCTION',
 					uuid: MACBETH_PRODUCTION_UUID,
 					name: 'Macbeth',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -429,6 +434,7 @@ describe('Instance validation failures: Productions API', () => {
 					model: 'PRODUCTION',
 					uuid: MACBETH_PRODUCTION_UUID,
 					name: 'Macbeth',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -548,6 +554,7 @@ describe('Instance validation failures: Productions API', () => {
 					model: 'PRODUCTION',
 					uuid: OTHELLO_DONMAR_PRODUCTION_UUID,
 					name: 'Othello',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',

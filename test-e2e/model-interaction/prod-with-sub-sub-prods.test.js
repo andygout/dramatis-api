@@ -592,6 +592,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
+				subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -679,6 +680,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Durand\'s Line',
+				subtitle: 'Durand\'s Line subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -766,6 +768,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Campaign',
+				subtitle: 'Campaign subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -853,6 +856,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
+				subtitle: 'Invasions and Independence subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -951,6 +955,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
+				subtitle: 'Black Tulips subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1038,6 +1043,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
+				subtitle: 'Blood and Gifts subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1125,6 +1131,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
+				subtitle: 'Miniskirts of Kabul subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1212,6 +1219,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+				subtitle: 'Communism, the Mujahideen and the Taliban subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1310,6 +1318,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Honey',
+				subtitle: 'Honey subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1397,6 +1406,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
+				subtitle: 'The Night Is Darkest Before the Dawn subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1484,6 +1494,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
+				subtitle: 'On the Side of the Angels subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1571,6 +1582,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
+				subtitle: 'Enduring Freedom subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1669,6 +1681,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
+				subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -1767,6 +1780,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
+				subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1785,6 +1799,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Durand\'s Line',
+				subtitle: 'Durand\'s Line subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1803,6 +1818,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Campaign',
+				subtitle: 'Campaign subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1821,6 +1837,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
+				subtitle: 'Invasions and Independence subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1850,6 +1867,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
+				subtitle: 'Black Tulips subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1868,6 +1886,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
+				subtitle: 'Blood and Gifts subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1886,6 +1905,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
+				subtitle: 'Miniskirts of Kabul subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1904,6 +1924,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+				subtitle: 'Communism, the Mujahideen and the Taliban subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1933,6 +1954,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Honey',
+				subtitle: 'Honey subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1951,6 +1973,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
+				subtitle: 'The Night Is Darkest Before the Dawn subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1969,6 +1992,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
+				subtitle: 'On the Side of the Angels subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -1987,6 +2011,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
+				subtitle: 'Enduring Freedom subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -2016,6 +2041,7 @@ describe('Production with sub-sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
+				subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -2136,6 +2162,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 					name: 'Part One — Invasions and Independence (1842-1930)',
+					subtitle: 'Invasions and Independence subtitle',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -2200,6 +2227,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
 							name: 'Bugles at the Gates of Jalalabad',
+							subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -2359,6 +2387,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
 							name: 'Durand\'s Line',
+							subtitle: 'Durand\'s Line subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -2518,6 +2547,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
 							name: 'Campaign',
+							subtitle: 'Campaign subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -2770,6 +2800,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
 					name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+					subtitle: 'Communism, the Mujahideen and the Taliban subtitle',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -2834,6 +2865,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
 							name: 'Black Tulips',
+							subtitle: 'Black Tulips subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -2993,6 +3025,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
 							name: 'Blood and Gifts',
+							subtitle: 'Blood and Gifts subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -3152,6 +3185,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
 							name: 'Miniskirts of Kabul',
+							subtitle: 'Miniskirts of Kabul subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -3404,6 +3438,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
 					name: 'Part Three — Enduring Freedom (1996-2009)',
+					subtitle: 'Enduring Freedom subtitle',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -3468,6 +3503,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: HONEY_RODA_PRODUCTION_UUID,
 							name: 'Honey',
+							subtitle: 'Honey subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -3627,6 +3663,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
 							name: 'The Night Is Darkest Before the Dawn',
+							subtitle: 'The Night Is Darkest Before the Dawn subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -3786,6 +3823,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
 							name: 'On the Side of the Angels',
+							subtitle: 'On the Side of the Angels subtitle',
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
@@ -4052,6 +4090,7 @@ describe('Production with sub-sub-productions', () => {
 				model: 'PRODUCTION',
 				uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
 				name: 'The Great Game: Afghanistan',
+				subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -4213,6 +4252,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
 					name: 'Bugles at the Gates of Jalalabad',
+					subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -4373,6 +4413,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
 					name: 'Durand\'s Line',
+					subtitle: 'Durand\'s Line subtitle',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -4533,6 +4574,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
 					name: 'Campaign',
+					subtitle: 'Campaign subtitle',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -4707,6 +4749,7 @@ describe('Production with sub-sub-productions', () => {
 				model: 'PRODUCTION',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
 				name: 'Part One — Invasions and Independence (1842-1930)',
+				subtitle: 'Invasions and Independence subtitle',
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
@@ -4770,6 +4813,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
 					name: 'The Great Game: Afghanistan',
+					subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
@@ -5026,6 +5070,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part One — Invasions and Independence (1842-1930)',
+					subtitle: 'Invasions and Independence subtitle',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
@@ -5078,6 +5123,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
 							name: 'Bugles at the Gates of Jalalabad',
+							subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5138,6 +5184,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
 							name: 'Durand\'s Line',
+							subtitle: 'Durand\'s Line subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5198,6 +5245,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 							name: 'Campaign',
+							subtitle: 'Campaign subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5264,6 +5312,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+					subtitle: 'Communism, the Mujahideen and the Taliban subtitle',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
@@ -5316,6 +5365,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID,
 							name: 'Black Tulips',
+							subtitle: 'Black Tulips subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5376,6 +5426,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID,
 							name: 'Blood and Gifts',
+							subtitle: 'Blood and Gifts subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5436,6 +5487,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID,
 							name: 'Miniskirts of Kabul',
+							subtitle: 'Miniskirts of Kabul subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5502,6 +5554,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID,
 					name: 'Part Three — Enduring Freedom (1996-2009)',
+					subtitle: 'Enduring Freedom subtitle',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
@@ -5554,6 +5607,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: HONEY_TRICYCLE_PRODUCTION_UUID,
 							name: 'Honey',
+							subtitle: 'Honey subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5614,6 +5668,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID,
 							name: 'The Night Is Darkest Before the Dawn',
+							subtitle: 'The Night Is Darkest Before the Dawn subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5674,6 +5729,7 @@ describe('Production with sub-sub-productions', () => {
 							model: 'PRODUCTION',
 							uuid: ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID,
 							name: 'On the Side of the Angels',
+							subtitle: 'On the Side of the Angels subtitle',
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
@@ -5754,6 +5810,7 @@ describe('Production with sub-sub-productions', () => {
 				model: 'PRODUCTION',
 				uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 				name: 'The Great Game: Afghanistan',
+				subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -5816,6 +5873,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID,
 					name: 'Bugles at the Gates of Jalalabad',
+					subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
@@ -5877,6 +5935,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
 					name: 'Durand\'s Line',
+					subtitle: 'Durand\'s Line subtitle',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
@@ -5938,6 +5997,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: CAMPAIGN_TRICYCLE_PRODUCTION_UUID,
 					name: 'Campaign',
+					subtitle: 'Campaign subtitle',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
@@ -6013,6 +6073,7 @@ describe('Production with sub-sub-productions', () => {
 				model: 'PRODUCTION',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
 				name: 'Part One — Invasions and Independence (1842-1930)',
+				subtitle: 'Invasions and Independence subtitle',
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
@@ -6064,6 +6125,7 @@ describe('Production with sub-sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
 					name: 'The Great Game: Afghanistan',
+					subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',

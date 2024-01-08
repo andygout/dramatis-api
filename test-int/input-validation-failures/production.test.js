@@ -56,6 +56,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: '',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -121,12 +122,80 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
 					hasErrors: true,
 					errors: {
 						name: [
+							'Value is too long'
+						]
+					},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('subtitle value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					subtitle: ABOVE_MAX_LENGTH_STRING
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: ABOVE_MAX_LENGTH_STRING,
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {
+						subtitle: [
 							'Value is too long'
 						]
 					},
@@ -189,6 +258,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: 'foobar',
 					pressDate: 'foobar',
 					endDate: 'foobar',
@@ -263,6 +333,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '2011-01-26',
 					pressDate: '2010-10-07',
 					endDate: '2010-09-30',
@@ -340,6 +411,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -409,6 +481,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -477,6 +550,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -546,6 +620,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -614,6 +689,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -683,6 +759,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -751,6 +828,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -820,6 +898,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -890,6 +969,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'The Coast of Utopia',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -967,6 +1047,7 @@ describe('Input validation failures: Production instance', () => {
 			const expectedResponseBody = {
 				uuid: PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -1046,6 +1127,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'The Coast of Utopia',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1133,6 +1215,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1212,6 +1295,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1302,6 +1386,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1391,6 +1476,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1480,6 +1566,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1571,6 +1658,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1680,6 +1768,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1834,6 +1923,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -1936,6 +2026,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2039,6 +2130,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Waiting for Godot',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2131,6 +2223,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2211,6 +2304,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2300,6 +2394,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2414,6 +2509,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2507,6 +2603,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2600,6 +2697,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2694,6 +2792,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2787,6 +2886,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2880,6 +2980,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -2983,6 +3084,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3116,6 +3218,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3195,6 +3298,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3285,6 +3389,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3373,6 +3478,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3462,6 +3568,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3551,6 +3658,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3642,6 +3750,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3751,6 +3860,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -3905,6 +4015,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4007,6 +4118,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4110,6 +4222,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4201,6 +4314,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4280,6 +4394,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4370,6 +4485,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4458,6 +4574,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4547,6 +4664,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4636,6 +4754,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4727,6 +4846,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4836,6 +4956,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -4990,6 +5111,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -5092,6 +5214,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',
@@ -5195,6 +5318,7 @@ describe('Input validation failures: Production instance', () => {
 				const expectedResponseBody = {
 					uuid: undefined,
 					name: 'Hamlet',
+					subtitle: '',
 					startDate: '',
 					pressDate: '',
 					endDate: '',

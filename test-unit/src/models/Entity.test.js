@@ -1003,6 +1003,7 @@ describe('Entity model', () => {
 					expect(result).to.deep.equal({
 						uuid: undefined,
 						name: 'Hamlet',
+						subtitle: '',
 						startDate: '',
 						pressDate: '',
 						endDate: '',
@@ -1139,6 +1140,7 @@ describe('Entity model', () => {
 					expect(result).to.deep.equal({
 						uuid: undefined,
 						name: 'Hamlet',
+						subtitle: '',
 						startDate: '',
 						pressDate: '',
 						endDate: '',

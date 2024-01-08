@@ -17,6 +17,7 @@ describe('Cypher Queries Production module', () => {
 				CREATE (production:Production {
 					uuid: $uuid,
 					name: $name,
+					subtitle: $subtitle,
 					startDate: $startDate,
 					pressDate: $pressDate,
 					endDate: $endDate
@@ -31,6 +32,7 @@ describe('Cypher Queries Production module', () => {
 				RETURN
 					production.uuid AS uuid,
 					production.name AS name,
+					production.subtitle AS subtitle,
 					production.startDate AS startDate,
 					production.pressDate AS pressDate,
 					production.endDate AS endDate,
@@ -78,6 +80,7 @@ describe('Cypher Queries Production module', () => {
 
 				SET
 					production.name = $name,
+					production.subtitle = $subtitle,
 					production.startDate = $startDate,
 					production.pressDate = $pressDate,
 					production.endDate = $endDate
@@ -91,6 +94,7 @@ describe('Cypher Queries Production module', () => {
 				RETURN
 					production.uuid AS uuid,
 					production.name AS name,
+					production.subtitle AS subtitle,
 					production.startDate AS startDate,
 					production.pressDate AS pressDate,
 					production.endDate AS endDate,
