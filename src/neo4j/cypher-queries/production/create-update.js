@@ -8,6 +8,7 @@ const getCreateUpdateQuery = action => {
 			CREATE (production:Production {
 				uuid: $uuid,
 				name: $name,
+				subtitle: $subtitle,
 				startDate: $startDate,
 				pressDate: $pressDate,
 				endDate: $endDate
@@ -25,6 +26,7 @@ const getCreateUpdateQuery = action => {
 
 			SET
 				production.name = $name,
+				production.subtitle = $subtitle,
 				production.startDate = $startDate,
 				production.pressDate = $pressDate,
 				production.endDate = $endDate

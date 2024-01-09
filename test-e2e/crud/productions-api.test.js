@@ -23,6 +23,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
 				name: '',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -163,6 +164,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -279,6 +281,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'As You Like It',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -399,6 +402,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -515,6 +519,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'The Tempest',
+				subtitle: null,
 				startDate: null,
 				pressDate: null,
 				endDate: null,
@@ -546,6 +551,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
 				name: 'The Tempest',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -598,7 +604,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#2_PRODUCTION_UUID';
 		const RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#3_PRODUCTION_UUID';
 		const PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
-		const THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID = 'THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_1_MATERIAL_UUID';
+		const THE_TRAGEDY_OF_HAMLET_MATERIAL_UUID = 'THE_TRAGEDY_OF_HAMLET_1_MATERIAL_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_1_VENUE_UUID';
 		const SHAKESPEAREAN_TRAGEDY_SEASON_UUID = 'SHAKESPEAREAN_TRAGEDY_SEASON_1_SEASON_UUID';
 		const THE_COMPLETE_WORKS_FESTIVAL_UUID = 'THE_COMPLETE_WORKS_1_FESTIVAL_UUID';
@@ -717,11 +723,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
+					subtitle: 'Prince of Denmark',
 					startDate: '2010-09-30',
 					pressDate: '2010-10-07',
 					endDate: '2011-01-26',
 					material: {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						name: 'The Tragedy of Hamlet',
 						differentiator: '1'
 					},
 					venue: {
@@ -1019,13 +1026,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				subtitle: 'Prince of Denmark',
 				startDate: '2010-09-30',
 				pressDate: '2010-10-07',
 				endDate: '2011-01-26',
 				errors: {},
 				material: {
 					model: 'MATERIAL',
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					name: 'The Tragedy of Hamlet',
 					differentiator: '1',
 					errors: {}
 				},
@@ -1692,13 +1700,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				subtitle: 'Prince of Denmark',
 				startDate: '2010-09-30',
 				pressDate: '2010-10-07',
 				endDate: '2011-01-26',
 				material: {
 					model: 'MATERIAL',
-					uuid: THE_TRAGEDY_OF_HAMLET_PRINCE_OF_DENMARK_MATERIAL_UUID,
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					uuid: THE_TRAGEDY_OF_HAMLET_MATERIAL_UUID,
+					name: 'The Tragedy of Hamlet',
 					format: null,
 					year: null,
 					surMaterial: null,
@@ -1727,6 +1736,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
 						name: 'Hamlet sub-production #1',
+						subtitle: null,
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -1744,6 +1754,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
 						name: 'Hamlet sub-production #2',
+						subtitle: null,
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -1761,6 +1772,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'PRODUCTION',
 						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
 						name: 'Hamlet sub-production #3',
+						subtitle: null,
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -2106,13 +2118,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				subtitle: 'Prince of Denmark',
 				startDate: '2010-09-30',
 				pressDate: '2010-10-07',
 				endDate: '2011-01-26',
 				errors: {},
 				material: {
 					model: 'MATERIAL',
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					name: 'The Tragedy of Hamlet',
 					differentiator: '1',
 					errors: {}
 				},
@@ -2777,11 +2790,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
+					subtitle: 'Prince of Denmark',
 					startDate: '2010-09-30',
 					pressDate: '2010-10-07',
 					endDate: '2011-01-26',
 					material: {
-						name: 'The Tragedy of Hamlet, Prince of Denmark',
+						name: 'The Tragedy of Hamlet',
 						differentiator: '1'
 					},
 					venue: {
@@ -3079,13 +3093,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Hamlet',
+				subtitle: 'Prince of Denmark',
 				startDate: '2010-09-30',
 				pressDate: '2010-10-07',
 				endDate: '2011-01-26',
 				errors: {},
 				material: {
 					model: 'MATERIAL',
-					name: 'The Tragedy of Hamlet, Prince of Denmark',
+					name: 'The Tragedy of Hamlet',
 					differentiator: '1',
 					errors: {}
 				},
@@ -3751,6 +3766,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III',
+					subtitle: 'The Last King of the Plantagenets',
 					startDate: '2016-06-07',
 					pressDate: '2016-06-16',
 					endDate: '2016-08-06',
@@ -4052,6 +4068,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				subtitle: 'The Last King of the Plantagenets',
 				startDate: '2016-06-07',
 				pressDate: '2016-06-16',
 				endDate: '2016-08-06',
@@ -4725,6 +4742,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				subtitle: 'The Last King of the Plantagenets',
 				startDate: '2016-06-07',
 				pressDate: '2016-06-16',
 				endDate: '2016-08-06',
@@ -4760,6 +4778,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID,
 						name: 'Richard III sub-production #1',
+						subtitle: null,
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -4777,6 +4796,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID,
 						name: 'Richard III sub-production #2',
+						subtitle: null,
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -4794,6 +4814,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'PRODUCTION',
 						uuid: RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID,
 						name: 'Richard III sub-production #3',
+						subtitle: null,
 						startDate: null,
 						pressDate: null,
 						endDate: null,
@@ -5144,6 +5165,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				model: 'PRODUCTION',
 				uuid: PRODUCTION_UUID,
 				name: 'Richard III',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',
@@ -5261,6 +5283,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
 				name: 'Richard III',
+				subtitle: '',
 				startDate: '',
 				pressDate: '',
 				endDate: '',

@@ -233,6 +233,22 @@ describe('Entity model', () => {
 
 	});
 
+	describe('validateSubtitle method', () => {
+
+		it('will call validateStringForProperty method', () => {
+
+			spy(instance, 'validateStringForProperty');
+			instance.validateSubtitle();
+			assert.calledOnce(instance.validateStringForProperty);
+			assert.calledWithExactly(
+				instance.validateStringForProperty,
+				'subtitle', { isRequired: false }
+			);
+
+		});
+
+	});
+
 	describe('validateNoAssociationWithSelf method', () => {
 
 		context('valid data', () => {
@@ -987,6 +1003,7 @@ describe('Entity model', () => {
 					expect(result).to.deep.equal({
 						uuid: undefined,
 						name: 'Hamlet',
+						subtitle: '',
 						startDate: '',
 						pressDate: '',
 						endDate: '',
@@ -1123,6 +1140,7 @@ describe('Entity model', () => {
 					expect(result).to.deep.equal({
 						uuid: undefined,
 						name: 'Hamlet',
+						subtitle: '',
 						startDate: '',
 						pressDate: '',
 						endDate: '',

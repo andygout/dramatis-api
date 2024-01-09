@@ -568,6 +568,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				model: 'MATERIAL',
 				uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
 				name: 'The First Henriad',
+				subtitle: null,
 				format: 'sub-group of plays',
 				year: 2009,
 				writingCredits: [
@@ -639,6 +640,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					model: 'MATERIAL',
 					uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'The Henriad',
+					subtitle: null,
 					format: 'group of plays',
 					year: 2009,
 					writingCredits: [
@@ -723,6 +725,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				model: 'MATERIAL',
 				uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
 				name: 'The Henriad',
+				subtitle: null,
 				format: 'group of plays',
 				year: 2009,
 				writingCredits: [
@@ -803,6 +806,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					model: 'MATERIAL',
 					uuid: RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Richard II',
+					subtitle: null,
 					format: 'play',
 					year: 2009,
 					writingCredits: [
@@ -897,6 +901,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					model: 'MATERIAL',
 					uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'The First Henriad',
+					subtitle: null,
 					format: 'sub-group of plays',
 					year: 2009,
 					writingCredits: [
@@ -969,6 +974,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							model: 'MATERIAL',
 							uuid: RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
 							name: 'Richard II',
+							subtitle: null,
 							format: 'play',
 							year: 2009,
 							writingCredits: [

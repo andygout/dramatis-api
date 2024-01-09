@@ -246,6 +246,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Voyage',
+				subtitle: 'In the Thrall of German Idealistic Philosophy',
 				startDate: '2002-06-27',
 				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
@@ -333,6 +334,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Shipwreck',
+				subtitle: 'In the Year of European Revolution',
 				startDate: '2002-07-08',
 				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
@@ -420,6 +422,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Salvage',
+				subtitle: 'The Emancipation of the Serfs',
 				startDate: '2002-07-19',
 				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
@@ -507,6 +510,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
+				subtitle: 'Romantics and Revolutionaries in an Age of Emperors',
 				startDate: '2002-06-27',
 				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
@@ -605,6 +609,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Voyage',
+				subtitle: 'In the Thrall of German Idealistic Philosophy',
 				startDate: '2006-10-17',
 				pressDate: '2006-11-27',
 				endDate: '2007-05-12',
@@ -623,6 +628,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Shipwreck',
+				subtitle: 'In the Year of European Revolution',
 				startDate: '2006-12-05',
 				pressDate: '2006-12-21',
 				endDate: '2007-05-12',
@@ -641,6 +647,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'Salvage',
+				subtitle: 'The Emancipation of the Serfs',
 				startDate: '2007-01-31',
 				pressDate: '2007-02-18',
 				endDate: '2007-05-13',
@@ -659,6 +666,7 @@ describe('Production with sub-productions', () => {
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
+				subtitle: 'Romantics and Revolutionaries in an Age of Emperors',
 				startDate: '2006-10-17',
 				endDate: '2007-05-13',
 				material: {
@@ -769,6 +777,7 @@ describe('Production with sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
 					name: 'Voyage',
+					subtitle: 'In the Thrall of German Idealistic Philosophy',
 					startDate: '2002-06-27',
 					pressDate: '2002-08-03',
 					endDate: '2002-11-23',
@@ -925,6 +934,7 @@ describe('Production with sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
 					name: 'Shipwreck',
+					subtitle: 'In the Year of European Revolution',
 					startDate: '2002-07-08',
 					pressDate: '2002-08-03',
 					endDate: '2002-11-23',
@@ -1081,6 +1091,7 @@ describe('Production with sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
 					name: 'Salvage',
+					subtitle: 'The Emancipation of the Serfs',
 					startDate: '2002-07-19',
 					pressDate: '2002-08-03',
 					endDate: '2002-11-23',
@@ -1251,6 +1262,7 @@ describe('Production with sub-productions', () => {
 				model: 'PRODUCTION',
 				uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
+				subtitle: 'Romantics and Revolutionaries in an Age of Emperors',
 				startDate: '2002-06-27',
 				pressDate: '2002-08-03',
 				endDate: '2002-11-23',
@@ -1416,6 +1428,7 @@ describe('Production with sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 					name: 'Voyage',
+					subtitle: 'In the Thrall of German Idealistic Philosophy',
 					startDate: '2006-10-17',
 					pressDate: '2006-11-27',
 					endDate: '2007-05-12',
@@ -1473,6 +1486,7 @@ describe('Production with sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: SHIPWRECK_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 					name: 'Shipwreck',
+					subtitle: 'In the Year of European Revolution',
 					startDate: '2006-12-05',
 					pressDate: '2006-12-21',
 					endDate: '2007-05-12',
@@ -1530,6 +1544,7 @@ describe('Production with sub-productions', () => {
 					model: 'PRODUCTION',
 					uuid: SALVAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 					name: 'Salvage',
+					subtitle: 'The Emancipation of the Serfs',
 					startDate: '2007-01-31',
 					pressDate: '2007-02-18',
 					endDate: '2007-05-13',
@@ -1601,6 +1616,7 @@ describe('Production with sub-productions', () => {
 				model: 'PRODUCTION',
 				uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
+				subtitle: 'Romantics and Revolutionaries in an Age of Emperors',
 				startDate: '2006-10-17',
 				pressDate: null,
 				endDate: '2007-05-13',

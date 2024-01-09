@@ -25,6 +25,7 @@ export default class Production extends Entity {
 		super(props);
 
 		const {
+			subtitle,
 			startDate,
 			pressDate,
 			endDate,
@@ -38,6 +39,8 @@ export default class Production extends Entity {
 			creativeCredits,
 			crewCredits
 		} = props;
+
+		this.subtitle = subtitle?.trim() || '';
 
 		this.startDate = startDate?.trim() || '';
 
@@ -84,6 +87,8 @@ export default class Production extends Entity {
 	runInputValidations () {
 
 		this.validateName({ isRequired: true });
+
+		this.validateSubtitle();
 
 		this.validateDates();
 

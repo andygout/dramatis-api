@@ -65,6 +65,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
+				subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -95,6 +96,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Durand\'s Line',
+				subtitle: 'Durand\'s Line subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -112,6 +114,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Campaign',
+				subtitle: 'Campaign subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -129,6 +132,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
+				subtitle: 'Invasions and Independence subtitle',
 				format: 'sub-collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -148,6 +152,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
+				subtitle: 'Black Tulips subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -165,6 +170,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
+				subtitle: 'Blood and Gifts subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -182,6 +188,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
+				subtitle: 'Miniskirts of Kabul subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -212,6 +219,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+				subtitle: 'Communism, the Mujahideen and the Taliban subtitle',
 				format: 'sub-collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -231,6 +239,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Honey',
+				subtitle: 'Honey subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -248,6 +257,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
+				subtitle: 'The Night Is Darkest Before the Dawn subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -278,6 +288,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
+				subtitle: 'On the Side of the Angels subtitle',
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -295,6 +306,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
+				subtitle: 'Enduring Freedom subtitle',
 				format: 'sub-collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -314,6 +326,7 @@ describe('Material with sub-sub-materials', () => {
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
+				subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 				format: 'collection of plays',
 				year: '2009',
 				subMaterials: [
@@ -504,6 +517,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 					name: 'Part One — Invasions and Independence (1842-1930)',
+					subtitle: 'Invasions and Independence subtitle',
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
@@ -513,6 +527,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
 							name: 'Bugles at the Gates of Jalalabad',
+							subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -554,6 +569,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: DURANDS_LINE_MATERIAL_UUID,
 							name: 'Durand\'s Line',
+							subtitle: 'Durand\'s Line subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -576,6 +592,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: CAMPAIGN_MATERIAL_UUID,
 							name: 'Campaign',
+							subtitle: 'Campaign subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -601,6 +618,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
 					name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+					subtitle: 'Communism, the Mujahideen and the Taliban subtitle',
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
@@ -610,6 +628,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: BLACK_TULIPS_MATERIAL_UUID,
 							name: 'Black Tulips',
+							subtitle: 'Black Tulips subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -632,6 +651,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: BLOOD_AND_GIFTS_MATERIAL_UUID,
 							name: 'Blood and Gifts',
+							subtitle: 'Blood and Gifts subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -654,6 +674,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: MINISKIRTS_OF_KABUL_MATERIAL_UUID,
 							name: 'Miniskirts of Kabul',
+							subtitle: 'Miniskirts of Kabul subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -698,6 +719,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
 					name: 'Part Three — Enduring Freedom (1996-2009)',
+					subtitle: 'Enduring Freedom subtitle',
 					format: 'sub-collection of plays',
 					year: 2009,
 					writingCredits: [],
@@ -707,6 +729,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: HONEY_MATERIAL_UUID,
 							name: 'Honey',
+							subtitle: 'Honey subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -729,6 +752,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
 							name: 'The Night Is Darkest Before the Dawn',
+							subtitle: 'The Night Is Darkest Before the Dawn subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -770,6 +794,7 @@ describe('Material with sub-sub-materials', () => {
 							model: 'MATERIAL',
 							uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
 							name: 'On the Side of the Angels',
+							subtitle: 'On the Side of the Angels subtitle',
 							format: 'play',
 							year: 2009,
 							writingCredits: [
@@ -809,6 +834,7 @@ describe('Material with sub-sub-materials', () => {
 				model: 'MATERIAL',
 				uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
 				name: 'The Great Game: Afghanistan',
+				subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 				format: 'collection of plays',
 				year: 2009,
 				writingCredits: [],
@@ -830,6 +856,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
 					name: 'Bugles at the Gates of Jalalabad',
+					subtitle: 'Bugles at the Gates of Jalalabad subtitle',
 					format: 'play',
 					year: 2009,
 					writingCredits: [
@@ -872,6 +899,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: DURANDS_LINE_MATERIAL_UUID,
 					name: 'Durand\'s Line',
+					subtitle: 'Durand\'s Line subtitle',
 					format: 'play',
 					year: 2009,
 					writingCredits: [
@@ -895,6 +923,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: CAMPAIGN_MATERIAL_UUID,
 					name: 'Campaign',
+					subtitle: 'Campaign subtitle',
 					format: 'play',
 					year: 2009,
 					writingCredits: [
@@ -932,6 +961,7 @@ describe('Material with sub-sub-materials', () => {
 				model: 'MATERIAL',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
 				name: 'Part One — Invasions and Independence (1842-1930)',
+				subtitle: 'Invasions and Independence subtitle',
 				format: 'sub-collection of plays',
 				year: 2009,
 				writingCredits: [],
@@ -940,6 +970,7 @@ describe('Material with sub-sub-materials', () => {
 					model: 'MATERIAL',
 					uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
 					name: 'The Great Game: Afghanistan',
+					subtitle: 'Distrust, Diplomatic Intrigue, and Regional Wars',
 					format: 'collection of plays',
 					year: 2009,
 					writingCredits: [],

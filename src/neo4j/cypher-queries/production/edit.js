@@ -334,6 +334,7 @@ export default () => `
 	RETURN
 		production.uuid AS uuid,
 		production.name AS name,
+		production.subtitle AS subtitle,
 		production.startDate AS startDate,
 		production.pressDate AS pressDate,
 		production.endDate AS endDate,

@@ -803,6 +803,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				model: 'MATERIAL',
 				uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
 				name: 'The Wolf Hall Trilogy',
+				subtitle: null,
 				format: 'trilogy of plays',
 				year: 2021,
 				writingCredits: [

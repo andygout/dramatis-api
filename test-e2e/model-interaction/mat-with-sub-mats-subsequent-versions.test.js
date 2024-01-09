@@ -627,6 +627,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				model: 'MATERIAL',
 				uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
 				name: 'The Oresteia',
+				subtitle: null,
 				format: 'trilogy of plays',
 				year: 2015,
 				writingCredits: [
@@ -711,6 +712,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					model: 'MATERIAL',
 					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Agamemnon',
+					subtitle: null,
 					format: 'play',
 					year: 2015,
 					writingCredits: [

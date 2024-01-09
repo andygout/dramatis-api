@@ -111,6 +111,45 @@ describe('Production model', () => {
 
 	describe('constructor method', () => {
 
+		describe('subtitle property', () => {
+
+			it('assigns empty string if absent from props', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
+				expect(instance.subtitle).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is empty string', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: '' });
+				expect(instance.subtitle).to.equal('');
+
+			});
+
+			it('assigns empty string if included in props but value is whitespace-only string', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' ' });
+				expect(instance.subtitle).to.equal('');
+
+			});
+
+			it('assigns value if included in props and is string with length', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: 'Prince of Denmark' });
+				expect(instance.subtitle).to.equal('Prince of Denmark');
+
+			});
+
+			it('trims value before assigning', () => {
+
+				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' Prince of Denmark ' });
+				expect(instance.subtitle).to.equal('Prince of Denmark');
+
+			});
+
+		});
+
 		describe('startDate property', () => {
 
 			it('assigns empty string if absent from props', () => {
@@ -242,7 +281,7 @@ describe('Production model', () => {
 				const instance = createInstance({
 					name: 'Hamlet',
 					material: {
-						name: 'The Tragedy of Hamlet, Prince of Denmark'
+						name: 'The Tragedy of Hamlet'
 					}
 				});
 				expect(instance.material instanceof MaterialBase).to.be.true;
@@ -503,6 +542,7 @@ describe('Production model', () => {
 			const props = {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'Hamlet',
+				subtitle: 'Prince of Denmark',
 				subProductions: [
 					{
 						uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
@@ -531,10 +571,12 @@ describe('Production model', () => {
 			};
 			const instance = createInstance(props);
 			spy(instance, 'validateName');
+			spy(instance, 'validateSubtitle');
 			spy(instance, 'validateDates');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
+				instance.validateSubtitle,
 				instance.validateDates,
 				instance.material.validateName,
 				instance.material.validateDifferentiator,
@@ -559,6 +601,8 @@ describe('Production model', () => {
 			);
 			assert.calledOnce(instance.validateName);
 			assert.calledWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnce(instance.validateSubtitle);
+			assert.calledWithExactly(instance.validateSubtitle);
 			assert.calledOnce(instance.validateDates);
 			assert.calledWithExactly(instance.validateDates);
 			assert.calledOnce(instance.material.validateName);
