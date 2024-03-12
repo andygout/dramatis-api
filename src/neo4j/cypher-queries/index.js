@@ -31,6 +31,7 @@ import {
 	getShowQueries as getProductionShowQueries,
 	getListQuery as getProductionListQuery
 } from './production';
+import { getSearchQuery } from './search';
 import { getShowQueries as getSeasonShowQueries } from './season';
 import {
 	getCreateQuery as getSharedCreateQuery,
@@ -119,12 +120,17 @@ const validationQueries = {
 	getSubVenueChecksQuery
 };
 
+const searchQueries = {
+	getSearchQuery
+};
+
 export {
 	getCreateQueries,
 	getEditQueries,
 	getUpdateQueries,
 	getShowQueries,
 	getListQueries,
+	searchQueries,
 	sharedQueries,
 	validationQueries
 };
