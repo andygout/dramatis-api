@@ -31,27 +31,41 @@ const FULL_TEXT_INDEX_NAMES = new Set([
 
 const createFullTextIndex = async fullTextIndexName => {
 
-	const dropFullTextIndexQuery = `DROP INDEX ${fullTextIndexName} IF EXISTS`;
+	const dropFullTextIndexQuery = 'DROP INDEX $name IF EXISTS';
+
+	const params = {
+		name: fullTextIndexName
+	};
 
 	const pipeSeparatedLabels = [...FULL_TEXT_INDEX_NAME_TO_LABELS_MAP[fullTextIndexName]].join('|');
 
 	const property = FULL_TEXT_INDEX_NAME_TO_PROPERTY_MAP[fullTextIndexName];
 
 	const createFullTextIndexQuery =
-		`CREATE FULLTEXT INDEX ${fullTextIndexName} FOR (n:${pipeSeparatedLabels}) ON EACH [n.${property}]`;
+		`CREATE FULLTEXT INDEX $name FOR (n:${pipeSeparatedLabels}) ON EACH [n.${property}]`;
 
 	try {
 
 		await neo4jQuery(
-			{ query: dropFullTextIndexQuery },
-			{ isOptionalResult: true }
+			{
+				query: dropFullTextIndexQuery,
+				params
+			},
+			{
+				isOptionalResult: true
+			}
 		);
 
 		console.log(`Neo4j database: Full-text index ${fullTextIndexName} has been dropped (if pre-existing)`); // eslint-disable-line no-console
 
 		await neo4jQuery(
-			{ query: createFullTextIndexQuery },
-			{ isOptionalResult: true }
+			{
+				query: createFullTextIndexQuery,
+				params
+			},
+			{
+				isOptionalResult: true
+			}
 		);
 
 		const commaSeparatedLabels = [...FULL_TEXT_INDEX_NAME_TO_LABELS_MAP[fullTextIndexName]].join(',');
