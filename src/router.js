@@ -12,11 +12,14 @@ import {
 	materials as materialsController,
 	people as peopleController,
 	productions as productionsController,
+	search as searchController,
 	seasons as seasonsController,
 	venues as venuesController
 } from './controllers';
 
 const router = new Router();
+
+router.get('/search', searchController);
 
 router.get('/awards/new', awardsController.newRoute);
 router.post('/awards', awardsController.createRoute);

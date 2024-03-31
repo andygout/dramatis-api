@@ -7,6 +7,7 @@ import * as festivalSerieses from './festival-serieses';
 import * as materials from './materials';
 import * as people from './people';
 import * as productions from './productions';
+import search from './search';
 import * as seasons from './seasons';
 import * as venues from './venues';
 
@@ -20,6 +21,7 @@ export {
 	materials,
 	people,
 	productions,
+	search,
 	seasons,
 	venues
 };
