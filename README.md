@@ -16,6 +16,11 @@ Graph database-driven API for site of theatrical productions, materials, and ass
 	- Neo4j local graph database password matches `.env` `DATABASE_PASSWORD` value
 	- `.env` `DATABASE_URL` value is endpoint on which Neo4j local graph database is running
 	- N.B. Neo4j user name and Neo4j local graph database endpoint can be viewed via the Desktop app by running the local Neo4j graph database, then launching the Neo4j Browser and viewing its connection status, which is displayed upon opening the browser and can be returned via browser command `:server status`)
+- Open Neo4j Desktop app
+	- On the requisite database, click `…`, then `Settings…`, then edit the settings as below to avoid encountering `Neo4jError: There is not enough memory to perform the current task` when seeding the database:
+	- Uncomment and increase the value: `#server.memory.heap.initial_size=512m` -> `server.memory.heap.initial_size=5000m`
+	- Uncomment and increase the value: `#server.memory.heap.max_size=512m` -> `server.memory.heap.max_size=5000m`
+	- Press `Apply`
 
 ## To run local Neo4j graph database
 - Open Neo4j Desktop app
