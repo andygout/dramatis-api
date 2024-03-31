@@ -3,7 +3,7 @@ import directly from 'directly';
 import { neo4jQuery } from './query';
 import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants';
 
-const CONSTRAINABLE_MODELS = new Set([
+const CONSTRAINABLE_LABELS = new Set([
 	MODEL_TO_NODE_LABEL_MAP.AWARD,
 	MODEL_TO_NODE_LABEL_MAP.AWARD_CEREMONY,
 	MODEL_TO_NODE_LABEL_MAP.CHARACTER,
@@ -17,9 +17,9 @@ const CONSTRAINABLE_MODELS = new Set([
 	MODEL_TO_NODE_LABEL_MAP.VENUE
 ]);
 
-const createConstraint = async model => {
+const createConstraint = async label => {
 
-	const createConstraintQuery = `CREATE CONSTRAINT FOR (node:${model}) REQUIRE node.uuid IS UNIQUE`;
+	const createConstraintQuery = `CREATE CONSTRAINT FOR (node:${label}) REQUIRE node.uuid IS UNIQUE`;
 
 	try {
 
@@ -28,7 +28,7 @@ const createConstraint = async model => {
 			{ isOptionalResult: true }
 		);
 
-		console.log(`Neo4j database: Constraint on uuid property created for ${model}`); // eslint-disable-line no-console
+		console.log(`Neo4j database: Constraint on uuid property created for ${label}`); // eslint-disable-line no-console
 
 	} catch (error) {
 
@@ -49,13 +49,13 @@ export default async () => {
 			{ isOptionalResult: true, isArrayResult: true }
 		);
 
-		const modelsWithConstraint = constraints.map(constraint => constraint.labelsOrTypes[0]);
+		const labelsWithConstraint = constraints.map(constraint => constraint.labelsOrTypes[0]);
 
-		const modelsToConstrain = [...CONSTRAINABLE_MODELS].filter(model => !modelsWithConstraint.includes(model));
+		const labelsToConstrain = [...CONSTRAINABLE_LABELS].filter(label => !labelsWithConstraint.includes(label));
 
 		console.log('Neo4j database: Creating constraints…'); // eslint-disable-line no-console
 
-		if (!modelsToConstrain.length) {
+		if (!labelsToConstrain.length) {
 
 			console.log('Neo4j database: No constraints required'); // eslint-disable-line no-console
 
@@ -63,9 +63,9 @@ export default async () => {
 
 		}
 
-		const modelConstraintFunctions = modelsToConstrain.map(model => () => createConstraint(model));
+		const labelConstraintFunctions = labelsToConstrain.map(label => () => createConstraint(label));
 
-		await directly(1, modelConstraintFunctions);
+		await directly(1, labelConstraintFunctions);
 
 		console.log('Neo4j database: All constraints created'); // eslint-disable-line no-console
 
