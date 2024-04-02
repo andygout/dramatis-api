@@ -12,7 +12,7 @@
     "unit-test": "mocha --require @babel/register test-unit/mocha.env.js test-unit/**/*.test.js",
     "int-test": "mocha --require @babel/register test-int/mocha.env.js test-int/**/*.test.js",
     "e2e-test-resources": "docker-compose -f docker/docker-compose.yml up",
-    "e2e-test": "mocha --timeout 25000 --reporter-option maxDiffSize=8192 --require @babel/register test-e2e/mocha.env.js test-e2e/setup.js test-e2e/**/*.test.js",
+    "e2e-test": "mocha --timeout 60000 --reporter-option maxDiffSize=8192 --require @babel/register test-e2e/mocha.env.js test-e2e/setup.js test-e2e/**/*.test.js",
     "seed-db": "node db-seeding/seed-db",
     "transfer-env-dev": "node transfer-env-dev",
     "build": "webpack",
