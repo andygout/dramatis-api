@@ -1,5 +1,5 @@
 {
-  "name": "theatrebase-api",
+  "name": "dramatis-api",
   "version": "0.0.0",
   "description": "Graph database-driven API for site of theatrical productions, materials, and associated data.",
   "author": "https://github.com/andygout",

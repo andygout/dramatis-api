@@ -1,4 +1,4 @@
-# theatrebase-api [![CircleCI](https://circleci.com/gh/andygout/theatrebase-api/tree/main.svg?style=svg)](https://circleci.com/gh/andygout/theatrebase-api/tree/main)
+# dramatis-api [![CircleCI](https://circleci.com/gh/andygout/dramatis-api/tree/main.svg?style=svg)](https://circleci.com/gh/andygout/dramatis-api/tree/main)
 
 Graph database-driven API for site of theatrical productions, materials, and associated data.
 
@@ -7,7 +7,7 @@ Graph database-driven API for site of theatrical productions, materials, and ass
 - Set Node.js to version specified in `.nvmrc`, which can be achieved by running `$ nvm use` (if using [Volta](https://docs.volta.sh/guide/getting-started) then it will be set automatically)
 - Install Node.js modules: `$ npm install`
 - Compile code: `$ npm run build`
-- Copy development environment variables from `.env-dev` into `.env` by running command `$ npm run transfer-env-dev`; N.B. values may need to be amended to match your specific local database configuration (see: [Database setup](https://github.com/andygout/theatrebase-api#user-content-database-setup))
+- Copy development environment variables from `.env-dev` into `.env` by running command `$ npm run transfer-env-dev`; N.B. values may need to be amended to match your specific local database configuration (see: [Database setup](https://github.com/andygout/dramatis-api#user-content-database-setup))
 
 ## Database setup
 - Download the [Neo4j Desktop app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version)
@@ -36,14 +36,14 @@ Graph database-driven API for site of theatrical productions, materials, and ass
 - Run `$ npm run seed-db`
 
 ## To edit content via CMS (content management system) (locally)
-- Run a local instance of [`theatrebase-cms`](https://github.com/andygout/theatrebase-cms) on `http://localhost:3001`, which will point at this API on port 3000
+- Run a local instance of [`dramatis-cms`](https://github.com/andygout/dramatis-cms) on `http://localhost:3001`, which will point at this API on port 3000
 
 ## To view content via user interface (locally)
-- Run a local instance of [`theatrebase-spa`](https://github.com/andygout/theatrebase-spa) (single-page application) on `http://localhost:3002`, which will point at this API on port 3000
+- Run a local instance of [`dramatis-spa`](https://github.com/andygout/dramatis-spa) (single-page application) on `http://localhost:3002`, which will point at this API on port 3000
 
 or
 
-- Run a local instance of [`theatrebase-ssr`](https://github.com/andygout/theatrebase-ssr) (server-side rendered) on `http://localhost:3003`, which will point at this API on port 3000
+- Run a local instance of [`dramatis-ssr`](https://github.com/andygout/dramatis-ssr) (server-side rendered) on `http://localhost:3003`, which will point at this API on port 3000
 
 ## To run linting checks
 - `$ npm run lint-check`
