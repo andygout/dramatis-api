@@ -16,12 +16,14 @@ import Material from './Material';
 import MaterialBase from './MaterialBase';
 import NominatedProductionIdentifier from './NominatedProductionIdentifier';
 import Nomination from './Nomination';
+import OriginalVersionMaterial from './OriginalVersionMaterial';
 import Person from './Person';
 import ProducerCredit from './ProducerCredit';
 import Production from './Production';
 import ProductionIdentifier from './ProductionIdentifier';
 import Role from './Role';
 import Season from './Season';
+import SourceMaterial from './SourceMaterial';
 import SubMaterial from './SubMaterial';
 import SubProductionIdentifier from './SubProductionIdentifier';
 import SubVenue from './SubVenue';
@@ -48,12 +50,14 @@ export {
 	MaterialBase,
 	NominatedProductionIdentifier,
 	Nomination,
+	OriginalVersionMaterial,
 	Person,
 	ProducerCredit,
 	Production,
 	ProductionIdentifier,
 	Role,
 	Season,
+	SourceMaterial,
 	SubMaterial,
 	SubProductionIdentifier,
 	SubVenue,

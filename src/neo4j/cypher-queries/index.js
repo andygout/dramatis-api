@@ -44,6 +44,8 @@ import {
 	getAwardContextualDuplicateRecordCheckQuery,
 	getDuplicateRecordCheckQuery,
 	getExistenceCheckQuery,
+	getOriginalVersionMaterialChecksQuery,
+	getSourceMaterialChecksQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery
@@ -115,6 +117,8 @@ const validationQueries = {
 	getAwardContextualDuplicateRecordCheckQuery,
 	getDuplicateRecordCheckQuery,
 	getExistenceCheckQuery,
+	getOriginalVersionMaterialChecksQuery,
+	getSourceMaterialChecksQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery

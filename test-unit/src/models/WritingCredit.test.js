@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Company, Person, MaterialBase } from '../../../src/models';
+import { Company, Person, SourceMaterial } from '../../../src/models';
 
 describe('WritingCredit model', () => {
 
@@ -14,9 +14,9 @@ describe('WritingCredit model', () => {
 
 	};
 
-	const MaterialBaseStub = function () {
+	const SourceMaterialStub = function () {
 
-		return createStubInstance(MaterialBase);
+		return createStubInstance(SourceMaterial);
 
 	};
 
@@ -34,7 +34,7 @@ describe('WritingCredit model', () => {
 			},
 			models: {
 				Company: CompanyStub,
-				MaterialBase: MaterialBaseStub,
+				SourceMaterial: SourceMaterialStub,
 				Person: PersonStub
 			}
 		};
@@ -144,13 +144,13 @@ describe('WritingCredit model', () => {
 				expect(instance.entities.length).to.equal(9);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof Company).to.be.true;
-				expect(instance.entities[2] instanceof MaterialBase).to.be.true;
+				expect(instance.entities[2] instanceof SourceMaterial).to.be.true;
 				expect(instance.entities[3] instanceof Person).to.be.true;
 				expect(instance.entities[4] instanceof Company).to.be.true;
-				expect(instance.entities[5] instanceof MaterialBase).to.be.true;
+				expect(instance.entities[5] instanceof SourceMaterial).to.be.true;
 				expect(instance.entities[6] instanceof Person).to.be.true;
 				expect(instance.entities[7] instanceof Company).to.be.true;
-				expect(instance.entities[8] instanceof MaterialBase).to.be.true;
+				expect(instance.entities[8] instanceof SourceMaterial).to.be.true;
 
 			});
 
@@ -230,6 +230,40 @@ describe('WritingCredit model', () => {
 			assert.calledWithExactly(
 				instance.entities[2].validateNoAssociationWithSelf,
 				{ name: 'The Indian Boy', differentiator: '1' }
+			);
+
+		});
+
+	});
+
+	describe('runDatabaseValidations method', () => {
+
+		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
+
+			const props = {
+				name: 'version by',
+				entities: [
+					{
+						name: 'David Eldridge'
+					},
+					{
+						model: 'COMPANY',
+						name: 'Told by an Idiot'
+					},
+					{
+						model: 'MATERIAL',
+						name: 'A Midsummer Night\'s Dream'
+					}
+				]
+			};
+			const instance = createInstance(props);
+			await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+			assert.notCalled(instance.entities[0].runDatabaseValidations);
+			assert.notCalled(instance.entities[1].runDatabaseValidations);
+			assert.calledOnce(instance.entities[2].runDatabaseValidations);
+			assert.calledWithExactly(
+				instance.entities[2].runDatabaseValidations,
+				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
 
 		});
