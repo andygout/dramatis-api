@@ -1,6 +1,6 @@
 import { getDuplicateEntityIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
-import { Company, Person, MaterialBase } from '.';
+import { Company, Person, SourceMaterial } from '.';
 import { CREDIT_TYPES, MODELS } from '../utils/constants';
 
 export default class WritingCredit extends Base {
@@ -19,7 +19,7 @@ export default class WritingCredit extends Base {
 					case MODELS.COMPANY:
 						return new Company(entity);
 					case MODELS.MATERIAL:
-						return new MaterialBase(entity);
+						return new SourceMaterial(entity);
 					default:
 						return new Person(entity);
 				}
@@ -59,6 +59,20 @@ export default class WritingCredit extends Base {
 			}
 
 		});
+
+	}
+
+	async runDatabaseValidations ({ subjectMaterialUuid = null }) {
+
+		for (const entity of this.entities) {
+
+			if (entity.model === MODELS.MATERIAL) {
+
+				await entity.runDatabaseValidations({ subjectMaterialUuid });
+
+			}
+
+		}
 
 	}
 

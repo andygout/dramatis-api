@@ -27,6 +27,8 @@ describe('Input validation failures: Material instance', () => {
 				isExistent: true,
 				isDuplicate: false,
 				isAssignedToSurMaterial: false,
+				isSourcingMaterialOfSubjectMaterial: false,
+				isSubsequentVersionMaterialOfSubjectMaterial: false,
 				isSurSurMaterial: false,
 				isSurMaterialOfSubjectMaterial: false,
 				isSubjectMaterialASubSubMaterial: false

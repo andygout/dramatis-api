@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CharacterGroup, MaterialBase, SubMaterial, WritingCredit } from '../../../src/models';
+import { CharacterGroup, MaterialBase, OriginalVersionMaterial, SubMaterial, WritingCredit } from '../../../src/models';
 
 describe('Material model', () => {
 
@@ -11,6 +11,12 @@ describe('Material model', () => {
 	const CharacterGroupStub = function () {
 
 		return createStubInstance(CharacterGroup);
+
+	};
+
+	const OriginalVersionMaterialStub = function () {
+
+		return createStubInstance(OriginalVersionMaterial);
 
 	};
 
@@ -38,6 +44,7 @@ describe('Material model', () => {
 			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
+				OriginalVersionMaterial: OriginalVersionMaterialStub,
 				SubMaterial: SubMaterialStub,
 				WritingCredit: WritingCreditStub
 			}
@@ -367,8 +374,6 @@ describe('Material model', () => {
 			spy(instance, 'validateSubtitle');
 			spy(instance, 'validateFormat');
 			spy(instance, 'validateYear');
-			spy(instance.originalVersionMaterial, 'validateName');
-			spy(instance.originalVersionMaterial, 'validateDifferentiator');
 			instance.runInputValidations();
 			assert.callOrder(
 				instance.validateName,
@@ -518,10 +523,19 @@ describe('Material model', () => {
 
 			const props = {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-				name: 'The Coast of Utopia',
+				name: 'Foo',
+				originalVersionMaterial: {
+					name: 'Ur-Foo'
+				},
+				writingCredits: [
+					{
+						model: 'MATERIAL',
+						name: 'Pre-Foo'
+					}
+				],
 				subMaterials: [
 					{
-						name: 'Voyage'
+						name: 'Sub-Foo'
 					}
 				]
 			};
@@ -530,6 +544,16 @@ describe('Material model', () => {
 			await instance.runDatabaseValidations();
 			assert.calledOnce(instance.validateUniquenessInDatabase);
 			assert.calledWithExactly(instance.validateUniquenessInDatabase);
+			assert.calledOnce(instance.originalVersionMaterial.runDatabaseValidations);
+			assert.calledWithExactly(
+				instance.originalVersionMaterial.runDatabaseValidations,
+				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
+			);
+			assert.calledOnce(instance.writingCredits[0].runDatabaseValidations);
+			assert.calledWithExactly(
+				instance.writingCredits[0].runDatabaseValidations,
+				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
+			);
 			assert.calledOnce(instance.subMaterials[0].runDatabaseValidations);
 			assert.calledWithExactly(
 				instance.subMaterials[0].runDatabaseValidations,

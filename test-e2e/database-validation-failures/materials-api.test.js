@@ -646,6 +646,198 @@ describe('Database validation failures: Materials API', () => {
 
 		});
 
+		context('original version material is instance\'s subsequent version material', () => {
+
+			const PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+			const UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+
+			before(async () => {
+
+				await purgeDatabase();
+
+				await createNode({
+					label: 'Material',
+					uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Plugh'
+				});
+
+				await createNode({
+					label: 'Material',
+					uuid: UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Ur-Plugh'
+				});
+
+				await createRelationship({
+					sourceLabel: 'Material',
+					sourceUuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					destinationLabel: 'Material',
+					destinationUuid: UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID,
+					relationshipName: 'SUBSEQUENT_VERSION_OF'
+				});
+
+			});
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Material')).to.equal(2);
+
+				const response = await chai.request(app)
+					.put(`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`)
+					.send({
+						name: 'Ur-Plugh',
+						originalVersionMaterial: {
+							name: 'Plugh'
+						}
+					});
+
+				const expectedResponseBody = {
+					model: 'MATERIAL',
+					uuid: UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Ur-Plugh',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						name: 'Plugh',
+						differentiator: '',
+						errors: {
+							name: [
+								'Material with these attributes is this material\'s subsequent version material'
+							],
+							differentiator: [
+								'Material with these attributes is this material\'s subsequent version material'
+							]
+						}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					characterGroups: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Material')).to.equal(2);
+				expect(await isNodeExistent({
+					label: 'Material',
+					name: 'Ur-Plugh',
+					uuid: UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID
+				})).to.be.true;
+
+			});
+
+		});
+
+		context('source material is instance\'s sourcing material', () => {
+
+			const WIBBLE_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+			const WALDO_MATERIAL_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
+
+			before(async () => {
+
+				await purgeDatabase();
+
+				await createNode({
+					label: 'Material',
+					uuid: WIBBLE_MATERIAL_UUID,
+					name: 'Wibble'
+				});
+
+				await createNode({
+					label: 'Material',
+					uuid: WALDO_MATERIAL_UUID,
+					name: 'Waldo'
+				});
+
+				await createRelationship({
+					sourceLabel: 'Material',
+					sourceUuid: WIBBLE_MATERIAL_UUID,
+					destinationLabel: 'Material',
+					destinationUuid: WALDO_MATERIAL_UUID,
+					relationshipName: 'USES_SOURCE_MATERIAL'
+				});
+
+			});
+
+			it('returns instance with appropriate errors attached', async () => {
+
+				expect(await countNodesWithLabel('Material')).to.equal(2);
+
+				const response = await chai.request(app)
+					.put(`/materials/${WALDO_MATERIAL_UUID}`)
+					.send({
+						name: 'Waldo',
+						writingCredits: [
+							{
+								entities: [
+									{
+										model: 'MATERIAL',
+										name: 'Wibble'
+									}
+								]
+							}
+						]
+					});
+
+				const expectedResponseBody = {
+					model: 'MATERIAL',
+					uuid: WALDO_MATERIAL_UUID,
+					name: 'Waldo',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						model: 'MATERIAL',
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: '',
+							creditType: null,
+							errors: {},
+							entities: [
+								{
+									model: 'MATERIAL',
+									name: 'Wibble',
+									differentiator: '',
+									errors: {
+										name: [
+											'Material with these attributes is this material\'s sourcing material'
+										],
+										differentiator: [
+											'Material with these attributes is this material\'s sourcing material'
+										]
+									}
+								}
+							]
+						}
+					],
+					subMaterials: [],
+					characterGroups: []
+				};
+
+				expect(response).to.have.status(200);
+				expect(response.body).to.deep.equal(expectedResponseBody);
+				expect(await countNodesWithLabel('Material')).to.equal(2);
+				expect(await isNodeExistent({
+					label: 'Material',
+					name: 'Waldo',
+					uuid: WALDO_MATERIAL_UUID
+				})).to.be.true;
+
+			});
+
+		});
+
 	});
 
 });
