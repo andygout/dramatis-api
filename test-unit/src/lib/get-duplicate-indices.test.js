@@ -6,7 +6,8 @@ import {
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
 	getDuplicateProductionIdentifierIndices,
-	getDuplicateRoleIndices
+	getDuplicateRoleIndices,
+	getDuplicateUrlIndices
 } from '../../../src/lib/get-duplicate-indices';
 import applyModelGetter from '../../test-helpers/apply-model-getter';
 
@@ -372,6 +373,46 @@ describe('Get Duplicate Indices module', () => {
 				);
 
 				expect(result).to.deep.equal([0, 1, 3, 4]);
+
+			});
+
+		});
+
+	});
+
+	describe('getDuplicateUrlIndices function', () => {
+
+		context('duplicates do not exist', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateUrlIndices(
+					[
+						{ url: 'https://www.foo.com' },
+						{ url: 'https://www.bar.com' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('duplicates exist', () => {
+
+			it('returns an array of indices of duplicate items, ignoring items with empty string url values', () => {
+
+				const result = getDuplicateUrlIndices(
+					[
+						{ url: 'https://www.foo.com' },
+						{ url: 'https://www.bar.com' },
+						{ url: '' },
+						{ url: 'https://www.foo.com' }
+					]
+				);
+
+				expect(result).to.deep.equal([0, 3]);
 
 			});
 

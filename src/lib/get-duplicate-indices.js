@@ -151,11 +151,31 @@ const getDuplicateRoleIndices = arrayOfObjects => {
 
 };
 
+const getDuplicateUrlIndices = arrayOfObjects => {
+
+	return arrayOfObjects.reduce((accumulator, object, index) => {
+
+		const isDuplicate =
+			Boolean(object.url) &&
+			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
+				index !== comparisonIndex &&
+				object.url === comparisonObject.url
+			);
+
+		if (isDuplicate) accumulator.push(index);
+
+		return accumulator;
+
+	}, []);
+
+};
+
 export {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateCharacterIndices,
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
 	getDuplicateProductionIdentifierIndices,
-	getDuplicateRoleIndices
+	getDuplicateRoleIndices,
+	getDuplicateUrlIndices
 };

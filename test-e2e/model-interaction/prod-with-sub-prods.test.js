@@ -37,6 +37,8 @@ describe('Production with sub-productions', () => {
 	const FIONA_BARDSLEY_JR_PERSON_UUID = 'FIONA_BARDSLEY_JR_PERSON_UUID';
 	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
 	const SUE_MILLIN_JR_PERSON_UUID = 'SUE_MILLIN_JR_PERSON_UUID';
+	const THE_SUB_GUARDIAN_COMPANY_UUID = 'THE_SUB_GUARDIAN_COMPANY_UUID';
+	const MICHAEL_BILLINGTON_JR_PERSON_UUID = 'MICHAEL_BILLINGTON_JR_PERSON_UUID';
 	const SHIPWRECK_OLIVIER_PRODUCTION_UUID = 'SHIPWRECK_PRODUCTION_UUID';
 	const SALVAGE_OLIVIER_PRODUCTION_UUID = 'SALVAGE_PRODUCTION_UUID';
 	const THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID = 'THE_COAST_OF_UTOPIA_PRODUCTION_UUID';
@@ -50,6 +52,8 @@ describe('Production with sub-productions', () => {
 	const FIONA_BARDSLEY_SR_PERSON_UUID = 'FIONA_BARDSLEY_SR_PERSON_UUID';
 	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
 	const SUE_MILLIN_SR_PERSON_UUID = 'SUE_MILLIN_SR_PERSON_UUID';
+	const THE_SUR_GUARDIAN_COMPANY_UUID = 'THE_SUR_GUARDIAN_COMPANY_UUID';
+	const MICHAEL_BILLINGTON_SR_PERSON_UUID = 'MICHAEL_BILLINGTON_SR_PERSON_UUID';
 	const VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID = 'VOYAGE_2_PRODUCTION_UUID';
 	const VIVIAN_BEAUMONT_THEATRE_VENUE_UUID = 'VIVIAN_BEAUMONT_THEATRE_VENUE_UUID';
 	const PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID = 'PRE_REVOLUTION_RUSSIA_FESTIVAL_FESTIVAL_UUID';
@@ -79,6 +83,8 @@ describe('Production with sub-productions', () => {
 	let fionaBardsleyJrPerson;
 	let subStageManagementLtdCompany;
 	let sueMillinJrPerson;
+	let theSubGuardianCompany;
+	let michaelBillingtonJrPerson;
 	let alexanderHerzenJrCharacter;
 
 	const sandbox = createSandbox();
@@ -327,6 +333,18 @@ describe('Production with sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2002/aug/04/voyage-review',
+						date: '2002-08-04',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
+					}
 				]
 			});
 
@@ -415,6 +433,18 @@ describe('Production with sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2002/aug/05/shipwreck-review',
+						date: '2002-08-05',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
+					}
 				]
 			});
 
@@ -502,6 +532,18 @@ describe('Production with sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2002/aug/06/salvage-review',
+						date: '2002-08-06',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
 					}
 				]
 			});
@@ -601,6 +643,18 @@ describe('Production with sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2002/aug/07/the-coast-of-utopia-review',
+						date: '2002-08-07',
+						publication: {
+							name: 'The Sur-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Sr'
+						}
 					}
 				]
 			});
@@ -756,6 +810,12 @@ describe('Production with sub-productions', () => {
 
 		sueMillinJrPerson = await chai.request(app)
 			.get(`/people/${SUE_MILLIN_JR_PERSON_UUID}`);
+
+		theSubGuardianCompany = await chai.request(app)
+			.get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
+
+		michaelBillingtonJrPerson = await chai.request(app)
+			.get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
 
 		alexanderHerzenJrCharacter = await chai.request(app)
 			.get(`/characters/${ALEXANDER_HERZEN_JR_CHARACTER_UUID}`);
@@ -928,6 +988,23 @@ describe('Production with sub-productions', () => {
 								}
 							]
 						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2002/aug/04/voyage-review',
+							date: '2002-08-04',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+								name: 'The Sub-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+								name: 'Michael Billington Jr'
+							}
+						}
 					]
 				},
 				{
@@ -1085,6 +1162,23 @@ describe('Production with sub-productions', () => {
 								}
 							]
 						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2002/aug/05/shipwreck-review',
+							date: '2002-08-05',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+								name: 'The Sub-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+								name: 'Michael Billington Jr'
+							}
+						}
 					]
 				},
 				{
@@ -1241,6 +1335,23 @@ describe('Production with sub-productions', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2002/aug/06/salvage-review',
+							date: '2002-08-06',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+								name: 'The Sub-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+								name: 'Michael Billington Jr'
+							}
 						}
 					]
 				}
@@ -1408,6 +1519,23 @@ describe('Production with sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/07/the-coast-of-utopia-review',
+						date: '2002-08-07',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUR_GUARDIAN_COMPANY_UUID,
+							name: 'The Sur-Guardian'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_SR_PERSON_UUID,
+							name: 'Michael Billington Sr'
+						}
+					}
 				]
 			};
 
@@ -1480,7 +1608,8 @@ describe('Production with sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -1538,7 +1667,8 @@ describe('Production with sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -1596,7 +1726,8 @@ describe('Production with sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				}
 			];
 
@@ -1663,7 +1794,8 @@ describe('Production with sub-productions', () => {
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				reviews: []
 			};
 
 			const { surProduction } = voyageVivianBeaumontProduction.body;
@@ -3800,6 +3932,234 @@ describe('Production with sub-productions', () => {
 			const { crewProductions } = sueMillinJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+
+		});
+
+	});
+
+	describe('The Sub-Guardian (company)', () => {
+
+		it('includes productions they have reviewed as a publication, including the sur-production', () => {
+
+			const expectedReviewPublicationProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/06/salvage-review',
+						date: '2002-08-06',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2002-07-08',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/05/shipwreck-review',
+						date: '2002-08-05',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/04/voyage-review',
+						date: '2002-08-04',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				}
+			];
+
+			const { reviewPublicationProductions } = theSubGuardianCompany.body;
+
+			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
+
+		});
+
+	});
+
+	describe('Michael Billington Jr (person)', () => {
+
+		it('includes productions they have reviewed as a critic, including the sur-production', () => {
+
+			const expectedReviewCriticProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: SALVAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Salvage',
+					startDate: '2002-07-19',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/06/salvage-review',
+						date: '2002-08-06',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: SHIPWRECK_OLIVIER_PRODUCTION_UUID,
+					name: 'Shipwreck',
+					startDate: '2002-07-08',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/05/shipwreck-review',
+						date: '2002-08-05',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: VOYAGE_OLIVIER_PRODUCTION_UUID,
+					name: 'Voyage',
+					startDate: '2002-06-27',
+					endDate: '2002-11-23',
+					venue: {
+						model: 'VENUE',
+						uuid: OLIVIER_THEATRE_VENUE_UUID,
+						name: 'Olivier Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: NATIONAL_THEATRE_VENUE_UUID,
+							name: 'National Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
+						name: 'The Coast of Utopia',
+						surProduction: null
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2002/aug/04/voyage-review',
+						date: '2002-08-04',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				}
+			];
+
+			const { reviewCriticProductions } = michaelBillingtonJrPerson.body;
+
+			expect(reviewCriticProductions).to.deep.equal(expectedReviewCriticProductions);
 
 		});
 

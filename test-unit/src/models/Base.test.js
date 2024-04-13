@@ -3,7 +3,7 @@ import { assert, createSandbox, spy } from 'sinon';
 
 import * as validateStringModule from '../../../src/lib/validate-string';
 import Base from '../../../src/models/Base';
-import { Nomination, ProductionIdentifier } from '../../../src/models';
+import { Nomination, ProductionIdentifier, Review } from '../../../src/models';
 
 describe('Base model', () => {
 
@@ -97,6 +97,20 @@ describe('Base model', () => {
 						const instance = new ProductionIdentifier({
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 							name: '1'
+						});
+						expect(instance).to.not.have.property('name');
+
+					});
+
+				});
+
+				context('model is Review', () => {
+
+					it('does not assign name property', () => {
+
+						const instance = new Review({
+							url: 'https://www.foo.com',
+							name: 'foo'
 						});
 						expect(instance).to.not.have.property('name');
 

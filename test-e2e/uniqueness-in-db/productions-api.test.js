@@ -2049,4 +2049,300 @@ describe('Uniqueness in database: Productions API', () => {
 
 	});
 
+	describe('Production review publication (company) uniqueness in database', () => {
+
+		const LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedCompanyFinancialTimes1 = {
+			model: 'COMPANY',
+			name: 'Financial Times',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedCompanyFinancialTimes2 = {
+			model: 'COMPANY',
+			name: 'Financial Times',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID,
+				name: 'Long Day\'s Journey Into Night'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates review publication (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
+				.send({
+					name: 'Long Day\'s Journey Into Night',
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/bcf4484a-5200-4961-ac12-1e0138518f89',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes1);
+			expect(await countNodesWithLabel('Company')).to.equal(1);
+
+		});
+
+		it('updates production and creates review publication (company) that has same name as existing review publication but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
+				.send({
+					name: 'Long Day\'s Journey Into Night',
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/bcf4484a-5200-4961-ac12-1e0138518f89',
+							publication: {
+								name: 'Financial Times',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes2);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing review publication (company) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
+				.send({
+					name: 'Long Day\'s Journey Into Night',
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/bcf4484a-5200-4961-ac12-1e0138518f89',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes1);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing review publication (company) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
+				.send({
+					name: 'Long Day\'s Journey Into Night',
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/bcf4484a-5200-4961-ac12-1e0138518f89',
+							publication: {
+								name: 'Financial Times',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes2);
+			expect(await countNodesWithLabel('Company')).to.equal(2);
+
+		});
+
+	});
+
+	describe('Production review critic (person) uniqueness in database', () => {
+
+		const NYE_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPersonArifaAkbar1 = {
+			model: 'PERSON',
+			name: 'Arifa Akbar',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPersonArifaAkbar2 = {
+			model: 'PERSON',
+			name: 'Arifa Akbar',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Production',
+				uuid: NYE_PRODUCTION_UUID,
+				name: 'Nye'
+			});
+
+		});
+
+		after(() => {
+
+			sandbox.restore();
+
+		});
+
+		it('updates production and creates review critic (person) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(0);
+
+			const response = await chai.request(app)
+				.put(`/productions/${NYE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Nye',
+					reviews: [
+						{
+							url: 'https://www.theguardian.com/stage/2024/mar/07/nye-review-michael-sheen-olivier-theatre',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar1);
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+		});
+
+		it('updates production and creates review critic (person) that has same name as existing review critic but uses a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(1);
+
+			const response = await chai.request(app)
+				.put(`/productions/${NYE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Nye',
+					reviews: [
+						{
+							url: 'https://www.theguardian.com/stage/2024/mar/07/nye-review-michael-sheen-olivier-theatre',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing review critic (person) that does not have a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${NYE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Nye',
+					reviews: [
+						{
+							url: 'https://www.theguardian.com/stage/2024/mar/07/nye-review-michael-sheen-olivier-theatre',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar1);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+		it('updates production and uses existing review critic (person) that has a differentiator', async () => {
+
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+			const response = await chai.request(app)
+				.put(`/productions/${NYE_PRODUCTION_UUID}`)
+				.send({
+					name: 'Nye',
+					reviews: [
+						{
+							url: 'https://www.theguardian.com/stage/2024/mar/07/nye-review-michael-sheen-olivier-theatre',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			expect(response).to.have.status(200);
+			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar2);
+			expect(await countNodesWithLabel('Person')).to.equal(2);
+
+		});
+
+	});
+
 });

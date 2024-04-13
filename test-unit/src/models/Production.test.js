@@ -9,6 +9,7 @@ import {
 	FestivalBase,
 	MaterialBase,
 	ProducerCredit,
+	Review,
 	Season,
 	SubProductionIdentifier,
 	VenueBase
@@ -54,6 +55,12 @@ describe('Production model', () => {
 
 	};
 
+	const ReviewStub = function () {
+
+		return createStubInstance(Review);
+
+	};
+
 	const SeasonStub = function () {
 
 		return createStubInstance(Season);
@@ -75,10 +82,14 @@ describe('Production model', () => {
 	beforeEach(() => {
 
 		stubs = {
+			getDuplicateEntityInfoModule: {
+				getDuplicateEntities: stub().returns([])
+			},
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([]),
-				getDuplicateProductionIdentifierIndices: stub().returns([])
+				getDuplicateProductionIdentifierIndices: stub().returns([]),
+				getDuplicateUrlIndices: stub().returns([])
 			},
 			models: {
 				CastMember: CastMemberStub,
@@ -87,6 +98,7 @@ describe('Production model', () => {
 				FestivalBase: FestivalBaseStub,
 				MaterialBase: MaterialBaseStub,
 				ProducerCredit: ProducerCreditStub,
+				Review: ReviewStub,
 				Season: SeasonStub,
 				SubProductionIdentifier: SubProductionIdentifierStub,
 				VenueBase: VenueBaseStub
@@ -97,6 +109,7 @@ describe('Production model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
+			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
@@ -533,6 +546,41 @@ describe('Production model', () => {
 
 		});
 
+		describe('reviews property', () => {
+
+			it('assigns empty array if absent from props', () => {
+
+				const instance = createInstance({ name: 'Hamlet' });
+				expect(instance.reviews).to.deep.equal([]);
+
+			});
+
+			it('assigns array of reviews if included in props, retaining those with empty or whitespace-only string urls', () => {
+
+				const props = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com'
+						},
+						{
+							url: ''
+						},
+						{
+							url: ' '
+						}
+					]
+				};
+				const instance = createInstance(props);
+				expect(instance.reviews.length).to.equal(3);
+				expect(instance.reviews[0] instanceof Review).to.be.true;
+				expect(instance.reviews[1] instanceof Review).to.be.true;
+				expect(instance.reviews[2] instanceof Review).to.be.true;
+
+			});
+
+		});
+
 	});
 
 	describe('runInputValidations method', () => {
@@ -567,6 +615,17 @@ describe('Production model', () => {
 					{
 						name: 'Stage Manager'
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.foo.com',
+						publication: {
+							name: 'Financial Times'
+						},
+						critic: {
+							name: 'Sarah Hemming'
+						}
+					}
 				]
 			};
 			const instance = createInstance(props);
@@ -597,7 +656,10 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.creativeCredits[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
-				instance.crewCredits[0].runInputValidations
+				instance.crewCredits[0].runInputValidations,
+				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
+				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
+				instance.reviews[0].runInputValidations
 			);
 			assert.calledOnce(instance.validateName);
 			assert.calledWithExactly(instance.validateName, { isRequired: true });
@@ -675,6 +737,21 @@ describe('Production model', () => {
 			assert.calledWithExactly(
 				instance.crewCredits[0].runInputValidations,
 				{ isDuplicate: false }
+			);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateUrlIndices);
+			assert.calledWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
+				instance.reviews
+			);
+			assert.calledOnce(stubs.getDuplicateEntityInfoModule.getDuplicateEntities);
+			assert.calledWithExactly(
+				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
+				[instance.reviews[0].publication, instance.reviews[0].critic]
+			);
+			assert.calledOnce(instance.reviews[0].runInputValidations);
+			assert.calledWithExactly(
+				instance.reviews[0].runInputValidations,
+				{ isDuplicate: false, duplicatePublicationAndCriticEntities: [] }
 			);
 
 		});

@@ -331,6 +331,45 @@ export default () => `
 			ELSE crewEntity { .model, .name, .differentiator }
 		END] + [{}] AS crewEntities
 
+	WITH
+		production,
+		material,
+		venue,
+		season,
+		festival,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeCredits,
+		COLLECT(
+			CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
+				THEN null
+				ELSE { name: crewCreditName, entities: crewEntities }
+			END
+		) + [{ entities: [{}] }] AS crewCredits
+
+	OPTIONAL MATCH
+		(publication:Company)<-[publicationRel:HAS_REVIEWER]-(production)-[criticRel:HAS_REVIEWER]->(critic:Person)
+		WHERE
+			publicationRel.position IS NULL OR
+			publicationRel.position = criticRel.position
+
+	WITH
+		production,
+		material,
+		venue,
+		season,
+		festival,
+		subProductions,
+		producerCredits,
+		cast,
+		creativeCredits,
+		crewCredits,
+		publication,
+		publicationRel,
+		critic
+		ORDER BY publicationRel.position
+
 	RETURN
 		production.uuid AS uuid,
 		production.name AS name,
@@ -346,10 +385,16 @@ export default () => `
 		producerCredits,
 		cast,
 		creativeCredits,
+		crewCredits,
 		COLLECT(
-			CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
+			CASE WHEN publicationRel IS NULL
 				THEN null
-				ELSE { name: crewCreditName, entities: crewEntities }
+				ELSE {
+					url: publicationRel.url,
+					date: publicationRel.date,
+					publication: publication { .name, .differentiator },
+					critic: critic { .name, .differentiator }
+				}
 			END
-		) + [{ entities: [{}] }] AS crewCredits
+		) + [{}] AS reviews
 `;

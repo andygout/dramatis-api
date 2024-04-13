@@ -49,6 +49,8 @@ describe('Production with sub-sub-productions', () => {
 	const LIZZIE_CHAPMAN_JR_PERSON_UUID = 'LIZZIE_CHAPMAN_JR_PERSON_UUID';
 	const SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
 	const CHARLOTTE_PADGHAM_JR_PERSON_UUID = 'CHARLOTTE_PADGHAM_JR_PERSON_UUID';
+	const THE_SUB_GUARDIAN_COMPANY_UUID = 'THE_SUB_GUARDIAN_COMPANY_UUID';
+	const MICHAEL_BILLINGTON_JR_PERSON_UUID = 'MICHAEL_BILLINGTON_JR_PERSON_UUID';
 	const DURANDS_LINE_RODA_PRODUCTION_UUID = 'DURANDS_LINE_PRODUCTION_UUID';
 	const CAMPAIGN_RODA_PRODUCTION_UUID = 'CAMPAIGN_PRODUCTION_UUID';
 	const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
@@ -62,6 +64,8 @@ describe('Production with sub-sub-productions', () => {
 	const LIZZIE_CHAPMAN_PERSON_UUID = 'LIZZIE_CHAPMAN_PERSON_UUID';
 	const MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'MID_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
 	const CHARLOTTE_PADGHAM_PERSON_UUID = 'CHARLOTTE_PADGHAM_PERSON_UUID';
+	const THE_MID_GUARDIAN_COMPANY_UUID = 'THE_MID_GUARDIAN_COMPANY_UUID';
+	const MICHAEL_BILLINGTON_PERSON_UUID = 'MICHAEL_BILLINGTON_PERSON_UUID';
 	const BLACK_TULIPS_RODA_PRODUCTION_UUID = 'BLACK_TULIPS_PRODUCTION_UUID';
 	const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_PRODUCTION_UUID';
 	const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_UUID';
@@ -81,6 +85,8 @@ describe('Production with sub-sub-productions', () => {
 	const LIZZIE_CHAPMAN_SR_PERSON_UUID = 'LIZZIE_CHAPMAN_SR_PERSON_UUID';
 	const SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'SUR_STAGE_MANAGEMENT_LTD_COMPANY_UUID';
 	const CHARLOTTE_PADGHAM_SR_PERSON_UUID = 'CHARLOTTE_PADGHAM_SR_PERSON_UUID';
+	const THE_SUR_GUARDIAN_COMPANY_UUID = 'THE_SUR_GUARDIAN_COMPANY_UUID';
+	const MICHAEL_BILLINGTON_SR_PERSON_UUID = 'MICHAEL_BILLINGTON_SR_PERSON_UUID';
 	const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_2_PRODUCTION_UUID';
 	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
 	const WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID = 'WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID';
@@ -122,6 +128,8 @@ describe('Production with sub-sub-productions', () => {
 	let lizzieChapmanJrPerson;
 	let subStageManagementLtdCompany;
 	let charlottePadghamJrPerson;
+	let theSubGuardianCompany;
+	let michaelBillingtonJrPerson;
 	let barJrCharacter;
 
 	const sandbox = createSandbox();
@@ -673,6 +681,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/oct/26/bugles-at-the-gates-of-jalalabad-review',
+						date: '2010-10-26',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
+					}
 				]
 			});
 
@@ -761,6 +781,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/oct/27/durands-line-review',
+						date: '2010-10-27',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
+					}
 				]
 			});
 
@@ -848,6 +880,18 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/oct/28/campaign-review',
+						date: '2010-10-28',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
 					}
 				]
 			});
@@ -948,6 +992,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/oct/29/part-one-invasions-and-independence-1842-1930-review',
+						date: '2010-10-29',
+						publication: {
+							name: 'The Mid-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington'
+						}
+					}
 				]
 			});
 
@@ -1035,6 +1091,18 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/oct/30/black-tulips-review',
+						date: '2010-10-30',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
 					}
 				]
 			});
@@ -1124,6 +1192,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/oct/31/blood-and-gifts-review',
+						date: '2010-10-31',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
+					}
 				]
 			});
 
@@ -1211,6 +1291,18 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/01/miniskirts-of-kabul-review',
+						date: '2010-11-01',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
 					}
 				]
 			});
@@ -1311,6 +1403,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/02/part-two-communism-the-mujahideen-and-the-taliban-1979-1996-review',
+						date: '2010-11-02',
+						publication: {
+							name: 'The Mid-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington'
+						}
+					}
 				]
 			});
 
@@ -1398,6 +1502,18 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/03/honey-review',
+						date: '2010-11-03',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
 					}
 				]
 			});
@@ -1487,6 +1603,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/04/the-night-is-darkest-before-the-dawn-review',
+						date: '2010-11-04',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
+					}
 				]
 			});
 
@@ -1574,6 +1702,18 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/05/on-the-side-of-the-angels-review',
+						date: '2010-11-05',
+						publication: {
+							name: 'The Sub-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Jr'
+						}
 					}
 				]
 			});
@@ -1674,6 +1814,18 @@ describe('Production with sub-sub-productions', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/06/part-three-enduring-freedom-1996-2009-review',
+						date: '2010-11-06',
+						publication: {
+							name: 'The Mid-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington'
+						}
+					}
 				]
 			});
 
@@ -1772,6 +1924,18 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						url: 'https://www.theguardian.com/culture/2010/nov/07/the-great-game-afghanistan-review',
+						date: '2010-11-07',
+						publication: {
+							name: 'The Sur-Guardian'
+						},
+						critic: {
+							name: 'Michael Billington Sr'
+						}
 					}
 				]
 			});
@@ -2142,6 +2306,12 @@ describe('Production with sub-sub-productions', () => {
 		charlottePadghamJrPerson = await chai.request(app)
 			.get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
 
+		theSubGuardianCompany = await chai.request(app)
+			.get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
+
+		michaelBillingtonJrPerson = await chai.request(app)
+			.get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
+
 		barJrCharacter = await chai.request(app)
 			.get(`/characters/${BAR_JR_CHARACTER_UUID}`);
 
@@ -2381,6 +2551,23 @@ describe('Production with sub-sub-productions', () => {
 										}
 									]
 								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/oct/26/bugles-at-the-gates-of-jalalabad-review',
+									date: '2010-10-26',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
+								}
 							]
 						},
 						{
@@ -2540,6 +2727,23 @@ describe('Production with sub-sub-productions', () => {
 											]
 										}
 									]
+								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/oct/27/durands-line-review',
+									date: '2010-10-27',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
 								}
 							]
 						},
@@ -2701,6 +2905,23 @@ describe('Production with sub-sub-productions', () => {
 										}
 									]
 								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/oct/28/campaign-review',
+									date: '2010-10-28',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
+								}
 							]
 						}
 					],
@@ -2793,6 +3014,23 @@ describe('Production with sub-sub-productions', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/oct/29/part-one-invasions-and-independence-1842-1930-review',
+							date: '2010-10-29',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_MID_GUARDIAN_COMPANY_UUID,
+								name: 'The Mid-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_PERSON_UUID,
+								name: 'Michael Billington'
+							}
 						}
 					]
 				},
@@ -3019,6 +3257,23 @@ describe('Production with sub-sub-productions', () => {
 										}
 									]
 								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/oct/30/black-tulips-review',
+									date: '2010-10-30',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
+								}
 							]
 						},
 						{
@@ -3178,6 +3433,23 @@ describe('Production with sub-sub-productions', () => {
 											]
 										}
 									]
+								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/oct/31/blood-and-gifts-review',
+									date: '2010-10-31',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
 								}
 							]
 						},
@@ -3339,6 +3611,23 @@ describe('Production with sub-sub-productions', () => {
 										}
 									]
 								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/nov/01/miniskirts-of-kabul-review',
+									date: '2010-11-01',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
+								}
 							]
 						}
 					],
@@ -3431,6 +3720,23 @@ describe('Production with sub-sub-productions', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/nov/02/part-two-communism-the-mujahideen-and-the-taliban-1979-1996-review',
+							date: '2010-11-02',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_MID_GUARDIAN_COMPANY_UUID,
+								name: 'The Mid-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_PERSON_UUID,
+								name: 'Michael Billington'
+							}
 						}
 					]
 				},
@@ -3657,6 +3963,23 @@ describe('Production with sub-sub-productions', () => {
 										}
 									]
 								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/nov/03/honey-review',
+									date: '2010-11-03',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
+								}
 							]
 						},
 						{
@@ -3816,6 +4139,23 @@ describe('Production with sub-sub-productions', () => {
 											]
 										}
 									]
+								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/nov/04/the-night-is-darkest-before-the-dawn-review',
+									date: '2010-11-04',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
 								}
 							]
 						},
@@ -3977,6 +4317,23 @@ describe('Production with sub-sub-productions', () => {
 										}
 									]
 								}
+							],
+							reviews: [
+								{
+									model: 'REVIEW',
+									url: 'https://www.theguardian.com/culture/2010/nov/05/on-the-side-of-the-angels-review',
+									date: '2010-11-05',
+									publication: {
+										model: 'COMPANY',
+										uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+										name: 'The Sub-Guardian'
+									},
+									critic: {
+										model: 'PERSON',
+										uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+										name: 'Michael Billington Jr'
+									}
+								}
 							]
 						}
 					],
@@ -4069,6 +4426,23 @@ describe('Production with sub-sub-productions', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/nov/06/part-three-enduring-freedom-1996-2009-review',
+							date: '2010-11-06',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_MID_GUARDIAN_COMPANY_UUID,
+								name: 'The Mid-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_PERSON_UUID,
+								name: 'Michael Billington'
+							}
 						}
 					]
 				}
@@ -4235,6 +4609,23 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/07/the-great-game-afghanistan-review',
+						date: '2010-11-07',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUR_GUARDIAN_COMPANY_UUID,
+							name: 'The Sur-Guardian'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_SR_PERSON_UUID,
+							name: 'Michael Billington Sr'
+						}
 					}
 				]
 			};
@@ -4407,6 +4798,23 @@ describe('Production with sub-sub-productions', () => {
 								}
 							]
 						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/oct/26/bugles-at-the-gates-of-jalalabad-review',
+							date: '2010-10-26',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+								name: 'The Sub-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+								name: 'Michael Billington Jr'
+							}
+						}
 					]
 				},
 				{
@@ -4568,6 +4976,23 @@ describe('Production with sub-sub-productions', () => {
 								}
 							]
 						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/oct/27/durands-line-review',
+							date: '2010-10-27',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+								name: 'The Sub-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+								name: 'Michael Billington Jr'
+							}
+						}
 					]
 				},
 				{
@@ -4728,6 +5153,23 @@ describe('Production with sub-sub-productions', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/oct/28/campaign-review',
+							date: '2010-10-28',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+								name: 'The Sub-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+								name: 'Michael Billington Jr'
+							}
 						}
 					]
 				}
@@ -4958,6 +5400,23 @@ describe('Production with sub-sub-productions', () => {
 								}
 							]
 						}
+					],
+					reviews: [
+						{
+							model: 'REVIEW',
+							url: 'https://www.theguardian.com/culture/2010/nov/07/the-great-game-afghanistan-review',
+							date: '2010-11-07',
+							publication: {
+								model: 'COMPANY',
+								uuid: THE_SUR_GUARDIAN_COMPANY_UUID,
+								name: 'The Sur-Guardian'
+							},
+							critic: {
+								model: 'PERSON',
+								uuid: MICHAEL_BILLINGTON_SR_PERSON_UUID,
+								name: 'Michael Billington Sr'
+							}
+						}
 					]
 				},
 				producerCredits: [
@@ -5049,6 +5508,23 @@ describe('Production with sub-sub-productions', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/29/part-one-invasions-and-independence-1842-1930-review',
+						date: '2010-10-29',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_MID_GUARDIAN_COMPANY_UUID,
+							name: 'The Mid-Guardian'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_PERSON_UUID,
+							name: 'Michael Billington'
+						}
 					}
 				]
 			};
@@ -5178,7 +5654,8 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						},
 						{
 							model: 'PRODUCTION',
@@ -5239,7 +5716,8 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						},
 						{
 							model: 'PRODUCTION',
@@ -5300,13 +5778,15 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						}
 					],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -5420,7 +5900,8 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						},
 						{
 							model: 'PRODUCTION',
@@ -5481,7 +5962,8 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						},
 						{
 							model: 'PRODUCTION',
@@ -5542,13 +6024,15 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						}
 					],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -5662,7 +6146,8 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						},
 						{
 							model: 'PRODUCTION',
@@ -5723,7 +6208,8 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						},
 						{
 							model: 'PRODUCTION',
@@ -5784,13 +6270,15 @@ describe('Production with sub-sub-productions', () => {
 							producerCredits: [],
 							cast: [],
 							creativeCredits: [],
-							crewCredits: []
+							crewCredits: [],
+							reviews: []
 						}
 					],
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				}
 			];
 
@@ -5857,7 +6345,8 @@ describe('Production with sub-sub-productions', () => {
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				reviews: []
 			};
 
 			const { surProduction } = partOneInvasionsAndIndependenceTricycleProduction.body;
@@ -5929,7 +6418,8 @@ describe('Production with sub-sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -5991,7 +6481,8 @@ describe('Production with sub-sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				{
 					model: 'PRODUCTION',
@@ -6053,7 +6544,8 @@ describe('Production with sub-sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				}
 			];
 
@@ -6171,12 +6663,14 @@ describe('Production with sub-sub-productions', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				},
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				reviews: []
 			};
 
 			const { surProduction } = buglesAtTheGatesOfJalalabadTricycleProduction.body;
@@ -12603,6 +13097,702 @@ describe('Production with sub-sub-productions', () => {
 			const { crewProductions } = charlottePadghamJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+
+		});
+
+	});
+
+	describe('The Sub-Guardian (company)', () => {
+
+		it('includes productions they have reviewed as a publication, including the sur-production and sur-sur-production', () => {
+
+			const expectedReviewPublicationProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/05/on-the-side-of-the-angels-review',
+						date: '2010-11-05',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/04/the-night-is-darkest-before-the-dawn-review',
+						date: '2010-11-04',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_RODA_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/03/honey-review',
+						date: '2010-11-03',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/01/miniskirts-of-kabul-review',
+						date: '2010-11-01',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/31/blood-and-gifts-review',
+						date: '2010-10-31',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/30/black-tulips-review',
+						date: '2010-10-30',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/28/campaign-review',
+						date: '2010-10-28',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/27/durands-line-review',
+						date: '2010-10-27',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/26/bugles-at-the-gates-of-jalalabad-review',
+						date: '2010-10-26',
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_JR_PERSON_UUID,
+							name: 'Michael Billington Jr'
+						}
+					}
+				}
+			];
+
+			const { reviewPublicationProductions } = theSubGuardianCompany.body;
+
+			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
+
+		});
+
+	});
+
+	describe('Michael Billington Jr (person)', () => {
+
+		it('includes productions they have reviewed as a critic, including the sur-production and sur-sur-production', () => {
+
+			const expectedReviewCriticProductions = [
+				{
+					model: 'PRODUCTION',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID,
+					name: 'On the Side of the Angels',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/05/on-the-side-of-the-angels-review',
+						date: '2010-11-05',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/04/the-night-is-darkest-before-the-dawn-review',
+						date: '2010-11-04',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HONEY_RODA_PRODUCTION_UUID,
+					name: 'Honey',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/03/honey-review',
+						date: '2010-11-03',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID,
+					name: 'Miniskirts of Kabul',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/nov/01/miniskirts-of-kabul-review',
+						date: '2010-11-01',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID,
+					name: 'Blood and Gifts',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/31/blood-and-gifts-review',
+						date: '2010-10-31',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BLACK_TULIPS_RODA_PRODUCTION_UUID,
+					name: 'Black Tulips',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/30/black-tulips-review',
+						date: '2010-10-30',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: CAMPAIGN_RODA_PRODUCTION_UUID,
+					name: 'Campaign',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/28/campaign-review',
+						date: '2010-10-28',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
+					name: 'Durand\'s Line',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/27/durands-line-review',
+						date: '2010-10-27',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					startDate: '2010-10-22',
+					endDate: '2010-11-07',
+					venue: {
+						model: 'VENUE',
+						uuid: RODA_THEATRE_VENUE_UUID,
+						name: 'Roda Theatre',
+						surVenue: {
+							model: 'VENUE',
+							uuid: BERKELEY_REPERTORY_THEATRE_VENUE_UUID,
+							name: 'Berkeley Repertory Theatre'
+						}
+					},
+					surProduction: {
+						model: 'PRODUCTION',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surProduction: {
+							model: 'PRODUCTION',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					review: {
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/26/bugles-at-the-gates-of-jalalabad-review',
+						date: '2010-10-26',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_SUB_GUARDIAN_COMPANY_UUID,
+							name: 'The Sub-Guardian'
+						}
+					}
+				}
+			];
+
+			const { reviewCriticProductions } = michaelBillingtonJrPerson.body;
+
+			expect(reviewCriticProductions).to.deep.equal(expectedReviewCriticProductions);
 
 		});
 

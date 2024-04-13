@@ -1,7 +1,9 @@
+import { getDuplicateEntities } from '../lib/get-duplicate-entity-info';
 import {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateNameIndices,
-	getDuplicateProductionIdentifierIndices
+	getDuplicateProductionIdentifierIndices,
+	getDuplicateUrlIndices
 } from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
 import Entity from './Entity';
@@ -12,6 +14,7 @@ import {
 	FestivalBase,
 	MaterialBase,
 	ProducerCredit,
+	Review,
 	Season,
 	SubProductionIdentifier,
 	VenueBase
@@ -37,7 +40,8 @@ export default class Production extends Entity {
 			producerCredits,
 			cast,
 			creativeCredits,
-			crewCredits
+			crewCredits,
+			reviews
 		} = props;
 
 		this.subtitle = subtitle?.trim() || '';
@@ -74,6 +78,10 @@ export default class Production extends Entity {
 
 		this.crewCredits = crewCredits
 			? crewCredits.map(crewCredit => new CrewCredit(crewCredit))
+			: [];
+
+		this.reviews = reviews
+			? reviews.map(review => new Review(review))
 			: [];
 
 	}
@@ -144,6 +152,18 @@ export default class Production extends Entity {
 
 		this.crewCredits.forEach((crewCredit, index) =>
 			crewCredit.runInputValidations({ isDuplicate: duplicateCrewCreditIndices.includes(index) })
+		);
+
+		const duplicateReviewUrlIndices = getDuplicateUrlIndices(this.reviews);
+
+		const duplicatePublicationAndCriticEntities =
+			getDuplicateEntities(this.reviews.map(({ publication, critic }) => [publication, critic]).flat());
+
+		this.reviews.forEach((review, index) =>
+			review.runInputValidations({
+				isDuplicate: duplicateReviewUrlIndices.includes(index),
+				duplicatePublicationAndCriticEntities
+			})
 		);
 
 	}
