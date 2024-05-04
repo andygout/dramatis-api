@@ -676,6 +676,26 @@ describe('Prepare As Params module', () => {
 
 		});
 
+		context('object is in array where items require a url', () => {
+
+			it('retains objects only if they have a non-empty url value', () => {
+
+				const instance = {
+					reviews: [
+						{ url: '' },
+						{ url: 'https://www.foo.com' },
+						{ url: '' }
+					]
+				};
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.reviews.length).to.equal(1);
+
+			});
+
+		});
+
 		context('object is in array where items require a uuid', () => {
 
 			it('retains objects only if they have a non-empty uuid value', () => {
@@ -1051,6 +1071,28 @@ describe('Prepare As Params module', () => {
 				assert.notCalled(stubs.cryptoRandomUUID);
 				assert.calledThrice(stubs.neo4jInt);
 				expect(result.production.cast.length).to.equal(3);
+
+			});
+
+		});
+
+		context('object is in array where items require a url', () => {
+
+			it('retains objects only if they have a non-empty url value', () => {
+
+				const instance = {
+					foo: {
+						reviews: [
+							{ url: '' },
+							{ url: 'https://www.foo.com' },
+							{ url: '' }
+						]
+					}
+				};
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.foo.reviews.length).to.equal(1);
 
 			});
 
@@ -1477,6 +1519,30 @@ describe('Prepare As Params module', () => {
 				assert.notCalled(stubs.cryptoRandomUUID);
 				assert.calledThrice(stubs.neo4jInt);
 				expect(result.productions[0].cast.length).to.equal(3);
+
+			});
+
+		});
+
+		context('object is in array where items require a url', () => {
+
+			it('retains objects only if they have a non-empty url value', () => {
+
+				const instance = {
+					subProductions: [
+						{
+							reviews: [
+								{ url: '' },
+								{ url: 'https://www.foo.com' },
+								{ url: '' }
+							]
+						}
+					]
+				};
+				const result = prepareAsParams(instance);
+				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.neo4jInt);
+				expect(result.subProductions[0].reviews.length).to.equal(1);
 
 			});
 

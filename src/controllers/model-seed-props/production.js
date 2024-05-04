@@ -29,5 +29,11 @@ export default {
 				{}
 			]
 		}
+	],
+	reviews: [
+		{
+			publication: {},
+			critic: {}
+		}
 	]
 };

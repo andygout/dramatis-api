@@ -94,7 +94,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -160,7 +161,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -227,7 +229,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -302,7 +305,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -380,7 +384,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -449,7 +454,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -519,7 +525,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -588,7 +595,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -658,7 +666,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -727,7 +736,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -797,7 +807,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -866,7 +877,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -936,7 +948,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1012,7 +1025,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1090,7 +1104,8 @@ describe('Input validation failures: Production instance', () => {
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				reviews: []
 			};
 
 			expect(result).to.deep.equal(expectedResponseBody);
@@ -1182,7 +1197,8 @@ describe('Input validation failures: Production instance', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1259,7 +1275,8 @@ describe('Input validation failures: Production instance', () => {
 					],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1348,7 +1365,8 @@ describe('Input validation failures: Production instance', () => {
 					],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1437,7 +1455,8 @@ describe('Input validation failures: Production instance', () => {
 					],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1527,7 +1546,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1618,7 +1638,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1710,7 +1731,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1877,7 +1899,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -1982,7 +2005,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2085,7 +2109,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2189,7 +2214,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2269,7 +2295,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2350,7 +2377,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2471,7 +2499,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2564,7 +2593,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2658,7 +2688,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2752,7 +2783,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2847,7 +2879,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -2941,7 +2974,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3035,7 +3069,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3185,7 +3220,8 @@ describe('Input validation failures: Production instance', () => {
 						}
 					],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3262,7 +3298,8 @@ describe('Input validation failures: Production instance', () => {
 							entities: []
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3351,7 +3388,8 @@ describe('Input validation failures: Production instance', () => {
 							entities: []
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3440,7 +3478,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3529,7 +3568,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3619,7 +3659,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3710,7 +3751,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3802,7 +3844,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -3969,7 +4012,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4074,7 +4118,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4177,7 +4222,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4281,7 +4327,8 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4358,7 +4405,8 @@ describe('Input validation failures: Production instance', () => {
 							},
 							entities: []
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4447,7 +4495,8 @@ describe('Input validation failures: Production instance', () => {
 							},
 							entities: []
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4536,7 +4585,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4625,7 +4675,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4715,7 +4766,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4806,7 +4858,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -4898,7 +4951,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -5065,7 +5119,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -5170,7 +5225,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -5273,7 +5329,8 @@ describe('Input validation failures: Production instance', () => {
 								}
 							]
 						}
-					]
+					],
+					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
@@ -5376,6 +5433,1633 @@ describe('Input validation failures: Production instance', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: []
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review url value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const urlProtocolAndSubdomain = 'https://www.';
+
+				const urlDomainName = 'a'.repeat((STRING_MAX_LENGTH - urlProtocolAndSubdomain.length) + 1);
+
+				const ABOVE_MAX_LENGTH_URL = urlProtocolAndSubdomain + urlDomainName;
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: ABOVE_MAX_LENGTH_URL,
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: ABOVE_MAX_LENGTH_URL,
+							date: '',
+							errors: {
+								url: [
+									'Value is too long'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review url value is not a valid URL', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const INVALID_URL = 'foobar';
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: INVALID_URL,
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: INVALID_URL,
+							date: '',
+							errors: {
+								url: [
+									'URL must be a valid URL'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('duplicate review url values', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						},
+						{
+							url: 'https://www.bar.com',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar'
+							}
+						},
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'The Telegraph'
+							},
+							critic: {
+								name: 'Dominic Cavendish'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {
+								url: [
+									'This item has been duplicated within the group'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							url: 'https://www.bar.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'The Guardian',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Arifa Akbar',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {
+								url: [
+									'This item has been duplicated within the group'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'The Telegraph',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Dominic Cavendish',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review without url value has named publication', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: '',
+							publication: {
+								name: 'Financial Times'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: '',
+							date: '',
+							errors: {
+								url: [
+									'URL is required if named children exist'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review without url value has named critic', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: '',
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: '',
+							date: '',
+							errors: {
+								url: [
+									'URL is required if named children exist'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review date value with invalid date format', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: 'foobar',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: 'foobar',
+							errors: {
+								date: [
+									'Value must be in date format'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review with url value has publication without name', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: ''
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {
+									name: [
+										'Value is too short'
+									]
+								}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review with url value has critic without name', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: ''
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {
+									name: [
+										'Value is too short'
+									]
+								}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review date is in an invalid date format', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: 'foobar',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: 'foobar',
+							errors: {
+								date: [
+									'Value must be in date format'
+								]
+							},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review publication name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: ABOVE_MAX_LENGTH_STRING
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: ABOVE_MAX_LENGTH_STRING,
+								differentiator: '',
+								errors: {
+									name: [
+										'Value is too long'
+									]
+								}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review publication differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times',
+								differentiator: ABOVE_MAX_LENGTH_STRING
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: ABOVE_MAX_LENGTH_STRING,
+								errors: {
+									differentiator: [
+										'Value is too long'
+									]
+								}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review critic name value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: ABOVE_MAX_LENGTH_STRING,
+								differentiator: '',
+								errors: {
+									name: [
+										'Value is too long'
+									]
+								}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('review critic differentiator value exceeds maximum limit', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming',
+								differentiator: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: ABOVE_MAX_LENGTH_STRING,
+								errors: {
+									differentiator: [
+										'Value is too long'
+									]
+								}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('duplicate review publications exist within different reviews', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						},
+						{
+							url: 'https://www.bar.com',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar'
+							}
+						},
+						{
+							url: 'https://www.baz.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Dominic Cavendish'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {
+									name: [
+										'This item has been duplicated within the group'
+									],
+									differentiator: [
+										'This item has been duplicated within the group'
+									]
+								}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							url: 'https://www.bar.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'The Guardian',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Arifa Akbar',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							url: 'https://www.baz.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {
+									name: [
+										'This item has been duplicated within the group'
+									],
+									differentiator: [
+										'This item has been duplicated within the group'
+									]
+								}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Dominic Cavendish',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					]
+				};
+
+				expect(result).to.deep.equal(expectedResponseBody);
+
+			});
+
+		}
+
+	});
+
+	context('duplicate review critics exist within different reviews', () => {
+
+		for (const method of methods) {
+
+			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const instanceProps = {
+					name: 'Hamlet',
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							publication: {
+								name: 'Financial Times'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						},
+						{
+							url: 'https://www.bar.com',
+							publication: {
+								name: 'The Guardian'
+							},
+							critic: {
+								name: 'Arifa Akbar'
+							}
+						},
+						{
+							url: 'https://www.baz.com',
+							publication: {
+								name: 'The Telegraph'
+							},
+							critic: {
+								name: 'Sarah Hemming'
+							}
+						}
+					]
+				};
+
+				const instance = new Production(instanceProps);
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '',
+					pressDate: '',
+					endDate: '',
+					hasErrors: true,
+					errors: {},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'Financial Times',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {
+									name: [
+										'This item has been duplicated within the group'
+									],
+									differentiator: [
+										'This item has been duplicated within the group'
+									]
+								}
+							}
+						},
+						{
+							url: 'https://www.bar.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'The Guardian',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Arifa Akbar',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							url: 'https://www.baz.com',
+							date: '',
+							errors: {},
+							publication: {
+								uuid: undefined,
+								name: 'The Telegraph',
+								differentiator: '',
+								errors: {}
+							},
+							critic: {
+								uuid: undefined,
+								name: 'Sarah Hemming',
+								differentiator: '',
+								errors: {
+									name: [
+										'This item has been duplicated within the group'
+									],
+									differentiator: [
+										'This item has been duplicated within the group'
+									]
+								}
+							}
 						}
 					]
 				};

@@ -21,6 +21,7 @@ import Person from './Person';
 import ProducerCredit from './ProducerCredit';
 import Production from './Production';
 import ProductionIdentifier from './ProductionIdentifier';
+import Review from './Review';
 import Role from './Role';
 import Season from './Season';
 import SourceMaterial from './SourceMaterial';
@@ -55,6 +56,7 @@ export {
 	ProducerCredit,
 	Production,
 	ProductionIdentifier,
+	Review,
 	Role,
 	Season,
 	SourceMaterial,

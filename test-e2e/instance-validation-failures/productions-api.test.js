@@ -78,7 +78,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -153,7 +154,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -235,7 +237,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -318,7 +321,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -399,7 +403,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -482,7 +487,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -593,7 +599,8 @@ describe('Instance validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);

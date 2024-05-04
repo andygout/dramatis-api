@@ -1036,7 +1036,8 @@ describe('Entity model', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					});
 
 				});
@@ -1178,7 +1179,8 @@ describe('Entity model', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					});
 
 				});

@@ -664,6 +664,52 @@ export default () => `
 				END
 			) AS crewCredits
 
+		OPTIONAL MATCH (publication:Company)
+			<-[publicationRel:HAS_REVIEWER]-(collectionProduction)-[criticRel:HAS_REVIEWER]->(critic:Person)
+			WHERE
+				publicationRel.position IS NULL OR
+				publicationRel.position = criticRel.position
+
+		WITH
+			production,
+			collectionProduction,
+			material,
+			venue,
+			season,
+			festival,
+			producerCredits,
+			cast,
+			creativeCredits,
+			crewCredits,
+			publication,
+			publicationRel,
+			critic
+			ORDER BY publicationRel.date
+
+		WITH
+			production,
+			collectionProduction,
+			material,
+			venue,
+			season,
+			festival,
+			producerCredits,
+			cast,
+			creativeCredits,
+			crewCredits,
+			COLLECT(
+				CASE WHEN publicationRel IS NULL
+					THEN null
+					ELSE {
+						model: 'REVIEW',
+						url: publicationRel.url,
+						date: publicationRel.date,
+						publication: publication { model: 'COMPANY', .uuid, .name },
+						critic: critic { model: 'PERSON', .uuid, .name }
+					}
+				END
+			) AS reviews
+
 		OPTIONAL MATCH (collectionProduction)-[surProductionRel:HAS_SUB_PRODUCTION]->(production)
 
 		OPTIONAL MATCH (collectionProduction)-[surSurProductionRel:HAS_SUB_PRODUCTION]->
@@ -690,7 +736,8 @@ export default () => `
 			producerCredits,
 			cast,
 			creativeCredits,
-			crewCredits
+			crewCredits,
+			reviews
 			ORDER BY subProductionRel.position, subSubProductionRel.position
 
 		WITH production,
@@ -716,7 +763,8 @@ export default () => `
 					producerCredits,
 					cast,
 					creativeCredits,
-					crewCredits
+					crewCredits,
+					reviews
 				}
 			) AS collectionProductions
 
@@ -731,7 +779,8 @@ export default () => `
 					.producerCredits,
 					.cast,
 					.creativeCredits,
-					.crewCredits
+					.crewCredits,
+					.reviews
 				}
 			]) AS subjectProduction,
 			HEAD([
@@ -765,13 +814,15 @@ export default () => `
 								.producerCredits,
 								.cast,
 								.creativeCredits,
-								.crewCredits
+								.crewCredits,
+								.reviews
 							}
 					]),
 					.producerCredits,
 					.cast,
 					.creativeCredits,
-					.crewCredits
+					.crewCredits,
+					.reviews
 				}
 			]) AS surProduction,
 			[
@@ -808,13 +859,15 @@ export default () => `
 								.producerCredits,
 								.cast,
 								.creativeCredits,
-								.crewCredits
+								.crewCredits,
+								.reviews
 							}
 					],
 					.producerCredits,
 					.cast,
 					.creativeCredits,
-					.crewCredits
+					.crewCredits,
+					.reviews
 				}
 			] AS subProductions
 
@@ -835,5 +888,6 @@ export default () => `
 		subjectProduction.producerCredits AS producerCredits,
 		subjectProduction.cast AS cast,
 		subjectProduction.creativeCredits AS creativeCredits,
-		subjectProduction.crewCredits AS crewCredits
+		subjectProduction.crewCredits AS crewCredits,
+		subjectProduction.reviews AS reviews
 `;

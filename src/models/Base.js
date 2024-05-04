@@ -3,7 +3,8 @@ import { MODELS } from '../utils/constants';
 
 const NAME_EXEMPT_MODELS = new Set([
 	MODELS.NOMINATION,
-	MODELS.PRODUCTION_IDENTIFIER
+	MODELS.PRODUCTION_IDENTIFIER,
+	MODELS.REVIEW
 ]);
 
 export default class Base {

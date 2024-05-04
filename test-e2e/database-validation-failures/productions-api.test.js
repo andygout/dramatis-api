@@ -86,7 +86,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -190,7 +191,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -313,7 +315,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -411,7 +414,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -521,7 +525,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -638,7 +643,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -770,7 +776,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);
@@ -902,7 +909,8 @@ describe('Database validation failures: Productions API', () => {
 					producerCredits: [],
 					cast: [],
 					creativeCredits: [],
-					crewCredits: []
+					crewCredits: [],
+					reviews: []
 				};
 
 				expect(response).to.have.status(200);

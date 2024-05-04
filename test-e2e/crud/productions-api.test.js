@@ -122,6 +122,26 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -263,6 +283,26 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -379,6 +419,26 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								errors: {}
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
 					}
 				]
 			};
@@ -501,6 +561,26 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -533,6 +613,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				cast: [],
 				creativeCredits: [],
 				crewCredits: [],
+				reviews: [],
 				awards: []
 			};
 
@@ -584,7 +665,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				reviews: []
 			};
 
 			expect(response).to.have.status(200);
@@ -633,6 +715,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const CREW_ASSISTANTS_LTD_COMPANY_UUID = 'CREW_ASSISTANTS_LTD_1_COMPANY_UUID';
 		const MOLLY_EINCHCOMB_PERSON_UUID = 'MOLLY_EINCHCOMB_1_PERSON_UUID';
 		const MATTHEW_HELLYER_PERSON_UUID = 'MATTHEW_HELLYER_1_PERSON_UUID';
+		const FINANCIAL_TIMES_COMPANY_UUID = 'FINANCIAL_TIMES_1_COMPANY_UUID';
+		const IAN_SHUTTLEWORTH_PERSON_UUID = 'IAN_SHUTTLEWORTH_1_PERSON_UUID';
+		const THE_GUARDIAN_COMPANY_UUID = 'THE_GUARDIAN_1_COMPANY_UUID';
+		const MICHAEL_BILLINGTON_PERSON_UUID = 'MICHAEL_BILLINGTON_1_PERSON_UUID';
+		const THE_TELEGRAPH_COMPANY_UUID = 'THE_TELEGRAPH_1_COMPANY_UUID';
+		const CHARLES_SPENCER_PERSON_UUID = 'CHARLES_SPENCER_1_PERSON_UUID';
 		const THE_TRAGEDY_OF_KING_RICHARD_III_MATERIAL_UUID = 'THE_TRAGEDY_OF_KING_RICHARD_III_1_MATERIAL_UUID';
 		const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_1_VENUE_UUID';
 		const SHAKESPEAREAN_HISTORY_SEASON_UUID = 'SHAKESPEAREAN_HISTORY_SEASON_1_SEASON_UUID';
@@ -662,6 +750,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const DESIGN_ASSISTANTS_LTD_COMPANY_UUID = 'DESIGN_ASSISTANTS_LTD_1_COMPANY_UUID';
 		const COLIN_FALCONER_PERSON_UUID = 'COLIN_FALCONER_1_PERSON_UUID';
 		const ALEX_LOWDE_PERSON_UUID = 'ALEX_LOWDE_1_PERSON_UUID';
+		const SARAH_HEMMING_PERSON_UUID = 'SARAH_HEMMING_1_PERSON_UUID';
+		const DOMINIC_CAVENDISH_PERSON_UUID = 'DOMINIC_CAVENDISH_1_PERSON_UUID';
 
 		before(async () => {
 
@@ -1019,6 +1109,44 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								}
 							]
 						}
+					],
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0',
+							date: '2010-10-09',
+							publication: {
+								name: 'Financial Times',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Ian Shuttleworth',
+								differentiator: '1'
+							}
+						},
+						{
+							url: 'https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear',
+							date: '2010-10-10',
+							publication: {
+								name: 'The Guardian',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Michael Billington',
+								differentiator: '1'
+							}
+						},
+						{
+							url: 'https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html',
+							date: '2010-10-08',
+							publication: {
+								name: 'The Telegraph',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Charles Spencer',
+								differentiator: '1'
+							}
+						}
 					]
 				});
 
@@ -1682,6 +1810,80 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0',
+						date: '2010-10-09',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'Financial Times',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Ian Shuttleworth',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear',
+						date: '2010-10-10',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Guardian',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Michael Billington',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html',
+						date: '2010-10-08',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Telegraph',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Charles Spencer',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -1748,7 +1950,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -1766,7 +1969,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -1784,7 +1988,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					}
 				],
 				producerCredits: [
@@ -2099,6 +2304,53 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 								]
 							}
 						]
+					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html',
+						date: '2010-10-08',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_TELEGRAPH_COMPANY_UUID,
+							name: 'The Telegraph'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: CHARLES_SPENCER_PERSON_UUID,
+							name: 'Charles Spencer'
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0',
+						date: '2010-10-09',
+						publication: {
+							model: 'COMPANY',
+							uuid: FINANCIAL_TIMES_COMPANY_UUID,
+							name: 'Financial Times'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: IAN_SHUTTLEWORTH_PERSON_UUID,
+							name: 'Ian Shuttleworth'
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear',
+						date: '2010-10-10',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_GUARDIAN_COMPANY_UUID,
+							name: 'The Guardian'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_PERSON_UUID,
+							name: 'Michael Billington'
+						}
 					}
 				],
 				awards: []
@@ -2774,6 +3026,80 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0',
+						date: '2010-10-09',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'Financial Times',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Ian Shuttleworth',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear',
+						date: '2010-10-10',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Guardian',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Michael Billington',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html',
+						date: '2010-10-08',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Telegraph',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Charles Spencer',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -3085,6 +3411,44 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0',
+							date: '2010-10-09',
+							publication: {
+								name: 'Financial Times',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Ian Shuttleworth',
+								differentiator: '1'
+							}
+						},
+						{
+							url: 'https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear',
+							date: '2010-10-10',
+							publication: {
+								name: 'The Guardian',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Michael Billington',
+								differentiator: '1'
+							}
+						},
+						{
+							url: 'https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html',
+							date: '2010-10-08',
+							publication: {
+								name: 'The Telegraph',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Charles Spencer',
+								differentiator: '1'
+							}
 						}
 					]
 				});
@@ -3749,6 +4113,80 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0',
+						date: '2010-10-09',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'Financial Times',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Ian Shuttleworth',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear',
+						date: '2010-10-10',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Guardian',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Michael Billington',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html',
+						date: '2010-10-08',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Telegraph',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Charles Spencer',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -4060,6 +4498,44 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 									]
 								}
 							]
+						}
+					],
+					reviews: [
+						{
+							url: 'https://www.ft.com/content/d5cdf386-347a-11e6-bda0-04585c31b153',
+							date: '2016-06-18',
+							publication: {
+								name: 'Financial Times',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Sarah Hemming',
+								differentiator: '1'
+							}
+						},
+						{
+							url: 'https://www.theguardian.com/stage/2016/jun/16/richard-iii-review-ralph-fiennes-almeida-theatre',
+							date: '2016-06-19',
+							publication: {
+								name: 'The Guardian',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Michael Billington',
+								differentiator: '1'
+							}
+						},
+						{
+							url: 'https://www.telegraph.co.uk/theatre/what-to-see/richard-iii-almeida-review-getting-up-close-and-personal-with-ra',
+							date: '2016-06-17',
+							publication: {
+								name: 'The Telegraph',
+								differentiator: '1'
+							},
+							critic: {
+								name: 'Dominic Cavendish',
+								differentiator: '1'
+							}
 						}
 					]
 				});
@@ -4724,6 +5200,80 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.ft.com/content/d5cdf386-347a-11e6-bda0-04585c31b153',
+						date: '2016-06-18',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'Financial Times',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Sarah Hemming',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/stage/2016/jun/16/richard-iii-review-ralph-fiennes-almeida-theatre',
+						date: '2016-06-19',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Guardian',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Michael Billington',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.telegraph.co.uk/theatre/what-to-see/richard-iii-almeida-review-getting-up-close-and-personal-with-ra',
+						date: '2016-06-17',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: 'The Telegraph',
+							differentiator: '1',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: 'Dominic Cavendish',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -4790,7 +5340,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -4808,7 +5359,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					},
 					{
 						model: 'PRODUCTION',
@@ -4826,7 +5378,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						producerCredits: [],
 						cast: [],
 						creativeCredits: [],
-						crewCredits: []
+						crewCredits: [],
+						reviews: []
 					}
 				],
 				producerCredits: [
@@ -5143,6 +5696,53 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						]
 					}
 				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: 'https://www.telegraph.co.uk/theatre/what-to-see/richard-iii-almeida-review-getting-up-close-and-personal-with-ra',
+						date: '2016-06-17',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_TELEGRAPH_COMPANY_UUID,
+							name: 'The Telegraph'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: DOMINIC_CAVENDISH_PERSON_UUID,
+							name: 'Dominic Cavendish'
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.ft.com/content/d5cdf386-347a-11e6-bda0-04585c31b153',
+						date: '2016-06-18',
+						publication: {
+							model: 'COMPANY',
+							uuid: FINANCIAL_TIMES_COMPANY_UUID,
+							name: 'Financial Times'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: SARAH_HEMMING_PERSON_UUID,
+							name: 'Sarah Hemming'
+						}
+					},
+					{
+						model: 'REVIEW',
+						url: 'https://www.theguardian.com/stage/2016/jun/16/richard-iii-review-ralph-fiennes-almeida-theatre',
+						date: '2016-06-19',
+						publication: {
+							model: 'COMPANY',
+							uuid: THE_GUARDIAN_COMPANY_UUID,
+							name: 'The Guardian'
+						},
+						critic: {
+							model: 'PERSON',
+							uuid: MICHAEL_BILLINGTON_PERSON_UUID,
+							name: 'Michael Billington'
+						}
+					}
+				],
 				awards: []
 			};
 
@@ -5264,6 +5864,26 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 							}
 						]
 					}
+				],
+				reviews: [
+					{
+						model: 'REVIEW',
+						url: '',
+						date: '',
+						errors: {},
+						publication: {
+							model: 'COMPANY',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						critic: {
+							model: 'PERSON',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
 				]
 			};
 
@@ -5316,7 +5936,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				producerCredits: [],
 				cast: [],
 				creativeCredits: [],
-				crewCredits: []
+				crewCredits: [],
+				reviews: []
 			};
 
 			expect(response).to.have.status(200);

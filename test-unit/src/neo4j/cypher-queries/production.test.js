@@ -44,12 +44,18 @@ describe('Cypher Queries Production module', () => {
 					producerCredits,
 					cast,
 					creativeCredits,
+					crewCredits,
 					COLLECT(
-						CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
+						CASE WHEN publicationRel IS NULL
 							THEN null
-							ELSE { name: crewCreditName, entities: crewEntities }
+							ELSE {
+								url: publicationRel.url,
+								date: publicationRel.date,
+								publication: publication { .name, .differentiator },
+								critic: critic { .name, .differentiator }
+							}
 						END
-					) + [{ entities: [{}] }] AS crewCredits
+					) + [{}] AS reviews
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
@@ -106,12 +112,18 @@ describe('Cypher Queries Production module', () => {
 					producerCredits,
 					cast,
 					creativeCredits,
+					crewCredits,
 					COLLECT(
-						CASE WHEN crewCreditName IS NULL AND SIZE(crewEntities) = 1
+						CASE WHEN publicationRel IS NULL
 							THEN null
-							ELSE { name: crewCreditName, entities: crewEntities }
+							ELSE {
+								url: publicationRel.url,
+								date: publicationRel.date,
+								publication: publication { .name, .differentiator },
+								critic: critic { .name, .differentiator }
+							}
 						END
-					) + [{ entities: [{}] }] AS crewCredits
+					) + [{}] AS reviews
 			`);
 
 			expect(compactedResult.startsWith(startSegment)).to.be.true;

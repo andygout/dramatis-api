@@ -474,6 +474,48 @@ const getCreateUpdateQuery = action => {
 
 		WITH DISTINCT production
 
+		UNWIND (CASE $reviews WHEN [] THEN [null] ELSE $reviews END) AS reviewParam
+
+			OPTIONAL MATCH (existingCompany:Company { name: reviewParam.publication.name })
+				WHERE
+					(reviewParam.publication.differentiator IS NULL AND existingCompany.differentiator IS NULL) OR
+					reviewParam.publication.differentiator = existingCompany.differentiator
+
+			OPTIONAL MATCH (existingPerson:Person { name: reviewParam.critic.name })
+				WHERE
+					(reviewParam.critic.differentiator IS NULL AND existingPerson.differentiator IS NULL) OR
+					reviewParam.critic.differentiator = existingPerson.differentiator
+
+			FOREACH (item IN CASE WHEN reviewParam IS NULL THEN [] ELSE [1] END |
+				MERGE (publication:Company {
+					uuid: COALESCE(existingCompany.uuid, reviewParam.publication.uuid),
+					name: reviewParam.publication.name
+				})
+					ON CREATE SET publication.differentiator = reviewParam.publication.differentiator
+
+				CREATE (production)-
+					[:HAS_REVIEWER {
+						position: reviewParam.position,
+						criticPersonUuid: COALESCE(existingPerson.uuid, reviewParam.critic.uuid),
+						url: reviewParam.url,
+						date: reviewParam.date
+					}]->(publication)
+
+				MERGE (critic:Person {
+					uuid: COALESCE(existingPerson.uuid, reviewParam.critic.uuid),
+					name: reviewParam.critic.name
+				})
+					ON CREATE SET critic.differentiator = reviewParam.critic.differentiator
+
+				CREATE (production)-
+					[:HAS_REVIEWER {
+						position: reviewParam.position,
+						publicationCompanyUuid: COALESCE(existingCompany.uuid, reviewParam.publication.uuid)
+					}]->(critic)
+			)
+
+		WITH DISTINCT production
+
 		${getEditQuery()}
 	`;
 
