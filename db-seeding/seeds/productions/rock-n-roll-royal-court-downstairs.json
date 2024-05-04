@@ -179,5 +179,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/jun/15/theatre",
+			"date": "2006-06-15",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-rock-n-roll-royal-court-london-6098178.html",
+			"date": "2006-06-15",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/rock-n-roll-nt5sh3rx2bg",
+			"date": "2006-06-15",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3653139/More-than-rock-n-roll-and-I-love-it.html",
+			"date": "2006-06-15",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/3653236/Play-revolution-for-me.html",
+			"date": "2006-06-18",
+			"publication": {
+				"name": "The Sunday Telegraph"
+			},
+			"critic": {
+				"name": "Rebecca Tyrrel"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/rock-n-roll-royal-court-downstairs-london-a-voyage-round-my-father-donmar-london-fool-for-love-apollo-shaftesbury-london-8704705.html",
+			"date": "2006-06-18",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/jun/18/theatre1",
+			"date": "2006-06-18",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

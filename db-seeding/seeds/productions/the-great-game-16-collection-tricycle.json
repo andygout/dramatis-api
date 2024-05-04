@@ -148,5 +148,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/apr/25/tricycle-theatre-great-game-afghanistan",
+			"date": "2009-04-25",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/apr/26/great-game-tricycle-season",
+			"date": "2009-04-26",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-great-game-afghanistan-tricycle-theatre-london-1675070.html",
+			"date": "2009-04-28",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/c883f546-333c-11de-8f1b-00144feabdc0",
+			"date": "2009-04-27",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/98598/The-Great-Game",
+			"date": "2009-05-03",
+			"publication": {
+				"name": "Sunday Express"
+			},
+			"critic": {
+				"name": "Mark Shenton"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/rookery-nook-menier-chocolate-factory-londonwuthering-heights-lyric-hammersmith-londonthe-great-game-afghanistan-tricycle-london-1677827.html",
+			"date": "2009-05-03",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

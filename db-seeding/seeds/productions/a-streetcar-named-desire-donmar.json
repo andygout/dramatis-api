@@ -155,5 +155,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/jul/29/review-streetcar-named-desire-donmar",
+			"date": "2009-07-29",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-streetcar-named-desire-donmar-warehouse-london-1764540.html",
+			"date": "2009-07-30",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/8929d754-7d28-11de-b8ee-00144feabdc0",
+			"date": "2009-07-30",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/117342/A-Streetcar-Named-Desire-Donmar-Warehouse-London",
+			"date": "2009-07-31",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/aug/02/streetcar-named-desire-review",
+			"date": "2009-08-02",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Kate Kellaway"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-streetcar-named-desire-donmar-warehouse-londonghosts-arcola-londonsixteen-kensal-house-estate-london-1765989.html",
+			"date": "2009-08-02",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/a-streetcar-named-desire-at-the-donmar-wc2-sr5bv2zlhf5",
+			"date": "2009-08-02",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

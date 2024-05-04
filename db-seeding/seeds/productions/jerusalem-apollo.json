@@ -257,5 +257,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2010/feb/10/jerusalem-review",
+			"date": "2010-02-10",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/london-shows/7205537/Jerusalem-at-the-Apollo-Theatre-review.html",
+			"date": "2010-02-10",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/jerusalem-apollo-theatre-london-1895571.html",
+			"date": "2010-02-11",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/157712/Jerusalem-Apollo-Theatre-London",
+			"date": "2010-02-12",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Julie Carpenter"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/86b7168a-17fb-11df-91d2-00144feab49a",
+			"date": "2010-02-14",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

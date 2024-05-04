@@ -120,5 +120,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/theatre/what-to-see/true-west-review-vaudeville-theatre-kit-harington-proves-mettle/",
+			"date": "2018-12-04",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2018/dec/04/true-west-review-harington-and-flynn-star-as-shepards-warring-siblings",
+			"date": "2018-12-04",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/true-west-review-kit-harington-and-johnny-flynn-electrify-in-tale-of-brothers-grim-a4008696.html",
+			"date": "2018-12-05",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/true-west-vaudeville-theatre-london-review-kit-harington-johnny-flynn-game-of-thrones-a8668346.html",
+			"date": "2018-12-05",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/e7a39be0-f8a6-11e8-af46-2022a0b02a6c",
+			"date": "2018-12-06",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/home/event/article-6467009/True-West-review-Powerful-performances-Kit-Harington-Johnny-Flynn.html",
+			"date": "2018-12-08",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Robert Gore-Langton"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-review-true-west-vaudeville-johnny-flynn-and-kit-harington-star-in-sam-shepards-play-n9662vzq8",
+			"date": "2018-12-09",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

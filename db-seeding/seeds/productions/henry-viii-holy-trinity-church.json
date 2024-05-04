@@ -206,5 +206,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/aug/26/theatre",
+			"date": "2006-08-26",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/henry-viii-7pqsfh2bh2p",
+			"date": "2006-08-26",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/0db16ee8-36ae-11db-89d6-0000779e2340",
+			"date": "2006-08-08",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/frost-nixon-donmar-london-henry-viii-holy-trinity-church-stratford-look-back-in-anger-theatre-royal-bath-413573.html",
+			"date": "2006-08-27",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-viii-holy-trinity-church-stratforduponavon-413962.html",
+			"date": "2006-08-30",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.spectator.co.uk/article/wives-and-wooings",
+			"date": "2006-09-16",
+			"publication": {
+				"name": "The Spectator"
+			},
+			"critic": {
+				"name": "Patrick Carnegy"
+			}
+		}
 	]
 }

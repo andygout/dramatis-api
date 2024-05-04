@@ -153,5 +153,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/nov/12/rsc.theatre",
+			"date": "2006-11-12",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Kate Kellaway"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-indian-boy-pf69zspvllc",
+			"date": "2006-11-13",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Sam Marlowe"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/e02f0610-73f7-11db-8dd7-0000779e2340",
+			"date": "2006-11-14",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

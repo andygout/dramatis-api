@@ -505,5 +505,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2000/nov/15/theatre.artsfeatures",
+			"date": "2000-11-15",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		}
 	]
 }

@@ -160,5 +160,58 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/10917888/Midsummer-Mischief-The-Other-Place-at-the-Courtyard-Theatre-Stratford-upon-Avon-review.html",
+			"date": "2014-06-22",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/rsc-midsummer-mischief-festival-the-other-place-stratforduponavon-theatre-review-9555817.html",
+			"date": "2014-06-23",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Fiona Mountford"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/midsummer-mischief-at-the-other-place-stratford-upon-avon-g2s52zwdgng",
+			"date": "2014-06-24",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2014/jun/23/midsummer-mischief-royal-shakespeare-company-stratford-review",
+			"date": "2014-06-23",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/0667f616-fabe-11e3-8993-00144feab7de",
+			"date": "2014-06-25",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
+
 }

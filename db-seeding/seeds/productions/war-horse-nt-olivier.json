@@ -445,5 +445,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3668613/War-Horse-Horse-play-is-no-puppet-show.html",
+			"date": "2007-10-18",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/oct/18/theatre.michaelmorpurgo",
+			"date": "2007-10-18",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-war-horse-olivier-national-theatre-london-397181.html",
+			"date": "2007-10-18",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/aacd8668-7de7-11dc-9f47-0000779fd2ac",
+			"date": "2007-10-19",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-488664/War-Horse-galloping-winner-pulls-heart-strings.html",
+			"date": "2007-10-19",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/oct/21/theatre.michaelmorpurgo",
+			"date": "2007-10-21",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

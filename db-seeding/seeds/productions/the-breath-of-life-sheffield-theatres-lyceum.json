@@ -81,5 +81,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8341120/The-Breath-of-Life-Sheffield-Lyceum-review.html",
+			"date": "2011-02-22",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-breath-of-life-at-the-lyceum-sheffield-9m75b9rbc0l",
+			"date": "2011-02-23",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/231057/Theatre-review-Breath-of-life-The-Lyceum-Sheffield",
+			"date": "2011-02-25",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Neil Norman"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/feb/24/the-breath-of-life-review",
+			"date": "2011-02-24",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		}
 	]
 }

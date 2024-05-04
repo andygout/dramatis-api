@@ -178,5 +178,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/feb/22/theatre1",
+			"date": "2007-02-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/b4d3d9cc-c2a4-11db-9e1c-000b5df10621",
+			"date": "2007-02-22",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/3663357/Haunting-portrait-of-a-mysterious-life.html",
+			"date": "2007-02-23",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		}
 	]
 }

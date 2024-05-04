@@ -138,5 +138,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/apr/28/theatre.rsc",
+			"date": "2006-04-28",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/othello-qzmpm87c8cd",
+			"date": "2006-05-01",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Sam Marlowe"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/51c257d0-dac6-11da-aa09-0000779e2340",
+			"date": "2006-04-03",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		}
 	]
 }

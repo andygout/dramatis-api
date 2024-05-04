@@ -102,5 +102,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/after-miss-julie-young-vic-review-7581384.html",
+			"date": "2012-03-22",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Fiona Mountford"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/mar/22/after-miss-julie-review",
+			"date": "2012-03-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9160273/After-Miss-Julie-Young-Vic-review.html",
+			"date": "2012-03-22",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9171625/After-Miss-Julie-Young-Vic-Seven-magazine-review.html",
+			"date": "2012-03-25",
+			"publication": {
+				"name": "The Sunday Telegraph"
+			},
+			"critic": {
+				"name": "Tim Walker"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/7c27d436-74d1-11e1-ab8b-00144feab49a",
+			"date": "2012-03-25",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		}
 	]
 }

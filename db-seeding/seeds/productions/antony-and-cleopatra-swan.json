@@ -320,5 +320,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3651709/Middle-aged-passion-goes-to-the-heart.html",
+			"date": "2006-04-20",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/apr/20/theatre.rsc",
+			"date": "2006-04-20",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/antony-and-cleopatra-h2xhcktr6qq",
+			"date": "2006-04-21",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/apr/23/theatre",
+			"date": "2006-04-23",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-world-will-love-these-lovers-wf2f2xgbspp",
+			"date": "2006-04-23",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/5ed2020a-d3b3-11da-b2f3-0000779e2340",
+			"date": "2006-04-24",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/twelfth-night-lowry-salfordantony-and-cleopatra-swan-stratford-much-ado-about-nothing-swan-stratford-480115.html",
+			"date": "2006-05-28",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

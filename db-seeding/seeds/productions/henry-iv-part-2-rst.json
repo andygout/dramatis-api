@@ -297,5 +297,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/henry-iv-parts-i-and-ii-royal-shakespeare-theatre-stratforduponavon-theatre-review-9267204.html",
+			"date": "2014-04-17",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/10772492/Henry-IV-Parts-I-and-II-RSC-review-full-blooded-life.html",
+			"date": "2014-04-17",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/article-2607432/QUENTIN-LETTS-Huzzah-Prince-Hal-Falstaff-needs-bit-bottle.html",
+			"date": "2014-04-18",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2014/apr/17/henry-iv-parts-i-and-ii-review-antony-sher-falstaff",
+			"date": "2014-04-17",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/henry-iv-parts-i-and-ii-royal-shakespeare-theatre-stratford-upon-avon-tfpvsghksrv",
+			"date": "2014-04-18",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-iv-parts-i-and-ii-royal-shakespeare-theatre-stratforduponavon-review-9269377.html",
+			"date": "2014-04-18",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2014/apr/20/roaring-girl-henry-iv-parts-i-ii-rsc-review-stratford",
+			"date": "2014-04-20",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/0815ef7e-c614-11e3-ba0e-00144feabdc0",
+			"date": "2014-04-20",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

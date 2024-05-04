@@ -539,5 +539,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/dec/10/theatre.pantoseason",
+			"date": "2007-12-10",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/nicholas-nickleby-gielgud-theatre-london-764284.html",
+			"date": "2007-12-11",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Rhoda Koenig"
+			}
+		}
 	]
 }

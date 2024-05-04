@@ -212,5 +212,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/16/henry-vi-parts-1-2-3-review",
+			"date": "2012-05-16",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Matt Trueman"
+			}
+		}
 	]
 }

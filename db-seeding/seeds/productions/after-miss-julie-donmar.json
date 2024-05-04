@@ -70,5 +70,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2003/nov/26/theatre",
+			"date": "2003-11-26",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/after-miss-julie-donmar-warehouse-earlham-st-wc2-5q5jw93hc9s",
+			"date": "2003-11-27",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/after-miss-julie-donmar-warehouse-london-80159.html",
+			"date": "2003-11-27",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3607352/Night-of-guilty-pleasures.html",
+			"date": "2003-11-27",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/mourning-becomes-electra-nt-lyttelton-londonafter-miss-julie-donmar-warehouse-londonthe-god-botherers-bush-london-80767.html",
+			"date": "2003-11-30",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

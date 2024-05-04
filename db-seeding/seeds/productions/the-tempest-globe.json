@@ -155,5 +155,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/08/the-tempest-review",
+			"date": "2012-05-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Imogen Tilden"
+			}
+		}
 	]
 }

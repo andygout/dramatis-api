@@ -113,5 +113,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1076034/No-Mans-Land-Even-great-Gambon-save-Pinter-stinker.html",
+			"date": "2008-10-09",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/3561818/Review-No-Mans-Land.html",
+			"date": "2008-10-08",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/oct/08/pinter",
+			"date": "2008-10-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-norman-conquests-at-the-old-vic-no-mans-land-at-duke-of-yorks-the-sunday-times-reviews-vq6jl8wmnsj",
+			"date": "2008-10-12",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/oct/12/theatre",
+			"date": "2008-10-12",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

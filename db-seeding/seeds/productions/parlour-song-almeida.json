@@ -122,5 +122,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/mar/28/theatre-review-parlour-song",
+			"date": "2009-03-28",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/mar/29/priscilla-queen-of-the-desert",
+			"date": "2009-03-29",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/8d4d1e70-1af1-11de-8aa3-0000779fd2ac",
+			"date": "2009-03-29",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/parlour-song-almeida-theatre-london-1656856.html",
+			"date": "2009-03-30",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/92330/Parlour-Song-Comedy-reveals-dark-side-of-suburbia",
+			"date": "2009-03-31",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		}
 	]
 }

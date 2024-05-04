@@ -143,5 +143,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/nov/27/play-the-priory-review",
+			"date": "2009-11-27",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/nation-national-theatre-londonthe-line-arcola-londonthe-priory-royal-court-london-1830348.html",
+			"date": "2009-11-29",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://ft.com/content/924e70fe-db76-11de-9424-00144feabdc0",
+			"date": "2009-11-29",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-priory-royal-court-london-1831619.html",
+			"date": "2009-12-01",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		}
 	]
 }

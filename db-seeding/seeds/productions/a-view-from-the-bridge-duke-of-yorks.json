@@ -211,5 +211,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/a-view-from-the-bridge-at-the-duke-of-yorks-wc2-8mk5dlgr9t2",
+			"date": "2009-02-06",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/feb/06/view-from-bridge-review",
+			"date": "2009-02-06",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/culture/2009/feb/08/view-bridge-shun-kin-sloane",
+			"date": "2009-02-08",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/c7d44986-f465-11dd-8e76-0000779fd2ac",
+			"date": "2009-02-08",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-view-from-the-bridge-duke-of-york-s-london-1605273.html",
+			"date": "2009-02-10",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-view-from-the-bridge-duke-of-york-8217-s-london-1628647.html",
+			"date": "2009-02-22",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

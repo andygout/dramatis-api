@@ -98,5 +98,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2010/nov/14/the-dark-philosophers-review",
+			"date": "2010-11-14",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-dark-philosophers-at-the-riverfront-newport-fhknz6tflpk",
+			"date": "2010-11-16",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Donald Hutera"
+			}
+		}
 	]
 }

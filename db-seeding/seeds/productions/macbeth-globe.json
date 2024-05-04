@@ -124,5 +124,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/09/macbeth-shakespeares-globe-review",
+			"date": "2012-05-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/b4c19792-9a96-11e1-83bf-00144feabdc0",
+			"date": "2012-05-10",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Griselda Murray Brown"
+			}
+		}
 	]
 }

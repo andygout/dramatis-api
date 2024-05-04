@@ -211,5 +211,127 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/three-sisters-young-vic-review-8139513.html",
+			"date": "2012-09-14",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/three-sisters-at-the-young-vic-rtkcbwlb8tr",
+			"date": "2012-09-14",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/three-sisters-young-vic-london-8139210.html",
+			"date": "2012-09-14",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/sep/14/three-sisters-review",
+			"date": "2012-09-14",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9547946/Three-Sisters-Young-Vic-review.html",
+			"date": "2012-09-16",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/afd9b7c6-fe70-11e1-8028-00144feabdc0",
+			"date": "2012-09-17",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-2206359/The-Chekhov-rulebook-ripped-apart-Three-Sisters.html",
+			"date": "2012-09-20",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Patrick Marmion"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9570865/Three-Sisters-at-Young-Vic-Seven-magazine-review.html",
+			"date": "2012-09-23",
+			"publication": {
+				"name": "The Sunday Telegraph"
+			},
+			"critic": {
+				"name": "Tim Auld"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/sep/23/love-information-three-sisters-steptoe",
+			"date": "2012-09-23",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/also-showing-sept-23-kxq8pz8mln0",
+			"date": "2012-09-23",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "David Jays"
+			}
+		},
+		{
+			"url": "https://www.thejc.com/life-and-culture/theatre/review-three-sisters-its-a-russian-revolution-as-chekhov-is-modernised-pim6p7w8",
+			"date": "2012-09-27",
+			"publication": {
+				"name": "The Jewish Chronicle"
+			},
+			"critic": {
+				"name": "John Nathan"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/349045/Theatre-review-The-Judas-Kiss-Three-Sisters-Jesus-Christ-Superstar-and-Let-It-Be",
+			"date": "2012-09-30",
+			"publication": {
+				"name": "Sunday Express"
+			},
+			"critic": {
+				"name": "Mark Shenton"
+			}
+		}
 	]
 }

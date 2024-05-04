@@ -159,5 +159,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/apr/27/theatre2",
+			"date": "2007-04-27",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3664755/Rafta-Rafta-at-the-National-Theatre-review.html",
+			"date": "2007-04-27",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/5342feea-f733-11db-86b0-000b5df10621",
+			"date": "2007-04-30",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		}
 	]
 }

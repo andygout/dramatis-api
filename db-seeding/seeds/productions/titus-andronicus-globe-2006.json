@@ -295,5 +295,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-tutus-andronicus-shakespeare-s-globe-london-480477.html",
+			"date": "2006-05-31",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/049e5524-f0c1-11da-9338-0000779e2340",
+			"date": "2006-05-31",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/jun/01/theatre2",
+			"date": "2006-06-01",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/titus-andronicus-0pvhbx7kg75",
+			"date": "2006-06-01",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Sam Marlowe"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3652794/The-horror-endures.html",
+			"date": "2006-06-01",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/titus-andronicus-globe-london-sit-and-shiver-new-end-london-hear-and-now-gate-london-8684776.html",
+			"date": "2006-06-04",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/jun/04/theatre",
+			"date": "2006-06-04",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

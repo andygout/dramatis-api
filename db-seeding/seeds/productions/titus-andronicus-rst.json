@@ -511,5 +511,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/titus-andronicus-royal-shakespeare-theatre-stratforduponavon-6097503.html",
+			"date": "2006-06-22",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/jun/22/theatre.rsc",
+			"date": "2006-06-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3653287/The-good-taste-gorefest.html",
+			"date": "2006-06-22",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/titus-andronicus-rst-stratfordjeffrey-bernard-is-unwell-garrick-londonwoman-and-scarecrow-royal-court-upstairs-london-6097234.html",
+			"date": "2006-06-25",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/3653392/Tongueless-in-Stratford.html",
+			"date": "2006-06-25",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Rebecca Tyrrel"
+			}
+		}
 	]
 }

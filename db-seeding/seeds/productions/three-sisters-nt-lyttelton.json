@@ -468,5 +468,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/theatre/what-to-see/three-sisters-national-theatre-review-proof-inua-ellams-one/",
+			"date": "2019-12-11",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2019/dec/11/three-sisters-review-inua-ellams-chekhov-lyttelton-theatre-london",
+			"date": "2011-12-11",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/three-sisters-review-chekhov-finds-compelling-home-in-nigeria-a4310426.html",
+			"date": "2011-12-11",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Nick Curtis"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/9c4515ea-1cde-11ea-97df-cc63de1d73f4",
+			"date": "2011-12-12",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-review-three-sisters-lyttelton-theatre-national-cyrano-de-bergerac-playhouse-8blm6bf37",
+			"date": "2011-12-15",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		}
 	]
 }

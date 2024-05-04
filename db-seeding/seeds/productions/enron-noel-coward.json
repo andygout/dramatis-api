@@ -340,5 +340,57 @@
 				}
 			]
 		}
+	]	,
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/7080788/Enron-at-the-Noel-Coward-Theatre-review.html",
+			"date": "2010-01-27",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/enron-at-the-noel-coward-theatre-wc2-0c60jxz22r2",
+			"date": "2010-01-27",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/jan/27/enron-noel-coward-london",
+			"date": "2010-01-27",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/a5b74e7c-0b69-11df-8232-00144feabdc0",
+			"date": "2010-01-27",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/jan/31/three-sisters-trilogy-yusuf-enron",
+			"date": "2010-01-31",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

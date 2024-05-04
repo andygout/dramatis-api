@@ -114,5 +114,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/88304a32-a597-11e1-a77b-00144feabdc0",
+			"date": "2012-05-24",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Griselda Murray Brown"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/jun/01/alls-well-that-ends-well-review",
+			"date": "2012-06-01",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Andrew Dickson"
+			}
+		}
 	]
 }

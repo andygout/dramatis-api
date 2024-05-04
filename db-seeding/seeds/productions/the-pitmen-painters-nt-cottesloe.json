@@ -127,5 +127,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/may/22/theatre",
+			"date": "2008-05-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-the-pitmen-painters-cottesloe-national-theatre-london-832252.html",
+			"date": "2008-05-22",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1021309/The-Pitmen-Painters-A-minor-triumph-follow-Billy-Elliot.html",
+			"date": "2008-05-11",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/may/25/theatre",
+			"date": "2008-05-25",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/marguerite-theatre-royal-haymarket-londonthe-long-road-soho-theatre-londonthe-pitman-painters-cottesloe-london-833849.html",
+			"date": "2008-05-25",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-pitmen-painters-0hrjwkjg3lz",
+			"date": "2008-06-01",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Emma Smith"
+			}
+		}
 	]
 }

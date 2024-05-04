@@ -172,5 +172,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/30/the-winters-tale-review",
+			"date": "2012-05-20",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Imogen Tilden"
+			}
+		}
 	]
 }

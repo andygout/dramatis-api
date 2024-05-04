@@ -17,5 +17,57 @@
 		{
 			"uuid": "00d11b13-e1c8-47ae-a141-ba7c9ebf572b"
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/his-dark-materials-national-theatre-olivier-london-74757.html",
+			"date": "2004-01-04",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Madeleine North"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3609641/Working-with-the-wrong-material.html",
+			"date": "2004-01-05",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2004/jan/05/theatre.fiction",
+			"date": "2004-01-05",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/his-dark-materials-olivier-theatre-london-75801.html",
+			"date": "2004-01-05",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/voices/columnists/thomas-sutcliffe/an-epic-battle-of-theatre-vs-cinema-72635.html",
+			"date": "2004-01-09",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Thomas Sutcliffe"
+			}
+		}
 	]
 }

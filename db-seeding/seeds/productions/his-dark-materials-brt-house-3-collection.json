@@ -17,5 +17,47 @@
 		{
 			"uuid": "4ab87bf3-b49b-497a-8bb1-a1d07d024580"
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/mar/28/theatre-review-his-dark-materials",
+			"date": "2009-03-28",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/his-dark-materials-at-the-birmingham-repertory-d9vjc5zmkxr",
+			"date": "2009-03-28",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/his-dark-materials-birmingham-rep-birmingham-1666088.html",
+			"date": "2009-04-09",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Lynne Walker"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/his-dark-materials-at-the-birmingham-repertory-theatre-7b3nvqnwbsc",
+			"date": "2009-04-12",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "David Jays"
+			}
+		}
 	]
 }

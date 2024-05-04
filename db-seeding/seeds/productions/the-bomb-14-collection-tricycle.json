@@ -271,5 +271,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/feb/21/the-bomb-review",
+			"date": "2012-02-21",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9096699/The-Bomb-Tricycle-Theatre-review.html",
+			"date": "2012-02-21",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/cb6fbd26-5c92-11e1-911f-00144feabdc0",
+			"date": "2012-02-22",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/article-2105544/The-Bomb-theatre-review-Political-theatre-thats-going-big-bang.html",
+			"date": "2012-02-23",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Patrick Marmion"
+			}
+		}
 	]
 }

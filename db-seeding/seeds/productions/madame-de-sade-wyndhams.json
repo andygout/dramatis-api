@@ -137,5 +137,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/madame-de-sade-wyndham-s-theatre-london-1651602.html",
+			"date": "2009-03-23",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/mar/19/madame-de-sade-grandage",
+			"date": "2009-03-19",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/90197/Madame-De-Sade",
+			"date": "2009-03-20",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/mar/21/theatre",
+			"date": "2009-03-22",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/madame-de-sade-wyndhams-londonkafka-s-monkey-young-vic-londonthe-last-cigarette-minerva-chichester-1651029.html",
+			"date": "2009-03-22",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

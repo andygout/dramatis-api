@@ -173,5 +173,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/the-merchant-of-venice-shakespeares-globe-review-7799799.html",
+			"date": "2012-05-29",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Fiona Mountford"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/29/merchant-of-venice-review",
+			"date": "2012-05-29",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-drama-s-outside-protests-target-israeli-take-on-shakespeare-7799885.html",
+			"date": "2012-05-12",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.thejc.com/life-and-culture/theatre/review-habimas-bravura-merchant-of-venice-yfvgzklo",
+			"date": "2012-06-01",
+			"publication": {
+				"name": "The Jewish Chronicle"
+			},
+			"critic": {
+				"name": "John Nathan"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/cba68df6-ab11-11e1-b675-00144feabdc0",
+			"date": "2012-06-02",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Eleanor Turney"
+			}
+		}
 	]
 }

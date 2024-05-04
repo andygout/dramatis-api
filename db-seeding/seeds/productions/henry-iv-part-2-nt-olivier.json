@@ -451,5 +451,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2005/may/05/theatre1",
+			"date": "2005-05-05",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-iv-parts-1-amp-2-national-theatre-olivier-london-495277.html",
+			"date": "2005-05-06",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/henry-iv-parts-1-and-2-hx8pfbbrp3v",
+			"date": "2005-05-06",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2005/may/08/theatre1",
+			"date": "2005-05-08",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-iv-parts-1-amp-2-nt-olivier-london-the-importance-of-being-earnest-old-vic-bristol-if-destroyed-true-menier-chocolate-factory-london-490093.html",
+			"date": "2005-05-08",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

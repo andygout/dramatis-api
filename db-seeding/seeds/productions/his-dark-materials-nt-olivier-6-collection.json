@@ -17,5 +17,37 @@
 		{
 			"uuid": "44d2dae3-94a2-4332-9ec4-1287bc65c524"
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/his-dark-materials-national-theatre-london-686118.html",
+			"date": "2004-12-14",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Robert Hanks"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2004/dec/10/theatre",
+			"date": "2004-12-10",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/3633079/Triumphant-transformation.html",
+			"date": "2004-12-10",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		}
 	]
 }

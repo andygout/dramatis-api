@@ -290,5 +290,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/culture/2009/jan/28/mrs-affleck-cottesloe-review-ibsen",
+			"date": "2009-01-28",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/82580/Mrs-Affleck",
+			"date": "2009-01-30",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Simon Edge"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/dbe7cdea-f13f-11dd-8790-0000779fd2ac",
+			"date": "2009-02-02",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		}
 	]
 }

@@ -145,5 +145,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/31/henry-viii-review-globe-to-globe",
+			"date": "2012-05-31",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Laura Barnett"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/cba68df6-ab11-11e1-b675-00144feabdc0",
+			"date": "2012-06-02",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Raphael Abraham"
+			}
+		}
 	]
 }

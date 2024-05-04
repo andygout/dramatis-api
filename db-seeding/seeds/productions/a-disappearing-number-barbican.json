@@ -112,5 +112,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/sep/12/theatre2",
+			"date": "2007-09-12",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3667884/A-Disappearing-Number-Maths-emotion-a-hit.html",
+			"date": "2007-09-13",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/5fabfa80-626b-11dc-bdf6-0000779fd2ac",
+			"date": "2007-09-14",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/sep/16/theatre1",
+			"date": "2007-09-16",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-disappearing-number-barbican-londonblack-eyed-susan-theatre-royal-bury-st-edmundsawake-and-sing-almeida-london-464341.html",
+			"date": "2007-09-16",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

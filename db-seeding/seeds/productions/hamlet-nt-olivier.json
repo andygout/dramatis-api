@@ -419,5 +419,117 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1318713/Hamlets-hoodie-want-hug-.html",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8050155/Hamlet-National-Theatre-review.html",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/culture/2010/oct/08/hamlet-review-rory-kinnear",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-hamlet-national-theatre-london-2100704.html",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "David Lister"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/204319/Review-Hamlet-National-Theatre",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Neil Norman"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/rory-kinnear-good-show-sweet-prince-6541358.html",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/1f8d723c-d2fa-11df-9ae9-00144feabdc0",
+			"date": "2010-10-08",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/204701/Reviews-Hamlet-Or-You-Could-Kiss-Me-Beautiful-Burnout-Enlightenment-and-Lower-Ninth",
+			"date": "2010-10-10",
+			"publication": {
+				"name": "Sunday Express"
+			},
+			"critic": {
+				"name": "Mark Shenton"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/hamlet-national-theatre-mqg7dfsh2vb",
+			"date": "2010-10-10",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/oct/10/hamlet-a-number-enlightenment-faust-review",
+			"date": "2010-10-10",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/hamlet-nt-olivier-londonhamlet-crucible-sheffieldenlightenment-hampstead-theatre-london-2102427.html",
+			"date": "2010-10-10",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

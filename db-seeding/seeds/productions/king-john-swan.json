@@ -374,5 +374,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/aug/04/theatre.rsc",
+			"date": "2006-08-04",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/894cdb78-256a-11db-a12e-0000779e2340",
+			"date": "2006-08-06",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/king-john-swan-theatre-stratforduponavon-411044.html",
+			"date": "2006-07-07",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Rhoda Koenig"
+			}
+		}
 	]
 }

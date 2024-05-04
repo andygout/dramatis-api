@@ -17,5 +17,87 @@
 		{
 			"uuid": "4ea42855-2708-4ca2-93b8-5c229e617224"
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/theatre/what-to-see/angels-america-national-theatre-reviewdazzling-quirky-often/",
+			"date": "2017-05-04",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/angels-in-america-review-andrew-garfield-makes-a-profound-impression-in-a-true-theatrical-epic-a3680726.html",
+			"date": "2017-05-05",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/6e8de008-3188-11e7-9555-23ef563ecf9a",
+			"date": "2017-05-05",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2017/may/05/angels-in-america-review-andrew-garfield-nathan-lane-tony-kushner",
+			"date": "2017-05-05",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2017/may/07/angels-in-america-review-nathan-lane-andrew-garfield-denise-gough",
+			"date": "2017-05-07",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/angels-in-america-review-national-theatre-marianne-elliott-tony-kushner-andrew-garfield-aids-reagan-new-york-a7725596.html",
+			"date": "2017-05-11",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/home/event/article-4499132/Angels-America-review-half-marathon-plenty.html",
+			"date": "2017-05-13",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Georgina Brown"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-review-david-jays-angels-in-america-226tbbgns",
+			"date": "2017-05-14",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "David Jays"
+			}
+		}
 	]
 }

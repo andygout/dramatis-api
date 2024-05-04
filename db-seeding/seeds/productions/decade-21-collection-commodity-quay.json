@@ -219,5 +219,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-2035290/Decade-theatre-review-A-towering-9-11-tribute.html",
+			"date": "2011-09-08",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/sep/09/decade-review",
+			"date": "2011-09-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/270205/First-Night-Review-Decade-Commodity-Quay",
+			"date": "2011-09-09",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Neil Norman"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/279fd1fc-dad0-11e0-a58b-00144feabdc0",
+			"date": "2011-09-11",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

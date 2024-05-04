@@ -101,5 +101,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/nicholas-nickleby-festival-theatre-chichestertonight-at-8-30-minerva-chichesterthe-last-five-years-menier-chocolate-factory-london-409919.html",
+			"date": "2006-07-30",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/80159cec-20ac-11db-8b3e-0000779e2340",
+			"date": "2006-07-31",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Antony Thorncroft"
+			}
+		}
 	]
 }

@@ -275,5 +275,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/jul/12/theatre2",
+			"date": "2007-07-12",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/saint-joan-3svglxm80vm",
+			"date": "2007-07-12",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3666497/St-Joan-is-topical-fresh-and-deeply-moving-are-you-Shaw.html",
+			"date": "2007-07-12",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/13242/Saint-Joan",
+			"date": "2007-07-13",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Julie Carpenter"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/cf33df4c-30e5-11dc-9a81-0000779fd2ac",
+			"date": "2007-07-13",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/jul/15/theatre1",
+			"date": "2007-07-15",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

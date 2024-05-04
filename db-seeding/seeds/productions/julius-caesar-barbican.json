@@ -381,5 +381,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3640790/Brutus-the-right-on-guy.html",
+			"date": "2005-04-21",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/julius-caesar-s3kzh8h6mmt",
+			"date": "2005-04-21",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2005/apr/21/theatre",
+			"date": "2005-04-21",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/julius-caesar-barbican-london-someone-who-ll-watch-over-me-new-ambassadors-london-the-far-pavilions-shaftesbury-london-vanishing-points-german-gym-london-518101.html",
+			"date": "2005-04-24",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

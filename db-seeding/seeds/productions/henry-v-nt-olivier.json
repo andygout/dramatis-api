@@ -465,5 +465,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2003/may/14/theatre.artsfeatures2",
+			"date": "2003-05-14",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-v-olivier-national-theatre-london-104805.html",
+			"date": "2003-05-15",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3594575/A-tale-for-our-time-summons-the-blood.html",
+			"date": "2003-05-15",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-long-live-the-king-x55762878qn",
+			"date": "2003-05-18",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "John Peter"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/theobserver/2003/may/18/features.review117",
+			"date": "2003-03-18",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

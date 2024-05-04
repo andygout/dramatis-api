@@ -165,5 +165,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/88304a32-a597-11e1-a77b-00144feabdc0",
+			"date": "2012-05-24",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alexander Gilmour"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/25/review-loves-labours-lost-globe",
+			"date": "2012-05-25",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lucy Howard"
+			}
+		}
 	]
 }

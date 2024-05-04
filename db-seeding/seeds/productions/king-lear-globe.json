@@ -116,5 +116,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/6091bdd0-a024-11e1-90f3-00144feabdc0",
+			"date": "2012-05-19",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Griselda Murray Brown"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/23/king-lear-review",
+			"date": "2012-05-23",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Andrew Dickson"
+			}
+		}
 	]
 }

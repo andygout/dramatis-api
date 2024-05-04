@@ -182,5 +182,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/7810387/Love-Story-at-the-Minerva-Theatre-Chichester-review.html",
+			"date": "2010-06-07",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/jun/08/love-story-review",
+			"date": "2010-06-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/66cb4d1e-7313-11df-ae73-00144feabdc0",
+			"date": "2010-06-08",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1285681/Love-Story-Romantic-gem-thatll-tears-flowing.html",
+			"date": "2010-06-11",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/love-story-minerva-theatre-chichester-1997234.html",
+			"date": "2010-06-11",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/after-the-dance-nt-lyttelton-londonlove-story-minerva-chichesterthe-fantasticks-duchess-london-1998836.html",
+			"date": "2010-06-13",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

@@ -476,5 +476,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/article-2860124/Croatia-sore-history-one-character-puts-colony-QUENTIN-LETTS-reviews-3-Winters.html",
+			"date": "2014-12-04",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/3-winters-at-the-lyttelton-se1-rfv72xwqp2j",
+			"date": "2014-12-04",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/3-winters-nationals-lyttelton-theatre-review-9902553.html",
+			"date": "2014-12-04",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Fiona Mountford"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2014/dec/04/3-winters-lyttelton-london-review",
+			"date": "2014-12-04",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/b656f39c-7bba-11e4-a695-00144feabdc0",
+			"date": "2014-12-05",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2014/dec/07/3-winters-review-croatia-national-theatre-tena-stivicic",
+			"date": "2014-12-07",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thejc.com/life-and-culture/theatre/review-3-winters-sa5tglb6",
+			"date": "2014-12-11",
+			"publication": {
+				"name": "The Jewish Chronicle"
+			},
+			"critic": {
+				"name": "John Nathan"
+			}
+		},
+		{
+			"url": "https://www.spectator.co.uk/article/national-theatre-s-3-winters-a-hideous-balkans-ballyhoo/",
+			"date": "2015-01-03",
+			"publication": {
+				"name": "The Spectator"
+			},
+			"critic": {
+				"name": "Lloyd Evans"
+			}
+		}
 	]
 }

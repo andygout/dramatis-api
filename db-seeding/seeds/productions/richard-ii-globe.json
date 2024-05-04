@@ -165,5 +165,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/06/richard-ii-ashtar-ramallah-review",
+			"date": "2012-05-06",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/richard-ii-at-shakespeares-globe-se1-mcxp9j3szg6",
+			"date": "2012-05-07",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Libby Purves"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/b4c19792-9a96-11e1-83bf-00144feabdc0",
+			"date": "2012-05-10",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alexander Gilmour"
+			}
+		}
 	]
 }

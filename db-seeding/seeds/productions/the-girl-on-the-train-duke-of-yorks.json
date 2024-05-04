@@ -154,5 +154,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/the-girl-on-the-train-review-clumsy-and-mechanical-thriller-goes-off-the-rails-a4202051.html",
+			"date": "2019-07-31",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Nick Curtis"
+			}
+		}
 	]
 }

@@ -316,5 +316,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/nov/16/theatre.rsc",
+			"date": "2006-11-16",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/d5873c2e-758b-11db-aea1-0000779e2340",
+			"date": "2006-11-16",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-winters-talepericles-krg0frx0z6j",
+			"date": "2006-11-17",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-winter-s-tale-pericles-swan-theatre-stratforduponavon-424690.html",
+			"date": "2006-11-17",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		}
 	]
 }

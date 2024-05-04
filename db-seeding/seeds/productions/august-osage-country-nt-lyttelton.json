@@ -213,5 +213,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/nov/27/august-osage-county-theatre-review",
+			"date": "2008-11-27",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3563719/August-Osage-County-at-the-National-Theatre.html",
+			"date": "2008-11-27",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/90e03b90-bc95-11dd-9efc-0000779fd18c",
+			"date": "2008-11-27",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/august-osage-county-nt-lyttelton-londonwig-out-royal-court-downstairs-londontombstone-tales-and-boothill-ballads-arcola-london-1041116.html",
+			"date": "2008-11-30",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/nov/30/august-osage-county-theatre-review",
+			"date": "2008-11-30",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/august-osage-county-the-sunday-times-review-ttzf60zsgxd",
+			"date": "2008-11-30",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/august-osage-county-national-theatre-lyttelton-london-1042377.html",
+			"date": "2008-12-01",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		}
 	]
 }
