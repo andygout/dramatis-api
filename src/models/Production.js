@@ -1,4 +1,3 @@
-import { getDuplicateEntities } from '../lib/get-duplicate-entity-info';
 import {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateNameIndices,
@@ -156,15 +155,7 @@ export default class Production extends Entity {
 
 		const duplicateReviewUrlIndices = getDuplicateUrlIndices(this.reviews);
 
-		const duplicatePublicationAndCriticEntities =
-			getDuplicateEntities(this.reviews.map(({ publication, critic }) => [publication, critic]).flat());
-
-		this.reviews.forEach((review, index) =>
-			review.runInputValidations({
-				isDuplicate: duplicateReviewUrlIndices.includes(index),
-				duplicatePublicationAndCriticEntities
-			})
-		);
+		this.reviews.forEach((review, index) => review.runInputValidations({ isDuplicate: duplicateReviewUrlIndices.includes(index) }));
 
 	}
 
