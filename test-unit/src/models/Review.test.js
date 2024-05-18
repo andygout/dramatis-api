@@ -209,12 +209,8 @@ describe('Review model', () => {
 					instance.validateDate,
 					instance.publication.validateName,
 					instance.publication.validateDifferentiator,
-					stubs.getDuplicateEntityInfoModule.isEntityInArray,
-					instance.publication.validateUniquenessInGroup,
 					instance.critic.validateName,
-					instance.critic.validateDifferentiator,
-					stubs.getDuplicateEntityInfoModule.isEntityInArray,
-					instance.critic.validateUniquenessInGroup
+					instance.critic.validateDifferentiator
 				);
 				assert.calledOnce(instance.validateUrl);
 				assert.calledWithExactly(instance.validateUrl, { isRequired: false });
@@ -234,23 +230,10 @@ describe('Review model', () => {
 				assert.calledWithExactly(instance.publication.validateName, { isRequired: true });
 				assert.calledOnce(instance.publication.validateDifferentiator);
 				assert.calledWithExactly(instance.publication.validateDifferentiator);
-				assert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
-				assert.calledWithExactly(
-					stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(0),
-					instance.publication, []
-				);
-				assert.calledOnce(instance.publication.validateUniquenessInGroup);
-				assert.calledWithExactly(instance.publication.validateUniquenessInGroup, { isDuplicate: false });
 				assert.calledOnce(instance.critic.validateName);
 				assert.calledWithExactly(instance.critic.validateName, { isRequired: true });
 				assert.calledOnce(instance.critic.validateDifferentiator);
 				assert.calledWithExactly(instance.critic.validateDifferentiator);
-				assert.calledWithExactly(
-					stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(1),
-					instance.critic, []
-				);
-				assert.calledOnce(instance.critic.validateUniquenessInGroup);
-				assert.calledWithExactly(instance.critic.validateUniquenessInGroup, { isDuplicate: false });
 
 			});
 

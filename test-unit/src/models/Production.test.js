@@ -82,9 +82,6 @@ describe('Production model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateEntityInfoModule: {
-				getDuplicateEntities: stub().returns([])
-			},
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([]),
@@ -109,7 +106,6 @@ describe('Production model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
-			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'.': stubs.models
 		}).default;
@@ -658,7 +654,6 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.crewCredits[0].runInputValidations,
 				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
-				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
 				instance.reviews[0].runInputValidations
 			);
 			assert.calledOnce(instance.validateName);
@@ -743,15 +738,10 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
 				instance.reviews
 			);
-			assert.calledOnce(stubs.getDuplicateEntityInfoModule.getDuplicateEntities);
-			assert.calledWithExactly(
-				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
-				[instance.reviews[0].publication, instance.reviews[0].critic]
-			);
 			assert.calledOnce(instance.reviews[0].runInputValidations);
 			assert.calledWithExactly(
 				instance.reviews[0].runInputValidations,
-				{ isDuplicate: false, duplicatePublicationAndCriticEntities: [] }
+				{ isDuplicate: false }
 			);
 
 		});

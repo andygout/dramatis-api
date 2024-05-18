@@ -1,4 +1,3 @@
-import { isEntityInArray } from '../lib/get-duplicate-entity-info';
 import { isValidDate } from '../lib/is-valid-date';
 import Base from './Base';
 import { Company, Person } from '.';
@@ -42,17 +41,9 @@ export default class Review extends Base {
 
 		this.publication.validateDifferentiator();
 
-		this.publication.validateUniquenessInGroup({
-			isDuplicate: isEntityInArray(this.publication, opts.duplicatePublicationAndCriticEntities)
-		});
-
 		this.critic.validateName({ isRequired: Boolean(this.url) });
 
 		this.critic.validateDifferentiator();
-
-		this.critic.validateUniquenessInGroup({
-			isDuplicate: isEntityInArray(this.critic, opts.duplicatePublicationAndCriticEntities)
-		});
 
 	}
 
