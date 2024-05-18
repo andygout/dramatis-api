@@ -684,7 +684,7 @@ export default () => `
 			publication,
 			publicationRel,
 			critic
-			ORDER BY publicationRel.date
+			ORDER BY publicationRel.date, publication.name
 
 		WITH
 			production,
