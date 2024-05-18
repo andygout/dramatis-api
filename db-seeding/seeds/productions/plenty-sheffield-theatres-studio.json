@@ -171,5 +171,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/8314042/Plenty-Sheffield-Crucible-review.html",
+			"date": "2011-02-09",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/feb/09/plenty-review",
+			"date": "2011-02-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/plenty-at-crucible-sheffield-zl5kpq67zkw",
+			"date": "2011-02-11",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Sam Marlowe"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-children-s-hour-comedy-theatre-londonplenty-crucible-studio-sheffieldthe-heretic-royal-court-downstairs-london-2213032.html",
+			"date": "2011-02-13",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/feb/13/childrens-hour-keira-knightley-review",
+			"date": "2011-02-13",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/plenty-crucible-studio-sheffield-2214962.html",
+			"date": "2011-02-15",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Jonathan Brown"
+			}
+		}
 	]
 }

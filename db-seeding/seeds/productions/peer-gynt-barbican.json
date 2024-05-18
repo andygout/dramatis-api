@@ -171,5 +171,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/mar/02/theatre",
+			"date": "2007-03-02",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/3ea984f0-c8e3-11db-9f7b-000b5df10621",
+			"date": "2007-03-04",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

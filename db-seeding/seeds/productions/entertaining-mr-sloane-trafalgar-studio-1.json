@@ -132,5 +132,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/feb/02/entertaining-mr-sloane-review",
+			"date": "2009-02-02",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/entertaining-mr-sloane-trafalgar-studios-london-1543510.html",
+			"date": "2009-02-03",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/5b4a6b40-f20a-11dd-9678-0000779fd2ac",
+			"date": "2009-02-03",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1136948/Entertaining-Mr-Sloane-Leather-lust--This-Orton-like-ought-be.html",
+			"date": "2009-02-05",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		}
 	]
 }

@@ -135,5 +135,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/sep/12/theatre1",
+			"date": "2008-09-12",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-now-or-later-royal-court-london-927096.html",
+			"date": "2008-09-12",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/now-or-later-royal-court-downstairs-londonkicking-a-dead-horse-almeida-londonlipsynch-barbican-london-929563.html",
+			"date": "2008-09-14",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/cf9e5a1e-8406-11dd-bf00-000077b07658",
+			"date": "2008-09-16",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

@@ -39,5 +39,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/b4c19792-9a96-11e1-83bf-00144feabdc0",
+			"date": "2012-05-10",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alexander Gilmour"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/14/the-two-gentlemen-of-verona-review",
+			"date": "2012-05-14",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Alex Needham"
+			}
+		}
 	]
 }

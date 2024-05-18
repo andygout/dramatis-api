@@ -76,5 +76,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/7826387/Women-Power-and-Politics-at-the-Tricycle-Theatre-review.html",
+			"date": "2010-06-13",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/jun/13/women-power-politics-tricycle-review",
+			"date": "2010-06-13",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/fa3c17c6-77ce-11df-82c3-00144feabdc0",
+			"date": "2010-06-14",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/women-power-and-politics-tricycle-theatre-london-2000466.html",
+			"date": "2010-06-15",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/through-a-glass-darkly-almeida-londonlulu-gate-londonwomen-power-and-politics-tricycle-london-2005190.html",
+			"date": "2010-06-20",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/jun/20/women-power-politics-tricycle-susannah-clapp",
+			"date": "2010-06-20",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

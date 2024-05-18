@@ -492,5 +492,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/jul/22/theatre",
+			"date": "2006-07-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/1bea3cbe-1a62-11db-848c-0000779e2340",
+			"date": "2006-07-23",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/nicholas-nickleby-j76ncgcmfq9",
+			"date": "2006-07-24",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/nicholas-nickleby-festival-theatre-chichestertonight-at-8-30-minerva-chichesterthe-last-five-years-menier-chocolate-factory-london-409919.html",
+			"date": "2006-07-30",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-not-for-the-faint-hearted-s6p6ld2fjw0",
+			"date": "2006-07-30",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "A A Gill"
+			}
+		}
 	]
 }

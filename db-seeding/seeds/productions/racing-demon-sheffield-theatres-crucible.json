@@ -164,5 +164,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/regional-shows/8331383/Racing-Demon-Sheffield-Crucible-review.html",
+			"date": "2011-02-17",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/culture/2011/feb/17/racing-demon-review",
+			"date": "2011-02-17",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1360385/Daniel-Evans-production-David-Hares-Racing-Demon-Crucible-Sheffield-Perhaps-little-sympathy-Devil.html",
+			"date": "2011-02-25",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Patrick Marmion"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/culture/2011/feb/27/racing-demon-hare-review",
+			"date": "2011-02-27",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Clare Brennan"
+			}
+		}
 	]
 }

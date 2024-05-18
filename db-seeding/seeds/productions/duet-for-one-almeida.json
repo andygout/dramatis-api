@@ -261,5 +261,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/jan/30/review-almeida-duet-for-one",
+			"date": "2009-01-30",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/82781/Duet-For-One",
+			"date": "2009-01-31",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/duet-for-one-almeida-theatre-london-1522812.html",
+			"date": "2009-02-02",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/shunkin-barbican-londonduet-for-one-almeida-londonspring-awakening-lyric-hammersmith-london-1603713.html",
+			"date": "2009-02-08",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

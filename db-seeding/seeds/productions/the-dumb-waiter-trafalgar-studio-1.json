@@ -71,5 +71,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-dumb-waiter-trafalgar-studios-london-436003.html",
+			"date": "2007-02-09",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Rhoda Koenig"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/arts/theatre/drama/reviews/story/0,,2009375,00.html",
+			"date": "2007-02-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3663038/Short-sharp-lesson-from-Pinter-master.html",
+			"date": "2007-02-09",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/rest-of-the-weeks-theatre-7x8q7s3ctpq",
+			"date": "2007-02-11",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-man-of-mode-nt-olivier-london-the-dumb-waiter-trafalgar-studios-london-nothing-but-the-truth-hampstead-london-6228912.html",
+			"date": "2007-02-11",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/feb/11/theatre",
+			"date": "2007-02-11",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

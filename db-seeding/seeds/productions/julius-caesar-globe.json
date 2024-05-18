@@ -92,5 +92,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/6930e45e-9514-11e1-ad72-00144feab49a",
+			"date": "2012-05-03",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alexander Gilmour"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/03/julius-caesar-globe-review",
+			"date": "2012-05-03",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Melissa Denes"
+			}
+		}
 	]
 }

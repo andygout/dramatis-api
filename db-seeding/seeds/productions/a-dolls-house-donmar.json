@@ -172,5 +172,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/may/20/a-dolls-house-theatre-review",
+			"date": "2009-05-20",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/102320/A-Doll-s-House-Donmar-Warehouse",
+			"date": "2009-05-20",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/article-1186173/A-Dolls-House-Another-house-scandal.html",
+			"date": "2009-05-21",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-doll-s-house-donmar-warehouse-london-1688864.html",
+			"date": "2009-05-21",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/3ccee504-4626-11de-803f-00144feabdc0",
+			"date": "2009-05-21",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-doll-s-house-donmar-londonthe-observer-nt-cottesloe-londongrasses-of-a-thousand-colours-royal-court-upstairs-london-1689909.html",
+			"date": "2009-05-24",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/a-dolls-house-at-the-donmar-warehouse-wc2-n3k3wldkp6k",
+			"date": "2009-05-24",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Sam Leith"
+			}
+		}
 	]
 }

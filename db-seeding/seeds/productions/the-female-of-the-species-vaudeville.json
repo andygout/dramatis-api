@@ -136,5 +136,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/jul/17/theatre.reviews2",
+			"date": "2008-07-17",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-female-of-the-species-vaudeville-theatre-london-870725.html",
+			"date": "2008-07-18",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Rhoda Koenig"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/the-female-of-the-species-the-sunday-times-review-27fjf7s28tp",
+			"date": "2008-07-20",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/be04377e-572e-11dd-916c-000077b07658",
+			"date": "2008-07-21",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

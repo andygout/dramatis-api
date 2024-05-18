@@ -492,5 +492,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/theatre/what-to-see/vanessa-kirby-crown-jewel-lacklustre-julie-national-theatre/",
+			"date": "2018-06-08",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-review-julie-lyttelton-se1-8vng83pl7",
+			"date": "2018-06-08",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Ann Treneman"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2018/jun/08/julie-review-polly-stenham-strindberg-lyttelton-theatre",
+			"date": "2018-06-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/julie-review-problematic-take-on-strindberg-lacks-danger-a3858321.html",
+			"date": "2018-06-08",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/julie-review-national-theatre-vanessa-kirby-polly-stenham-a8389466.html",
+			"date": "2018-06-08",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/a18fe43e-6b10-11e8-b6eb-4acfcfb08c11",
+			"date": "2018-06-11",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/home/event/article-5840407/Theatre.html",
+			"date": "2018-06-16",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Robert Gore-Langton"
+			}
+		}
 	]
 }

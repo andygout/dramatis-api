@@ -341,5 +341,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/a5a7340a-2892-11db-a2c1-0000779e2340",
+			"date": "2006-08-10",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/aug/11/theatre.rsc",
+			"date": "2006-08-11",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/henry-vi-df0mrsf9twn",
+			"date": "2006-08-11",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-tempest-royal-shakespeare-theatre-stratford-henry-vi-parts-13-courtyard-stratford-411700.html",
+			"date": "2006-08-13",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-vi-parts-1-2-amp-3-courtyard-theatre-stratforduponavon-411741.html",
+			"date": "2006-08-14",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-a-right-royal-performance-rrwc9d5g5cr",
+			"date": "2006-08-20",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

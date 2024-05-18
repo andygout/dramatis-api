@@ -319,5 +319,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/mar/07/theatre.rsc",
+			"date": "2007-03-07",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/coriolanus-sfm62bvwlrj",
+			"date": "2007-03-08",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/368f658a-cd9a-11db-839d-000b5df10621",
+			"date": "2007-03-08",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/mar/11/theatre",
+			"date": "2007-03-11",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

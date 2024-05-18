@@ -190,5 +190,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/10822944/Tonight-at-8.30-review-a-major-theatrical-feast.html?onwardjourney=584162_c1",
+			"date": "2014-05-10",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2014/may/11/tonight-at-830-review",
+			"date": "2014-05-11",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/90bbfaba-d9b7-11e3-b3e3-00144feabdc0",
+			"date": "2014-05-12",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/tonight-at-830-at-the-nuffield-southampton-st008ccchnf",
+			"date": "2014-05-14",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

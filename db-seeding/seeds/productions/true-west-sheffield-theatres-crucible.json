@@ -120,5 +120,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2010/may/19/true-west-michael-billington",
+			"date": "2010-05-19",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/7744490/True-West-at-the-Sheffield-Crucible-review.html?onwardjourney=584162_v1",
+			"date": "2010-05-20",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1280064/True-West-An-American-lesson-brotherly-love.html",
+			"date": "2010-05-21",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Patrick Marmion"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/true-west-crucible-sheffield-1983798.html",
+			"date": "2010-05-27",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Lynne Walker"
+			}
+		}
 	]
 }

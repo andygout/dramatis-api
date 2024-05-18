@@ -271,5 +271,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-hamlet-wyndham-s-theatre-london-1696528.html",
+			"date": "2009-06-04",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/jun/04/review-theatre-hamlet-jude-law",
+			"date": "2009-06-04",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1190716/Jude-Law-stuns-critics-lucid-excellent-performance-Hamlet.html",
+			"date": "2009-06-04",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/105392/Hamlet-Wyndham-s-Theatre-London",
+			"date": "2009-06-05",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Mark Shenton"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/fc7469be-5388-11de-be08-00144feabdc0",
+			"date": "2009-06-07",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/jun/07/hamlet-wyndhams-jude-law",
+			"date": "2009-06-07",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/hamlet-wyndham-s-londonsister-act-palladium-londonarcadia-duke-of-york-s-london-1698487.html",
+			"date": "2009-06-07",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

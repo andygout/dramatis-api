@@ -150,5 +150,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/17/michael-billington-rope-almeida",
+			"date": "2009-12-17",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/20/keira-knightley-misanthrope-rope-almeida",
+			"date": "2009-12-20",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-misanthrope-comedy-londonrope-almeida-londonthe-cat-in-the-hat-national-young-vic-london-1845567.html",
+			"date": "2009-12-20",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/767352de-ebff-11de-8070-00144feab49a",
+			"date": "2009-12-20",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/6875002/Rope-Almeida-Theatre-review.html",
+			"date": "2012-12-23",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		}
 	]
 }

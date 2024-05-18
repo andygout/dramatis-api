@@ -273,5 +273,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/02/cat-on-a-hot-tin-roof-billington",
+			"date": "2009-12-02",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/143682/Cat-On-A-Hot-Tin-Roof-Novello-Theatre-London",
+			"date": "2009-12-02",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/6708794/Cat-On-A-Hot-Tin-Roof-at-the-Novello-Theatre-review.html",
+			"date": "2009-12-02",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/cat-on-a-hot-tin-roof-novello-theatre-london-1832995.html",
+			"date": "2009-12-03",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/144461/Theatre-reviews-Sweet-Charity-and-Cat-On-A-Hot-Tin-Roof",
+			"date": "2009-12-06",
+			"publication": {
+				"name": "Sunday Express"
+			},
+			"critic": {
+				"name": "Mark Shenton"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/06/tennessee-williams-sweet-charity-review",
+			"date": "2009-12-06",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/cat-on-a-hot-tin-roof-novello-londondetaining-justice-tricycle-londonsweet-charity-menier-london-1834823.html",
+			"date": "2009-12-06",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/192dd0ba-e0ef-11de-9f58-00144feab49a",
+			"date": "2009-12-06",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		}
 	]
 }

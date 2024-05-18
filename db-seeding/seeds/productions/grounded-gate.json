@@ -113,5 +113,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/4c0efe06-115a-11e3-8321-00144feabdc0",
+			"date": "2013-09-01",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alexander Gilmour"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/theatre-review-blue-stockings-laughing-all-the-way-to-the-lecture-hall-8792724.html",
+			"date": "2013-09-01",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/grounded-gate-theatre-theatre-review-8793929.html",
+			"date": "2013-09-02",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "William Moore"
+			}
+		}
 	]
 }

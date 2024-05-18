@@ -200,5 +200,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3669710/Othello-review-Ewan-McGregor-loses-the-plot.html",
+			"date": "2007-12-05",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/dec/05/theatre.shakespeare",
+			"date": "2007-12-05",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/othello-donmar-warehouse-londno-763213.html",
+			"date": "2007-12-06",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/eaa770ba-a41a-11dc-a28d-0000779fd2ac",
+			"date": "2007-12-06",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/27639/Othello-triumphs-over-a-testy-Iago",
+			"date": "2007-12-07",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/dec/09/theatre",
+			"date": "2007-12-09",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/curtain-up-on-a-force-too-powerful-even-for-a-jedi-z9jljbpgxv7",
+			"date": "2007-12-09",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/othello-donmar-warehouse-londonikrisma-kherol-impempe-yomlingo-young-vic-londongod-in-ruins-soho-london-766054.html",
+			"date": "2007-12-09",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

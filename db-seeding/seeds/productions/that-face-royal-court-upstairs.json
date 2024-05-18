@@ -127,5 +127,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/76a6b7ba-f34a-11db-9845-000b5df10621",
+			"date": "2007-04-25",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/apr/26/theatre3",
+			"date": "2007-04-26",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3664728/One-of-the-most-thrilling-debuts-for-decades.html",
+			"date": "2007-04-26",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/may/06/theatre1",
+			"date": "2007-05-06",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

@@ -176,5 +176,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-the-seagull-royal-court-theatre-london-433747.html",
+			"date": "2007-01-26",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/3662753/Leaving-Court-free-as-a-bird.html",
+			"date": "2007-01-26",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/jan/26/theatre1",
+			"date": "2007-01-26",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/637/Seagull-soars-to-success",
+			"date": "2007-01-26",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-seagull-royal-court-londoncomfort-me-with-apples-hampstead-london-and-touring-happy-days-nt-lyttelton-london-434029.html",
+			"date": "2007-01-28",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/jan/28/theatre2",
+			"date": "2007-01-28",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/a-bird-thats-on-song-gn53d2ddfg8",
+			"date": "2007-01-28",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/198864ca-afac-11db-94ab-0000779e2340",
+			"date": "2007-01-29",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		}
 	]
 }

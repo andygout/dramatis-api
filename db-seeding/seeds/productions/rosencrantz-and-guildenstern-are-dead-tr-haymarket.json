@@ -277,5 +277,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2011/jun/25/emperor-galilean-rosencrantz-guildenstern-takeaway",
+			"date": "2011-06-25",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

@@ -253,5 +253,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/jun/09/theatre.rsc",
+			"date": "2006-06-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/a-midsummer-night-s-dream-swan-theatre-stratforduponavon-6098441.html",
+			"date": "2006-06-11",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3653094/A-fantastical-unforgettable-Dream.html",
+			"date": "2006-06-12",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/27d27322-fa35-11da-b7ff-0000779e2340",
+			"date": "2006-06-12",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/3653236/Play-revolution-for-me.html",
+			"date": "2006-06-18",
+			"publication": {
+				"name": "The Sunday Telegraph"
+			},
+			"critic": {
+				"name": "Rebecca Tyrrel"
+			}
+		}
 	]
 }

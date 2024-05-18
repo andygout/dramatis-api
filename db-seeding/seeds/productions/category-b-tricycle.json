@@ -166,5 +166,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/oct/13/category-b-michael-billington-review",
+			"date": "2009-10-13",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/6318449/Category-B-at-the-Tricycle-Kilburn-review.html",
+			"date": "2009-10-13",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		}
 	]
 }

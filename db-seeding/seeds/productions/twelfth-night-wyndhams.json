@@ -215,5 +215,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/dec/11/theatre",
+			"date": "2008-12-11",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-twelfth-night-wyndham-s-theatre-london-1061462.html",
+			"date": "2008-12-11",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/bb2dbeea-c785-11dd-b611-000077b07658",
+			"date": "2008-12-11",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/75469/Twelfth-Night",
+			"date": "2008-12-12",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/3724509/Twelfth-Night-at-the-Donmar-at-Wyndhams-review.html",
+			"date": "2008-12-12",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/dec/14/twelfth-night-wyndhams-hamlet-novello",
+			"date": "2008-12-14",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

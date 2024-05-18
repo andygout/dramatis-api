@@ -341,5 +341,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/theatre/what-to-see/henry-v-royal-shakespeare-company-review/",
+			"date": "2015-09-23",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2015/sep/23/henry-v-review-alex-hassell-royal-shakespeare-theatre",
+			"date": "2015-09-23",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/henry-v-at-the-royal-shakespeare-theatre-stratford-upon-avon-9z8mc9bq758",
+			"date": "2015-09-24",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/henry-v-theatre-review-harry-for-our-times-a2955006.html",
+			"date": "2015-09-24",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Fiona Mountford"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-3248289/A-ravishing-display-s-fit-king-QUENTIN-LETTS-reviews.html",
+			"date": "2015-09-25",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/0b9ffe54-6371-11e5-a28b-50226830d644",
+			"date": "2015-09-27",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-v-royal-shakespeare-theatre-stratforduponavon-review-a-production-of-huge-flair-and-bite-a6670251.html",
+			"date": "2015-09-28",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		}
 	]
 }

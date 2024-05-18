@@ -142,5 +142,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/02/midsummer-nights-dream-review",
+			"date": "2012-05-02",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Brian Logan"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/06/enquirer-love-royal-court-midsummers-night",
+			"date": "2012-05-06",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

@@ -174,5 +174,57 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/6702723/Detaining-Justice-at-the-Tricycle-Theatre-review.html",
+			"date": "2009-12-01",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/02/detaining-justice-review",
+			"date": "2009-12-02",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/detaining-justice-tricycle-theatre-london-1833000.html",
+			"date": "2009-12-02",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/a295cb12-e02e-11de-8494-00144feab49a",
+			"date": "2009-12-04",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/cat-on-a-hot-tin-roof-novello-londondetaining-justice-tricycle-londonsweet-charity-menier-london-1834823.html",
+			"date": "2009-12-06",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

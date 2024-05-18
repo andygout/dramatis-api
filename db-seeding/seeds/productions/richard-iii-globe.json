@@ -73,5 +73,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/02/richard-iii-review",
+			"date": "2012-05-02",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Andrew Dickson"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/enquirer-the-hub-at-pacific-quay-glasgow-richard-iii-shakespeare-s-globe-london-making-noises-quietly-donmar-london-7717374.html",
+			"date": "2012-05-06",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

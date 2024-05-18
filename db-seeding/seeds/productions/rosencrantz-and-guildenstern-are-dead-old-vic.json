@@ -200,5 +200,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/theatre/what-to-see/daniel-radcliffe-rosencrantz-guildenstern-dead-old-vic-review/",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/theatre-rosencrantz-and-guildenstern-are-dead-the-old-vic-se1-09clqlh2c",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Ann Treneman"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2017/mar/08/rosencrantz-and-guildenstern-are-dead-review-daniel-radcliffe-stoppard-old-vic-london",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/rosencrantz-and-guildenstern-are-dead-review-old-vic-daniel-radcliffe-david-leveaux-joshua-mcguire-david-haig-tom-stoppard-a7618096.html",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/article-4291830/Quentin-Letts-review-Rosencrantz-Guildenstern-Dead.html",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://ft.com/content/e3a2b158-03e7-11e7-aa5b-6bb07f5c8e12",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/rosencrantz-and-guildenstern-are-dead-theatre-review-daniel-radcliffe-excels-at-this-game-of-intellectual-ping-pong-a3680216.html",
+			"date": "2017-03-08",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Henry Hitchings"
+			}
+		}
 	]
 }

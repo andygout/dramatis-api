@@ -194,5 +194,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/apr/30/world-shakespeare-festival-shakespeare",
+			"date": "2012-04-30",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Alex Needham"
+			}
+		}
 	]
 }

@@ -95,5 +95,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/cba68df6-ab11-11e1-b675-00144feabdc0",
+			"date": "2012-06-02",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Griselda Murray Brown"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/jun/07/comedy-of-errors-shakespeares-globe",
+			"date": "2012-06-07",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Andrew Dickson"
+			}
+		}
 	]
 }

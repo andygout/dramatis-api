@@ -151,5 +151,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/jun/03/hamlet-review",
+			"date": "2012-06-03",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		}
 	]
 }

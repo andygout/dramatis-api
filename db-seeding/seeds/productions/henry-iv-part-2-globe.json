@@ -89,5 +89,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/17/henry-iv-part-i-ii-review",
+			"date": "2012-05-17",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Laura Barnett"
+			}
+		}
 	]
 }

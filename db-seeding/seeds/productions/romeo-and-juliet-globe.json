@@ -157,5 +157,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/22/romeo-and-juliet-review",
+			"date": "2012-05-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Maddy Costa"
+			}
+		}
 	]
 }

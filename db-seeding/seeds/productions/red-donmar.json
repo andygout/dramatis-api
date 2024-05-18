@@ -87,5 +87,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/6767740/Red-at-the-Donmar-Warehouse-review.html",
+			"date": "2009-12-09",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-red-donmar-warehouse-london-1836780.html",
+			"date": "2009-12-09",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/09/theatre-review-red-donmar-warehouse",
+			"date": "2009-12-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/145306/Red-Donmar-Warehouse-London",
+			"date": "2009-12-11",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/d868d52c-e515-11de-9a25-00144feab49a",
+			"date": "2009-12-11",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/dec/13/red-jack-and-the-beanstalk",
+			"date": "2009-12-13",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/red-at-the-donmar-warehouse-wc2-hlrx8mpc6jr",
+			"date": "2009-12-13",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

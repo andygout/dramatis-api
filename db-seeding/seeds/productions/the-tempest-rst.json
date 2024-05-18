@@ -274,5 +274,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-the-tempest-royal-shakespeare-theatre-stratforduponavon-411147.html",
+			"date": "2006-08-09",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/293eef2c-27c3-11db-b25c-0000779e2340",
+			"date": "2006-08-09",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/aug/10/theatre.rsc",
+			"date": "2006-08-10",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-tempest-royal-shakespeare-theatre-stratford-henry-vi-parts-13-courtyard-stratford-411700.html",
+			"date": "2006-08-13",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

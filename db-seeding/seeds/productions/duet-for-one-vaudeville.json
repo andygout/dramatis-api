@@ -79,5 +79,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/duet-for-one-at-the-vaudeville-wc2-rtgqd0xbk5g",
+			"date": "2009-05-13",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		}
 	]
 }

@@ -124,5 +124,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/22/as-you-like-it-globe-review",
+			"date": "2012-05-22",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Kate Kellaway"
+			}
+		}
 	]
 }

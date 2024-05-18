@@ -61,5 +61,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2011/may/08/incoming-theatre-review-andrew-motion",
+			"date": "2011-05-08",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/may/15/dining-with-alice-review",
+			"date": "2011-05-15",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

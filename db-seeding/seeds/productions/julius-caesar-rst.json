@@ -289,5 +289,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/may/17/theatre.rsc1",
+			"date": "2006-05-17",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/38f7bd24-e68f-11da-a36e-0000779e2340",
+			"date": "2006-05-18",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/3652578/Honourable-men.html",
+			"date": "2006-05-21",
+			"publication": {
+				"name": "The Sunday Telegraph"
+			},
+			"critic": {
+				"name": "Rebecca Tyrrel"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/much-ado-about-nothing-swan-theatre-julius-caesar-royal-shakespeare-theatre-stratforduponavon-479672.html",
+			"date": "2006-05-25",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		}
 	]
 }

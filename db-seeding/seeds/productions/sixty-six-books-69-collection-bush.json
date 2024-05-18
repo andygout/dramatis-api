@@ -181,5 +181,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/sixty-six-books-at-the-bush-london-v2wq67hzzrf",
+			"date": "2011-10-16",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Ruth Gledhill"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/oct/16/sixty-six-books-review",
+			"date": "2011-10-16",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8832518/Sixty-Six-Books-Bush-Theatre-London-review.html",
+			"date": "2011-10-17",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/8c33109a-f8bf-11e0-ad8f-00144feab49a",
+			"date": "2011-10-17",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/sixtysix-books-bush-theatre-london-2373067.html",
+			"date": "2011-10-22",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2011/oct/23/jumpy-inadmissible-sixty-six-review",
+			"date": "2011-10-23",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

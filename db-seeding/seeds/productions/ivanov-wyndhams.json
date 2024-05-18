@@ -221,5 +221,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/first-night-ivanov-wyndhams-theatre-london-934237.html",
+			"date": "2008-09-18",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/ivanov-at-the-wyndhams-wc2-c05mlkkt5ll",
+			"date": "2008-09-18",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/sep/18/theatre",
+			"date": "2008-09-18",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1058053/Ivanov-Branaghs-brilliant-mid-life-crisis.html",
+			"date": "2008-09-19",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3560826/Ivanov-high-praise-for-a-lowering-play.html",
+			"date": "2008-09-18",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/62317/Ivanov",
+			"date": "2008-09-19",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/sep/21/theatre",
+			"date": "2008-09-21",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

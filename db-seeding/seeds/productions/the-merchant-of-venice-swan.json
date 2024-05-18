@@ -201,5 +201,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/f6d94472-dd4a-11db-8d42-000b5df10621",
+			"date": "2007-03-28",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/mar/29/theatre",
+			"date": "2007-03-29",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-rose-tattoo-nt-olivier-london-the-merchant-of-venice-swan-stratford-5332600.html",
+			"date": "2007-04-01",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

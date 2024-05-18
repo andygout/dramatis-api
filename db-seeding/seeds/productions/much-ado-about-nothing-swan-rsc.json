@@ -287,5 +287,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2006/may/19/theatre.rsc",
+			"date": "2006-05-19",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/3652588/Bursting-with-life-wit-and-feeling.html",
+			"date": "2006-05-22",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/c5dfde64-e9b0-11da-a33b-0000779e2340",
+			"date": "2006-05-22",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alastair Macauley"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/much-ado-about-nothing-swan-theatre-julius-caesar-royal-shakespeare-theatre-stratforduponavon-479672.html",
+			"date": "2006-05-25",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/twelfth-night-lowry-salfordantony-and-cleopatra-swan-stratford-much-ado-about-nothing-swan-stratford-480115.html",
+			"date": "2006-05-28",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2006/may/28/theatre1",
+			"date": "2006-05-28",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Kate Kellaway"
+			}
+		}
 	]
 }

@@ -288,5 +288,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/nov/28/theatre3",
+			"date": "2007-11-28",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/40f058e4-9ea1-11dc-b4e4-0000779fd2ac",
+			"date": "2007-11-29",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		}
 	]
 }

@@ -195,5 +195,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/troilus-and-cressida-shakespeares-globe-se1-3t3dsxwctzv",
+			"date": "2012-04-24",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/apr/24/troilus-cressida-review",
+			"date": "2012-04-24",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Andrew Dickson"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9224440/Maori-Troilus-and-Cressida-Shakespeares-Globe-review.html",
+			"date": "2012-04-24",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/globe-to-globe-shakespeare-s-globe-london-wild-swans-young-vic-london-what-country-friends-is-this-royal-shakespeare-theatre-stratforduponavon-7687280.html",
+			"date": "2012-04-28",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

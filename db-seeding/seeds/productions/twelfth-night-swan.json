@@ -200,5 +200,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/twelfth-night-njpvvjhrmss",
+			"date": "2007-03-02",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		}
 	]
 }

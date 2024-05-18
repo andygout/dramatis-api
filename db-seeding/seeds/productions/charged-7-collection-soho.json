@@ -116,5 +116,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/03acd8ee-f0de-11df-bf4b-00144feab49a",
+			"date": "2010-11-15",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2010/nov/15/charged-review",
+			"date": "2010-11-15",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Maddy Costa"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/8138516/Charged-Clean-Break-Soho-Theatre-review.html",
+			"date": "2011-11-16",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Daisy Bowie-Sell"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/charged-soho-theatre-london-2135919.html",
+			"date": "2011-11-17",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		}
 	]
 }

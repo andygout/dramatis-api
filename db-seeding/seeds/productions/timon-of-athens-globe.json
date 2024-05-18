@@ -90,5 +90,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/jun/06/timon-of-athens-review",
+			"date": "2012-06-12",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Peter Beech"
+			}
+		}
 	]
 }

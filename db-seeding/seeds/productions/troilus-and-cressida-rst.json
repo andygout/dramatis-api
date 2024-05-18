@@ -373,5 +373,17 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.spectator.co.uk/article/wives-and-wooings",
+			"date": "2006-09-16",
+			"publication": {
+				"name": "The Spectator"
+			},
+			"critic": {
+				"name": "Patrick Carnegy"
+			}
+		}
 	]
 }

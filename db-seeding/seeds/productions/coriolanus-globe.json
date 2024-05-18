@@ -108,5 +108,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/88304a32-a597-11e1-a77b-00144feabdc0",
+			"date": "2012-05-24",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "David Cheal"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/25/coriolanus-review",
+			"date": "2012-05-25",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Chris Michael"
+			}
+		}
 	]
 }

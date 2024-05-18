@@ -19,5 +19,57 @@
 		{
 			"uuid": "26860468-0c27-4fc0-99d5-de86d4b44239"
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/news/stoppard-s-magnificent-spectacle-just-the-five-hours-too-long-172180.html",
+			"date": "2002-08-05",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2002/aug/05/theatre.artsfeatures",
+			"date": "2002-08-05",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3581055/Excellent-in-parts-but-less-than-Utopian.html",
+			"date": "2002-08-05",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-coast-of-utopia-nt-olivier-london-on-an-average-day-comedy-london-173094.html",
+			"date": "2002-08-11",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/theobserver/2002/aug/11/artsfeatures",
+			"date": "2002-08-11",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		}
 	]
 }

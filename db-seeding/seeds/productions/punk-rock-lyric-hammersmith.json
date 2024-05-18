@@ -160,5 +160,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/sep/09/punk-rock-review",
+			"date": "2009-09-09",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/b9197be6-9e1f-11de-b0aa-00144feabdc0",
+			"date": "2009-09-10",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/126432/Punk-Rock-Lyric-Hammersmith-London",
+			"date": "2009-09-11",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Julie Carpenter"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/punk-rock-lyric-hammersmith-london-2077473.html",
+			"date": "2009-09-13",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Matilda Battersby"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/the-shawl-arcola-londonpunk-rock-lyric-hammersmith-londonkatrina-bargehouse-london-1786337.html",
+			"date": "2009-09-13",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/punk-rock-at-the-lyric-hammersmith-w6-3krchj62lft",
+			"date": "2009-09-13",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

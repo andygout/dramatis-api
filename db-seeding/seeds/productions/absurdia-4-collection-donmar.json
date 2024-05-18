@@ -16,5 +16,47 @@
 		{
 			"uuid": "aa0d868f-072f-4b91-b562-bc382f78b61f"
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2007/aug/01/theatre1",
+			"date": "2007-08-01",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/absurdia-mc2zxxhc5wh",
+			"date": "2007-08-02",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Sam Marlowe"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/32096de8-414f-11dc-8f37-0000779fd2ac",
+			"date": "2007-08-03",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3666954/Absurdia-an-inspector-calls-and-an-elephant-appears.html",
+			"date": "2007-08-06",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		}
 	]
 }

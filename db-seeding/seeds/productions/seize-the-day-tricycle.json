@@ -172,5 +172,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/nov/03/seize-the-day-review",
+			"date": "2009-11-03",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/seize-the-day-tricycle-theatre-london-1814137.html",
+			"date": "2009-12-04",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/4bc7acf6-ca62-11de-a3a3-00144feabdc0",
+			"date": "2009-11-06",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		}
 	]
 }

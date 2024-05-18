@@ -157,5 +157,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.ft.com/content/d60dd9ac-a746-11e2-9fbe-00144feabdc0",
+			"date": "2013-04-17",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2013/apr/21/seagull-blanche-mcintyre-review",
+			"date": "2013-04-21",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/10004140/The-Seagull-Nuffield-Theatre-Southamptontouring-review.html",
+			"date": "2013-04-18",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Matt Trueman"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2013/apr/21/the-seagull-review",
+			"date": "2013-04-21",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		}
 	]
 }

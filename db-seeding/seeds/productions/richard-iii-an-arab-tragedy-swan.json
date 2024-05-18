@@ -195,5 +195,37 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3663182/Putting-the-sheikh-into-Shakespeare.html",
+			"date": "2007-02-15",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/43ed090a-bc59-11db-9cbc-0000779e2340",
+			"date": "2007-02-15",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2007/feb/16/theatre1",
+			"date": "2007-02-16",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Brian Logan"
+			}
+		}
 	]
 }

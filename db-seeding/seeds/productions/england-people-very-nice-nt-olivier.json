@@ -412,5 +412,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/feb/12/england-people-very-nice-review",
+			"date": "2009-02-12",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/england-people-very-nice-at-olivier-se1-g7p8cdjd8ct",
+			"date": "2009-02-12",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1144031/England-People-Very-Nice-Mr-Bean-mad-mullah.html",
+			"date": "2009-02-12",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/84637/England-People-Very-Nice",
+			"date": "2009-02-13",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Neil Norman"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/culture/2009/feb/15/england-people-very-nice-review",
+			"date": "2009-02-15",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/england-people-very-nice-olivier-national-theatre-london-1623651.html",
+			"date": "2009-02-17",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		}
 	]
 }

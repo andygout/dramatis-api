@@ -106,5 +106,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/mar/26/theatre1",
+			"date": "2008-03-26",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3672098/God-of-Carnage-Electrifying-despite-lights-failing.html",
+			"date": "2008-03-26",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/god-of-carnage-gielgud-theatre-london-801139.html",
+			"date": "2008-03-27",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Alice Jones"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/god-of-carnage-gielgud-londonnever-so-good-lyttelton-london-802478.html",
+			"date": "2008-03-30",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/mar/30/theatre3",
+			"date": "2008-03-30",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/god-of-carnage-gielgud-never-so-good-national-the-sunday-times-reviews-gl29zfj0jlq",
+			"date": "2008-03-30",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

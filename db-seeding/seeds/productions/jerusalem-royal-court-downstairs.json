@@ -223,5 +223,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/jerusalem-at-the-royal-court-sw1-lbvpsx36m5v",
+			"date": "2009-07-16",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/jul/16/jerusalem-review",
+			"date": "2009-07-16",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/54333e50-7229-11de-ba94-00144feabdc0",
+			"date": "2009-07-16",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/114388/Jerusalem-Royal-Court-Theatre-London",
+			"date": "2009-07-17",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Paul Callan"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/jul/19/jerusalem-royal-court-review",
+			"date": "2009-07-19",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/jerusalem-royal-court-downstairs-londonthe-apple-cart-theatre-royal-bathbassline-barbican-centre-car-park-london-1752047.html",
+			"date": "2009-07-19",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/jerusalem-royal-court-london-1752715.html",
+			"date": "2009-07-20",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		}
 	]
 }

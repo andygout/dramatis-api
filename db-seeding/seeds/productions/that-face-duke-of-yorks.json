@@ -138,5 +138,67 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3673321/That-Face-into-the-West-End-raw-power-intact.html",
+			"date": "2008-05-12",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/may/12/theatre1",
+			"date": "2008-05-13",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/that-face-at-the-duke-of-yorks-theatre-wc2-g5drld8l23w",
+			"date": "2008-05-12",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/e3e0c7cc-2043-11dd-80b4-000077b07658",
+			"date": "2008-05-12",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Ian Shuttleworth"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2008/may/18/theatre",
+			"date": "2008-05-18",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Killian Fox"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/that-face-duke-of-yorks-the-sunday-times-review-hbcbm5v6z2g",
+			"date": "2008-05-18",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

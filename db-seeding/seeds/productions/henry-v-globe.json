@@ -272,5 +272,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.standard.co.uk/culture/theatre/henry-v-globe-review-7850779.html",
+			"date": "2012-06-14",
+			"publication": {
+				"name": "Evening Standard"
+			},
+			"critic": {
+				"name": "Fiona Mountford"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/theatre-reviews/9329868/Henry-V-Shakespeares-Globe-review.html",
+			"date": "2012-06-14",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Dominic Cavendish"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2012/jun/14/henry-v-review",
+			"date": "2012-06-14",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Lyn Gardner"
+			}
+		},
+		{
+			"url": "https://www.express.co.uk/entertainment/theatre/326621/Stage-Review-Henry-V-Globe-Theatre-London",
+			"date": "2012-06-15",
+			"publication": {
+				"name": "Daily Express"
+			},
+			"critic": {
+				"name": "Julie Carpenter"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-2159592/Henry-V-theatre-review-Japes-jigs-conquering-King-Henry-Globe.html",
+			"date": "2012-06-15",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/henry-v-at-shakespeares-globe-se1-9b0097qkw0k",
+			"date": "2012-06-15",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Dominic Maxwell"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/henry-v-shakespeare-s-globe-london-7854958.html",
+			"date": "2012-06-15",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/9a784adc-b6cc-11e1-8a95-00144feabdc0",
+			"date": "2012-06-17",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		}
 	]
 }

@@ -179,5 +179,77 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2008/jun/25/theatre.reviews1",
+			"date": "2008-06-25",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1029789/Black-Watch-Explosive--thats-just-language.html",
+			"date": "2008-06-26",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/black-watch-barbican-london-854183.html",
+			"date": "2008-06-26",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Paul Taylor"
+			}
+		},
+		{
+			"url": "https://www.telegraph.co.uk/culture/theatre/drama/3555126/Black-Watch-searing-insights-into-the-horrors-of-modern-warfare.html",
+			"date": "2008-06-26",
+			"publication": {
+				"name": "The Telegraph"
+			},
+			"critic": {
+				"name": "Charles Spencer"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/d1ac4d78-43e9-11dd-842e-0000779fd2ac",
+			"date": "2008-06-28",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/black-watch-barbican-londonthe-diver-soho-londonthe-merry-wives-of-windsor-globe-london-856388.html",
+			"date": "2008-06-29",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/black-watch-at-the-barbican-ec2-the-sunday-times-review-fj683wxtzjk",
+			"date": "2008-06-29",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		}
 	]
 }

@@ -163,5 +163,27 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2012/may/30/taming-of-the-shrew-review",
+			"date": "2012-05-30",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Nosheen Iqbal"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/cba68df6-ab11-11e1-b675-00144feabdc0",
+			"date": "2012-06-02",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Alexander Gilmour"
+			}
+		}
 	]
 }

@@ -149,5 +149,87 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.thetimes.co.uk/article/three-days-of-rain-at-the-apollo-vlnnqz5069c",
+			"date": "2009-02-11",
+			"publication": {
+				"name": "The Times"
+			},
+			"critic": {
+				"name": "Benedict Nightingale"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/feb/11/theatre",
+			"date": "2009-02-11",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/three-days-of-rain-apollo-theatre-london-1607054.html",
+			"date": "2009-02-12",
+			"publication": {
+				"name": "The Independent"
+			},
+			"critic": {
+				"name": "Michael Coveney"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1144032/Three-Days-Of-Rain-I-wish-rain-stopped-dreary-play.html",
+			"date": "2009-02-12",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Quentin Letts"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/69ef67be-f925-11dd-ab7f-000077b07658",
+			"date": "2009-02-12",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/feb/15/theatre",
+			"date": "2009-02-15",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Susannah Clapp"
+			}
+		},
+		{
+			"url": "https://www.thetimes.co.uk/article/three-days-of-rain-at-the-apollo-w1-jjg6nlnptk6",
+			"date": "2009-02-15",
+			"publication": {
+				"name": "The Sunday Times"
+			},
+			"critic": {
+				"name": "Christopher Hart"
+			}
+		},
+		{
+			"url": "https://www.independent.co.uk/arts-entertainment/theatre-dance/reviews/three-days-of-rain-apollo-theatre-londonthe-stone-royal-court-downstairs-londonengland-people-very-nice-nt-olivier-london-1622127.html",
+			"date": "2009-02-15",
+			"publication": {
+				"name": "The Independent on Sunday"
+			},
+			"critic": {
+				"name": "Kate Bassett"
+			}
+		}
 	]
 }

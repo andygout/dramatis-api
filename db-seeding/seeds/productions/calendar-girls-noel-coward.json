@@ -202,5 +202,47 @@
 				}
 			]
 		}
+	],
+	"reviews": [
+		{
+			"url": "https://www.theguardian.com/stage/2009/apr/15/calendar-girls-theatre-review",
+			"date": "2009-04-16",
+			"publication": {
+				"name": "The Guardian"
+			},
+			"critic": {
+				"name": "Michael Billington"
+			}
+		},
+		{
+			"url": "https://www.dailymail.co.uk/tvshowbiz/reviews/article-1170781/Calendar-Girls-As-sweet-artfully-placed-ice-buns.html",
+			"date": "2009-04-16",
+			"publication": {
+				"name": "Daily Mail"
+			},
+			"critic": {
+				"name": "Patrick Marmion"
+			}
+		},
+		{
+			"url": "https://www.ft.com/content/2ec3679a-2dbd-11de-9eba-00144feabdc0",
+			"date": "2009-04-20",
+			"publication": {
+				"name": "Financial Times"
+			},
+			"critic": {
+				"name": "Sarah Hemming"
+			}
+		},
+		{
+			"url": "https://www.theguardian.com/stage/2009/apr/26/calendar-girls-stageplay-review",
+			"date": "2009-04-26",
+			"publication": {
+				"name": "The Observer"
+			},
+			"critic": {
+				"name": "Carole Cadwalladr"
+			}
+		}
 	]
 }
