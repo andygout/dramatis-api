@@ -11,6 +11,16 @@
 					"name": "Dreamworks"
 				}
 			]
+		},
+		{
+			"name": "based on",
+			"entities": [
+				{
+					"model": "MATERIAL",
+					"name": "The Girl on the Train",
+					"differentiator": "1"
+				}
+			]
 		}
 	]
 }
