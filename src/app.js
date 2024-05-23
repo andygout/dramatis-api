@@ -29,7 +29,10 @@ const server = http.createServer(app);
 
 server.listen(port, () => console.log(`Listening on port ${port}`)); // eslint-disable-line no-console
 
-const shutDown = () => server.close(() => neo4jDriver.close().then(() => process.exit(0)));
+const shutDown = () => {
+	server.closeAllConnections();
+	server.close(() => neo4jDriver.close().then(() => process.exit(0)));
+};
 
 process.on('SIGTERM', shutDown);
 process.on('SIGINT', shutDown);
