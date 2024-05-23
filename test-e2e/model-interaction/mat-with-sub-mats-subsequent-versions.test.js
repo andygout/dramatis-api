@@ -26,26 +26,26 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 	const ORESTEIA_ALMEIDA_PRODUCTION_UUID = 'ORESTEIA_PRODUCTION_UUID';
 	const AGAMEMNON_TRAFALGAR_STUDIOS_PRODUCTION_UUID = 'AGAMEMNON_2_PRODUCTION_UUID';
 	const ORESTEIA_TRAFALGAR_STUDIOS_PRODUCTION_UUID = 'ORESTEIA_2_PRODUCTION_UUID';
-	const PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = 'PLUGH_MATERIAL_UUID';
+	const UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID = 'UR_PLUGH_MATERIAL_UUID';
 	const FRANCIS_FLOB_PERSON_UUID = 'FRANCIS_FLOB_PERSON_UUID';
 	const CURTAIN_UP_LTD_COMPANY_UUID = 'CURTAIN_UP_LTD_COMPANY_UUID';
 	const SUB_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUB_PLUGH_MATERIAL_UUID';
 	const BEATRICE_BAR_I_PERSON_UUID = 'BEATRICE_BAR_I_PERSON_UUID';
 	const OLD_STAGECRAFT_LTD_COMPANY_UUID = 'OLD_STAGECRAFT_LTD_COMPANY_UUID';
 	const SUR_PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'SUR_PLUGH_MATERIAL_UUID';
-	const PLUGH_REDUX_SUBSEQUENT_VERSION_MATERIAL_UUID = 'PLUGH_REDUX_MATERIAL_UUID';
+	const PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID = 'PLUGH_MATERIAL_UUID';
 	const BEATRICE_BAR_II_PERSON_UUID = 'BEATRICE_BAR_II_PERSON_UUID';
 	const NEW_STAGECRAFT_LTD_COMPANY_UUID = 'NEW_STAGECRAFT_LTD_COMPANY_UUID';
-	const SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID = 'SUB_PLUGH_REDUX_PRODUCTION_UUID';
+	const SUB_PLUGH_GIELGUD_PRODUCTION_UUID = 'SUB_PLUGH_PRODUCTION_UUID';
 	const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
-	const SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID = 'SUR_PLUGH_REDUX_PRODUCTION_UUID';
+	const SUR_PLUGH_GIELGUD_PRODUCTION_UUID = 'SUR_PLUGH_PRODUCTION_UUID';
 
 	let agamemnonOriginalVersionMaterial;
 	let agamemnonSubsequentVersionMaterial;
 	let theOresteiaSubsequentVersionMaterial;
 	let aeschylusPerson;
 	let theFathersOfTragedyCompany;
-	let plughOriginalVersionMaterial;
+	let urPlughOriginalVersionMaterial;
 	let francisFlobPerson;
 	let curtainUpLtdCompany;
 
@@ -279,7 +279,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Plugh',
+				name: 'Ur-Plugh',
 				format: 'play',
 				year: '1899',
 				writingCredits: [
@@ -304,7 +304,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				format: 'play',
 				year: '2009',
 				originalVersionMaterial: {
-					name: 'Plugh'
+					name: 'Ur-Plugh'
 				},
 				writingCredits: [
 					{
@@ -341,7 +341,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				format: 'play',
 				year: '2009',
 				originalVersionMaterial: {
-					name: 'Plugh'
+					name: 'Ur-Plugh'
 				},
 				writingCredits: [
 					{
@@ -379,11 +379,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		await chai.request(app)
 			.post('/materials')
 			.send({
-				name: 'Plugh Redux',
+				name: 'Plugh',
 				format: 'play',
 				year: '2023',
 				originalVersionMaterial: {
-					name: 'Plugh'
+					name: 'Ur-Plugh'
 				},
 				writingCredits: [
 					{
@@ -416,12 +416,12 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sub-Plugh Redux',
+				name: 'Sub-Plugh',
 				startDate: '2023-10-17',
 				pressDate: '2023-10-26',
 				endDate: '2023-12-23',
 				material: {
-					name: 'Plugh Redux'
+					name: 'Plugh'
 				},
 				venue: {
 					name: 'Gielgud Theatre'
@@ -431,19 +431,19 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		await chai.request(app)
 			.post('/productions')
 			.send({
-				name: 'Sur-Plugh Redux',
+				name: 'Sur-Plugh',
 				startDate: '2023-10-17',
 				pressDate: '2023-10-26',
 				endDate: '2023-12-23',
 				material: {
-					name: 'Plugh Redux'
+					name: 'Plugh'
 				},
 				venue: {
 					name: 'Gielgud Theatre'
 				},
 				subProductions: [
 					{
-						uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID
+						uuid: SUB_PLUGH_GIELGUD_PRODUCTION_UUID
 					}
 				]
 			});
@@ -463,8 +463,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		theFathersOfTragedyCompany = await chai.request(app)
 			.get(`/companies/${THE_FATHERS_OF_TRAGEDY_COMPANY_UUID}`);
 
-		plughOriginalVersionMaterial = await chai.request(app)
-			.get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+		urPlughOriginalVersionMaterial = await chai.request(app)
+			.get(`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 		francisFlobPerson = await chai.request(app)
 			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
@@ -992,15 +992,15 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 	});
 
-	describe('Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version, and a separate subsequent version is attached to multiple tiers of a production', () => {
+	describe('Ur-Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version, and a separate subsequent version is attached to multiple tiers of a production', () => {
 
 		it('includes subsequent versions of this material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
 
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: PLUGH_REDUX_SUBSEQUENT_VERSION_MATERIAL_UUID,
-					name: 'Plugh Redux',
+					uuid: PLUGH_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Plugh',
 					format: 'play',
 					year: 2023,
 					surMaterial: null,
@@ -1056,7 +1056,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			];
 
-			const { subsequentVersionMaterials } = plughOriginalVersionMaterial.body;
+			const { subsequentVersionMaterials } = urPlughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
 
@@ -1067,8 +1067,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
-					name: 'Sub-Plugh Redux',
+					uuid: SUB_PLUGH_GIELGUD_PRODUCTION_UUID,
+					name: 'Sub-Plugh',
 					startDate: '2023-10-17',
 					endDate: '2023-12-23',
 					venue: {
@@ -1079,14 +1079,14 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
-						name: 'Sur-Plugh Redux',
+						uuid: SUR_PLUGH_GIELGUD_PRODUCTION_UUID,
+						name: 'Sur-Plugh',
 						surProduction: null
 					}
 				}
 			];
 
-			const { subsequentVersionMaterialProductions } = plughOriginalVersionMaterial.body;
+			const { subsequentVersionMaterialProductions } = urPlughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
 
@@ -1101,8 +1101,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
-					name: 'Sub-Plugh Redux',
+					uuid: SUB_PLUGH_GIELGUD_PRODUCTION_UUID,
+					name: 'Sub-Plugh',
 					startDate: '2023-10-17',
 					endDate: '2023-12-23',
 					venue: {
@@ -1113,8 +1113,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
-						name: 'Sur-Plugh Redux',
+						uuid: SUR_PLUGH_GIELGUD_PRODUCTION_UUID,
+						name: 'Sur-Plugh',
 						surProduction: null
 					}
 				}
@@ -1135,8 +1135,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
-					uuid: SUB_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
-					name: 'Sub-Plugh Redux',
+					uuid: SUB_PLUGH_GIELGUD_PRODUCTION_UUID,
+					name: 'Sub-Plugh',
 					startDate: '2023-10-17',
 					endDate: '2023-12-23',
 					venue: {
@@ -1147,8 +1147,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					},
 					surProduction: {
 						model: 'PRODUCTION',
-						uuid: SUR_PLUGH_REDUX_GIELGUD_PRODUCTION_UUID,
-						name: 'Sur-Plugh Redux',
+						uuid: SUR_PLUGH_GIELGUD_PRODUCTION_UUID,
+						name: 'Sur-Plugh',
 						surProduction: null
 					}
 				}
