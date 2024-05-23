@@ -1,7 +1,7 @@
 import {
 	getDuplicateBaseInstanceIndices,
 	getDuplicateNameIndices,
-	getDuplicateProductionIdentifierIndices,
+	getDuplicateUuidIndices,
 	getDuplicateUrlIndices
 } from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
@@ -115,7 +115,7 @@ export default class Production extends Entity {
 
 		this.festival.validateDifferentiator();
 
-		const duplicateSubProductionIdentifierIndices = getDuplicateProductionIdentifierIndices(this.subProductions);
+		const duplicateSubProductionIdentifierIndices = getDuplicateUuidIndices(this.subProductions);
 
 		this.subProductions.forEach((subProductionIdentifier, index) => {
 

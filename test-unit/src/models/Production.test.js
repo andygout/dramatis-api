@@ -85,7 +85,7 @@ describe('Production model', () => {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([]),
-				getDuplicateProductionIdentifierIndices: stub().returns([]),
+				getDuplicateUuidIndices: stub().returns([]),
 				getDuplicateUrlIndices: stub().returns([])
 			},
 			models: {
@@ -641,7 +641,7 @@ describe('Production model', () => {
 				instance.season.validateDifferentiator,
 				instance.festival.validateName,
 				instance.festival.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices,
 				instance.subProductions[0].validateUuid,
 				instance.subProductions[0].validateNoAssociationWithSelf,
 				instance.subProductions[0].validateUniquenessInGroup,
@@ -678,11 +678,8 @@ describe('Production model', () => {
 			assert.calledWithExactly(instance.festival.validateName, { isRequired: false });
 			assert.calledOnce(instance.festival.validateDifferentiator);
 			assert.calledWithExactly(instance.festival.validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices);
-			assert.calledWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
-				instance.subProductions
-			);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices);
+			assert.calledWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices, instance.subProductions);
 			assert.calledOnce(instance.subProductions[0].validateUuid);
 			assert.calledWithExactly(instance.subProductions[0].validateUuid);
 			assert.calledOnce(instance.subProductions[0].validateNoAssociationWithSelf);

@@ -1,5 +1,5 @@
 import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
-import { getDuplicateBaseInstanceIndices, getDuplicateProductionIdentifierIndices } from '../lib/get-duplicate-indices';
+import { getDuplicateBaseInstanceIndices, getDuplicateUuidIndices } from '../lib/get-duplicate-indices';
 import Base from './Base';
 import { CompanyWithMembers, MaterialBase, NominatedProductionIdentifier, Person } from '.';
 import { MODELS } from '../utils/constants';
@@ -61,7 +61,7 @@ export default class Nomination extends Base {
 
 		});
 
-		const duplicateProductionIdentifierIndices = getDuplicateProductionIdentifierIndices(this.productions);
+		const duplicateProductionIdentifierIndices = getDuplicateUuidIndices(this.productions);
 
 		this.productions.forEach((nominatedProductionIdentifier, index) => {
 

@@ -5,7 +5,7 @@ import {
 	getDuplicateCharacterIndices,
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
-	getDuplicateProductionIdentifierIndices,
+	getDuplicateUuidIndices,
 	getDuplicateRoleIndices,
 	getDuplicateUrlIndices
 } from '../../../src/lib/get-duplicate-indices';
@@ -251,46 +251,6 @@ describe('Get Duplicate Indices module', () => {
 
 	});
 
-	describe('getDuplicateProductionIdentifierIndices function', () => {
-
-		context('duplicates do not exist', () => {
-
-			it('returns an empty array', () => {
-
-				const result = getDuplicateProductionIdentifierIndices(
-					[
-						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
-						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }
-					]
-				);
-
-				expect(result).to.deep.equal([]);
-
-			});
-
-		});
-
-		context('duplicates exist', () => {
-
-			it('returns an array of indices of duplicate items, ignoring items with empty string uuid values', () => {
-
-				const result = getDuplicateProductionIdentifierIndices(
-					[
-						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
-						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' },
-						{ uuid: '' },
-						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-					]
-				);
-
-				expect(result).to.deep.equal([0, 3]);
-
-			});
-
-		});
-
-	});
-
 	describe('getDuplicateRoleIndices function', () => {
 
 		context('duplicates do not exist', () => {
@@ -409,6 +369,46 @@ describe('Get Duplicate Indices module', () => {
 						{ url: 'https://www.bar.com' },
 						{ url: '' },
 						{ url: 'https://www.foo.com' }
+					]
+				);
+
+				expect(result).to.deep.equal([0, 3]);
+
+			});
+
+		});
+
+	});
+
+	describe('getDuplicateUuidIndices function', () => {
+
+		context('duplicates do not exist', () => {
+
+			it('returns an empty array', () => {
+
+				const result = getDuplicateUuidIndices(
+					[
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' }
+					]
+				);
+
+				expect(result).to.deep.equal([]);
+
+			});
+
+		});
+
+		context('duplicates exist', () => {
+
+			it('returns an array of indices of duplicate items, ignoring items with empty string uuid values', () => {
+
+				const result = getDuplicateUuidIndices(
+					[
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
+						{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' },
+						{ uuid: '' },
+						{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 					]
 				);
 
