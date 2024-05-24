@@ -163,30 +163,37 @@ export default class Production extends Entity {
 
 		const formatErrorText = 'Value must be in date format';
 
-		if (Boolean(this.startDate) && !isValidDate(this.startDate))
+		const isValidStartDate = isValidDate(this.startDate);
+		const isValidPressDate = isValidDate(this.pressDate);
+		const isValidEndDate = isValidDate(this.endDate);
+
+		if (Boolean(this.startDate) && !isValidStartDate) {
 			this.addPropertyError('startDate', formatErrorText);
+		}
 
-		if (Boolean(this.pressDate) && !isValidDate(this.pressDate))
+		if (Boolean(this.pressDate) && !isValidPressDate) {
 			this.addPropertyError('pressDate', formatErrorText);
+		}
 
-		if (Boolean(this.endDate) && !isValidDate(this.endDate))
+		if (Boolean(this.endDate) && !isValidEndDate) {
 			this.addPropertyError('endDate', formatErrorText);
+		}
 
-		if (isValidDate(this.startDate) && isValidDate(this.endDate) && this.startDate > this.endDate) {
+		if (isValidStartDate && isValidEndDate && this.startDate > this.endDate) {
 
 			this.addPropertyError('startDate', 'Start date must not be after end date');
 			this.addPropertyError('endDate', 'End date must not be before start date');
 
 		}
 
-		if (isValidDate(this.startDate) && isValidDate(this.pressDate) && this.startDate > this.pressDate) {
+		if (isValidStartDate && isValidPressDate && this.startDate > this.pressDate) {
 
 			this.addPropertyError('startDate', 'Start date must not be after press date');
 			this.addPropertyError('pressDate', 'Press date must not be before start date');
 
 		}
 
-		if (isValidDate(this.pressDate) && isValidDate(this.endDate) && this.pressDate > this.endDate) {
+		if (isValidPressDate && isValidEndDate && this.pressDate > this.endDate) {
 
 			this.addPropertyError('pressDate', 'Press date must not be after end date');
 			this.addPropertyError('endDate', 'End date must not be before press date');
