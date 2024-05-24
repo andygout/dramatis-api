@@ -41,7 +41,7 @@ describe('Nomination model', () => {
 			},
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
-				getDuplicateProductionIdentifierIndices: stub().returns([])
+				getDuplicateUuidIndices: stub().returns([])
 			},
 			models: {
 				CompanyWithMembers: CompanyWithMembersStub,
@@ -308,7 +308,7 @@ describe('Nomination model', () => {
 				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.entities[1].validateUniquenessInGroup,
 				instance.entities[1].runInputValidations,
-				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
+				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices,
 				instance.productions[0].validateUuid,
 				instance.productions[0].validateUniquenessInGroup,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
@@ -349,11 +349,8 @@ describe('Nomination model', () => {
 				instance.entities[1].runInputValidations,
 				{ duplicateEntities: 'getDuplicateEntities response' }
 			);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices);
-			assert.calledWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateProductionIdentifierIndices,
-				instance.productions
-			);
+			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices);
+			assert.calledWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices, instance.productions);
 			assert.calledOnce(instance.productions[0].validateUuid);
 			assert.calledWithExactly(instance.productions[0].validateUuid);
 			assert.calledOnce(instance.productions[0].validateUniquenessInGroup);

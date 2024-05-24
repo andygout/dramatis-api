@@ -1,13 +1,12 @@
-const getDuplicateBaseInstanceIndices = arrayOfObjects => {
+const getDuplicateIndices = (arrayOfObjects, propertiesToCompare) => {
 
 	return arrayOfObjects.reduce((accumulator, object, index) => {
 
 		const isDuplicate =
-			Boolean(object.name) &&
+			Boolean(object[propertiesToCompare[0]]) &&
 			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
 				index !== comparisonIndex &&
-				object.name === comparisonObject.name &&
-				object.differentiator === comparisonObject.differentiator
+				propertiesToCompare.every(property => object[property] === comparisonObject[property])
 			);
 
 		if (isDuplicate) accumulator.push(index);
@@ -15,6 +14,12 @@ const getDuplicateBaseInstanceIndices = arrayOfObjects => {
 		return accumulator;
 
 	}, []);
+
+};
+
+const getDuplicateBaseInstanceIndices = arrayOfObjects => {
+
+	return getDuplicateIndices(arrayOfObjects, ['name', 'differentiator']);
 
 };
 
@@ -57,60 +62,13 @@ const getDuplicateCharacterIndices = arrayOfObjects => {
 
 const getDuplicateEntityIndices = arrayOfObjects => {
 
-	return arrayOfObjects.reduce((accumulator, object, index) => {
-
-		const isDuplicate =
-			Boolean(object.name) &&
-			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				index !== comparisonIndex &&
-				object.model === comparisonObject.model &&
-				object.name === comparisonObject.name &&
-				object.differentiator === comparisonObject.differentiator
-			);
-
-		if (isDuplicate) accumulator.push(index);
-
-		return accumulator;
-
-	}, []);
+	return getDuplicateIndices(arrayOfObjects, ['name', 'model', 'differentiator']);
 
 };
 
 const getDuplicateNameIndices = arrayOfObjects => {
 
-	return arrayOfObjects.reduce((accumulator, object, index) => {
-
-		const isDuplicate =
-			Boolean(object.name) &&
-			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				index !== comparisonIndex &&
-				object.name === comparisonObject.name
-			);
-
-		if (isDuplicate) accumulator.push(index);
-
-		return accumulator;
-
-	}, []);
-
-};
-
-const getDuplicateProductionIdentifierIndices = arrayOfObjects => {
-
-	return arrayOfObjects.reduce((accumulator, object, index) => {
-
-		const isDuplicate =
-			Boolean(object.uuid) &&
-			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				index !== comparisonIndex &&
-				object.uuid === comparisonObject.uuid
-			);
-
-		if (isDuplicate) accumulator.push(index);
-
-		return accumulator;
-
-	}, []);
+	return getDuplicateIndices(arrayOfObjects, ['name']);
 
 };
 
@@ -153,20 +111,13 @@ const getDuplicateRoleIndices = arrayOfObjects => {
 
 const getDuplicateUrlIndices = arrayOfObjects => {
 
-	return arrayOfObjects.reduce((accumulator, object, index) => {
+	return getDuplicateIndices(arrayOfObjects, ['url']);
 
-		const isDuplicate =
-			Boolean(object.url) &&
-			arrayOfObjects.find((comparisonObject, comparisonIndex) =>
-				index !== comparisonIndex &&
-				object.url === comparisonObject.url
-			);
+};
 
-		if (isDuplicate) accumulator.push(index);
+const getDuplicateUuidIndices = arrayOfObjects => {
 
-		return accumulator;
-
-	}, []);
+	return getDuplicateIndices(arrayOfObjects, ['uuid']);
 
 };
 
@@ -175,7 +126,7 @@ export {
 	getDuplicateCharacterIndices,
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
-	getDuplicateProductionIdentifierIndices,
 	getDuplicateRoleIndices,
-	getDuplicateUrlIndices
+	getDuplicateUrlIndices,
+	getDuplicateUuidIndices
 };
