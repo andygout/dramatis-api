@@ -1,6 +1,5 @@
 import FestivalBase from './FestivalBase';
 import { FestivalSeries } from '.';
-import { MODELS } from '../utils/constants';
 
 export default class Festival extends FestivalBase {
 
@@ -11,12 +10,6 @@ export default class Festival extends FestivalBase {
 		const { festivalSeries } = props;
 
 		this.festivalSeries = new FestivalSeries(festivalSeries);
-
-	}
-
-	get model () {
-
-		return MODELS.FESTIVAL;
 
 	}
 
