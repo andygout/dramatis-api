@@ -420,15 +420,38 @@ describe('Base model', () => {
 
 	describe('validateNamePresenceIfNamedChildren method', () => {
 
+		it('will call validatePropertyPresenceIfNamedChildren', () => {
+
+			spy(instance, 'validatePropertyPresenceIfNamedChildren');
+			instance.validateNamePresenceIfNamedChildren([
+				{
+					name: 'Foo'
+				},
+				{
+					name: 'Bar'
+				}
+			]);
+			assert.calledOnce(instance.validatePropertyPresenceIfNamedChildren);
+			assert.calledWithExactly(
+				instance.validatePropertyPresenceIfNamedChildren,
+				'name', [{ name: 'Foo' }, { name: 'Bar' }]
+			);
+
+		});
+
+	});
+
+	describe('validatePropertyPresenceIfNamedChildren method', () => {
+
 		context('valid data', () => {
 
 			context('instance does not have name nor any children with names', () => {
 
 				it('will not add properties to errors property', () => {
 
-					const instance = new Base({ name: '' });
+					instance.name = '';
 					spy(instance, 'addPropertyError');
-					instance.validateNamePresenceIfNamedChildren([{ name: '' }]);
+					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: '' }]);
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -439,9 +462,8 @@ describe('Base model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					const instance = new Base({ name: 'Foo' });
 					spy(instance, 'addPropertyError');
-					instance.validateNamePresenceIfNamedChildren([{ name: '' }]);
+					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: '' }]);
 					assert.notCalled(instance.addPropertyError);
 				});
 
@@ -451,9 +473,8 @@ describe('Base model', () => {
 
 				it('will not add properties to errors property', () => {
 
-					const instance = new Base({ name: 'Foo' });
 					spy(instance, 'addPropertyError');
-					instance.validateNamePresenceIfNamedChildren([{ name: 'Bar' }]);
+					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -466,13 +487,13 @@ describe('Base model', () => {
 
 			it('adds properties to errors property', () => {
 
-				const instance = new Base({ name: '' });
+				instance.name = '';
 				spy(instance, 'addPropertyError');
-				instance.validateNamePresenceIfNamedChildren([{ name: 'Bar' }]);
+				instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
 				assert.calledOnce(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError,
-					'name', 'Name is required if named children exist'
+					'name', 'Value is required if named children exist'
 				);
 
 			});

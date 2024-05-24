@@ -71,9 +71,15 @@ export default class Base {
 
 	validateNamePresenceIfNamedChildren (children) {
 
-		if (this.name === '' && children.some(child => Boolean(child.name))) {
+		this.validatePropertyPresenceIfNamedChildren('name', children);
 
-			this.addPropertyError('name', 'Name is required if named children exist');
+	}
+
+	validatePropertyPresenceIfNamedChildren (property, children) {
+
+		if (this[property] === '' && children.some(child => Boolean(child.name))) {
+
+			this.addPropertyError(property, 'Value is required if named children exist');
 
 		}
 

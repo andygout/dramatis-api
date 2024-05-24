@@ -1988,7 +1988,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: '',
 									errors: {
 										name: [
-											'Name is required if named children exist'
+											'Value is required if named children exist'
 										]
 									},
 									members: [
@@ -2577,7 +2577,7 @@ describe('Input validation failures: Production instance', () => {
 							differentiator: '',
 							errors: {
 								name: [
-									'Name is required if named children exist'
+									'Value is required if named children exist'
 								]
 							},
 							roles: [
@@ -3465,7 +3465,7 @@ describe('Input validation failures: Production instance', () => {
 							name: '',
 							errors: {
 								name: [
-									'Name is required if named children exist'
+									'Value is required if named children exist'
 								]
 							},
 							entities: [
@@ -4103,7 +4103,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: '',
 									errors: {
 										name: [
-											'Name is required if named children exist'
+											'Value is required if named children exist'
 										]
 									},
 									members: [
@@ -4573,7 +4573,7 @@ describe('Input validation failures: Production instance', () => {
 							name: '',
 							errors: {
 								name: [
-									'Name is required if named children exist'
+									'Value is required if named children exist'
 								]
 							},
 							entities: [
@@ -5211,7 +5211,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: '',
 									errors: {
 										name: [
-											'Name is required if named children exist'
+											'Value is required if named children exist'
 										]
 									},
 									members: [
@@ -5864,7 +5864,7 @@ describe('Input validation failures: Production instance', () => {
 							date: '',
 							errors: {
 								url: [
-									'URL is required if named children exist'
+									'Value is required if named children exist'
 								]
 							},
 							publication: {
@@ -5957,7 +5957,7 @@ describe('Input validation failures: Production instance', () => {
 							date: '',
 							errors: {
 								url: [
-									'URL is required if named children exist'
+									'Value is required if named children exist'
 								]
 							},
 							publication: {

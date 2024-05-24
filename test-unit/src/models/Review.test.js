@@ -327,62 +327,23 @@ describe('Review model', () => {
 
 	describe('validateUrlPresenceIfNamedChildren method', () => {
 
-		context('valid data', () => {
+		it('will call validatePropertyPresenceIfNamedChildren', () => {
 
-			context('instance does not have url nor any children with names', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = new Review({ url: '' });
-					spy(instance, 'addPropertyError');
-					instance.validateUrlPresenceIfNamedChildren([{ name: '' }]);
-					assert.notCalled(instance.addPropertyError);
-
-				});
-
-			});
-
-			context('instance has a url and no children with names', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = new Review({ url: 'https://www.foo.com' });
-					spy(instance, 'addPropertyError');
-					instance.validateUrlPresenceIfNamedChildren([{ name: '' }]);
-					assert.notCalled(instance.addPropertyError);
-				});
-
-			});
-
-			context('instance has a url and children with names', () => {
-
-				it('will not add properties to errors property', () => {
-
-					const instance = new Review({ url: 'https://www.foo.com' });
-					spy(instance, 'addPropertyError');
-					instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }]);
-					assert.notCalled(instance.addPropertyError);
-
-				});
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('adds properties to errors property', () => {
-
-				const instance = new Review({ url: '' });
-				spy(instance, 'addPropertyError');
-				instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }]);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
-					instance.addPropertyError,
-					'url', 'URL is required if named children exist'
-				);
-
-			});
+			const instance = new Review();
+			spy(instance, 'validatePropertyPresenceIfNamedChildren');
+			instance.validateUrlPresenceIfNamedChildren([
+				{
+					name: 'Financial Times'
+				},
+				{
+					name: 'Sarah Hemming'
+				}
+			]);
+			assert.calledOnce(instance.validatePropertyPresenceIfNamedChildren);
+			assert.calledWithExactly(
+				instance.validatePropertyPresenceIfNamedChildren,
+				'url', [{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]
+			);
 
 		});
 

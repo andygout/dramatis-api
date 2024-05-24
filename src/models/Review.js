@@ -67,11 +67,7 @@ export default class Review extends Base {
 
 	validateUrlPresenceIfNamedChildren (children) {
 
-		if (this.url === '' && children.some(child => Boolean(child.name))) {
-
-			this.addPropertyError('url', 'URL is required if named children exist');
-
-		}
+		this.validatePropertyPresenceIfNamedChildren('url', children);
 
 	}
 
