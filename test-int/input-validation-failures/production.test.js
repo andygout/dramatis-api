@@ -1475,7 +1475,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							entities: [
@@ -1526,10 +1526,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							errors: {},
@@ -1547,6 +1544,9 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
@@ -1566,7 +1566,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							entities: [
@@ -1617,10 +1617,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							errors: {},
@@ -1639,6 +1636,9 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
@@ -1658,7 +1658,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							entities: [
@@ -1710,10 +1710,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							errors: {},
@@ -1732,6 +1729,9 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
@@ -1751,7 +1751,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'Producers',
 							entities: [
@@ -1821,10 +1821,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'Producers',
 							errors: {},
@@ -1900,12 +1897,15 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].entities[0].members[1].model).to.equal('PERSON');
-				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
+				expect(result.producerCredits[0].entities[0].members[1].model).to.equal('PERSON');
+				expect(result.producerCredits[0].entities[3].model).to.equal('COMPANY');
 
 			});
 
@@ -1921,7 +1921,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							entities: [
@@ -1977,10 +1977,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							errors: {},
@@ -2006,6 +2003,9 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
@@ -2025,7 +2025,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							entities: [
@@ -2081,10 +2081,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							errors: {},
@@ -2110,6 +2107,9 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
@@ -2129,7 +2129,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const instanceProps = {
 					name: 'Waiting for Godot',
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							entities: [
@@ -2186,10 +2186,7 @@ describe('Input validation failures: Production instance', () => {
 						errors: {}
 					},
 					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [
+					producerCredits: [
 						{
 							name: 'produced by',
 							errors: {},
@@ -2215,6 +2212,9 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
 					reviews: []
 				};
 
