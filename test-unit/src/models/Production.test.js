@@ -88,6 +88,9 @@ describe('Production model', () => {
 				getDuplicateUuidIndices: stub().returns([]),
 				getDuplicateUrlIndices: stub().returns([])
 			},
+			isValidDateModule: {
+				isValidDate: stub().returns(false)
+			},
 			models: {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
@@ -107,6 +110,7 @@ describe('Production model', () => {
 	const createSubject = () =>
 		proxyquire('../../../src/models/Production', {
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/is-valid-date': stubs.isValidDateModule,
 			'.': stubs.models
 		}).default;
 
@@ -756,6 +760,10 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -766,9 +774,14 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate.onFirstCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -782,6 +795,10 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -792,9 +809,14 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate.onSecondCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -808,19 +830,28 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', endDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
 
 			});
 
-			context('pressDate with valid date format', () => {
+			context('endDate with valid date format', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', endDate: '2011-01-26' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -831,9 +862,16 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', endDate: '2011-01-26' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -844,9 +882,16 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', endDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -857,6 +902,9 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onSecondCall().returns(true);
 					const instance = createInstance({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -864,6 +912,10 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -874,9 +926,20 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
-					const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30', pressDate: '2010-09-30' });
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onSecondCall().returns(true);
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2010-09-30',
+						pressDate: '2010-09-30'
+					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -887,9 +950,16 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onSecondCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07', endDate: '2011-01-26' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -900,9 +970,16 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onSecondCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2010-09-30', endDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -916,6 +993,10 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: '', pressDate: '', endDate: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -926,6 +1007,10 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onSecondCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -934,6 +1019,10 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -944,6 +1033,10 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onSecondCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -952,6 +1045,10 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -969,6 +1066,10 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', startDate: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), 'foobar');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.calledOnce(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError,
@@ -986,6 +1087,10 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', pressDate: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), 'foobar');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.calledOnce(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError,
@@ -1003,6 +1108,10 @@ describe('Production model', () => {
 					const instance = createInstance({ name: 'Hamlet', endDate: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), 'foobar');
 					assert.calledOnce(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError,
@@ -1017,9 +1126,16 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', startDate: '2011-01-26', endDate: '2010-09-30' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2011-01-26');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2010-09-30');
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.getCall(0),
@@ -1038,9 +1154,20 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', () => {
 
-					const instance = createInstance({ name: 'Hamlet', startDate: '2010-10-07', pressDate: '2010-09-30' });
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onSecondCall().returns(true);
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2010-10-07',
+						pressDate: '2010-09-30'
+					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.getCall(0),
@@ -1059,9 +1186,16 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onSecondCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({ name: 'Hamlet', pressDate: '2011-01-26', endDate: '2010-10-07' });
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2011-01-26');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2010-10-07');
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.getCall(0),
@@ -1080,6 +1214,10 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', () => {
 
+					stubs.isValidDateModule.isValidDate
+						.onFirstCall().returns(true)
+						.onSecondCall().returns(true)
+						.onThirdCall().returns(true);
 					const instance = createInstance({
 						name: 'Hamlet',
 						startDate: '2011-01-26',
@@ -1088,6 +1226,10 @@ describe('Production model', () => {
 					});
 					spy(instance, 'addPropertyError');
 					instance.validateDates();
+					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '2011-01-26');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '2010-09-30');
 					expect(instance.addPropertyError.callCount).to.equal(6);
 					assert.calledWithExactly(
 						instance.addPropertyError.getCall(0),

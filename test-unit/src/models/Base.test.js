@@ -179,7 +179,7 @@ describe('Base model', () => {
 
 			it('will call addPropertyError method', () => {
 
-				const instance = new Base({ name: '' });
+				instance.name = '';
 				spy(instance, 'addPropertyError');
 				instance.validateStringForProperty('name', { isRequired: true });
 				assert.callOrder(
@@ -423,14 +423,7 @@ describe('Base model', () => {
 		it('will call validatePropertyPresenceIfNamedChildren', () => {
 
 			spy(instance, 'validatePropertyPresenceIfNamedChildren');
-			instance.validateNamePresenceIfNamedChildren([
-				{
-					name: 'Foo'
-				},
-				{
-					name: 'Bar'
-				}
-			]);
+			instance.validateNamePresenceIfNamedChildren([{ name: 'Foo' }, { name: 'Bar' }]);
 			assert.calledOnce(instance.validatePropertyPresenceIfNamedChildren);
 			assert.calledWithExactly(
 				instance.validatePropertyPresenceIfNamedChildren,

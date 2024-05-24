@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import Review from '../../../src/models/Review';
 import { Company, Person } from '../../../src/models';
 
 describe('Review model', () => {
@@ -24,9 +23,6 @@ describe('Review model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			getDuplicateEntityInfoModule: {
-				isEntityInArray: stub().returns(false)
-			},
 			isValidDateModule: {
 				isValidDate: stub().returns(true)
 			},
@@ -40,16 +36,15 @@ describe('Review model', () => {
 
 	const createSubject = () =>
 		proxyquire('../../../src/models/Review', {
-			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
 			'../lib/is-valid-date': stubs.isValidDateModule,
 			'.': stubs.models
 		}).default;
 
 	const createInstance = props => {
 
-		const ProductionTeamCredit = createSubject();
+		const Review = createSubject();
 
-		return new ProductionTeamCredit(props);
+		return new Review(props);
 
 	};
 
@@ -269,7 +264,7 @@ describe('Review model', () => {
 
 		it('will call validateStringForProperty method', () => {
 
-			const instance = new Review({ url: 'https://www.foo.com' });
+			const instance = createInstance({ url: 'https://www.foo.com' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateUrl({ isRequired: false });
 			assert.calledOnce(instance.validateStringForProperty);
@@ -284,7 +279,7 @@ describe('Review model', () => {
 
 			it('will not call addPropertyError method', () => {
 
-				const instance = new Review({ url: 'https://www.foo.com' });
+				const instance = createInstance({ url: 'https://www.foo.com' });
 				spy(instance, 'addPropertyError');
 				instance.validateUrl({ isRequired: false });
 				assert.notCalled(instance.addPropertyError);
@@ -297,7 +292,7 @@ describe('Review model', () => {
 
 			it('will not call addPropertyError method', () => {
 
-				const instance = new Review({ url: '' });
+				const instance = createInstance({ url: '' });
 				spy(instance, 'addPropertyError');
 				instance.validateUrl({ isRequired: false });
 				assert.notCalled(instance.addPropertyError);
@@ -310,7 +305,7 @@ describe('Review model', () => {
 
 			it('will call addPropertyError method', () => {
 
-				const instance = new Review({ url: 'foobar' });
+				const instance = createInstance({ url: 'foobar' });
 				spy(instance, 'addPropertyError');
 				instance.validateUrl({ isRequired: false });
 				assert.calledOnce(instance.addPropertyError);
@@ -329,16 +324,9 @@ describe('Review model', () => {
 
 		it('will call validatePropertyPresenceIfNamedChildren', () => {
 
-			const instance = new Review();
+			const instance = createInstance();
 			spy(instance, 'validatePropertyPresenceIfNamedChildren');
-			instance.validateUrlPresenceIfNamedChildren([
-				{
-					name: 'Financial Times'
-				},
-				{
-					name: 'Sarah Hemming'
-				}
-			]);
+			instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]);
 			assert.calledOnce(instance.validatePropertyPresenceIfNamedChildren);
 			assert.calledWithExactly(
 				instance.validatePropertyPresenceIfNamedChildren,
