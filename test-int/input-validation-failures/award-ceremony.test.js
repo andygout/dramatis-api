@@ -363,7 +363,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 							name: '',
 							errors: {
 								name: [
-									'Name is required if named children exist'
+									'Value is required if named children exist'
 								]
 							},
 							nominations: [
@@ -984,7 +984,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											differentiator: '',
 											errors: {
 												name: [
-													'Name is required if named children exist'
+													'Value is required if named children exist'
 												]
 											},
 											members: [
