@@ -309,14 +309,14 @@ describe('Nomination model', () => {
 			assert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
 			assert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
 			assert.calledWithExactly(
-				stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(0),
+				stubs.getDuplicateEntityInfoModule.isEntityInArray.firstCall,
 				instance.entities[0], 'getDuplicateEntities response'
 			);
 			assert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
 			assert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
 			assert.calledWithExactly(
-				stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(1),
+				stubs.getDuplicateEntityInfoModule.isEntityInArray.secondCall,
 				instance.entities[1], 'getDuplicateEntities response'
 			);
 			assert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });

@@ -1141,11 +1141,11 @@ describe('Entity model', () => {
 				assert.calledOnceWithExactly(stubs.getShowQueries.PRODUCTION);
 				assert.calledTwice(stubs.neo4jQuery);
 				assert.calledWithExactly(
-					stubs.neo4jQuery.getCall(0),
+					stubs.neo4jQuery.firstCall,
 					{ query: 'showProductionQuery', params: { uuid: instance.uuid } }
 				);
 				assert.calledWithExactly(
-					stubs.neo4jQuery.getCall(1),
+					stubs.neo4jQuery.secondCall,
 					{ query: 'showProductionAwardsQuery', params: { uuid: instance.uuid } }
 				);
 				expect(result).to.deep.equal(neo4jQueryMockResponse);

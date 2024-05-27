@@ -476,8 +476,8 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				assert.calledTwice(stubs.cryptoRandomUUID);
 				assert.calledTwice(stubs.neo4jInt);
-				assert.calledWithExactly(stubs.neo4jInt.getCall(0), 0);
-				assert.calledWithExactly(stubs.neo4jInt.getCall(1), 1);
+				assert.calledWithExactly(stubs.neo4jInt.firstCall, 0);
+				assert.calledWithExactly(stubs.neo4jInt.secondCall, 1);
 				expect(result.cast[0]).to.have.property('position');
 				expect(result.cast[0].position).to.equal(0);
 				expect(result.cast[1]).to.have.property('position');
@@ -866,8 +866,8 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				assert.calledTwice(stubs.cryptoRandomUUID);
 				assert.calledTwice(stubs.neo4jInt);
-				assert.calledWithExactly(stubs.neo4jInt.getCall(0), 0);
-				assert.calledWithExactly(stubs.neo4jInt.getCall(1), 1);
+				assert.calledWithExactly(stubs.neo4jInt.firstCall, 0);
+				assert.calledWithExactly(stubs.neo4jInt.secondCall, 1);
 				expect(result.production.cast[0]).to.have.property('position');
 				expect(result.production.cast[0].position).to.equal(0);
 				expect(result.production.cast[1]).to.have.property('position');
@@ -1288,8 +1288,8 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 				assert.calledTwice(stubs.cryptoRandomUUID);
 				assert.calledTwice(stubs.neo4jInt);
-				assert.calledWithExactly(stubs.neo4jInt.getCall(0), 0);
-				assert.calledWithExactly(stubs.neo4jInt.getCall(1), 1);
+				assert.calledWithExactly(stubs.neo4jInt.firstCall, 0);
+				assert.calledWithExactly(stubs.neo4jInt.secondCall, 1);
 				expect(result.cast[0]).to.not.have.property('position');
 				expect(result.cast[0].roles[0]).to.have.property('position');
 				expect(result.cast[0].roles[0].position).to.equal(0);
