@@ -105,25 +105,17 @@ describe('CharacterGroup model', () => {
 				instance.characters[0].validateCharacterNameUnderlyingNameDisparity,
 				instance.characters[0].validateUniquenessInGroup
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
 				instance.characters
 			);
-			assert.calledOnce(instance.characters[0].validateName);
-			assert.calledWithExactly(instance.characters[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.characters[0].validateUnderlyingName);
-			assert.calledWithExactly(instance.characters[0].validateUnderlyingName);
-			assert.calledOnce(instance.characters[0].validateDifferentiator);
-			assert.calledWithExactly(instance.characters[0].validateDifferentiator);
-			assert.calledOnce(instance.characters[0].validateQualifier);
-			assert.calledWithExactly(instance.characters[0].validateQualifier);
-			assert.calledOnce(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
-			assert.calledWithExactly(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
-			assert.calledOnce(instance.characters[0].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.characters[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.characters[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.characters[0].validateUnderlyingName);
+			assert.calledOnceWithExactly(instance.characters[0].validateDifferentiator);
+			assert.calledOnceWithExactly(instance.characters[0].validateQualifier);
+			assert.calledOnceWithExactly(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
+			assert.calledOnceWithExactly(instance.characters[0].validateUniquenessInGroup, { isDuplicate: false });
 
 		});
 

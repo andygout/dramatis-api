@@ -40,8 +40,7 @@ describe('Search controller', () => {
 
 			const request = httpMocks.createRequest();
 			const result = await searchController(request, stubs.response, stubs.next);
-			assert.calledOnce(stubs.sendJsonResponse);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response, []
 			);
@@ -60,8 +59,7 @@ describe('Search controller', () => {
 
 			const request = httpMocks.createRequest({ query: { searchTerm: '' } });
 			const result = await searchController(request, stubs.response, stubs.next);
-			assert.calledOnce(stubs.sendJsonResponse);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response, []
 			);
@@ -81,10 +79,8 @@ describe('Search controller', () => {
 			it('calls getSearchQuery, neo4jQuery, then sendJsonResponse with the response object and the neo4jQuery response', async () => {
 
 				const result = await searchController(stubs.request, stubs.response, stubs.next);
-				assert.calledOnce(stubs.getSearchQuery);
-				assert.calledWithExactly(stubs.getSearchQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.getSearchQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSearchQuery response',
@@ -97,8 +93,7 @@ describe('Search controller', () => {
 						isArrayResult: true
 					}
 				);
-				assert.calledOnce(stubs.sendJsonResponse);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.sendJsonResponse,
 					stubs.response, ['foo bar']
 				);
@@ -117,10 +112,8 @@ describe('Search controller', () => {
 				stubs.neo4jQuery.rejects(neo4jQueryError);
 				
 				await searchController(stubs.request, stubs.response, stubs.next);
-				assert.calledOnce(stubs.getSearchQuery);
-				assert.calledWithExactly(stubs.getSearchQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.getSearchQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSearchQuery response',
@@ -134,8 +127,7 @@ describe('Search controller', () => {
 					}
 				);
 				assert.notCalled(stubs.sendJsonResponse);
-				assert.calledOnce(stubs.next);
-				assert.calledWithExactly(stubs.next, neo4jQueryError);
+				assert.calledOnceWithExactly(stubs.next, neo4jQueryError);
 
 			});
 

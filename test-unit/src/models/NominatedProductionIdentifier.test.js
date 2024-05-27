@@ -14,8 +14,7 @@ describe('NominatedProductionIdentifier model', () => {
 				stub(instance, 'confirmExistenceInDatabase').resolves(true);
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations();
-				assert.calledOnce(instance.confirmExistenceInDatabase);
-				assert.calledWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
+				assert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
 				assert.notCalled(instance.addPropertyError);
 
 			});
@@ -30,10 +29,8 @@ describe('NominatedProductionIdentifier model', () => {
 				stub(instance, 'confirmExistenceInDatabase').resolves(false);
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations();
-				assert.calledOnce(instance.confirmExistenceInDatabase);
-				assert.calledWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid', 'Production with this UUID does not exist'
 				);

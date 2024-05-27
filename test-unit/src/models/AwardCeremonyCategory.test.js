@@ -57,14 +57,10 @@ describe('AwardCeremonyCategory model', () => {
 				instance.validateNamePresenceIfNamedChildren,
 				instance.nominations[0].runInputValidations
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnce(instance.validateUniquenessInGroup);
-			assert.calledWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
-			assert.calledWithExactly(instance.validateNamePresenceIfNamedChildren, []);
-			assert.calledOnce(instance.nominations[0].runInputValidations);
-			assert.calledWithExactly(instance.nominations[0].runInputValidations);
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, []);
+			assert.calledOnceWithExactly(instance.nominations[0].runInputValidations);
 
 		});
 
@@ -80,8 +76,7 @@ describe('AwardCeremonyCategory model', () => {
 			const instance = new AwardCeremonyCategory(props);
 			spy(instance.nominations[0], 'runDatabaseValidations');
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.nominations[0].runDatabaseValidations);
-			assert.calledWithExactly(instance.nominations[0].runDatabaseValidations);
+			assert.calledOnceWithExactly(instance.nominations[0].runDatabaseValidations);
 
 		});
 

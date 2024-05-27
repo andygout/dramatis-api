@@ -60,12 +60,9 @@ describe('SubMaterial model', () => {
 					stubs.validationQueries.getSubMaterialChecksQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
@@ -102,12 +99,9 @@ describe('SubMaterial model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
@@ -152,12 +146,9 @@ describe('SubMaterial model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
@@ -202,12 +193,9 @@ describe('SubMaterial model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
@@ -252,12 +240,9 @@ describe('SubMaterial model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',

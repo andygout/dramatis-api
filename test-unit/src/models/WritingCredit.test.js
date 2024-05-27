@@ -199,35 +199,23 @@ describe('WritingCredit model', () => {
 				instance.entities[2].validateUniquenessInGroup,
 				instance.entities[2].validateNoAssociationWithSelf
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
 				instance.entities
 			);
-			assert.calledOnce(instance.entities[0].validateName);
-			assert.calledWithExactly(instance.entities[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.entities[0].validateDifferentiator);
-			assert.calledWithExactly(instance.entities[0].validateDifferentiator);
-			assert.calledOnce(instance.entities[0].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
+			assert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
 			assert.notCalled(instance.entities[0].validateNoAssociationWithSelf);
-			assert.calledOnce(instance.entities[1].validateName);
-			assert.calledWithExactly(instance.entities[1].validateName, { isRequired: false });
-			assert.calledOnce(instance.entities[1].validateDifferentiator);
-			assert.calledWithExactly(instance.entities[1].validateDifferentiator);
-			assert.calledOnce(instance.entities[1].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
+			assert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
 			assert.notCalled(instance.entities[1].validateNoAssociationWithSelf);
-			assert.calledOnce(instance.entities[2].validateName);
-			assert.calledWithExactly(instance.entities[2].validateName, { isRequired: false });
-			assert.calledOnce(instance.entities[2].validateDifferentiator);
-			assert.calledWithExactly(instance.entities[2].validateDifferentiator);
-			assert.calledOnce(instance.entities[2].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnce(instance.entities[2].validateNoAssociationWithSelf);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.entities[2].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.entities[2].validateDifferentiator);
+			assert.calledOnceWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(
 				instance.entities[2].validateNoAssociationWithSelf,
 				{ name: 'The Indian Boy', differentiator: '1' }
 			);
@@ -260,8 +248,7 @@ describe('WritingCredit model', () => {
 			await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 			assert.notCalled(instance.entities[0].runDatabaseValidations);
 			assert.notCalled(instance.entities[1].runDatabaseValidations);
-			assert.calledOnce(instance.entities[2].runDatabaseValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.entities[2].runDatabaseValidations,
 				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);

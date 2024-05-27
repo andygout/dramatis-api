@@ -110,29 +110,19 @@ describe('CastMember model', () => {
 				instance.roles[0].validateRoleNameCharacterNameDisparity,
 				instance.roles[0].validateUniquenessInGroup
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnce(instance.validateDifferentiator);
-			assert.calledWithExactly(instance.validateDifferentiator);
-			assert.calledOnce(instance.validateUniquenessInGroup);
-			assert.calledWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
-			assert.calledWithExactly(instance.validateNamePresenceIfNamedChildren, instance.roles);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.roles);
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateRoleIndices,
 				instance.roles
 			);
-			assert.calledOnce(instance.roles[0].validateName);
-			assert.calledWithExactly(instance.roles[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.roles[0].validateCharacterName);
-			assert.calledWithExactly(instance.roles[0].validateCharacterName);
-			assert.calledOnce(instance.roles[0].validateQualifier);
-			assert.calledWithExactly(instance.roles[0].validateQualifier);
-			assert.calledOnce(instance.roles[0].validateRoleNameCharacterNameDisparity);
-			assert.calledWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
-			assert.calledOnce(instance.roles[0].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.roles[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.roles[0].validateCharacterName);
+			assert.calledOnceWithExactly(instance.roles[0].validateQualifier);
+			assert.calledOnceWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
+			assert.calledOnceWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
 
 		});
 

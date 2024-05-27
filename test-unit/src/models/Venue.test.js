@@ -108,26 +108,19 @@ describe('Venue model', () => {
 				instance.subVenues[0].validateNoAssociationWithSelf,
 				instance.subVenues[0].validateUniquenessInGroup
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnce(instance.validateDifferentiator);
-			assert.calledWithExactly(instance.validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnceWithExactly(instance.validateDifferentiator);
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.subVenues
 			);
-			assert.calledOnce(instance.subVenues[0].validateName);
-			assert.calledWithExactly(instance.subVenues[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.subVenues[0].validateDifferentiator);
-			assert.calledWithExactly(instance.subVenues[0].validateDifferentiator);
-			assert.calledOnce(instance.subVenues[0].validateNoAssociationWithSelf);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.subVenues[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.subVenues[0].validateDifferentiator);
+			assert.calledOnceWithExactly(
 				instance.subVenues[0].validateNoAssociationWithSelf,
 				{ name: 'National Theatre', differentiator: '' }
 			);
-			assert.calledOnce(instance.subVenues[0].validateUniquenessInGroup);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.subVenues[0].validateUniquenessInGroup,
 				{ isDuplicate: false }
 			);
@@ -152,10 +145,8 @@ describe('Venue model', () => {
 			const instance = createInstance(props);
 			stub(instance, 'validateUniquenessInDatabase');
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.validateUniquenessInDatabase);
-			assert.calledWithExactly(instance.validateUniquenessInDatabase);
-			assert.calledOnce(instance.subVenues[0].runDatabaseValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
+			assert.calledOnceWithExactly(
 				instance.subVenues[0].runDatabaseValidations,
 				{ subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);

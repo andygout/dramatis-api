@@ -139,40 +139,29 @@ describe('ProductionTeamCredit model', () => {
 				instance.entities[1].validateUniquenessInGroup,
 				instance.entities[1].runInputValidations
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnce(instance.validateUniquenessInGroup);
-			assert.calledWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
-			assert.calledWithExactly(instance.validateNamePresenceIfNamedChildren, instance.entities);
-			assert.calledOnce(stubs.getDuplicateEntityInfoModule.getDuplicateEntities);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.entities);
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
 				instance.entities
 			);
-			assert.calledOnce(instance.entities[0].validateName);
-			assert.calledWithExactly(instance.entities[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.entities[0].validateDifferentiator);
-			assert.calledWithExactly(instance.entities[0].validateDifferentiator);
+			assert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
 			assert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
 			assert.calledWithExactly(
 				stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(0),
 				instance.entities[0], 'getDuplicateEntities response'
 			);
-			assert.calledOnce(instance.entities[0].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnce(instance.entities[1].validateName);
-			assert.calledWithExactly(instance.entities[1].validateName, { isRequired: false });
-			assert.calledOnce(instance.entities[1].validateDifferentiator);
-			assert.calledWithExactly(instance.entities[1].validateDifferentiator);
+			assert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
 			assert.calledWithExactly(
 				stubs.getDuplicateEntityInfoModule.isEntityInArray.getCall(1),
 				instance.entities[1], 'getDuplicateEntities response'
 			);
-			assert.calledOnce(instance.entities[1].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnce(instance.entities[1].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(
 				instance.entities[1].runInputValidations,
 				{ duplicateEntities: 'getDuplicateEntities response' }
 			);

@@ -50,8 +50,7 @@ describe('Call Class Methods module', () => {
 				const instanceMethodResponse = { property: 'value' };
 				sandbox.stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse); });
 				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
-				assert.calledOnce(stubs.sendJsonResponse);
-				assert.calledWithExactly(stubs.sendJsonResponse, stubs.response, instanceMethodResponse);
+				assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, instanceMethodResponse);
 				assert.notCalled(stubs.next);
 				expect(result).to.equal('sendJsonResponse response');
 
@@ -65,8 +64,7 @@ describe('Call Class Methods module', () => {
 
 				sandbox.stub(character, method).callsFake(() => { return Promise.reject(error); });
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
-				assert.calledOnce(stubs.next);
-				assert.calledWithExactly(stubs.next, error);
+				assert.calledOnceWithExactly(stubs.next, error);
 				assert.notCalled(stubs.sendJsonResponse);
 
 			});
@@ -108,8 +106,7 @@ describe('Call Class Methods module', () => {
 				sandbox.stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse); });
 				const result =
 					await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
-				assert.calledOnce(stubs.sendJsonResponse);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.sendJsonResponse,
 					stubs.response, staticListMethodResponse
 				);
@@ -126,8 +123,7 @@ describe('Call Class Methods module', () => {
 
 				sandbox.stub(Character, method).callsFake(() => { return Promise.reject(error); });
 				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
-				assert.calledOnce(stubs.next);
-				assert.calledWithExactly(stubs.next, error);
+				assert.calledOnceWithExactly(stubs.next, error);
 				assert.notCalled(stubs.sendJsonResponse);
 
 			});

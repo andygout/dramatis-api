@@ -154,19 +154,14 @@ describe('AwardCeremony model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.categories[0].runInputValidations
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnce(instance.award.validateName);
-			assert.calledWithExactly(instance.award.validateName, { isRequired: false });
-			assert.calledOnce(instance.award.validateDifferentiator);
-			assert.calledWithExactly(instance.award.validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnceWithExactly(instance.award.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.award.validateDifferentiator);
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.categories
 			);
-			assert.calledOnce(instance.categories[0].runInputValidations);
-			assert.calledWithExactly(instance.categories[0].runInputValidations, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.categories[0].runInputValidations, { isDuplicate: false });
 
 		});
 
@@ -187,10 +182,8 @@ describe('AwardCeremony model', () => {
 			const instance = createInstance(props);
 			spy(instance, 'validateAwardContextualUniquenessInDatabase');
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.validateAwardContextualUniquenessInDatabase);
-			assert.calledWithExactly(instance.validateAwardContextualUniquenessInDatabase);
-			assert.calledOnce(instance.categories[0].runDatabaseValidations);
-			assert.calledWithExactly(instance.categories[0].runDatabaseValidations);
+			assert.calledOnceWithExactly(instance.validateAwardContextualUniquenessInDatabase);
+			assert.calledOnceWithExactly(instance.categories[0].runDatabaseValidations);
 
 		});
 
@@ -211,16 +204,11 @@ describe('AwardCeremony model', () => {
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
-				assert.calledOnce(
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
 				);
-				assert.calledWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
-				);
-				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getAwardContextualDuplicateRecordCheckQuery response',
@@ -255,16 +243,11 @@ describe('AwardCeremony model', () => {
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParamsModule.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
-				assert.calledOnce(
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
 				);
-				assert.calledWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
-				);
-				assert.calledOnce(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getAwardContextualDuplicateRecordCheckQuery response',
@@ -278,8 +261,7 @@ describe('AwardCeremony model', () => {
 						}
 					}
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'name', 'Award ceremony already exists for given award'
 				);

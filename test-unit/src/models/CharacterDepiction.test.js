@@ -67,8 +67,7 @@ describe('CharacterDepiction model', () => {
 			const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateUnderlyingName();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'underlyingName', { isRequired: false }
 			);
@@ -129,8 +128,7 @@ describe('CharacterDepiction model', () => {
 				const instance = new CharacterDepiction({ name: 'King Henry V', underlyingName: 'King Henry V' });
 				spy(instance, 'addPropertyError');
 				instance.validateCharacterNameUnderlyingNameDisparity();
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'underlyingName', 'Underlying name is only required if different from character name'
 				);

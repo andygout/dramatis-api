@@ -57,12 +57,9 @@ describe('SourceMaterial model', () => {
 					stubs.validationQueries.getSourceMaterialChecksQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSourceMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSourceMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSourceMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSourceMaterialChecksQuery response',
@@ -94,12 +91,9 @@ describe('SourceMaterial model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSourceMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSourceMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSourceMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSourceMaterialChecksQuery response',

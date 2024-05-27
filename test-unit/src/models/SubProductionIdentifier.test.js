@@ -55,10 +55,8 @@ describe('SubProductionIdentifier model', () => {
 					stubs.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
@@ -94,10 +92,8 @@ describe('SubProductionIdentifier model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
@@ -107,8 +103,7 @@ describe('SubProductionIdentifier model', () => {
 						}
 					}
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid', 'Production with this UUID does not exist'
 				);
@@ -137,10 +132,8 @@ describe('SubProductionIdentifier model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
@@ -150,8 +143,7 @@ describe('SubProductionIdentifier model', () => {
 						}
 					}
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid', 'Production with this UUID is already assigned to another sur-production'
 				);
@@ -180,10 +172,8 @@ describe('SubProductionIdentifier model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
@@ -193,8 +183,7 @@ describe('SubProductionIdentifier model', () => {
 						}
 					}
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid', 'Production with this UUID is the sur-most production of a three-tiered production collection'
 				);
@@ -223,10 +212,8 @@ describe('SubProductionIdentifier model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
@@ -236,8 +223,7 @@ describe('SubProductionIdentifier model', () => {
 						}
 					}
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid', 'Production with this UUID is this production\'s sur-production'
 				);
@@ -266,10 +252,8 @@ describe('SubProductionIdentifier model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
@@ -279,8 +263,7 @@ describe('SubProductionIdentifier model', () => {
 						}
 					}
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid', 'Sub-production cannot be assigned to a three-tiered production collection'
 				);

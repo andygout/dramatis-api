@@ -55,8 +55,7 @@ describe('ProductionIdentifier model', () => {
 			const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateUuid();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
+			assert.calledOnceWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
 
 		});
 
