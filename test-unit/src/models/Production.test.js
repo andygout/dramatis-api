@@ -91,6 +91,9 @@ describe('Production model', () => {
 			isValidDateModule: {
 				isValidDate: stub().returns(false)
 			},
+			stringsModule: {
+				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+			},
 			models: {
 				CastMember: CastMemberStub,
 				CreativeCredit: CreativeCreditStub,
@@ -111,6 +114,7 @@ describe('Production model', () => {
 		proxyquire('../../../src/models/Production', {
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'../lib/is-valid-date': stubs.isValidDateModule,
+			'../lib/strings': stubs.stringsModule,
 			'.': stubs.models
 		}).default;
 
@@ -124,39 +128,19 @@ describe('Production model', () => {
 
 	describe('constructor method', () => {
 
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			createInstance();
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
+
+		});
+
 		describe('subtitle property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
-				expect(instance.subtitle).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: '' });
-				expect(instance.subtitle).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' ' });
-				expect(instance.subtitle).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: 'Prince of Denmark' });
-				expect(instance.subtitle).to.equal('Prince of Denmark');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' Prince of Denmark ' });
+				const instance = createInstance({ subtitle: 'Prince of Denmark' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
 
 			});
@@ -165,37 +149,10 @@ describe('Production model', () => {
 
 		describe('startDate property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = createInstance({ name: 'Hamlet' });
-				expect(instance.startDate).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'Hamlet', startDate: '' });
-				expect(instance.startDate).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ name: 'Hamlet', startDate: ' ' });
-				expect(instance.startDate).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = createInstance({ name: 'Hamlet', startDate: '2010-09-30' });
-				expect(instance.startDate).to.equal('2010-09-30');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ name: 'Hamlet', startDate: ' 2010-09-30 ' });
+				const instance = createInstance({ startDate: '2010-09-30' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2010-09-30');
 				expect(instance.startDate).to.equal('2010-09-30');
 
 			});
@@ -204,37 +161,10 @@ describe('Production model', () => {
 
 		describe('pressDate property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = createInstance({ name: 'Hamlet' });
-				expect(instance.pressDate).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'Hamlet', pressDate: '' });
-				expect(instance.pressDate).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ name: 'Hamlet', pressDate: ' ' });
-				expect(instance.pressDate).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = createInstance({ name: 'Hamlet', pressDate: '2010-10-07' });
-				expect(instance.pressDate).to.equal('2010-10-07');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ name: 'Hamlet', pressDate: ' 2010-10-07 ' });
+				const instance = createInstance({ pressDate: '2010-10-07' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-10-07');
 				expect(instance.pressDate).to.equal('2010-10-07');
 
 			});
@@ -243,37 +173,10 @@ describe('Production model', () => {
 
 		describe('endDate property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = createInstance({ name: 'Hamlet' });
-				expect(instance.endDate).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'Hamlet', endDate: '' });
-				expect(instance.endDate).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ name: 'Hamlet', endDate: ' ' });
-				expect(instance.endDate).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = createInstance({ name: 'Hamlet', endDate: '2011-01-26' });
-				expect(instance.endDate).to.equal('2011-01-26');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ name: 'Hamlet', endDate: ' 2011-01-26 ' });
+				const instance = createInstance({ endDate: '2011-01-26' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2011-01-26');
 				expect(instance.endDate).to.equal('2011-01-26');
 
 			});

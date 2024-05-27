@@ -1,3 +1,4 @@
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import { validateString } from '../lib/validate-string';
 import { MODELS } from '../utils/constants';
 
@@ -11,7 +12,7 @@ export default class Base {
 
 	constructor (props = {}) {
 
-		if (!NAME_EXEMPT_MODELS.has(this.model)) this.name = props.name?.trim() || '';
+		if (!NAME_EXEMPT_MODELS.has(this.model)) this.name = getTrimmedOrEmptyString(props.name);
 
 		this.errors = {};
 

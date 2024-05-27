@@ -26,6 +26,9 @@ describe('Review model', () => {
 			isValidDateModule: {
 				isValidDate: stub().returns(true)
 			},
+			stringsModule: {
+				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+			},
 			models: {
 				Company: CompanyStub,
 				Person: PersonStub
@@ -37,6 +40,7 @@ describe('Review model', () => {
 	const createSubject = () =>
 		proxyquire('../../../src/models/Review', {
 			'../lib/is-valid-date': stubs.isValidDateModule,
+			'../lib/strings': stubs.stringsModule,
 			'.': stubs.models
 		}).default;
 
@@ -50,39 +54,19 @@ describe('Review model', () => {
 
 	describe('constructor method', () => {
 
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			createInstance();
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
+
+		});
+
 		describe('url property', () => {
 
-			it('assigns empty string if absent from props', () => {
-
-				const instance = createInstance({});
-				expect(instance.url).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ url: '' });
-				expect(instance.url).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ url: ' ' });
-				expect(instance.url).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
 				const instance = createInstance({ url: 'https://www.foo.com' });
-				expect(instance.url).to.equal('https://www.foo.com');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ url: ' https://www.foo.com ' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'https://www.foo.com');
 				expect(instance.url).to.equal('https://www.foo.com');
 
 			});
@@ -91,37 +75,10 @@ describe('Review model', () => {
 
 		describe('date property', () => {
 
-			it('assigns empty string if absent from props', () => {
-
-				const instance = createInstance({});
-				expect(instance.date).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ date: '' });
-				expect(instance.date).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ date: ' ' });
-				expect(instance.date).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
 				const instance = createInstance({ date: '2024-04-03' });
-				expect(instance.date).to.equal('2024-04-03');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ date: ' 2024-04-03 ' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2024-04-03');
 				expect(instance.date).to.equal('2024-04-03');
 
 			});

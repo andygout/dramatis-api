@@ -1,5 +1,6 @@
 import { hasErrors } from '../lib/has-errors';
 import { prepareAsParams } from '../lib/prepare-as-params';
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Base from './Base';
 import {
 	getCreateQueries,
@@ -34,7 +35,11 @@ export default class Entity extends Base {
 
 		this.uuid = uuid;
 
-		if (!DIFFERENTIATOR_EXEMPT_MODELS.has(this.model)) this.differentiator = differentiator?.trim() || '';
+		if (!DIFFERENTIATOR_EXEMPT_MODELS.has(this.model)) {
+
+			this.differentiator = getTrimmedOrEmptyString(differentiator);
+
+		}
 
 	}
 

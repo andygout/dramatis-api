@@ -1,45 +1,45 @@
 import { expect } from 'chai';
-import { assert, spy } from 'sinon';
+import { assert, createSandbox, spy } from 'sinon';
 
+import * as stringsModule from '../../../src/lib/strings';
 import CharacterDepiction from '../../../src/models/CharacterDepiction';
 
 describe('CharacterDepiction model', () => {
 
+	let stubs;
+
+	const sandbox = createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			getTrimmedOrEmptyString:
+				sandbox.stub(stringsModule, 'getTrimmedOrEmptyString').callsFake(arg => arg?.trim() || '')
+		};
+
+	});
+
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
+
 	describe('constructor method', () => {
+
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			new CharacterDepiction();
+			expect(stubs.getTrimmedOrEmptyString.callCount).to.equal(4);
+
+		});
 
 		describe('underlyingName property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = new CharacterDepiction({ name: 'Prince Hal' });
-				expect(instance.underlyingName).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: '' });
-				expect(instance.underlyingName).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: ' ' });
-				expect(instance.underlyingName).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
-				expect(instance.underlyingName).to.equal('King Henry V');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: ' King Henry V ' });
+				const instance = new CharacterDepiction({ underlyingName: 'King Henry V' });
+				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.thirdCall, 'King Henry V');
 				expect(instance.underlyingName).to.equal('King Henry V');
 
 			});
@@ -48,37 +48,10 @@ describe('CharacterDepiction model', () => {
 
 		describe('qualifier property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = new CharacterDepiction({ name: 'Esme' });
-				expect(instance.qualifier).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new CharacterDepiction({ name: 'Esme', qualifier: '' });
-				expect(instance.qualifier).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new CharacterDepiction({ name: 'Esme', qualifier: ' ' });
-				expect(instance.qualifier).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = new CharacterDepiction({ name: 'Esme', qualifier: 'older' });
-				expect(instance.qualifier).to.equal('older');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new CharacterDepiction({ name: 'Esme', qualifier: ' older ' });
+				const instance = new CharacterDepiction({ qualifier: 'older' });
+				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.getCall(3), 'older');
 				expect(instance.qualifier).to.equal('older');
 
 			});
