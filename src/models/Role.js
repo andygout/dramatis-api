@@ -1,3 +1,4 @@
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Base from './Base';
 import { MODELS } from '../utils/constants';
 
@@ -9,9 +10,12 @@ export default class Role extends Base {
 
 		const { characterName, characterDifferentiator, qualifier, isAlternate } = props;
 
-		this.characterName = characterName?.trim() || '';
-		this.characterDifferentiator = characterDifferentiator?.trim() || '';
-		this.qualifier = qualifier?.trim() || '';
+		this.characterName = getTrimmedOrEmptyString(characterName);
+
+		this.characterDifferentiator = getTrimmedOrEmptyString(characterDifferentiator);
+
+		this.qualifier = getTrimmedOrEmptyString(qualifier);
+
 		this.isAlternate = Boolean(isAlternate);
 
 	}

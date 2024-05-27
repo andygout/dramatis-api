@@ -43,6 +43,9 @@ describe('Nomination model', () => {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateUuidIndices: stub().returns([])
 			},
+			stringsModule: {
+				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+			},
 			models: {
 				CompanyWithMembers: CompanyWithMembersStub,
 				MaterialBase: MaterialBaseStub,
@@ -57,6 +60,7 @@ describe('Nomination model', () => {
 		proxyquire('../../../src/models/Nomination', {
 			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
+			'../lib/strings': stubs.stringsModule,
 			'.': stubs.models
 		}).default;
 
@@ -109,39 +113,19 @@ describe('Nomination model', () => {
 
 		});
 
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			createInstance();
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(1);
+
+		});
+
 		describe('customType property', () => {
 
-			it('assigns empty string if absent from props', () => {
-
-				const instance = createInstance({});
-				expect(instance.customType).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ customType: '' });
-				expect(instance.customType).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ customType: ' ' });
-				expect(instance.customType).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
 				const instance = createInstance({ customType: 'Shortlisted' });
-				expect(instance.customType).to.equal('Shortlisted');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ customType: ' Shortlisted ' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Shortlisted');
 				expect(instance.customType).to.equal('Shortlisted');
 
 			});

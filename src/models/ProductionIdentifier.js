@@ -1,3 +1,4 @@
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Entity from './Entity';
 import { MODELS } from '../utils/constants';
 
@@ -7,7 +8,7 @@ export default class ProductionIdentifier extends Entity {
 
 		super(props);
 
-		this.uuid = props.uuid?.trim() || '';
+		this.uuid = getTrimmedOrEmptyString(props.uuid);
 
 	}
 

@@ -1,45 +1,45 @@
 import { expect } from 'chai';
-import { assert, spy } from 'sinon';
+import { assert, createSandbox, spy } from 'sinon';
 
+import * as stringsModule from '../../../src/lib/strings';
 import { ProductionIdentifier } from '../../../src/models';
 
 describe('ProductionIdentifier model', () => {
 
+	let stubs;
+
+	const sandbox = createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			getTrimmedOrEmptyString:
+				sandbox.stub(stringsModule, 'getTrimmedOrEmptyString').callsFake(arg => arg?.trim() || '')
+		};
+
+	});
+
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
+
 	describe('constructor method', () => {
+
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			new ProductionIdentifier();
+			expect(stubs.getTrimmedOrEmptyString.callCount).to.equal(1);
+
+		});
 
 		describe('uuid property', () => {
 
-			it('assigns empty string if absent from props', () => {
-
-				const instance = new ProductionIdentifier({});
-				expect(instance.uuid).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new ProductionIdentifier({ uuid: '' });
-				expect(instance.uuid).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new ProductionIdentifier({ uuid: ' ' });
-				expect(instance.uuid).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
 				const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
-				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new ProductionIdentifier({ uuid: ' xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx ' });
+				assert.calledWithExactly(stubs.getTrimmedOrEmptyString, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});

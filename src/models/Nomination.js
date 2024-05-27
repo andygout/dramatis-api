@@ -1,5 +1,6 @@
 import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info';
 import { getDuplicateBaseInstanceIndices, getDuplicateUuidIndices } from '../lib/get-duplicate-indices';
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Base from './Base';
 import { CompanyWithMembers, MaterialBase, NominatedProductionIdentifier, Person } from '.';
 import { MODELS } from '../utils/constants';
@@ -14,7 +15,7 @@ export default class Nomination extends Base {
 
 		this.isWinner = Boolean(isWinner);
 
-		this.customType = customType?.trim() || '';
+		this.customType = getTrimmedOrEmptyString(customType);
 
 		this.entities = entities
 			? entities.map(entity => {

@@ -1,4 +1,5 @@
 import { isValidDate } from '../lib/is-valid-date';
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Base from './Base';
 import { Company, Person } from '.';
 import { MODELS } from '../utils/constants';
@@ -11,9 +12,9 @@ export default class Review extends Base {
 
 		const { url, date, publication, critic } = props;
 
-		this.url = url?.trim() || '';
+		this.url = getTrimmedOrEmptyString(url);
 
-		this.date = date?.trim() || '';
+		this.date = getTrimmedOrEmptyString(date);
 
 		this.publication = new Company(publication);
 

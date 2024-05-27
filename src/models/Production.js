@@ -5,6 +5,7 @@ import {
 	getDuplicateUrlIndices
 } from '../lib/get-duplicate-indices';
 import { isValidDate } from '../lib/is-valid-date';
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Entity from './Entity';
 import {
 	CastMember,
@@ -43,13 +44,13 @@ export default class Production extends Entity {
 			reviews
 		} = props;
 
-		this.subtitle = subtitle?.trim() || '';
+		this.subtitle = getTrimmedOrEmptyString(subtitle);
 
-		this.startDate = startDate?.trim() || '';
+		this.startDate = getTrimmedOrEmptyString(startDate);
 
-		this.pressDate = pressDate?.trim() || '';
+		this.pressDate = getTrimmedOrEmptyString(pressDate);
 
-		this.endDate = endDate?.trim() || '';
+		this.endDate = getTrimmedOrEmptyString(endDate);
 
 		this.material = new MaterialBase(material);
 

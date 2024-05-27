@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
+import * as stringsModule from '../../../src/lib/strings';
 import * as validateStringModule from '../../../src/lib/validate-string';
 import Base from '../../../src/models/Base';
 import { Nomination, ProductionIdentifier, Review } from '../../../src/models';
@@ -18,6 +19,8 @@ describe('Base model', () => {
 	beforeEach(() => {
 
 		stubs = {
+			getTrimmedOrEmptyString:
+				sandbox.stub(stringsModule, 'getTrimmedOrEmptyString').callsFake(arg => arg?.trim() || ''),
 			validateString: sandbox.stub(validateStringModule, 'validateString').returns(undefined)
 		};
 
@@ -40,38 +43,11 @@ describe('Base model', () => {
 
 			context('model is not exempt', () => {
 
-				it('assigns empty string if absent from props', () => {
+				it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-					const instance = new Base({});
-					expect(instance.name).to.equal('');
-
-				});
-
-				it('assigns empty string if included in props but value is empty string', () => {
-
-					const instance = new Base({ name: '' });
-					expect(instance.name).to.equal('');
-
-				});
-
-				it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-					const instance = new Base({ name: ' ' });
-					expect(instance.name).to.equal('');
-
-				});
-
-				it('assigns value if included in props and is string with length', () => {
-
-					const instance = new Base({ name: 'Barfoo' });
-					expect(instance.name).to.equal('Barfoo');
-
-				});
-
-				it('trims value before assigning', () => {
-
-					const instance = new Base({ name: ' Barfoo ' });
-					expect(instance.name).to.equal('Barfoo');
+					assert.calledOnce(stubs.getTrimmedOrEmptyString);
+					assert.calledWithExactly(stubs.getTrimmedOrEmptyString, 'Foobar');
+					expect(instance.name).to.equal('Foobar');
 
 				});
 

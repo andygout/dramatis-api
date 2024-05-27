@@ -42,6 +42,9 @@ describe('Material model', () => {
 			isValidYearModule: {
 				isValidYear: stub().returns(false)
 			},
+			stringsModule: {
+				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
 				OriginalVersionMaterial: OriginalVersionMaterialStub,
@@ -58,6 +61,7 @@ describe('Material model', () => {
 		proxyquire('../../../src/models/Material', {
 			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
 			'../lib/is-valid-year': stubs.isValidYearModule,
+			'../lib/strings': stubs.stringsModule,
 			'.': stubs.models
 		}).default;
 
@@ -71,39 +75,19 @@ describe('Material model', () => {
 
 	describe('constructor method', () => {
 
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			createInstance();
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(3);
+
+		});
+
 		describe('subtitle property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
-				expect(instance.subtitle).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: '' });
-				expect(instance.subtitle).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' ' });
-				expect(instance.subtitle).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: 'Prince of Denmark' });
-				expect(instance.subtitle).to.equal('Prince of Denmark');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', subtitle: ' Prince of Denmark ' });
+				const instance = createInstance({ subtitle: 'Prince of Denmark' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
 
 			});
@@ -112,37 +96,10 @@ describe('Material model', () => {
 
 		describe('format property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = createInstance({ name: 'The Tragedy of Hamlet' });
-				expect(instance.format).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: '' });
-				expect(instance.format).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: ' ' });
-				expect(instance.format).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: 'play' });
-				expect(instance.format).to.equal('play');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = createInstance({ name: 'The Tragedy of Hamlet', format: ' play ' });
+				const instance = createInstance({ format: 'play' });
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'play');
 				expect(instance.format).to.equal('play');
 
 			});
@@ -151,59 +108,40 @@ describe('Material model', () => {
 
 		describe('year property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			context('value cannot be parsed as integer', () => {
 
-				const instance = createInstance({ name: 'The Caretaker' });
-				expect(instance.year).to.equal('');
+				it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-			});
+					const instance = createInstance({ year: 'Nineteen Fifty-Nine' });
+					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'Nineteen Fifty-Nine');
+					expect(instance.year).to.equal('Nineteen Fifty-Nine');
 
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = createInstance({ name: 'The Caretaker', year: '' });
-				expect(instance.year).to.equal('');
+				});
 
 			});
 
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
+			context('value can be parsed as integer', () => {
 
-				const instance = createInstance({ name: 'The Caretaker', year: ' ' });
-				expect(instance.year).to.equal('');
+				it('assigns value converted to integer if included in props and value can be parsed as integer', () => {
 
-			});
+					const instance = createInstance({ year: '1959' });
+					expect(instance.year).to.equal(1959);
 
-			it('assigns value if included in props and cannot be parsed as integer', () => {
+				});
 
-				const instance = createInstance({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
-				expect(instance.year).to.equal('Nineteen Fifty-Nine');
+				it('assigns value with flanking whitespace converted to integer if included in props and value can be parsed as integer', () => {
 
-			});
+					const instance = createInstance({ year: ' 1959 ' });
+					expect(instance.year).to.equal(1959);
 
-			it('assigns whitespace-trimmed value if included in props and value cannot be parsed as integer', () => {
+				});
 
-				const instance = createInstance({ name: 'The Caretaker', year: ' Nineteen Fifty-Nine ' });
-				expect(instance.year).to.equal('Nineteen Fifty-Nine');
+				it('assigns value if included in props and is an integer', () => {
 
-			});
+					const instance = createInstance({ year: 1959 });
+					expect(instance.year).to.equal(1959);
 
-			it('assigns value converted to integer if included in props and value can be parsed as integer', () => {
-
-				const instance = createInstance({ name: 'The Caretaker', year: '1959' });
-				expect(instance.year).to.equal(1959);
-
-			});
-
-			it('assigns value with flanking whitespace converted to integer if included in props and value can be parsed as integer', () => {
-
-				const instance = createInstance({ name: 'The Caretaker', year: ' 1959 ' });
-				expect(instance.year).to.equal(1959);
-
-			});
-
-			it('assigns value if included in props and is an integer', () => {
-
-				const instance = createInstance({ name: 'The Caretaker', year: 1959 });
-				expect(instance.year).to.equal(1959);
+				});
 
 			});
 

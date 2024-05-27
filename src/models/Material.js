@@ -1,5 +1,6 @@
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices';
 import { isValidYear } from '../lib/is-valid-year';
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import MaterialBase from './MaterialBase';
 import { CharacterGroup, OriginalVersionMaterial, SubMaterial, WritingCredit } from '.';
 
@@ -19,11 +20,11 @@ export default class Material extends MaterialBase {
 			characterGroups
 		} = props;
 
-		this.subtitle = subtitle?.trim() || '';
+		this.subtitle = getTrimmedOrEmptyString(subtitle);
 
-		this.format = format?.trim() || '';
+		this.format = getTrimmedOrEmptyString(format);
 
-		this.year = parseInt(year) || year?.trim() || '';
+		this.year = parseInt(year) || getTrimmedOrEmptyString(year);
 
 		this.originalVersionMaterial = new OriginalVersionMaterial(originalVersionMaterial);
 

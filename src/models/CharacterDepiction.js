@@ -1,3 +1,4 @@
+import { getTrimmedOrEmptyString } from '../lib/strings';
 import Character from './Character';
 
 export default class CharacterDepiction extends Character {
@@ -8,8 +9,9 @@ export default class CharacterDepiction extends Character {
 
 		const { underlyingName, qualifier } = props;
 
-		this.underlyingName = underlyingName?.trim() || '';
-		this.qualifier = qualifier?.trim() || '';
+		this.underlyingName = getTrimmedOrEmptyString(underlyingName);
+
+		this.qualifier = getTrimmedOrEmptyString(qualifier);
 
 	}
 

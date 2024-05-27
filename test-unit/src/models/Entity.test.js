@@ -3,6 +3,7 @@ import { assert, createSandbox, spy, stub } from 'sinon';
 
 import * as hasErrorsModule from '../../../src/lib/has-errors';
 import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
+import * as stringsModule from '../../../src/lib/strings';
 import Entity from '../../../src/models/Entity';
 import { AwardCeremony, Person, Production, ProductionIdentifier } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
@@ -20,8 +21,10 @@ describe('Entity model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns('prepareAsParams response'),
 			hasErrors: sandbox.stub(hasErrorsModule, 'hasErrors').returns(false),
+			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns('prepareAsParams response'),
+			getTrimmedOrEmptyString:
+				sandbox.stub(stringsModule, 'getTrimmedOrEmptyString').callsFake(arg => arg?.trim() || ''),
 			getCreateQueries: {
 				PRODUCTION:
 					sandbox.stub(cypherQueries.getCreateQueries, 'PRODUCTION')
@@ -65,7 +68,7 @@ describe('Entity model', () => {
 			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
 		};
 
-		instance = new Entity({ name: 'Foobar' });
+		instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 	});
 
@@ -88,41 +91,19 @@ describe('Entity model', () => {
 
 		});
 
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			expect(stubs.getTrimmedOrEmptyString.callCount).to.equal(2);
+
+		});
+
 		describe('differentiator property', () => {
 
 			context('model is not exempt', () => {
 
-				it('assigns empty string if absent from props', () => {
+				it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-					const instance = new Entity({ name: 'Foobar' });
-					expect(instance.differentiator).to.equal('');
-
-				});
-
-				it('assigns empty string if included in props but value is empty string', () => {
-
-					const instance = new Entity({ name: 'Foobar', differentiator: '' });
-					expect(instance.differentiator).to.equal('');
-
-				});
-
-				it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-					const instance = new Entity({ name: 'Foobar', differentiator: ' ' });
-					expect(instance.differentiator).to.equal('');
-
-				});
-
-				it('assigns value if included in props and is string with length', () => {
-
-					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-					expect(instance.differentiator).to.equal('1');
-
-				});
-
-				it('trims value before assigning', () => {
-
-					const instance = new Entity({ name: 'Foobar', differentiator: ' 1 ' });
+					assert.calledWithExactly(stubs.getTrimmedOrEmptyString.secondCall, '1');
 					expect(instance.differentiator).to.equal('1');
 
 				});
@@ -766,7 +747,7 @@ describe('Entity model', () => {
 					model: 'VENUE',
 					uuid: undefined,
 					name: 'Foobar',
-					differentiator: '',
+					differentiator: '1',
 					errors: {},
 					hasErrors: true
 				});

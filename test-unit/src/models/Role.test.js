@@ -1,45 +1,45 @@
 import { expect } from 'chai';
-import { assert, spy } from 'sinon';
+import { assert, createSandbox, spy } from 'sinon';
 
+import * as stringsModule from '../../../src/lib/strings';
 import Role from '../../../src/models/Role';
 
 describe('Role model', () => {
 
+	let stubs;
+
+	const sandbox = createSandbox();
+
+	beforeEach(() => {
+
+		stubs = {
+			getTrimmedOrEmptyString:
+				sandbox.stub(stringsModule, 'getTrimmedOrEmptyString').callsFake(arg => arg?.trim() || '')
+		};
+
+	});
+
+	afterEach(() => {
+
+		sandbox.restore();
+
+	});
+
 	describe('constructor method', () => {
+
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+
+			new Role();
+			expect(stubs.getTrimmedOrEmptyString.callCount).to.equal(4);
+
+		});
 
 		describe('characterName property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark' });
-				expect(instance.characterName).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: '' });
-				expect(instance.characterName).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ' ' });
-				expect(instance.characterName).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
-				expect(instance.characterName).to.equal('Hamlet');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: ' Hamlet ' });
+				const instance = new Role({ characterName: 'Hamlet' });
+				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.secondCall, 'Hamlet');
 				expect(instance.characterName).to.equal('Hamlet');
 
 			});
@@ -48,37 +48,10 @@ describe('Role model', () => {
 
 		describe('characterDifferentiator property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = new Role({ name: 'Cinna' });
-				expect(instance.characterDifferentiator).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new Role({ name: 'Cinna', characterDifferentiator: '' });
-				expect(instance.characterDifferentiator).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new Role({ name: 'Cinna', characterDifferentiator: ' ' });
-				expect(instance.characterDifferentiator).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
-				expect(instance.characterDifferentiator).to.equal('1');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new Role({ name: 'Cinna', characterDifferentiator: ' 1 ' });
+				const instance = new Role({ characterDifferentiator: '1' });
+				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.thirdCall, '1');
 				expect(instance.characterDifferentiator).to.equal('1');
 
 			});
@@ -87,37 +60,10 @@ describe('Role model', () => {
 
 		describe('qualifier property', () => {
 
-			it('assigns empty string if absent from props', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-				const instance = new Role({ name: 'Esme' });
-				expect(instance.qualifier).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is empty string', () => {
-
-				const instance = new Role({ name: 'Esme', qualifier: '' });
-				expect(instance.qualifier).to.equal('');
-
-			});
-
-			it('assigns empty string if included in props but value is whitespace-only string', () => {
-
-				const instance = new Role({ name: 'Esme', qualifier: ' ' });
-				expect(instance.qualifier).to.equal('');
-
-			});
-
-			it('assigns value if included in props and is string with length', () => {
-
-				const instance = new Role({ name: 'Esme', qualifier: 'younger' });
-				expect(instance.qualifier).to.equal('younger');
-
-			});
-
-			it('trims value before assigning', () => {
-
-				const instance = new Role({ name: 'Esme', qualifier: ' younger ' });
+				const instance = new Role({ qualifier: 'younger' });
+				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.getCall(3), 'younger');
 				expect(instance.qualifier).to.equal('younger');
 
 			});
