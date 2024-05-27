@@ -59,12 +59,9 @@ describe('SubVenue model', () => {
 					stubs.validationQueries.getSubVenueChecksQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
@@ -100,12 +97,9 @@ describe('SubVenue model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
@@ -149,12 +143,9 @@ describe('SubVenue model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
@@ -198,12 +189,9 @@ describe('SubVenue model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',

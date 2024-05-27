@@ -57,12 +57,9 @@ describe('OriginalVersionMaterial model', () => {
 					stubs.validationQueries.getOriginalVersionMaterialChecksQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getOriginalVersionMaterialChecksQuery response',
@@ -94,12 +91,9 @@ describe('OriginalVersionMaterial model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
-				assert.calledWithExactly(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getOriginalVersionMaterialChecksQuery response',

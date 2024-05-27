@@ -330,27 +330,18 @@ describe('Material model', () => {
 				instance.subMaterials[0].validateUniquenessInGroup,
 				instance.characterGroups[0].runInputValidations
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnce(instance.validateDifferentiator);
-			assert.calledWithExactly(instance.validateDifferentiator);
-			assert.calledOnce(instance.validateSubtitle);
-			assert.calledWithExactly(instance.validateSubtitle);
-			assert.calledOnce(instance.validateFormat);
-			assert.calledWithExactly(instance.validateFormat, { isRequired: false });
-			assert.calledOnce(instance.validateYear);
-			assert.calledWithExactly(instance.validateYear, { isRequired: false });
-			assert.calledOnce(instance.originalVersionMaterial.validateName);
-			assert.calledWithExactly(instance.originalVersionMaterial.validateName, { isRequired: false });
-			assert.calledOnce(instance.originalVersionMaterial.validateDifferentiator);
-			assert.calledWithExactly(instance.originalVersionMaterial.validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnceWithExactly(instance.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.validateSubtitle);
+			assert.calledOnceWithExactly(instance.validateFormat, { isRequired: false });
+			assert.calledOnceWithExactly(instance.validateYear, { isRequired: false });
+			assert.calledOnceWithExactly(instance.originalVersionMaterial.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.originalVersionMaterial.validateDifferentiator);
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.writingCredits
 			);
-			assert.calledOnce(instance.writingCredits[0].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.writingCredits[0].runInputValidations,
 				{
 					isDuplicate: false,
@@ -360,27 +351,21 @@ describe('Material model', () => {
 					}
 				}
 			);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.subMaterials
 			);
-			assert.calledOnce(instance.subMaterials[0].validateName);
-			assert.calledWithExactly(instance.subMaterials[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.subMaterials[0].validateDifferentiator);
-			assert.calledWithExactly(instance.subMaterials[0].validateDifferentiator);
-			assert.calledOnce(instance.subMaterials[0].validateNoAssociationWithSelf);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.subMaterials[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.subMaterials[0].validateDifferentiator);
+			assert.calledOnceWithExactly(
 				instance.subMaterials[0].validateNoAssociationWithSelf,
 				{ name: 'The Tragedy of Hamlet', differentiator: '1' }
 			);
-			assert.calledOnce(instance.subMaterials[0].validateUniquenessInGroup);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.subMaterials[0].validateUniquenessInGroup,
 				{ isDuplicate: false }
 			);
-			assert.calledOnce(instance.characterGroups[0].runInputValidations);
-			assert.calledWithExactly(instance.characterGroups[0].runInputValidations);
+			assert.calledOnceWithExactly(instance.characterGroups[0].runInputValidations);
 
 		});
 
@@ -393,8 +378,7 @@ describe('Material model', () => {
 			const instance = createInstance({ name: 'The Tragedy of Hamlet', format: 'play' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateFormat({ isRequired: false });
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'format', { isRequired: false }
 			);
@@ -426,10 +410,8 @@ describe('Material model', () => {
 				const instance = createInstance({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
 				spy(instance, 'addPropertyError');
 				instance.validateYear();
-				assert.calledOnce(stubs.isValidYearModule.isValidYear);
-				assert.calledWithExactly(stubs.isValidYearModule.isValidYear, 'Nineteen Fifty-Nine');
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.isValidYearModule.isValidYear, 'Nineteen Fifty-Nine');
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'year', 'Value must be a valid year'
 				);
@@ -445,8 +427,7 @@ describe('Material model', () => {
 				const instance = createInstance({ name: 'The Caretaker', year: 1959 });
 				spy(instance, 'addPropertyError');
 				instance.validateYear();
-				assert.calledOnce(stubs.isValidYearModule.isValidYear);
-				assert.calledWithExactly(stubs.isValidYearModule.isValidYear, 1959);
+				assert.calledOnceWithExactly(stubs.isValidYearModule.isValidYear, 1959);
 				assert.notCalled(instance.addPropertyError);
 
 			});
@@ -480,20 +461,16 @@ describe('Material model', () => {
 			const instance = createInstance(props);
 			stub(instance, 'validateUniquenessInDatabase');
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.validateUniquenessInDatabase);
-			assert.calledWithExactly(instance.validateUniquenessInDatabase);
-			assert.calledOnce(instance.originalVersionMaterial.runDatabaseValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
+			assert.calledOnceWithExactly(
 				instance.originalVersionMaterial.runDatabaseValidations,
 				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
-			assert.calledOnce(instance.writingCredits[0].runDatabaseValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.writingCredits[0].runDatabaseValidations,
 				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
-			assert.calledOnce(instance.subMaterials[0].runDatabaseValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.subMaterials[0].runDatabaseValidations,
 				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);

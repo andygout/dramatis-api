@@ -189,10 +189,8 @@ describe('Entity model', () => {
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			instance.runInputValidations();
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnce(instance.validateDifferentiator);
-			assert.calledWithExactly(instance.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnceWithExactly(instance.validateDifferentiator);
 
 		});
 
@@ -204,8 +202,7 @@ describe('Entity model', () => {
 
 			spy(instance, 'validateStringForProperty');
 			instance.validateDifferentiator();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'differentiator', { isRequired: false }
 			);
@@ -220,8 +217,7 @@ describe('Entity model', () => {
 
 			spy(instance, 'validateStringForProperty');
 			instance.validateSubtitle();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'subtitle', { isRequired: false }
 			);
@@ -357,8 +353,7 @@ describe('Entity model', () => {
 					const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 					spy(instance, 'addPropertyError');
 					instance.validateNoAssociationWithSelf({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'uuid', 'Instance cannot form association with itself'
 					);
@@ -379,8 +374,7 @@ describe('Entity model', () => {
 
 				spy(instance, 'validateUniquenessInDatabase');
 				await instance.runDatabaseValidations();
-				assert.calledOnce(instance.validateUniquenessInDatabase);
-				assert.calledWithExactly(instance.validateUniquenessInDatabase);
+				assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
 
 			});
 
@@ -420,12 +414,9 @@ describe('Entity model', () => {
 					stubs.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCheckQuery);
-				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCheckQuery, instance.model);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getDuplicateRecordCheckQuery, instance.model);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getDuplicateRecordCheckQuery response',
@@ -460,12 +451,9 @@ describe('Entity model', () => {
 					stubs.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.validationQueries.getDuplicateRecordCheckQuery);
-				assert.calledWithExactly(stubs.validationQueries.getDuplicateRecordCheckQuery, instance.model);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.validationQueries.getDuplicateRecordCheckQuery, instance.model);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getDuplicateRecordCheckQuery response',
@@ -497,8 +485,7 @@ describe('Entity model', () => {
 		it('will call hasErrors function and assign its return value to the instance\'s hasErrors property', () => {
 
 			instance.setErrorStatus();
-			assert.calledOnce(stubs.hasErrors);
-			assert.calledWithExactly(stubs.hasErrors, instance);
+			assert.calledOnceWithExactly(stubs.hasErrors, instance);
 			expect(instance.hasErrors).to.be.false;
 
 		});
@@ -518,10 +505,8 @@ describe('Entity model', () => {
 					stubs.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.validationQueries.getExistenceCheckQuery);
-				assert.calledWithExactly(stubs.validationQueries.getExistenceCheckQuery, instance.model);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getExistenceCheckQuery, instance.model);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{ query: 'getExistenceCheckQuery response', params: { uuid: instance.uuid } }
 				);
@@ -541,10 +526,8 @@ describe('Entity model', () => {
 					stubs.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(stubs.validationQueries.getExistenceCheckQuery);
-				assert.calledWithExactly(stubs.validationQueries.getExistenceCheckQuery, model);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.validationQueries.getExistenceCheckQuery, model);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{ query: 'getExistenceCheckQuery response', params: { uuid: instance.uuid } }
 				);
@@ -607,14 +590,10 @@ describe('Entity model', () => {
 					stubs.prepareAsParams,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(instance.runInputValidations);
-				assert.calledWithExactly(instance.runInputValidations);
-				assert.calledOnce(instance.runDatabaseValidations);
-				assert.calledWithExactly(instance.runDatabaseValidations);
-				assert.calledOnce(instance.setErrorStatus);
-				assert.calledWithExactly(instance.setErrorStatus);
-				assert.calledOnce(stubs.sharedQueries.getCreateQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getCreateQuery, instance.model);
+				assert.calledOnceWithExactly(instance.runInputValidations);
+				assert.calledOnceWithExactly(instance.runDatabaseValidations);
+				assert.calledOnceWithExactly(instance.setErrorStatus);
+				assert.calledOnceWithExactly(stubs.sharedQueries.getCreateQuery, instance.model);
 				assert.calledTwice(stubs.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
 				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
@@ -634,8 +613,7 @@ describe('Entity model', () => {
 					stubs.neo4jQuery.secondCall,
 					{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
 				);
-				assert.calledOnce(instance.constructor);
-				assert.calledWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
 
 			});
@@ -662,14 +640,10 @@ describe('Entity model', () => {
 					stubs.prepareAsParams,
 					stubs.neo4jQuery
 				);
-				assert.calledOnce(instance.runInputValidations);
-				assert.calledWithExactly(instance.runInputValidations);
-				assert.calledOnce(instance.runDatabaseValidations);
-				assert.calledWithExactly(instance.runDatabaseValidations);
-				assert.calledOnce(instance.setErrorStatus);
-				assert.calledWithExactly(instance.setErrorStatus);
-				assert.calledOnce(stubs.sharedQueries.getUpdateQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getUpdateQuery, instance.model);
+				assert.calledOnceWithExactly(instance.runInputValidations);
+				assert.calledOnceWithExactly(instance.runDatabaseValidations);
+				assert.calledOnceWithExactly(instance.setErrorStatus);
+				assert.calledOnceWithExactly(stubs.sharedQueries.getUpdateQuery, instance.model);
 				assert.calledTwice(stubs.prepareAsParams);
 				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
 				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
@@ -689,8 +663,7 @@ describe('Entity model', () => {
 					stubs.neo4jQuery.secondCall,
 					{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
 				);
-				assert.calledOnce(instance.constructor);
-				assert.calledWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
 
 			});
@@ -720,17 +693,12 @@ describe('Entity model', () => {
 					instance.runDatabaseValidations,
 					instance.setErrorStatus
 				);
-				assert.calledOnce(instance.runInputValidations);
-				assert.calledWithExactly(instance.runInputValidations);
-				assert.calledOnce(instance.runDatabaseValidations);
-				assert.calledWithExactly(instance.runDatabaseValidations);
-				assert.calledOnce(instance.setErrorStatus);
-				assert.calledWithExactly(instance.setErrorStatus);
+				assert.calledOnceWithExactly(instance.runInputValidations);
+				assert.calledOnceWithExactly(instance.runDatabaseValidations);
+				assert.calledOnceWithExactly(instance.setErrorStatus);
 				assert.notCalled(getCreateUpdateQueryStub);
-				assert.calledOnce(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{
 						query: 'getDuplicateRecordCheckQuery response',
@@ -767,8 +735,7 @@ describe('Entity model', () => {
 				instance.model = 'PRODUCTION';
 				spy(instance, 'createUpdate');
 				await instance.create();
-				assert.calledOnce(instance.createUpdate);
-				assert.calledWithExactly(instance.createUpdate, stubs.getCreateQueries[instance.model]);
+				assert.calledOnceWithExactly(instance.createUpdate, stubs.getCreateQueries[instance.model]);
 
 			});
 
@@ -780,8 +747,7 @@ describe('Entity model', () => {
 
 				spy(instance, 'createUpdate');
 				await instance.create();
-				assert.calledOnce(instance.createUpdate);
-				assert.calledWithExactly(instance.createUpdate, stubs.sharedQueries.getCreateQuery);
+				assert.calledOnceWithExactly(instance.createUpdate, stubs.sharedQueries.getCreateQuery);
 
 			});
 
@@ -798,16 +764,13 @@ describe('Entity model', () => {
 				instance.model = 'PRODUCTION';
 				spy(instance, 'constructor');
 				const result = await instance.edit();
-				assert.calledOnce(stubs.getEditQueries[instance.model]);
-				assert.calledWithExactly(stubs.getEditQueries[instance.model]);
+				assert.calledOnceWithExactly(stubs.getEditQueries[instance.model]);
 				assert.notCalled(stubs.sharedQueries.getEditQuery);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{ query: 'getEditProductionQuery response', params: { uuid: instance.uuid } }
 				);
-				assert.calledOnce(instance.constructor);
-				assert.calledWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
 
 			});
@@ -820,16 +783,13 @@ describe('Entity model', () => {
 
 				spy(instance, 'constructor');
 				const result = await instance.edit();
-				assert.calledOnce(stubs.sharedQueries.getEditQuery);
-				assert.calledWithExactly(stubs.sharedQueries.getEditQuery, instance.model);
+				assert.calledOnceWithExactly(stubs.sharedQueries.getEditQuery, instance.model);
 				assert.notCalled(stubs.getEditQueries.PRODUCTION);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{ query: 'getEditQuery response', params: { uuid: instance.uuid } }
 				);
-				assert.calledOnce(instance.constructor);
-				assert.calledWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
 
 			});
@@ -851,8 +811,7 @@ describe('Entity model', () => {
 					await instance.update();
 				} catch (error) {
 					expect(error.message).to.equal('Not Found');
-					assert.calledOnce(instance.confirmExistenceInDatabase);
-					assert.calledWithExactly(instance.confirmExistenceInDatabase);
+					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
 					assert.notCalled(instance.createUpdate);
 				}
 
@@ -870,10 +829,8 @@ describe('Entity model', () => {
 					stub(instance, 'confirmExistenceInDatabase').returns(true);
 					spy(instance, 'createUpdate');
 					await instance.update();
-					assert.calledOnce(instance.confirmExistenceInDatabase);
-					assert.calledWithExactly(instance.confirmExistenceInDatabase);
-					assert.calledOnce(instance.createUpdate);
-					assert.calledWithExactly(instance.createUpdate, stubs.getUpdateQueries[instance.model]);
+					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
+					assert.calledOnceWithExactly(instance.createUpdate, stubs.getUpdateQueries[instance.model]);
 
 				});
 
@@ -886,10 +843,8 @@ describe('Entity model', () => {
 					stub(instance, 'confirmExistenceInDatabase').returns(true);
 					spy(instance, 'createUpdate');
 					await instance.update();
-					assert.calledOnce(instance.confirmExistenceInDatabase);
-					assert.calledWithExactly(instance.confirmExistenceInDatabase);
-					assert.calledOnce(instance.createUpdate);
-					assert.calledWithExactly(instance.createUpdate, stubs.sharedQueries.getUpdateQuery);
+					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
+					assert.calledOnceWithExactly(instance.createUpdate, stubs.sharedQueries.getUpdateQuery);
 
 				});
 
@@ -923,15 +878,12 @@ describe('Entity model', () => {
 						stubs.sharedQueries.getDeleteQuery,
 						stubs.neo4jQuery
 					);
-					assert.calledOnce(stubs.sharedQueries.getDeleteQuery);
-					assert.calledWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
-					assert.calledOnce(stubs.neo4jQuery);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
+					assert.calledOnceWithExactly(
 						stubs.neo4jQuery,
 						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					);
-					assert.calledOnce(instance.constructor);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.constructor,
 						{ name: 'Almeida Theatre', differentiator: null }
 					);
@@ -969,15 +921,12 @@ describe('Entity model', () => {
 						stubs.sharedQueries.getDeleteQuery,
 						stubs.neo4jQuery
 					);
-					assert.calledOnce(stubs.sharedQueries.getDeleteQuery);
-					assert.calledWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
-					assert.calledOnce(stubs.neo4jQuery);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
+					assert.calledOnceWithExactly(
 						stubs.neo4jQuery,
 						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					);
-					assert.calledOnce(instance.constructor);
-					assert.calledWithExactly(instance.constructor, { name: 'Hamlet' });
+					assert.calledOnceWithExactly(instance.constructor, { name: 'Hamlet' });
 					assert.notCalled(instance.addPropertyError);
 					assert.notCalled(instance.setErrorStatus);
 					expect(result instanceof Production).to.be.true;
@@ -1050,21 +999,17 @@ describe('Entity model', () => {
 						stubs.sharedQueries.getDeleteQuery,
 						stubs.neo4jQuery
 					);
-					assert.calledOnce(stubs.sharedQueries.getDeleteQuery);
-					assert.calledWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
-					assert.calledOnce(stubs.neo4jQuery);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
+					assert.calledOnceWithExactly(
 						stubs.neo4jQuery,
 						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					);
 					assert.notCalled(instance.constructor);
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'associations', 'Production'
 					);
-					assert.calledOnce(instance.setErrorStatus);
-					assert.calledWithExactly(instance.setErrorStatus);
+					assert.calledOnceWithExactly(instance.setErrorStatus);
 					expect(result).to.deep.equal(instance);
 					expect(result).to.deep.equal({
 						uuid: undefined,
@@ -1103,21 +1048,17 @@ describe('Entity model', () => {
 						stubs.sharedQueries.getDeleteQuery,
 						stubs.neo4jQuery
 					);
-					assert.calledOnce(stubs.sharedQueries.getDeleteQuery);
-					assert.calledWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
-					assert.calledOnce(stubs.neo4jQuery);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(stubs.sharedQueries.getDeleteQuery, instance.model);
+					assert.calledOnceWithExactly(
 						stubs.neo4jQuery,
 						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
 					);
 					assert.notCalled(instance.constructor);
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'associations', 'Venue'
 					);
-					assert.calledOnce(instance.setErrorStatus);
-					assert.calledWithExactly(instance.setErrorStatus);
+					assert.calledOnceWithExactly(instance.setErrorStatus);
 					expect(result).to.deep.equal(instance);
 					expect(result).to.deep.equal({
 						uuid: undefined,
@@ -1180,10 +1121,8 @@ describe('Entity model', () => {
 
 				instance.model = 'VENUE';
 				const result = await instance.show();
-				assert.calledOnce(stubs.getShowQueries.VENUE);
-				assert.calledWithExactly(stubs.getShowQueries.VENUE);
-				assert.calledOnce(stubs.neo4jQuery);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(stubs.getShowQueries.VENUE);
+				assert.calledOnceWithExactly(
 					stubs.neo4jQuery,
 					{ query: 'showVenueQuery', params: { uuid: instance.uuid } }
 				);
@@ -1199,8 +1138,7 @@ describe('Entity model', () => {
 
 				instance.model = 'PRODUCTION';
 				const result = await instance.show();
-				assert.calledOnce(stubs.getShowQueries.PRODUCTION);
-				assert.calledWithExactly(stubs.getShowQueries.PRODUCTION);
+				assert.calledOnceWithExactly(stubs.getShowQueries.PRODUCTION);
 				assert.calledTwice(stubs.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQuery.getCall(0),
@@ -1223,10 +1161,8 @@ describe('Entity model', () => {
 		it('gets list data', async () => {
 
 			const result = await Entity.list('model');
-			assert.calledOnce(stubs.sharedQueries.getListQuery);
-			assert.calledWithExactly(stubs.sharedQueries.getListQuery, 'model');
-			assert.calledOnce(stubs.neo4jQuery);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(stubs.sharedQueries.getListQuery, 'model');
+			assert.calledOnceWithExactly(
 				stubs.neo4jQuery,
 				{ query: 'getListQuery response' }, { isOptionalResult: true, isArrayResult: true }
 			);

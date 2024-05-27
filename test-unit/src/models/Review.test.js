@@ -164,28 +164,20 @@ describe('Review model', () => {
 					instance.critic.validateName,
 					instance.critic.validateDifferentiator
 				);
-				assert.calledOnce(instance.validateUrl);
-				assert.calledWithExactly(instance.validateUrl, { isRequired: false });
-				assert.calledOnce(instance.validateUniquenessInGroup);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(instance.validateUrl, { isRequired: false });
+				assert.calledOnceWithExactly(
 					instance.validateUniquenessInGroup,
 					{ isDuplicate: false, properties: new Set(['url']) }
 				);
-				assert.calledOnce(instance.validateUrlPresenceIfNamedChildren);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.validateUrlPresenceIfNamedChildren,
 					[instance.publication, instance.critic]
 				);
-				assert.calledOnce(instance.validateDate);
-				assert.calledWithExactly(instance.validateDate);
-				assert.calledOnce(instance.publication.validateName);
-				assert.calledWithExactly(instance.publication.validateName, { isRequired: true });
-				assert.calledOnce(instance.publication.validateDifferentiator);
-				assert.calledWithExactly(instance.publication.validateDifferentiator);
-				assert.calledOnce(instance.critic.validateName);
-				assert.calledWithExactly(instance.critic.validateName, { isRequired: true });
-				assert.calledOnce(instance.critic.validateDifferentiator);
-				assert.calledWithExactly(instance.critic.validateDifferentiator);
+				assert.calledOnceWithExactly(instance.validateDate);
+				assert.calledOnceWithExactly(instance.publication.validateName, { isRequired: true });
+				assert.calledOnceWithExactly(instance.publication.validateDifferentiator);
+				assert.calledOnceWithExactly(instance.critic.validateName, { isRequired: true });
+				assert.calledOnceWithExactly(instance.critic.validateDifferentiator);
 
 			});
 
@@ -206,10 +198,8 @@ describe('Review model', () => {
 				};
 				const instance = createInstance(props);
 				instance.runInputValidations({ isDuplicate: false });
-				assert.calledOnce(instance.publication.validateName);
-				assert.calledWithExactly(instance.publication.validateName, { isRequired: false });
-				assert.calledOnce(instance.critic.validateName);
-				assert.calledWithExactly(instance.critic.validateName, { isRequired: false });
+				assert.calledOnceWithExactly(instance.publication.validateName, { isRequired: false });
+				assert.calledOnceWithExactly(instance.critic.validateName, { isRequired: false });
 
 			});
 
@@ -224,8 +214,7 @@ describe('Review model', () => {
 			const instance = createInstance({ url: 'https://www.foo.com' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateUrl({ isRequired: false });
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'url', { isRequired: false }
 			);
@@ -265,8 +254,7 @@ describe('Review model', () => {
 				const instance = createInstance({ url: 'foobar' });
 				spy(instance, 'addPropertyError');
 				instance.validateUrl({ isRequired: false });
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'url', 'URL must be a valid URL'
 				);
@@ -284,8 +272,7 @@ describe('Review model', () => {
 			const instance = createInstance();
 			spy(instance, 'validatePropertyPresenceIfNamedChildren');
 			instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]);
-			assert.calledOnce(instance.validatePropertyPresenceIfNamedChildren);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validatePropertyPresenceIfNamedChildren,
 				'url', [{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]
 			);
@@ -319,8 +306,7 @@ describe('Review model', () => {
 					const instance = createInstance({ date: '2024-04-03' });
 					spy(instance, 'addPropertyError');
 					instance.validateDate();
-					assert.calledOnce(stubs.isValidDateModule.isValidDate);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
+					assert.calledOnceWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -339,10 +325,8 @@ describe('Review model', () => {
 					const instance = createInstance({ date: 'foobar' });
 					spy(instance, 'addPropertyError');
 					instance.validateDate();
-					assert.calledOnce(stubs.isValidDateModule.isValidDate);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(instance.addPropertyError, 'date', 'Value must be in date format');
+					assert.calledOnceWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
+					assert.calledOnceWithExactly(instance.addPropertyError, 'date', 'Value must be in date format');
 
 				});
 

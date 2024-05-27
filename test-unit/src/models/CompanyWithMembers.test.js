@@ -102,18 +102,14 @@ describe('CompanyWithMembers model', () => {
 				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.members[0].validateUniquenessInGroup
 			);
-			assert.calledOnce(instance.validateNamePresenceIfNamedChildren);
-			assert.calledOnce(instance.members[0].validateName);
-			assert.calledWithExactly(instance.members[0].validateName, { isRequired: false });
-			assert.calledOnce(instance.members[0].validateDifferentiator);
-			assert.calledWithExactly(instance.members[0].validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateEntityInfoModule.isEntityInArray);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.members);
+			assert.calledOnceWithExactly(instance.members[0].validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.members[0].validateDifferentiator);
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.members[0], []
 			);
-			assert.calledOnce(instance.members[0].validateUniquenessInGroup);
-			assert.calledWithExactly(instance.members[0].validateUniquenessInGroup, { isDuplicate: false });
+			assert.calledOnceWithExactly(instance.members[0].validateUniquenessInGroup, { isDuplicate: false });
 
 		});
 

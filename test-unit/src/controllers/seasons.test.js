@@ -54,8 +54,7 @@ describe('Seasons controller', () => {
 		it('calls sendJsonResponse module', () => {
 
 			const result = callFunction('newRoute');
-			assert.calledOnce(stubs.sendJsonResponseModule.sendJsonResponse);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.sendJsonResponseModule.sendJsonResponse,
 				stubs.response, stubs.models.Season() // eslint-disable-line new-cap
 			);
@@ -70,8 +69,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('createRoute');
-			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'CREATE' // eslint-disable-line new-cap
 			);
@@ -86,8 +84,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('editRoute');
-			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'EDIT' // eslint-disable-line new-cap
 			);
@@ -102,8 +99,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('updateRoute');
-			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'UPDATE' // eslint-disable-line new-cap
 			);
@@ -118,8 +114,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('deleteRoute');
-			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'DELETE' // eslint-disable-line new-cap
 			);
@@ -134,8 +129,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('showRoute');
-			assert.calledOnce(stubs.callClassMethodsModule.callInstanceMethod);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'SHOW' // eslint-disable-line new-cap
 			);
@@ -150,8 +144,7 @@ describe('Seasons controller', () => {
 		it('calls callStaticListMethod module', async () => {
 
 			const result = await callFunction('listRoute');
-			assert.calledOnce(stubs.callClassMethodsModule.callStaticListMethod);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callStaticListMethod,
 				stubs.response, stubs.next, stubs.models.Season, 'SEASON'
 			);

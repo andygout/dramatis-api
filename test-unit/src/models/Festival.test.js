@@ -87,14 +87,10 @@ describe('Festival model', () => {
 				instance.festivalSeries.validateName,
 				instance.festivalSeries.validateDifferentiator
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnce(instance.validateDifferentiator);
-			assert.calledWithExactly(instance.validateDifferentiator);
-			assert.calledOnce(instance.festivalSeries.validateName);
-			assert.calledWithExactly(instance.festivalSeries.validateName, { isRequired: false });
-			assert.calledOnce(instance.festivalSeries.validateDifferentiator);
-			assert.calledWithExactly(instance.festivalSeries.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnceWithExactly(instance.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.festivalSeries.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.festivalSeries.validateDifferentiator);
 
 		});
 

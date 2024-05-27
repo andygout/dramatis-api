@@ -118,8 +118,7 @@ describe('Role model', () => {
 			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterName();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'characterName', { isRequired: false }
 			);
@@ -135,8 +134,7 @@ describe('Role model', () => {
 			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterDifferentiator();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'characterDifferentiator', { isRequired: false }
 			);
@@ -197,8 +195,7 @@ describe('Role model', () => {
 				const instance = new Role({ name: 'Hamlet', characterName: 'Hamlet' });
 				spy(instance, 'addPropertyError');
 				instance.validateRoleNameCharacterNameDisparity();
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'characterName', 'Character name is only required if different from role name'
 				);

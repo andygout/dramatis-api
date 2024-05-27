@@ -563,39 +563,26 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
 				instance.reviews[0].runInputValidations
 			);
-			assert.calledOnce(instance.validateName);
-			assert.calledWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnce(instance.validateSubtitle);
-			assert.calledWithExactly(instance.validateSubtitle);
-			assert.calledOnce(instance.validateDates);
-			assert.calledWithExactly(instance.validateDates);
-			assert.calledOnce(instance.material.validateName);
-			assert.calledWithExactly(instance.material.validateName, { isRequired: false });
-			assert.calledOnce(instance.material.validateDifferentiator);
-			assert.calledWithExactly(instance.material.validateDifferentiator);
-			assert.calledOnce(instance.venue.validateName);
-			assert.calledWithExactly(instance.venue.validateName, { isRequired: false });
-			assert.calledOnce(instance.venue.validateDifferentiator);
-			assert.calledWithExactly(instance.venue.validateDifferentiator);
-			assert.calledOnce(instance.season.validateName);
-			assert.calledWithExactly(instance.season.validateName, { isRequired: false });
-			assert.calledOnce(instance.season.validateDifferentiator);
-			assert.calledWithExactly(instance.season.validateDifferentiator);
-			assert.calledOnce(instance.festival.validateName);
-			assert.calledWithExactly(instance.festival.validateName, { isRequired: false });
-			assert.calledOnce(instance.festival.validateDifferentiator);
-			assert.calledWithExactly(instance.festival.validateDifferentiator);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices);
-			assert.calledWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices, instance.subProductions);
-			assert.calledOnce(instance.subProductions[0].validateUuid);
-			assert.calledWithExactly(instance.subProductions[0].validateUuid);
-			assert.calledOnce(instance.subProductions[0].validateNoAssociationWithSelf);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			assert.calledOnceWithExactly(instance.validateSubtitle);
+			assert.calledOnceWithExactly(instance.validateDates);
+			assert.calledOnceWithExactly(instance.material.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.material.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.venue.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.venue.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.season.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.season.validateDifferentiator);
+			assert.calledOnceWithExactly(instance.festival.validateName, { isRequired: false });
+			assert.calledOnceWithExactly(instance.festival.validateDifferentiator);
+			assert.calledOnceWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices, instance.subProductions
+			);
+			assert.calledOnceWithExactly(instance.subProductions[0].validateUuid);
+			assert.calledOnceWithExactly(
 				instance.subProductions[0].validateNoAssociationWithSelf,
 				{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);
-			assert.calledOnce(instance.subProductions[0].validateUniquenessInGroup);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.subProductions[0].validateUniquenessInGroup,
 				{ isDuplicate: false, properties: new Set(['uuid']) }
 			);
@@ -604,18 +591,15 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(0),
 				instance.producerCredits
 			);
-			assert.calledOnce(instance.producerCredits[0].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.producerCredits[0].runInputValidations,
 				{ isDuplicate: false }
 			);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices);
-			assert.calledWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.getCall(0),
+			assert.calledOnceWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast
 			);
-			assert.calledOnce(instance.cast[0].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.cast[0].runInputValidations,
 				{ isDuplicate: false }
 			);
@@ -623,8 +607,7 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(1),
 				instance.creativeCredits
 			);
-			assert.calledOnce(instance.creativeCredits[0].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.creativeCredits[0].runInputValidations,
 				{ isDuplicate: false }
 			);
@@ -632,18 +615,15 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.getCall(2),
 				instance.crewCredits
 			);
-			assert.calledOnce(instance.crewCredits[0].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.crewCredits[0].runInputValidations,
 				{ isDuplicate: false }
 			);
-			assert.calledOnce(stubs.getDuplicateIndicesModule.getDuplicateUrlIndices);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
 				instance.reviews
 			);
-			assert.calledOnce(instance.reviews[0].runInputValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.reviews[0].runInputValidations,
 				{ isDuplicate: false }
 			);
@@ -973,8 +953,7 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), 'foobar');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'startDate', 'Value must be in date format'
 					);
@@ -994,8 +973,7 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), 'foobar');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), '');
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'pressDate', 'Value must be in date format'
 					);
@@ -1015,8 +993,7 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(0), '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(1), '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.getCall(2), 'foobar');
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'endDate', 'Value must be in date format'
 					);
@@ -1181,8 +1158,7 @@ describe('Production model', () => {
 			};
 			const instance = createInstance(props);
 			await instance.runDatabaseValidations();
-			assert.calledOnce(instance.subProductions[0].runDatabaseValidations);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.subProductions[0].runDatabaseValidations,
 				{ subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 			);

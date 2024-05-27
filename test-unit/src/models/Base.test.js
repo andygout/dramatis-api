@@ -45,8 +45,7 @@ describe('Base model', () => {
 
 				it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
 
-					assert.calledOnce(stubs.getTrimmedOrEmptyString);
-					assert.calledWithExactly(stubs.getTrimmedOrEmptyString, 'Foobar');
+					assert.calledOnceWithExactly(stubs.getTrimmedOrEmptyString, 'Foobar');
 					expect(instance.name).to.equal('Foobar');
 
 				});
@@ -106,8 +105,7 @@ describe('Base model', () => {
 
 			spy(instance, 'validateStringForProperty');
 			instance.validateName({ isRequired: false });
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'name', { isRequired: false }
 			);
@@ -122,8 +120,7 @@ describe('Base model', () => {
 
 			spy(instance, 'validateStringForProperty');
 			instance.validateQualifier();
-			assert.calledOnce(instance.validateStringForProperty);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'qualifier', { isRequired: false }
 			);
@@ -140,8 +137,7 @@ describe('Base model', () => {
 
 				spy(instance, 'addPropertyError');
 				instance.validateStringForProperty('name', { isRequired: false });
-				assert.calledOnce(stubs.validateString);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.validateString,
 					instance.name, { isRequired: false }
 				);
@@ -162,13 +158,11 @@ describe('Base model', () => {
 					stubs.validateString,
 					instance.addPropertyError
 				);
-				assert.calledOnce(stubs.validateString);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					stubs.validateString,
 					instance.name, { isRequired: true }
 				);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'name', 'Value is too short'
 				);
@@ -203,8 +197,7 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'name', 'This item has been duplicated within the group'
 					);
@@ -330,8 +323,7 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true };
 					instance.validateUniquenessInGroup(opts);
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'name', 'This item has been duplicated within the group'
 					);
@@ -380,8 +372,7 @@ describe('Base model', () => {
 					spy(instance, 'addPropertyError');
 					const opts = { isDuplicate: true, properties: new Set(['uuid']) };
 					instance.validateUniquenessInGroup(opts);
-					assert.calledOnce(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'uuid', 'This item has been duplicated within the group'
 					);
@@ -400,8 +391,7 @@ describe('Base model', () => {
 
 			spy(instance, 'validatePropertyPresenceIfNamedChildren');
 			instance.validateNamePresenceIfNamedChildren([{ name: 'Foo' }, { name: 'Bar' }]);
-			assert.calledOnce(instance.validatePropertyPresenceIfNamedChildren);
-			assert.calledWithExactly(
+			assert.calledOnceWithExactly(
 				instance.validatePropertyPresenceIfNamedChildren,
 				'name', [{ name: 'Foo' }, { name: 'Bar' }]
 			);
@@ -459,8 +449,7 @@ describe('Base model', () => {
 				instance.name = '';
 				spy(instance, 'addPropertyError');
 				instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
-				assert.calledOnce(instance.addPropertyError);
-				assert.calledWithExactly(
+				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'name', 'Value is required if named children exist'
 				);
