@@ -16,7 +16,7 @@ describe('Prepare As Params module', () => {
 
 		stubs = {
 			neo4jInt: sandbox.stub(neo4j, 'int').returnsArg(0),
-			cryptoRandomUUID:
+			getRandomUuid:
 				sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 		};
 
@@ -84,7 +84,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: '', name: 'Foo' };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -94,7 +94,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: undefined, name: 'Foo' };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -104,7 +104,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'Foo' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -118,7 +118,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: '', name: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal(null);
 
@@ -128,7 +128,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: undefined, name: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal(null);
 
@@ -138,7 +138,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -152,7 +152,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal(null);
 
@@ -162,7 +162,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: undefined };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal(null);
 
@@ -172,7 +172,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -184,7 +184,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { foo: 'bar' };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.foo).to.equal('bar');
 
@@ -194,7 +194,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.foo).to.equal(null);
 
@@ -204,7 +204,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { foo: false };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.foo).to.equal(null);
 
@@ -214,7 +214,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result).not.to.have.property('position');
 
@@ -238,7 +238,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: '', name: 'Foo' } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -248,7 +248,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: undefined, name: 'Foo' } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -258,7 +258,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'Foo' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -272,7 +272,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: '', name: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -282,7 +282,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: undefined, name: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -292,7 +292,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -306,7 +306,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -316,7 +316,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: undefined } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -326,7 +326,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -338,7 +338,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { venue: { foo: 'bar' } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.venue.foo).to.equal('bar');
 
@@ -348,7 +348,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { venue: { foo: '' } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.venue.foo).to.equal(null);
 
@@ -358,7 +358,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { venue: { foo: false } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.venue.foo).to.equal(null);
 
@@ -368,7 +368,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { venue: { uuid: '' } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.venue).not.to.have.property('position');
 
@@ -390,7 +390,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -400,7 +400,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ uuid: undefined, name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -410,7 +410,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -420,7 +420,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ foo: 'bar', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].foo).to.equal('bar');
 
@@ -430,7 +430,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ foo: '', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].foo).to.equal(null);
 
@@ -440,7 +440,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ foo: false, name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].foo).to.equal(null);
 
@@ -452,7 +452,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.cast[0]).to.not.have.property('position');
 
@@ -474,7 +474,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [{ uuid: '', name: 'David Calder' }, { uuid: '', name: 'Ruth Negga' }] };
 				const result = prepareAsParams(instance);
-				assert.calledTwice(stubs.cryptoRandomUUID);
+				assert.calledTwice(stubs.getRandomUuid);
 				assert.calledTwice(stubs.neo4jInt);
 				assert.calledWithExactly(stubs.neo4jInt.getCall(0), 0);
 				assert.calledWithExactly(stubs.neo4jInt.getCall(1), 1);
@@ -506,7 +506,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'David Calder' }] };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.cast.length).to.equal(1);
 				expect(result.cast[0].name).to.equal('David Calder');
@@ -529,7 +529,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.productions.length).to.equal(1);
 				expect(result.productions[0]).to.not.have.property('name');
@@ -561,7 +561,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.characterGroups.length).to.equal(1);
 				expect(result.characterGroups[0].name).to.be.null;
@@ -631,7 +631,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				expect(stubs.neo4jInt.callCount).to.equal(4);
 				expect(result.characterGroups.length).to.equal(1);
 				expect(result.characterGroups[0]).to.not.have.property('position');
@@ -668,7 +668,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.calledThrice(stubs.neo4jInt);
 				expect(result.cast.length).to.equal(3);
 
@@ -688,7 +688,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.reviews.length).to.equal(1);
 
@@ -713,7 +713,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.productions.length).to.equal(1);
 				expect(result.subProductions.length).to.equal(1);
@@ -724,7 +724,7 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items that will need to share the same database entry', () => {
 
-			stubs.cryptoRandomUUID
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
@@ -746,7 +746,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4jInt.callCount).to.equal(10);
 			expect(result.characters[0].uuid).to.equal(result.characters[5].uuid);
 			expect(result.characters[1].uuid).to.equal(result.characters[6].uuid);
@@ -764,7 +764,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -774,7 +774,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { production: { cast: [{ uuid: undefined, name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -793,7 +793,7 @@ describe('Prepare As Params module', () => {
 				}
 			};
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.production.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -803,7 +803,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { production: { cast: [{ foo: 'bar', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.production.cast[0].foo).to.equal('bar');
 
@@ -813,7 +813,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { production: { cast: [{ foo: '', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.production.cast[0].foo).to.equal(null);
 
@@ -823,7 +823,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { production: { cast: [{ foo: false, name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.production.cast[0].foo).to.equal(null);
 
@@ -835,7 +835,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.production.cast[0]).to.not.have.property('position');
 
@@ -864,7 +864,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.calledTwice(stubs.cryptoRandomUUID);
+				assert.calledTwice(stubs.getRandomUuid);
 				assert.calledTwice(stubs.neo4jInt);
 				assert.calledWithExactly(stubs.neo4jInt.getCall(0), 0);
 				assert.calledWithExactly(stubs.neo4jInt.getCall(1), 1);
@@ -898,7 +898,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { production: { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'David Calder' }] } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.production.cast.length).to.equal(1);
 				expect(result.production.cast[0].name).to.equal('David Calder');
@@ -923,7 +923,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.foo.productions.length).to.equal(1);
 				expect(result.foo.productions[0]).to.not.have.property('name');
@@ -957,7 +957,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.foo.characterGroups.length).to.equal(1);
 				expect(result.foo.characterGroups[0].name).to.be.null;
@@ -1029,7 +1029,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				expect(stubs.neo4jInt.callCount).to.equal(4);
 				expect(result.foo.characterGroups.length).to.equal(1);
 				expect(result.foo.characterGroups[0]).to.not.have.property('position');
@@ -1068,7 +1068,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.calledThrice(stubs.neo4jInt);
 				expect(result.production.cast.length).to.equal(3);
 
@@ -1090,7 +1090,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.foo.reviews.length).to.equal(1);
 
@@ -1117,7 +1117,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.foo.productions.length).to.equal(1);
 				expect(result.foo.subProductions.length).to.equal(1);
@@ -1128,7 +1128,7 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items that will need to share the same database entry', () => {
 
-			stubs.cryptoRandomUUID
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
@@ -1152,7 +1152,7 @@ describe('Prepare As Params module', () => {
 				}
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4jInt.callCount).to.equal(10);
 			expect(result.production.cast[0].uuid).to.equal(result.production.cast[5].uuid);
 			expect(result.production.cast[1].uuid).to.equal(result.production.cast[6].uuid);
@@ -1170,7 +1170,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -1180,7 +1180,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: undefined, name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.cryptoRandomUUID);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -1202,7 +1202,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].roles[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -1212,7 +1212,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: 'bar', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].roles[0].foo).to.equal('bar');
 
@@ -1222,7 +1222,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: '', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].roles[0].foo).to.equal(null);
 
@@ -1232,7 +1232,7 @@ describe('Prepare As Params module', () => {
 
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: false, name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.cryptoRandomUUID);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4jInt);
 			expect(result.cast[0].roles[0].foo).to.equal(null);
 
@@ -1244,7 +1244,7 @@ describe('Prepare As Params module', () => {
 
 				const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.cast[0]).to.not.have.property('position');
 				expect(result.cast[0].roles[0]).to.not.have.property('position');
@@ -1286,7 +1286,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.calledTwice(stubs.cryptoRandomUUID);
+				assert.calledTwice(stubs.getRandomUuid);
 				assert.calledTwice(stubs.neo4jInt);
 				assert.calledWithExactly(stubs.neo4jInt.getCall(0), 0);
 				assert.calledWithExactly(stubs.neo4jInt.getCall(1), 1);
@@ -1334,7 +1334,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.cryptoRandomUUID);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.cast[0].roles.length).to.equal(1);
 				expect(result.cast[0].roles[0].name).to.equal('Polonius');
@@ -1362,7 +1362,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.foos[0].productions.length).to.equal(1);
 				expect(result.foos[0].productions[0]).to.not.have.property('name');
@@ -1399,7 +1399,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.foos[0].characterGroups.length).to.equal(1);
 				expect(result.foos[0].characterGroups[0].name).to.be.null;
@@ -1474,7 +1474,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				expect(stubs.neo4jInt.callCount).to.equal(4);
 				expect(result.foos[0].characterGroups.length).to.equal(1);
 				expect(result.foos[0].characterGroups[0]).to.not.have.property('position');
@@ -1516,7 +1516,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.calledThrice(stubs.neo4jInt);
 				expect(result.productions[0].cast.length).to.equal(3);
 
@@ -1540,7 +1540,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.subProductions[0].reviews.length).to.equal(1);
 
@@ -1573,7 +1573,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.cryptoRandomUUID);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4jInt);
 				expect(result.nominations[0].productions.length).to.equal(1);
 				expect(result.productions[0].subProductions.length).to.equal(1);
@@ -1584,7 +1584,7 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items in the same array that will need to share the same database entry', () => {
 
-			stubs.cryptoRandomUUID
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
@@ -1610,7 +1610,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4jInt.callCount).to.equal(10);
 			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[0].characters[5].uuid);
 			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[0].characters[6].uuid);
@@ -1624,7 +1624,7 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items in different arrays that will need to share the same database entry', () => {
 
-			stubs.cryptoRandomUUID
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
@@ -1656,7 +1656,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.cryptoRandomUUID.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4jInt.callCount).to.equal(12);
 			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[1].characters[0].uuid);
 			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[1].characters[1].uuid);
