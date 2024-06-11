@@ -1,7 +1,11 @@
 {
-  "file": ["test-e2e/mocha.env.js", "test-e2e/setup.js"],
   "reporter-option": "maxDiffSize=8192",
-  "require": "@babel/register",
+  "require": [
+    "@babel/register",
+    "test-e2e/mocha.env.js",
+    "test-e2e/setup.js",
+    "test-e2e/teardown.js"
+  ],
   "spec": "test-e2e/**/*.test.js",
   "timeout": "60000"
 }
