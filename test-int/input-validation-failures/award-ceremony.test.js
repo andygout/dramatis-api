@@ -1,40 +1,45 @@
 import { expect } from 'chai';
-import { createSandbox } from 'sinon';
-
-import AwardCeremony from '../../src/models/AwardCeremony';
-import * as neo4jQueryModule from '../../src/neo4j/query';
+import esmock from 'esmock';
+import { stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
-const methods = [
-	'create',
-	'update'
-];
+describe('AwardCeremony model', () => {
 
-const sandbox = createSandbox();
+	let stubs;
 
-describe('Input validation failures: AwardCeremony instance', () => {
+	const methods = [
+		'create',
+		'update'
+	];
 
 	beforeEach(() => {
 
-		// Stub with a contrived resolution that ensures various
-		// neo4jQuery function calls all pass database validation.
-		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ isExistent: true, isDuplicateRecord: false });
+		stubs = {
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
+			}
+		};
 
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../src/models/AwardCeremony.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	context('name value is empty string', () => {
 
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instance = new AwardCeremony({ name: '' });
 
@@ -72,6 +77,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -107,6 +114,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2020',
@@ -151,6 +160,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2020',
 					award: {
@@ -194,6 +205,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2020',
@@ -245,6 +258,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2020',
@@ -325,6 +340,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -401,6 +418,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -465,6 +484,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',
@@ -542,6 +563,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -618,6 +641,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',
@@ -697,6 +722,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -775,6 +802,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',
@@ -930,6 +959,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -1020,6 +1051,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -1109,6 +1142,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',
@@ -1201,6 +1236,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -1274,6 +1311,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',
@@ -1367,6 +1406,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const AwardCeremony = await createSubject();
+
 				const instanceProps = {
 					name: '2010',
 					categories: [
@@ -1442,6 +1483,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',
@@ -1519,6 +1562,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const AwardCeremony = await createSubject();
 
 				const instanceProps = {
 					name: '2010',

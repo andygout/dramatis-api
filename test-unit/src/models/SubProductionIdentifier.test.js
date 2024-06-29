@@ -1,38 +1,36 @@
-import { assert, createSandbox, spy } from 'sinon';
-
-import { SubProductionIdentifier } from '../../../src/models';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
-
-let stubs;
-let instance;
-
-const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-const sandbox = createSandbox();
+import esmock from 'esmock';
+import { assert, spy, stub } from 'sinon';
 
 describe('SubProductionIdentifier model', () => {
+
+	let stubs;
+
+	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(() => {
 
 		stubs = {
-			validationQueries: {
-				getSubProductionChecksQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getSubProductionChecksQuery')
-						.returns('getSubProductionChecksQuery response')
+			cypherQueriesModule: {
+				validationQueries: {
+					getSubProductionChecksQuery: stub().returns('getSubProductionChecksQuery response')
+				}
 			},
-			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+			}
 		};
 
-		instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
-
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../../src/models/SubProductionIdentifier.js',
+			{
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	describe('runDatabaseValidations method', () => {
 
@@ -40,24 +38,26 @@ describe('SubProductionIdentifier model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+				const SubProductionIdentifier = await createSubject();
+				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 				assert.callOrder(
-					stubs.validationQueries.getSubProductionChecksQuery,
-					stubs.neo4jQuery
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
 						params: {
@@ -76,25 +76,27 @@ describe('SubProductionIdentifier model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: false,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+				const SubProductionIdentifier = await createSubject();
+				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 				assert.callOrder(
-					stubs.validationQueries.getSubProductionChecksQuery,
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
 						params: {
@@ -116,25 +118,27 @@ describe('SubProductionIdentifier model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: true,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+				const SubProductionIdentifier = await createSubject();
+				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 				assert.callOrder(
-					stubs.validationQueries.getSubProductionChecksQuery,
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
 						params: {
@@ -156,25 +160,27 @@ describe('SubProductionIdentifier model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: true,
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+				const SubProductionIdentifier = await createSubject();
+				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 				assert.callOrder(
-					stubs.validationQueries.getSubProductionChecksQuery,
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
 						params: {
@@ -196,25 +202,27 @@ describe('SubProductionIdentifier model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: true,
 					isSubjectProductionASubSubProduction: false
 				});
+				const SubProductionIdentifier = await createSubject();
+				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 				assert.callOrder(
-					stubs.validationQueries.getSubProductionChecksQuery,
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
 						params: {
@@ -236,25 +244,27 @@ describe('SubProductionIdentifier model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
 					isSurSurProduction: false,
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: true
 				});
+				const SubProductionIdentifier = await createSubject();
+				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 				assert.callOrder(
-					stubs.validationQueries.getSubProductionChecksQuery,
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubProductionChecksQuery);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubProductionChecksQuery response',
 						params: {

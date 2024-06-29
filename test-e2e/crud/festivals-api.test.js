@@ -1,15 +1,11 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
@@ -42,19 +38,13 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 	describe('CRUD', () => {
 
-		const FESTIVAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const FESTIVAL_UUID = 'THE_COMPLETE_WORKS_FESTIVAL_UUID';
 
 		before(async () => {
 
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(FESTIVAL_UUID);
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -197,17 +187,9 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		before(async () => {
 
-			const stubUuidCounts = {};
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -453,9 +435,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		before(async () => {
 
-			const stubUuidCounts = {};
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
@@ -476,12 +456,6 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 				.send({
 					name: 'Globe to Globe'
 				});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

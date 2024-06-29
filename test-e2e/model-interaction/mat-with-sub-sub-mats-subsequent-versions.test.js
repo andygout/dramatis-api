@@ -1,11 +1,9 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
@@ -36,15 +34,11 @@ let theHenriadSubsequentVersionMaterial;
 let williamShakespearePerson;
 let theKingsMenCompany;
 
-const sandbox = createSandbox();
-
 describe('Material with sub-sub-materials and subsequent versions thereof', () => {
 
 	before(async () => {
 
-		const stubUuidCounts = {};
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
@@ -396,12 +390,6 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 		theKingsMenCompany = await chai.request(app)
 			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
 
 	});
 

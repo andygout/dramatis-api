@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
+import esmock from 'esmock';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CharacterDepiction } from '../../../src/models';
+import { CharacterDepiction } from '../../../src/models/index.js';
 
 describe('CharacterGroup model', () => {
 
@@ -28,33 +28,27 @@ describe('CharacterGroup model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/models/CharacterGroup', {
-			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
-			'.': stubs.models
-		}).default;
-
-	const createInstance = props => {
-
-		const CharacterGroup = createSubject();
-
-		return new CharacterGroup(props);
-
-	};
+		esmock('../../../src/models/CharacterGroup.js', {
+			'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
+			'../../../src/models/index.js': stubs.models
+		});
 
 	describe('constructor method', () => {
 
 		describe('characters property', () => {
 
-			it('assigns empty array if absent from props', () => {
+			it('assigns empty array if absent from props', async () => {
 
-				const instance = createInstance({ name: 'Montagues' });
+				const CharacterGroup = await createSubject();
+				const instance = new CharacterGroup({ name: 'Montagues' });
 				expect(instance.characters).to.deep.equal([]);
 
 			});
 
-			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', async () => {
 
-				const props = {
+				const CharacterGroup = await createSubject();
+				const instance = new CharacterGroup({
 					name: 'Montagues',
 					characters: [
 						{
@@ -67,8 +61,7 @@ describe('CharacterGroup model', () => {
 							name: ' '
 						}
 					]
-				};
-				const instance = createInstance(props);
+				});
 				expect(instance.characters.length).to.equal(3);
 				expect(instance.characters[0] instanceof CharacterDepiction).to.be.true;
 				expect(instance.characters[1] instanceof CharacterDepiction).to.be.true;
@@ -82,17 +75,17 @@ describe('CharacterGroup model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance\'s validate methods and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
-			const props = {
+			const CharacterGroup = await createSubject();
+			const instance = new CharacterGroup({
 				name: 'Montagues',
 				characters: [
 					{
 						name: 'Romeo'
 					}
 				]
-			};
-			const instance = createInstance(props);
+			});
 			spy(instance, 'validateName');
 			instance.runInputValidations({ isDuplicate: false });
 			assert.callOrder(

@@ -1,3 +1,6 @@
+import * as stubUuidCounterClient from './stub-uuid-counter-client.js';
+import * as stubUuidToCountMapClient from './stub-uuid-to-count-map-client.js';
+
 const constructStubUuid = components => {
 
 	const stubUuidBase =
@@ -20,7 +23,13 @@ const constructStubUuid = components => {
 
 };
 
-export default (arg, stubUuidCounts) => {
+export default (arg = {}) => {
+
+	if (typeof stubUuidCounterClient.getValue() === 'number') {
+
+		return stubUuidCounterClient.incrementValue().toString();
+
+	}
 
 	const { model, name, differentiator } = arg;
 
@@ -28,11 +37,16 @@ export default (arg, stubUuidCounts) => {
 
 	if (differentiator === undefined) {
 
-		stubUuidCounts[stubUuid] = stubUuidCounts[stubUuid] ? stubUuidCounts[stubUuid] + 1 : 1;
+		const countValue =
+			stubUuidToCountMapClient.get(stubUuid)
+				? stubUuidToCountMapClient.get(stubUuid) + 1
+				: 1;
 
-		if (stubUuidCounts[stubUuid] > 1) {
+		stubUuidToCountMapClient.set(stubUuid, countValue);
 
-			stubUuid = constructStubUuid([name, stubUuidCounts[stubUuid].toString(), model]);
+		if (stubUuidToCountMapClient.get(stubUuid) > 1) {
+
+			stubUuid = constructStubUuid([name, stubUuidToCountMapClient.get(stubUuid).toString(), model]);
 
 		}
 

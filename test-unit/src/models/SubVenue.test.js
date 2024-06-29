@@ -1,43 +1,39 @@
-import { assert, createSandbox, spy } from 'sinon';
-
-import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
-import { SubVenue } from '../../../src/models';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
-
-let stubs;
-let instance;
-
-const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-const sandbox = createSandbox();
+import esmock from 'esmock';
+import { assert, spy, stub } from 'sinon';
 
 describe('SubVenue model', () => {
+
+	let stubs;
+
+	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(() => {
 
 		stubs = {
-			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns({
-				name: 'NAME_VALUE',
-				differentiator: 'DIFFERENTIATOR_VALUE'
-			}),
-			validationQueries: {
-				getSubVenueChecksQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getSubVenueChecksQuery')
-						.returns('getSubVenueChecksQuery response')
+			prepareAsParamsModule: {
+				prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })
 			},
-			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
+			cypherQueriesModule: {
+				validationQueries: {
+					getSubVenueChecksQuery: stub().returns('getSubVenueChecksQuery response')
+				}
+			},
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+			}
 		};
 
-		instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
-
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../../src/models/SubVenue.js',
+			{
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	describe('runDatabaseValidations method', () => {
 
@@ -45,24 +41,26 @@ describe('SubVenue model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
 				});
+				const SubVenue = await createSubject();
+				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQuery
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
 						params: {
@@ -82,25 +80,27 @@ describe('SubVenue model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: true,
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
 				});
+				const SubVenue = await createSubject();
+				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
 						params: {
@@ -128,25 +128,27 @@ describe('SubVenue model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: true,
 					isSubjectVenueASubVenue: false
 				});
+				const SubVenue = await createSubject();
+				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
 						params: {
@@ -174,25 +176,27 @@ describe('SubVenue model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,
 					isSubjectVenueASubVenue: true
 				});
+				const SubVenue = await createSubject();
+				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubVenueChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubVenueChecksQuery response',
 						params: {

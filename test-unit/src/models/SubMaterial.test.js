@@ -1,43 +1,39 @@
-import { assert, createSandbox, spy } from 'sinon';
-
-import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
-import { SubMaterial } from '../../../src/models';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
-
-let stubs;
-let instance;
-
-const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-const sandbox = createSandbox();
+import esmock from 'esmock';
+import { assert, spy, stub } from 'sinon';
 
 describe('SubMaterial model', () => {
+
+	let stubs;
+
+	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(() => {
 
 		stubs = {
-			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns({
-				name: 'NAME_VALUE',
-				differentiator: 'DIFFERENTIATOR_VALUE'
-			}),
-			validationQueries: {
-				getSubMaterialChecksQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getSubMaterialChecksQuery')
-						.returns('getSubMaterialChecksQuery response')
+			prepareAsParamsModule: {
+				prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })
 			},
-			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
+			cypherQueriesModule: {
+				validationQueries: {
+					getSubMaterialChecksQuery: stub().returns('getSubMaterialChecksQuery response')
+				}
+			},
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+			}
 		};
 
-		instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
-
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../../src/models/SubMaterial.js',
+			{
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	describe('runDatabaseValidations method', () => {
 
@@ -45,25 +41,27 @@ describe('SubMaterial model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
+				const SubMaterial = await createSubject();
+				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubMaterialChecksQuery,
-					stubs.neo4jQuery
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
@@ -83,26 +81,28 @@ describe('SubMaterial model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: true,
 					isSurSurMaterial: false,
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
+				const SubMaterial = await createSubject();
+				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubMaterialChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
@@ -130,26 +130,28 @@ describe('SubMaterial model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: true,
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
+				const SubMaterial = await createSubject();
+				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubMaterialChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
@@ -177,26 +179,28 @@ describe('SubMaterial model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
 					isSurMaterialOfSubjectMaterial: true,
 					isSubjectMaterialASubSubMaterial: false
 				});
+				const SubMaterial = await createSubject();
+				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubMaterialChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {
@@ -224,26 +228,28 @@ describe('SubMaterial model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: true
 				});
+				const SubMaterial = await createSubject();
+				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSubMaterialChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSubMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSubMaterialChecksQuery response',
 						params: {

@@ -1,13 +1,10 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import app from '../../src/app';
-import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
+import app from '../../src/app.js';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('Uniqueness in database: Productions API', () => {
 
@@ -38,12 +35,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: HOME_PRODUCTION_UUID,
 				name: 'Home'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -157,12 +148,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates venue that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
@@ -270,12 +255,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: DETAINING_JUSTICE_PRODUCTION_UUID,
 				name: 'Detaining Justice'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -389,12 +368,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates festival that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(0);
@@ -502,12 +475,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: GIRL_NO_7_PRODUCTION_UUID,
 				name: 'Girl No 7'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -665,12 +632,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates producer entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
@@ -810,12 +771,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: GIRL_NO_7_PRODUCTION_UUID,
 				name: 'Girl No 7'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -1003,12 +958,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates cast member that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
@@ -1124,12 +1073,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: GIRL_NO_7_PRODUCTION_UUID,
 				name: 'Girl No 7'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -1287,12 +1230,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates creative entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
@@ -1432,12 +1369,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID,
 				name: 'Mother Courage and Her Children'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -1603,12 +1534,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates crew entity (person) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
@@ -1763,12 +1688,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates crew entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
@@ -1908,12 +1827,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: HAMLET_PRODUCTION_UUID,
 				name: 'Hamlet'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -2079,12 +1992,6 @@ describe('Uniqueness in database: Productions API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates production and creates review publication (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
@@ -2224,12 +2131,6 @@ describe('Uniqueness in database: Productions API', () => {
 				uuid: NYE_PRODUCTION_UUID,
 				name: 'Nye'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

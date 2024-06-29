@@ -1,40 +1,45 @@
 import { expect } from 'chai';
-import { createSandbox } from 'sinon';
-
-import FestivalSeries from '../../src/models/FestivalSeries';
-import * as neo4jQueryModule from '../../src/neo4j/query';
+import esmock from 'esmock';
+import { stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
-const methods = [
-	'create',
-	'update'
-];
-
-const sandbox = createSandbox();
-
 describe('Input validation failures: Festival Series instance', () => {
+
+	let stubs;
+
+	const methods = [
+		'create',
+		'update'
+	];
 
 	beforeEach(() => {
 
-		// Stub with a contrived resolution that ensures various
-		// neo4jQuery function calls all pass database validation.
-		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ isExistent: true, isDuplicateRecord: false });
+		stubs = {
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
+			}
+		};
 
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../src/models/FestivalSeries.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	context('name value is empty string', () => {
 
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const FestivalSeries = await createSubject();
 
 				const instance = new FestivalSeries({ name: '' });
 
@@ -66,6 +71,8 @@ describe('Input validation failures: Festival Series instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const FestivalSeries = await createSubject();
+
 				const instance = new FestivalSeries({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -95,6 +102,8 @@ describe('Input validation failures: Festival Series instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const FestivalSeries = await createSubject();
 
 				const instance = new FestivalSeries({
 					name: 'Edinburgh International Festival',

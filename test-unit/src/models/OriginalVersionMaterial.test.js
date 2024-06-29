@@ -1,43 +1,40 @@
-import { assert, createSandbox, spy } from 'sinon';
-
-import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
-import { OriginalVersionMaterial } from '../../../src/models';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
-
-let stubs;
-let instance;
-
-const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-const sandbox = createSandbox();
+import esmock from 'esmock';
+import { assert, spy, stub } from 'sinon';
 
 describe('OriginalVersionMaterial model', () => {
+
+	let stubs;
+
+	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(() => {
 
 		stubs = {
-			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns({
-				name: 'NAME_VALUE',
-				differentiator: 'DIFFERENTIATOR_VALUE'
-			}),
-			validationQueries: {
-				getOriginalVersionMaterialChecksQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getOriginalVersionMaterialChecksQuery')
-						.returns('getOriginalVersionMaterialChecksQuery response')
+			prepareAsParamsModule: {
+				prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })
 			},
-			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
+			cypherQueriesModule: {
+				validationQueries: {
+					getOriginalVersionMaterialChecksQuery:
+						stub().returns('getOriginalVersionMaterialChecksQuery response')
+				}
+			},
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+			}
 		};
 
-		instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
-
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../../src/models/OriginalVersionMaterial.js',
+			{
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	describe('runDatabaseValidations method', () => {
 
@@ -45,22 +42,26 @@ describe('OriginalVersionMaterial model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: false
 				});
+				const OriginalVersionMaterial = await createSubject();
+				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getOriginalVersionMaterialChecksQuery,
-					stubs.neo4jQuery
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
+				);
+				assert.calledOnceWithExactly(
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getOriginalVersionMaterialChecksQuery response',
 						params: {
@@ -80,21 +81,25 @@ describe('OriginalVersionMaterial model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: true
 				});
+				const OriginalVersionMaterial = await createSubject();
+				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getOriginalVersionMaterialChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getOriginalVersionMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
+				);
+				assert.calledOnceWithExactly(
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getOriginalVersionMaterialChecksQuery response',
 						params: {
