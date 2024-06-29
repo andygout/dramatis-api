@@ -7,11 +7,11 @@ import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const sandbox = createSandbox();
+
 describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
-
-	chai.use(chaiHttp);
-
-	const sandbox = createSandbox();
 
 	describe('GET new endpoint', () => {
 

@@ -7,38 +7,38 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const THREE_WINTERS_MATERIAL_UUID = '3_WINTERS_MATERIAL_UUID';
+const ALISA_KOS_CHARACTER_UUID = 'ALISA_KOS_CHARACTER_UUID';
+const MAŠA_KOS_CHARACTER_UUID = 'MASA_KOS_CHARACTER_UUID';
+const ALEKSANDER_KING_CHARACTER_UUID = 'ALEKSANDER_KING_CHARACTER_UUID';
+const ROSE_KING_CHARACTER_UUID = 'ROSE_KING_CHARACTER_UUID';
+const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '3_WINTERS_PRODUCTION_UUID';
+const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+const SIOBHAN_FINNERAN_PERSON_UUID = 'SIOBHAN_FINNERAN_PERSON_UUID';
+const JO_HERBERT_PERSON_UUID = 'JO_HERBERT_PERSON_UUID';
+const JAMES_LAURENSON_PERSON_UUID = 'JAMES_LAURENSON_PERSON_UUID';
+const JODIE_MCNEE_PERSON_UUID = 'JODIE_MCNEE_PERSON_UUID';
+const ALEX_PRICE_PERSON_UUID = 'ALEX_PRICE_PERSON_UUID';
+const BEBE_SANDERS_PERSON_UUID = 'BEBE_SANDERS_PERSON_UUID';
+
+let alisaKosCharacter;
+let mašaKosCharacter;
+let aleksanderKingCharacter;
+let roseKingCharacter;
+let threeWintersMaterial;
+let threeWintersNationalProduction;
+let siobhanFinneranPerson;
+let joHerbertPerson;
+let jamesLaurensonPerson;
+let jodieMcNeePerson;
+let alexPricePerson;
+let bebeSandersPerson;
+
+const sandbox = createSandbox();
+
 describe('Character with multiple appearances in different character groups of the same material', () => {
-
-	chai.use(chaiHttp);
-
-	const THREE_WINTERS_MATERIAL_UUID = '3_WINTERS_MATERIAL_UUID';
-	const ALISA_KOS_CHARACTER_UUID = 'ALISA_KOS_CHARACTER_UUID';
-	const MAŠA_KOS_CHARACTER_UUID = 'MASA_KOS_CHARACTER_UUID';
-	const ALEKSANDER_KING_CHARACTER_UUID = 'ALEKSANDER_KING_CHARACTER_UUID';
-	const ROSE_KING_CHARACTER_UUID = 'ROSE_KING_CHARACTER_UUID';
-	const THREE_WINTERS_NATIONAL_PRODUCTION_UUID = '3_WINTERS_PRODUCTION_UUID';
-	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
-	const SIOBHAN_FINNERAN_PERSON_UUID = 'SIOBHAN_FINNERAN_PERSON_UUID';
-	const JO_HERBERT_PERSON_UUID = 'JO_HERBERT_PERSON_UUID';
-	const JAMES_LAURENSON_PERSON_UUID = 'JAMES_LAURENSON_PERSON_UUID';
-	const JODIE_MCNEE_PERSON_UUID = 'JODIE_MCNEE_PERSON_UUID';
-	const ALEX_PRICE_PERSON_UUID = 'ALEX_PRICE_PERSON_UUID';
-	const BEBE_SANDERS_PERSON_UUID = 'BEBE_SANDERS_PERSON_UUID';
-
-	let alisaKosCharacter;
-	let mašaKosCharacter;
-	let aleksanderKingCharacter;
-	let roseKingCharacter;
-	let threeWintersMaterial;
-	let threeWintersNationalProduction;
-	let siobhanFinneranPerson;
-	let joHerbertPerson;
-	let jamesLaurensonPerson;
-	let jodieMcNeePerson;
-	let alexPricePerson;
-	let bebeSandersPerson;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

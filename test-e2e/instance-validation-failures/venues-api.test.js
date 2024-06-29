@@ -10,12 +10,12 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j';
 
+const STRING_MAX_LENGTH = 1000;
+const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
+chai.use(chaiHttp);
+
 describe('Instance validation failures: Venues API', () => {
-
-	const STRING_MAX_LENGTH = 1000;
-	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
-
-	chai.use(chaiHttp);
 
 	describe('attempt to create instance', () => {
 

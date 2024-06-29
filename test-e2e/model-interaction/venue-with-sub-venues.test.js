@@ -7,33 +7,33 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
+const LYTTELTON_THEATRE_VENUE_UUID = 'LYTTELTON_THEATRE_VENUE_UUID';
+const DORFMAN_THEATRE_VENUE_UUID = 'DORFMAN_THEATRE_VENUE_UUID';
+const MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID = 'MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID';
+const MOTHER_COURAGE_CHARACTER_UUID = 'MOTHER_COURAGE_CHARACTER_UUID';
+const RICHARD_II_MATERIAL_UUID = 'RICHARD_II_MATERIAL_UUID';
+const KING_RICHARD_II_CHARACTER_UUID = 'KING_RICHARD_II_CHARACTER_UUID';
+const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = 'MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID';
+const FIONA_SHAW_PERSON_UUID = 'FIONA_SHAW_PERSON_UUID';
+const RICHARD_II_NATIONAL_PRODUCTION_UUID = 'RICHARD_II_PRODUCTION_UUID';
+
+let nationalTheatreVenue;
+let olivierTheatreVenue;
+let motherCourageCharacter;
+let kingRichardIICharacter;
+let motherCourageAndHerChildrenMaterial;
+let richardIIMaterial;
+let motherCourageAndHerChildrenOlivierProduction;
+let richardIINationalProduction;
+let fionaShawPerson;
+
+const sandbox = createSandbox();
+
 describe('Venue with sub-venues', () => {
-
-	chai.use(chaiHttp);
-
-	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
-	const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
-	const LYTTELTON_THEATRE_VENUE_UUID = 'LYTTELTON_THEATRE_VENUE_UUID';
-	const DORFMAN_THEATRE_VENUE_UUID = 'DORFMAN_THEATRE_VENUE_UUID';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID = 'MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID';
-	const MOTHER_COURAGE_CHARACTER_UUID = 'MOTHER_COURAGE_CHARACTER_UUID';
-	const RICHARD_II_MATERIAL_UUID = 'RICHARD_II_MATERIAL_UUID';
-	const KING_RICHARD_II_CHARACTER_UUID = 'KING_RICHARD_II_CHARACTER_UUID';
-	const MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID = 'MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID';
-	const FIONA_SHAW_PERSON_UUID = 'FIONA_SHAW_PERSON_UUID';
-	const RICHARD_II_NATIONAL_PRODUCTION_UUID = 'RICHARD_II_PRODUCTION_UUID';
-
-	let nationalTheatreVenue;
-	let olivierTheatreVenue;
-	let motherCourageCharacter;
-	let kingRichardIICharacter;
-	let motherCourageAndHerChildrenMaterial;
-	let richardIIMaterial;
-	let motherCourageAndHerChildrenOlivierProduction;
-	let richardIINationalProduction;
-	let fionaShawPerson;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

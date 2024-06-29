@@ -4,9 +4,9 @@ import chaiHttp from 'chai-http';
 import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 
-describe('Non-existent instances: Festival Serieses API', () => {
+chai.use(chaiHttp);
 
-	chai.use(chaiHttp);
+describe('Non-existent instances: Festival Serieses API', () => {
 
 	before(async () => {
 

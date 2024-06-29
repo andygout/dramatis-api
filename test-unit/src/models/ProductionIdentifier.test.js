@@ -4,11 +4,11 @@ import { assert, createSandbox, spy } from 'sinon';
 import * as stringsModule from '../../../src/lib/strings';
 import { ProductionIdentifier } from '../../../src/models';
 
+let stubs;
+
+const sandbox = createSandbox();
+
 describe('ProductionIdentifier model', () => {
-
-	let stubs;
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

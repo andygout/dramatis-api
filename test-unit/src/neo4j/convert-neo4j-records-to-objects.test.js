@@ -4,9 +4,9 @@ import { createSandbox } from 'sinon';
 import * as convertNeo4jIntegersToNumbersModule from '../../../src/neo4j/convert-neo4j-integers-to-numbers';
 import { convertNeo4jRecordsToObjects } from '../../../src/neo4j/convert-neo4j-records-to-objects';
 
-describe('Convert Neo4j Records To Objects module', () => {
+const sandbox = createSandbox();
 
-	const sandbox = createSandbox();
+describe('Convert Neo4j Records To Objects module', () => {
 
 	beforeEach(() => {
 

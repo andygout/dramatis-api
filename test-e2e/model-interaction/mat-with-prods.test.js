@@ -7,28 +7,28 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const TWELFTH_NIGHT_MATERIAL_UUID = 'TWELFTH_NIGHT_MATERIAL_UUID';
+const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
+const THE_KINGS_MEN_COMPANY_UUID = 'THE_KINGS_MEN_COMPANY_UUID';
+const TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID = 'TWELFTH_NIGHT_PRODUCTION_UUID';
+const SHAKESPEARES_GLOBE_VENUE_UUID = 'SHAKESPEARES_GLOBE_VENUE_UUID';
+const TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID = 'TWELFTH_NIGHT_OR_WHAT_YOU_WILL_PRODUCTION_UUID';
+const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
+const TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID = 'TWELFTH_NIGHT_2_PRODUCTION_UUID';
+const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+
+let twelfthNightMaterial;
+let williamShakespearePerson;
+let theKingsMenCompany;
+let twelfthNightGlobeProduction;
+let twelfthNightDonmarProduction;
+let twelfthNightNationalProduction;
+
+const sandbox = createSandbox();
+
 describe('Material with multiple productions', () => {
-
-	chai.use(chaiHttp);
-
-	const TWELFTH_NIGHT_MATERIAL_UUID = 'TWELFTH_NIGHT_MATERIAL_UUID';
-	const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
-	const THE_KINGS_MEN_COMPANY_UUID = 'THE_KINGS_MEN_COMPANY_UUID';
-	const TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID = 'TWELFTH_NIGHT_PRODUCTION_UUID';
-	const SHAKESPEARES_GLOBE_VENUE_UUID = 'SHAKESPEARES_GLOBE_VENUE_UUID';
-	const TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID = 'TWELFTH_NIGHT_OR_WHAT_YOU_WILL_PRODUCTION_UUID';
-	const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
-	const TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID = 'TWELFTH_NIGHT_2_PRODUCTION_UUID';
-	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
-
-	let twelfthNightMaterial;
-	let williamShakespearePerson;
-	let theKingsMenCompany;
-	let twelfthNightGlobeProduction;
-	let twelfthNightDonmarProduction;
-	let twelfthNightNationalProduction;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

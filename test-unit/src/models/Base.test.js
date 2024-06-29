@@ -6,15 +6,15 @@ import * as validateStringModule from '../../../src/lib/validate-string';
 import Base from '../../../src/models/Base';
 import { Nomination, ProductionIdentifier, Review } from '../../../src/models';
 
+let stubs;
+let instance;
+
+const STRING_MAX_LENGTH = 1000;
+const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
+const sandbox = createSandbox();
+
 describe('Base model', () => {
-
-	let stubs;
-	let instance;
-
-	const STRING_MAX_LENGTH = 1000;
-	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

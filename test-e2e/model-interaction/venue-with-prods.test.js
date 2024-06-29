@@ -7,21 +7,21 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = 'A_STREETCAR_NAMED_DESIRE_PRODUCTION_UUID';
+const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
+const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = 'LIFE_IS_A_DREAM_PRODUCTION_UUID';
+const RED_DONMAR_PRODUCTION_UUID = 'RED_PRODUCTION_UUID';
+
+let donmarWarehouseVenue;
+let streetcarNamedDesireDonmarProduction;
+let lifeIsADreamDonmarProduction;
+let redDonmarProduction;
+
+const sandbox = createSandbox();
+
 describe('Venue with multiple productions', () => {
-
-	chai.use(chaiHttp);
-
-	const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = 'A_STREETCAR_NAMED_DESIRE_PRODUCTION_UUID';
-	const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
-	const LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID = 'LIFE_IS_A_DREAM_PRODUCTION_UUID';
-	const RED_DONMAR_PRODUCTION_UUID = 'RED_PRODUCTION_UUID';
-
-	let donmarWarehouseVenue;
-	let streetcarNamedDesireDonmarProduction;
-	let lifeIsADreamDonmarProduction;
-	let redDonmarProduction;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 
