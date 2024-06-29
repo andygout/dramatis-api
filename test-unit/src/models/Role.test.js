@@ -1,45 +1,46 @@
 import { expect } from 'chai';
-import { assert, createSandbox, spy } from 'sinon';
-
-import * as stringsModule from '../../../src/lib/strings';
-import Role from '../../../src/models/Role';
-
-let stubs;
-
-const sandbox = createSandbox();
+import esmock from 'esmock';
+import { assert, spy, stub } from 'sinon';
 
 describe('Role model', () => {
+
+	let stubs;
 
 	beforeEach(() => {
 
 		stubs = {
-			getTrimmedOrEmptyString:
-				sandbox.stub(stringsModule, 'getTrimmedOrEmptyString').callsFake(arg => arg?.trim() || '')
+			stringsModule: {
+				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+			}
 		};
 
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../../src/models/Role.js',
+			{
+				'../../../src/lib/strings.js': stubs.stringsModule
+			}
+		);
 
 	describe('constructor method', () => {
 
-		it('calls getTrimmedOrEmptyString to get values to assign to properties', () => {
+		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
+			const Role = await createSubject();
 			new Role();
-			expect(stubs.getTrimmedOrEmptyString.callCount).to.equal(4);
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(3);
 
 		});
 
 		describe('characterName property', () => {
 
-			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ characterName: 'Hamlet' });
-				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.secondCall, 'Hamlet');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Hamlet');
 				expect(instance.characterName).to.equal('Hamlet');
 
 			});
@@ -48,10 +49,11 @@ describe('Role model', () => {
 
 		describe('characterDifferentiator property', () => {
 
-			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ characterDifferentiator: '1' });
-				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.thirdCall, '1');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
 				expect(instance.characterDifferentiator).to.equal('1');
 
 			});
@@ -60,10 +62,11 @@ describe('Role model', () => {
 
 		describe('qualifier property', () => {
 
-			it('assigns return value from getTrimmedOrEmptyString called with props value', () => {
+			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ qualifier: 'younger' });
-				assert.calledWithExactly(stubs.getTrimmedOrEmptyString.getCall(3), 'younger');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'younger');
 				expect(instance.qualifier).to.equal('younger');
 
 			});
@@ -72,36 +75,41 @@ describe('Role model', () => {
 
 		describe('isAlternate property', () => {
 
-			it('assigns false if absent from props', () => {
+			it('assigns false if absent from props', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ name: 'Young Lucius' });
 				expect(instance.isAlternate).to.equal(false);
 
 			});
 
-			it('assigns false if included in props but value evaluates to false', () => {
+			it('assigns false if included in props but value evaluates to false', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ name: 'Young Lucius', isAlternate: null });
 				expect(instance.isAlternate).to.equal(false);
 
 			});
 
-			it('assigns false if included in props but value is false', () => {
+			it('assigns false if included in props but value is false', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ name: 'Young Lucius', isAlternate: false });
 				expect(instance.isAlternate).to.equal(false);
 
 			});
 
-			it('assigns true if included in props and value evaluates to true', () => {
+			it('assigns true if included in props and value evaluates to true', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ name: 'Young Lucius', isAlternate: 'foobar' });
 				expect(instance.isAlternate).to.equal(true);
 
 			});
 
-			it('assigns true if included in props and value is true', () => {
+			it('assigns true if included in props and value is true', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ name: 'Young Lucius', isAlternate: true });
 				expect(instance.isAlternate).to.equal(true);
 
@@ -113,8 +121,9 @@ describe('Role model', () => {
 
 	describe('validateCharacterName method', () => {
 
-		it('will call validateStringForProperty method', () => {
+		it('will call validateStringForProperty method', async () => {
 
+			const Role = await createSubject();
 			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterName();
@@ -129,8 +138,9 @@ describe('Role model', () => {
 
 	describe('validateCharacterDifferentiator method', () => {
 
-		it('will call validateStringForProperty method', () => {
+		it('will call validateStringForProperty method', async () => {
 
+			const Role = await createSubject();
 			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 			spy(instance, 'validateStringForProperty');
 			instance.validateCharacterDifferentiator();
@@ -149,8 +159,9 @@ describe('Role model', () => {
 
 			context('role name without a character name', () => {
 
-				it('will not add properties to errors property', () => {
+				it('will not add properties to errors property', async () => {
 
+					const Role = await createSubject();
 					const instance = new Role({ name: 'Hamlet', characterName: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
@@ -162,8 +173,9 @@ describe('Role model', () => {
 
 			context('role name and different character name', () => {
 
-				it('will not add properties to errors property', () => {
+				it('will not add properties to errors property', async () => {
 
+					const Role = await createSubject();
 					const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
@@ -175,8 +187,9 @@ describe('Role model', () => {
 
 			context('no role name and no character name', () => {
 
-				it('will not add properties to errors property', () => {
+				it('will not add properties to errors property', async () => {
 
+					const Role = await createSubject();
 					const instance = new Role({ name: '', characterName: '' });
 					spy(instance, 'addPropertyError');
 					instance.validateRoleNameCharacterNameDisparity();
@@ -190,8 +203,9 @@ describe('Role model', () => {
 
 		context('invalid data', () => {
 
-			it('adds properties whose values are arrays to errors property', () => {
+			it('adds properties whose values are arrays to errors property', async () => {
 
+				const Role = await createSubject();
 				const instance = new Role({ name: 'Hamlet', characterName: 'Hamlet' });
 				spy(instance, 'addPropertyError');
 				instance.validateRoleNameCharacterNameDisparity();

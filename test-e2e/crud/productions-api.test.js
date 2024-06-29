@@ -1,15 +1,11 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
@@ -154,19 +150,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 	describe('CRUD with minimum range of attributes assigned values', () => {
 
-		const PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const PRODUCTION_UUID = 'AS_YOU_LIKE_IT_PRODUCTION_UUID';
 
 		before(async () => {
 
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(PRODUCTION_UUID);
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -755,9 +745,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		before(async () => {
 
-			const stubUuidCounts = {};
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
@@ -796,12 +784,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				.send({
 					name: 'Richard III sub-production #3'
 				});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -5962,9 +5944,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		before(async () => {
 
-			const stubUuidCounts = {};
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
@@ -6027,12 +6007,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Almeida Theatre'
 					}
 				});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

@@ -1,15 +1,11 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
@@ -36,19 +32,13 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 	describe('CRUD', () => {
 
-		const CHARACTER_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+		const CHARACTER_UUID = 'ROMEO_CHARACTER_UUID';
 
 		before(async () => {
 
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').returns(CHARACTER_UUID);
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -169,9 +159,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 		before(async () => {
 
-			const stubUuidCounts = {};
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
@@ -192,12 +180,6 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 				.send({
 					name: 'Nurse'
 				});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

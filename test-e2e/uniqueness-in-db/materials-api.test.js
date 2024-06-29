@@ -1,27 +1,22 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
+import app from '../../src/app.js';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidCounterClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('Uniqueness in database: Materials API', () => {
 
 	describe('Material uniqueness in database', () => {
 
-		const MATERIAL_1_UUID = '1';
-		const MATERIAL_2_UUID = '4';
+		const MATERIAL_1_UUID = '2';
+		const MATERIAL_2_UUID = '5';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
+			stubUuidCounterClient.setValueToZero();
 
 			await purgeDatabase();
 
@@ -29,7 +24,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 		after(() => {
 
-			sandbox.restore();
+			stubUuidCounterClient.setValueToUndefined();
 
 		});
 
@@ -451,12 +446,6 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates material and creates original version material that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
@@ -568,12 +557,6 @@ describe('Uniqueness in database: Materials API', () => {
 				uuid: DOT_MATERIAL_UUID,
 				name: 'Dot'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -708,12 +691,6 @@ describe('Uniqueness in database: Materials API', () => {
 				uuid: UNTITLED_MATERIAL_UUID,
 				name: 'Untitled'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -852,12 +829,6 @@ describe('Uniqueness in database: Materials API', () => {
 				uuid: THE_INDIAN_BOY_MATERIAL_UUID,
 				name: 'The Indian Boy'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -1003,12 +974,6 @@ describe('Uniqueness in database: Materials API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates material and creates sub-material that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
@@ -1128,12 +1093,6 @@ describe('Uniqueness in database: Materials API', () => {
 				uuid: TITUS_ANDRONICUS_MATERIAL_UUID,
 				name: 'Titus Andronicus'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

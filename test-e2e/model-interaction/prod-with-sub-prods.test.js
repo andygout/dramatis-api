@@ -1,11 +1,9 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
@@ -85,15 +83,11 @@ let theSubGuardianCompany;
 let michaelBillingtonJrPerson;
 let alexanderHerzenJrCharacter;
 
-const sandbox = createSandbox();
-
 describe('Production with sub-productions', () => {
 
 	before(async () => {
 
-		const stubUuidCounts = {};
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
@@ -819,12 +813,6 @@ describe('Production with sub-productions', () => {
 
 		alexanderHerzenJrCharacter = await chai.request(app)
 			.get(`/characters/${ALEXANDER_HERZEN_JR_CHARACTER_UUID}`);
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
 
 	});
 

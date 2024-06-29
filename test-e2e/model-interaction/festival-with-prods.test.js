@@ -1,11 +1,9 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
@@ -25,15 +23,11 @@ let antonyAndCleopatraSwanProduction;
 let juliusCaesarRoyalShakespeareProduction;
 let troilusAndCressidaKingsProduction;
 
-const sandbox = createSandbox();
-
 describe('Festival with multiple productions', () => {
 
 	before(async () => {
 
-		const stubUuidCounts = {};
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
@@ -119,12 +113,6 @@ describe('Festival with multiple productions', () => {
 
 		troilusAndCressidaKingsProduction = await chai.request(app)
 			.get(`/productions/${TROILUS_AND_CRESSIDA_KINGS_PRODUCTION_UUID}`);
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
 
 	});
 

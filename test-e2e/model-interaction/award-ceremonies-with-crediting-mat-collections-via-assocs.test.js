@@ -1,11 +1,9 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
@@ -67,15 +65,11 @@ let subFictioneersLtdCompany;
 let midFictioneersLtdCompany;
 let surFictioneersLtdCompany;
 
-const sandbox = createSandbox();
-
 describe('Award ceremonies with crediting material collections loosely connected to source material/original version (with person/company/material nominations gained via associations to sur-sur and sub-sub-materials)', () => {
 
 	before(async () => {
 
-		const stubUuidCounts = {};
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
@@ -672,12 +666,6 @@ describe('Award ceremonies with crediting material collections loosely connected
 					}
 				]
 			});
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
 
 	});
 

@@ -1,13 +1,10 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import app from '../../src/app';
-import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
+import app from '../../src/app.js';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('Uniqueness in database: Award ceremonies API', () => {
 
@@ -38,12 +35,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				uuid: TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
 				name: '2020'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -154,12 +145,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				uuid: TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
 				name: '2010'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
@@ -333,12 +318,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 		});
 
-		after(() => {
-
-			sandbox.restore();
-
-		});
-
 		it('updates award ceremony and creates nominee entity (company) that does not have a differentiator', async () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
@@ -494,12 +473,6 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 				uuid: TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID,
 				name: '2010'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

@@ -1,11 +1,9 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
@@ -34,15 +32,11 @@ let davidRintoulPerson;
 let patrickStewartPerson;
 let peterEyrePerson;
 
-const sandbox = createSandbox();
-
 describe('Character with variant names from productions of the same material', () => {
 
 	before(async () => {
 
-		const stubUuidCounts = {};
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
@@ -205,12 +199,6 @@ describe('Character with variant names from productions of the same material', (
 
 		peterEyrePerson = await chai.request(app)
 			.get(`/people/${PETER_EYRE_PERSON_UUID}`);
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
 
 	});
 

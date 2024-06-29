@@ -1,11 +1,9 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { purgeDatabase } from '../test-helpers/neo4j';
-import { getStubUuid } from '../test-helpers';
+import app from '../../src/app.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
@@ -44,15 +42,11 @@ let surWibbleJerwoodTheatreUpstairsProduction;
 let subWibblePartIMaterial;
 let surWibbleMaterial;
 
-const sandbox = createSandbox();
-
 describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 	before(async () => {
 
-		const stubUuidCounts = {};
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(arg => getStubUuid(arg, stubUuidCounts));
+		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
@@ -346,12 +340,6 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 		surWibbleMaterial = await chai.request(app)
 			.get(`/materials/${SUR_WIBBLE_MATERIAL_UUID}`);
-
-	});
-
-	after(() => {
-
-		sandbox.restore();
 
 	});
 

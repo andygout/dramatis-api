@@ -1,8 +1,12 @@
-const fs = require('node:fs');
-const path = require('node:path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const directly = require('directly');
-const jsonlint = require('jsonlint');
+const __filename = fileURLToPath(import.meta.url); // eslint-disable-line no-underscore-dangle
+const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore-dangle
+
+import directly from 'directly';
+import jsonlint from 'jsonlint';
 
 const BASE_URL = 'http://localhost:3000';
 

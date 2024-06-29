@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
+import esmock from 'esmock';
 import { assert, createStubInstance, spy } from 'sinon';
 
-import { FestivalSeries } from '../../../src/models';
+import { FestivalSeries } from '../../../src/models/index.js';
 
 describe('Festival model', () => {
 
@@ -25,33 +25,26 @@ describe('Festival model', () => {
 	});
 
 	const createSubject = () =>
-
-		proxyquire('../../../src/models/Festival', {
-			'.': stubs.models
-		}).default;
-
-	const createInstance = props => {
-
-		const Festival = createSubject();
-
-		return new Festival(props);
-
-	};
+		esmock('../../../src/models/Festival.js', {
+			'../../../src/models/index.js': stubs.models
+		});
 
 	describe('constructor method', () => {
 
 		describe('festivalSeries property', () => {
 
-			it('assigns instance if absent from props', () => {
+			it('assigns instance if absent from props', async () => {
 
-				const instance = createInstance({ name: '2008' });
+				const Festival = await createSubject();
+				const instance = new Festival({ name: '2008' });
 				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
 
 			});
 
-			it('assigns instance if included in props', () => {
+			it('assigns instance if included in props', async () => {
 
-				const instance = createInstance({
+				const Festival = await createSubject();
+				const instance = new Festival({
 					name: '2008',
 					festivalSeries: {
 						name: 'Edinburgh International Festival'
@@ -67,17 +60,17 @@ describe('Festival model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance\'s validate methods and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
-			const props = {
+			const Festival = await createSubject();
+			const instance = new Festival({
 				name: '2008',
 				differentiator: '',
 				festivalSeries: {
 					name: 'Edinburgh International Festival',
 					differentiator: ''
 				}
-			};
-			const instance = createInstance(props);
+			});
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			instance.runInputValidations();

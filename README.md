@@ -6,7 +6,6 @@ Graph database-driven API for site of theatrical productions, materials, and ass
 - Clone this repo
 - Set Node.js to version specified in `.nvmrc`, which can be achieved by running `$ nvm use` (if using [Volta](https://docs.volta.sh/guide/getting-started) then it will be set automatically)
 - Install Node.js modules: `$ npm install`
-- Compile code: `$ npm run build`
 - Copy development environment variables from `.env-dev` into `.env` by running command `$ npm run transfer-env-dev`; N.B. values may need to be amended to match your specific local database configuration (see: [Database setup](https://github.com/andygout/dramatis-api#user-content-database-setup))
 
 ## Database setup

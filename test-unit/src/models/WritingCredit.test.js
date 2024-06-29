@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
+import esmock from 'esmock';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Company, Person, SourceMaterial } from '../../../src/models';
+import { Company, Person, SourceMaterial } from '../../../src/models/index.js';
 
 describe('WritingCredit model', () => {
 
@@ -42,50 +42,45 @@ describe('WritingCredit model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/models/WritingCredit', {
-			'../lib/get-duplicate-indices': stubs.getDuplicateIndicesModule,
-			'.': stubs.models
-		}).default;
-
-	const createInstance = props => {
-
-		const WritingCredit = createSubject();
-
-		return new WritingCredit(props);
-
-	};
+		esmock('../../../src/models/WritingCredit.js', {
+			'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
+			'../../../src/models/index.js': stubs.models
+		});
 
 	describe('constructor method', () => {
 
 		describe('creditType property', () => {
 
-			it('assigns null if absent from props', () => {
+			it('assigns null if absent from props', async () => {
 
-				const instance = createInstance({ name: '' });
+				const WritingCredit = await createSubject();
+				const instance = new WritingCredit({ name: '' });
 				expect(instance.creditType).to.equal(null);
 
 			});
 
-			it('assigns null if included in props but value is not an accepted credit type', () => {
+			it('assigns null if included in props but value is not an accepted credit type', async () => {
 
-				const instance = createInstance({ name: '', creditType: 'foobar' });
+				const WritingCredit = await createSubject();
+				const instance = new WritingCredit({ name: '', creditType: 'foobar' });
 				expect(instance.creditType).to.equal(null);
 
 			});
 
-			it('assigns value if included in props and is an accepted credit type', () => {
+			it('assigns value if included in props and is an accepted credit type', async () => {
 
 				const creditTypes = [
 					'NON_SPECIFIC_SOURCE_MATERIAL',
 					'RIGHTS_GRANTOR'
 				];
 
-				creditTypes.forEach(creditType => {
+				for (const creditType of creditTypes) {
 
-					const instance = createInstance({ name: '', creditType });
+					const WritingCredit = await createSubject();
+					const instance = new WritingCredit({ name: '', creditType });
 					expect(instance.creditType).to.equal(creditType);
 
-				});
+				}
 
 			});
 
@@ -93,16 +88,18 @@ describe('WritingCredit model', () => {
 
 		describe('entities property', () => {
 
-			it('assigns empty array if absent from props', () => {
+			it('assigns empty array if absent from props', async () => {
 
-				const instance = createInstance({ name: 'version by' });
+				const WritingCredit = await createSubject();
+				const instance = new WritingCredit({ name: 'version by' });
 				expect(instance.entities).to.deep.equal([]);
 
 			});
 
-			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
 
-				const props = {
+				const WritingCredit = await createSubject();
+				const instance = new WritingCredit({
 					name: 'version by',
 					entities: [
 						{
@@ -139,8 +136,7 @@ describe('WritingCredit model', () => {
 							name: ' '
 						}
 					]
-				};
-				const instance = createInstance(props);
+				});
 				expect(instance.entities.length).to.equal(9);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof Company).to.be.true;
@@ -160,9 +156,10 @@ describe('WritingCredit model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance\'s validate methods and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
-			const props = {
+			const WritingCredit = await createSubject();
+			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
 					{
@@ -177,8 +174,7 @@ describe('WritingCredit model', () => {
 						name: 'A Midsummer Night\'s Dream'
 					}
 				]
-			};
-			const instance = createInstance(props);
+			});
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			instance.runInputValidations(
@@ -228,7 +224,8 @@ describe('WritingCredit model', () => {
 
 		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
 
-			const props = {
+			const WritingCredit = await createSubject();
+			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
 					{
@@ -243,8 +240,7 @@ describe('WritingCredit model', () => {
 						name: 'A Midsummer Night\'s Dream'
 					}
 				]
-			};
-			const instance = createInstance(props);
+			});
 			await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 			assert.notCalled(instance.entities[0].runDatabaseValidations);
 			assert.notCalled(instance.entities[1].runDatabaseValidations);

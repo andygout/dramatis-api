@@ -1,27 +1,22 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
+import app from '../../src/app.js';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidCounterClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('Uniqueness in database: Venues API', () => {
 
 	describe('Venue uniqueness in database', () => {
 
-		const VENUE_1_UUID = '1';
-		const VENUE_2_UUID = '4';
+		const VENUE_1_UUID = '2';
+		const VENUE_2_UUID = '5';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
+			stubUuidCounterClient.setValueToZero();
 
 			await purgeDatabase();
 
@@ -29,7 +24,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 		after(() => {
 
-			sandbox.restore();
+			stubUuidCounterClient.setValueToUndefined();
 
 		});
 
@@ -258,12 +253,6 @@ describe('Uniqueness in database: Venues API', () => {
 				uuid: SHEFFIELD_THEATRES_VENUE_UUID,
 				name: 'Sheffield Theatres'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 

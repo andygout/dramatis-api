@@ -1,8 +1,8 @@
 import { expect } from 'chai';
-import proxyquire from 'proxyquire';
+import esmock from 'esmock';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CompanyWithMembers, Person } from '../../../src/models';
+import { CompanyWithMembers, Person } from '../../../src/models/index.js';
 
 describe('ProducerCredit model', () => {
 
@@ -36,33 +36,27 @@ describe('ProducerCredit model', () => {
 	});
 
 	const createSubject = () =>
-		proxyquire('../../../src/models/ProducerCredit', {
-			'../lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
-			'.': stubs.models
-		}).default;
-
-	const createInstance = props => {
-
-		const ProducerCredit = createSubject();
-
-		return new ProducerCredit(props);
-
-	};
+		esmock('../../../src/models/ProducerCredit.js', {
+			'../../../src/lib/get-duplicate-entity-info.js': stubs.getDuplicateEntityInfoModule,
+			'../../../src/models/index.js': stubs.models
+		});
 
 	describe('constructor method', () => {
 
 		describe('entities property', () => {
 
-			it('assigns empty array if absent from props', () => {
+			it('assigns empty array if absent from props', async () => {
 
-				const instance = createInstance({ name: 'in association with' });
+				const ProducerCredit = await createSubject();
+				const instance = new ProducerCredit({ name: 'in association with' });
 				expect(instance.entities).to.deep.equal([]);
 
 			});
 
-			it('assigns array of producers if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', () => {
+			it('assigns array of producers if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
 
-				const props = {
+				const ProducerCredit = await createSubject();
+				const instance = new ProducerCredit({
 					name: 'in association with',
 					entities: [
 						{
@@ -87,8 +81,7 @@ describe('ProducerCredit model', () => {
 							name: ' '
 						}
 					]
-				};
-				const instance = createInstance(props);
+				});
 				expect(instance.entities.length).to.equal(6);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof CompanyWithMembers).to.be.true;
@@ -105,9 +98,10 @@ describe('ProducerCredit model', () => {
 
 	describe('runInputValidations method', () => {
 
-		it('calls instance\'s validate methods and associated models\' validate methods', () => {
+		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
-			const props = {
+			const ProducerCredit = await createSubject();
+			const instance = new ProducerCredit({
 				name: 'in association with',
 				entities: [
 					{
@@ -118,8 +112,7 @@ describe('ProducerCredit model', () => {
 						name: 'Fiery Angel'
 					}
 				]
-			};
-			const instance = createInstance(props);
+			});
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			instance.runInputValidations({ isDuplicate: false });

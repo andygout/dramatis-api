@@ -1,43 +1,39 @@
-import { assert, createSandbox, spy } from 'sinon';
-
-import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
-import { SourceMaterial } from '../../../src/models';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
-
-let stubs;
-let instance;
-
-const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-const sandbox = createSandbox();
+import esmock from 'esmock';
+import { assert, spy, stub } from 'sinon';
 
 describe('SourceMaterial model', () => {
+
+	let stubs;
+
+	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(() => {
 
 		stubs = {
-			prepareAsParams: sandbox.stub(prepareAsParamsModule, 'prepareAsParams').returns({
-				name: 'NAME_VALUE',
-				differentiator: 'DIFFERENTIATOR_VALUE'
-			}),
-			validationQueries: {
-				getSourceMaterialChecksQuery:
-					sandbox.stub(cypherQueries.validationQueries, 'getSourceMaterialChecksQuery')
-						.returns('getSourceMaterialChecksQuery response')
+			prepareAsParamsModule: {
+				prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })
 			},
-			neo4jQuery: sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves(neo4jQueryMockResponse)
+			cypherQueriesModule: {
+				validationQueries: {
+					getSourceMaterialChecksQuery: stub().returns('getSourceMaterialChecksQuery response')
+				}
+			},
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+			}
 		};
 
-		instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
-
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../../src/models/SourceMaterial.js',
+			{
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	describe('runDatabaseValidations method', () => {
 
@@ -45,7 +41,9 @@ describe('SourceMaterial model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				const SourceMaterial = await createSubject();
+				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: false
 				});
 				spy(instance, 'addPropertyError');
@@ -53,14 +51,14 @@ describe('SourceMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSourceMaterialChecksQuery,
-					stubs.neo4jQuery
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSourceMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSourceMaterialChecksQuery response',
 						params: {
@@ -80,21 +78,23 @@ describe('SourceMaterial model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				stubs.neo4jQuery.resolves({
+				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: true
 				});
+				const SourceMaterial = await createSubject();
+				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 				spy(instance, 'addPropertyError');
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 				assert.callOrder(
-					stubs.prepareAsParams,
-					stubs.validationQueries.getSourceMaterialChecksQuery,
-					stubs.neo4jQuery,
+					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.validationQueries.getSourceMaterialChecksQuery);
+				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery);
 				assert.calledOnceWithExactly(
-					stubs.neo4jQuery,
+					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSourceMaterialChecksQuery response',
 						params: {

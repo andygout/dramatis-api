@@ -1,27 +1,22 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
+import app from '../../src/app.js';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidCounterClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
-
-const sandbox = createSandbox();
 
 describe('Uniqueness in database: Festivals API', () => {
 
 	describe('Festival uniqueness in database', () => {
 
-		const FESTIVAL_1_UUID = '1';
-		const FESTIVAL_2_UUID = '4';
+		const FESTIVAL_1_UUID = '2';
+		const FESTIVAL_2_UUID = '5';
 
 		before(async () => {
 
-			let uuidCallCount = 0;
-
-			sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
+			stubUuidCounterClient.setValueToZero();
 
 			await purgeDatabase();
 
@@ -29,7 +24,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 		after(() => {
 
-			sandbox.restore();
+			stubUuidCounterClient.setValueToUndefined();
 
 		});
 
@@ -260,12 +255,6 @@ describe('Uniqueness in database: Festivals API', () => {
 				uuid: TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID,
 				name: '2008'
 			});
-
-		});
-
-		after(() => {
-
-			sandbox.restore();
 
 		});
 
