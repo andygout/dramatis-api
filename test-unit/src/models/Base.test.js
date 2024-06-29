@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
-import * as stringsModule from '../../../src/lib/strings';
-import * as validateStringModule from '../../../src/lib/validate-string';
-import Base from '../../../src/models/Base';
-import { Nomination, ProductionIdentifier, Review } from '../../../src/models';
+import * as stringsModule from '../../../src/lib/strings.js';
+import * as validateStringModule from '../../../src/lib/validate-string.js';
+import Base from '../../../src/models/Base.js';
+import { Nomination, ProductionIdentifier, Review } from '../../../src/models/index.js';
 
 let stubs;
 let instance;

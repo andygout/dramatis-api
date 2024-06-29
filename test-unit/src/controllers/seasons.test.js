@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, stub } from 'sinon';
 
-import { Season } from '../../../src/models';
+import { Season } from '../../../src/models/index.js';
 
 describe('Seasons controller', () => {
 

@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Role } from '../../../src/models';
+import { Role } from '../../../src/models/index.js';
 
 describe('CastMember model', () => {
 

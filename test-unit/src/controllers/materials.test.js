@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, stub } from 'sinon';
 
-import { Material } from '../../../src/models';
+import { Material } from '../../../src/models/index.js';
 
 describe('Materials controller', () => {
 

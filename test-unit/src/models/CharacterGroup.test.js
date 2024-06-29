@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { CharacterDepiction } from '../../../src/models';
+import { CharacterDepiction } from '../../../src/models/index.js';
 
 describe('CharacterGroup model', () => {
 

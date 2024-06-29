@@ -13,7 +13,7 @@ import {
 	Season,
 	SubProductionIdentifier,
 	VenueBase
-} from '../../../src/models';
+} from '../../../src/models/index.js';
 
 describe('Production model', () => {
 

@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy } from 'sinon';
 
-import * as stringsModule from '../../../src/lib/strings';
-import CharacterDepiction from '../../../src/models/CharacterDepiction';
+import * as stringsModule from '../../../src/lib/strings.js';
+import CharacterDepiction from '../../../src/models/CharacterDepiction.js';
 
 let stubs;
 

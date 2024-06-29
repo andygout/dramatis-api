@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 import { assert, createSandbox, spy, stub } from 'sinon';
 
-import * as hasErrorsModule from '../../../src/lib/has-errors';
-import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params';
-import * as stringsModule from '../../../src/lib/strings';
-import Entity from '../../../src/models/Entity';
-import { AwardCeremony, Person, Production, ProductionIdentifier } from '../../../src/models';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
+import * as hasErrorsModule from '../../../src/lib/has-errors.js';
+import * as prepareAsParamsModule from '../../../src/lib/prepare-as-params.js';
+import * as stringsModule from '../../../src/lib/strings.js';
+import Entity from '../../../src/models/Entity.js';
+import { AwardCeremony, Person, Production, ProductionIdentifier } from '../../../src/models/index.js';
+import * as cypherQueries from '../../../src/neo4j/cypher-queries/index.js';
+import * as neo4jQueryModule from '../../../src/neo4j/query.js';
 
 let stubs;
 let instance;

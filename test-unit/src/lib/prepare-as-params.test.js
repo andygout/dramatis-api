@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import { assert, createSandbox } from 'sinon';
 import neo4j from 'neo4j-driver';
 
-import * as getRandomUuidModule from '../../../src/lib/get-random-uuid';
-import { prepareAsParams } from '../../../src/lib/prepare-as-params';
-import applyModelGetter from '../../test-helpers/apply-model-getter';
+import * as getRandomUuidModule from '../../../src/lib/get-random-uuid.js';
+import { prepareAsParams } from '../../../src/lib/prepare-as-params.js';
+import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
 let stubs;
 

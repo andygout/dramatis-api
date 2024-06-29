@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Company, Person } from '../../../src/models';
+import { Company, Person } from '../../../src/models/index.js';
 
 describe('Review model', () => {
 

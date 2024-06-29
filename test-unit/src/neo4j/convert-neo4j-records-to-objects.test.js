@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { createSandbox } from 'sinon';
 
-import * as convertNeo4jIntegersToNumbersModule from '../../../src/neo4j/convert-neo4j-integers-to-numbers';
-import { convertNeo4jRecordsToObjects } from '../../../src/neo4j/convert-neo4j-records-to-objects';
+import * as convertNeo4jIntegersToNumbersModule from '../../../src/neo4j/convert-neo4j-integers-to-numbers.js';
+import { convertNeo4jRecordsToObjects } from '../../../src/neo4j/convert-neo4j-records-to-objects.js';
 
 const sandbox = createSandbox();
 

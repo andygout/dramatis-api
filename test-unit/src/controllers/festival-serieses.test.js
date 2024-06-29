@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, stub } from 'sinon';
 
-import { FestivalSeries } from '../../../src/models';
+import { FestivalSeries } from '../../../src/models/index.js';
 
 describe('Festival Serieses controller', () => {
 

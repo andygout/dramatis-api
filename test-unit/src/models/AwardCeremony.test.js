@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import proxyquire from 'proxyquire';
 import { assert, createStubInstance, spy, stub } from 'sinon';
 
-import { Award, AwardCeremonyCategory } from '../../../src/models';
+import { Award, AwardCeremonyCategory } from '../../../src/models/index.js';
 
 describe('AwardCeremony model', () => {
 

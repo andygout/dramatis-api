@@ -2,10 +2,10 @@ import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
 import { assert, createSandbox } from 'sinon';
 
-import searchController from '../../../src/controllers/search';
-import * as sendJsonResponseModule from '../../../src/lib/send-json-response';
-import * as cypherQueries from '../../../src/neo4j/cypher-queries';
-import * as neo4jQueryModule from '../../../src/neo4j/query';
+import searchController from '../../../src/controllers/search.js';
+import * as sendJsonResponseModule from '../../../src/lib/send-json-response.js';
+import * as cypherQueries from '../../../src/neo4j/cypher-queries/index.js';
+import * as neo4jQueryModule from '../../../src/neo4j/query.js';
 
 let stubs;
 

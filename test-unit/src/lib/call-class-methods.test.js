@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import httpMocks from 'node-mocks-http';
 import { assert, createSandbox } from 'sinon';
 
-import * as callClassMethods from '../../../src/lib/call-class-methods';
-import * as sendJsonResponseModule from '../../../src/lib/send-json-response';
-import { Character } from '../../../src/models';
+import * as callClassMethods from '../../../src/lib/call-class-methods.js';
+import * as sendJsonResponseModule from '../../../src/lib/send-json-response.js';
+import { Character } from '../../../src/models/index.js';
 
 let stubs;
 
