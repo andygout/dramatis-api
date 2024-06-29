@@ -7,31 +7,31 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const AUSTIN_CHARACTER_UUID = 'AUSTIN_CHARACTER_UUID';
+const LEE_CHARACTER_UUID = 'LEE_CHARACTER_UUID';
+const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = 'TRUE_WEST_PRODUCTION_UUID';
+const CRUCIBLE_THEATRE_VENUE_UUID = 'CRUCIBLE_THEATRE_VENUE_UUID';
+const NIGEL_HARMAN_PERSON_UUID = 'NIGEL_HARMAN_PERSON_UUID';
+const JOHN_LIGHT_PERSON_UUID = 'JOHN_LIGHT_PERSON_UUID';
+const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = 'TRUE_WEST_2_PRODUCTION_UUID';
+const VAUDEVILLE_THEATRE_VENUE_UUID = 'VAUDEVILLE_THEATRE_VENUE_UUID';
+const KIT_HARINGTON_PERSON_UUID = 'KIT_HARINGTON_PERSON_UUID';
+const JOHNNY_FLYNN_PERSON_UUID = 'JOHNNY_FLYNN_PERSON_UUID';
+
+let austinCharacter;
+let leeCharacter;
+let trueWestCrucibleProduction;
+let trueWestVaudevilleProduction;
+let nigelHarmanPerson;
+let johnLightPerson;
+let kitHaringtonPerson;
+let johnnyFlynnPerson;
+
+const sandbox = createSandbox();
+
 describe('Roles with alternating cast', () => {
-
-	chai.use(chaiHttp);
-
-	const AUSTIN_CHARACTER_UUID = 'AUSTIN_CHARACTER_UUID';
-	const LEE_CHARACTER_UUID = 'LEE_CHARACTER_UUID';
-	const TRUE_WEST_CRUCIBLE_PRODUCTION_UUID = 'TRUE_WEST_PRODUCTION_UUID';
-	const CRUCIBLE_THEATRE_VENUE_UUID = 'CRUCIBLE_THEATRE_VENUE_UUID';
-	const NIGEL_HARMAN_PERSON_UUID = 'NIGEL_HARMAN_PERSON_UUID';
-	const JOHN_LIGHT_PERSON_UUID = 'JOHN_LIGHT_PERSON_UUID';
-	const TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID = 'TRUE_WEST_2_PRODUCTION_UUID';
-	const VAUDEVILLE_THEATRE_VENUE_UUID = 'VAUDEVILLE_THEATRE_VENUE_UUID';
-	const KIT_HARINGTON_PERSON_UUID = 'KIT_HARINGTON_PERSON_UUID';
-	const JOHNNY_FLYNN_PERSON_UUID = 'JOHNNY_FLYNN_PERSON_UUID';
-
-	let austinCharacter;
-	let leeCharacter;
-	let trueWestCrucibleProduction;
-	let trueWestVaudevilleProduction;
-	let nigelHarmanPerson;
-	let johnLightPerson;
-	let kitHaringtonPerson;
-	let johnnyFlynnPerson;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

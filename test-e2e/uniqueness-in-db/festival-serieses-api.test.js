@@ -6,14 +6,14 @@ import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
 
+chai.use(chaiHttp);
+
+const FESTIVAL_SERIES_1_UUID = '1';
+const FESTIVAL_SERIES_2_UUID = '4';
+
+const sandbox = createSandbox();
+
 describe('Uniqueness in database: Festival Serieses API', () => {
-
-	chai.use(chaiHttp);
-
-	const FESTIVAL_SERIES_1_UUID = '1';
-	const FESTIVAL_SERIES_2_UUID = '4';
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

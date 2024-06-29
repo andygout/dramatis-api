@@ -4,11 +4,11 @@ import { assert, createSandbox, spy } from 'sinon';
 import * as stringsModule from '../../../src/lib/strings';
 import Role from '../../../src/models/Role';
 
+let stubs;
+
+const sandbox = createSandbox();
+
 describe('Role model', () => {
-
-	let stubs;
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

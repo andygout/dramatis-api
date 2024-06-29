@@ -5,11 +5,11 @@ import { createSandbox } from 'sinon';
 import app from '../../src/app';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
 
+chai.use(chaiHttp);
+
+const sandbox = createSandbox();
+
 describe('Uniqueness in database: Productions API', () => {
-
-	chai.use(chaiHttp);
-
-	const sandbox = createSandbox();
 
 	describe('Production material uniqueness in database', () => {
 

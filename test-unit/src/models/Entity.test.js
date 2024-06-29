@@ -9,14 +9,14 @@ import { AwardCeremony, Person, Production, ProductionIdentifier } from '../../.
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
+let stubs;
+let instance;
+
+const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
+
+const sandbox = createSandbox();
+
 describe('Entity model', () => {
-
-	let stubs;
-	let instance;
-
-	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

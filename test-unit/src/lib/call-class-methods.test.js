@@ -6,14 +6,14 @@ import * as callClassMethods from '../../../src/lib/call-class-methods';
 import * as sendJsonResponseModule from '../../../src/lib/send-json-response';
 import { Character } from '../../../src/models';
 
-describe('Call Class Methods module', () => {
+let stubs;
 
-	let stubs;
+const sandbox = createSandbox();
+
+describe('Call Class Methods module', () => {
 
 	const error = new Error('errorText');
 	const notFoundError = new Error('Not Found');
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

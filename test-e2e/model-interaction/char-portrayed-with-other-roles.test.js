@@ -7,24 +7,24 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const JOEYS_MOTHER_CHARACTER_UUID = 'JOEYS_MOTHER_CHARACTER_UUID';
+const DR_SCHWEYK_CHARACTER_UUID = 'DR_SCHWEYK_CHARACTER_UUID';
+const COCO_CHARACTER_UUID = 'COCO_CHARACTER_UUID';
+const GEORDIE_CHARACTER_UUID = 'GEORDIE_CHARACTER_UUID';
+const WAR_HORSE_NATIONAL_PRODUCTION_UUID = 'WAR_HORSE_PRODUCTION_UUID';
+const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+const STEPHEN_HARPER_PERSON_UUID = 'STEPHEN_HARPER_PERSON_UUID';
+
+let joeysMotherCharacter;
+let drSchweykCharacter;
+let cocoCharacter;
+let geordieCharacter;
+
+const sandbox = createSandbox();
+
 describe('Character portrayed with other roles', () => {
-
-	chai.use(chaiHttp);
-
-	const JOEYS_MOTHER_CHARACTER_UUID = 'JOEYS_MOTHER_CHARACTER_UUID';
-	const DR_SCHWEYK_CHARACTER_UUID = 'DR_SCHWEYK_CHARACTER_UUID';
-	const COCO_CHARACTER_UUID = 'COCO_CHARACTER_UUID';
-	const GEORDIE_CHARACTER_UUID = 'GEORDIE_CHARACTER_UUID';
-	const WAR_HORSE_NATIONAL_PRODUCTION_UUID = 'WAR_HORSE_PRODUCTION_UUID';
-	const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
-	const STEPHEN_HARPER_PERSON_UUID = 'STEPHEN_HARPER_PERSON_UUID';
-
-	let joeysMotherCharacter;
-	let drSchweykCharacter;
-	let cocoCharacter;
-	let geordieCharacter;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

@@ -7,24 +7,24 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = 'THE_GREEKS_PRODUCTION_UUID';
+const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
+const SUSANNAH_FELLOWS_PERSON_UUID = 'SUSANNAH_FELLOWS_PERSON_UUID';
+const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = 'CITY_OF_ANGELS_PRODUCTION_UUID';
+const PRINCE_OF_WALES_THEATRE_VENUE_UUID = 'PRINCE_OF_WALES_THEATRE_VENUE_UUID';
+const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = 'ENRON_PRODUCTION_UUID';
+const CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID = 'CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID';
+
+let susannahFellowsPerson;
+let theGreeksAldwychProduction;
+let cityOfAngelsPrinceOfWalesProduction;
+let enronChichesterFestivalProduction;
+
+const sandbox = createSandbox();
+
 describe('Cast member with multiple production credits', () => {
-
-	chai.use(chaiHttp);
-
-	const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = 'THE_GREEKS_PRODUCTION_UUID';
-	const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
-	const SUSANNAH_FELLOWS_PERSON_UUID = 'SUSANNAH_FELLOWS_PERSON_UUID';
-	const CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID = 'CITY_OF_ANGELS_PRODUCTION_UUID';
-	const PRINCE_OF_WALES_THEATRE_VENUE_UUID = 'PRINCE_OF_WALES_THEATRE_VENUE_UUID';
-	const ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID = 'ENRON_PRODUCTION_UUID';
-	const CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID = 'CHICHESTER_FESTIVAL_THEATRE_VENUE_UUID';
-
-	let susannahFellowsPerson;
-	let theGreeksAldwychProduction;
-	let cityOfAngelsPrinceOfWalesProduction;
-	let enronChichesterFestivalProduction;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

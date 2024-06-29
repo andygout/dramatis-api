@@ -7,18 +7,18 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
+const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
+const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
+const BRANDON_BAZ_PERSON_UUID = 'BRANDON_BAZ_PERSON_UUID';
+
+let material;
+
+const sandbox = createSandbox();
+
 describe('Nameless writer groups grouping', () => {
-
-	chai.use(chaiHttp);
-
-	const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
-	const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
-	const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
-	const BRANDON_BAZ_PERSON_UUID = 'BRANDON_BAZ_PERSON_UUID';
-
-	let material;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

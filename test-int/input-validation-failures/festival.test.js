@@ -4,17 +4,17 @@ import { createSandbox } from 'sinon';
 import Festival from '../../src/models/Festival';
 import * as neo4jQueryModule from '../../src/neo4j/query';
 
+const STRING_MAX_LENGTH = 1000;
+const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
+const methods = [
+	'create',
+	'update'
+];
+
+const sandbox = createSandbox();
+
 describe('Input validation failures: Festival instance', () => {
-
-	const STRING_MAX_LENGTH = 1000;
-	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
-
-	const methods = [
-		'create',
-		'update'
-	];
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

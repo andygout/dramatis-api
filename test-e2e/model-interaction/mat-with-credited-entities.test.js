@@ -7,19 +7,19 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
+const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
+const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
+
+let material;
+let person;
+let company;
+
+const sandbox = createSandbox();
+
 describe('Material with entities credited multiple times', () => {
-
-	chai.use(chaiHttp);
-
-	const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
-	const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
-	const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
-
-	let material;
-	let person;
-	let company;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

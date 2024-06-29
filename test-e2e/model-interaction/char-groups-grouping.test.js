@@ -7,18 +7,18 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const JULIUS_CAESAR_MATERIAL_UUID = 'JULIUS_CAESAR_MATERIAL_UUID';
+const JULIUS_CAESAR_CHARACTER_UUID = 'JULIUS_CAESAR_CHARACTER_UUID';
+const MARK_ANTONY_CHARACTER_UUID = 'MARK_ANTONY_CHARACTER_UUID';
+const MESSENGER_CHARACTER_UUID = 'MESSENGER_CHARACTER_UUID';
+
+let juliusCaesarMaterial;
+
+const sandbox = createSandbox();
+
 describe('Nameless character groups grouping', () => {
-
-	chai.use(chaiHttp);
-
-	const JULIUS_CAESAR_MATERIAL_UUID = 'JULIUS_CAESAR_MATERIAL_UUID';
-	const JULIUS_CAESAR_CHARACTER_UUID = 'JULIUS_CAESAR_CHARACTER_UUID';
-	const MARK_ANTONY_CHARACTER_UUID = 'MARK_ANTONY_CHARACTER_UUID';
-	const MESSENGER_CHARACTER_UUID = 'MESSENGER_CHARACTER_UUID';
-
-	let juliusCaesarMaterial;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

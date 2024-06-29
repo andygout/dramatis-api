@@ -10,9 +10,9 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j';
 
-describe('Instance validation failures: Festival Serieses API', () => {
+chai.use(chaiHttp);
 
-	chai.use(chaiHttp);
+describe('Instance validation failures: Festival Serieses API', () => {
 
 	describe('attempt to create instance', () => {
 

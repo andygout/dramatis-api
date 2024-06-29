@@ -6,11 +6,11 @@ import * as getRandomUuidModule from '../../../src/lib/get-random-uuid';
 import { prepareAsParams } from '../../../src/lib/prepare-as-params';
 import applyModelGetter from '../../test-helpers/apply-model-getter';
 
+let stubs;
+
+const sandbox = createSandbox();
+
 describe('Prepare As Params module', () => {
-
-	let stubs;
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

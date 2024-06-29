@@ -7,11 +7,11 @@ import * as sendJsonResponseModule from '../../../src/lib/send-json-response';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
+let stubs;
+
+const sandbox = createSandbox();
+
 describe('Search controller', () => {
-
-	let stubs;
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

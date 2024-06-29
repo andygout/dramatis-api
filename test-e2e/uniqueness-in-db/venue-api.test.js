@@ -6,11 +6,11 @@ import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
 import app from '../../src/app';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j';
 
+chai.use(chaiHttp);
+
+const sandbox = createSandbox();
+
 describe('Uniqueness in database: Venues API', () => {
-
-	chai.use(chaiHttp);
-
-	const sandbox = createSandbox();
 
 	describe('Venue uniqueness in database', () => {
 

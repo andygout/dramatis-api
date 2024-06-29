@@ -4,14 +4,14 @@ import { SubProductionIdentifier } from '../../../src/models';
 import * as cypherQueries from '../../../src/neo4j/cypher-queries';
 import * as neo4jQueryModule from '../../../src/neo4j/query';
 
+let stubs;
+let instance;
+
+const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
+
+const sandbox = createSandbox();
+
 describe('SubProductionIdentifier model', () => {
-
-	let stubs;
-	let instance;
-
-	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
-
-	const sandbox = createSandbox();
 
 	beforeEach(() => {
 

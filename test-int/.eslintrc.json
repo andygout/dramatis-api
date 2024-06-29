@@ -3,9 +3,14 @@
     "mocha": true
   },
   "plugins": [
+    "mocha",
     "no-only-tests"
   ],
+  "extends": [
+    "plugin:mocha/recommended"
+  ],
   "rules": {
+    "mocha/no-mocha-arrows": 0,
     "no-only-tests/no-only-tests": 2
   }
 }

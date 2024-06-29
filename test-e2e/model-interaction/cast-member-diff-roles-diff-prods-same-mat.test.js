@@ -7,29 +7,29 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const KING_LEAR_CHARACTER_UUID = 'KING_LEAR_CHARACTER_UUID';
+const FOOL_CHARACTER_UUID = 'FOOL_CHARACTER_UUID';
+const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'KING_LEAR_PRODUCTION_UUID';
+const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
+const MICHAEL_GAMBON_PERSON_UUID = 'MICHAEL_GAMBON_PERSON_UUID';
+const ANTONY_SHER_PERSON_UUID = 'ANTONY_SHER_PERSON_UUID';
+const KING_LEAR_BARBICAN_PRODUCTION_UUID = 'KING_LEAR_2_PRODUCTION_UUID';
+const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
+const GRAHAM_TURNER_PERSON_UUID = 'GRAHAM_TURNER_PERSON_UUID';
+
+let kingLearCharacter;
+let foolCharacter;
+let kingLearRoyalShakespeareProduction;
+let kingLearBarbicanProduction;
+let michaelGambonPerson;
+let antonySherPerson;
+let grahamTurnerPerson;
+
+const sandbox = createSandbox();
+
 describe('Cast member performing different roles in different productions of same material', () => {
-
-	chai.use(chaiHttp);
-
-	const KING_LEAR_CHARACTER_UUID = 'KING_LEAR_CHARACTER_UUID';
-	const FOOL_CHARACTER_UUID = 'FOOL_CHARACTER_UUID';
-	const KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'KING_LEAR_PRODUCTION_UUID';
-	const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
-	const MICHAEL_GAMBON_PERSON_UUID = 'MICHAEL_GAMBON_PERSON_UUID';
-	const ANTONY_SHER_PERSON_UUID = 'ANTONY_SHER_PERSON_UUID';
-	const KING_LEAR_BARBICAN_PRODUCTION_UUID = 'KING_LEAR_2_PRODUCTION_UUID';
-	const BARBICAN_THEATRE_VENUE_UUID = 'BARBICAN_THEATRE_VENUE_UUID';
-	const GRAHAM_TURNER_PERSON_UUID = 'GRAHAM_TURNER_PERSON_UUID';
-
-	let kingLearCharacter;
-	let foolCharacter;
-	let kingLearRoyalShakespeareProduction;
-	let kingLearBarbicanProduction;
-	let michaelGambonPerson;
-	let antonySherPerson;
-	let grahamTurnerPerson;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

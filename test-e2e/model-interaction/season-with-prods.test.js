@@ -7,22 +7,22 @@ import app from '../../src/app';
 import { purgeDatabase } from '../test-helpers/neo4j';
 import { getStubUuid } from '../test-helpers';
 
+chai.use(chaiHttp);
+
+const SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID = 'SEIZE_THE_DAY_PRODUCTION_UUID';
+const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
+const NOT_BLACK_AND_WHITE_SEASON_UUID = 'NOT_BLACK_AND_WHITE_SEASON_UUID';
+const DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID = 'DETAINING_JUSTICE_PRODUCTION_UUID';
+const CATEGORY_B_TRICYCLE_PRODUCTION_UUID = 'CATEGORY_B_PRODUCTION_UUID';
+
+let notBlackAndWhiteSeason;
+let categoryBTricycleProduction;
+let seizeTheDayTricycleProduction;
+let detainingJusticeTricycleProduction;
+
+const sandbox = createSandbox();
+
 describe('Season with multiple productions', () => {
-
-	chai.use(chaiHttp);
-
-	const SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID = 'SEIZE_THE_DAY_PRODUCTION_UUID';
-	const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
-	const NOT_BLACK_AND_WHITE_SEASON_UUID = 'NOT_BLACK_AND_WHITE_SEASON_UUID';
-	const DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID = 'DETAINING_JUSTICE_PRODUCTION_UUID';
-	const CATEGORY_B_TRICYCLE_PRODUCTION_UUID = 'CATEGORY_B_PRODUCTION_UUID';
-
-	let notBlackAndWhiteSeason;
-	let categoryBTricycleProduction;
-	let seizeTheDayTricycleProduction;
-	let detainingJusticeTricycleProduction;
-
-	const sandbox = createSandbox();
 
 	before(async () => {
 

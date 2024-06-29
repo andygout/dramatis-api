@@ -2,11 +2,11 @@ import { expect } from 'chai';
 
 import { validateString } from '../../../src/lib/validate-string';
 
-describe('Validate String module', () => {
+const STRING_MAX_LENGTH = 1000;
+const MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH);
+const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
-	const STRING_MAX_LENGTH = 1000;
-	const MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH);
-	const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+describe('Validate String module', () => {
 
 	context('string is empty', () => {
 
