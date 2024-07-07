@@ -32,7 +32,7 @@ export default (arg, stubUuidCounts) => {
 
 		if (stubUuidCounts[stubUuid] > 1) {
 
-			stubUuid = constructStubUuid([name, stubUuidCounts[stubUuid].toString(), model]);
+			stubUuid = constructStubUuid([name, model, stubUuidCounts[stubUuid].toString()]);
 
 		}
 

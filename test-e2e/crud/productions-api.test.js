@@ -679,12 +679,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 
-		const HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#1_PRODUCTION_UUID';
-		const HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#2_PRODUCTION_UUID';
-		const HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#3_PRODUCTION_UUID';
-		const RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#1_PRODUCTION_UUID';
-		const RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#2_PRODUCTION_UUID';
-		const RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID = 'RICHARD_III_SUB_PRODUCTION_#3_PRODUCTION_UUID';
+		const HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID = 'HAMLET_SUB_PRODUCTION_#1_PRODUCTION_UUID';
+		const HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID = 'HAMLET_SUB_PRODUCTION_#2_PRODUCTION_UUID';
+		const HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID = 'HAMLET_SUB_PRODUCTION_#3_PRODUCTION_UUID';
+		const RICHARD_III_SUB_PRODUCTION_PRODUCTION_1_UUID = 'RICHARD_III_SUB_PRODUCTION_#1_PRODUCTION_UUID';
+		const RICHARD_III_SUB_PRODUCTION_PRODUCTION_2_UUID = 'RICHARD_III_SUB_PRODUCTION_#2_PRODUCTION_UUID';
+		const RICHARD_III_SUB_PRODUCTION_PRODUCTION_3_UUID = 'RICHARD_III_SUB_PRODUCTION_#3_PRODUCTION_UUID';
 		const PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
 		const THE_TRAGEDY_OF_HAMLET_MATERIAL_UUID = 'THE_TRAGEDY_OF_HAMLET_1_MATERIAL_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_1_VENUE_UUID';
@@ -835,13 +835,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					subProductions: [
 						{
-							uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID
+							uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID
 						},
 						{
-							uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID
+							uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID
 						},
 						{
-							uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID
+							uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID
 						}
 					],
 					producerCredits: [
@@ -1186,17 +1186,17 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID,
 						errors: {}
 					},
 					{
@@ -1936,7 +1936,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				subProductions: [
 					{
 						model: 'PRODUCTION',
-						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID,
 						name: 'Hamlet sub-production #1',
 						subtitle: null,
 						startDate: null,
@@ -1955,7 +1955,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCTION',
-						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID,
 						name: 'Hamlet sub-production #2',
 						subtitle: null,
 						startDate: null,
@@ -1974,7 +1974,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCTION',
-						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID,
 						name: 'Hamlet sub-production #3',
 						subtitle: null,
 						startDate: null,
@@ -2402,17 +2402,17 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID,
 						errors: {}
 					},
 					{
@@ -3138,13 +3138,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					subProductions: [
 						{
-							uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID
+							uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID
 						},
 						{
-							uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID
+							uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID
 						},
 						{
-							uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID
+							uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID
 						}
 					],
 					producerCredits: [
@@ -3489,17 +3489,17 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_1_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_2_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						uuid: HAMLET_SUB_PRODUCTION_PRODUCTION_3_UUID,
 						errors: {}
 					},
 					{
@@ -4226,13 +4226,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					subProductions: [
 						{
-							uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID
+							uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_1_UUID
 						},
 						{
-							uuid: RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID
+							uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_2_UUID
 						},
 						{
-							uuid: RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID
+							uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_3_UUID
 						}
 					],
 					producerCredits: [
@@ -4576,17 +4576,17 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				subProductions: [
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_1_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_2_UUID,
 						errors: {}
 					},
 					{
 						model: 'PRODUCTION_IDENTIFIER',
-						uuid: RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_3_UUID,
 						errors: {}
 					},
 					{
@@ -5326,7 +5326,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				subProductions: [
 					{
 						model: 'PRODUCTION',
-						uuid: RICHARD_III_SUB_PRODUCTION_1_PRODUCTION_UUID,
+						uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_1_UUID,
 						name: 'Richard III sub-production #1',
 						subtitle: null,
 						startDate: null,
@@ -5345,7 +5345,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCTION',
-						uuid: RICHARD_III_SUB_PRODUCTION_2_PRODUCTION_UUID,
+						uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_2_UUID,
 						name: 'Richard III sub-production #2',
 						subtitle: null,
 						startDate: null,
@@ -5364,7 +5364,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					},
 					{
 						model: 'PRODUCTION',
-						uuid: RICHARD_III_SUB_PRODUCTION_3_PRODUCTION_UUID,
+						uuid: RICHARD_III_SUB_PRODUCTION_PRODUCTION_3_UUID,
 						name: 'Richard III sub-production #3',
 						subtitle: null,
 						startDate: null,
@@ -5954,11 +5954,11 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
 		const HAMLET_NATIONAL_PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
-		const MACBETH_ALMEIDA_PRODUCTION_UUID = 'MACBETH_2_PRODUCTION_UUID';
+		const MACBETH_ALMEIDA_PRODUCTION_UUID = 'MACBETH_PRODUCTION_2_UUID';
 		const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_VENUE_UUID';
-		const HAMLET_WYNDHAMS_PRODUCTION_UUID = 'HAMLET_2_PRODUCTION_UUID';
+		const HAMLET_WYNDHAMS_PRODUCTION_UUID = 'HAMLET_PRODUCTION_2_UUID';
 		const WYNDHAMS_THEATRE_VENUE_UUID = 'WYNDHAMS_THEATRE_VENUE_UUID';
-		const HAMLET_ALMEIDA_PRODUCTION_UUID = 'HAMLET_3_PRODUCTION_UUID';
+		const HAMLET_ALMEIDA_PRODUCTION_UUID = 'HAMLET_PRODUCTION_3_UUID';
 
 		before(async () => {
 
