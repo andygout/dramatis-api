@@ -18,7 +18,7 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "setup": "node --require source-map-support/register built/setup.js",
-    "start": "npm run setup && npm run watch & node --watch --require source-map-support/register built/app.js"
+    "start": "npm run setup && npm run watch & node --watch --watch-preserve-output --require source-map-support/register built/app.js"
   },
   "pre-commit": [
     "lint-check",
