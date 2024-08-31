@@ -1,25 +1,20 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import { createSandbox } from 'sinon';
 
-import * as getRandomUuidModule from '../../src/lib/get-random-uuid';
-import app from '../../src/app';
-import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j';
+import app from '../../src/app.js';
+import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
+import { stubUuidCounterClient } from '../test-helpers/index.js';
 
 chai.use(chaiHttp);
 
-const COMPANY_1_UUID = '1';
-const COMPANY_2_UUID = '4';
-
-const sandbox = createSandbox();
+const COMPANY_1_UUID = '2';
+const COMPANY_2_UUID = '5';
 
 describe('Uniqueness in database: Companies API', () => {
 
 	before(async () => {
 
-		let uuidCallCount = 0;
-
-		sandbox.stub(getRandomUuidModule, 'getRandomUuid').callsFake(() => (uuidCallCount++).toString());
+		stubUuidCounterClient.setValueToZero();
 
 		await purgeDatabase();
 
@@ -27,7 +22,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 	after(() => {
 
-		sandbox.restore();
+		stubUuidCounterClient.setValueToUndefined();
 
 	});
 

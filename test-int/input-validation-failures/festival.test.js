@@ -1,40 +1,45 @@
 import { expect } from 'chai';
-import { createSandbox } from 'sinon';
-
-import Festival from '../../src/models/Festival';
-import * as neo4jQueryModule from '../../src/neo4j/query';
+import esmock from 'esmock';
+import { stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
-const methods = [
-	'create',
-	'update'
-];
-
-const sandbox = createSandbox();
-
 describe('Input validation failures: Festival instance', () => {
+
+	let stubs;
+
+	const methods = [
+		'create',
+		'update'
+	];
 
 	beforeEach(() => {
 
-		// Stub with a contrived resolution that ensures various
-		// neo4jQuery function calls all pass database validation.
-		sandbox.stub(neo4jQueryModule, 'neo4jQuery').resolves({ isExistent: true, isDuplicateRecord: false });
+		stubs = {
+			neo4jQueryModule: {
+				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
+			}
+		};
 
 	});
 
-	afterEach(() => {
-
-		sandbox.restore();
-
-	});
+	const createSubject = () =>
+		esmock(
+			'../../src/models/Festival.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	context('name value is empty string', () => {
 
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const Festival = await createSubject();
 
 				const instance = new Festival({ name: '' });
 
@@ -72,6 +77,8 @@ describe('Input validation failures: Festival instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
+				const Festival = await createSubject();
+
 				const instance = new Festival({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -107,6 +114,8 @@ describe('Input validation failures: Festival instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const Festival = await createSubject();
 
 				const instance = new Festival({
 					name: 'The Complete Works',
@@ -146,6 +155,8 @@ describe('Input validation failures: Festival instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const Festival = await createSubject();
 
 				const instance = new Festival({
 					name: '2008',
@@ -187,6 +198,8 @@ describe('Input validation failures: Festival instance', () => {
 		for (const method of methods) {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
+
+				const Festival = await createSubject();
 
 				const instance = new Festival({
 					name: '2008',
