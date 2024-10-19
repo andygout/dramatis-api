@@ -19,6 +19,9 @@ describe('Role model', () => {
 	const createSubject = () =>
 		esmock(
 			'../../../src/models/Role.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
 			{
 				'../../../src/lib/strings.js': stubs.stringsModule
 			}
@@ -30,7 +33,7 @@ describe('Role model', () => {
 
 			const Role = await createSubject();
 			new Role();
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(3);
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
 
 		});
 
@@ -40,7 +43,7 @@ describe('Role model', () => {
 
 				const Role = await createSubject();
 				const instance = new Role({ characterName: 'Hamlet' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Hamlet');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Hamlet');
 				expect(instance.characterName).to.equal('Hamlet');
 
 			});
@@ -53,7 +56,7 @@ describe('Role model', () => {
 
 				const Role = await createSubject();
 				const instance = new Role({ characterDifferentiator: '1' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '1');
 				expect(instance.characterDifferentiator).to.equal('1');
 
 			});
@@ -66,7 +69,7 @@ describe('Role model', () => {
 
 				const Role = await createSubject();
 				const instance = new Role({ qualifier: 'younger' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'younger');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'younger');
 				expect(instance.qualifier).to.equal('younger');
 
 			});

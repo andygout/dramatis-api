@@ -28,10 +28,16 @@ describe('CastMember model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/CastMember.js', {
-			'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/CastMember.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 

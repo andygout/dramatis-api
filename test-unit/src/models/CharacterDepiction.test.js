@@ -17,9 +17,15 @@ describe('CharacterDepiction model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/CharacterDepiction.js', {
-			'../../../src/lib/strings.js': stubs.stringsModule
-		});
+		esmock(
+			'../../../src/models/CharacterDepiction.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/strings.js': stubs.stringsModule
+			}
+		);
 
 	describe('constructor method', () => {
 
@@ -27,7 +33,7 @@ describe('CharacterDepiction model', () => {
 
 			const CharacterDepiction = await createSubject();
 			new CharacterDepiction();
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
 
 		});
 
@@ -37,7 +43,7 @@ describe('CharacterDepiction model', () => {
 
 				const CharacterDepiction = await createSubject();
 				const instance = new CharacterDepiction({ underlyingName: 'King Henry V' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'King Henry V');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'King Henry V');
 				expect(instance.underlyingName).to.equal('King Henry V');
 
 			});
@@ -50,7 +56,7 @@ describe('CharacterDepiction model', () => {
 
 				const CharacterDepiction = await createSubject();
 				const instance = new CharacterDepiction({ qualifier: 'older' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'older');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'older');
 				expect(instance.qualifier).to.equal('older');
 
 			});

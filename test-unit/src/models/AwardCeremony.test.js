@@ -54,13 +54,19 @@ describe('AwardCeremony model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/AwardCeremony.js', {
-			'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-			'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
-			'../../../src/models/index.js': stubs.models,
-			'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
-			'../../../src/neo4j/query.js': stubs.neo4jQueryModule
-		});
+		esmock(
+			'../../../src/models/AwardCeremony.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/models/index.js': stubs.models,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	describe('constructor method', () => {
 

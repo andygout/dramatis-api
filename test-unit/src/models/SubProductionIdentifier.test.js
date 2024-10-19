@@ -25,6 +25,9 @@ describe('SubProductionIdentifier model', () => {
 	const createSubject = () =>
 		esmock(
 			'../../../src/models/SubProductionIdentifier.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
 			{
 				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
 				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,

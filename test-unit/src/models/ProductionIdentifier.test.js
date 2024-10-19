@@ -19,6 +19,9 @@ describe('ProductionIdentifier model', () => {
 	const createSubject = () =>
 		esmock(
 			'../../../src/models/ProductionIdentifier.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
 			{
 				'../../../src/lib/strings.js': stubs.stringsModule
 			}

@@ -111,12 +111,18 @@ describe('Production model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/Production.js', {
-			'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-			'../../../src/lib/is-valid-date.js': stubs.isValidDateModule,
-			'../../../src/lib/strings.js': stubs.stringsModule,
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/Production.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
+				'../../../src/lib/is-valid-date.js': stubs.isValidDateModule,
+				'../../../src/lib/strings.js': stubs.stringsModule,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 
@@ -124,7 +130,7 @@ describe('Production model', () => {
 
 			const Production = await createSubject();
 			new Production();
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(5);
 
 		});
 
@@ -134,7 +140,7 @@ describe('Production model', () => {
 
 				const Production = await createSubject();
 				const instance = new Production({ subtitle: 'Prince of Denmark' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Prince of Denmark');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
 
 			});
@@ -147,7 +153,7 @@ describe('Production model', () => {
 
 				const Production = await createSubject();
 				const instance = new Production({ startDate: '2010-09-30' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2010-09-30');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-09-30');
 				expect(instance.startDate).to.equal('2010-09-30');
 
 			});
@@ -160,7 +166,7 @@ describe('Production model', () => {
 
 				const Production = await createSubject();
 				const instance = new Production({ pressDate: '2010-10-07' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-10-07');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2010-10-07');
 				expect(instance.pressDate).to.equal('2010-10-07');
 
 			});
@@ -173,7 +179,7 @@ describe('Production model', () => {
 
 				const Production = await createSubject();
 				const instance = new Production({ endDate: '2011-01-26' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2011-01-26');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), '2011-01-26');
 				expect(instance.endDate).to.equal('2011-01-26');
 
 			});

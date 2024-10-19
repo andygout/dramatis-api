@@ -38,11 +38,17 @@ describe('Review model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/Review.js', {
-			'../../../src/lib/is-valid-date.js': stubs.isValidDateModule,
-			'../../../src/lib/strings.js': stubs.stringsModule,
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/Review.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/is-valid-date.js': stubs.isValidDateModule,
+				'../../../src/lib/strings.js': stubs.stringsModule,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 
