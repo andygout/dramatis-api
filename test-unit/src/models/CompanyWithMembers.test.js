@@ -28,10 +28,16 @@ describe('CompanyWithMembers model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/CompanyWithMembers', {
-			'../../../src/lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/CompanyWithMembers.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/get-duplicate-entity-info': stubs.getDuplicateEntityInfoModule,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 

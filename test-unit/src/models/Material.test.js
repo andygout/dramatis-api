@@ -64,12 +64,18 @@ describe('Material model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/Material.js', {
-			'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-			'../../../src/lib/is-valid-year.js': stubs.isValidYearModule,
-			'../../../src/lib/strings.js': stubs.stringsModule,
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/Material.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
+				'../../../src/lib/is-valid-year.js': stubs.isValidYearModule,
+				'../../../src/lib/strings.js': stubs.stringsModule,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 
@@ -77,7 +83,7 @@ describe('Material model', () => {
 
 			const Material = await createSubject();
 			new Material();
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(3);
+			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(5);
 
 		});
 
@@ -87,7 +93,7 @@ describe('Material model', () => {
 
 				const Material = await createSubject();
 				const instance = new Material({ subtitle: 'Prince of Denmark' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Prince of Denmark');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
 
 			});
@@ -100,7 +106,7 @@ describe('Material model', () => {
 
 				const Material = await createSubject();
 				const instance = new Material({ format: 'play' });
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'play');
+				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'play');
 				expect(instance.format).to.equal('play');
 
 			});
@@ -115,7 +121,7 @@ describe('Material model', () => {
 
 					const Material = await createSubject();
 					const instance = new Material({ year: 'Nineteen Fifty-Nine' });
-					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'Nineteen Fifty-Nine');
+					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), 'Nineteen Fifty-Nine');
 					expect(instance.year).to.equal('Nineteen Fifty-Nine');
 
 				});

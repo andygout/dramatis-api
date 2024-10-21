@@ -25,9 +25,15 @@ describe('Festival model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/Festival.js', {
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/Festival.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 

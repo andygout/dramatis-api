@@ -36,10 +36,16 @@ describe('ProducerCredit model', () => {
 	});
 
 	const createSubject = () =>
-		esmock('../../../src/models/ProducerCredit.js', {
-			'../../../src/lib/get-duplicate-entity-info.js': stubs.getDuplicateEntityInfoModule,
-			'../../../src/models/index.js': stubs.models
-		});
+		esmock(
+			'../../../src/models/ProducerCredit.js',
+			{},
+			// globalmocks: mock definitions imported everywhere.
+			// Required for when functions are invoked by ancestor class methods.
+			{
+				'../../../src/lib/get-duplicate-entity-info.js': stubs.getDuplicateEntityInfoModule,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
 
 	describe('constructor method', () => {
 
