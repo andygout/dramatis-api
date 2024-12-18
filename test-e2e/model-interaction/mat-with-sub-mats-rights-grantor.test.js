@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -41,7 +43,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Birmingham Repertory Theatre',
@@ -52,7 +54,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -70,7 +72,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -94,7 +96,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -135,7 +137,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -169,7 +171,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -185,7 +187,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -206,7 +208,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -222,7 +224,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -243,7 +245,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -277,7 +279,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -291,7 +293,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -310,16 +312,16 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		cSLewisSocietyCompany = await chai.request(app)
+		cSLewisSocietyCompany = await request.execute(app)
 			.get(`/companies/${C_S_LEWIS_SOCIETY_COMPANY_UUID}`);
 
-		sarahSeldenPerson = await chai.request(app)
+		sarahSeldenPerson = await request.execute(app)
 			.get(`/people/${SARAH_SELDEN_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await chai.request(app)
+		cinerightsLtdCompany = await request.execute(app)
 			.get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await chai.request(app)
+		talyseTataPerson = await request.execute(app)
 			.get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 
 	});

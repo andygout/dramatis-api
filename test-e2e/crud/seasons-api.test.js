@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 		it('responds with data required to prepare new season', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/seasons/new');
 
 			const expectedResponseBody = {
@@ -46,7 +48,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 			expect(await countNodesWithLabel('Season')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/seasons')
 				.send({
 					name: 'Not Black and White'
@@ -68,7 +70,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 		it('gets data required to edit specific season', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/seasons/${SEASON_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -88,7 +90,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 			expect(await countNodesWithLabel('Season')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/seasons/${SEASON_UUID}`)
 				.send({
 					name: 'The David Hare Season'
@@ -110,7 +112,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 		it('shows season', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/seasons/${SEASON_UUID}`);
 
 			const expectedResponseBody = {
@@ -130,7 +132,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 			expect(await countNodesWithLabel('Season')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/seasons/${SEASON_UUID}`);
 
 			const expectedResponseBody = {
@@ -160,19 +162,19 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/seasons')
 				.send({
 					name: 'The David Hare Season'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/seasons')
 				.send({
 					name: 'Not Black and White'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/seasons')
 				.send({
 					name: 'Donmar in the West End'
@@ -182,7 +184,7 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 		it('lists all seasons ordered by name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/seasons');
 
 			const expectedResponseBody = [

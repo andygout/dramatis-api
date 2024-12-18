@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -9,6 +9,8 @@ import {
 	isNodeExistent,
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -36,7 +38,7 @@ describe('Instance validation failures: Awards API', () => {
 
 				expect(await countNodesWithLabel('Award')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/awards')
 					.send({
 						name: ''
@@ -68,7 +70,7 @@ describe('Instance validation failures: Awards API', () => {
 
 				expect(await countNodesWithLabel('Award')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/awards')
 					.send({
 						name: 'Laurence Olivier Awards'
@@ -128,7 +130,7 @@ describe('Instance validation failures: Awards API', () => {
 
 				expect(await countNodesWithLabel('Award')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`)
 					.send({
 						name: ''
@@ -166,7 +168,7 @@ describe('Instance validation failures: Awards API', () => {
 
 				expect(await countNodesWithLabel('Award')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`)
 					.send({
 						name: 'Laurence Olivier Awards'
@@ -240,7 +242,7 @@ describe('Instance validation failures: Awards API', () => {
 
 				expect(await countNodesWithLabel('Award')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.delete(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
 
 				const expectedResponseBody = {

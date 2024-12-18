@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('responds with data required to prepare new festival', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/festivals/new');
 
 			const expectedResponseBody = {
@@ -52,7 +54,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'The Complete Works'
@@ -80,7 +82,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('gets data required to edit specific festival', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/festivals/${FESTIVAL_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -106,7 +108,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_UUID}`)
 				.send({
 					name: 'Globe to Globe'
@@ -134,7 +136,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('shows festival', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/festivals/${FESTIVAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -155,7 +157,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/festivals/${FESTIVAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -197,7 +199,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: '2008',
@@ -230,7 +232,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('shows festival (post-creation)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/festivals/${FESTIVAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -253,7 +255,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('gets data required to edit specific festival', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/festivals/${FESTIVAL_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -279,7 +281,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -314,7 +316,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_UUID}`)
 				.send({
 					name: '2009',
@@ -347,7 +349,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('shows festival (post-update)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/festivals/${FESTIVAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -372,7 +374,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_UUID}`)
 				.send({
 					name: '2009',
@@ -403,7 +405,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/festivals/${FESTIVAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -439,19 +441,19 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'Shakespeare 400 Arts Festival'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'The Complete Works'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'Globe to Globe'
@@ -461,7 +463,7 @@ describe('CRUD (Create, Read, Update, Delete): Festivals API', () => {
 
 		it('lists all festivals ordered by name in descending order (and then by festival series name)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/festivals');
 
 			const expectedResponseBody = [

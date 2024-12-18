@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -59,7 +61,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -83,7 +85,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -107,7 +109,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry V',
@@ -130,7 +132,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -148,7 +150,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -184,7 +186,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -221,7 +223,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry V',
@@ -258,7 +260,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -295,7 +297,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -332,7 +334,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry V',
@@ -369,55 +371,55 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		kingHenryVCharacter = await chai.request(app)
+		kingHenryVCharacter = await request.execute(app)
 			.get(`/characters/${KING_HENRY_V_CHARACTER_UUID}`);
 
-		sirJohnFalstaffCharacter = await chai.request(app)
+		sirJohnFalstaffCharacter = await request.execute(app)
 			.get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
-		messengerCharacter = await chai.request(app)
+		messengerCharacter = await request.execute(app)
 			.get(`/characters/${MESSENGER_CHARACTER_UUID}`);
 
-		attendantCharacter = await chai.request(app)
+		attendantCharacter = await request.execute(app)
 			.get(`/characters/${ATTENDANT_CHARACTER_UUID}`);
 
-		soldierCharacter = await chai.request(app)
+		soldierCharacter = await request.execute(app)
 			.get(`/characters/${SOLDIER_CHARACTER_UUID}`);
 
-		henryIVPart1Material = await chai.request(app)
+		henryIVPart1Material = await request.execute(app)
 			.get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Material = await chai.request(app)
+		henryIVPart2Material = await request.execute(app)
 			.get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		henryVMaterial = await chai.request(app)
+		henryVMaterial = await request.execute(app)
 			.get(`/materials/${HENRY_V_MATERIAL_UUID}`);
 
-		henryIVPart1RoyalShakespeareProduction = await chai.request(app)
+		henryIVPart1RoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		henryIVPart2RoyalShakespeareProduction = await chai.request(app)
+		henryIVPart2RoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		henryVRoyalShakespeareProduction = await chai.request(app)
+		henryVRoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		henryIVPart1NationalProduction = await chai.request(app)
+		henryIVPart1NationalProduction = await request.execute(app)
 			.get(`/productions/${HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID}`);
 
-		henryIVPart2NationalProduction = await chai.request(app)
+		henryIVPart2NationalProduction = await request.execute(app)
 			.get(`/productions/${HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID}`);
 
-		henryVNationalProduction = await chai.request(app)
+		henryVNationalProduction = await request.execute(app)
 			.get(`/productions/${HENRY_V_NATIONAL_PRODUCTION_UUID}`);
 
-		alexHassellPerson = await chai.request(app)
+		alexHassellPerson = await request.execute(app)
 			.get(`/people/${ALEX_HASSELL_PERSON_UUID}`);
 
-		matthewMacfadyenPerson = await chai.request(app)
+		matthewMacfadyenPerson = await request.execute(app)
 			.get(`/people/${MATTHEW_MACFADYEN_PERSON_UUID}`);
 
-		adrianLesterPerson = await chai.request(app)
+		adrianLesterPerson = await request.execute(app)
 			.get(`/people/${ADRIAN_LESTER_PERSON_UUID}`);
 
 	});

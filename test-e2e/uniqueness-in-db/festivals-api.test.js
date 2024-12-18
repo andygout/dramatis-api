@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -32,7 +34,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'Globe to Globe'
@@ -62,7 +64,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'Globe to Globe'
@@ -99,7 +101,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/festivals')
 				.send({
 					name: 'Globe to Globe',
@@ -130,7 +132,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_1_UUID}`)
 				.send({
 					name: 'Globe to Globe',
@@ -169,7 +171,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_1_UUID}`)
 				.send({
 					name: 'Globe to Globe',
@@ -200,7 +202,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('Festival')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${FESTIVAL_2_UUID}`)
 				.send({
 					name: 'Globe to Globe'
@@ -262,7 +264,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('FestivalSeries')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -281,7 +283,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -301,7 +303,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -320,7 +322,7 @@ describe('Uniqueness in database: Festivals API', () => {
 
 			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',

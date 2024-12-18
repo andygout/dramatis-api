@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -54,7 +56,7 @@ describe('Productions with crew', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -71,7 +73,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Waste',
@@ -156,7 +158,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Much Ado About Nothing',
@@ -246,7 +248,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Phèdre',
@@ -330,7 +332,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Pains of Youth',
@@ -389,37 +391,37 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		wasteAlmeidaProduction = await chai.request(app)
+		wasteAlmeidaProduction = await request.execute(app)
 			.get(`/productions/${WASTE_ALMEIDA_PRODUCTION_UUID}`);
 
-		muchAdoAboutNothingOlivierProduction = await chai.request(app)
+		muchAdoAboutNothingOlivierProduction = await request.execute(app)
 			.get(`/productions/${MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID}`);
 
-		phèdreLytteltonProduction = await chai.request(app)
+		phèdreLytteltonProduction = await request.execute(app)
 			.get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
 
-		painsOfYouthCottesloeProduction = await chai.request(app)
+		painsOfYouthCottesloeProduction = await request.execute(app)
 			.get(`/productions/${PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID}`);
 
-		tariqHussainPerson = await chai.request(app)
+		tariqHussainPerson = await request.execute(app)
 			.get(`/people/${TARIQ_HUSSAIN_PERSON_UUID}`);
 
-		cassKirchnerPerson = await chai.request(app)
+		cassKirchnerPerson = await request.execute(app)
 			.get(`/people/${CASS_KIRCHNER_PERSON_UUID}`);
 
-		saraGunterPerson = await chai.request(app)
+		saraGunterPerson = await request.execute(app)
 			.get(`/people/${SARA_GUNTER_PERSON_UUID}`);
 
-		peterGregoryPerson = await chai.request(app)
+		peterGregoryPerson = await request.execute(app)
 			.get(`/people/${PETER_GREGORY_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await chai.request(app)
+		stagecraftLtdCompany = await request.execute(app)
 			.get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		crewDeputiesLtdCompany = await chai.request(app)
+		crewDeputiesLtdCompany = await request.execute(app)
 			.get(`/companies/${CREW_DEPUTIES_LTD_COMPANY_UUID}`);
 
-		crewAssistantsLtdCompany = await chai.request(app)
+		crewAssistantsLtdCompany = await request.execute(app)
 			.get(`/companies/${CREW_ASSISTANTS_LTD_COMPANY_UUID}`);
 
 	});

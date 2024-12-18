@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -28,7 +30,7 @@ describe('Cast member with multiple production credits', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Greeks',
@@ -53,7 +55,7 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'City of Angels',
@@ -78,7 +80,7 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Enron',
@@ -106,16 +108,16 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		susannahFellowsPerson = await chai.request(app)
+		susannahFellowsPerson = await request.execute(app)
 			.get(`/people/${SUSANNAH_FELLOWS_PERSON_UUID}`);
 
-		theGreeksAldwychProduction = await chai.request(app)
+		theGreeksAldwychProduction = await request.execute(app)
 			.get(`/productions/${THE_GREEKS_ALDWYCH_PRODUCTION_UUID}`);
 
-		cityOfAngelsPrinceOfWalesProduction = await chai.request(app)
+		cityOfAngelsPrinceOfWalesProduction = await request.execute(app)
 			.get(`/productions/${CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID}`);
 
-		enronChichesterFestivalProduction = await chai.request(app)
+		enronChichesterFestivalProduction = await request.execute(app)
 			.get(`/productions/${ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID}`);
 
 	});

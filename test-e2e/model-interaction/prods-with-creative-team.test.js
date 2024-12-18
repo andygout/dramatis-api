@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -54,7 +56,7 @@ describe('Productions with creative team', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -71,7 +73,7 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -156,7 +158,7 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -246,7 +248,7 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Happy Days',
@@ -330,7 +332,7 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -389,37 +391,37 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		juliusCaesarBarbicanProduction = await chai.request(app)
+		juliusCaesarBarbicanProduction = await request.execute(app)
 			.get(`/productions/${JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID}`);
 
-		motherCourageAndHerChildrenOlivierProduction = await chai.request(app)
+		motherCourageAndHerChildrenOlivierProduction = await request.execute(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
 
-		happyDaysLytteltonProduction = await chai.request(app)
+		happyDaysLytteltonProduction = await request.execute(app)
 			.get(`/productions/${HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID}`);
 
-		richardIICottesloeProduction = await chai.request(app)
+		richardIICottesloeProduction = await request.execute(app)
 			.get(`/productions/${RICHARD_II_COTTESLOE_PRODUCTION_UUID}`);
 
-		deborahWarnerPerson = await chai.request(app)
+		deborahWarnerPerson = await request.execute(app)
 			.get(`/people/${DEBORAH_WARNER_PERSON_UUID}`);
 
-		ninaDunnPerson = await chai.request(app)
+		ninaDunnPerson = await request.execute(app)
 			.get(`/people/${NINA_DUNN_PERSON_UUID}`);
 
-		leoWarnerPerson = await chai.request(app)
+		leoWarnerPerson = await request.execute(app)
 			.get(`/people/${LEO_WARNER_PERSON_UUID}`);
 
-		annaJamesonPerson = await chai.request(app)
+		annaJamesonPerson = await request.execute(app)
 			.get(`/people/${ANNA_JAMESON_PERSON_UUID}`);
 
-		autographCompany = await chai.request(app)
+		autographCompany = await request.execute(app)
 			.get(`/companies/${AUTOGRAPH_COMPANY_UUID}`);
 
-		mesmerCompany = await chai.request(app)
+		mesmerCompany = await request.execute(app)
 			.get(`/companies/${MESMER_COMPANY_UUID}`);
 
-		fiftyNineProductionsCompany = await chai.request(app)
+		fiftyNineProductionsCompany = await request.execute(app)
 			.get(`/companies/${FIFTY_NINE_PRODUCTIONS_COMPANY_UUID}`);
 
 	});

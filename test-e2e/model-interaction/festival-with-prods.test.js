@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -31,7 +33,7 @@ describe('Festival with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Antony and Cleopatra',
@@ -46,7 +48,7 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -61,7 +63,7 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Romeo and Juliet',
@@ -76,7 +78,7 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2006',
@@ -85,7 +87,7 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Troilus and Cressida',
@@ -99,19 +101,19 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		theCompleteWorksFestival = await chai.request(app)
+		theCompleteWorksFestival = await request.execute(app)
 			.get(`/festivals/${THE_COMPLETE_WORKS_FESTIVAL_UUID}`);
 
-		romeoAndJulietRoyalShakespeareProduction = await chai.request(app)
+		romeoAndJulietRoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		antonyAndCleopatraSwanProduction = await chai.request(app)
+		antonyAndCleopatraSwanProduction = await request.execute(app)
 			.get(`/productions/${ANTONY_AND_CLEOPATRA_SWAN_PRODUCTION_UUID}`);
 
-		juliusCaesarRoyalShakespeareProduction = await chai.request(app)
+		juliusCaesarRoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		troilusAndCressidaKingsProduction = await chai.request(app)
+		troilusAndCressidaKingsProduction = await request.execute(app)
 			.get(`/productions/${TROILUS_AND_CRESSIDA_KINGS_PRODUCTION_UUID}`);
 
 	});

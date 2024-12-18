@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -42,7 +44,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Unicorn Theatre',
@@ -53,7 +55,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -75,7 +77,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The First Henriad',
@@ -103,7 +105,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Henriad',
@@ -131,7 +133,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -169,7 +171,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The First Henriad',
@@ -213,7 +215,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Henriad',
@@ -257,7 +259,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -273,7 +275,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The First Henriad',
@@ -294,7 +296,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Henriad',
@@ -315,7 +317,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -331,7 +333,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The First Henriad',
@@ -352,7 +354,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Henriad',
@@ -373,22 +375,22 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		richardIIOriginalVersionMaterial = await chai.request(app)
+		richardIIOriginalVersionMaterial = await request.execute(app)
 			.get(`/materials/${RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		richardIISubsequentVersionMaterial = await chai.request(app)
+		richardIISubsequentVersionMaterial = await request.execute(app)
 			.get(`/materials/${RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		theFirstHenriadSubsequentVersionMaterial = await chai.request(app)
+		theFirstHenriadSubsequentVersionMaterial = await request.execute(app)
 			.get(`/materials/${THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		theHenriadSubsequentVersionMaterial = await chai.request(app)
+		theHenriadSubsequentVersionMaterial = await request.execute(app)
 			.get(`/materials/${THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await chai.request(app)
+		williamShakespearePerson = await request.execute(app)
 			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		theKingsMenCompany = await chai.request(app)
+		theKingsMenCompany = await request.execute(app)
 			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
 	});

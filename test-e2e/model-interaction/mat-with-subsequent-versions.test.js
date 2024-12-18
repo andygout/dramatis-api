@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -46,7 +48,7 @@ describe('Material with subsequent versions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Barbican Centre',
@@ -57,7 +59,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -68,7 +70,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Peer Gynt',
@@ -99,7 +101,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Peer Gynt',
@@ -142,7 +144,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Peer Gynt',
@@ -200,7 +202,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Ghosts',
@@ -222,7 +224,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Ghosts',
@@ -271,7 +273,7 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Peer Gynt',
@@ -287,7 +289,7 @@ describe('Material with subsequent versions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Peer Gynt',
@@ -302,7 +304,7 @@ describe('Material with subsequent versions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Ghosts',
@@ -318,28 +320,28 @@ describe('Material with subsequent versions', () => {
 				}
 			});
 
-		peerGyntOriginalVersionMaterial = await chai.request(app)
+		peerGyntOriginalVersionMaterial = await request.execute(app)
 			.get(`/materials/${PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		peerGyntSubsequentVersion2Material = await chai.request(app)
+		peerGyntSubsequentVersion2Material = await request.execute(app)
 			.get(`/materials/${PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID}`);
 
-		henrikIbsenPerson = await chai.request(app)
+		henrikIbsenPerson = await request.execute(app)
 			.get(`/people/${HENRIK_IBSEN_PERSON_UUID}`);
 
-		gerryBammanPerson = await chai.request(app)
+		gerryBammanPerson = await request.execute(app)
 			.get(`/people/${GERRY_BAMMAN_PERSON_UUID}`);
 
-		ibsenTheatreCompany = await chai.request(app)
+		ibsenTheatreCompany = await request.execute(app)
 			.get(`/companies/${IBSEN_THEATRE_COMPANY_UUID}`);
 
-		bammanTheatreCompany = await chai.request(app)
+		bammanTheatreCompany = await request.execute(app)
 			.get(`/companies/${BAMMAN_THEATRE_COMPANY_UUID}`);
 
-		peerGyntCharacter = await chai.request(app)
+		peerGyntCharacter = await request.execute(app)
 			.get(`/characters/${PEER_GYNT_CHARACTER_UUID}`);
 
-		peerGyntBarbicanProduction = await chai.request(app)
+		peerGyntBarbicanProduction = await request.execute(app)
 			.get(`/productions/${PEER_GYNT_BARBICAN_PRODUCTION_UUID}`);
 
 	});
@@ -1558,7 +1560,7 @@ describe('Material with subsequent versions', () => {
 
 		it('includes writers', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials');
 
 			const expectedResponseBody = [

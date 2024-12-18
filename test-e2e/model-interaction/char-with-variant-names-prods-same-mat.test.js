@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -40,7 +42,7 @@ describe('Character with variant names from productions of the same material', (
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hamlet',
@@ -64,7 +66,7 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -103,7 +105,7 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -141,7 +143,7 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -179,25 +181,25 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		ghostCharacter = await chai.request(app)
+		ghostCharacter = await request.execute(app)
 			.get(`/characters/${GHOST_CHARACTER_UUID}`);
 
-		hamletAlmeidaProduction = await chai.request(app)
+		hamletAlmeidaProduction = await request.execute(app)
 			.get(`/productions/${HAMLET_ALMEIDA_PRODUCTION_UUID}`);
 
-		hamletNovelloProduction = await chai.request(app)
+		hamletNovelloProduction = await request.execute(app)
 			.get(`/productions/${HAMLET_NOVELLO_PRODUCTION_UUID}`);
 
-		hamletWyndhamsProduction = await chai.request(app)
+		hamletWyndhamsProduction = await request.execute(app)
 			.get(`/productions/${HAMLET_WYNDHAMS_PRODUCTION_UUID}`);
 
-		davidRintoulPerson = await chai.request(app)
+		davidRintoulPerson = await request.execute(app)
 			.get(`/people/${DAVID_RINTOUL_PERSON_UUID}`);
 
-		patrickStewartPerson = await chai.request(app)
+		patrickStewartPerson = await request.execute(app)
 			.get(`/people/${PATRICK_STEWART_PERSON_UUID}`);
 
-		peterEyrePerson = await chai.request(app)
+		peterEyrePerson = await request.execute(app)
 			.get(`/people/${PETER_EYRE_PERSON_UUID}`);
 
 	});

@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -30,7 +32,7 @@ describe('Material with rights grantor credits', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Liverpool Everyman & Playhouse',
@@ -41,7 +43,7 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Ladykillers',
@@ -59,7 +61,7 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Ladykillers',
@@ -100,7 +102,7 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Ladykillers',
@@ -115,7 +117,7 @@ describe('Material with rights grantor credits', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Ladykillers',
@@ -131,10 +133,10 @@ describe('Material with rights grantor credits', () => {
 				}
 			});
 
-		studioCanalCompany = await chai.request(app)
+		studioCanalCompany = await request.execute(app)
 			.get(`/companies/${STUDIOCANAL_COMPANY_UUID}`);
 
-		alisonMeesePerson = await chai.request(app)
+		alisonMeesePerson = await request.execute(app)
 			.get(`/people/${ALISON_MEESE_PERSON_UUID}`);
 
 	});

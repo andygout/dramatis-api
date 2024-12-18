@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -9,6 +9,8 @@ import {
 	isNodeExistent,
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -28,7 +30,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Sur-Grault',
@@ -133,7 +135,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Sur-Garply',
@@ -257,7 +259,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -355,7 +357,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${SUR_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sur-Grault',
@@ -466,7 +468,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${SUB_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sub-Grault',
@@ -584,7 +586,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${SUR_GARPLY_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sur-Garply',
@@ -717,7 +719,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(4);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${SUR_SUR_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -850,7 +852,7 @@ describe('Database validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(4);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${SUB_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sub-Grault',

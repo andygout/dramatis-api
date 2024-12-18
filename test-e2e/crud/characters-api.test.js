@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 		it('responds with data required to prepare new character', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/characters/new');
 
 			const expectedResponseBody = {
@@ -46,7 +48,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/characters')
 				.send({
 					name: 'Romeo'
@@ -68,7 +70,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 		it('gets data required to edit specific character', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/characters/${CHARACTER_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -88,7 +90,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/characters/${CHARACTER_UUID}`)
 				.send({
 					name: 'Juliet'
@@ -110,7 +112,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 		it('shows character', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/characters/${CHARACTER_UUID}`);
 
 			const expectedResponseBody = {
@@ -133,7 +135,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/characters/${CHARACTER_UUID}`);
 
 			const expectedResponseBody = {
@@ -163,19 +165,19 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/characters')
 				.send({
 					name: 'Romeo'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/characters')
 				.send({
 					name: 'Juliet'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/characters')
 				.send({
 					name: 'Nurse'
@@ -185,7 +187,7 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 		it('lists all characters ordered by name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/characters');
 
 			const expectedResponseBody = [

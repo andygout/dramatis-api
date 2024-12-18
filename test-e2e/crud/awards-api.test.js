@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 		it('responds with data required to prepare new award', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/awards/new');
 
 			const expectedResponseBody = {
@@ -46,7 +48,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/awards')
 				.send({
 					name: 'Laurence Olivier Awards'
@@ -68,7 +70,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 		it('gets data required to edit specific award', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/awards/${AWARD_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -88,7 +90,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/awards/${AWARD_UUID}`)
 				.send({
 					name: 'Evening Standard Theatre Awards'
@@ -110,7 +112,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 		it('shows award', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/awards/${AWARD_UUID}`);
 
 			const expectedResponseBody = {
@@ -130,7 +132,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/awards/${AWARD_UUID}`);
 
 			const expectedResponseBody = {
@@ -160,19 +162,19 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/awards')
 				.send({
 					name: 'Evening Standard Theatre Awards'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/awards')
 				.send({
 					name: 'Laurence Olivier Awards'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/awards')
 				.send({
 					name: 'Critics\' Circle Theatre Awards'
@@ -182,7 +184,7 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 		it('lists all awards ordered by name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/awards');
 
 			const expectedResponseBody = [

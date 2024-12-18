@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 		it('responds with data required to prepare new company', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/companies/new');
 
 			const expectedResponseBody = {
@@ -46,7 +48,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/companies')
 				.send({
 					name: 'National Theatre Company'
@@ -68,7 +70,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 		it('gets data required to edit specific company', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/companies/${COMPANY_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -88,7 +90,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/companies/${COMPANY_UUID}`)
 				.send({
 					name: 'Royal Shakespeare Company'
@@ -110,7 +112,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 		it('shows company', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/companies/${COMPANY_UUID}`);
 
 			const expectedResponseBody = {
@@ -145,7 +147,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/companies/${COMPANY_UUID}`);
 
 			const expectedResponseBody = {
@@ -175,19 +177,19 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/companies')
 				.send({
 					name: 'National Theatre Company'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/companies')
 				.send({
 					name: 'Royal Shakespeare Company'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/companies')
 				.send({
 					name: 'Almeida Theatre Company'
@@ -197,7 +199,7 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 		it('lists all companies ordered by name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/companies');
 
 			const expectedResponseBody = [

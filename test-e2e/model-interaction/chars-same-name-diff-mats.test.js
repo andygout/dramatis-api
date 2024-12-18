@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -39,7 +41,7 @@ describe('Different characters with the same name from different materials', () 
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -58,7 +60,7 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Titus Andronicus',
@@ -77,7 +79,7 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -110,7 +112,7 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Titus Andronicus',
@@ -143,28 +145,28 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		demetriusCharacter1 = await chai.request(app)
+		demetriusCharacter1 = await request.execute(app)
 			.get(`/characters/${DEMETRIUS_CHARACTER_1_UUID}`);
 
-		demetriusCharacter2 = await chai.request(app)
+		demetriusCharacter2 = await request.execute(app)
 			.get(`/characters/${DEMETRIUS_CHARACTER_2_UUID}`);
 
-		aMidsummerNightsDreamMaterial = await chai.request(app)
+		aMidsummerNightsDreamMaterial = await request.execute(app)
 			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
-		titusAndronicusMaterial = await chai.request(app)
+		titusAndronicusMaterial = await request.execute(app)
 			.get(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`);
 
-		aMidsummerNightsDreamNovelloProduction = await chai.request(app)
+		aMidsummerNightsDreamNovelloProduction = await request.execute(app)
 			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID}`);
 
-		titusAndronicusGlobeProduction = await chai.request(app)
+		titusAndronicusGlobeProduction = await request.execute(app)
 			.get(`/productions/${TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID}`);
 
-		oscarPearcePerson = await chai.request(app)
+		oscarPearcePerson = await request.execute(app)
 			.get(`/people/${OSCAR_PEARCE_PERSON_UUID}`);
 
-		samAlexanderPerson = await chai.request(app)
+		samAlexanderPerson = await request.execute(app)
 			.get(`/people/${SAM_ALEXANDER_PERSON_UUID}`);
 
 	});

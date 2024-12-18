@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -12,6 +12,8 @@ import {
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -39,7 +41,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/materials')
 					.send({
 						name: ''
@@ -83,7 +85,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/materials')
 					.send({
 						name: 'The Wild Duck'
@@ -130,7 +132,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/materials')
 					.send({
 						name: 'The Wild Duck',
@@ -218,7 +220,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${GHOSTS_MATERIAL_UUID}`)
 					.send({
 						name: ''
@@ -268,7 +270,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${GHOSTS_MATERIAL_UUID}`)
 					.send({
 						name: 'The Wild Duck'
@@ -321,7 +323,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${GHOSTS_MATERIAL_UUID}`)
 					.send({
 						name: 'The Wild Duck',
@@ -423,7 +425,7 @@ describe('Instance validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.delete(`/materials/${GHOSTS_MATERIAL_UUID}`);
 
 				const expectedResponseBody = {

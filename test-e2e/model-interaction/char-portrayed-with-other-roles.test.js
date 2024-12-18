@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -28,7 +30,7 @@ describe('Character portrayed with other roles', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'War Horse',
@@ -55,7 +57,7 @@ describe('Character portrayed with other roles', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'War Horse',
@@ -97,16 +99,16 @@ describe('Character portrayed with other roles', () => {
 				]
 			});
 
-		joeysMotherCharacter = await chai.request(app)
+		joeysMotherCharacter = await request.execute(app)
 			.get(`/characters/${JOEYS_MOTHER_CHARACTER_UUID}`);
 
-		drSchweykCharacter = await chai.request(app)
+		drSchweykCharacter = await request.execute(app)
 			.get(`/characters/${DR_SCHWEYK_CHARACTER_UUID}`);
 
-		cocoCharacter = await chai.request(app)
+		cocoCharacter = await request.execute(app)
 			.get(`/characters/${COCO_CHARACTER_UUID}`);
 
-		geordieCharacter = await chai.request(app)
+		geordieCharacter = await request.execute(app)
 			.get(`/characters/${GEORDIE_CHARACTER_UUID}`);
 
 	});

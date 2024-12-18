@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -94,7 +96,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Fred',
@@ -115,7 +117,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Fred',
@@ -141,7 +143,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Fred',
@@ -167,7 +169,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh',
@@ -189,7 +191,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh',
@@ -217,7 +219,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -245,7 +247,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh',
@@ -283,7 +285,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh',
@@ -327,7 +329,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -371,7 +373,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Waldo',
@@ -392,7 +394,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Waldo',
@@ -418,7 +420,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Waldo',
@@ -444,7 +446,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble',
@@ -474,7 +476,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Wibble',
@@ -509,7 +511,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -544,7 +546,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Hoge',
@@ -578,7 +580,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Hoge',
@@ -617,7 +619,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Hoge',
@@ -656,7 +658,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -670,7 +672,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -684,7 +686,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Fred',
@@ -695,7 +697,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Fred',
@@ -711,7 +713,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Fred',
@@ -727,7 +729,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Fred',
@@ -738,7 +740,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Fred',
@@ -754,7 +756,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Fred',
@@ -770,7 +772,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Plugh',
@@ -781,7 +783,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Plugh',
@@ -797,7 +799,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Plugh',
@@ -813,7 +815,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Plugh',
@@ -824,7 +826,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Plugh',
@@ -840,7 +842,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Plugh',
@@ -856,7 +858,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble',
@@ -867,7 +869,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Wibble',
@@ -883,7 +885,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -899,7 +901,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble',
@@ -910,7 +912,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Wibble',
@@ -926,7 +928,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -942,7 +944,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -953,7 +955,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Hoge',
@@ -969,7 +971,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -985,7 +987,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -996,7 +998,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Hoge',
@@ -1012,7 +1014,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -1028,7 +1030,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -1106,7 +1108,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -1184,7 +1186,7 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -1262,37 +1264,37 @@ describe('Award ceremonies with crediting sub-sub-materials', () => {
 				]
 			});
 
-		wordsmithAward2010AwardCeremony = await chai.request(app)
+		wordsmithAward2010AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${WORDSMITH_AWARD_2010_AWARD_CEREMONY_UUID}`);
 
-		playwritingPrize2009AwardCeremony = await chai.request(app)
+		playwritingPrize2009AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID}`);
 
-		dramatistsMedal2008AwardCeremony = await chai.request(app)
+		dramatistsMedal2008AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${DRAMATISTS_MEDAL_2008_AWARD_CEREMONY_UUID}`);
 
-		johnDoePerson = await chai.request(app)
+		johnDoePerson = await request.execute(app)
 			.get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		playwrightsLtdCompany = await chai.request(app)
+		playwrightsLtdCompany = await request.execute(app)
 			.get(`/companies/${PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
-		francisFlobPerson = await chai.request(app)
+		francisFlobPerson = await request.execute(app)
 			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await chai.request(app)
+		curtainUpLtdCompany = await request.execute(app)
 			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		janeRoePerson = await chai.request(app)
+		janeRoePerson = await request.execute(app)
 			.get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await chai.request(app)
+		fictioneersLtdCompany = await request.execute(app)
 			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await chai.request(app)
+		talyseTataPerson = await request.execute(app)
 			.get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await chai.request(app)
+		cinerightsLtdCompany = await request.execute(app)
 			.get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 
 	});

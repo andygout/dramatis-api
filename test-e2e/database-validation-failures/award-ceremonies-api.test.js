@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -9,6 +9,8 @@ import {
 	isNodeExistent,
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -28,7 +30,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/award-ceremonies')
 					.send({
 						name: '2020',
@@ -139,7 +141,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: '2020',

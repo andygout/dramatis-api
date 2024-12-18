@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -27,7 +29,7 @@ describe('Cast member performing same role in different productions of same mate
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -42,7 +44,7 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -68,7 +70,7 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -94,16 +96,16 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		titaniaCharacter = await chai.request(app)
+		titaniaCharacter = await request.execute(app)
 			.get(`/characters/${TITANIA_CHARACTER_UUID}`);
 
-		aMidsummerNightsDreamRoyalShakespeareProduction = await chai.request(app)
+		aMidsummerNightsDreamRoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		aMidsummerNightsDreamRoseProduction = await chai.request(app)
+		aMidsummerNightsDreamRoseProduction = await request.execute(app)
 			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID}`);
 
-		judiDenchPerson = await chai.request(app)
+		judiDenchPerson = await request.execute(app)
 			.get(`/people/${JUDI_DENCH_PERSON_UUID}`);
 
 	});

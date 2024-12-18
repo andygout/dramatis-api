@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -104,7 +106,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Piyo',
@@ -149,7 +151,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -170,7 +172,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -200,7 +202,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -234,7 +236,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fred',
@@ -255,7 +257,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -272,7 +274,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -294,7 +296,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -332,7 +334,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -366,7 +368,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Thud',
@@ -383,7 +385,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Tutu',
@@ -400,7 +402,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Toto',
@@ -433,7 +435,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fuga',
@@ -450,7 +452,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Grault',
@@ -467,7 +469,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -484,7 +486,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -498,7 +500,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -509,7 +511,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -520,7 +522,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -531,7 +533,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -542,7 +544,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -553,7 +555,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -564,7 +566,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -575,7 +577,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -586,7 +588,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -597,7 +599,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -608,7 +610,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -619,7 +621,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -630,7 +632,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -641,7 +643,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Thud',
@@ -652,7 +654,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Tutu',
@@ -663,7 +665,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -674,7 +676,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -685,7 +687,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fuga',
@@ -696,7 +698,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Grault',
@@ -707,7 +709,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -772,7 +774,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -835,7 +837,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -891,7 +893,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -947,7 +949,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -1007,7 +1009,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2007',
@@ -1060,58 +1062,58 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		wordsmithAward2009AwardCeremony = await chai.request(app)
+		wordsmithAward2009AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID}`);
 
-		playwritingPrize2009AwardCeremony = await chai.request(app)
+		playwritingPrize2009AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID}`);
 
-		johnDoePerson = await chai.request(app)
+		johnDoePerson = await request.execute(app)
 			.get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		playwrightsLtdCompany = await chai.request(app)
+		playwrightsLtdCompany = await request.execute(app)
 			.get(`/companies/${PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
-		claraQuuxPerson = await chai.request(app)
+		claraQuuxPerson = await request.execute(app)
 			.get(`/people/${CLARA_QUUX_PERSON_UUID}`);
 
-		songbirdsLtdCompany = await chai.request(app)
+		songbirdsLtdCompany = await request.execute(app)
 			.get(`/companies/${SONGBIRDS_LTD_COMPANY_UUID}`);
 
-		beatriceBarPerson = await chai.request(app)
+		beatriceBarPerson = await request.execute(app)
 			.get(`/people/${BEATRICE_BAR_PERSON_UUID}`);
 
-		theatricalsLtdCompany = await chai.request(app)
+		theatricalsLtdCompany = await request.execute(app)
 			.get(`/companies/${THEATRICALS_LTD_COMPANY_UUID}`);
 
-		waldoMaterial = await chai.request(app)
+		waldoMaterial = await request.execute(app)
 			.get(`/materials/${WALDO_MATERIAL_UUID}`);
 
-		janeRoePerson = await chai.request(app)
+		janeRoePerson = await request.execute(app)
 			.get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await chai.request(app)
+		fictioneersLtdCompany = await request.execute(app)
 			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
-		brandonBazPerson = await chai.request(app)
+		brandonBazPerson = await request.execute(app)
 			.get(`/people/${BRANDON_BAZ_PERSON_UUID}`);
 
-		creatorsLtdCompany = await chai.request(app)
+		creatorsLtdCompany = await request.execute(app)
 			.get(`/companies/${CREATORS_LTD_COMPANY_UUID}`);
 
-		plughOriginalVersionMaterial = await chai.request(app)
+		plughOriginalVersionMaterial = await request.execute(app)
 			.get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		francisFlobPerson = await chai.request(app)
+		francisFlobPerson = await request.execute(app)
 			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await chai.request(app)
+		curtainUpLtdCompany = await request.execute(app)
 			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await chai.request(app)
+		talyseTataPerson = await request.execute(app)
 			.get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await chai.request(app)
+		cinerightsLtdCompany = await request.execute(app)
 			.get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 
 	});

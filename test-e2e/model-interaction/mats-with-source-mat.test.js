@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -60,7 +62,7 @@ describe('Materials with source material', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Shakespeare Theatre',
@@ -71,7 +73,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -92,7 +94,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Donkey Show',
@@ -122,7 +124,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Indian Boy',
@@ -161,7 +163,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Shakespeare\'s Villains',
@@ -204,7 +206,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'A Moorish Captain',
@@ -226,7 +228,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Othello',
@@ -266,7 +268,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'A Midsummer Night\'s Dream',
@@ -281,7 +283,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Donkey Show',
@@ -296,7 +298,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Indian Boy',
@@ -311,7 +313,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Shakespeare\'s Villains',
@@ -326,7 +328,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Othello',
@@ -341,52 +343,52 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		aMidsummerNightsDreamMaterial = await chai.request(app)
+		aMidsummerNightsDreamMaterial = await request.execute(app)
 			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
-		theIndianBoyMaterial = await chai.request(app)
+		theIndianBoyMaterial = await request.execute(app)
 			.get(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`);
 
-		shakespearesVillainsMaterial = await chai.request(app)
+		shakespearesVillainsMaterial = await request.execute(app)
 			.get(`/materials/${SHAKESPEARES_VILLAINS_MATERIAL_UUID}`);
 
-		aMoorishCaptainMaterial = await chai.request(app)
+		aMoorishCaptainMaterial = await request.execute(app)
 			.get(`/materials/${A_MOORISH_CAPTAIN_MATERIAL_UUID}`);
 
-		othelloMaterial = await chai.request(app)
+		othelloMaterial = await request.execute(app)
 			.get(`/materials/${OTHELLO_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await chai.request(app)
+		williamShakespearePerson = await request.execute(app)
 			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		ronaMunroPerson = await chai.request(app)
+		ronaMunroPerson = await request.execute(app)
 			.get(`/people/${RONA_MUNRO_PERSON_UUID}`);
 
-		stevenBerkoffPerson = await chai.request(app)
+		stevenBerkoffPerson = await request.execute(app)
 			.get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
 
-		theKingsMenCompany = await chai.request(app)
+		theKingsMenCompany = await request.execute(app)
 			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
-		royalShakespeareCompany = await chai.request(app)
+		royalShakespeareCompany = await request.execute(app)
 			.get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
-		eastProductionsCompany = await chai.request(app)
+		eastProductionsCompany = await request.execute(app)
 			.get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
 
-		theIndianBoyRoyalShakespeareTheatreProduction = await chai.request(app)
+		theIndianBoyRoyalShakespeareTheatreProduction = await request.execute(app)
 			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		shakespearesVillainsTheatreRoyalHaymarketProduction = await chai.request(app)
+		shakespearesVillainsTheatreRoyalHaymarketProduction = await request.execute(app)
 			.get(`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`);
 
-		othelloDonmarWarehouseProduction = await chai.request(app)
+		othelloDonmarWarehouseProduction = await request.execute(app)
 			.get(`/productions/${OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID}`);
 
-		theIndianBoyCharacter = await chai.request(app)
+		theIndianBoyCharacter = await request.execute(app)
 			.get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
 
-		iagoCharacter = await chai.request(app)
+		iagoCharacter = await request.execute(app)
 			.get(`/characters/${IAGO_CHARACTER_UUID}`);
 
 	});
@@ -2117,7 +2119,7 @@ describe('Materials with source material', () => {
 
 		it('includes writers of the materials and their corresponding source material', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials');
 
 			const expectedResponseBody = [

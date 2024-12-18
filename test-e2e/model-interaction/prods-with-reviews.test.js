@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -33,7 +35,7 @@ describe('Productions with reviews', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -44,7 +46,7 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Long Day\'s Journey Into Night',
@@ -88,7 +90,7 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Nye',
@@ -132,7 +134,7 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Harry Clarke',
@@ -176,13 +178,13 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		aLongDaysJourneyIntoNightWyndhamsProduction = await chai.request(app)
+		aLongDaysJourneyIntoNightWyndhamsProduction = await request.execute(app)
 			.get(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_WYNDHAMS_PRODUCTION_UUID}`);
 
-		financialTimesCompany = await chai.request(app)
+		financialTimesCompany = await request.execute(app)
 			.get(`/companies/${FINANCIAL_TIMES_COMPANY_UUID}`);
 
-		sarahHemmingPerson = await chai.request(app)
+		sarahHemmingPerson = await request.execute(app)
 			.get(`/people/${SARAH_HEMMING_PERSON_UUID}`);
 
 	});
