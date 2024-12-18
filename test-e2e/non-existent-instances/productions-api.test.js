@@ -1,8 +1,10 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -22,7 +24,7 @@ describe('Non-existent instances: Productions API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.get(`/productions/${NON_EXISTENT_PRODUCTION_UUID}/edit`);
 
 				expect(response).to.have.status(404);
@@ -36,7 +38,7 @@ describe('Non-existent instances: Productions API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`)
 					.send({
 						name: 'The Tempest'
@@ -53,7 +55,7 @@ describe('Non-existent instances: Productions API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.get(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`);
 
 				expect(response).to.have.status(404);
@@ -67,7 +69,7 @@ describe('Non-existent instances: Productions API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.delete(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`);
 
 				expect(response).to.have.status(404);

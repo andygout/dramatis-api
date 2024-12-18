@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -55,7 +57,7 @@ describe('Material with sub-sub-materials', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -86,7 +88,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Durand\'s Line',
@@ -104,7 +106,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -122,7 +124,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -142,7 +144,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -160,7 +162,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -178,7 +180,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -209,7 +211,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -229,7 +231,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -247,7 +249,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -278,7 +280,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -296,7 +298,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -316,7 +318,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -336,7 +338,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -351,7 +353,7 @@ describe('Material with sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -371,7 +373,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -386,7 +388,7 @@ describe('Material with sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -406,7 +408,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -421,7 +423,7 @@ describe('Material with sub-sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -441,7 +443,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -467,31 +469,31 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		theGreatGameAfghanistanMaterial = await chai.request(app)
+		theGreatGameAfghanistanMaterial = await request.execute(app)
 			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
 
-		partOneInvasionsAndIndependenceMaterial = await chai.request(app)
+		partOneInvasionsAndIndependenceMaterial = await request.execute(app)
 			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
 
-		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
+		buglesAtTheGatesOfJalalabadMaterial = await request.execute(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
 
-		barCharacter = await chai.request(app)
+		barCharacter = await request.execute(app)
 			.get(`/characters/${BAR_CHARACTER_UUID}`);
 
-		theGreatGameAfghanistanTricycleProduction = await chai.request(app)
+		theGreatGameAfghanistanTricycleProduction = await request.execute(app)
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
 
-		partOneInvasionsAndIndependenceTricycleProduction = await chai.request(app)
+		partOneInvasionsAndIndependenceTricycleProduction = await request.execute(app)
 			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
 
-		buglesAtTheGateOfJalalabadTricycleProduction = await chai.request(app)
+		buglesAtTheGateOfJalalabadTricycleProduction = await request.execute(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
 
-		ferdinandFooPerson = await chai.request(app)
+		ferdinandFooPerson = await request.execute(app)
 			.get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await chai.request(app)
+		fictioneersLtdCompany = await request.execute(app)
 			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
 	});
@@ -1440,7 +1442,7 @@ describe('Material with sub-sub-materials', () => {
 
 		it('includes materials with corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials as these will be included via sub-material and sub-sub-material associations', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials');
 
 			const expectedResponseBody = [

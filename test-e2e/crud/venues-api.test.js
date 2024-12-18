@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('responds with data required to prepare new venue', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/venues/new');
 
 			const expectedResponseBody = {
@@ -54,7 +56,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'National Theatre'
@@ -84,7 +86,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('gets data required to edit specific venue', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -112,7 +114,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'Almeida Theatre'
@@ -142,7 +144,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('shows venue', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
@@ -164,7 +166,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
@@ -204,7 +206,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'National Theatre',
@@ -267,7 +269,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('shows venue (post-creation)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
@@ -303,7 +305,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('gets data required to edit specific venue', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -349,7 +351,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'National Theatre',
@@ -414,7 +416,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'Royal Court Theatre',
@@ -467,7 +469,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('shows venue (post-update)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
@@ -500,7 +502,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(6);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'Royal Court Theatre',
@@ -533,7 +535,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(6);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
@@ -564,19 +566,19 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'Donmar Warehouse'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'National Theatre'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'Almeida Theatre'
@@ -586,7 +588,7 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 		it('lists all venues ordered by name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/venues');
 
 			const expectedResponseBody = [

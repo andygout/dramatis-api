@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('responds with data required to prepare new production', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/productions/new');
 
 			const expectedResponseBody = {
@@ -164,7 +166,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'As You Like It'
@@ -304,7 +306,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('gets data required to edit specific production', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/productions/${PRODUCTION_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -442,7 +444,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'The Tempest'
@@ -582,7 +584,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('shows production', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
@@ -616,7 +618,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
@@ -749,37 +751,37 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet sub-production #1'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet sub-production #2'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet sub-production #3'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Richard III sub-production #1'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Richard III sub-production #2'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Richard III sub-production #3'
@@ -791,7 +793,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(6);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -1877,7 +1879,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('shows production (post-creation)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
@@ -2345,7 +2347,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('gets data required to edit specific production', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/productions/${PRODUCTION_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -3094,7 +3096,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -4182,7 +4184,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III',
@@ -5267,7 +5269,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('shows production (post-update)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
@@ -5737,7 +5739,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III'
@@ -5879,7 +5881,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
@@ -5948,7 +5950,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Macbeth',
@@ -5960,7 +5962,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -5972,7 +5974,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Macbeth',
@@ -5984,7 +5986,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -5996,7 +5998,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -6012,7 +6014,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 		it('lists all productions ordered by start date then name then venue name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/productions');
 
 			const expectedResponseBody = [

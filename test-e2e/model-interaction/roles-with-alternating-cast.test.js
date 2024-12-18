@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -35,7 +37,7 @@ describe('Roles with alternating cast', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'True West',
@@ -53,7 +55,7 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'True West',
@@ -96,7 +98,7 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'True West',
@@ -139,28 +141,28 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		austinCharacter = await chai.request(app)
+		austinCharacter = await request.execute(app)
 			.get(`/characters/${AUSTIN_CHARACTER_UUID}`);
 
-		leeCharacter = await chai.request(app)
+		leeCharacter = await request.execute(app)
 			.get(`/characters/${LEE_CHARACTER_UUID}`);
 
-		trueWestCrucibleProduction = await chai.request(app)
+		trueWestCrucibleProduction = await request.execute(app)
 			.get(`/productions/${TRUE_WEST_CRUCIBLE_PRODUCTION_UUID}`);
 
-		trueWestVaudevilleProduction = await chai.request(app)
+		trueWestVaudevilleProduction = await request.execute(app)
 			.get(`/productions/${TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID}`);
 
-		nigelHarmanPerson = await chai.request(app)
+		nigelHarmanPerson = await request.execute(app)
 			.get(`/people/${NIGEL_HARMAN_PERSON_UUID}`);
 
-		johnLightPerson = await chai.request(app)
+		johnLightPerson = await request.execute(app)
 			.get(`/people/${JOHN_LIGHT_PERSON_UUID}`);
 
-		kitHaringtonPerson = await chai.request(app)
+		kitHaringtonPerson = await request.execute(app)
 			.get(`/people/${KIT_HARINGTON_PERSON_UUID}`);
 
-		johnnyFlynnPerson = await chai.request(app)
+		johnnyFlynnPerson = await request.execute(app)
 			.get(`/people/${JOHNNY_FLYNN_PERSON_UUID}`);
 
 	});

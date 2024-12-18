@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -40,7 +42,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -57,7 +59,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -74,7 +76,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -91,7 +93,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -116,7 +118,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -141,7 +143,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -166,7 +168,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -191,7 +193,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -216,7 +218,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -241,7 +243,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -266,7 +268,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -291,7 +293,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -316,16 +318,16 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		sirJohnFalstaffCharacter = await chai.request(app)
+		sirJohnFalstaffCharacter = await request.execute(app)
 			.get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
-		henryIVPart1Material = await chai.request(app)
+		henryIVPart1Material = await request.execute(app)
 			.get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Material = await chai.request(app)
+		henryIVPart2Material = await request.execute(app)
 			.get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		merryWivesOfWindsorMaterial = await chai.request(app)
+		merryWivesOfWindsorMaterial = await request.execute(app)
 			.get(`/materials/${THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID}`);
 
 	});

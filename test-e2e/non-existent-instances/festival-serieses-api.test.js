@@ -1,8 +1,10 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -22,7 +24,7 @@ describe('Non-existent instances: Festival Serieses API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.get(`/festival-serieses/${NON_EXISTENT_FESTIVAL_SERIES_UUID}/edit`);
 
 				expect(response).to.have.status(404);
@@ -36,7 +38,7 @@ describe('Non-existent instances: Festival Serieses API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/festival-serieses/${NON_EXISTENT_FESTIVAL_SERIES_UUID}`)
 					.send({ name: 'Edinburgh International Festival' });
 
@@ -51,7 +53,7 @@ describe('Non-existent instances: Festival Serieses API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.get(`/festival-serieses/${NON_EXISTENT_FESTIVAL_SERIES_UUID}`);
 
 				expect(response).to.have.status(404);
@@ -65,7 +67,7 @@ describe('Non-existent instances: Festival Serieses API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.delete(`/festival-serieses/${NON_EXISTENT_FESTIVAL_SERIES_UUID}`);
 
 				expect(response).to.have.status(404);

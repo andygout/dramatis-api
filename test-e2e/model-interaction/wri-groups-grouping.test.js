@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -22,7 +24,7 @@ describe('Nameless writer groups grouping', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -53,7 +55,7 @@ describe('Nameless writer groups grouping', () => {
 				]
 			});
 
-		material = await chai.request(app)
+		material = await request.execute(app)
 			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
 	});

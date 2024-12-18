@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -44,7 +46,7 @@ describe('Material with sub-materials', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Voyage',
@@ -75,7 +77,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Shipwreck',
@@ -106,7 +108,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Salvage',
@@ -137,7 +139,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Coast of Utopia',
@@ -179,7 +181,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -194,7 +196,7 @@ describe('Material with sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -214,7 +216,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -235,7 +237,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Garply',
@@ -249,7 +251,7 @@ describe('Material with sub-materials', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Garply',
@@ -268,37 +270,37 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		theCoastOfUtopiaMaterial = await chai.request(app)
+		theCoastOfUtopiaMaterial = await request.execute(app)
 			.get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
 
-		voyageMaterial = await chai.request(app)
+		voyageMaterial = await request.execute(app)
 			.get(`/materials/${VOYAGE_MATERIAL_UUID}`);
 
-		alexanderHerzenCharacter = await chai.request(app)
+		alexanderHerzenCharacter = await request.execute(app)
 			.get(`/characters/${ALEXANDER_HERZEN_CHARACTER_UUID}`);
 
-		ivanTurgunevCharacter = await chai.request(app)
+		ivanTurgunevCharacter = await request.execute(app)
 			.get(`/characters/${IVAN_TURGENEV_CHARACTER_UUID}`);
 
-		theCoastOfUtopiaOlivierProduction = await chai.request(app)
+		theCoastOfUtopiaOlivierProduction = await request.execute(app)
 			.get(`/productions/${THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID}`);
 
-		voyageOlivierProduction = await chai.request(app)
+		voyageOlivierProduction = await request.execute(app)
 			.get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
 
-		tomStoppardPerson = await chai.request(app)
+		tomStoppardPerson = await request.execute(app)
 			.get(`/people/${TOM_STOPPARD_PERSON_UUID}`);
 
-		theSträusslerGroupCompany = await chai.request(app)
+		theSträusslerGroupCompany = await request.execute(app)
 			.get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
 
-		garplyMaterial = await chai.request(app)
+		garplyMaterial = await request.execute(app)
 			.get(`/materials/${GARPLY_MATERIAL_UUID}`);
 
-		conorCorgePerson = await chai.request(app)
+		conorCorgePerson = await request.execute(app)
 			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		scribesLtdCompany = await chai.request(app)
+		scribesLtdCompany = await request.execute(app)
 			.get(`/companies/${SCRIBES_LTD_COMPANY_UUID}`);
 
 	});
@@ -1061,7 +1063,7 @@ describe('Material with sub-materials', () => {
 
 		it('includes materials and, where applicable, corresponding sur-material; will exclude sur-materials as these will be included via sub-material association', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials');
 
 			const expectedResponseBody = [

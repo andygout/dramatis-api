@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -50,7 +52,7 @@ describe('Character with multiple appearances in the same material under differe
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Rock \'n\' Roll',
@@ -84,7 +86,7 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Rock \'n\' Roll',
@@ -136,7 +138,7 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Handbagged',
@@ -174,7 +176,7 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Handbagged',
@@ -231,40 +233,40 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		esmeCharacter = await chai.request(app)
+		esmeCharacter = await request.execute(app)
 			.get(`/characters/${ESME_CHARACTER_UUID}`);
 
-		aliceCharacter = await chai.request(app)
+		aliceCharacter = await request.execute(app)
 			.get(`/characters/${ALICE_CHARACTER_UUID}`);
 
-		eleanorCharacter = await chai.request(app)
+		eleanorCharacter = await request.execute(app)
 			.get(`/characters/${ELEANOR_CHARACTER_UUID}`);
 
-		rockNRollMaterial = await chai.request(app)
+		rockNRollMaterial = await request.execute(app)
 			.get(`/materials/${ROCK_N_ROLL_MATERIAL_UUID}`);
 
-		rockNRollRoyalCourtProduction = await chai.request(app)
+		rockNRollRoyalCourtProduction = await request.execute(app)
 			.get(`/productions/${ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID}`);
 
-		aliceEvePerson = await chai.request(app)
+		aliceEvePerson = await request.execute(app)
 			.get(`/people/${ALICE_EVE_PERSON_UUID}`);
 
-		sineadCusackPerson = await chai.request(app)
+		sineadCusackPerson = await request.execute(app)
 			.get(`/people/${SINEAD_CUSACK_PERSON_UUID}`);
 
-		queenElizabethIICharacter = await chai.request(app)
+		queenElizabethIICharacter = await request.execute(app)
 			.get(`/characters/${QUEEN_ELIZABETH_II_CHARACTER_UUID}`);
 
-		handbaggedMaterial = await chai.request(app)
+		handbaggedMaterial = await request.execute(app)
 			.get(`/materials/${HANDBAGGED_MATERIAL_UUID}`);
 
-		handbaggedTricycleProduction = await chai.request(app)
+		handbaggedTricycleProduction = await request.execute(app)
 			.get(`/productions/${HANDBAGGED_TRICYCLE_PRODUCTION_UUID}`);
 
-		kikaMarkhamPerson = await chai.request(app)
+		kikaMarkhamPerson = await request.execute(app)
 			.get(`/people/${KIKA_MARKHAM_PERSON_UUID}`);
 
-		claireCoxPerson = await chai.request(app)
+		claireCoxPerson = await request.execute(app)
 			.get(`/people/${CLAIRE_COX_PERSON_UUID}`);
 
 	});

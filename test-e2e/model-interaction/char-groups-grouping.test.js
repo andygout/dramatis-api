@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -22,7 +24,7 @@ describe('Nameless character groups grouping', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Julius Caesar',
@@ -52,7 +54,7 @@ describe('Nameless character groups grouping', () => {
 				]
 			});
 
-		juliusCaesarMaterial = await chai.request(app)
+		juliusCaesarMaterial = await request.execute(app)
 			.get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
 
 	});

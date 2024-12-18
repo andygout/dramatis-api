@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -26,7 +28,7 @@ describe('Season with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Seize the Day',
@@ -41,7 +43,7 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Detaining Justice',
@@ -56,7 +58,7 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Category B',
@@ -71,16 +73,16 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		notBlackAndWhiteSeason = await chai.request(app)
+		notBlackAndWhiteSeason = await request.execute(app)
 			.get(`/seasons/${NOT_BLACK_AND_WHITE_SEASON_UUID}`);
 
-		categoryBTricycleProduction = await chai.request(app)
+		categoryBTricycleProduction = await request.execute(app)
 			.get(`/productions/${CATEGORY_B_TRICYCLE_PRODUCTION_UUID}`);
 
-		seizeTheDayTricycleProduction = await chai.request(app)
+		seizeTheDayTricycleProduction = await request.execute(app)
 			.get(`/productions/${SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID}`);
 
-		detainingJusticeTricycleProduction = await chai.request(app)
+		detainingJusticeTricycleProduction = await request.execute(app)
 			.get(`/productions/${DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID}`);
 
 	});

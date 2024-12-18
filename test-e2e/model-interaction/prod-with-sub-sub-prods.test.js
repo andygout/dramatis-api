@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -136,7 +138,7 @@ describe('Production with sub-sub-productions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Berkeley Repertory Theatre',
@@ -147,7 +149,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -156,7 +158,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -186,7 +188,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Durand\'s Line',
@@ -216,7 +218,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -246,7 +248,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -287,7 +289,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -317,7 +319,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -347,7 +349,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -377,7 +379,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -418,7 +420,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -448,7 +450,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -478,7 +480,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -508,7 +510,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -549,7 +551,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -590,7 +592,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -690,7 +692,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Durand\'s Line',
@@ -790,7 +792,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -890,7 +892,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -1001,7 +1003,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -1101,7 +1103,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -1201,7 +1203,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -1301,7 +1303,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -1412,7 +1414,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -1512,7 +1514,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -1612,7 +1614,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -1712,7 +1714,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -1823,7 +1825,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -1934,7 +1936,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -1953,7 +1955,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Durand\'s Line',
@@ -1972,7 +1974,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -1991,7 +1993,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -2021,7 +2023,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -2040,7 +2042,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -2059,7 +2061,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -2078,7 +2080,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -2108,7 +2110,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -2127,7 +2129,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -2146,7 +2148,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -2165,7 +2167,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -2195,7 +2197,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -2225,88 +2227,88 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		theGreatGameAfghanistanRodaProduction = await chai.request(app)
+		theGreatGameAfghanistanRodaProduction = await request.execute(app)
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID}`);
 
-		partOneInvasionsAndIndependenceRodaProduction = await chai.request(app)
+		partOneInvasionsAndIndependenceRodaProduction = await request.execute(app)
 			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID}`);
 
-		buglesAtTheGatesOfJalalabadRodaProduction = await chai.request(app)
+		buglesAtTheGatesOfJalalabadRodaProduction = await request.execute(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID}`);
 
-		theGreatGameAfghanistanTricycleProduction = await chai.request(app)
+		theGreatGameAfghanistanTricycleProduction = await request.execute(app)
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
 
-		partOneInvasionsAndIndependenceTricycleProduction = await chai.request(app)
+		partOneInvasionsAndIndependenceTricycleProduction = await request.execute(app)
 			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
 
-		buglesAtTheGatesOfJalalabadTricycleProduction = await chai.request(app)
+		buglesAtTheGatesOfJalalabadTricycleProduction = await request.execute(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
 
-		theGreatGameAfghanistanMaterial = await chai.request(app)
+		theGreatGameAfghanistanMaterial = await request.execute(app)
 			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
 
-		partOneInvasionsAndIndependenceMaterial = await chai.request(app)
+		partOneInvasionsAndIndependenceMaterial = await request.execute(app)
 			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
 
-		buglesAtTheGatesOfJalalabadMaterial = await chai.request(app)
+		buglesAtTheGatesOfJalalabadMaterial = await request.execute(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
 
-		ferdinandFooJrPerson = await chai.request(app)
+		ferdinandFooJrPerson = await request.execute(app)
 			.get(`/people/${FERDINAND_FOO_JR_PERSON_UUID}`);
 
-		subInkistsLtdCompany = await chai.request(app)
+		subInkistsLtdCompany = await request.execute(app)
 			.get(`/companies/${SUB_INKISTS_LTD_COMPANY_UUID}`);
 
-		berkeleyRepertoryTheatreVenue = await chai.request(app)
+		berkeleyRepertoryTheatreVenue = await request.execute(app)
 			.get(`/venues/${BERKELEY_REPERTORY_THEATRE_VENUE_UUID}`);
 
-		rodaTheatreVenue = await chai.request(app)
+		rodaTheatreVenue = await request.execute(app)
 			.get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
 
-		afghanHistorySeason = await chai.request(app)
+		afghanHistorySeason = await request.execute(app)
 			.get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
 
-		afghanHistoryFestival2009 = await chai.request(app)
+		afghanHistoryFestival2009 = await request.execute(app)
 			.get(`/festivals/${AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID}`);
 
-		nicolasKentJrPerson = await chai.request(app)
+		nicolasKentJrPerson = await request.execute(app)
 			.get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
 
-		subTricycleTheatreCompany = await chai.request(app)
+		subTricycleTheatreCompany = await request.execute(app)
 			.get(`/companies/${SUB_TRICYCLE_THEATRE_COMPANY_UUID}`);
 
-		zoëIngenhaagJrPerson = await chai.request(app)
+		zoëIngenhaagJrPerson = await request.execute(app)
 			.get(`/people/${ZOË_INGENHAAG_JR_PERSON_UUID}`);
 
-		rickWardenJrPerson = await chai.request(app)
+		rickWardenJrPerson = await request.execute(app)
 			.get(`/people/${RICK_WARDEN_JR_PERSON_UUID}`);
 
-		howardHarrisonJrPerson = await chai.request(app)
+		howardHarrisonJrPerson = await request.execute(app)
 			.get(`/people/${HOWARD_HARRISON_JR_PERSON_UUID}`);
 
-		subLightingDesignLtdCompany = await chai.request(app)
+		subLightingDesignLtdCompany = await request.execute(app)
 			.get(`/companies/${SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
 
-		jackKnowlesJrPerson = await chai.request(app)
+		jackKnowlesJrPerson = await request.execute(app)
 			.get(`/people/${JACK_KNOWLES_JR_PERSON_UUID}`);
 
-		lizzieChapmanJrPerson = await chai.request(app)
+		lizzieChapmanJrPerson = await request.execute(app)
 			.get(`/people/${LIZZIE_CHAPMAN_JR_PERSON_UUID}`);
 
-		subStageManagementLtdCompany = await chai.request(app)
+		subStageManagementLtdCompany = await request.execute(app)
 			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		charlottePadghamJrPerson = await chai.request(app)
+		charlottePadghamJrPerson = await request.execute(app)
 			.get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
 
-		theSubGuardianCompany = await chai.request(app)
+		theSubGuardianCompany = await request.execute(app)
 			.get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
 
-		michaelBillingtonJrPerson = await chai.request(app)
+		michaelBillingtonJrPerson = await request.execute(app)
 			.get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
 
-		barJrCharacter = await chai.request(app)
+		barJrCharacter = await request.execute(app)
 			.get(`/characters/${BAR_JR_CHARACTER_UUID}`);
 
 	});
@@ -14147,7 +14149,7 @@ describe('Production with sub-sub-productions', () => {
 
 		it('includes productions and corresponding sur-productions and sur-sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/productions');
 
 			const expectedResponseBody = [

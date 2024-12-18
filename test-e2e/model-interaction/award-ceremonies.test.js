@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -93,7 +95,7 @@ describe('Award ceremonies', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -110,7 +112,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -121,7 +123,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -132,7 +134,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -143,7 +145,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -154,7 +156,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Waldo',
@@ -165,7 +167,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Waldo',
@@ -176,7 +178,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -187,7 +189,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -198,7 +200,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -209,7 +211,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -220,7 +222,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -231,7 +233,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -242,7 +244,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Thud',
@@ -253,7 +255,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -264,7 +266,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fuga',
@@ -275,7 +277,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Tutu',
@@ -286,7 +288,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Grault',
@@ -297,7 +299,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -305,7 +307,7 @@ describe('Award ceremonies', () => {
 				year: '2019'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -313,7 +315,7 @@ describe('Award ceremonies', () => {
 				year: '2019'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fred',
@@ -321,7 +323,7 @@ describe('Award ceremonies', () => {
 				year: '2019'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -329,7 +331,7 @@ describe('Award ceremonies', () => {
 				year: '2019'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Piyo',
@@ -337,7 +339,7 @@ describe('Award ceremonies', () => {
 				year: '2017'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -345,7 +347,7 @@ describe('Award ceremonies', () => {
 				year: '2017'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -353,7 +355,7 @@ describe('Award ceremonies', () => {
 				year: '2017'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -361,7 +363,7 @@ describe('Award ceremonies', () => {
 				year: '2017'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Thud',
@@ -369,7 +371,7 @@ describe('Award ceremonies', () => {
 				year: '2017'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Toto',
@@ -377,7 +379,7 @@ describe('Award ceremonies', () => {
 				year: '2018'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fuga',
@@ -385,7 +387,7 @@ describe('Award ceremonies', () => {
 				year: '2018'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Tutu',
@@ -393,7 +395,7 @@ describe('Award ceremonies', () => {
 				year: '2018'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Grault',
@@ -401,7 +403,7 @@ describe('Award ceremonies', () => {
 				year: '2019'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2020',
@@ -671,7 +673,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
@@ -864,7 +866,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
@@ -958,7 +960,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -1089,7 +1091,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2017',
@@ -1365,7 +1367,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -1561,43 +1563,43 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		laurenceOlivierAwards2020AwardCeremony = await chai.request(app)
+		laurenceOlivierAwards2020AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`);
 
-		eveningStandardTheatreAwards2017AwardCeremony = await chai.request(app)
+		eveningStandardTheatreAwards2017AwardCeremony = await request.execute(app)
 			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS2017AWARD_CEREMONY_UUID}`);
 
-		laurenceOlivierAwardsAward = await chai.request(app)
+		laurenceOlivierAwardsAward = await request.execute(app)
 			.get(`/awards/${LAURENCE_OLIVIER_AWARDS_AWARD_UUID}`);
 
-		eveningStandardTheatreAwardsAward = await chai.request(app)
+		eveningStandardTheatreAwardsAward = await request.execute(app)
 			.get(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
 
-		johnDoePerson = await chai.request(app)
+		johnDoePerson = await request.execute(app)
 			.get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await chai.request(app)
+		curtainUpLtdCompany = await request.execute(app)
 			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		conorCorgePerson = await chai.request(app)
+		conorCorgePerson = await request.execute(app)
 			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await chai.request(app)
+		stagecraftLtdCompany = await request.execute(app)
 			.get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		quincyQuxPerson = await chai.request(app)
+		quincyQuxPerson = await request.execute(app)
 			.get(`/people/${QUINCY_QUX_PERSON_UUID}`);
 
-		garplyLytteltonProduction = await chai.request(app)
+		garplyLytteltonProduction = await request.execute(app)
 			.get(`/productions/${GARPLY_LYTTELTON_PRODUCTION_UUID}`);
 
-		xyzzyPlayhouseProduction = await chai.request(app)
+		xyzzyPlayhouseProduction = await request.execute(app)
 			.get(`/productions/${XYZZY_PLAYHOUSE_PRODUCTION_UUID}`);
 
-		garplyMaterial = await chai.request(app)
+		garplyMaterial = await request.execute(app)
 			.get(`/materials/${GARPLY_MATERIAL_UUID}`);
 
-		xyzzyMaterial = await chai.request(app)
+		xyzzyMaterial = await request.execute(app)
 			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
 	});

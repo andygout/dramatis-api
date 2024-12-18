@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -9,6 +9,8 @@ import {
 	isNodeExistent,
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -51,7 +53,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/materials')
 					.send({
 						name: 'Sur-Garply',
@@ -158,7 +160,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/materials')
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -254,7 +256,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${SUB_GRAULT_MATERIAL_UUID}`)
 					.send({
 						name: 'Sub-Grault',
@@ -355,7 +357,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${SUR_GARPLY_MATERIAL_UUID}`)
 					.send({
 						name: 'Sur-Garply',
@@ -471,7 +473,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(4);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${SUR_SUR_GRAULT_MATERIAL_UUID}`)
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -587,7 +589,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(4);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${SUB_GRAULT_MATERIAL_UUID}`)
 					.send({
 						name: 'Sub-Grault',
@@ -681,7 +683,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`)
 					.send({
 						name: 'Ur-Plugh',
@@ -766,7 +768,7 @@ describe('Database validation failures: Materials API', () => {
 
 				expect(await countNodesWithLabel('Material')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/materials/${WALDO_MATERIAL_UUID}`)
 					.send({
 						name: 'Waldo',

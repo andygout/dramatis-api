@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -48,7 +50,7 @@ describe('Character with variant names from productions of different materials',
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hamlet',
@@ -68,7 +70,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
@@ -88,7 +90,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fortinbras',
@@ -108,7 +110,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hamletmachine',
@@ -128,7 +130,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -163,7 +165,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
@@ -198,7 +200,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fortinbras',
@@ -233,7 +235,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamletmachine',
@@ -267,31 +269,31 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		hamletCharacter = await chai.request(app)
+		hamletCharacter = await request.execute(app)
 			.get(`/characters/${HAMLET_CHARACTER_UUID}`);
 
-		hamletNationalProduction = await chai.request(app)
+		hamletNationalProduction = await request.execute(app)
 			.get(`/productions/${HAMLET_NATIONAL_PRODUCTION_UUID}`);
 
-		rosencrantzAndGuildensternAreDeadHaymarketProduction = await chai.request(app)
+		rosencrantzAndGuildensternAreDeadHaymarketProduction = await request.execute(app)
 			.get(`/productions/${ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID}`);
 
-		fortinbrasLaJollaProduction = await chai.request(app)
+		fortinbrasLaJollaProduction = await request.execute(app)
 			.get(`/productions/${FORTINBRAS_LA_JOLLA_PRODUCTION_UUID}`);
 
-		hamletmachineTetroSanNicolòProduction = await chai.request(app)
+		hamletmachineTetroSanNicolòProduction = await request.execute(app)
 			.get(`/productions/${HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID}`);
 
-		roryKinnearPerson = await chai.request(app)
+		roryKinnearPerson = await request.execute(app)
 			.get(`/people/${RORY_KINNEAR_PERSON_UUID}`);
 
-		jackHawkinsPerson = await chai.request(app)
+		jackHawkinsPerson = await request.execute(app)
 			.get(`/people/${JACK_HAWKINS_PERSON_UUID}`);
 
-		donReillyPerson = await chai.request(app)
+		donReillyPerson = await request.execute(app)
 			.get(`/people/${DON_REILLY_PERSON_UUID}`);
 
-		gabrieleCicirelloPerson = await chai.request(app)
+		gabrieleCicirelloPerson = await request.execute(app)
 			.get(`/people/${GABRIELE_CICIRELLO_PERSON_UUID}`);
 
 	});

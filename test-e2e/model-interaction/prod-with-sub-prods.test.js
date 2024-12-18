@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -91,7 +93,7 @@ describe('Production with sub-productions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -102,7 +104,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2002',
@@ -111,7 +113,7 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Voyage',
@@ -141,7 +143,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Shipwreck',
@@ -171,7 +173,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Salvage',
@@ -201,7 +203,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Coast of Utopia',
@@ -242,7 +244,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -342,7 +344,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Shipwreck',
@@ -442,7 +444,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Salvage',
@@ -542,7 +544,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -653,7 +655,7 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -672,7 +674,7 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Shipwreck',
@@ -691,7 +693,7 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Salvage',
@@ -710,7 +712,7 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -739,79 +741,79 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		theCoastOfUtopiaOlivierProduction = await chai.request(app)
+		theCoastOfUtopiaOlivierProduction = await request.execute(app)
 			.get(`/productions/${THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID}`);
 
-		voyageOlivierProduction = await chai.request(app)
+		voyageOlivierProduction = await request.execute(app)
 			.get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
 
-		theCoastOfUtopiaVivianBeaumontProduction = await chai.request(app)
+		theCoastOfUtopiaVivianBeaumontProduction = await request.execute(app)
 			.get(`/productions/${THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID}`);
 
-		voyageVivianBeaumontProduction = await chai.request(app)
+		voyageVivianBeaumontProduction = await request.execute(app)
 			.get(`/productions/${VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID}`);
 
-		theCoastOfUtopiaMaterial = await chai.request(app)
+		theCoastOfUtopiaMaterial = await request.execute(app)
 			.get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
 
-		voyageMaterial = await chai.request(app)
+		voyageMaterial = await request.execute(app)
 			.get(`/materials/${VOYAGE_MATERIAL_UUID}`);
 
-		tomStoppardJrPerson = await chai.request(app)
+		tomStoppardJrPerson = await request.execute(app)
 			.get(`/people/${TOM_STOPPARD_JR_PERSON_UUID}`);
 
-		theSubSträusslerGroupCompany = await chai.request(app)
+		theSubSträusslerGroupCompany = await request.execute(app)
 			.get(`/companies/${THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID}`);
 
-		nationalTheatreVenue = await chai.request(app)
+		nationalTheatreVenue = await request.execute(app)
 			.get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
 
-		olivierTheatreVenue = await chai.request(app)
+		olivierTheatreVenue = await request.execute(app)
 			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
-		stoppardSeason = await chai.request(app)
+		stoppardSeason = await request.execute(app)
 			.get(`/seasons/${STOPPARD_SEASON_UUID}`);
 
-		stoppardFestival2002 = await chai.request(app)
+		stoppardFestival2002 = await request.execute(app)
 			.get(`/festivals/${STOPPARD_FESTIVAL_2002_FESTIVAL_UUID}`);
 
-		trevorNunnJrPerson = await chai.request(app)
+		trevorNunnJrPerson = await request.execute(app)
 			.get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
 
-		subNationalTheatreCompany = await chai.request(app)
+		subNationalTheatreCompany = await request.execute(app)
 			.get(`/companies/${SUB_NATIONAL_THEATRE_COMPANY_UUID}`);
 
-		nickStarrJrPerson = await chai.request(app)
+		nickStarrJrPerson = await request.execute(app)
 			.get(`/people/${NICK_STARR_JR_PERSON_UUID}`);
 
-		stephenDillaneJrPerson = await chai.request(app)
+		stephenDillaneJrPerson = await request.execute(app)
 			.get(`/people/${STEPHEN_DILLANE_JR_PERSON_UUID}`);
 
-		stevenEdisJrPerson = await chai.request(app)
+		stevenEdisJrPerson = await request.execute(app)
 			.get(`/people/${STEVEN_EDIS_JR_PERSON_UUID}`);
 
-		subMusicalDirectionLtdCompany = await chai.request(app)
+		subMusicalDirectionLtdCompany = await request.execute(app)
 			.get(`/companies/${SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID}`);
 
-		markBousieJrPerson = await chai.request(app)
+		markBousieJrPerson = await request.execute(app)
 			.get(`/people/${MARK_BOUSIE_JR_PERSON_UUID}`);
 
-		fionaBardsleyJrPerson = await chai.request(app)
+		fionaBardsleyJrPerson = await request.execute(app)
 			.get(`/people/${FIONA_BARDSLEY_JR_PERSON_UUID}`);
 
-		subStageManagementLtdCompany = await chai.request(app)
+		subStageManagementLtdCompany = await request.execute(app)
 			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		sueMillinJrPerson = await chai.request(app)
+		sueMillinJrPerson = await request.execute(app)
 			.get(`/people/${SUE_MILLIN_JR_PERSON_UUID}`);
 
-		theSubGuardianCompany = await chai.request(app)
+		theSubGuardianCompany = await request.execute(app)
 			.get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
 
-		michaelBillingtonJrPerson = await chai.request(app)
+		michaelBillingtonJrPerson = await request.execute(app)
 			.get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
 
-		alexanderHerzenJrCharacter = await chai.request(app)
+		alexanderHerzenJrCharacter = await request.execute(app)
 			.get(`/characters/${ALEXANDER_HERZEN_JR_CHARACTER_UUID}`);
 
 	});
@@ -4274,7 +4276,7 @@ describe('Production with sub-productions', () => {
 
 		it('includes productions and corresponding sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/productions');
 
 			const expectedResponseBody = [

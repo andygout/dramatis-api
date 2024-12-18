@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -12,6 +12,8 @@ import {
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -31,7 +33,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/productions')
 					.send({
 						name: ''
@@ -96,7 +98,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Macbeth',
@@ -172,7 +174,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Macbeth',
@@ -273,7 +275,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: ''
@@ -344,7 +346,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: 'Macbeth',
@@ -421,7 +423,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: 'Macbeth',
@@ -553,7 +555,7 @@ describe('Instance validation failures: Productions API', () => {
 
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.delete(`/productions/${OTHELLO_DONMAR_PRODUCTION_UUID}`);
 
 				const expectedResponseBody = {

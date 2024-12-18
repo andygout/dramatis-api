@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -32,7 +34,7 @@ describe('Festival series with festivals', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -42,7 +44,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -52,7 +54,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -62,7 +64,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -72,7 +74,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -82,7 +84,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -92,7 +94,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -102,7 +104,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -112,7 +114,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -122,19 +124,19 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: 'The Complete Works'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/festivals')
 			.send({
 				name: 'Globe to Globe'
 			});
 
-		edinburghInternationalFestivalFestivalSeries = await chai.request(app)
+		edinburghInternationalFestivalFestivalSeries = await request.execute(app)
 			.get(`/festival-serieses/${EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID}`);
 
 	});
@@ -173,7 +175,7 @@ describe('Festival series with festivals', () => {
 
 		it('includes festival series', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/festival-serieses');
 
 			const expectedResponseBody = [
@@ -205,7 +207,7 @@ describe('Festival series with festivals', () => {
 
 		it('includes festivals and (if applicable) corresponding festival series', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/festivals');
 
 			const expectedResponseBody = [

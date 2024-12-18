@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -42,7 +44,7 @@ describe('Character with multiple appearances in different character groups of t
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: '3 Winters',
@@ -88,7 +90,7 @@ describe('Character with multiple appearances in different character groups of t
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: '3 Winters',
@@ -157,40 +159,40 @@ describe('Character with multiple appearances in different character groups of t
 				]
 			});
 
-		alisaKosCharacter = await chai.request(app)
+		alisaKosCharacter = await request.execute(app)
 			.get(`/characters/${ALISA_KOS_CHARACTER_UUID}`);
 
-		mašaKosCharacter = await chai.request(app)
+		mašaKosCharacter = await request.execute(app)
 			.get(`/characters/${MAŠA_KOS_CHARACTER_UUID}`);
 
-		aleksanderKingCharacter = await chai.request(app)
+		aleksanderKingCharacter = await request.execute(app)
 			.get(`/characters/${ALEKSANDER_KING_CHARACTER_UUID}`);
 
-		roseKingCharacter = await chai.request(app)
+		roseKingCharacter = await request.execute(app)
 			.get(`/characters/${ROSE_KING_CHARACTER_UUID}`);
 
-		threeWintersMaterial = await chai.request(app)
+		threeWintersMaterial = await request.execute(app)
 			.get(`/materials/${THREE_WINTERS_MATERIAL_UUID}`);
 
-		threeWintersNationalProduction = await chai.request(app)
+		threeWintersNationalProduction = await request.execute(app)
 			.get(`/productions/${THREE_WINTERS_NATIONAL_PRODUCTION_UUID}`);
 
-		siobhanFinneranPerson = await chai.request(app)
+		siobhanFinneranPerson = await request.execute(app)
 			.get(`/people/${SIOBHAN_FINNERAN_PERSON_UUID}`);
 
-		joHerbertPerson = await chai.request(app)
+		joHerbertPerson = await request.execute(app)
 			.get(`/people/${JO_HERBERT_PERSON_UUID}`);
 
-		jamesLaurensonPerson = await chai.request(app)
+		jamesLaurensonPerson = await request.execute(app)
 			.get(`/people/${JAMES_LAURENSON_PERSON_UUID}`);
 
-		jodieMcNeePerson = await chai.request(app)
+		jodieMcNeePerson = await request.execute(app)
 			.get(`/people/${JODIE_MCNEE_PERSON_UUID}`);
 
-		alexPricePerson = await chai.request(app)
+		alexPricePerson = await request.execute(app)
 			.get(`/people/${ALEX_PRICE_PERSON_UUID}`);
 
-		bebeSandersPerson = await chai.request(app)
+		bebeSandersPerson = await request.execute(app)
 			.get(`/people/${BEBE_SANDERS_PERSON_UUID}`);
 
 	});

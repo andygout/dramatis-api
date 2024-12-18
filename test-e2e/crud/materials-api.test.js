@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('responds with data required to prepare new material', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials/new');
 
 			const expectedResponseBody = {
@@ -96,7 +98,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Uncle Vanya'
@@ -168,7 +170,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('gets data required to edit specific material', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/materials/${MATERIAL_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -238,7 +240,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_UUID}`)
 				.send({
 					name: 'The Cherry Orchard'
@@ -310,7 +312,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('shows material', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -345,7 +347,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -413,7 +415,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'John Gabriel Borkman',
@@ -690,7 +692,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('shows material (post-creation)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -837,7 +839,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('gets data required to edit specific material', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/materials/${MATERIAL_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -1030,7 +1032,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(6);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_UUID}`)
 				.send({
 					name: 'John Gabriel Borkman',
@@ -1309,7 +1311,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(6);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1588,7 +1590,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('shows material (post-update)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -1737,7 +1739,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(11);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1812,7 +1814,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(11);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
@@ -1856,7 +1858,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Haunting Julia',
@@ -1864,7 +1866,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					year: 1994
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'A Word from Our Sponsor',
@@ -1872,7 +1874,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					year: 1995
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'The Musical Jigsaw Play',
@@ -1880,7 +1882,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					year: 1994
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Dreams from a Summer House',
@@ -1888,7 +1890,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					year: 1992
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Communicating Doors',
@@ -1900,7 +1902,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 		it('lists all materials ordered by year then name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials');
 
 			const expectedResponseBody = [

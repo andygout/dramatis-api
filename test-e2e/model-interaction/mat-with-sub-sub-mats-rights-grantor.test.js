@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -37,7 +39,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -55,7 +57,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lord of the Rings',
@@ -79,7 +81,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Tolkien\'s Legendarium',
@@ -103,7 +105,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -144,7 +146,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lord of the Rings',
@@ -178,7 +180,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Tolkien\'s Legendarium',
@@ -212,7 +214,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -228,7 +230,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lord of the Rings',
@@ -249,7 +251,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Tolkien\'s Legendarium',
@@ -270,7 +272,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -286,7 +288,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lord of the Rings',
@@ -307,7 +309,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Tolkien\'s Legendarium',
@@ -328,10 +330,10 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		theTolkienEstateCompany = await chai.request(app)
+		theTolkienEstateCompany = await request.execute(app)
 			.get(`/companies/${THE_TOLKIEN_ESTATE_COMPANY_UUID}`);
 
-		baillieTolkienPerson = await chai.request(app)
+		baillieTolkienPerson = await request.execute(app)
 			.get(`/people/${BAILLIE_TOLKIEN_PERSON_UUID}`);
 
 	});

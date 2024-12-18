@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -32,7 +34,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'New Theatre'
@@ -64,7 +66,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'New Theatre'
@@ -96,7 +98,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/venues')
 				.send({
 					name: 'New Theatre',
@@ -129,7 +131,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_1_UUID}`)
 				.send({
 					name: 'New Theatre',
@@ -163,7 +165,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_1_UUID}`)
 				.send({
 					name: 'New Theatre',
@@ -196,7 +198,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${VENUE_2_UUID}`)
 				.send({
 					name: 'New Theatre'
@@ -260,7 +262,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
@@ -281,7 +283,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
@@ -303,7 +305,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',
@@ -324,7 +326,7 @@ describe('Uniqueness in database: Venues API', () => {
 
 			expect(await countNodesWithLabel('Venue')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/venues/${SHEFFIELD_THEATRES_VENUE_UUID}`)
 				.send({
 					name: 'Sheffield Theatres',

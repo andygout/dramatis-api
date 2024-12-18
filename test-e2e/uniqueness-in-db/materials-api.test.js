@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -32,7 +34,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Home'
@@ -106,7 +108,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Home'
@@ -149,7 +151,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/materials')
 				.send({
 					name: 'Home',
@@ -224,7 +226,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_1_UUID}`)
 				.send({
 					name: 'Home',
@@ -269,7 +271,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_1_UUID}`)
 				.send({
 					name: 'Home',
@@ -344,7 +346,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${MATERIAL_2_UUID}`)
 				.send({
 					name: 'Home'
@@ -450,7 +452,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -470,7 +472,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -491,7 +493,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -511,7 +513,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -564,7 +566,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -589,7 +591,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -615,7 +617,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -640,7 +642,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -698,7 +700,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -724,7 +726,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -751,7 +753,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -777,7 +779,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -836,7 +838,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -863,7 +865,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -891,7 +893,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -918,7 +920,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -978,7 +980,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -999,7 +1001,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -1021,7 +1023,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -1042,7 +1044,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Material')).to.equal(3);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -1100,7 +1102,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1125,7 +1127,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1151,7 +1153,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1176,7 +1178,7 @@ describe('Uniqueness in database: Materials API', () => {
 
 			expect(await countNodesWithLabel('Character')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',

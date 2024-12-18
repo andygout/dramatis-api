@@ -1,5 +1,5 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import {
@@ -9,6 +9,8 @@ import {
 	isNodeExistent,
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -51,7 +53,7 @@ describe('Database validation failures: Venues API', () => {
 
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/venues')
 					.send({
 						name: 'Sur-Bar Theatre',
@@ -132,7 +134,7 @@ describe('Database validation failures: Venues API', () => {
 
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.post('/venues')
 					.send({
 						name: 'Sur-Sur-Foo Theatre',
@@ -224,7 +226,7 @@ describe('Database validation failures: Venues API', () => {
 
 				expect(await countNodesWithLabel('Venue')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/venues/${SUR_BAR_VENUE_UUID}`)
 					.send({
 						name: 'Sur-Bar Theatre',
@@ -314,7 +316,7 @@ describe('Database validation failures: Venues API', () => {
 
 				expect(await countNodesWithLabel('Venue')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/venues/${SUR_SUR_FOO_THEATRE_VENUE_UUID}`)
 					.send({
 						name: 'Sur-Sur-Foo Theatre',
@@ -404,7 +406,7 @@ describe('Database validation failures: Venues API', () => {
 
 				expect(await countNodesWithLabel('Venue')).to.equal(3);
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/venues/${SUB_FOO_THEATRE_VENUE_UUID}`)
 					.send({
 						name: 'Sub-Foo Theatre',

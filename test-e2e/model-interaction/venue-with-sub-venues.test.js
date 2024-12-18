@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -37,7 +39,7 @@ describe('Venue with sub-venues', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -54,7 +56,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -69,7 +71,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -84,7 +86,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -109,7 +111,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -134,31 +136,31 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		nationalTheatreVenue = await chai.request(app)
+		nationalTheatreVenue = await request.execute(app)
 			.get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
 
-		olivierTheatreVenue = await chai.request(app)
+		olivierTheatreVenue = await request.execute(app)
 			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
-		motherCourageCharacter = await chai.request(app)
+		motherCourageCharacter = await request.execute(app)
 			.get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
 
-		kingRichardIICharacter = await chai.request(app)
+		kingRichardIICharacter = await request.execute(app)
 			.get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
 
-		motherCourageAndHerChildrenMaterial = await chai.request(app)
+		motherCourageAndHerChildrenMaterial = await request.execute(app)
 			.get(`/materials/${MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID}`);
 
-		richardIIMaterial = await chai.request(app)
+		richardIIMaterial = await request.execute(app)
 			.get(`/materials/${RICHARD_II_MATERIAL_UUID}`);
 
-		motherCourageAndHerChildrenOlivierProduction = await chai.request(app)
+		motherCourageAndHerChildrenOlivierProduction = await request.execute(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
 
-		richardIINationalProduction = await chai.request(app)
+		richardIINationalProduction = await request.execute(app)
 			.get(`/productions/${RICHARD_II_NATIONAL_PRODUCTION_UUID}`);
 
-		fionaShawPerson = await chai.request(app)
+		fionaShawPerson = await request.execute(app)
 			.get(`/people/${FIONA_SHAW_PERSON_UUID}`);
 
 	});
@@ -521,7 +523,7 @@ describe('Venue with sub-venues', () => {
 
 		it('includes venue and corresponding sub-venues', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/venues');
 
 			const expectedResponseBody = [
@@ -560,7 +562,7 @@ describe('Venue with sub-venues', () => {
 
 		it('includes venue and (if applicable) corresponding sur-venue', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/productions');
 
 			const expectedResponseBody = [

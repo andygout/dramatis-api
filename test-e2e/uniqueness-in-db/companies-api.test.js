@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -30,7 +32,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 		expect(await countNodesWithLabel('Company')).to.equal(0);
 
-		const response = await chai.request(app)
+		const response = await request.execute(app)
 			.post('/companies')
 			.send({
 				name: 'Gate Theatre Company'
@@ -54,7 +56,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 		expect(await countNodesWithLabel('Company')).to.equal(1);
 
-		const response = await chai.request(app)
+		const response = await request.execute(app)
 			.post('/companies')
 			.send({
 				name: 'Gate Theatre Company'
@@ -85,7 +87,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 		expect(await countNodesWithLabel('Company')).to.equal(1);
 
-		const response = await chai.request(app)
+		const response = await request.execute(app)
 			.post('/companies')
 			.send({
 				name: 'Gate Theatre Company',
@@ -110,7 +112,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 		expect(await countNodesWithLabel('Company')).to.equal(2);
 
-		const response = await chai.request(app)
+		const response = await request.execute(app)
 			.put(`/companies/${COMPANY_1_UUID}`)
 			.send({
 				name: 'Gate Theatre Company',
@@ -143,7 +145,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 		expect(await countNodesWithLabel('Company')).to.equal(2);
 
-		const response = await chai.request(app)
+		const response = await request.execute(app)
 			.put(`/companies/${COMPANY_1_UUID}`)
 			.send({
 				name: 'Gate Theatre Company',
@@ -168,7 +170,7 @@ describe('Uniqueness in database: Companies API', () => {
 
 		expect(await countNodesWithLabel('Company')).to.equal(2);
 
-		const response = await chai.request(app)
+		const response = await request.execute(app)
 			.put(`/companies/${COMPANY_2_UUID}`)
 			.send({
 				name: 'Gate Theatre Company'

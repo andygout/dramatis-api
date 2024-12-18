@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -32,7 +34,7 @@ describe('Material with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Twelfth Night',
@@ -53,7 +55,7 @@ describe('Material with multiple productions', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
@@ -67,7 +69,7 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night, or What You Will',
@@ -82,7 +84,7 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
@@ -97,22 +99,22 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		twelfthNightMaterial = await chai.request(app)
+		twelfthNightMaterial = await request.execute(app)
 			.get(`/materials/${TWELFTH_NIGHT_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await chai.request(app)
+		williamShakespearePerson = await request.execute(app)
 			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		theKingsMenCompany = await chai.request(app)
+		theKingsMenCompany = await request.execute(app)
 			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
-		twelfthNightGlobeProduction = await chai.request(app)
+		twelfthNightGlobeProduction = await request.execute(app)
 			.get(`/productions/${TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID}`);
 
-		twelfthNightDonmarProduction = await chai.request(app)
+		twelfthNightDonmarProduction = await request.execute(app)
 			.get(`/productions/${TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID}`);
 
-		twelfthNightNationalProduction = await chai.request(app)
+		twelfthNightNationalProduction = await request.execute(app)
 			.get(`/productions/${TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID}`);
 
 	});

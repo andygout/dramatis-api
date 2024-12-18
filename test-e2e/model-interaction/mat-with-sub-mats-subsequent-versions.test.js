@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -53,7 +55,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Trafalgar Studios',
@@ -64,7 +66,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Agamemnon',
@@ -86,7 +88,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Oresteia',
@@ -114,7 +116,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Agamemnon',
@@ -152,7 +154,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Oresteia',
@@ -196,7 +198,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Agamemnon',
@@ -212,7 +214,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Oresteia',
@@ -233,7 +235,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Agamemnon',
@@ -249,7 +251,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Oresteia',
@@ -270,7 +272,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Ur-Plugh',
@@ -291,7 +293,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh',
@@ -328,7 +330,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -370,7 +372,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -407,7 +409,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Plugh',
@@ -422,7 +424,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Plugh',
@@ -442,28 +444,28 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		agamemnonOriginalVersionMaterial = await chai.request(app)
+		agamemnonOriginalVersionMaterial = await request.execute(app)
 			.get(`/materials/${AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		agamemnonSubsequentVersionMaterial = await chai.request(app)
+		agamemnonSubsequentVersionMaterial = await request.execute(app)
 			.get(`/materials/${AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		theOresteiaSubsequentVersionMaterial = await chai.request(app)
+		theOresteiaSubsequentVersionMaterial = await request.execute(app)
 			.get(`/materials/${THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		aeschylusPerson = await chai.request(app)
+		aeschylusPerson = await request.execute(app)
 			.get(`/people/${AESCHYLUS_PERSON_UUID}`);
 
-		theFathersOfTragedyCompany = await chai.request(app)
+		theFathersOfTragedyCompany = await request.execute(app)
 			.get(`/companies/${THE_FATHERS_OF_TRAGEDY_COMPANY_UUID}`);
 
-		urPlughOriginalVersionMaterial = await chai.request(app)
+		urPlughOriginalVersionMaterial = await request.execute(app)
 			.get(`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		francisFlobPerson = await chai.request(app)
+		francisFlobPerson = await request.execute(app)
 			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await chai.request(app)
+		curtainUpLtdCompany = await request.execute(app)
 			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 	});

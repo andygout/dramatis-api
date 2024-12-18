@@ -1,8 +1,10 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -22,7 +24,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.get(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}/edit`);
 
 				expect(response).to.have.status(404);
@@ -36,7 +38,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.put(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`)
 					.send({ name: '2020' });
 
@@ -51,7 +53,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.get(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`);
 
 				expect(response).to.have.status(404);
@@ -65,7 +67,7 @@ describe('Non-existent instances: Award ceremonies API', () => {
 
 			it('responds with 404 Not Found error', async () => {
 
-				const response = await chai.request(app)
+				const response = await request.execute(app)
 					.delete(`/award-ceremonies/${NON_EXISTENT_AWARD_CEREMONY_UUID}`);
 
 				expect(response).to.have.status(404);

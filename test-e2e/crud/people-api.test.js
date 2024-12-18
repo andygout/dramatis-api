@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -13,7 +15,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 		it('responds with data required to prepare new person', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/people/new');
 
 			const expectedResponseBody = {
@@ -46,7 +48,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.post('/people')
 				.send({
 					name: 'Ian McKellen'
@@ -68,7 +70,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 		it('gets data required to edit specific person', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/people/${PERSON_UUID}/edit`);
 
 			const expectedResponseBody = {
@@ -88,7 +90,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/people/${PERSON_UUID}`)
 				.send({
 					name: 'Patrick Stewart'
@@ -110,7 +112,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 		it('shows person', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
@@ -146,7 +148,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.delete(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
@@ -176,19 +178,19 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			await purgeDatabase();
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/people')
 				.send({
 					name: 'Ian McKellen'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/people')
 				.send({
 					name: 'Patrick Stewart'
 				});
 
-			await chai.request(app)
+			await request.execute(app)
 				.post('/people')
 				.send({
 					name: 'Matthew Kelly'
@@ -198,7 +200,7 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 		it('lists all people ordered by name', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/people');
 
 			const expectedResponseBody = [

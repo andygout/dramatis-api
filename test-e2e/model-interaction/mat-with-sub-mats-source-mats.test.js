@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -67,7 +69,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -89,7 +91,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -117,7 +119,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -158,7 +160,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -196,7 +198,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -212,7 +214,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -233,7 +235,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -249,7 +251,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -270,7 +272,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -292,7 +294,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
@@ -324,7 +326,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -362,7 +364,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
@@ -377,7 +379,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -398,7 +400,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -419,7 +421,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble',
@@ -449,7 +451,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -484,7 +486,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -514,7 +516,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble',
@@ -529,7 +531,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -549,40 +551,40 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		bringUpTheBodiesNovelMaterial = await chai.request(app)
+		bringUpTheBodiesNovelMaterial = await request.execute(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
 
-		bringUpTheBodiesPlayMaterial = await chai.request(app)
+		bringUpTheBodiesPlayMaterial = await request.execute(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID}`);
 
-		hilaryMantelPerson = await chai.request(app)
+		hilaryMantelPerson = await request.execute(app)
 			.get(`/people/${HILARY_MANTEL_PERSON_UUID}`);
 
-		mikePoultonPerson = await chai.request(app)
+		mikePoultonPerson = await request.execute(app)
 			.get(`/people/${MIKE_POULTON_PERSON_UUID}`);
 
-		theMantelGroupCompany = await chai.request(app)
+		theMantelGroupCompany = await request.execute(app)
 			.get(`/companies/${THE_MANTEL_GROUP_COMPANY_UUID}`);
 
-		royalShakespeareCompany = await chai.request(app)
+		royalShakespeareCompany = await request.execute(app)
 			.get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
-		bringUpTheBodiesSwanTheatreProduction = await chai.request(app)
+		bringUpTheBodiesSwanTheatreProduction = await request.execute(app)
 			.get(`/productions/${BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID}`);
 
-		thomasCromwellCharacter = await chai.request(app)
+		thomasCromwellCharacter = await request.execute(app)
 			.get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
 
-		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await chai.request(app)
+		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await request.execute(app)
 			.get(`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`);
 
-		waldoMaterial = await chai.request(app)
+		waldoMaterial = await request.execute(app)
 			.get(`/materials/${WALDO_MATERIAL_UUID}`);
 
-		janeRoePerson = await chai.request(app)
+		janeRoePerson = await request.execute(app)
 			.get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await chai.request(app)
+		fictioneersLtdCompany = await request.execute(app)
 			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
 	});
@@ -1798,7 +1800,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		it('includes writers of the materials and their corresponding source material (with corresponding sur-material)', async () => {
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.get('/materials');
 
 			const expectedResponseBody = [

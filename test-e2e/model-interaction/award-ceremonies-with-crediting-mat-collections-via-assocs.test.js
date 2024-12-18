@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -73,7 +75,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -95,7 +97,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part II',
@@ -104,7 +106,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '1899'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh: Section I',
@@ -136,7 +138,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh: Section II',
@@ -145,7 +147,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '1899'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -177,7 +179,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -211,7 +213,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part II',
@@ -220,7 +222,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '2009'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh: Section I',
@@ -264,7 +266,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh: Section II',
@@ -273,7 +275,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '2009'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -317,7 +319,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Waldo: Part I',
@@ -338,7 +340,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Waldo: Part II',
@@ -346,7 +348,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '1974'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Waldo: Section I',
@@ -375,7 +377,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Waldo: Section II',
@@ -383,7 +385,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '1974'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Waldo',
@@ -412,7 +414,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -433,7 +435,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble: Part II',
@@ -441,7 +443,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '2009'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Wibble: Section I',
@@ -470,7 +472,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Wibble: Section II',
@@ -478,7 +480,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				year: '2009'
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -507,7 +509,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -539,7 +541,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -571,7 +573,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -603,7 +605,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -635,7 +637,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -699,7 +701,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				subPlughPartIOriginalVersionMaterial = await chai.request(app)
+				subPlughPartIOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -845,7 +847,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sub-material\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				midPlughSectionIOriginalVersionMaterial = await chai.request(app)
+				midPlughSectionIOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -991,7 +993,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sub-sub-material\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				surPlughOriginalVersionMaterial = await chai.request(app)
+				surPlughOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -1137,7 +1139,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				francisFlobJrPerson = await chai.request(app)
+				francisFlobJrPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -1283,7 +1285,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				francisFlobPerson = await chai.request(app)
+				francisFlobPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -1429,7 +1431,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-sub-material\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				francisFlobSrPerson = await chai.request(app)
+				francisFlobSrPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -1575,7 +1577,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				subCurtainUpLtdCompany = await chai.request(app)
+				subCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -1721,7 +1723,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				midCurtainUpLtdCompany = await chai.request(app)
+				midCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -1867,7 +1869,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-sub-material\'s subsequent versions (and their sur-material and sur-sur-material)', async () => {
 
-				surCurtainUpLtdCompany = await chai.request(app)
+				surCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -2041,7 +2043,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sur-material\'s subsequent versions (and their sur-material, but not their sub-materials)', async () => {
 
-				subPlughPartIOriginalVersionMaterial = await chai.request(app)
+				subPlughPartIOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -2140,7 +2142,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its subsequent versions (and their sur-material and sub-materials)', async () => {
 
-				midPlughSectionIOriginalVersionMaterial = await chai.request(app)
+				midPlughSectionIOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -2333,7 +2335,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sub-material\'s subsequent versions (and their sur-material and sub-materials)', async () => {
 
-				surPlughOriginalVersionMaterial = await chai.request(app)
+				surPlughOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -2526,7 +2528,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s subsequent versions (and their sur-material, but not their sub-materials)', async () => {
 
-				francisFlobJrPerson = await chai.request(app)
+				francisFlobJrPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -2625,7 +2627,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s subsequent versions (and their sur-material and sub-materials)', async () => {
 
-				francisFlobPerson = await chai.request(app)
+				francisFlobPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -2818,7 +2820,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s subsequent versions (and their sur-material and sub-materials)', async () => {
 
-				francisFlobSrPerson = await chai.request(app)
+				francisFlobSrPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3011,7 +3013,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s subsequent versions (and their sur-material, but not their sub-materials)', async () => {
 
-				subCurtainUpLtdCompany = await chai.request(app)
+				subCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3110,7 +3112,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s subsequent versions (and their sur-material and sub-materials)', async () => {
 
-				midCurtainUpLtdCompany = await chai.request(app)
+				midCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3303,7 +3305,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s subsequent versions (and their sur-material and sub-materials)', async () => {
 
-				surCurtainUpLtdCompany = await chai.request(app)
+				surCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3524,7 +3526,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sur-sur-material\'s subsequent versions (but not their sub-materials and sub-sub-materials)', async () => {
 
-				subPlughPartIOriginalVersionMaterial = await chai.request(app)
+				subPlughPartIOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3580,7 +3582,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sur-material\'s subsequent versions (but not their sub-materials and sub-sub-materials)', async () => {
 
-				midPlughSectionIOriginalVersionMaterial = await chai.request(app)
+				midPlughSectionIOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3636,7 +3638,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its subsequent versions (and their sub-materials and sub-sub-materials)', async () => {
 
-				surPlughOriginalVersionMaterial = await chai.request(app)
+				surPlughOriginalVersionMaterial = await request.execute(app)
 					.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3872,7 +3874,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-sur-material\'s subsequent versions (but not their sub-materials and sub-sub-materials)', async () => {
 
-				francisFlobJrPerson = await chai.request(app)
+				francisFlobJrPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3928,7 +3930,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s subsequent versions (but not their sub-materials and sub-sub-materials)', async () => {
 
-				francisFlobPerson = await chai.request(app)
+				francisFlobPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -3984,7 +3986,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s subsequent versions (and their sub-materials and sub-sub-materials)', async () => {
 
-				francisFlobSrPerson = await chai.request(app)
+				francisFlobSrPerson = await request.execute(app)
 					.get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -4220,7 +4222,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-sur-material\'s subsequent versions (but not their sub-materials and sub-sub-materials)', async () => {
 
-				subCurtainUpLtdCompany = await chai.request(app)
+				subCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -4276,7 +4278,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s subsequent versions (but not their sub-materials and sub-sub-materials)', async () => {
 
-				midCurtainUpLtdCompany = await chai.request(app)
+				midCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -4332,7 +4334,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s subsequent versions (and their sub-materials and sub-sub-materials)', async () => {
 
-				surCurtainUpLtdCompany = await chai.request(app)
+				surCurtainUpLtdCompany = await request.execute(app)
 					.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
@@ -4596,7 +4598,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				subWaldoPartIMaterial = await chai.request(app)
+				subWaldoPartIMaterial = await request.execute(app)
 					.get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -4742,7 +4744,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				midWaldoSectionIMaterial = await chai.request(app)
+				midWaldoSectionIMaterial = await request.execute(app)
 					.get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -4888,7 +4890,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sub-sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				surWaldoMaterial = await chai.request(app)
+				surWaldoMaterial = await request.execute(app)
 					.get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5034,7 +5036,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				janeRoeJrPerson = await chai.request(app)
+				janeRoeJrPerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5180,7 +5182,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				janeRoePerson = await chai.request(app)
+				janeRoePerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5326,7 +5328,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				janeRoeSrPerson = await chai.request(app)
+				janeRoeSrPerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5472,7 +5474,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				subFictioneersLtdCompany = await chai.request(app)
+				subFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5618,7 +5620,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				midFictioneersLtdCompany = await chai.request(app)
+				midFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5764,7 +5766,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				surFictioneersLtdCompany = await chai.request(app)
+				surFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -5938,7 +5940,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sur-material\'s sourcing materials (and their sur-material, but not their sub-materials)', async () => {
 
-				subWaldoPartIMaterial = await chai.request(app)
+				subWaldoPartIMaterial = await request.execute(app)
 					.get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -6037,7 +6039,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sourcing materials (and their sur-material and sub-materials)', async () => {
 
-				midWaldoSectionIMaterial = await chai.request(app)
+				midWaldoSectionIMaterial = await request.execute(app)
 					.get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -6230,7 +6232,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sub-material\'s sourcing materials (and their sur-material and sub-materials)', async () => {
 
-				surWaldoMaterial = await chai.request(app)
+				surWaldoMaterial = await request.execute(app)
 					.get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -6423,7 +6425,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s sourcing materials (and their sur-material, but not their sub-materials)', async () => {
 
-				janeRoeJrPerson = await chai.request(app)
+				janeRoeJrPerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -6522,7 +6524,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sourcing materials (and their sur-material and sub-materials)', async () => {
 
-				janeRoePerson = await chai.request(app)
+				janeRoePerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -6715,7 +6717,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s sourcing materials (and their sur-material and sub-materials)', async () => {
 
-				janeRoeSrPerson = await chai.request(app)
+				janeRoeSrPerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -6908,7 +6910,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s sourcing materials (and their sur-material, but not their sub-materials)', async () => {
 
-				subFictioneersLtdCompany = await chai.request(app)
+				subFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7007,7 +7009,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s sourcing materials (and their sur-material and sur-sur-material)', async () => {
 
-				midFictioneersLtdCompany = await chai.request(app)
+				midFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7200,7 +7202,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sub-material\'s sourcing materials (and their sur-material and sub-materials)', async () => {
 
-				surFictioneersLtdCompany = await chai.request(app)
+				surFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7421,7 +7423,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sur-sur-material\'s sourcing materials (but not their sub-materials and sub-sub-materials)', async () => {
 
-				subWaldoPartIMaterial = await chai.request(app)
+				subWaldoPartIMaterial = await request.execute(app)
 					.get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7477,7 +7479,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sur-material\'s sourcing materials (but not their sub-materials and sub-sub-materials)', async () => {
 
-				midWaldoSectionIMaterial = await chai.request(app)
+				midWaldoSectionIMaterial = await request.execute(app)
 					.get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7533,7 +7535,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of its sourcing materials (and their sub-materials and sub-sub-materials)', async () => {
 
-				surWaldoMaterial = await chai.request(app)
+				surWaldoMaterial = await request.execute(app)
 					.get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7769,7 +7771,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-sur-material\'s sourcing materials (but not their sub-materials and sub-sub-materials)', async () => {
 
-				janeRoeJrPerson = await chai.request(app)
+				janeRoeJrPerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7825,7 +7827,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s sourcing materials (but not their sub-materials and sub-sub-materials)', async () => {
 
-				janeRoePerson = await chai.request(app)
+				janeRoePerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -7881,7 +7883,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sourcing materials (and their sub-materials and sub-sub-materials)', async () => {
 
-				janeRoeSrPerson = await chai.request(app)
+				janeRoeSrPerson = await request.execute(app)
 					.get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -8117,7 +8119,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-sur-material\'s sourcing materials (but not their sub-materials and sub-sub-materials)', async () => {
 
-				subFictioneersLtdCompany = await chai.request(app)
+				subFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -8173,7 +8175,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sur-material\'s sourcing materials (but not their sub-materials and sub-sub-materials)', async () => {
 
-				midFictioneersLtdCompany = await chai.request(app)
+				midFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
@@ -8229,7 +8231,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 			it('includes awards of their work\'s sourcing materials (and their sub-materials and sub-sub-materials)', async () => {
 
-				surFictioneersLtdCompany = await chai.request(app)
+				surFictioneersLtdCompany = await request.execute(app)
 					.get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [

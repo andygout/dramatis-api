@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -33,7 +35,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Tragedy of King Lear',
@@ -51,7 +53,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'King Lear',
@@ -84,7 +86,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'King Lear',
@@ -117,25 +119,25 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		kingLearCharacter = await chai.request(app)
+		kingLearCharacter = await request.execute(app)
 			.get(`/characters/${KING_LEAR_CHARACTER_UUID}`);
 
-		foolCharacter = await chai.request(app)
+		foolCharacter = await request.execute(app)
 			.get(`/characters/${FOOL_CHARACTER_UUID}`);
 
-		kingLearRoyalShakespeareProduction = await chai.request(app)
+		kingLearRoyalShakespeareProduction = await request.execute(app)
 			.get(`/productions/${KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		kingLearBarbicanProduction = await chai.request(app)
+		kingLearBarbicanProduction = await request.execute(app)
 			.get(`/productions/${KING_LEAR_BARBICAN_PRODUCTION_UUID}`);
 
-		michaelGambonPerson = await chai.request(app)
+		michaelGambonPerson = await request.execute(app)
 			.get(`/people/${MICHAEL_GAMBON_PERSON_UUID}`);
 
-		antonySherPerson = await chai.request(app)
+		antonySherPerson = await request.execute(app)
 			.get(`/people/${ANTONY_SHER_PERSON_UUID}`);
 
-		grahamTurnerPerson = await chai.request(app)
+		grahamTurnerPerson = await request.execute(app)
 			.get(`/people/${GRAHAM_TURNER_PERSON_UUID}`);
 
 	});

@@ -1,8 +1,10 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -42,7 +44,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -61,7 +63,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -81,7 +83,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -100,7 +102,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Award')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -152,7 +154,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -182,7 +184,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -213,7 +215,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -243,7 +245,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -322,7 +324,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -353,7 +355,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -385,7 +387,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -416,7 +418,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Company')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -480,7 +482,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -516,7 +518,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -553,7 +555,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -589,7 +591,7 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 
 			expect(await countNodesWithLabel('Person')).to.equal(2);
 
-			const response = await chai.request(app)
+			const response = await request.execute(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',

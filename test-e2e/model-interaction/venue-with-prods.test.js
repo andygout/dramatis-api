@@ -1,9 +1,11 @@
-import chai, { expect } from 'chai';
-import chaiHttp from 'chai-http';
+import * as chai from 'chai';
+import { default as chaiHttp, request } from 'chai-http';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -25,7 +27,7 @@ describe('Venue with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'A Streetcar Named Desire',
@@ -37,7 +39,7 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Life is a Dream',
@@ -49,7 +51,7 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		await chai.request(app)
+		await request.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Red',
@@ -61,16 +63,16 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		donmarWarehouseVenue = await chai.request(app)
+		donmarWarehouseVenue = await request.execute(app)
 			.get(`/venues/${DONMAR_WAREHOUSE_VENUE_UUID}`);
 
-		streetcarNamedDesireDonmarProduction = await chai.request(app)
+		streetcarNamedDesireDonmarProduction = await request.execute(app)
 			.get(`/productions/${A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`);
 
-		lifeIsADreamDonmarProduction = await chai.request(app)
+		lifeIsADreamDonmarProduction = await request.execute(app)
 			.get(`/productions/${LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID}`);
 
-		redDonmarProduction = await chai.request(app)
+		redDonmarProduction = await request.execute(app)
 			.get(`/productions/${RED_DONMAR_PRODUCTION_UUID}`);
 
 	});
