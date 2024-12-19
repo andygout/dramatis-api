@@ -29,28 +29,28 @@ export default [
 			sourceType: 'module'
 		},
 		rules: {
-			'comma-dangle': 2,
-			eqeqeq: 2,
-			'guard-for-in': 2,
-			'new-cap': 2,
-			'no-caller': 2,
-			'no-console': 2,
-			'no-extend-native': 2,
-			'no-irregular-whitespace': 2,
-			'no-loop-func': 2,
-			'no-multi-spaces': 2,
-			'no-multiple-empty-lines': [2, { max: 1 }],
-			'no-undef': 2,
-			'no-underscore-dangle': 2,
-			'no-unused-vars': 2,
-			'no-var': 2,
-			'one-var': [2, 'never'],
-			quotes: [2, 'single'],
-			semi: 2,
-			'space-before-function-paren': 2,
-			'spaced-comment': 2,
-			strict: [2, 'global'],
-			'wrap-iife': 2
+			'comma-dangle': 'error',
+			eqeqeq: 'error',
+			'guard-for-in': 'error',
+			'new-cap': 'error',
+			'no-caller': 'error',
+			'no-console': 'error',
+			'no-extend-native': 'error',
+			'no-irregular-whitespace': 'error',
+			'no-loop-func': 'error',
+			'no-multi-spaces': 'error',
+			'no-multiple-empty-lines': ['error', { max: 1 }],
+			'no-undef': 'error',
+			'no-underscore-dangle': 'error',
+			'no-unused-vars': 'error',
+			'no-var': 'error',
+			'one-var': ['error', 'never'],
+			quotes: ['error', 'single'],
+			semi: 'error',
+			'space-before-function-paren': 'error',
+			'spaced-comment': 'error',
+			strict: ['error', 'global'],
+			'wrap-iife': 'error'
 		}
 	},
 	{
@@ -68,8 +68,8 @@ export default [
 			mocha: mochaPlugin
 		},
 		rules: {
-			'mocha/no-exclusive-tests': 2,
-			'mocha/no-mocha-arrows': 0
+			'mocha/no-exclusive-tests': 'error',
+			'mocha/no-mocha-arrows': 'off'
 		}
 	}
 ];
