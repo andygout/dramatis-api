@@ -7,7 +7,7 @@
   "license": "MS-RSL",
   "main": "src/app.js",
   "scripts": {
-    "lint": "eslint --ext .js db-seeding/ src/ test-e2e/ test-int/ test-unit/",
+    "lint": "eslint",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",
     "unit-test": "mocha --config test-unit/.mocharc.json",
@@ -42,10 +42,11 @@
   "devDependencies": {
     "chai": "5.1.2",
     "chai-http": "5.1.1",
-    "eslint": "8.57.0",
-    "eslint-plugin-mocha": "^10.4.3",
-    "eslint-plugin-no-only-tests": "3.1.0",
+    "eslint": "9.17.0",
+    "eslint-plugin-mocha": "10.5.0",
+    "eslint-plugin-no-only-tests": "3.3.0",
     "esmock": "^2.6.6",
+    "globals": "15.14.0",
     "jsonlint": "1.6.3",
     "lintspaces-cli": "0.8.0",
     "mocha": "10.4.0",
