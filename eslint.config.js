@@ -7,7 +7,6 @@ const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import mochaPlugin from 'eslint-plugin-mocha';
-import noOnlyTestsPlugin from 'eslint-plugin-no-only-tests';
 import globals from 'globals';
 
 const compat = new FlatCompat({
@@ -66,12 +65,11 @@ export default [
 			}
 		},
 		plugins: {
-			mocha: mochaPlugin,
-			'no-only-tests': noOnlyTestsPlugin
+			mocha: mochaPlugin
 		},
 		rules: {
-			'mocha/no-mocha-arrows': 0,
-			'no-only-tests/no-only-tests': 2
+			'mocha/no-exclusive-tests': 2,
+			'mocha/no-mocha-arrows': 0
 		}
 	}
 ];
