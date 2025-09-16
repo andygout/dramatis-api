@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/node:22.2.0
+      - image: cimg/node:24.8.0
       - image: neo4j:5.26.8
         environment:
           NEO4J_AUTH: none
