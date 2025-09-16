@@ -1,5 +1,3 @@
-import { randomUUID } from 'node:crypto';
-
 import { getStubUuid } from '../../test-e2e/test-helpers/index.js';
 
 export const getRandomUuid = (opts = {}) => {
@@ -10,6 +8,6 @@ export const getRandomUuid = (opts = {}) => {
 
 	}
 
-	return randomUUID({ disableEntropyCache: true });
+	return crypto.randomUUID({ disableEntropyCache: true });
 
 };
