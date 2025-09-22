@@ -1,5 +1,3 @@
-/* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
-
 import { Router } from 'express';
 
 import {
@@ -109,6 +107,6 @@ router.delete('/venues/:uuid', venuesController.deleteRoute);
 router.get('/venues/:uuid', venuesController.showRoute);
 router.get('/venues', venuesController.listRoute);
 
-router.get('*', (request, response, next) => response.sendStatus(404));
+router.use((request, response) => response.sendStatus(404));
 
 export default router;
