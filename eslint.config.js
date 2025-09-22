@@ -17,9 +17,9 @@ const compat = new FlatCompat({
 
 export default [
 	...compat.extends(
-		'eslint:recommended',
-		'plugin:mocha/recommended'
+		'eslint:recommended'
 	),
+	mochaPlugin.configs.recommended,
 	{
 		languageOptions: {
 			globals: {
