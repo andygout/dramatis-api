@@ -35,7 +35,7 @@
   "dependencies": {
     "directly": "2.0.6",
     "dotenv": "16.6.1",
-    "express": "4.21.2",
+    "express": "5.1.0",
     "morgan": "1.10.1",
     "neo4j-driver": "5.28.2"
   },
