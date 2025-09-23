@@ -43,7 +43,7 @@
     "chai": "6.0.1",
     "chai-http": "5.1.2",
     "eslint": "9.36.0",
-    "eslint-plugin-mocha": "10.5.0",
+    "eslint-plugin-mocha": "11.1.0",
     "esmock": "2.7.3",
     "globals": "16.4.0",
     "jsonlint": "1.6.3",
