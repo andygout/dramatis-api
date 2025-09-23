@@ -1,24 +1,9 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url); // eslint-disable-line no-underscore-dangle
-const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore-dangle
-
-import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import mochaPlugin from 'eslint-plugin-mocha';
 import globals from 'globals';
 
-const compat = new FlatCompat({
-	baseDirectory: __dirname,
-	recommendedConfig: js.configs.recommended,
-	allConfig: js.configs.all
-});
-
 export default [
-	...compat.extends(
-		'eslint:recommended'
-	),
+	js.configs.recommended,
 	mochaPlugin.configs.recommended,
 	{
 		languageOptions: {
