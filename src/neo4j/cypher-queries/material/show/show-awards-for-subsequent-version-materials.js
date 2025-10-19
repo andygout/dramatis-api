@@ -32,7 +32,7 @@ export default () => `
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
 
-		WITH	
+		WITH
 			material,
 			nominatedSubsequentVersionMaterial,
 			nomineeRel,
