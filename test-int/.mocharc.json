@@ -1,4 +1,4 @@
 {
-  "file": "test-int/mocha.env.js",
+  "require": "test-int/mocha.env.js",
   "spec": "test-int/**/*.test.js"
 }
