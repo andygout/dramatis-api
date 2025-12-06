@@ -241,7 +241,7 @@ describe('Base model', () => {
 
 		context('invalid data', () => {
 
-			context('instance does not have differentiator, characterDifferentiator, qualifier, or group property', () => {
+			context('instance does not have differentiator, characterDifferentiator, or qualifier property', () => {
 
 				it('will call addPropertyError method with group context error text for name property only', async () => {
 
@@ -414,30 +414,7 @@ describe('Base model', () => {
 
 			});
 
-			context('instance has group property', () => {
-
-				it('will call addPropertyError method with group context error text for name property', async () => {
-
-					const Base = await createSubject();
-
-					const instance = new Base({ name: 'Foobar' });
-
-					spy(instance, 'addPropertyError');
-
-					const opts = { isDuplicate: true };
-
-					instance.validateUniquenessInGroup(opts);
-
-					assert.calledOnceWithExactly(
-						instance.addPropertyError,
-						'name', 'This item has been duplicated within the group'
-					);
-
-				});
-
-			});
-
-			context('instance has differentiator, characterDifferentiator, qualifier, and group property', () => {
+			context('instance has differentiator, characterDifferentiator, and qualifier property', () => {
 
 				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', async () => {
 
@@ -448,7 +425,6 @@ describe('Base model', () => {
 					instance.differentiator = '';
 					instance.characterDifferentiator = '';
 					instance.qualifier = '';
-					instance.group = '';
 
 					spy(instance, 'addPropertyError');
 
