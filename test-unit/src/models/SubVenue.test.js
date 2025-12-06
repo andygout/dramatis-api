@@ -1,5 +1,5 @@
 import esmock from 'esmock';
-import { assert, spy, stub } from 'sinon';
+import { assert, restore, spy, stub } from 'sinon';
 
 describe('SubVenue model', () => {
 
@@ -22,6 +22,12 @@ describe('SubVenue model', () => {
 				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

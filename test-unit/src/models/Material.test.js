@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, createStubInstance, spy, stub } from 'sinon';
+import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import {
 	CharacterGroup,
@@ -60,6 +60,12 @@ describe('Material model', () => {
 		};
 
 		stubs.isValidYearModule.isValidYear.withArgs(1959).returns(true);
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

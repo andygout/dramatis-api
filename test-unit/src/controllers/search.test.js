@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
 import httpMocks from 'node-mocks-http';
-import { assert, stub } from 'sinon';
+import { assert, restore, stub } from 'sinon';
 
 describe('Search controller', () => {
 
@@ -25,6 +25,12 @@ describe('Search controller', () => {
 			response: httpMocks.createResponse(),
 			next: stub()
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

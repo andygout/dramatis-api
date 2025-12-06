@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
 import httpMocks from 'node-mocks-http';
-import { assert, stub } from 'sinon';
+import { assert, restore, stub } from 'sinon';
 
 import { Character } from '../../../src/models/index.js';
 
@@ -21,6 +21,12 @@ describe('Call Class Methods module', () => {
 			response: httpMocks.createResponse(),
 			next: stub()
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

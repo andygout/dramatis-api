@@ -1,5 +1,5 @@
 import esmock from 'esmock';
-import { assert, spy, stub } from 'sinon';
+import { assert, restore, spy, stub } from 'sinon';
 
 describe('SubProductionIdentifier model', () => {
 
@@ -19,6 +19,12 @@ describe('SubProductionIdentifier model', () => {
 				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

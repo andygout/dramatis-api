@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, createStubInstance, spy, stub } from 'sinon';
+import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { SubVenue } from '../../../src/models/index.js';
 
@@ -24,6 +24,12 @@ describe('Venue model', () => {
 				SubVenue: SubVenueStub
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

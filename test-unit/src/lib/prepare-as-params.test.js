@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, stub } from 'sinon';
+import { assert, restore, stub } from 'sinon';
 
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
@@ -18,6 +18,12 @@ describe('Prepare As Params module', () => {
 				getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, createStubInstance, spy, stub } from 'sinon';
+import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import {
 	CastMember,
@@ -107,6 +107,12 @@ describe('Production model', () => {
 				VenueBase: VenueBaseStub
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

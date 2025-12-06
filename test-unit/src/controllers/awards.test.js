@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, createStubInstance, stub } from 'sinon';
+import { assert, createStubInstance, restore, stub } from 'sinon';
 
 import { Award } from '../../../src/models/index.js';
 
@@ -31,6 +31,12 @@ describe('Awards controller', () => {
 			response: stub(),
 			next: stub()
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 
