@@ -48,12 +48,17 @@ describe('OriginalVersionMaterial model', () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: false
 				});
+
 				const OriginalVersionMaterial = await createSubject();
+
 				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
@@ -87,10 +92,15 @@ describe('OriginalVersionMaterial model', () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: true
 				});
+
 				const OriginalVersionMaterial = await createSubject();
+
 				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,

@@ -32,7 +32,9 @@ describe('ProductionIdentifier model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
 			const ProductionIdentifier = await createSubject();
+
 			new ProductionIdentifier();
+
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(1);
 
 		});
@@ -42,11 +44,14 @@ describe('ProductionIdentifier model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const ProductionIdentifier = await createSubject();
+
 				const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				assert.calledWithExactly(
 					stubs.stringsModule.getTrimmedOrEmptyString,
 					'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				);
+
 				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -60,9 +65,13 @@ describe('ProductionIdentifier model', () => {
 		it('will call validateStringForProperty method', async () => {
 
 			const ProductionIdentifier = await createSubject();
+
 			const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 			spy(instance, 'validateStringForProperty');
+
 			instance.validateUuid();
+
 			assert.calledOnceWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
 
 		});

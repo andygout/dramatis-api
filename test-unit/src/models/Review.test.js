@@ -55,7 +55,9 @@ describe('Review model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
 			const Review = await createSubject();
+
 			new Review();
+
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
 
 		});
@@ -65,7 +67,9 @@ describe('Review model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ url: 'https://www.foo.com' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'https://www.foo.com');
 				expect(instance.url).to.equal('https://www.foo.com');
 
@@ -78,7 +82,9 @@ describe('Review model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ date: '2024-04-03' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2024-04-03');
 				expect(instance.date).to.equal('2024-04-03');
 
@@ -91,7 +97,9 @@ describe('Review model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ url: 'https://www.foo.com' });
+
 				expect(instance.publication instanceof Company).to.be.true;
 
 			});
@@ -99,12 +107,14 @@ describe('Review model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({
 					url: 'https://www.foo.com',
 					publication: {
 						name: 'Financial Times'
 					}
 				});
+
 				expect(instance.publication instanceof Company).to.be.true;
 
 			});
@@ -116,7 +126,9 @@ describe('Review model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ url: 'https://www.foo.com' });
+
 				expect(instance.critic instanceof Person).to.be.true;
 
 			});
@@ -124,12 +136,14 @@ describe('Review model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({
 					name: 'https://www.foo.com',
 					critic: {
 						name: 'Sarah Hemming'
 					}
 				});
+
 				expect(instance.critic instanceof Person).to.be.true;
 
 			});
@@ -145,6 +159,7 @@ describe('Review model', () => {
 			it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({
 					url: 'https://www.foo.com',
 					publication: {
@@ -154,11 +169,14 @@ describe('Review model', () => {
 						name: 'Sarah Hemming'
 					}
 				});
+
 				spy(instance, 'validateUrl');
 				spy(instance, 'validateUniquenessInGroup');
 				spy(instance, 'validateUrlPresenceIfNamedChildren');
 				spy(instance, 'validateDate');
+
 				instance.runInputValidations({ isDuplicate: false, duplicatePublicationAndCriticEntities: [] });
+
 				assert.callOrder(
 					instance.validateUrl,
 					instance.validateUniquenessInGroup,
@@ -193,6 +211,7 @@ describe('Review model', () => {
 			it('calls instance\'s publication and critic validateName methods with an argument that it is not required', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({
 					url: '',
 					publication: {
@@ -202,7 +221,9 @@ describe('Review model', () => {
 						name: 'Sarah Hemming'
 					}
 				});
+
 				instance.runInputValidations({ isDuplicate: false });
+
 				assert.calledOnceWithExactly(instance.publication.validateName, { isRequired: false });
 				assert.calledOnceWithExactly(instance.critic.validateName, { isRequired: false });
 
@@ -217,9 +238,13 @@ describe('Review model', () => {
 		it('will call validateStringForProperty method', async () => {
 
 			const Review = await createSubject();
+
 			const instance = new Review({ url: 'https://www.foo.com' });
+
 			spy(instance, 'validateStringForProperty');
+
 			instance.validateUrl({ isRequired: false });
+
 			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'url', { isRequired: false }
@@ -232,9 +257,13 @@ describe('Review model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ url: 'https://www.foo.com' });
+
 				spy(instance, 'addPropertyError');
+
 				instance.validateUrl({ isRequired: false });
+
 				assert.notCalled(instance.addPropertyError);
 
 			});
@@ -246,9 +275,13 @@ describe('Review model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ url: '' });
+
 				spy(instance, 'addPropertyError');
+
 				instance.validateUrl({ isRequired: false });
+
 				assert.notCalled(instance.addPropertyError);
 
 			});
@@ -260,9 +293,13 @@ describe('Review model', () => {
 			it('will call addPropertyError method', async () => {
 
 				const Review = await createSubject();
+
 				const instance = new Review({ url: 'foobar' });
+
 				spy(instance, 'addPropertyError');
+
 				instance.validateUrl({ isRequired: false });
+
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'url', 'URL must be a valid URL'
@@ -279,9 +316,13 @@ describe('Review model', () => {
 		it('will call validatePropertyPresenceIfNamedChildren', async () => {
 
 			const Review = await createSubject();
+
 			const instance = new Review();
+
 			spy(instance, 'validatePropertyPresenceIfNamedChildren');
+
 			instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]);
+
 			assert.calledOnceWithExactly(
 				instance.validatePropertyPresenceIfNamedChildren,
 				'url', [{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]
@@ -300,9 +341,13 @@ describe('Review model', () => {
 				it('will not call isValidDate or addPropertyError method', async () => {
 
 					const Review = await createSubject();
+
 					const instance = new Review({ date: '' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDate();
+
 					assert.notCalled(stubs.isValidDateModule.isValidDate);
 					assert.notCalled(instance.addPropertyError);
 
@@ -315,9 +360,13 @@ describe('Review model', () => {
 				it('will call isValidDate; will not call addPropertyError method', async () => {
 
 					const Review = await createSubject();
+
 					const instance = new Review({ date: '2024-04-03' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDate();
+
 					assert.calledOnceWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
 					assert.notCalled(instance.addPropertyError);
 
@@ -334,10 +383,15 @@ describe('Review model', () => {
 				it('will call isValidDate and addPropertyError method', async () => {
 
 					stubs.isValidDateModule.isValidDate.returns(false);
+
 					const Review = await createSubject();
+
 					const instance = new Review({ date: 'foobar' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDate();
+
 					assert.calledOnceWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
 					assert.calledOnceWithExactly(instance.addPropertyError, 'date', 'Value must be in date format');
 

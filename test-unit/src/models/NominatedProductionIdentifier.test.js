@@ -11,9 +11,13 @@ describe('NominatedProductionIdentifier model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const instance = new NominatedProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				stub(instance, 'confirmExistenceInDatabase').resolves(true);
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations();
+
 				assert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
 				assert.notCalled(instance.addPropertyError);
 
@@ -26,9 +30,13 @@ describe('NominatedProductionIdentifier model', () => {
 			it('will call addPropertyError method', async () => {
 
 				const instance = new NominatedProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				stub(instance, 'confirmExistenceInDatabase').resolves(false);
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations();
+
 				assert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,

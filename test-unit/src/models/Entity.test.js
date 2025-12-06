@@ -75,7 +75,9 @@ describe('Entity model', () => {
 			it('assigns value', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
 			});
@@ -85,7 +87,9 @@ describe('Entity model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
 			const Entity = await createSubject();
+
 			new Entity({ differentiator: '1' });
+
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
 
 		});
@@ -97,7 +101,9 @@ describe('Entity model', () => {
 				it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 					const Entity = await createSubject();
+
 					const instance = new Entity({ differentiator: '1' });
+
 					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
 					expect(instance.differentiator).to.equal('1');
 
@@ -112,7 +118,9 @@ describe('Entity model', () => {
 					it('does not assign differentiator property', async () => {
 
 						const AwardCeremony = await createSubject('AwardCeremony');
+
 						const instance = new AwardCeremony({ differentiator: '1' });
+
 						expect(instance).to.not.have.property('differentiator');
 
 					});
@@ -124,7 +132,9 @@ describe('Entity model', () => {
 					it('does not assign differentiator property', async () => {
 
 						const Production = await createSubject('Production');
+
 						const instance = new Production({ differentiator: '1' });
+
 						expect(instance).to.not.have.property('differentiator');
 
 					});
@@ -136,10 +146,12 @@ describe('Entity model', () => {
 					it('does not assign differentiator property', async () => {
 
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
+
 						const instance = new ProductionIdentifier({
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 							differentiator: '1'
 						});
+
 						expect(instance).to.not.have.property('differentiator');
 
 					});
@@ -159,9 +171,13 @@ describe('Entity model', () => {
 			it('returns true', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				instance.differentiator = '';
+
 				const result = instance.hasDifferentiatorProperty();
+
 				expect(result).to.be.true;
 
 			});
@@ -173,8 +189,11 @@ describe('Entity model', () => {
 			it('returns false', async () => {
 
 				const Production = await createSubject('Production');
+
 				const instance = new Production({ name: 'Foobar', differentiator: '1' });
+
 				const result = instance.hasDifferentiatorProperty();
+
 				expect(result).to.be.false;
 
 			});
@@ -188,10 +207,14 @@ describe('Entity model', () => {
 		it('calls instance\'s validate methods', async () => {
 
 			const Entity = await createSubject();
+
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
+
 			instance.runInputValidations();
+
 			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
 			assert.calledOnceWithExactly(instance.validateDifferentiator);
 
@@ -204,9 +227,13 @@ describe('Entity model', () => {
 		it('will call validateStringForProperty method', async () => {
 
 			const Entity = await createSubject();
+
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 			spy(instance, 'validateStringForProperty');
+
 			instance.validateDifferentiator();
+
 			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'differentiator', { isRequired: false }
@@ -221,9 +248,13 @@ describe('Entity model', () => {
 		it('will call validateStringForProperty method', async () => {
 
 			const Entity = await createSubject();
+
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 			spy(instance, 'validateStringForProperty');
+
 			instance.validateSubtitle();
+
 			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'subtitle', { isRequired: false }
@@ -244,10 +275,15 @@ describe('Entity model', () => {
 					it('will not add properties to errors property', async () => {
 
 						const Entity = await createSubject();
+
 						const instance = new Entity({ name: 'National Theatre' });
+
 						instance.differentiator = '';
+
 						spy(instance, 'addPropertyError');
+
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
+
 						assert.notCalled(instance.addPropertyError);
 
 					});
@@ -259,10 +295,15 @@ describe('Entity model', () => {
 					it('will not add properties to errors property', async () => {
 
 						const Entity = await createSubject();
+
 						const instance = new Entity({ name: 'Olivier Theatre' });
+
 						instance.differentiator = '';
+
 						spy(instance, 'addPropertyError');
+
 						instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
+
 						assert.notCalled(instance.addPropertyError);
 
 					});
@@ -274,10 +315,15 @@ describe('Entity model', () => {
 					it('will not add properties to errors property', async () => {
 
 						const Entity = await createSubject();
+
 						const instance = new Entity({ name: '', differentiator: '' });
+
 						instance.differentiator = '';
+
 						spy(instance, 'addPropertyError');
+
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
+
 						assert.notCalled(instance.addPropertyError);
 
 					});
@@ -289,10 +335,15 @@ describe('Entity model', () => {
 					it('will not add properties to errors property', async () => {
 
 						const Entity = await createSubject();
+
 						const instance = new Entity({ name: '', differentiator: '1' });
+
 						instance.differentiator = '';
+
 						spy(instance, 'addPropertyError');
+
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '1' });
+
 						assert.notCalled(instance.addPropertyError);
 
 					});
@@ -308,9 +359,13 @@ describe('Entity model', () => {
 					it('will not add properties to errors property', async () => {
 
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
+
 						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 						spy(instance, 'addPropertyError');
+
 						instance.validateNoAssociationWithSelf({ uuid: undefined });
+
 						assert.notCalled(instance.addPropertyError);
 
 					});
@@ -322,9 +377,13 @@ describe('Entity model', () => {
 					it('will not add properties to errors property', async () => {
 
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
+
 						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 						spy(instance, 'addPropertyError');
+
 						instance.validateNoAssociationWithSelf({ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' });
+
 						assert.notCalled(instance.addPropertyError);
 
 					});
@@ -342,10 +401,15 @@ describe('Entity model', () => {
 				it('adds properties whose values are arrays to errors property', async () => {
 
 					const Entity = await createSubject();
+
 					const instance = new Entity({ name: 'National Theatre' });
+
 					instance.differentiator = '';
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
+
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
@@ -365,9 +429,13 @@ describe('Entity model', () => {
 				it('adds properties whose values are arrays to errors property', async () => {
 
 					const ProductionIdentifier = await createSubject('ProductionIdentifier');
+
 					const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateNoAssociationWithSelf({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'uuid', 'Instance cannot form association with itself'
@@ -388,9 +456,13 @@ describe('Entity model', () => {
 			it('will call validateUniquenessInDatabase method', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				spy(instance, 'validateUniquenessInDatabase');
+
 				await instance.runDatabaseValidations();
+
 				assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
 
 			});
@@ -402,9 +474,13 @@ describe('Entity model', () => {
 			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
 
 				const Production = await createSubject('Production');
+
 				const instance = new Production();
+
 				spy(instance, 'validateUniquenessInDatabase');
+
 				await instance.runDatabaseValidations();
+
 				assert.notCalled(instance.validateUniquenessInDatabase);
 
 			});
@@ -420,15 +496,20 @@ describe('Entity model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				stubs.prepareAsParamsModule.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.validateUniquenessInDatabase();
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
@@ -461,15 +542,20 @@ describe('Entity model', () => {
 			it('will call addPropertyError method', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				stubs.prepareAsParamsModule.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.validateUniquenessInDatabase();
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
@@ -513,9 +599,13 @@ describe('Entity model', () => {
 		it('will call hasErrors function and assign its return value to the instance\'s hasErrors property', async () => {
 
 			const Entity = await createSubject();
+
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 			instance.setErrorStatus();
+
 			assert.calledOnceWithExactly(stubs.hasErrorsModule.hasErrors, instance);
+
 			expect(instance.hasErrors).to.be.false;
 
 		});
@@ -529,9 +619,13 @@ describe('Entity model', () => {
 			it('confirms existence of instance in database using model value of instance', async () => {
 
 				const Person = await createSubject('Person');
+
 				const instance = new Person({ name: 'Antony Sher' });
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+
 				await instance.confirmExistenceInDatabase();
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
@@ -554,10 +648,15 @@ describe('Entity model', () => {
 			it('confirms existence of instance in database using provided model value', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				const model = 'PRODUCTION';
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+
 				await instance.confirmExistenceInDatabase({ model });
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
@@ -577,10 +676,15 @@ describe('Entity model', () => {
 			it('returns the isExistent value from the database response', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				const model = 'PRODUCTION';
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+
 				const result = await instance.confirmExistenceInDatabase({ model });
+
 				expect(result).to.equal(true);
 
 			});
@@ -592,10 +696,15 @@ describe('Entity model', () => {
 			it('returns the isExistent value from the database response', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				const model = 'PRODUCTION';
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: false });
+
 				const result = await instance.confirmExistenceInDatabase({ model });
+
 				expect(result).to.equal(false);
 
 			});
@@ -611,7 +720,9 @@ describe('Entity model', () => {
 			it('creates', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				stubs.prepareAsParamsModule.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
@@ -619,11 +730,14 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					})
 					.onSecondCall().returns('prepareAsParams response');
+
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
 				spy(instance, 'constructor');
+
 				const result = await instance.createUpdate(stubs.cypherQueriesModule.sharedQueries.getCreateQuery);
+
 				assert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,
@@ -663,7 +777,9 @@ describe('Entity model', () => {
 			it('updates', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				stubs.prepareAsParamsModule.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
@@ -671,11 +787,13 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					})
 					.onSecondCall().returns('prepareAsParams response');
+
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
 				spy(instance, 'constructor');
 				const result = await instance.createUpdate(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery);
+
 				assert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,
@@ -719,7 +837,9 @@ describe('Entity model', () => {
 			it('returns instance without creating/updating', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				stubs.prepareAsParamsModule.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
@@ -727,13 +847,18 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					});
 				stubs.hasErrorsModule.hasErrors.returns(true);
+
 				const getCreateUpdateQueryStub = stub();
+
 				instance.model = 'VENUE';
+
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
 				spy(instance, 'setErrorStatus');
 				spy(instance, 'constructor');
+
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
+
 				assert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,
@@ -779,10 +904,15 @@ describe('Entity model', () => {
 			it('calls createUpdate method with function to get model-specific create query as argument', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				instance.model = 'PRODUCTION';
+
 				spy(instance, 'createUpdate');
+
 				await instance.create();
+
 				assert.calledOnceWithExactly(
 					instance.createUpdate,
 					stubs.cypherQueriesModule.getCreateQueries[instance.model]
@@ -797,9 +927,13 @@ describe('Entity model', () => {
 			it('calls createUpdate method with function to get shared create query as argument', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				spy(instance, 'createUpdate');
+
 				await instance.create();
+
 				assert.calledOnceWithExactly(
 					instance.createUpdate,
 					stubs.cypherQueriesModule.sharedQueries.getCreateQuery
@@ -818,10 +952,15 @@ describe('Entity model', () => {
 			it('gets edit data using model-specific query', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				instance.model = 'PRODUCTION';
+
 				spy(instance, 'constructor');
+
 				const result = await instance.edit();
+
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getEditQueries[instance.model]);
 				assert.notCalled(stubs.cypherQueriesModule.sharedQueries.getEditQuery);
 				assert.calledOnceWithExactly(
@@ -840,9 +979,13 @@ describe('Entity model', () => {
 			it('gets edit data using shared query', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				spy(instance, 'constructor');
+
 				const result = await instance.edit();
+
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getEditQuery, instance.model);
 				assert.notCalled(stubs.cypherQueriesModule.getEditQueries.PRODUCTION);
 				assert.calledOnceWithExactly(
@@ -865,10 +1008,15 @@ describe('Entity model', () => {
 			it('throws a Not Found error and does not call the createUpdate method', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				instance.model = 'PRODUCTION';
+
 				stub(instance, 'confirmExistenceInDatabase').returns(false);
+
 				spy(instance, 'createUpdate');
+
 				try {
 					await instance.update();
 				} catch (error) {
@@ -888,11 +1036,17 @@ describe('Entity model', () => {
 				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
 
 					const Entity = await createSubject();
+
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 					instance.model = 'PRODUCTION';
+
 					stub(instance, 'confirmExistenceInDatabase').returns(true);
+
 					spy(instance, 'createUpdate');
+
 					await instance.update();
+
 					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
 					assert.calledOnceWithExactly(
 						instance.createUpdate,
@@ -908,10 +1062,15 @@ describe('Entity model', () => {
 				it('calls createUpdate method with function to get shared update query as argument', async () => {
 
 					const Entity = await createSubject();
+
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 					stub(instance, 'confirmExistenceInDatabase').returns(true);
+
 					spy(instance, 'createUpdate');
+
 					await instance.update();
+
 					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
 					assert.calledOnceWithExactly(
 						instance.createUpdate,
@@ -935,7 +1094,9 @@ describe('Entity model', () => {
 				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async () => {
 
 					const Entity = await createSubject();
+
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
 						name: 'Almeida Theatre',
@@ -943,11 +1104,15 @@ describe('Entity model', () => {
 						isDeleted: true,
 						associatedModels: []
 					});
+
 					instance.differentiator = '';
+
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
+
 					const result = await instance.delete();
+
 					assert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
@@ -983,7 +1148,9 @@ describe('Entity model', () => {
 				it('deletes instance and returns newly instantiated instance with assigned name property', async () => {
 
 					const Production = await createSubject('Production');
+
 					const instance = new Production();
+
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
 						name: 'Hamlet',
@@ -991,10 +1158,13 @@ describe('Entity model', () => {
 						isDeleted: true,
 						associatedModels: []
 					});
+
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
+
 					const result = await instance.delete();
+
 					assert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
@@ -1064,7 +1234,9 @@ describe('Entity model', () => {
 				it('returns instance without deleting', async () => {
 
 					const Entity = await createSubject();
+
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 					stubs.hasErrorsModule.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
@@ -1073,11 +1245,15 @@ describe('Entity model', () => {
 						isDeleted: false,
 						associatedModels: ['Production']
 					});
+
 					instance.differentiator = '';
+
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
+
 					const result = await instance.delete();
+
 					assert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
@@ -1118,7 +1294,9 @@ describe('Entity model', () => {
 				it('returns instance without deleting', async () => {
 
 					const Production = await createSubject('Production');
+
 					const instance = new Production({ name: 'Foobar' });
+
 					stubs.hasErrorsModule.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
@@ -1127,10 +1305,13 @@ describe('Entity model', () => {
 						isDeleted: false,
 						associatedModels: ['Venue']
 					});
+
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
 					spy(instance, 'setErrorStatus');
+
 					const result = await instance.delete();
+
 					assert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
@@ -1210,9 +1391,13 @@ describe('Entity model', () => {
 			it('gets show data', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				instance.model = 'VENUE';
+
 				const result = await instance.show();
+
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.VENUE);
 				assert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -1229,9 +1414,13 @@ describe('Entity model', () => {
 			it('gets show data', async () => {
 
 				const Entity = await createSubject();
+
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+
 				instance.model = 'PRODUCTION';
+
 				const result = await instance.show();
+
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.PRODUCTION);
 				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
@@ -1255,7 +1444,9 @@ describe('Entity model', () => {
 		it('gets list data', async () => {
 
 			const Entity = await createSubject();
+
 			const result = await Entity.list('model');
+
 			assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getListQuery, 'model');
 			assert.calledOnceWithExactly(
 				stubs.neo4jQueryModule.neo4jQuery,

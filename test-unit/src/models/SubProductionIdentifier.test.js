@@ -48,12 +48,17 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+
 				const SubProductionIdentifier = await createSubject();
+
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery
@@ -86,12 +91,17 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+
 				const SubProductionIdentifier = await createSubject();
+
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -128,12 +138,17 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+
 				const SubProductionIdentifier = await createSubject();
+
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -170,12 +185,17 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
+
 				const SubProductionIdentifier = await createSubject();
+
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -212,12 +232,17 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: true,
 					isSubjectProductionASubSubProduction: false
 				});
+
 				const SubProductionIdentifier = await createSubject();
+
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -254,12 +279,17 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: true
 				});
+
 				const SubProductionIdentifier = await createSubject();
+
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
+
 				assert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,

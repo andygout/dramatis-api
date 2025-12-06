@@ -50,12 +50,17 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
+
 				const SubMaterial = await createSubject();
+
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
@@ -90,12 +95,17 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
+
 				const SubMaterial = await createSubject();
+
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
@@ -139,12 +149,17 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
+
 				const SubMaterial = await createSubject();
+
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
@@ -188,12 +203,17 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: true,
 					isSubjectMaterialASubSubMaterial: false
 				});
+
 				const SubMaterial = await createSubject();
+
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,
@@ -237,12 +257,17 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: true
 				});
+
 				const SubMaterial = await createSubject();
+
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery,

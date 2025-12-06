@@ -42,7 +42,9 @@ describe('Festival model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Festival = await createSubject();
+
 				const instance = new Festival({ name: '2008' });
+
 				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
 
 			});
@@ -50,12 +52,14 @@ describe('Festival model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Festival = await createSubject();
+
 				const instance = new Festival({
 					name: '2008',
 					festivalSeries: {
 						name: 'Edinburgh International Festival'
 					}
 				});
+
 				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
 
 			});
@@ -69,6 +73,7 @@ describe('Festival model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const Festival = await createSubject();
+
 			const instance = new Festival({
 				name: '2008',
 				differentiator: '',
@@ -77,9 +82,12 @@ describe('Festival model', () => {
 					differentiator: ''
 				}
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
+
 			instance.runInputValidations();
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,

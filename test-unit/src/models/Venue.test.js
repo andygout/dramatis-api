@@ -46,7 +46,9 @@ describe('Venue model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Venue = await createSubject();
+
 				const instance = new Venue({ name: 'National Theatre' });
+
 				expect(instance.subVenues).to.deep.equal([]);
 
 			});
@@ -54,6 +56,7 @@ describe('Venue model', () => {
 			it('assigns array of subVenues if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const Venue = await createSubject();
+
 				const instance = new Venue({
 					name: 'National Theatre',
 					subVenues: [
@@ -68,6 +71,7 @@ describe('Venue model', () => {
 						}
 					]
 				});
+
 				expect(instance.subVenues.length).to.equal(3);
 				expect(instance.subVenues[0] instanceof SubVenue).to.be.true;
 				expect(instance.subVenues[1] instanceof SubVenue).to.be.true;
@@ -84,6 +88,7 @@ describe('Venue model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const Venue = await createSubject();
+
 			const instance = new Venue({
 				name: 'National Theatre',
 				differentiator: '',
@@ -94,9 +99,12 @@ describe('Venue model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
+
 			instance.runInputValidations();
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
@@ -132,6 +140,7 @@ describe('Venue model', () => {
 		it('calls associated subVenues\' runDatabaseValidations method', async () => {
 
 			const Venue = await createSubject();
+
 			const instance = new Venue({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'National Theatre',
@@ -141,8 +150,11 @@ describe('Venue model', () => {
 					}
 				]
 			});
+
 			stub(instance, 'validateUniquenessInDatabase');
+
 			await instance.runDatabaseValidations();
+
 			assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
 			assert.calledOnceWithExactly(
 				instance.subVenues[0].runDatabaseValidations,

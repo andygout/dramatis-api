@@ -46,7 +46,9 @@ describe('CharacterGroup model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const CharacterGroup = await createSubject();
+
 				const instance = new CharacterGroup({ name: 'Montagues' });
+
 				expect(instance.characters).to.deep.equal([]);
 
 			});
@@ -54,6 +56,7 @@ describe('CharacterGroup model', () => {
 			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const CharacterGroup = await createSubject();
+
 				const instance = new CharacterGroup({
 					name: 'Montagues',
 					characters: [
@@ -68,6 +71,7 @@ describe('CharacterGroup model', () => {
 						}
 					]
 				});
+
 				expect(instance.characters.length).to.equal(3);
 				expect(instance.characters[0] instanceof CharacterDepiction).to.be.true;
 				expect(instance.characters[1] instanceof CharacterDepiction).to.be.true;
@@ -84,6 +88,7 @@ describe('CharacterGroup model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const CharacterGroup = await createSubject();
+
 			const instance = new CharacterGroup({
 				name: 'Montagues',
 				characters: [
@@ -92,8 +97,11 @@ describe('CharacterGroup model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
+
 			instance.runInputValidations({ isDuplicate: false });
+
 			assert.callOrder(
 				instance.validateName,
 				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,

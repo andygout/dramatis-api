@@ -49,12 +49,17 @@ describe('SubVenue model', () => {
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
 				});
+
 				const SubVenue = await createSubject();
+
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
@@ -88,12 +93,17 @@ describe('SubVenue model', () => {
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
 				});
+
 				const SubVenue = await createSubject();
+
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
@@ -136,12 +146,17 @@ describe('SubVenue model', () => {
 					isSurVenue: true,
 					isSubjectVenueASubVenue: false
 				});
+
 				const SubVenue = await createSubject();
+
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
@@ -184,12 +199,17 @@ describe('SubVenue model', () => {
 					isSurVenue: false,
 					isSubjectVenueASubVenue: true
 				});
+
 				const SubVenue = await createSubject();
+
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
