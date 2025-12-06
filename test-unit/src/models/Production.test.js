@@ -129,7 +129,9 @@ describe('Production model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
 			const Production = await createSubject();
+
 			new Production();
+
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(5);
 
 		});
@@ -139,7 +141,9 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ subtitle: 'Prince of Denmark' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
 
@@ -152,7 +156,9 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ startDate: '2010-09-30' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-09-30');
 				expect(instance.startDate).to.equal('2010-09-30');
 
@@ -165,7 +171,9 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ pressDate: '2010-10-07' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2010-10-07');
 				expect(instance.pressDate).to.equal('2010-10-07');
 
@@ -178,7 +186,9 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ endDate: '2011-01-26' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), '2011-01-26');
 				expect(instance.endDate).to.equal('2011-01-26');
 
@@ -191,7 +201,9 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.material instanceof MaterialBase).to.be.true;
 
 			});
@@ -199,12 +211,14 @@ describe('Production model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					material: {
 						name: 'The Tragedy of Hamlet'
 					}
 				});
+
 				expect(instance.material instanceof MaterialBase).to.be.true;
 
 			});
@@ -216,7 +230,9 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.venue instanceof VenueBase).to.be.true;
 
 			});
@@ -224,12 +240,14 @@ describe('Production model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					venue: {
 						name: 'Olivier Theatre'
 					}
 				});
+
 				expect(instance.venue instanceof VenueBase).to.be.true;
 
 			});
@@ -241,7 +259,9 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.season instanceof Season).to.be.true;
 
 			});
@@ -249,12 +269,14 @@ describe('Production model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					season: {
 						name: 'Shakesperean Tragedy Season'
 					}
 				});
+
 				expect(instance.season instanceof Season).to.be.true;
 
 			});
@@ -266,7 +288,9 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.festival instanceof FestivalBase).to.be.true;
 
 			});
@@ -274,12 +298,14 @@ describe('Production model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					festival: {
 						name: 'The Complete Works'
 					}
 				});
+
 				expect(instance.festival instanceof FestivalBase).to.be.true;
 
 			});
@@ -291,7 +317,9 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({});
+
 				expect(instance.subProductions).to.deep.equal([]);
 
 			});
@@ -299,6 +327,7 @@ describe('Production model', () => {
 			it('assigns array of subProductions if included in props, retaining those with empty or whitespace-only string uuids', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					subProductions: [
 						{
@@ -312,6 +341,7 @@ describe('Production model', () => {
 						}
 					]
 				});
+
 				expect(instance.subProductions.length).to.equal(3);
 				expect(instance.subProductions[0] instanceof SubProductionIdentifier).to.be.true;
 				expect(instance.subProductions[1] instanceof SubProductionIdentifier).to.be.true;
@@ -326,7 +356,9 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.producerCredits).to.deep.equal([]);
 
 			});
@@ -334,6 +366,7 @@ describe('Production model', () => {
 			it('assigns array of produucerCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					producerCredits: [
@@ -348,6 +381,7 @@ describe('Production model', () => {
 						}
 					]
 				});
+
 				expect(instance.producerCredits.length).to.equal(3);
 				expect(instance.producerCredits[0] instanceof ProducerCredit).to.be.true;
 				expect(instance.producerCredits[1] instanceof ProducerCredit).to.be.true;
@@ -362,7 +396,9 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.cast).to.deep.equal([]);
 
 			});
@@ -370,6 +406,7 @@ describe('Production model', () => {
 			it('assigns array of cast if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
@@ -384,6 +421,7 @@ describe('Production model', () => {
 						}
 					]
 				});
+
 				expect(instance.cast.length).to.equal(3);
 				expect(instance.cast[0] instanceof CastMember).to.be.true;
 				expect(instance.cast[1] instanceof CastMember).to.be.true;
@@ -398,7 +436,9 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.creativeCredits).to.deep.equal([]);
 
 			});
@@ -406,6 +446,7 @@ describe('Production model', () => {
 			it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -420,6 +461,7 @@ describe('Production model', () => {
 						}
 					]
 				});
+
 				expect(instance.creativeCredits.length).to.equal(3);
 				expect(instance.creativeCredits[0] instanceof CreativeCredit).to.be.true;
 				expect(instance.creativeCredits[1] instanceof CreativeCredit).to.be.true;
@@ -434,7 +476,9 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.crewCredits).to.deep.equal([]);
 
 			});
@@ -442,6 +486,7 @@ describe('Production model', () => {
 			it('assigns array of crewCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
@@ -456,6 +501,7 @@ describe('Production model', () => {
 						}
 					]
 				});
+
 				expect(instance.crewCredits.length).to.equal(3);
 				expect(instance.crewCredits[0] instanceof CrewCredit).to.be.true;
 				expect(instance.crewCredits[1] instanceof CrewCredit).to.be.true;
@@ -470,7 +516,9 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({ name: 'Hamlet' });
+
 				expect(instance.reviews).to.deep.equal([]);
 
 			});
@@ -478,6 +526,7 @@ describe('Production model', () => {
 			it('assigns array of reviews if included in props, retaining those with empty or whitespace-only string urls', async () => {
 
 				const Production = await createSubject();
+
 				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
@@ -492,6 +541,7 @@ describe('Production model', () => {
 						}
 					]
 				});
+
 				expect(instance.reviews.length).to.equal(3);
 				expect(instance.reviews[0] instanceof Review).to.be.true;
 				expect(instance.reviews[1] instanceof Review).to.be.true;
@@ -508,6 +558,7 @@ describe('Production model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const Production = await createSubject();
+
 			const instance = new Production({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'Hamlet',
@@ -549,10 +600,13 @@ describe('Production model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateSubtitle');
 			spy(instance, 'validateDates');
+
 			instance.runInputValidations();
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateSubtitle,
@@ -658,9 +712,13 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', startDate: '' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -676,10 +734,15 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					stubs.isValidDateModule.isValidDate.onFirstCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', startDate: '2010-09-30' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -695,9 +758,13 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', pressDate: '' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -713,10 +780,15 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					stubs.isValidDateModule.isValidDate.onSecondCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', pressDate: '2010-10-07' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
@@ -732,9 +804,13 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', endDate: '' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -750,10 +826,15 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					stubs.isValidDateModule.isValidDate.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', endDate: '2011-01-26' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -771,14 +852,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
 						endDate: '2011-01-26'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -796,14 +882,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
 						endDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -821,14 +912,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
 						pressDate: '2010-10-07'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
@@ -846,14 +942,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
 						pressDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
@@ -871,14 +972,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						pressDate: '2010-10-07',
 						endDate: '2011-01-26'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
@@ -896,14 +1002,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						pressDate: '2010-09-30',
 						endDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
@@ -919,14 +1030,18 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '',
 						pressDate: '',
 						endDate: ''
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -945,15 +1060,20 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
 						pressDate: '2010-10-07',
 						endDate: '2011-01-26'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
@@ -972,15 +1092,20 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
 						pressDate: '2010-09-30',
 						endDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
@@ -1000,9 +1125,13 @@ describe('Production model', () => {
 				it('will call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', startDate: 'foobar' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, 'foobar');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -1021,9 +1150,13 @@ describe('Production model', () => {
 				it('will call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', pressDate: 'foobar' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, 'foobar');
@@ -1042,9 +1175,13 @@ describe('Production model', () => {
 				it('will call addPropertyError method', async () => {
 
 					const Production = await createSubject();
+
 					const instance = new Production({ name: 'Hamlet', endDate: 'foobar' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -1065,14 +1202,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2011-01-26',
 						endDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2011-01-26');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
@@ -1098,14 +1240,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-10-07',
 						pressDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-10-07');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
@@ -1131,14 +1278,19 @@ describe('Production model', () => {
 					stubs.isValidDateModule.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						pressDate: '2011-01-26',
 						endDate: '2010-10-07'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2011-01-26');
@@ -1165,15 +1317,20 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
+
 					const Production = await createSubject();
+
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2011-01-26',
 						pressDate: '2010-10-07',
 						endDate: '2010-09-30'
 					});
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateDates();
+
 					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2011-01-26');
 					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
@@ -1217,6 +1374,7 @@ describe('Production model', () => {
 		it('calls associated subProductions\' runDatabaseValidations method', async () => {
 
 			const Production = await createSubject();
+
 			const instance = new Production({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				subProductions: [
@@ -1225,7 +1383,9 @@ describe('Production model', () => {
 					}
 				]
 			});
+
 			await instance.runDatabaseValidations();
+
 			assert.calledOnceWithExactly(
 				instance.subProductions[0].runDatabaseValidations,
 				{ subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }

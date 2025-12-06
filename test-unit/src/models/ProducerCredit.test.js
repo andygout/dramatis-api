@@ -54,7 +54,9 @@ describe('ProducerCredit model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const ProducerCredit = await createSubject();
+
 				const instance = new ProducerCredit({ name: 'in association with' });
+
 				expect(instance.entities).to.deep.equal([]);
 
 			});
@@ -62,6 +64,7 @@ describe('ProducerCredit model', () => {
 			it('assigns array of producers if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
 
 				const ProducerCredit = await createSubject();
+
 				const instance = new ProducerCredit({
 					name: 'in association with',
 					entities: [
@@ -88,6 +91,7 @@ describe('ProducerCredit model', () => {
 						}
 					]
 				});
+
 				expect(instance.entities.length).to.equal(6);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof CompanyWithMembers).to.be.true;
@@ -107,6 +111,7 @@ describe('ProducerCredit model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const ProducerCredit = await createSubject();
+
 			const instance = new ProducerCredit({
 				name: 'in association with',
 				entities: [
@@ -119,9 +124,12 @@ describe('ProducerCredit model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
+
 			instance.runInputValidations({ isDuplicate: false });
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,

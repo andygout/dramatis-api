@@ -75,7 +75,9 @@ describe('AwardCeremony model', () => {
 			it('assigns instance if absent from props', async () => {
 
 				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony({ name: '2020' });
+
 				expect(instance.award instanceof Award).to.be.true;
 
 			});
@@ -83,12 +85,14 @@ describe('AwardCeremony model', () => {
 			it('assigns instance if included in props', async () => {
 
 				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony({
 					name: '2020',
 					award: {
 						name: 'Laurence Olivier Awards'
 					}
 				});
+
 				expect(instance.award instanceof Award).to.be.true;
 
 			});
@@ -100,7 +104,9 @@ describe('AwardCeremony model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony({ name: '2020' });
+
 				expect(instance.categories).to.deep.equal([]);
 
 			});
@@ -108,6 +114,7 @@ describe('AwardCeremony model', () => {
 			it('assigns array of category instances, retaining those with empty or whitespace-only string names', async () => {
 
 				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony({
 					name: '2020',
 					categories: [
@@ -122,6 +129,7 @@ describe('AwardCeremony model', () => {
 						}
 					]
 				});
+
 				expect(instance.categories.length).to.equal(3);
 				expect(instance.categories[0] instanceof AwardCeremonyCategory).to.be.true;
 				expect(instance.categories[1] instanceof AwardCeremonyCategory).to.be.true;
@@ -138,6 +146,7 @@ describe('AwardCeremony model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const AwardCeremony = await createSubject();
+
 			const instance = new AwardCeremony({
 				name: '2020',
 				categories: [
@@ -146,8 +155,11 @@ describe('AwardCeremony model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
+
 			instance.runInputValidations();
+
 			assert.callOrder(
 				instance.validateName,
 				instance.award.validateName,
@@ -173,6 +185,7 @@ describe('AwardCeremony model', () => {
 		it('calls instance\'s validateAwardContextualUniquenessInDatabase method and associated categories\' runDatabaseValidations method', async () => {
 
 			const AwardCeremony = await createSubject();
+
 			const instance = new AwardCeremony({
 				name: '2020',
 				categories: [
@@ -181,8 +194,11 @@ describe('AwardCeremony model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateAwardContextualUniquenessInDatabase');
+
 			await instance.runDatabaseValidations();
+
 			assert.calledOnceWithExactly(instance.validateAwardContextualUniquenessInDatabase);
 			assert.calledOnceWithExactly(instance.categories[0].runDatabaseValidations);
 
@@ -197,10 +213,15 @@ describe('AwardCeremony model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony();
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.validateAwardContextualUniquenessInDatabase();
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
@@ -236,10 +257,15 @@ describe('AwardCeremony model', () => {
 			it('will call addPropertyError method', async () => {
 
 				const AwardCeremony = await createSubject();
+
 				const instance = new AwardCeremony();
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.validateAwardContextualUniquenessInDatabase();
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,

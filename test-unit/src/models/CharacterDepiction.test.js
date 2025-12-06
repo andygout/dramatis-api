@@ -32,7 +32,9 @@ describe('CharacterDepiction model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
 			const CharacterDepiction = await createSubject();
+
 			new CharacterDepiction();
+
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
 
 		});
@@ -42,7 +44,9 @@ describe('CharacterDepiction model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const CharacterDepiction = await createSubject();
+
 				const instance = new CharacterDepiction({ underlyingName: 'King Henry V' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'King Henry V');
 				expect(instance.underlyingName).to.equal('King Henry V');
 
@@ -55,7 +59,9 @@ describe('CharacterDepiction model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
 				const CharacterDepiction = await createSubject();
+
 				const instance = new CharacterDepiction({ qualifier: 'older' });
+
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'older');
 				expect(instance.qualifier).to.equal('older');
 
@@ -70,9 +76,13 @@ describe('CharacterDepiction model', () => {
 		it('will call validateStringForProperty method', async () => {
 
 			const CharacterDepiction = await createSubject();
+
 			const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
+
 			spy(instance, 'validateStringForProperty');
+
 			instance.validateUnderlyingName();
+
 			assert.calledOnceWithExactly(
 				instance.validateStringForProperty,
 				'underlyingName', { isRequired: false }
@@ -91,9 +101,13 @@ describe('CharacterDepiction model', () => {
 				it('will not add properties to errors property', async () => {
 
 					const CharacterDepiction = await createSubject();
+
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: '' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateCharacterNameUnderlyingNameDisparity();
+
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -105,9 +119,13 @@ describe('CharacterDepiction model', () => {
 				it('will not add properties to errors property', async () => {
 
 					const CharacterDepiction = await createSubject();
+
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateCharacterNameUnderlyingNameDisparity();
+
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -119,9 +137,13 @@ describe('CharacterDepiction model', () => {
 				it('will not add properties to errors property', async () => {
 
 					const CharacterDepiction = await createSubject();
+
 					const instance = new CharacterDepiction({ name: '', underlyingName: '' });
+
 					spy(instance, 'addPropertyError');
+
 					instance.validateCharacterNameUnderlyingNameDisparity();
+
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -135,9 +157,13 @@ describe('CharacterDepiction model', () => {
 			it('adds properties whose values are arrays to errors property', async () => {
 
 				const CharacterDepiction = await createSubject();
+
 				const instance = new CharacterDepiction({ name: 'King Henry V', underlyingName: 'King Henry V' });
+
 				spy(instance, 'addPropertyError');
+
 				instance.validateCharacterNameUnderlyingNameDisparity();
+
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'underlyingName', 'Underlying name is only required if different from character name'

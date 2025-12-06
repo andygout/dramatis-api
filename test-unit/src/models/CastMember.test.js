@@ -46,7 +46,9 @@ describe('CastMember model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const CastMember = await createSubject();
+
 				const instance = new CastMember({ name: 'Ian McKellen' });
+
 				expect(instance.roles).to.deep.equal([]);
 
 			});
@@ -54,6 +56,7 @@ describe('CastMember model', () => {
 			it('assigns array of role instances, retaining those with empty or whitespace-only string names', async () => {
 
 				const CastMember = await createSubject();
+
 				const instance = new CastMember({
 					name: 'Ian McKellen',
 					roles: [
@@ -68,6 +71,7 @@ describe('CastMember model', () => {
 						}
 					]
 				});
+
 				expect(instance.roles.length).to.equal(3);
 				expect(instance.roles[0] instanceof Role).to.be.true;
 				expect(instance.roles[1] instanceof Role).to.be.true;
@@ -84,6 +88,7 @@ describe('CastMember model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const CastMember = await createSubject();
+
 			const instance = new CastMember({
 				name: 'Ian McKellen',
 				roles: [
@@ -92,11 +97,14 @@ describe('CastMember model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateDifferentiator');
 			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfNamedChildren');
+
 			instance.runInputValidations({ isDuplicate: false });
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,

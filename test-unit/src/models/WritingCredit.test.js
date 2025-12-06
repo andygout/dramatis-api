@@ -60,7 +60,9 @@ describe('WritingCredit model', () => {
 			it('assigns null if absent from props', async () => {
 
 				const WritingCredit = await createSubject();
+
 				const instance = new WritingCredit({ name: '' });
+
 				expect(instance.creditType).to.equal(null);
 
 			});
@@ -68,7 +70,9 @@ describe('WritingCredit model', () => {
 			it('assigns null if included in props but value is not an accepted credit type', async () => {
 
 				const WritingCredit = await createSubject();
+
 				const instance = new WritingCredit({ name: '', creditType: 'foobar' });
+
 				expect(instance.creditType).to.equal(null);
 
 			});
@@ -83,7 +87,9 @@ describe('WritingCredit model', () => {
 				for (const creditType of creditTypes) {
 
 					const WritingCredit = await createSubject();
+
 					const instance = new WritingCredit({ name: '', creditType });
+
 					expect(instance.creditType).to.equal(creditType);
 
 				}
@@ -97,7 +103,9 @@ describe('WritingCredit model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const WritingCredit = await createSubject();
+
 				const instance = new WritingCredit({ name: 'version by' });
+
 				expect(instance.entities).to.deep.equal([]);
 
 			});
@@ -105,6 +113,7 @@ describe('WritingCredit model', () => {
 			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
 
 				const WritingCredit = await createSubject();
+
 				const instance = new WritingCredit({
 					name: 'version by',
 					entities: [
@@ -143,6 +152,7 @@ describe('WritingCredit model', () => {
 						}
 					]
 				});
+
 				expect(instance.entities.length).to.equal(9);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof Company).to.be.true;
@@ -165,6 +175,7 @@ describe('WritingCredit model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const WritingCredit = await createSubject();
+
 			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
@@ -181,11 +192,14 @@ describe('WritingCredit model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
+
 			instance.runInputValidations(
 				{ isDuplicate: false, subject: { name: 'The Indian Boy', differentiator: '1' } }
 			);
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
@@ -231,6 +245,7 @@ describe('WritingCredit model', () => {
 		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
 
 			const WritingCredit = await createSubject();
+
 			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
@@ -247,7 +262,9 @@ describe('WritingCredit model', () => {
 					}
 				]
 			});
+
 			await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 			assert.notCalled(instance.entities[0].runDatabaseValidations);
 			assert.notCalled(instance.entities[1].runDatabaseValidations);
 			assert.calledOnceWithExactly(

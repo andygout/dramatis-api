@@ -12,6 +12,7 @@ describe('AwardCeremonyCategory model', () => {
 			it('assigns empty array if absent from props', () => {
 
 				const instance = new AwardCeremonyCategory({});
+
 				expect(instance.nominations).to.deep.equal([]);
 
 			});
@@ -25,7 +26,9 @@ describe('AwardCeremonyCategory model', () => {
 						{}
 					]
 				};
+
 				const instance = new AwardCeremonyCategory(props);
+
 				expect(instance.nominations.length).to.equal(3);
 				expect(instance.nominations[0] instanceof Nomination).to.be.true;
 				expect(instance.nominations[1] instanceof Nomination).to.be.true;

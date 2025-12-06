@@ -54,7 +54,9 @@ describe('ProductionTeamCredit model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const ProductionTeamCredit = await createSubject();
+
 				const instance = new ProductionTeamCredit({ name: 'Sound Designers' });
+
 				expect(instance.entities).to.deep.equal([]);
 
 			});
@@ -62,6 +64,7 @@ describe('ProductionTeamCredit model', () => {
 			it('assigns array of entities (people, companies) if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
 
 				const ProductionTeamCredit = await createSubject();
+
 				const instance = new ProductionTeamCredit({
 					name: 'Assistant Stage Managers',
 					entities: [
@@ -88,6 +91,7 @@ describe('ProductionTeamCredit model', () => {
 						}
 					]
 				});
+
 				expect(instance.entities.length).to.equal(6);
 				expect(instance.entities[0] instanceof Person).to.be.true;
 				expect(instance.entities[1] instanceof CompanyWithMembers).to.be.true;
@@ -107,6 +111,7 @@ describe('ProductionTeamCredit model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const ProductionTeamCredit = await createSubject();
+
 			const instance = new ProductionTeamCredit({
 				name: 'Assistant Stage Managers',
 				entities: [
@@ -119,10 +124,13 @@ describe('ProductionTeamCredit model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 			spy(instance, 'validateNamePresenceIfNamedChildren');
+
 			instance.runInputValidations({ isDuplicate: false });
+
 			assert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,

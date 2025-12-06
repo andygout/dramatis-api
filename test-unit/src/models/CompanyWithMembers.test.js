@@ -46,7 +46,9 @@ describe('CompanyWithMembers model', () => {
 			it('assigns empty array if absent from props', async () => {
 
 				const CompanyWithMembers = await createSubject();
+
 				const instance = new CompanyWithMembers({ name: 'Autograph' });
+
 				expect(instance.members).to.deep.equal([]);
 
 			});
@@ -54,6 +56,7 @@ describe('CompanyWithMembers model', () => {
 			it('assigns array of members if included in props, retaining those with empty or whitespace-only string names', async () => {
 
 				const CompanyWithMembers = await createSubject();
+
 				const instance = new CompanyWithMembers({
 					name: 'Autograph',
 					members: [
@@ -68,6 +71,7 @@ describe('CompanyWithMembers model', () => {
 						}
 					]
 				});
+
 				expect(instance.members.length).to.equal(3);
 				expect(instance.members[0] instanceof Person).to.be.true;
 				expect(instance.members[1] instanceof Person).to.be.true;
@@ -84,6 +88,7 @@ describe('CompanyWithMembers model', () => {
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
 
 			const CompanyWithMembers = await createSubject();
+
 			const instance = new CompanyWithMembers({
 				name: 'Fiery Angel',
 				members: [
@@ -92,8 +97,11 @@ describe('CompanyWithMembers model', () => {
 					}
 				]
 			});
+
 			spy(instance, 'validateNamePresenceIfNamedChildren');
+
 			instance.runInputValidations({ duplicateEntities: [] });
+
 			assert.callOrder(
 				instance.validateNamePresenceIfNamedChildren,
 				instance.members[0].validateName,

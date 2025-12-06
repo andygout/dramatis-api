@@ -45,14 +45,19 @@ describe('SourceMaterial model', () => {
 			it('will not call addPropertyError method', async () => {
 
 				const SourceMaterial = await createSubject();
+
 				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: false
 				});
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery,
@@ -84,10 +89,15 @@ describe('SourceMaterial model', () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: true
 				});
+
 				const SourceMaterial = await createSubject();
+
 				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+
 				spy(instance, 'addPropertyError');
+
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
+
 				assert.callOrder(
 					stubs.prepareAsParamsModule.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery,
