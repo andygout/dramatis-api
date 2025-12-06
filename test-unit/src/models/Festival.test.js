@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, createStubInstance, spy } from 'sinon';
+import { assert, createStubInstance, restore, spy } from 'sinon';
 
 import { FestivalSeries } from '../../../src/models/index.js';
 
@@ -21,6 +21,12 @@ describe('Festival model', () => {
 				FestivalSeries: FestivalSeriesStub
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

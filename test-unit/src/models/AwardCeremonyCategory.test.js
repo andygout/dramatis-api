@@ -1,9 +1,15 @@
 import { expect } from 'chai';
-import { assert, spy } from 'sinon';
+import { assert, restore, spy } from 'sinon';
 
 import { AwardCeremonyCategory, Nomination } from '../../../src/models/index.js';
 
 describe('AwardCeremonyCategory model', () => {
+
+	afterEach(() => {
+
+		restore();
+
+	});
 
 	describe('constructor method', () => {
 

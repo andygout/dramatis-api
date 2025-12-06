@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, spy, stub } from 'sinon';
+import { assert, restore, spy, stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -24,6 +24,12 @@ describe('Base model', () => {
 			.withArgs('', { isRequired: true }).returns('Value is too short');
 		stubs.validateStringModule.validateString
 			.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequired: false }).returns('Value is too long');
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

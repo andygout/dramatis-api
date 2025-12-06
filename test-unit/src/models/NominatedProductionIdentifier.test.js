@@ -1,8 +1,14 @@
-import { assert, spy, stub } from 'sinon';
+import { assert, restore, spy, stub } from 'sinon';
 
 import { NominatedProductionIdentifier } from '../../../src/models/index.js';
 
 describe('NominatedProductionIdentifier model', () => {
+
+	afterEach(() => {
+
+		restore();
+
+	});
 
 	describe('runDatabaseValidations method', () => {
 

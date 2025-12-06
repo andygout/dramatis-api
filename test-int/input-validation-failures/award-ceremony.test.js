@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { stub } from 'sinon';
+import { restore, stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -21,6 +21,12 @@ describe('AwardCeremony model', () => {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

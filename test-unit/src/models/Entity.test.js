@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, spy, stub } from 'sinon';
+import { assert, restore, spy, stub } from 'sinon';
 
 describe('Entity model', () => {
 
@@ -50,6 +50,12 @@ describe('Entity model', () => {
 				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

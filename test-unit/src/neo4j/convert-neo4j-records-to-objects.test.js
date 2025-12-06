@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { stub } from 'sinon';
+import { restore, stub } from 'sinon';
 
 describe('Convert Neo4j Records To Objects module', () => {
 
@@ -13,6 +13,12 @@ describe('Convert Neo4j Records To Objects module', () => {
 				convertNeo4jIntegersToNumbers: stub().returnsArg(0)
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

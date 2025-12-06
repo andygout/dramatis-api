@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { stub } from 'sinon';
+import { restore, stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -30,6 +30,12 @@ describe('Input validation failures: Production instance', () => {
 				})
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 

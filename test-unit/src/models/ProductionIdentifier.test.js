@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import esmock from 'esmock';
-import { assert, spy, stub } from 'sinon';
+import { assert, restore, spy, stub } from 'sinon';
 
 describe('ProductionIdentifier model', () => {
 
@@ -13,6 +13,12 @@ describe('ProductionIdentifier model', () => {
 				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
 			}
 		};
+
+	});
+
+	afterEach(() => {
+
+		restore();
 
 	});
 
