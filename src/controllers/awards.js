@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: ["error", { "argsIgnorePattern": "next" }] */
 
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods.js';
-import { sendJsonResponse } from '../lib/send-json-response.js';
+import sendJsonResponse from '../lib/send-json-response.js';
 import { Award } from '../models/index.js';
 import { ACTIONS, MODELS } from '../utils/constants.js';
 

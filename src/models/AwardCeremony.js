@@ -1,5 +1,5 @@
 import { getDuplicateBaseInstanceIndices } from '../lib/get-duplicate-indices.js';
-import { prepareAsParams } from '../lib/prepare-as-params.js';
+import prepareAsParams from '../lib/prepare-as-params.js';
 import Entity from './Entity.js';
 import { Award, AwardCeremonyCategory } from './index.js';
 import { validationQueries } from '../neo4j/cypher-queries/index.js';

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { hasErrors } from '../../../src/lib/has-errors.js';
+import hasErrors from '../../../src/lib/has-errors.js';
 
 describe('Has Errors module', () => {
 

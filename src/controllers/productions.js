@@ -2,7 +2,7 @@
 
 import { production as productionSeedProps } from './model-seed-props/index.js';
 import { callInstanceMethod, callStaticListMethod } from '../lib/call-class-methods.js';
-import { sendJsonResponse } from '../lib/send-json-response.js';
+import sendJsonResponse from '../lib/send-json-response.js';
 import { Production } from '../models/index.js';
 import { ACTIONS, MODELS } from '../utils/constants.js';
 

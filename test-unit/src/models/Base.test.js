@@ -15,14 +15,12 @@ describe('Base model', () => {
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
 			},
-			validateStringModule: {
-				validateString: stub().returns(undefined)
-			}
+			validateString: stub().returns(undefined)
 		};
 
-		stubs.validateStringModule.validateString
+		stubs.validateString
 			.withArgs('', { isRequired: true }).returns('Value is too short');
-		stubs.validateStringModule.validateString
+		stubs.validateString
 			.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequired: false }).returns('Value is too long');
 
 	});
@@ -41,7 +39,7 @@ describe('Base model', () => {
 			// Required for when instances of class extensions of the Base class are tested.
 			{
 				'../../../src/lib/strings.js': stubs.stringsModule,
-				'../../../src/lib/validate-string.js': stubs.validateStringModule
+				'../../../src/lib/validate-string.js': stubs.validateString
 			}
 		);
 
@@ -177,7 +175,7 @@ describe('Base model', () => {
 				instance.validateStringForProperty('name', { isRequired: false });
 
 				assert.calledOnceWithExactly(
-					stubs.validateStringModule.validateString,
+					stubs.validateString,
 					instance.name, { isRequired: false }
 				);
 				assert.notCalled(instance.addPropertyError);
@@ -199,11 +197,11 @@ describe('Base model', () => {
 				instance.validateStringForProperty('name', { isRequired: true });
 
 				assert.callOrder(
-					stubs.validateStringModule.validateString,
+					stubs.validateString,
 					instance.addPropertyError
 				);
 				assert.calledOnceWithExactly(
-					stubs.validateStringModule.validateString,
+					stubs.validateString,
 					instance.name, { isRequired: true }
 				);
 				assert.calledOnceWithExactly(

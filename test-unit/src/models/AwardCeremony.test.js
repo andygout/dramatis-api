@@ -26,16 +26,14 @@ describe('AwardCeremony model', () => {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([])
 			},
-			prepareAsParamsModule: {
-				prepareAsParams: stub().returns({
-					uuid: 'UUID_VALUE',
-					name: 'NAME_VALUE',
-					award: {
-						name: 'AWARD_UUID_VALUE',
-						differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
-					}
-				})
-			},
+			prepareAsParams: stub().returns({
+				uuid: 'UUID_VALUE',
+				name: 'NAME_VALUE',
+				award: {
+					name: 'AWARD_UUID_VALUE',
+					differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
+				}
+			}),
 			models: {
 				Award: AwardStub,
 				AwardCeremonyCategory: AwardCeremonyCategoryStub
@@ -67,7 +65,7 @@ describe('AwardCeremony model', () => {
 			// Required for when functions are invoked by ancestor class methods.
 			{
 				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParams,
 				'../../../src/models/index.js': stubs.models,
 				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
@@ -229,11 +227,11 @@ describe('AwardCeremony model', () => {
 				await instance.validateAwardContextualUniquenessInDatabase();
 
 				assert.callOrder(
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
 				);
@@ -273,12 +271,12 @@ describe('AwardCeremony model', () => {
 				await instance.validateAwardContextualUniquenessInDatabase();
 
 				assert.callOrder(
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
 				);

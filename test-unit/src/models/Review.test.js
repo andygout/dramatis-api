@@ -23,9 +23,7 @@ describe('Review model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			isValidDateModule: {
-				isValidDate: stub().returns(true)
-			},
+			isValidDate: stub().returns(true),
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
 			},
@@ -50,7 +48,7 @@ describe('Review model', () => {
 			// globalmocks: mock definitions imported everywhere.
 			// Required for when functions are invoked by ancestor class methods.
 			{
-				'../../../src/lib/is-valid-date.js': stubs.isValidDateModule,
+				'../../../src/lib/is-valid-date.js': stubs.isValidDate,
 				'../../../src/lib/strings.js': stubs.stringsModule,
 				'../../../src/models/index.js': stubs.models
 			}
@@ -354,7 +352,7 @@ describe('Review model', () => {
 
 					instance.validateDate();
 
-					assert.notCalled(stubs.isValidDateModule.isValidDate);
+					assert.notCalled(stubs.isValidDate);
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -373,7 +371,7 @@ describe('Review model', () => {
 
 					instance.validateDate();
 
-					assert.calledOnceWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
+					assert.calledOnceWithExactly(stubs.isValidDate, instance.date);
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -388,7 +386,7 @@ describe('Review model', () => {
 
 				it('will call isValidDate and addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate.returns(false);
+					stubs.isValidDate.returns(false);
 
 					const Review = await createSubject();
 
@@ -398,7 +396,7 @@ describe('Review model', () => {
 
 					instance.validateDate();
 
-					assert.calledOnceWithExactly(stubs.isValidDateModule.isValidDate, instance.date);
+					assert.calledOnceWithExactly(stubs.isValidDate, instance.date);
 					assert.calledOnceWithExactly(instance.addPropertyError, 'date', 'Value must be in date format');
 
 				});

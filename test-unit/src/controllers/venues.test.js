@@ -21,9 +21,7 @@ describe('Venues controller', () => {
 				callInstanceMethod: stub().resolves('callInstanceMethod response'),
 				callStaticListMethod: stub().resolves('callStaticListMethod response')
 			},
-			sendJsonResponseModule: {
-				sendJsonResponse: stub().returns('sendJsonResponse response')
-			},
+			sendJsonResponse: stub().returns('sendJsonResponse response'),
 			models: {
 				Venue: VenueStub
 			},
@@ -43,7 +41,7 @@ describe('Venues controller', () => {
 	const createSubject = () =>
 		esmock('../../../src/controllers/venues.js', {
 			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponseModule,
+			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
 			'../../../src/models/index.js': stubs.models
 		});
 
@@ -61,7 +59,7 @@ describe('Venues controller', () => {
 
 			const result = await callFunction('newRoute');
 			assert.calledOnceWithExactly(
-				stubs.sendJsonResponseModule.sendJsonResponse,
+				stubs.sendJsonResponse,
 				stubs.response, stubs.models.Venue() // eslint-disable-line new-cap
 			);
 			expect(result).to.equal('sendJsonResponse response');

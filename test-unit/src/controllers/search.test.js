@@ -10,9 +10,7 @@ describe('Search controller', () => {
 	beforeEach(() => {
 
 		stubs = {
-			sendJsonResponseModule: {
-				sendJsonResponse: stub().returns('sendJsonResponse response')
-			},
+			sendJsonResponse: stub().returns('sendJsonResponse response'),
 			cypherQueriesModule: {
 				searchQueries: {
 					getSearchQuery: stub().returns('getSearchQuery response')
@@ -36,7 +34,7 @@ describe('Search controller', () => {
 
 	const createSubject = () =>
 		esmock('../../../src/controllers/search.js', {
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponseModule,
+			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
 			'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
 			'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 		});
@@ -49,7 +47,7 @@ describe('Search controller', () => {
 			const request = httpMocks.createRequest();
 			const result = await searchController(request, stubs.response, stubs.next);
 			assert.calledOnceWithExactly(
-				stubs.sendJsonResponseModule.sendJsonResponse,
+				stubs.sendJsonResponse,
 				stubs.response, []
 			);
 			expect(result).to.equal('sendJsonResponse response');
@@ -69,7 +67,7 @@ describe('Search controller', () => {
 			const request = httpMocks.createRequest({ query: { searchTerm: '' } });
 			const result = await searchController(request, stubs.response, stubs.next);
 			assert.calledOnceWithExactly(
-				stubs.sendJsonResponseModule.sendJsonResponse,
+				stubs.sendJsonResponse,
 				stubs.response, []
 			);
 			expect(result).to.equal('sendJsonResponse response');
@@ -104,7 +102,7 @@ describe('Search controller', () => {
 					}
 				);
 				assert.calledOnceWithExactly(
-					stubs.sendJsonResponseModule.sendJsonResponse,
+					stubs.sendJsonResponse,
 					stubs.response, ['foo bar']
 				);
 				expect(result).to.equal('sendJsonResponse response');
@@ -137,7 +135,7 @@ describe('Search controller', () => {
 						isArrayResult: true
 					}
 				);
-				assert.notCalled(stubs.sendJsonResponseModule.sendJsonResponse);
+				assert.notCalled(stubs.sendJsonResponse);
 				assert.calledOnceWithExactly(stubs.next, neo4jQueryError);
 
 			});

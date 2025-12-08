@@ -1,6 +1,6 @@
 import neo4j from 'neo4j-driver';
 
-import { getRandomUuid } from './get-random-uuid.js';
+import getRandomUuid from './get-random-uuid.js';
 import isObjectWithKeys from './is-object-with-keys.js';
 
 const CHARACTER_GROUPS = 'characterGroups';
@@ -41,7 +41,7 @@ const REQUIRES_NON_EMPTY_UUID_KEYS = new Set([
 	SUB_PRODUCTIONS
 ]);
 
-export const prepareAsParams = instance => {
+const prepareAsParams = instance => {
 
 	const recordedInstances = [];
 
@@ -164,3 +164,5 @@ export const prepareAsParams = instance => {
 	return applyModifications(instance);
 
 };
+
+export default prepareAsParams;

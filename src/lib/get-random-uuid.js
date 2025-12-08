@@ -1,6 +1,6 @@
 import { getStubUuid } from '../../test-e2e/test-helpers/index.js';
 
-export const getRandomUuid = (instanceProps = {}) => {
+const getRandomUuid = (instanceProps = {}) => {
 
 	if (process.env.NODE_ENV === 'e2e-test') {
 
@@ -11,3 +11,5 @@ export const getRandomUuid = (instanceProps = {}) => {
 	return crypto.randomUUID({ disableEntropyCache: true });
 
 };
+
+export default getRandomUuid;

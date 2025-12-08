@@ -15,9 +15,7 @@ describe('Call Class Methods module', () => {
 	beforeEach(() => {
 
 		stubs = {
-			sendJsonResponseModule: {
-				sendJsonResponse: stub().returns('sendJsonResponse response')
-			},
+			sendJsonResponse: stub().returns('sendJsonResponse response'),
 			response: httpMocks.createResponse(),
 			next: stub()
 		};
@@ -32,7 +30,7 @@ describe('Call Class Methods module', () => {
 
 	const createSubject = () =>
 		esmock('../../../src/lib/call-class-methods.js', {
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponseModule
+			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse
 		});
 
 	describe('callInstanceMethod function', () => {
@@ -55,7 +53,7 @@ describe('Call Class Methods module', () => {
 				stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse); });
 				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				assert.calledOnceWithExactly(
-					stubs.sendJsonResponseModule.sendJsonResponse,
+					stubs.sendJsonResponse,
 					stubs.response, instanceMethodResponse
 				);
 				assert.notCalled(stubs.next);
@@ -73,7 +71,7 @@ describe('Call Class Methods module', () => {
 				stub(character, method).callsFake(() => { return Promise.reject(error); });
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				assert.calledOnceWithExactly(stubs.next, error);
-				assert.notCalled(stubs.sendJsonResponseModule.sendJsonResponse);
+				assert.notCalled(stubs.sendJsonResponse);
 
 			});
 
@@ -88,7 +86,7 @@ describe('Call Class Methods module', () => {
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.response.statusCode).to.equal(404);
 				expect(stubs.response._getData()).to.equal('Not Found'); // eslint-disable-line no-underscore-dangle
-				assert.notCalled(stubs.sendJsonResponseModule.sendJsonResponse);
+				assert.notCalled(stubs.sendJsonResponse);
 				assert.notCalled(stubs.next);
 
 			});
@@ -117,7 +115,7 @@ describe('Call Class Methods module', () => {
 				const result =
 					await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 				assert.calledOnceWithExactly(
-					stubs.sendJsonResponseModule.sendJsonResponse,
+					stubs.sendJsonResponse,
 					stubs.response, staticListMethodResponse
 				);
 				assert.notCalled(stubs.next);
@@ -135,7 +133,7 @@ describe('Call Class Methods module', () => {
 				stub(Character, method).callsFake(() => { return Promise.reject(error); });
 				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 				assert.calledOnceWithExactly(stubs.next, error);
-				assert.notCalled(stubs.sendJsonResponseModule.sendJsonResponse);
+				assert.notCalled(stubs.sendJsonResponse);
 
 			});
 

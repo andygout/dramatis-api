@@ -1,1 +1,3 @@
-export const isValidDate = string => new Date(string).toString() !== 'Invalid Date';
+const isValidDate = string => new Date(string).toString() !== 'Invalid Date';
+
+export default isValidDate;

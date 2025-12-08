@@ -4,7 +4,7 @@ const isErrorsProperty = (prop, value) => prop === 'errors' && isObjectWithKeys(
 
 const isObjectWithErrors = item => isObjectWithKeys(item) && hasErrors(item);
 
-export const hasErrors = instance => {
+const hasErrors = instance => {
 
 	for (const prop in instance) if (Object.hasOwn(instance, prop)) {
 
@@ -21,3 +21,5 @@ export const hasErrors = instance => {
 	return false;
 
 };
+
+export default hasErrors;
