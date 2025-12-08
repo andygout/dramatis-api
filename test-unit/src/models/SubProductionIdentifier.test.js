@@ -35,7 +35,7 @@ describe('SubProductionIdentifier model', () => {
 			// globalmocks: mock definitions imported everywhere.
 			// Required for when functions are invoked by ancestor class methods.
 			{
-				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParams,
 				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}

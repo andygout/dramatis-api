@@ -1,4 +1,4 @@
-export const validateString = (stringValue, opts) => {
+const validateString = (stringValue, opts) => {
 
 	const STRING_MAX_LENGTH = 1000;
 
@@ -17,3 +17,5 @@ export const validateString = (stringValue, opts) => {
 	return errorText;
 
 };
+
+export default validateString;

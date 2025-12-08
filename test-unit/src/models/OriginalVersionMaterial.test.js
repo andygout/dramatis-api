@@ -10,9 +10,7 @@ describe('OriginalVersionMaterial model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			prepareAsParamsModule: {
-				prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })
-			},
+			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
 			cypherQueriesModule: {
 				validationQueries: {
 					getOriginalVersionMaterialChecksQuery:
@@ -39,7 +37,7 @@ describe('OriginalVersionMaterial model', () => {
 			// globalmocks: mock definitions imported everywhere.
 			// Required for when functions are invoked by ancestor class methods.
 			{
-				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParams,
 				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
@@ -66,11 +64,11 @@ describe('OriginalVersionMaterial model', () => {
 				});
 
 				assert.callOrder(
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
 				);
@@ -108,12 +106,12 @@ describe('OriginalVersionMaterial model', () => {
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
 				assert.callOrder(
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
 				);

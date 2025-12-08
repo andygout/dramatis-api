@@ -14,9 +14,7 @@ describe('Prepare As Params module', () => {
 			neo4j: {
 				int: stub().returnsArg(0)
 			},
-			getRandomUuidModule: {
-				getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
-			}
+			getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
 		};
 
 	});
@@ -30,7 +28,7 @@ describe('Prepare As Params module', () => {
 	const createSubject = () =>
 		esmock('../../../src/lib/prepare-as-params.js', {
 			'neo4j-driver': stubs.neo4j,
-			'../../../src/lib/get-random-uuid.js': stubs.getRandomUuidModule
+			'../../../src/lib/get-random-uuid.js': stubs.getRandomUuid
 		});
 
 	it('returns new object with modifications but will not mutate input object', async () => {
@@ -63,7 +61,7 @@ describe('Prepare As Params module', () => {
 				}
 			]
 		};
-		const { prepareAsParams } = await createSubject();
+		const prepareAsParams = await createSubject();
 		const result = prepareAsParams(instance);
 		expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		expect(result.items[0].position).to.equal(0);
@@ -88,10 +86,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: '', name: 'Foo' };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -99,10 +97,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if undefined', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: undefined, name: 'Foo' };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -110,10 +108,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid property if one already exists', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'Foo' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -125,10 +123,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: '', name: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal(null);
 
@@ -136,10 +134,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if undefined', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: undefined, name: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal(null);
 
@@ -147,10 +145,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid property if one already exists', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -162,10 +160,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: '' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal(null);
 
@@ -173,10 +171,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if undefined', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: undefined };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal(null);
 
@@ -184,10 +182,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid property if one already exists', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -197,10 +195,10 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { foo: 'bar' };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.foo).to.equal('bar');
 
@@ -208,10 +206,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.foo).to.equal(null);
 
@@ -219,10 +217,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with false values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { foo: false };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.foo).to.equal(null);
 
@@ -230,10 +228,10 @@ describe('Prepare As Params module', () => {
 
 		it('will not add position property', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { foo: '' };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result).not.to.have.property('position');
 
@@ -241,7 +239,7 @@ describe('Prepare As Params module', () => {
 
 		it('will add model property with value from model getter method', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = applyModelGetter({ foo: '' });
 			const result = prepareAsParams(instance);
 			expect(result.model).to.equal('BASE');
@@ -256,10 +254,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: '', name: 'Foo' } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -267,10 +265,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if undefined', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: undefined, name: 'Foo' } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -278,10 +276,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid property if one already exists', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'Foo' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -293,10 +291,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: '', name: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -304,10 +302,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if undefined', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: undefined, name: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -315,10 +313,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid property if one already exists', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -330,10 +328,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: '' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -341,10 +339,10 @@ describe('Prepare As Params module', () => {
 
 			it('assigns value to uuid property if undefined', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: undefined } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal(null);
 
@@ -352,10 +350,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not assign value to uuid property if one already exists', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { venue: { uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' } };
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -365,10 +363,10 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { venue: { foo: 'bar' } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.venue.foo).to.equal('bar');
 
@@ -376,10 +374,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { venue: { foo: '' } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.venue.foo).to.equal(null);
 
@@ -387,10 +385,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with false values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { venue: { foo: false } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.venue.foo).to.equal(null);
 
@@ -398,10 +396,10 @@ describe('Prepare As Params module', () => {
 
 		it('will not add position property', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { venue: { uuid: '' } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.venue).not.to.have.property('position');
 
@@ -409,7 +407,7 @@ describe('Prepare As Params module', () => {
 
 		it('will add model property with value from model getter method', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { venue: applyModelGetter({ foo: '' }) };
 			const result = prepareAsParams(instance);
 			expect(result.venue.model).to.equal('BASE');
@@ -422,10 +420,10 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -433,10 +431,10 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ uuid: undefined, name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -444,10 +442,10 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -455,10 +453,10 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ foo: 'bar', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].foo).to.equal('bar');
 
@@ -466,10 +464,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ foo: '', name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].foo).to.equal(null);
 
@@ -477,10 +475,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with false values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ foo: false, name: 'David Calder' }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].foo).to.equal(null);
 
@@ -490,10 +488,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.cast[0]).to.not.have.property('position');
 
@@ -501,7 +499,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] };
 				const result = prepareAsParams(instance);
 				expect(result.cast[0].model).to.equal('BASE');
@@ -514,10 +512,10 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { cast: [{ uuid: '', name: 'David Calder' }, { uuid: '', name: 'Ruth Negga' }] };
 				const result = prepareAsParams(instance);
-				assert.calledTwice(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledTwice(stubs.getRandomUuid);
 				assert.calledTwice(stubs.neo4j.int);
 				assert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
 				assert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
@@ -530,7 +528,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					cast: [
 						applyModelGetter({ foo: '', name: 'David Calder' }),
@@ -548,10 +546,10 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'David Calder' }] };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.cast.length).to.equal(1);
 				expect(result.cast[0].name).to.equal('David Calder');
@@ -565,7 +563,7 @@ describe('Prepare As Params module', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					productions: [
 						{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }
@@ -575,7 +573,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.productions.length).to.equal(1);
 				expect(result.productions[0]).to.not.have.property('name');
@@ -592,7 +590,7 @@ describe('Prepare As Params module', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					characterGroups: [
 						{ name: '', characters: [{ name: 'Malene' }] }
@@ -608,7 +606,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.characterGroups.length).to.equal(1);
 				expect(result.characterGroups[0].name).to.be.null;
@@ -631,7 +629,7 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					characterGroups: [
 						{ name: 'The Rentheims', characters: [{ name: '' }] },
@@ -679,7 +677,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				expect(stubs.neo4j.int.callCount).to.equal(4);
 				expect(result.characterGroups.length).to.equal(1);
 				expect(result.characterGroups[0]).to.not.have.property('position');
@@ -708,7 +706,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					cast: [
 						{ name: 'David Bradley', roles: [{ name: 'King Henry IV' }] },
@@ -717,7 +715,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.calledThrice(stubs.neo4j.int);
 				expect(result.cast.length).to.equal(3);
 
@@ -729,7 +727,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects only if they have a non-empty url value', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					reviews: [
 						{ url: '' },
@@ -738,7 +736,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.reviews.length).to.equal(1);
 
@@ -750,7 +748,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects only if they have a non-empty uuid value', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					productions: [
 						{ uuid: '' },
@@ -764,7 +762,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.productions.length).to.equal(1);
 				expect(result.subProductions.length).to.equal(1);
@@ -775,14 +773,14 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items that will need to share the same database entry', async () => {
 
-			stubs.getRandomUuidModule.getRandomUuid
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
 				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = {
 				characters: [
 					applyModelGetter({ uuid: '', name: 'Ferdinand Foo', underlyingName: '', differentiator: '', qualifier: 'younger' }),
@@ -798,7 +796,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.getRandomUuidModule.getRandomUuid.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4j.int.callCount).to.equal(10);
 			expect(result.characters[0].uuid).to.equal(result.characters[5].uuid);
 			expect(result.characters[1].uuid).to.equal(result.characters[6].uuid);
@@ -814,10 +812,10 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -825,10 +823,10 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { production: { cast: [{ uuid: undefined, name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -836,7 +834,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = {
 				production: {
 					cast: [
@@ -848,7 +846,7 @@ describe('Prepare As Params module', () => {
 				}
 			};
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.production.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -856,10 +854,10 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { production: { cast: [{ foo: 'bar', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.production.cast[0].foo).to.equal('bar');
 
@@ -867,10 +865,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { production: { cast: [{ foo: '', name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.production.cast[0].foo).to.equal(null);
 
@@ -878,10 +876,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with false values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { production: { cast: [{ foo: false, name: 'David Calder' }] } };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.production.cast[0].foo).to.equal(null);
 
@@ -891,10 +889,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.production.cast[0]).to.not.have.property('position');
 
@@ -902,7 +900,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { production: { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] } };
 				const result = prepareAsParams(instance);
 				expect(result.production.cast[0].model).to.equal('BASE');
@@ -915,7 +913,7 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					production: {
 						cast: [
@@ -925,7 +923,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.calledTwice(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledTwice(stubs.getRandomUuid);
 				assert.calledTwice(stubs.neo4j.int);
 				assert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
 				assert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
@@ -938,7 +936,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					production: {
 						cast: [
@@ -958,10 +956,10 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { production: { cast: [{ uuid: '', name: '' }, { uuid: '', name: 'David Calder' }] } };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.production.cast.length).to.equal(1);
 				expect(result.production.cast[0].name).to.equal('David Calder');
@@ -975,7 +973,7 @@ describe('Prepare As Params module', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foo: {
 						productions: [
@@ -987,7 +985,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.foo.productions.length).to.equal(1);
 				expect(result.foo.productions[0]).to.not.have.property('name');
@@ -1004,7 +1002,7 @@ describe('Prepare As Params module', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foo: {
 						characterGroups: [
@@ -1022,7 +1020,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.foo.characterGroups.length).to.equal(1);
 				expect(result.foo.characterGroups[0].name).to.be.null;
@@ -1045,7 +1043,7 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foo: {
 						characterGroups: [
@@ -1095,7 +1093,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				expect(stubs.neo4j.int.callCount).to.equal(4);
 				expect(result.foo.characterGroups.length).to.equal(1);
 				expect(result.foo.characterGroups[0]).to.not.have.property('position');
@@ -1124,7 +1122,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					production: {
 						cast: [
@@ -1135,7 +1133,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.calledThrice(stubs.neo4j.int);
 				expect(result.production.cast.length).to.equal(3);
 
@@ -1147,7 +1145,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects only if they have a non-empty url value', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foo: {
 						reviews: [
@@ -1158,7 +1156,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.foo.reviews.length).to.equal(1);
 
@@ -1170,7 +1168,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects only if they have a non-empty uuid value', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foo: {
 						productions: [
@@ -1186,7 +1184,7 @@ describe('Prepare As Params module', () => {
 					}
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.foo.productions.length).to.equal(1);
 				expect(result.foo.subProductions.length).to.equal(1);
@@ -1197,14 +1195,14 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items that will need to share the same database entry', async () => {
 
-			stubs.getRandomUuidModule.getRandomUuid
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
 				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = {
 				production: {
 					cast: [
@@ -1222,7 +1220,7 @@ describe('Prepare As Params module', () => {
 				}
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.getRandomUuidModule.getRandomUuid.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4j.int.callCount).to.equal(10);
 			expect(result.production.cast[0].uuid).to.equal(result.production.cast[5].uuid);
 			expect(result.production.cast[1].uuid).to.equal(result.production.cast[6].uuid);
@@ -1238,10 +1236,10 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if empty string', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -1249,10 +1247,10 @@ describe('Prepare As Params module', () => {
 
 		it('assigns value to uuid property if undefined', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: undefined, name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+			assert.calledOnce(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 
@@ -1260,7 +1258,7 @@ describe('Prepare As Params module', () => {
 
 		it('will not assign value to uuid property if one already exists', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = {
 				cast: [
 					{
@@ -1275,7 +1273,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].roles[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 
@@ -1283,10 +1281,10 @@ describe('Prepare As Params module', () => {
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: 'bar', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].roles[0].foo).to.equal('bar');
 
@@ -1294,10 +1292,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: '', name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].roles[0].foo).to.equal(null);
 
@@ -1305,10 +1303,10 @@ describe('Prepare As Params module', () => {
 
 		it('will assign null value to non-uuid properties with false values', async () => {
 
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: false, name: 'Polonius' }] }] };
 			const result = prepareAsParams(instance);
-			assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+			assert.notCalled(stubs.getRandomUuid);
 			assert.notCalled(stubs.neo4j.int);
 			expect(result.cast[0].roles[0].foo).to.equal(null);
 
@@ -1318,10 +1316,10 @@ describe('Prepare As Params module', () => {
 
 			it('will not add position property', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.cast[0]).to.not.have.property('position');
 				expect(result.cast[0].roles[0]).to.not.have.property('position');
@@ -1330,7 +1328,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					cast: [
 						{
@@ -1352,7 +1350,7 @@ describe('Prepare As Params module', () => {
 
 			it('adds position property with value of array index', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					cast: [
 						{
@@ -1365,7 +1363,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.calledTwice(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledTwice(stubs.getRandomUuid);
 				assert.calledTwice(stubs.neo4j.int);
 				assert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
 				assert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
@@ -1379,7 +1377,7 @@ describe('Prepare As Params module', () => {
 
 			it('will add model property with value from model getter method', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					cast: [
 						{
@@ -1402,7 +1400,7 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					cast: [
 						{
@@ -1415,7 +1413,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.calledOnce(stubs.getRandomUuidModule.getRandomUuid);
+				assert.calledOnce(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.cast[0].roles.length).to.equal(1);
 				expect(result.cast[0].roles[0].name).to.equal('Polonius');
@@ -1429,7 +1427,7 @@ describe('Prepare As Params module', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foos: [
 						{
@@ -1444,7 +1442,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.foos[0].productions.length).to.equal(1);
 				expect(result.foos[0].productions[0]).to.not.have.property('name');
@@ -1461,7 +1459,7 @@ describe('Prepare As Params module', () => {
 
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foos: [
 						{
@@ -1482,7 +1480,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.foos[0].characterGroups.length).to.equal(1);
 				expect(result.foos[0].characterGroups[0].name).to.be.null;
@@ -1505,7 +1503,7 @@ describe('Prepare As Params module', () => {
 
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					foos: [
 						{
@@ -1558,7 +1556,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				expect(stubs.neo4j.int.callCount).to.equal(4);
 				expect(result.foos[0].characterGroups.length).to.equal(1);
 				expect(result.foos[0].characterGroups[0]).to.not.have.property('position');
@@ -1587,7 +1585,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					productions: [
 						{
@@ -1601,7 +1599,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.calledThrice(stubs.neo4j.int);
 				expect(result.productions[0].cast.length).to.equal(3);
 
@@ -1613,7 +1611,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects only if they have a non-empty url value', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					subProductions: [
 						{
@@ -1626,7 +1624,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.subProductions[0].reviews.length).to.equal(1);
 
@@ -1638,7 +1636,7 @@ describe('Prepare As Params module', () => {
 
 			it('retains objects only if they have a non-empty uuid value', async () => {
 
-				const { prepareAsParams } = await createSubject();
+				const prepareAsParams = await createSubject();
 				const instance = {
 					nominations: [
 						{
@@ -1660,7 +1658,7 @@ describe('Prepare As Params module', () => {
 					]
 				};
 				const result = prepareAsParams(instance);
-				assert.notCalled(stubs.getRandomUuidModule.getRandomUuid);
+				assert.notCalled(stubs.getRandomUuid);
 				assert.notCalled(stubs.neo4j.int);
 				expect(result.nominations[0].productions.length).to.equal(1);
 				expect(result.productions[0].subProductions.length).to.equal(1);
@@ -1671,14 +1669,14 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items in the same array that will need to share the same database entry', async () => {
 
-			stubs.getRandomUuidModule.getRandomUuid
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
 				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = {
 				characterGroups: [
 					{
@@ -1698,7 +1696,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.getRandomUuidModule.getRandomUuid.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4j.int.callCount).to.equal(10);
 			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[0].characters[5].uuid);
 			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[0].characters[6].uuid);
@@ -1712,14 +1710,14 @@ describe('Prepare As Params module', () => {
 
 		it('applies the same uuid value to items in different arrays that will need to share the same database entry', async () => {
 
-			stubs.getRandomUuidModule.getRandomUuid
+			stubs.getRandomUuid
 				.onFirstCall().returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
 				.onSecondCall().returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
 				.onThirdCall().returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
 				.onCall(3).returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
 				.onCall(4).returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5).returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
-			const { prepareAsParams } = await createSubject();
+			const prepareAsParams = await createSubject();
 			const instance = {
 				characterGroups: [
 					{
@@ -1745,7 +1743,7 @@ describe('Prepare As Params module', () => {
 				]
 			};
 			const result = prepareAsParams(instance);
-			expect(stubs.getRandomUuidModule.getRandomUuid.callCount).to.equal(6);
+			expect(stubs.getRandomUuid.callCount).to.equal(6);
 			expect(stubs.neo4j.int.callCount).to.equal(12);
 			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[1].characters[0].uuid);
 			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[1].characters[1].uuid);

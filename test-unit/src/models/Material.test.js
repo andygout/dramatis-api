@@ -45,9 +45,7 @@ describe('Material model', () => {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
 				getDuplicateNameIndices: stub().returns([])
 			},
-			isValidYearModule: {
-				isValidYear: stub().returns(false)
-			},
+			isValidYear: stub().returns(false),
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
 			},
@@ -59,7 +57,7 @@ describe('Material model', () => {
 			}
 		};
 
-		stubs.isValidYearModule.isValidYear.withArgs(1959).returns(true);
+		stubs.isValidYear.withArgs(1959).returns(true);
 
 	});
 
@@ -77,7 +75,7 @@ describe('Material model', () => {
 			// Required for when functions are invoked by ancestor class methods.
 			{
 				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-				'../../../src/lib/is-valid-year.js': stubs.isValidYearModule,
+				'../../../src/lib/is-valid-year.js': stubs.isValidYear,
 				'../../../src/lib/strings.js': stubs.stringsModule,
 				'../../../src/models/index.js': stubs.models
 			}
@@ -462,7 +460,7 @@ describe('Material model', () => {
 
 				instance.validateYear();
 
-				assert.notCalled(stubs.isValidYearModule.isValidYear);
+				assert.notCalled(stubs.isValidYear);
 				assert.notCalled(instance.addPropertyError);
 
 			});
@@ -481,7 +479,7 @@ describe('Material model', () => {
 
 				instance.validateYear();
 
-				assert.calledOnceWithExactly(stubs.isValidYearModule.isValidYear, 'Nineteen Fifty-Nine');
+				assert.calledOnceWithExactly(stubs.isValidYear, 'Nineteen Fifty-Nine');
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'year', 'Value must be a valid year'
@@ -503,7 +501,7 @@ describe('Material model', () => {
 
 				instance.validateYear();
 
-				assert.calledOnceWithExactly(stubs.isValidYearModule.isValidYear, 1959);
+				assert.calledOnceWithExactly(stubs.isValidYear, 1959);
 				assert.notCalled(instance.addPropertyError);
 
 			});

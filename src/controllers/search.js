@@ -1,4 +1,4 @@
-import { sendJsonResponse } from '../lib/send-json-response.js';
+import sendJsonResponse from '../lib/send-json-response.js';
 import { searchQueries } from '../neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../neo4j/query.js';
 

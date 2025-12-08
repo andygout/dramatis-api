@@ -21,9 +21,7 @@ describe('Awards controller', () => {
 				callInstanceMethod: stub().resolves('callInstanceMethod response'),
 				callStaticListMethod: stub().resolves('callStaticListMethod response')
 			},
-			sendJsonResponseModule: {
-				sendJsonResponse: stub().returns('sendJsonResponse response')
-			},
+			sendJsonResponse: stub().returns('sendJsonResponse response'),
 			models: {
 				Award: AwardStub
 			},
@@ -43,7 +41,7 @@ describe('Awards controller', () => {
 	const createSubject = () =>
 		esmock('../../../src/controllers/awards.js', {
 			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponseModule,
+			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
 			'../../../src/models/index.js': stubs.models
 		});
 
@@ -61,7 +59,7 @@ describe('Awards controller', () => {
 
 			const result = await callFunction('newRoute');
 			assert.calledOnceWithExactly(
-				stubs.sendJsonResponseModule.sendJsonResponse,
+				stubs.sendJsonResponse,
 				stubs.response, stubs.models.Award() // eslint-disable-line new-cap
 			);
 			expect(result).to.equal('sendJsonResponse response');

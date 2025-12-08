@@ -88,9 +88,7 @@ describe('Production model', () => {
 				getDuplicateUuidIndices: stub().returns([]),
 				getDuplicateUrlIndices: stub().returns([])
 			},
-			isValidDateModule: {
-				isValidDate: stub().returns(false)
-			},
+			isValidDate: stub().returns(false),
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
 			},
@@ -124,7 +122,7 @@ describe('Production model', () => {
 			// Required for when functions are invoked by ancestor class methods.
 			{
 				'../../../src/lib/get-duplicate-indices.js': stubs.getDuplicateIndicesModule,
-				'../../../src/lib/is-valid-date.js': stubs.isValidDateModule,
+				'../../../src/lib/is-valid-date.js': stubs.isValidDate,
 				'../../../src/lib/strings.js': stubs.stringsModule,
 				'../../../src/models/index.js': stubs.models
 			}
@@ -725,10 +723,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -739,7 +737,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate.onFirstCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true);
 
 					const Production = await createSubject();
 
@@ -749,10 +747,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -771,10 +769,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -785,7 +783,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate.onSecondCall().returns(true);
+					stubs.isValidDate.onSecondCall().returns(true);
 
 					const Production = await createSubject();
 
@@ -795,10 +793,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -817,10 +815,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -831,7 +829,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate.onThirdCall().returns(true);
+					stubs.isValidDate.onThirdCall().returns(true);
 
 					const Production = await createSubject();
 
@@ -841,10 +839,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2011-01-26');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -855,7 +853,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
 
@@ -871,10 +869,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2011-01-26');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -885,7 +883,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
 
@@ -901,10 +899,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2010-09-30');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -915,7 +913,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
 
@@ -931,10 +929,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -945,7 +943,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
 
@@ -961,10 +959,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -975,7 +973,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
 
@@ -991,10 +989,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2011-01-26');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -1005,7 +1003,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
 
@@ -1021,10 +1019,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2010-09-30');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -1048,10 +1046,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -1062,7 +1060,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
@@ -1080,10 +1078,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2011-01-26');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -1094,7 +1092,7 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
@@ -1112,10 +1110,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2010-09-30');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
 
 				});
@@ -1138,10 +1136,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, 'foobar');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, 'foobar');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'startDate', 'Value must be in date format'
@@ -1163,10 +1161,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, 'foobar');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, 'foobar');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'pressDate', 'Value must be in date format'
@@ -1188,10 +1186,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, 'foobar');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, 'foobar');
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'endDate', 'Value must be in date format'
@@ -1205,7 +1203,7 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
 
@@ -1221,10 +1219,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2011-01-26');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2010-09-30');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
@@ -1243,7 +1241,7 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
 
@@ -1259,10 +1257,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
@@ -1281,7 +1279,7 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
 
@@ -1297,10 +1295,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2011-01-26');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2010-10-07');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2011-01-26');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-10-07');
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
@@ -1319,7 +1317,7 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', async () => {
 
-					stubs.isValidDateModule.isValidDate
+					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
@@ -1337,10 +1335,10 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDateModule.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.firstCall, '2011-01-26');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDateModule.isValidDate.thirdCall, '2010-09-30');
+					expect(stubs.isValidDate.callCount).to.equal(3);
+					assert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
+					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					expect(instance.addPropertyError.callCount).to.equal(6);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,

@@ -1,5 +1,5 @@
 import { getTrimmedOrEmptyString } from '../lib/strings.js';
-import { validateString } from '../lib/validate-string.js';
+import validateString from '../lib/validate-string.js';
 import { MODELS } from '../utils/constants.js';
 
 const NAME_EXEMPT_MODELS = new Set([

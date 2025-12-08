@@ -1,5 +1,5 @@
-import { hasErrors } from '../lib/has-errors.js';
-import { prepareAsParams } from '../lib/prepare-as-params.js';
+import hasErrors from '../lib/has-errors.js';
+import prepareAsParams from '../lib/prepare-as-params.js';
 import { getTrimmedOrEmptyString } from '../lib/strings.js';
 import Base from './Base.js';
 import {

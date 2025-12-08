@@ -11,12 +11,8 @@ describe('Entity model', () => {
 	beforeEach(() => {
 
 		stubs = {
-			hasErrorsModule: {
-				hasErrors: stub().returns(false)
-			},
-			prepareAsParamsModule: {
-				prepareAsParams: stub().returns('prepareAsParams response')
-			},
+			hasErrors: stub().returns(false),
+			prepareAsParams: stub().returns('prepareAsParams response'),
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
 			},
@@ -66,8 +62,8 @@ describe('Entity model', () => {
 			// globalmocks: mock definitions imported everywhere
 			// Required for when instances of class extensions of the Entity class are tested.
 			{
-				'../../../src/lib/has-errors.js': stubs.hasErrorsModule,
-				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParamsModule,
+				'../../../src/lib/has-errors.js': stubs.hasErrors,
+				'../../../src/lib/prepare-as-params.js': stubs.prepareAsParams,
 				'../../../src/lib/strings.js': stubs.stringsModule,
 				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
@@ -505,7 +501,7 @@ describe('Entity model', () => {
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				stubs.prepareAsParamsModule.prepareAsParams.returns({
+				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
@@ -517,11 +513,11 @@ describe('Entity model', () => {
 				await instance.validateUniquenessInDatabase();
 
 				assert.callOrder(
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					instance.model
@@ -551,7 +547,7 @@ describe('Entity model', () => {
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				stubs.prepareAsParamsModule.prepareAsParams.returns({
+				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
@@ -563,12 +559,12 @@ describe('Entity model', () => {
 				await instance.validateUniquenessInDatabase();
 
 				assert.callOrder(
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					instance.model
@@ -610,7 +606,7 @@ describe('Entity model', () => {
 
 			instance.setErrorStatus();
 
-			assert.calledOnceWithExactly(stubs.hasErrorsModule.hasErrors, instance);
+			assert.calledOnceWithExactly(stubs.hasErrors, instance);
 
 			expect(instance.hasErrors).to.be.false;
 
@@ -729,7 +725,7 @@ describe('Entity model', () => {
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				stubs.prepareAsParamsModule.prepareAsParams
+				stubs.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
@@ -749,16 +745,16 @@ describe('Entity model', () => {
 					instance.runDatabaseValidations,
 					instance.setErrorStatus,
 					stubs.cypherQueriesModule.sharedQueries.getCreateQuery,
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
 				assert.calledOnceWithExactly(instance.runInputValidations);
 				assert.calledOnceWithExactly(instance.runDatabaseValidations);
 				assert.calledOnceWithExactly(instance.setErrorStatus);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getCreateQuery, instance.model);
-				assert.calledTwice(stubs.prepareAsParamsModule.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams.firstCall, instance);
-				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams.secondCall, instance);
+				assert.calledTwice(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
+				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
 				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery.firstCall,
@@ -786,7 +782,7 @@ describe('Entity model', () => {
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				stubs.prepareAsParamsModule.prepareAsParams
+				stubs.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
@@ -805,16 +801,16 @@ describe('Entity model', () => {
 					instance.runDatabaseValidations,
 					instance.setErrorStatus,
 					stubs.cypherQueriesModule.sharedQueries.getUpdateQuery,
-					stubs.prepareAsParamsModule.prepareAsParams,
+					stubs.prepareAsParams,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
 				assert.calledOnceWithExactly(instance.runInputValidations);
 				assert.calledOnceWithExactly(instance.runDatabaseValidations);
 				assert.calledOnceWithExactly(instance.setErrorStatus);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery, instance.model);
-				assert.calledTwice(stubs.prepareAsParamsModule.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams.firstCall, instance);
-				assert.calledWithExactly(stubs.prepareAsParamsModule.prepareAsParams.secondCall, instance);
+				assert.calledTwice(stubs.prepareAsParams);
+				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
+				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
 				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
 				assert.calledWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery.firstCall,
@@ -846,13 +842,13 @@ describe('Entity model', () => {
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				stubs.prepareAsParamsModule.prepareAsParams
+				stubs.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					});
-				stubs.hasErrorsModule.hasErrors.returns(true);
+				stubs.hasErrors.returns(true);
 
 				const getCreateUpdateQueryStub = stub();
 
@@ -874,7 +870,7 @@ describe('Entity model', () => {
 				assert.calledOnceWithExactly(instance.runDatabaseValidations);
 				assert.calledOnceWithExactly(instance.setErrorStatus);
 				assert.notCalled(getCreateUpdateQueryStub);
-				assert.calledOnceWithExactly(stubs.prepareAsParamsModule.prepareAsParams, instance);
+				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
@@ -1243,7 +1239,7 @@ describe('Entity model', () => {
 
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-					stubs.hasErrorsModule.hasErrors.returns(true);
+					stubs.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
 						name: 'Almeida Theatre',
@@ -1303,7 +1299,7 @@ describe('Entity model', () => {
 
 					const instance = new Production({ name: 'Foobar' });
 
-					stubs.hasErrorsModule.hasErrors.returns(true);
+					stubs.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
 						name: 'Hamlet',

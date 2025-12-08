@@ -1,4 +1,4 @@
-import { sendJsonResponse } from './send-json-response.js';
+import sendJsonResponse from './send-json-response.js';
 
 const callInstanceMethod = async (response, next, classInstance, action) => {
 
