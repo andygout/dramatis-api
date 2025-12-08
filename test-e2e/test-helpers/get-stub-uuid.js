@@ -23,7 +23,7 @@ const constructStubUuid = components => {
 
 };
 
-export default (arg = {}) => {
+export default (instanceProps = {}) => {
 
 	if (typeof stubUuidCounterClient.getValue() === 'number') {
 
@@ -31,7 +31,7 @@ export default (arg = {}) => {
 
 	}
 
-	const { model, name, differentiator } = arg;
+	const { model, name, differentiator } = instanceProps;
 
 	let stubUuid = constructStubUuid([name, differentiator, model]);
 
