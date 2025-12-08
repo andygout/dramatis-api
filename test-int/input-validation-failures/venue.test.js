@@ -154,16 +154,14 @@ describe('Input validation failures: Venue instance', () => {
 
 				const Venue = await createSubject();
 
-				const instanceProps = {
+				const instance = new Venue({
 					name: 'National Theatre',
 					subVenues: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Venue(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -203,7 +201,7 @@ describe('Input validation failures: Venue instance', () => {
 
 				const Venue = await createSubject();
 
-				const instanceProps = {
+				const instance = new Venue({
 					name: 'National Theatre',
 					subVenues: [
 						{
@@ -211,9 +209,7 @@ describe('Input validation failures: Venue instance', () => {
 							differentiator: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Venue(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -253,16 +249,14 @@ describe('Input validation failures: Venue instance', () => {
 
 				const Venue = await createSubject();
 
-				const instanceProps = {
+				const instance = new Venue({
 					name: 'National Theatre',
 					subVenues: [
 						{
 							name: 'National Theatre'
 						}
 					]
-				};
-
-				const instance = new Venue(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -305,7 +299,7 @@ describe('Input validation failures: Venue instance', () => {
 
 				const Venue = await createSubject();
 
-				const instanceProps = {
+				const instance = new Venue({
 					name: 'National Theatre',
 					subVenues: [
 						{
@@ -323,9 +317,7 @@ describe('Input validation failures: Venue instance', () => {
 							differentiator: '2'
 						}
 					]
-				};
-
-				const instance = new Venue(instanceProps);
+				});
 
 				const result = await instance[method]();
 

@@ -56,11 +56,9 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: ''
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -125,11 +123,9 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: ABOVE_MAX_LENGTH_STRING
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -194,12 +190,10 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					subtitle: ABOVE_MAX_LENGTH_STRING
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -264,14 +258,12 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					startDate: 'foobar',
 					pressDate: 'foobar',
 					endDate: 'foobar'
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -342,14 +334,12 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					startDate: '2011-01-26',
 					pressDate: '2010-10-07',
 					endDate: '2010-09-30'
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -423,14 +413,12 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					material: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -495,15 +483,13 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					material: {
 						name: 'Hamlet',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -568,14 +554,12 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					venue: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -640,15 +624,13 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					venue: {
 						name: 'National Theatre',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -713,14 +695,12 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					season: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -785,15 +765,13 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					season: {
 						name: 'Shakespearean Tragedy Season',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -858,14 +836,12 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					festival: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -930,15 +906,13 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					festival: {
 						name: 'The Complete Works',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1003,16 +977,14 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'The Coast of Utopia',
 					subProductions: [
 						{
 							uuid: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1083,7 +1055,7 @@ describe('Input validation failures: Production instance', () => {
 
 			const PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-			const instanceProps = {
+			const instance = new Production({
 				uuid: PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
 				subProductions: [
@@ -1091,9 +1063,7 @@ describe('Input validation failures: Production instance', () => {
 						uuid: PRODUCTION_UUID
 					}
 				]
-			};
-
-			const instance = new Production(instanceProps);
+			});
 
 			const result = await instance.update();
 
@@ -1161,7 +1131,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'The Coast of Utopia',
 					subProductions: [
 						{
@@ -1174,9 +1144,7 @@ describe('Input validation failures: Production instance', () => {
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1258,16 +1226,14 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1338,7 +1304,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1348,9 +1314,7 @@ describe('Input validation failures: Production instance', () => {
 							name: 'produced by'
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1430,7 +1394,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1442,9 +1406,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1522,7 +1484,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1535,9 +1497,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1615,7 +1575,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1628,9 +1588,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1709,7 +1667,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1723,9 +1681,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1804,7 +1760,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1836,9 +1792,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1976,7 +1930,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1994,9 +1948,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2082,7 +2034,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -2100,9 +2052,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2188,7 +2138,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -2207,9 +2157,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2295,7 +2243,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2303,9 +2251,7 @@ describe('Input validation failures: Production instance', () => {
 							roles: []
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2378,7 +2324,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2387,9 +2333,7 @@ describe('Input validation failures: Production instance', () => {
 							roles: []
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2462,7 +2406,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2480,9 +2424,7 @@ describe('Input validation failures: Production instance', () => {
 							differentiator: '2'
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2586,7 +2528,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2598,9 +2540,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2682,7 +2622,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2695,9 +2635,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2779,7 +2717,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2792,9 +2730,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2876,7 +2812,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2890,9 +2826,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -2974,7 +2908,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2987,9 +2921,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3071,7 +3003,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -3084,9 +3016,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3168,7 +3098,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -3191,9 +3121,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3321,16 +3249,14 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3401,7 +3327,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3411,9 +3337,7 @@ describe('Input validation failures: Production instance', () => {
 							name: 'Sound Design'
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3493,7 +3417,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3505,9 +3429,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3585,7 +3507,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3597,9 +3519,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3677,7 +3597,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3690,9 +3610,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3770,7 +3688,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3783,9 +3701,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3864,7 +3780,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3878,9 +3794,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -3959,7 +3873,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3991,9 +3905,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4131,7 +4043,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4149,9 +4061,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4237,7 +4147,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4255,9 +4165,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4343,7 +4251,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4362,9 +4270,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4450,16 +4356,14 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4530,7 +4434,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4540,9 +4444,7 @@ describe('Input validation failures: Production instance', () => {
 							name: 'Stage Manager'
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4622,7 +4524,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4634,9 +4536,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4714,7 +4614,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4726,9 +4626,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4806,7 +4704,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4819,9 +4717,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4899,7 +4795,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4912,9 +4808,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -4993,7 +4887,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5007,9 +4901,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5088,7 +4980,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5120,9 +5012,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5260,7 +5150,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5278,9 +5168,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5366,7 +5254,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5384,9 +5272,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5472,7 +5358,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5491,9 +5377,7 @@ describe('Input validation failures: Production instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5585,7 +5469,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const ABOVE_MAX_LENGTH_URL = urlProtocolAndSubdomain + urlDomainName;
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5598,9 +5482,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5685,7 +5567,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const INVALID_URL = 'foobar';
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5698,9 +5580,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5783,7 +5663,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5814,9 +5694,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -5937,7 +5815,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5947,9 +5825,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6032,7 +5908,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6042,9 +5918,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6127,7 +6001,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6141,9 +6015,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6226,7 +6098,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6239,9 +6111,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6324,7 +6194,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6337,9 +6207,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6422,7 +6290,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6436,9 +6304,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6521,7 +6387,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6534,9 +6400,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6619,7 +6483,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6633,9 +6497,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6718,7 +6580,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6731,9 +6593,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -6816,7 +6676,7 @@ describe('Input validation failures: Production instance', () => {
 
 				const Production = await createSubject();
 
-				const instanceProps = {
+				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6830,9 +6690,7 @@ describe('Input validation failures: Production instance', () => {
 							}
 						}
 					]
-				};
-
-				const instance = new Production(instanceProps);
+				});
 
 				const result = await instance[method]();
 

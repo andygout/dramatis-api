@@ -47,7 +47,9 @@ describe('Input validation failures: Person instance', () => {
 
 				const Person = await createSubject();
 
-				const instance = new Person({ name: '' });
+				const instance = new Person({
+					name: ''
+				});
 
 				const result = await instance[method]();
 
@@ -79,7 +81,9 @@ describe('Input validation failures: Person instance', () => {
 
 				const Person = await createSubject();
 
-				const instance = new Person({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Person({
+					name: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 
@@ -111,7 +115,10 @@ describe('Input validation failures: Person instance', () => {
 
 				const Person = await createSubject();
 
-				const instance = new Person({ name: 'Helen Mirren', differentiator: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Person({
+					name: 'Helen Mirren',
+					differentiator: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 

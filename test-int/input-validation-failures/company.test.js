@@ -47,7 +47,9 @@ describe('Input validation failures: Company instance', () => {
 
 				const Company = await createSubject();
 
-				const instance = new Company({ name: '' });
+				const instance = new Company({
+					name: ''
+				});
 
 				const result = await instance[method]();
 
@@ -79,7 +81,9 @@ describe('Input validation failures: Company instance', () => {
 
 				const Company = await createSubject();
 
-				const instance = new Company({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Company({
+					name: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 
@@ -111,7 +115,10 @@ describe('Input validation failures: Company instance', () => {
 
 				const Company = await createSubject();
 
-				const instance = new Company({ name: 'Playful Productions', differentiator: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Company({
+					name: 'Playful Productions',
+					differentiator: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 

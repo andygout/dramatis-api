@@ -47,7 +47,9 @@ describe('Input validation failures: Festival Series instance', () => {
 
 				const FestivalSeries = await createSubject();
 
-				const instance = new FestivalSeries({ name: '' });
+				const instance = new FestivalSeries({
+					name: ''
+				});
 
 				const result = await instance[method]();
 
@@ -79,7 +81,9 @@ describe('Input validation failures: Festival Series instance', () => {
 
 				const FestivalSeries = await createSubject();
 
-				const instance = new FestivalSeries({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new FestivalSeries({
+					name: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 

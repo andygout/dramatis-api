@@ -323,14 +323,12 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -374,15 +372,13 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
 						name: 'Rosmersholm',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -426,14 +422,12 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
 						name: 'Rosmersholm'
 					}
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -480,16 +474,14 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -540,7 +532,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -550,9 +542,7 @@ describe('Input validation failures: Material instance', () => {
 							name: 'version by'
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -613,7 +603,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -624,9 +614,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -684,7 +672,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -696,9 +684,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -756,7 +742,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -768,9 +754,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -828,7 +812,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -841,9 +825,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -901,7 +883,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -913,9 +895,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -973,7 +953,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -986,9 +966,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1046,7 +1024,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -1067,9 +1045,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1157,7 +1133,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -1169,9 +1145,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1232,16 +1206,14 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1292,7 +1264,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
@@ -1300,9 +1272,7 @@ describe('Input validation failures: Material instance', () => {
 							differentiator: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1353,16 +1323,14 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
 							name: 'The Coast of Utopia'
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1416,7 +1384,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
@@ -1434,9 +1402,7 @@ describe('Input validation failures: Material instance', () => {
 							differentiator: '2'
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1515,16 +1481,14 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1574,7 +1538,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1585,9 +1549,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1646,7 +1608,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1658,9 +1620,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1719,7 +1679,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1731,9 +1691,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1792,7 +1750,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1804,9 +1762,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1865,7 +1821,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1877,9 +1833,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1938,7 +1892,7 @@ describe('Input validation failures: Material instance', () => {
 
 				const Material = await createSubject();
 
-				const instanceProps = {
+				const instance = new Material({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1960,9 +1914,7 @@ describe('Input validation failures: Material instance', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new Material(instanceProps);
+				});
 
 				const result = await instance[method]();
 

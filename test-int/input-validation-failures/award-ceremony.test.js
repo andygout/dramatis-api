@@ -123,14 +123,12 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2020',
 					award: {
 						name: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -168,15 +166,13 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2020',
 					award: {
 						name: 'Laurence Olivier Awards',
 						differentiator: ABOVE_MAX_LENGTH_STRING
 					}
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -214,16 +210,14 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2020',
 					categories: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -267,7 +261,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2020',
 					categories: [
 						{
@@ -283,9 +277,7 @@ describe('AwardCeremony model', () => {
 							name: 'Best Revival'
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -348,7 +340,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -364,9 +356,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -426,7 +416,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -438,9 +428,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -493,7 +481,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -509,9 +497,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -571,7 +557,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -588,9 +574,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -650,7 +634,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -667,9 +651,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -730,7 +712,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -748,9 +730,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -811,7 +791,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -847,9 +827,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -967,7 +945,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -989,9 +967,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1059,7 +1035,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1081,9 +1057,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1151,7 +1125,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1174,9 +1148,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1244,7 +1216,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1260,9 +1232,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1320,7 +1290,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1342,9 +1312,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1414,7 +1382,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1430,9 +1398,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1492,7 +1458,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1509,9 +1475,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
@@ -1571,7 +1535,7 @@ describe('AwardCeremony model', () => {
 
 				const AwardCeremony = await createSubject();
 
-				const instanceProps = {
+				const instance = new AwardCeremony({
 					name: '2010',
 					categories: [
 						{
@@ -1593,9 +1557,7 @@ describe('AwardCeremony model', () => {
 							]
 						}
 					]
-				};
-
-				const instance = new AwardCeremony(instanceProps);
+				});
 
 				const result = await instance[method]();
 
