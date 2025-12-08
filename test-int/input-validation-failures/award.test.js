@@ -47,7 +47,9 @@ describe('Input validation failures: Award instance', () => {
 
 				const Award = await createSubject();
 
-				const instance = new Award({ name: '' });
+				const instance = new Award({
+					name: ''
+				});
 
 				const result = await instance[method]();
 
@@ -79,7 +81,9 @@ describe('Input validation failures: Award instance', () => {
 
 				const Award = await createSubject();
 
-				const instance = new Award({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Award({
+					name: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 

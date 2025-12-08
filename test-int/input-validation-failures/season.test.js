@@ -47,7 +47,9 @@ describe('Input validation failures: Season instance', () => {
 
 				const Season = await createSubject();
 
-				const instance = new Season({ name: '' });
+				const instance = new Season({
+					name: ''
+				});
 
 				const result = await instance[method]();
 
@@ -79,7 +81,9 @@ describe('Input validation failures: Season instance', () => {
 
 				const Season = await createSubject();
 
-				const instance = new Season({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Season({
+					name: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 

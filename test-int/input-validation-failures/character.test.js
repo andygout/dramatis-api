@@ -47,7 +47,9 @@ describe('Input validation failures: Character instance', () => {
 
 				const Character = await createSubject();
 
-				const instance = new Character({ name: '' });
+				const instance = new Character({
+					name: ''
+				});
 
 				const result = await instance[method]();
 
@@ -79,7 +81,9 @@ describe('Input validation failures: Character instance', () => {
 
 				const Character = await createSubject();
 
-				const instance = new Character({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Character({
+					name: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 
@@ -111,7 +115,10 @@ describe('Input validation failures: Character instance', () => {
 
 				const Character = await createSubject();
 
-				const instance = new Character({ name: 'Hamlet', differentiator: ABOVE_MAX_LENGTH_STRING });
+				const instance = new Character({
+					name: 'Hamlet',
+					differentiator: ABOVE_MAX_LENGTH_STRING
+				});
 
 				const result = await instance[method]();
 
