@@ -13,6 +13,7 @@ import {
 describe('Material model', () => {
 
 	let stubs;
+	let Material;
 
 	const CharacterGroupStub = function () {
 
@@ -38,7 +39,7 @@ describe('Material model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
@@ -59,16 +60,7 @@ describe('Material model', () => {
 
 		stubs.isValidYear.withArgs(1959).returns(true);
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Material = await esmock(
 			'../../../src/models/Material.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -81,11 +73,17 @@ describe('Material model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
-			const Material = await createSubject();
 
 			new Material();
 
@@ -96,8 +94,6 @@ describe('Material model', () => {
 		describe('subtitle property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({ subtitle: 'Prince of Denmark' });
 
@@ -111,8 +107,6 @@ describe('Material model', () => {
 		describe('format property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({ format: 'play' });
 
@@ -129,8 +123,6 @@ describe('Material model', () => {
 
 				it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
-					const Material = await createSubject();
-
 					const instance = new Material({ year: 'Nineteen Fifty-Nine' });
 
 					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), 'Nineteen Fifty-Nine');
@@ -144,8 +136,6 @@ describe('Material model', () => {
 
 				it('assigns value converted to integer if included in props and value can be parsed as integer', async () => {
 
-					const Material = await createSubject();
-
 					const instance = new Material({ year: '1959' });
 
 					expect(instance.year).to.equal(1959);
@@ -154,8 +144,6 @@ describe('Material model', () => {
 
 				it('assigns value with flanking whitespace converted to integer if included in props and value can be parsed as integer', async () => {
 
-					const Material = await createSubject();
-
 					const instance = new Material({ year: ' 1959 ' });
 
 					expect(instance.year).to.equal(1959);
@@ -163,8 +151,6 @@ describe('Material model', () => {
 				});
 
 				it('assigns value if included in props and is an integer', async () => {
-
-					const Material = await createSubject();
 
 					const instance = new Material({ year: 1959 });
 
@@ -180,8 +166,6 @@ describe('Material model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Material = await createSubject();
-
 				const instance = new Material({
 					name: 'The Seagull',
 					differentiator: '2'
@@ -192,8 +176,6 @@ describe('Material model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({
 					name: 'The Seagull',
@@ -214,8 +196,6 @@ describe('Material model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Material = await createSubject();
-
 				const instance = new Material({ name: 'The Tragedy of Hamlet' });
 
 				expect(instance.writingCredits).to.deep.equal([]);
@@ -223,8 +203,6 @@ describe('Material model', () => {
 			});
 
 			it('assigns array of writingCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({
 					name: 'The Tragedy of Hamlet',
@@ -254,8 +232,6 @@ describe('Material model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Material = await createSubject();
-
 				const instance = new Material({ name: 'The Coast of Utopia' });
 
 				expect(instance.subMaterials).to.deep.equal([]);
@@ -263,8 +239,6 @@ describe('Material model', () => {
 			});
 
 			it('assigns array of subMaterials if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({
 					name: 'The Coast of Utopia',
@@ -294,8 +268,6 @@ describe('Material model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Material = await createSubject();
-
 				const instance = new Material({ name: 'The Tragedy of Hamlet' });
 
 				expect(instance.characterGroups).to.deep.equal([]);
@@ -303,8 +275,6 @@ describe('Material model', () => {
 			});
 
 			it('assigns array of characterGroups if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({
 					name: 'The Tragedy of Hamlet',
@@ -335,8 +305,6 @@ describe('Material model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const Material = await createSubject();
 
 			const instance = new Material({
 				name: 'The Tragedy of Hamlet',
@@ -429,8 +397,6 @@ describe('Material model', () => {
 
 		it('will call validateStringForProperty method', async () => {
 
-			const Material = await createSubject();
-
 			const instance = new Material({ name: 'The Tragedy of Hamlet', format: 'play' });
 
 			spy(instance, 'validateStringForProperty');
@@ -452,8 +418,6 @@ describe('Material model', () => {
 
 			it('will not call isValidYear function or addPropertyError method', async () => {
 
-				const Material = await createSubject();
-
 				const instance = new Material({ name: 'The Caretaker', year: '' });
 
 				spy(instance, 'addPropertyError');
@@ -470,8 +434,6 @@ describe('Material model', () => {
 		context('year value is not a valid year', () => {
 
 			it('will call isValidYear function and addPropertyError method', async () => {
-
-				const Material = await createSubject();
 
 				const instance = new Material({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
 
@@ -493,8 +455,6 @@ describe('Material model', () => {
 
 			it('will call isValidYear function but not addPropertyError method', async () => {
 
-				const Material = await createSubject();
-
 				const instance = new Material({ name: 'The Caretaker', year: 1959 });
 
 				spy(instance, 'addPropertyError');
@@ -513,8 +473,6 @@ describe('Material model', () => {
 	describe('runDatabaseValidations method', () => {
 
 		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
-
-			const Material = await createSubject();
 
 			const instance = new Material({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',

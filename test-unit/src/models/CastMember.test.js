@@ -7,6 +7,7 @@ import { Role } from '../../../src/models/index.js';
 describe('CastMember model', () => {
 
 	let stubs;
+	let CastMember;
 
 	const RoleStub = function () {
 
@@ -14,7 +15,7 @@ describe('CastMember model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
@@ -25,16 +26,7 @@ describe('CastMember model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		CastMember = await esmock(
 			'../../../src/models/CastMember.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -45,13 +37,19 @@ describe('CastMember model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('roles property', () => {
 
 			it('assigns empty array if absent from props', async () => {
-
-				const CastMember = await createSubject();
 
 				const instance = new CastMember({ name: 'Ian McKellen' });
 
@@ -60,8 +58,6 @@ describe('CastMember model', () => {
 			});
 
 			it('assigns array of role instances, retaining those with empty or whitespace-only string names', async () => {
-
-				const CastMember = await createSubject();
 
 				const instance = new CastMember({
 					name: 'Ian McKellen',
@@ -92,8 +88,6 @@ describe('CastMember model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const CastMember = await createSubject();
 
 			const instance = new CastMember({
 				name: 'Ian McKellen',

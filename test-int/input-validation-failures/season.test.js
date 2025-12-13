@@ -8,19 +8,28 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('Input validation failures: Season instance', () => {
 
 	let stubs;
+	let Season;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
 			}
 		};
+
+		Season = await esmock(
+			'../../src/models/Season.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	});
 
@@ -30,14 +39,7 @@ describe('Input validation failures: Season instance', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/Season.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new Season(props);
 
 	context('name value is empty string', () => {
 
@@ -45,9 +47,7 @@ describe('Input validation failures: Season instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Season = await createSubject();
-
-				const instance = new Season({
+				const instance = createInstance({
 					name: ''
 				});
 
@@ -79,9 +79,7 @@ describe('Input validation failures: Season instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Season = await createSubject();
-
-				const instance = new Season({
+				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
 
@@ -113,9 +111,7 @@ describe('Input validation failures: Season instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Season = await createSubject();
-
-				const instance = new Season({
+				const instance = createInstance({
 					name: 'Not Black and White',
 					differentiator: ABOVE_MAX_LENGTH_STRING
 				});

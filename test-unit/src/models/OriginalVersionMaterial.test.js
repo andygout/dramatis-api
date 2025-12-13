@@ -4,10 +4,11 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('OriginalVersionMaterial model', () => {
 
 	let stubs;
+	let OriginalVersionMaterial;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
@@ -22,16 +23,7 @@ describe('OriginalVersionMaterial model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		OriginalVersionMaterial = await esmock(
 			'../../../src/models/OriginalVersionMaterial.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -43,6 +35,14 @@ describe('OriginalVersionMaterial model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('runDatabaseValidations method', () => {
 
 		context('valid data', () => {
@@ -52,8 +52,6 @@ describe('OriginalVersionMaterial model', () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: false
 				});
-
-				const OriginalVersionMaterial = await createSubject();
 
 				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
@@ -96,8 +94,6 @@ describe('OriginalVersionMaterial model', () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: true
 				});
-
-				const OriginalVersionMaterial = await createSubject();
 
 				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 

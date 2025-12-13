@@ -18,6 +18,7 @@ import {
 describe('Production model', () => {
 
 	let stubs;
+	let Production;
 
 	const CastMemberStub = function () {
 
@@ -79,7 +80,7 @@ describe('Production model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
@@ -106,16 +107,7 @@ describe('Production model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Production = await esmock(
 			'../../../src/models/Production.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -128,11 +120,17 @@ describe('Production model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
-			const Production = await createSubject();
 
 			new Production();
 
@@ -143,8 +141,6 @@ describe('Production model', () => {
 		describe('subtitle property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({ subtitle: 'Prince of Denmark' });
 
@@ -159,8 +155,6 @@ describe('Production model', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ startDate: '2010-09-30' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-09-30');
@@ -173,8 +167,6 @@ describe('Production model', () => {
 		describe('pressDate property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({ pressDate: '2010-10-07' });
 
@@ -189,8 +181,6 @@ describe('Production model', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ endDate: '2011-01-26' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), '2011-01-26');
@@ -204,8 +194,6 @@ describe('Production model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.material instanceof MaterialBase).to.be.true;
@@ -213,8 +201,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -233,8 +219,6 @@ describe('Production model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.venue instanceof VenueBase).to.be.true;
@@ -242,8 +226,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -262,8 +244,6 @@ describe('Production model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.season instanceof Season).to.be.true;
@@ -271,8 +251,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -291,8 +269,6 @@ describe('Production model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.festival instanceof FestivalBase).to.be.true;
@@ -300,8 +276,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -320,8 +294,6 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({});
 
 				expect(instance.subProductions).to.deep.equal([]);
@@ -329,8 +301,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns array of subProductions if included in props, retaining those with empty or whitespace-only string uuids', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					subProductions: [
@@ -359,8 +329,6 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.producerCredits).to.deep.equal([]);
@@ -368,8 +336,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns array of produucerCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -399,8 +365,6 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.cast).to.deep.equal([]);
@@ -408,8 +372,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns array of cast if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -439,8 +401,6 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.creativeCredits).to.deep.equal([]);
@@ -448,8 +408,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -479,8 +437,6 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.crewCredits).to.deep.equal([]);
@@ -488,8 +444,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns array of crewCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -519,8 +473,6 @@ describe('Production model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Production = await createSubject();
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.reviews).to.deep.equal([]);
@@ -528,8 +480,6 @@ describe('Production model', () => {
 			});
 
 			it('assigns array of reviews if included in props, retaining those with empty or whitespace-only string urls', async () => {
-
-				const Production = await createSubject();
 
 				const instance = new Production({
 					name: 'Hamlet',
@@ -560,8 +510,6 @@ describe('Production model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const Production = await createSubject();
 
 			const instance = new Production({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
@@ -715,8 +663,6 @@ describe('Production model', () => {
 
 				it('will not call addPropertyError method', async () => {
 
-					const Production = await createSubject();
-
 					const instance = new Production({ name: 'Hamlet', startDate: '' });
 
 					spy(instance, 'addPropertyError');
@@ -739,8 +685,6 @@ describe('Production model', () => {
 
 					stubs.isValidDate.onFirstCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({ name: 'Hamlet', startDate: '2010-09-30' });
 
 					spy(instance, 'addPropertyError');
@@ -760,8 +704,6 @@ describe('Production model', () => {
 			context('pressDate with empty string values', () => {
 
 				it('will not call addPropertyError method', async () => {
-
-					const Production = await createSubject();
 
 					const instance = new Production({ name: 'Hamlet', pressDate: '' });
 
@@ -785,8 +727,6 @@ describe('Production model', () => {
 
 					stubs.isValidDate.onSecondCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({ name: 'Hamlet', pressDate: '2010-10-07' });
 
 					spy(instance, 'addPropertyError');
@@ -806,8 +746,6 @@ describe('Production model', () => {
 			context('endDate with empty string values', () => {
 
 				it('will not call addPropertyError method', async () => {
-
-					const Production = await createSubject();
 
 					const instance = new Production({ name: 'Hamlet', endDate: '' });
 
@@ -830,8 +768,6 @@ describe('Production model', () => {
 				it('will not call addPropertyError method', async () => {
 
 					stubs.isValidDate.onThirdCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({ name: 'Hamlet', endDate: '2011-01-26' });
 
@@ -856,8 +792,6 @@ describe('Production model', () => {
 					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -887,8 +821,6 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -916,8 +848,6 @@ describe('Production model', () => {
 					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -947,8 +877,6 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -976,8 +904,6 @@ describe('Production model', () => {
 					stubs.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1007,8 +933,6 @@ describe('Production model', () => {
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({
 						name: 'Hamlet',
 						pressDate: '2010-09-30',
@@ -1032,8 +956,6 @@ describe('Production model', () => {
 			context('startDate, pressDate, and endDate with empty string values', () => {
 
 				it('will not call addPropertyError method', async () => {
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1065,8 +987,6 @@ describe('Production model', () => {
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -1097,8 +1017,6 @@ describe('Production model', () => {
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-09-30',
@@ -1128,8 +1046,6 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', async () => {
 
-					const Production = await createSubject();
-
 					const instance = new Production({ name: 'Hamlet', startDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -1153,8 +1069,6 @@ describe('Production model', () => {
 
 				it('will call addPropertyError method', async () => {
 
-					const Production = await createSubject();
-
 					const instance = new Production({ name: 'Hamlet', pressDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -1177,8 +1091,6 @@ describe('Production model', () => {
 			context('endDate with invalid date format', () => {
 
 				it('will call addPropertyError method', async () => {
-
-					const Production = await createSubject();
 
 					const instance = new Production({ name: 'Hamlet', endDate: 'foobar' });
 
@@ -1206,8 +1118,6 @@ describe('Production model', () => {
 					stubs.isValidDate
 						.onFirstCall().returns(true)
 						.onThirdCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1245,8 +1155,6 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true);
 
-					const Production = await createSubject();
-
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '2010-10-07',
@@ -1282,8 +1190,6 @@ describe('Production model', () => {
 					stubs.isValidDate
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1321,8 +1227,6 @@ describe('Production model', () => {
 						.onFirstCall().returns(true)
 						.onSecondCall().returns(true)
 						.onThirdCall().returns(true);
-
-					const Production = await createSubject();
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1376,8 +1280,6 @@ describe('Production model', () => {
 	describe('runDatabaseValidations method', () => {
 
 		it('calls associated subProductions\' runDatabaseValidations method', async () => {
-
-			const Production = await createSubject();
 
 			const instance = new Production({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',

@@ -8,17 +8,25 @@ import { Character } from '../../../src/models/index.js';
 describe('Call Class Methods module', () => {
 
 	let stubs;
+	let callClassMethods;
 
 	const error = new Error('errorText');
 	const notFoundError = new Error('Not Found');
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			sendJsonResponse: stub().returns('sendJsonResponse response'),
 			response: httpMocks.createResponse(),
 			next: stub()
 		};
+
+		callClassMethods = await esmock(
+			'../../../src/lib/call-class-methods.js',
+			{
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse
+			}
+		);
 
 	});
 
@@ -27,11 +35,6 @@ describe('Call Class Methods module', () => {
 		restore();
 
 	});
-
-	const createSubject = () =>
-		esmock('../../../src/lib/call-class-methods.js', {
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse
-		});
 
 	describe('callInstanceMethod function', () => {
 
@@ -48,7 +51,6 @@ describe('Call Class Methods module', () => {
 
 			it('calls renderPage module', async () => {
 
-				const callClassMethods = await createSubject();
 				const instanceMethodResponse = { property: 'value' };
 				stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse); });
 				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
@@ -67,7 +69,6 @@ describe('Call Class Methods module', () => {
 
 			it('calls next() with error', async () => {
 
-				const callClassMethods = await createSubject();
 				stub(character, method).callsFake(() => { return Promise.reject(error); });
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				assert.calledOnceWithExactly(stubs.next, error);
@@ -81,7 +82,6 @@ describe('Call Class Methods module', () => {
 
 			it('responds with 404 status and sends error message', async () => {
 
-				const callClassMethods = await createSubject();
 				stub(character, method).callsFake(() => { return Promise.reject(notFoundError); });
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 				expect(stubs.response.statusCode).to.equal(404);
@@ -109,7 +109,6 @@ describe('Call Class Methods module', () => {
 
 			it('calls renderPage module', async () => {
 
-				const callClassMethods = await createSubject();
 				const staticListMethodResponse = [{ property: 'value' }];
 				stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse); });
 				const result =
@@ -129,7 +128,6 @@ describe('Call Class Methods module', () => {
 
 			it('calls next() with error', async () => {
 
-				const callClassMethods = await createSubject();
 				stub(Character, method).callsFake(() => { return Promise.reject(error); });
 				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 				assert.calledOnceWithExactly(stubs.next, error);

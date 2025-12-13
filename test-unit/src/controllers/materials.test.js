@@ -7,6 +7,7 @@ import { Material } from '../../../src/models/index.js';
 describe('Materials controller', () => {
 
 	let stubs;
+	let materialsController;
 
 	const MaterialStub = function () {
 
@@ -14,7 +15,7 @@ describe('Materials controller', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			callClassMethodsModule: {
@@ -30,6 +31,15 @@ describe('Materials controller', () => {
 			next: stub()
 		};
 
+		materialsController = await esmock(
+			'../../../src/controllers/materials.js',
+			{
+				'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -38,16 +48,7 @@ describe('Materials controller', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock('../../../src/controllers/materials.js', {
-			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-			'../../../src/models/index.js': stubs.models
-		});
-
 	const callFunction = async functionName => {
-
-		const materialsController = await createSubject();
 
 		return materialsController[functionName](stubs.request, stubs.response, stubs.next);
 

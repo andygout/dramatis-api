@@ -7,6 +7,7 @@ import { Season } from '../../../src/models/index.js';
 describe('Seasons controller', () => {
 
 	let stubs;
+	let seasonsController;
 
 	const SeasonStub = function () {
 
@@ -14,7 +15,7 @@ describe('Seasons controller', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			callClassMethodsModule: {
@@ -30,6 +31,15 @@ describe('Seasons controller', () => {
 			next: stub()
 		};
 
+		seasonsController = await esmock(
+			'../../../src/controllers/seasons.js',
+			{
+				'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -38,16 +48,7 @@ describe('Seasons controller', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock('../../../src/controllers/seasons.js', {
-			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-			'../../../src/models/index.js': stubs.models
-		});
-
 	const callFunction = async functionName => {
-
-		const seasonsController = await createSubject();
 
 		return seasonsController[functionName](stubs.request, stubs.response, stubs.next);
 

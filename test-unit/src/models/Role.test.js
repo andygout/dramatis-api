@@ -5,8 +5,9 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('Role model', () => {
 
 	let stubs;
+	let Role;
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			stringsModule: {
@@ -14,16 +15,7 @@ describe('Role model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Role = await esmock(
 			'../../../src/models/Role.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -33,11 +25,17 @@ describe('Role model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
-			const Role = await createSubject();
 
 			new Role();
 
@@ -48,8 +46,6 @@ describe('Role model', () => {
 		describe('characterName property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Role = await createSubject();
 
 				const instance = new Role({ characterName: 'Hamlet' });
 
@@ -64,8 +60,6 @@ describe('Role model', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
-				const Role = await createSubject();
-
 				const instance = new Role({ characterDifferentiator: '1' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '1');
@@ -78,8 +72,6 @@ describe('Role model', () => {
 		describe('qualifier property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Role = await createSubject();
 
 				const instance = new Role({ qualifier: 'younger' });
 
@@ -94,8 +86,6 @@ describe('Role model', () => {
 
 			it('assigns false if absent from props', async () => {
 
-				const Role = await createSubject();
-
 				const instance = new Role({ name: 'Young Lucius' });
 
 				expect(instance.isAlternate).to.equal(false);
@@ -103,8 +93,6 @@ describe('Role model', () => {
 			});
 
 			it('assigns false if included in props but value evaluates to false', async () => {
-
-				const Role = await createSubject();
 
 				const instance = new Role({ name: 'Young Lucius', isAlternate: null });
 
@@ -114,8 +102,6 @@ describe('Role model', () => {
 
 			it('assigns false if included in props but value is false', async () => {
 
-				const Role = await createSubject();
-
 				const instance = new Role({ name: 'Young Lucius', isAlternate: false });
 
 				expect(instance.isAlternate).to.equal(false);
@@ -124,8 +110,6 @@ describe('Role model', () => {
 
 			it('assigns true if included in props and value evaluates to true', async () => {
 
-				const Role = await createSubject();
-
 				const instance = new Role({ name: 'Young Lucius', isAlternate: 'foobar' });
 
 				expect(instance.isAlternate).to.equal(true);
@@ -133,8 +117,6 @@ describe('Role model', () => {
 			});
 
 			it('assigns true if included in props and value is true', async () => {
-
-				const Role = await createSubject();
 
 				const instance = new Role({ name: 'Young Lucius', isAlternate: true });
 
@@ -149,8 +131,6 @@ describe('Role model', () => {
 	describe('validateCharacterName method', () => {
 
 		it('will call validateStringForProperty method', async () => {
-
-			const Role = await createSubject();
 
 			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 
@@ -170,8 +150,6 @@ describe('Role model', () => {
 	describe('validateCharacterDifferentiator method', () => {
 
 		it('will call validateStringForProperty method', async () => {
-
-			const Role = await createSubject();
 
 			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 
@@ -196,8 +174,6 @@ describe('Role model', () => {
 
 				it('will not add properties to errors property', async () => {
 
-					const Role = await createSubject();
-
 					const instance = new Role({ name: 'Hamlet', characterName: '' });
 
 					spy(instance, 'addPropertyError');
@@ -214,8 +190,6 @@ describe('Role model', () => {
 
 				it('will not add properties to errors property', async () => {
 
-					const Role = await createSubject();
-
 					const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 
 					spy(instance, 'addPropertyError');
@@ -231,8 +205,6 @@ describe('Role model', () => {
 			context('no role name and no character name', () => {
 
 				it('will not add properties to errors property', async () => {
-
-					const Role = await createSubject();
 
 					const instance = new Role({ name: '', characterName: '' });
 
@@ -251,8 +223,6 @@ describe('Role model', () => {
 		context('invalid data', () => {
 
 			it('adds properties whose values are arrays to errors property', async () => {
-
-				const Role = await createSubject();
 
 				const instance = new Role({ name: 'Hamlet', characterName: 'Hamlet' });
 

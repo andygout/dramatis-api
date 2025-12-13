@@ -7,6 +7,7 @@ import { SubVenue } from '../../../src/models/index.js';
 describe('Venue model', () => {
 
 	let stubs;
+	let Venue;
 
 	const SubVenueStub = function () {
 
@@ -14,7 +15,7 @@ describe('Venue model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
@@ -25,16 +26,7 @@ describe('Venue model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Venue = await esmock(
 			'../../../src/models/Venue.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -45,13 +37,19 @@ describe('Venue model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('subVenues property', () => {
 
 			it('assigns empty array if absent from props', async () => {
-
-				const Venue = await createSubject();
 
 				const instance = new Venue({ name: 'National Theatre' });
 
@@ -60,8 +58,6 @@ describe('Venue model', () => {
 			});
 
 			it('assigns array of subVenues if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Venue = await createSubject();
 
 				const instance = new Venue({
 					name: 'National Theatre',
@@ -92,8 +88,6 @@ describe('Venue model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const Venue = await createSubject();
 
 			const instance = new Venue({
 				name: 'National Theatre',
@@ -144,8 +138,6 @@ describe('Venue model', () => {
 	describe('runDatabaseValidations method', () => {
 
 		it('calls associated subVenues\' runDatabaseValidations method', async () => {
-
-			const Venue = await createSubject();
 
 			const instance = new Venue({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',

@@ -7,6 +7,7 @@ import { Character } from '../../../src/models/index.js';
 describe('Characters controller', () => {
 
 	let stubs;
+	let charactersController;
 
 	const CharacterStub = function () {
 
@@ -14,7 +15,7 @@ describe('Characters controller', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			callClassMethodsModule: {
@@ -30,6 +31,15 @@ describe('Characters controller', () => {
 			next: stub()
 		};
 
+		charactersController = await esmock(
+			'../../../src/controllers/characters.js',
+			{
+				'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -38,16 +48,7 @@ describe('Characters controller', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock('../../../src/controllers/characters.js', {
-			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-			'../../../src/models/index.js': stubs.models
-		});
-
 	const callFunction = async functionName => {
-
-		const charactersController = await createSubject();
 
 		return charactersController[functionName](stubs.request, stubs.response, stubs.next);
 

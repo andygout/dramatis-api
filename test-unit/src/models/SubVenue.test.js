@@ -4,10 +4,11 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('SubVenue model', () => {
 
 	let stubs;
+	let SubVenue;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
@@ -21,16 +22,7 @@ describe('SubVenue model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		SubVenue = await esmock(
 			'../../../src/models/SubVenue.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -41,6 +33,14 @@ describe('SubVenue model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
+
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
 
 	describe('runDatabaseValidations method', () => {
 
@@ -53,8 +53,6 @@ describe('SubVenue model', () => {
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
 				});
-
-				const SubVenue = await createSubject();
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
@@ -97,8 +95,6 @@ describe('SubVenue model', () => {
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
 				});
-
-				const SubVenue = await createSubject();
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
@@ -151,8 +147,6 @@ describe('SubVenue model', () => {
 					isSubjectVenueASubVenue: false
 				});
 
-				const SubVenue = await createSubject();
-
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
 				spy(instance, 'addPropertyError');
@@ -203,8 +197,6 @@ describe('SubVenue model', () => {
 					isSurVenue: false,
 					isSubjectVenueASubVenue: true
 				});
-
-				const SubVenue = await createSubject();
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 

@@ -8,13 +8,14 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('Input validation failures: Production instance', () => {
 
 	let stubs;
+	let Production;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
@@ -31,6 +32,14 @@ describe('Input validation failures: Production instance', () => {
 			}
 		};
 
+		Production = await esmock(
+			'../../src/models/Production.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -39,14 +48,7 @@ describe('Input validation failures: Production instance', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/Production.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new Production(props);
 
 	context('name value is empty string', () => {
 
@@ -54,9 +56,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: ''
 				});
 
@@ -121,9 +121,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
 
@@ -188,9 +186,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					subtitle: ABOVE_MAX_LENGTH_STRING
 				});
@@ -256,9 +252,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					startDate: 'foobar',
 					pressDate: 'foobar',
@@ -332,9 +326,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					startDate: '2011-01-26',
 					pressDate: '2010-10-07',
@@ -411,9 +403,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					material: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -481,9 +471,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					material: {
 						name: 'Hamlet',
@@ -552,9 +540,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					venue: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -622,9 +608,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					venue: {
 						name: 'National Theatre',
@@ -693,9 +677,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					season: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -763,9 +745,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					season: {
 						name: 'Shakespearean Tragedy Season',
@@ -834,9 +814,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					festival: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -904,9 +882,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					festival: {
 						name: 'The Complete Works',
@@ -975,9 +951,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subProductions: [
 						{
@@ -1051,11 +1025,9 @@ describe('Input validation failures: Production instance', () => {
 		// N.B. Only tested for update method; for create method the production instance will not yet have a uuid value.
 		it('assigns appropriate error (update method)', async () => {
 
-			const Production = await createSubject();
-
 			const PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
-			const instance = new Production({
+			const instance = createInstance({
 				uuid: PRODUCTION_UUID,
 				name: 'The Coast of Utopia',
 				subProductions: [
@@ -1129,9 +1101,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subProductions: [
 						{
@@ -1224,9 +1194,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1302,9 +1270,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1392,9 +1358,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1482,9 +1446,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1573,9 +1535,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1665,9 +1625,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1758,9 +1716,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -1928,9 +1884,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -2032,9 +1986,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -2136,9 +2088,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
 						{
@@ -2241,9 +2191,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2322,9 +2270,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2404,9 +2350,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2526,9 +2470,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2620,9 +2562,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2715,9 +2655,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2810,9 +2748,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -2906,9 +2842,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -3001,9 +2935,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -3096,9 +3028,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
 						{
@@ -3247,9 +3177,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3325,9 +3253,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3415,9 +3341,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3505,9 +3429,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3595,9 +3517,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3686,9 +3606,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3778,9 +3696,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -3871,9 +3787,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4041,9 +3955,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4145,9 +4057,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4249,9 +4159,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
 						{
@@ -4354,9 +4262,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4432,9 +4338,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4522,9 +4426,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4612,9 +4514,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4702,9 +4602,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4793,9 +4691,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4885,9 +4781,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -4978,9 +4872,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5148,9 +5040,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5252,9 +5142,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5356,9 +5244,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
 						{
@@ -5461,15 +5347,13 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
 				const urlProtocolAndSubdomain = 'https://www.';
 
 				const urlDomainName = 'a'.repeat((STRING_MAX_LENGTH - urlProtocolAndSubdomain.length) + 1);
 
 				const ABOVE_MAX_LENGTH_URL = urlProtocolAndSubdomain + urlDomainName;
 
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5563,11 +5447,9 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
 				const INVALID_URL = 'foobar';
 
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5661,9 +5543,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5813,9 +5693,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5906,9 +5784,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -5999,9 +5875,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6096,9 +5970,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6192,9 +6064,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6288,9 +6158,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6385,9 +6253,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6481,9 +6347,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6578,9 +6442,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{
@@ -6674,9 +6536,7 @@ describe('Input validation failures: Production instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Production = await createSubject();
-
-				const instance = new Production({
+				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
 						{

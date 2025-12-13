@@ -7,6 +7,7 @@ import { Company, Person } from '../../../src/models/index.js';
 describe('Review model', () => {
 
 	let stubs;
+	let Review;
 
 	const CompanyStub = function () {
 
@@ -20,7 +21,7 @@ describe('Review model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			isValidDate: stub().returns(true),
@@ -33,16 +34,7 @@ describe('Review model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Review = await esmock(
 			'../../../src/models/Review.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -54,11 +46,17 @@ describe('Review model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
-			const Review = await createSubject();
 
 			new Review();
 
@@ -69,8 +67,6 @@ describe('Review model', () => {
 		describe('url property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Review = await createSubject();
 
 				const instance = new Review({ url: 'https://www.foo.com' });
 
@@ -85,8 +81,6 @@ describe('Review model', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 
-				const Review = await createSubject();
-
 				const instance = new Review({ date: '2024-04-03' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2024-04-03');
@@ -100,8 +94,6 @@ describe('Review model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Review = await createSubject();
-
 				const instance = new Review({ url: 'https://www.foo.com' });
 
 				expect(instance.publication instanceof Company).to.be.true;
@@ -109,8 +101,6 @@ describe('Review model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Review = await createSubject();
 
 				const instance = new Review({
 					url: 'https://www.foo.com',
@@ -129,8 +119,6 @@ describe('Review model', () => {
 
 			it('assigns instance if absent from props', async () => {
 
-				const Review = await createSubject();
-
 				const instance = new Review({ url: 'https://www.foo.com' });
 
 				expect(instance.critic instanceof Person).to.be.true;
@@ -138,8 +126,6 @@ describe('Review model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Review = await createSubject();
 
 				const instance = new Review({
 					name: 'https://www.foo.com',
@@ -161,8 +147,6 @@ describe('Review model', () => {
 		context('instance url value is non-empty string', () => {
 
 			it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-				const Review = await createSubject();
 
 				const instance = new Review({
 					url: 'https://www.foo.com',
@@ -214,8 +198,6 @@ describe('Review model', () => {
 
 			it('calls instance\'s publication and critic validateName methods with an argument that it is not required', async () => {
 
-				const Review = await createSubject();
-
 				const instance = new Review({
 					url: '',
 					publication: {
@@ -241,8 +223,6 @@ describe('Review model', () => {
 
 		it('will call validateStringForProperty method', async () => {
 
-			const Review = await createSubject();
-
 			const instance = new Review({ url: 'https://www.foo.com' });
 
 			spy(instance, 'validateStringForProperty');
@@ -260,8 +240,6 @@ describe('Review model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				const Review = await createSubject();
-
 				const instance = new Review({ url: 'https://www.foo.com' });
 
 				spy(instance, 'addPropertyError');
@@ -278,8 +256,6 @@ describe('Review model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				const Review = await createSubject();
-
 				const instance = new Review({ url: '' });
 
 				spy(instance, 'addPropertyError');
@@ -295,8 +271,6 @@ describe('Review model', () => {
 		context('url property is a non-empty string that is not a valid URL', () => {
 
 			it('will call addPropertyError method', async () => {
-
-				const Review = await createSubject();
 
 				const instance = new Review({ url: 'foobar' });
 
@@ -318,8 +292,6 @@ describe('Review model', () => {
 	describe('validateUrlPresenceIfNamedChildren method', () => {
 
 		it('will call validatePropertyPresenceIfNamedChildren', async () => {
-
-			const Review = await createSubject();
 
 			const instance = new Review();
 
@@ -344,8 +316,6 @@ describe('Review model', () => {
 
 				it('will not call isValidDate or addPropertyError method', async () => {
 
-					const Review = await createSubject();
-
 					const instance = new Review({ date: '' });
 
 					spy(instance, 'addPropertyError');
@@ -362,8 +332,6 @@ describe('Review model', () => {
 			context('date is in a valid date format', () => {
 
 				it('will call isValidDate; will not call addPropertyError method', async () => {
-
-					const Review = await createSubject();
 
 					const instance = new Review({ date: '2024-04-03' });
 
@@ -387,8 +355,6 @@ describe('Review model', () => {
 				it('will call isValidDate and addPropertyError method', async () => {
 
 					stubs.isValidDate.returns(false);
-
-					const Review = await createSubject();
 
 					const instance = new Review({ date: 'foobar' });
 

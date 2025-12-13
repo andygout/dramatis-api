@@ -8,13 +8,14 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('Input validation failures: Venue instance', () => {
 
 	let stubs;
+	let Venue;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
@@ -30,6 +31,14 @@ describe('Input validation failures: Venue instance', () => {
 			}
 		};
 
+		Venue = await esmock(
+			'../../src/models/Venue.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -38,14 +47,7 @@ describe('Input validation failures: Venue instance', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/Venue.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new Venue(props);
 
 	context('name value is empty string', () => {
 
@@ -53,9 +55,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({ name: '' });
+				const instance = createInstance({ name: '' });
 
 				const result = await instance[method]();
 
@@ -86,9 +86,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -119,9 +117,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({ name: 'National Theatre', differentiator: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: 'National Theatre', differentiator: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -152,9 +148,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({
+				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
 						{
@@ -199,9 +193,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({
+				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
 						{
@@ -247,9 +239,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({
+				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
 						{
@@ -297,9 +287,7 @@ describe('Input validation failures: Venue instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Venue = await createSubject();
-
-				const instance = new Venue({
+				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
 						{

@@ -7,6 +7,7 @@ import { Company, Person, SourceMaterial } from '../../../src/models/index.js';
 describe('WritingCredit model', () => {
 
 	let stubs;
+	let WritingCredit;
 
 	const CompanyStub = function () {
 
@@ -26,7 +27,7 @@ describe('WritingCredit model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
@@ -39,16 +40,7 @@ describe('WritingCredit model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		WritingCredit = await esmock(
 			'../../../src/models/WritingCredit.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -59,13 +51,19 @@ describe('WritingCredit model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('creditType property', () => {
 
 			it('assigns null if absent from props', async () => {
-
-				const WritingCredit = await createSubject();
 
 				const instance = new WritingCredit({ name: '' });
 
@@ -74,8 +72,6 @@ describe('WritingCredit model', () => {
 			});
 
 			it('assigns null if included in props but value is not an accepted credit type', async () => {
-
-				const WritingCredit = await createSubject();
 
 				const instance = new WritingCredit({ name: '', creditType: 'foobar' });
 
@@ -92,8 +88,6 @@ describe('WritingCredit model', () => {
 
 				for (const creditType of creditTypes) {
 
-					const WritingCredit = await createSubject();
-
 					const instance = new WritingCredit({ name: '', creditType });
 
 					expect(instance.creditType).to.equal(creditType);
@@ -108,8 +102,6 @@ describe('WritingCredit model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const WritingCredit = await createSubject();
-
 				const instance = new WritingCredit({ name: 'version by' });
 
 				expect(instance.entities).to.deep.equal([]);
@@ -117,8 +109,6 @@ describe('WritingCredit model', () => {
 			});
 
 			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
-
-				const WritingCredit = await createSubject();
 
 				const instance = new WritingCredit({
 					name: 'version by',
@@ -179,8 +169,6 @@ describe('WritingCredit model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const WritingCredit = await createSubject();
 
 			const instance = new WritingCredit({
 				name: 'version by',
@@ -249,8 +237,6 @@ describe('WritingCredit model', () => {
 	describe('runDatabaseValidations method', () => {
 
 		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
-
-			const WritingCredit = await createSubject();
 
 			const instance = new WritingCredit({
 				name: 'version by',

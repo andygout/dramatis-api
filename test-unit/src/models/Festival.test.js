@@ -7,6 +7,7 @@ import { FestivalSeries } from '../../../src/models/index.js';
 describe('Festival model', () => {
 
 	let stubs;
+	let Festival;
 
 	const FestivalSeriesStub = function () {
 
@@ -14,7 +15,7 @@ describe('Festival model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			models: {
@@ -22,16 +23,7 @@ describe('Festival model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Festival = await esmock(
 			'../../../src/models/Festival.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -41,13 +33,19 @@ describe('Festival model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('festivalSeries property', () => {
 
 			it('assigns instance if absent from props', async () => {
-
-				const Festival = await createSubject();
 
 				const instance = new Festival({ name: '2008' });
 
@@ -56,8 +54,6 @@ describe('Festival model', () => {
 			});
 
 			it('assigns instance if included in props', async () => {
-
-				const Festival = await createSubject();
 
 				const instance = new Festival({
 					name: '2008',
@@ -77,8 +73,6 @@ describe('Festival model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const Festival = await createSubject();
 
 			const instance = new Festival({
 				name: '2008',

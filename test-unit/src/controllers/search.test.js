@@ -6,8 +6,9 @@ import { assert, restore, stub } from 'sinon';
 describe('Search controller', () => {
 
 	let stubs;
+	let searchController;
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			sendJsonResponse: stub().returns('sendJsonResponse response'),
@@ -24,6 +25,15 @@ describe('Search controller', () => {
 			next: stub()
 		};
 
+		searchController = await esmock(
+			'../../../src/controllers/search.js',
+			{
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -32,18 +42,10 @@ describe('Search controller', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock('../../../src/controllers/search.js', {
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-			'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
-			'../../../src/neo4j/query.js': stubs.neo4jQueryModule
-		});
-
 	context('searchTerm is not present in request.query', () => {
 
 		it('calls sendJsonResponse with the response object and an empty array; does not call neo4jQuery', async () => {
 
-			const searchController = await createSubject();
 			const request = httpMocks.createRequest();
 			const result = await searchController(request, stubs.response, stubs.next);
 			assert.calledOnceWithExactly(
@@ -63,7 +65,6 @@ describe('Search controller', () => {
 
 		it('calls sendJsonResponse with the response object and an empty array; does not call neo4jQuery', async () => {
 
-			const searchController = await createSubject();
 			const request = httpMocks.createRequest({ query: { searchTerm: '' } });
 			const result = await searchController(request, stubs.response, stubs.next);
 			assert.calledOnceWithExactly(
@@ -85,7 +86,6 @@ describe('Search controller', () => {
 
 			it('calls getSearchQuery, neo4jQuery, then sendJsonResponse with the response object and the neo4jQuery response', async () => {
 
-				const searchController = await createSubject();
 				const result = await searchController(stubs.request, stubs.response, stubs.next);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
 				assert.calledOnceWithExactly(
@@ -119,7 +119,6 @@ describe('Search controller', () => {
 				const neo4jQueryError = new Error('neo4jQuery error');
 				stubs.neo4jQueryModule.neo4jQuery.rejects(neo4jQueryError);
 
-				const searchController = await createSubject();
 				await searchController(stubs.request, stubs.response, stubs.next);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
 				assert.calledOnceWithExactly(

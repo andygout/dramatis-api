@@ -8,19 +8,28 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('Input validation failures: Festival Series instance', () => {
 
 	let stubs;
+	let FestivalSeries;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
 			}
 		};
+
+		FestivalSeries = await esmock(
+			'../../src/models/FestivalSeries.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	});
 
@@ -30,14 +39,7 @@ describe('Input validation failures: Festival Series instance', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/FestivalSeries.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new FestivalSeries(props);
 
 	context('name value is empty string', () => {
 
@@ -45,9 +47,7 @@ describe('Input validation failures: Festival Series instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const FestivalSeries = await createSubject();
-
-				const instance = new FestivalSeries({
+				const instance = createInstance({
 					name: ''
 				});
 
@@ -79,9 +79,7 @@ describe('Input validation failures: Festival Series instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const FestivalSeries = await createSubject();
-
-				const instance = new FestivalSeries({
+				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
 
@@ -113,9 +111,7 @@ describe('Input validation failures: Festival Series instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const FestivalSeries = await createSubject();
-
-				const instance = new FestivalSeries({
+				const instance = createInstance({
 					name: 'Edinburgh International Festival',
 					differentiator: ABOVE_MAX_LENGTH_STRING
 				});

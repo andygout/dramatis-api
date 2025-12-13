@@ -8,19 +8,28 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('AwardCeremony model', () => {
 
 	let stubs;
+	let AwardCeremony;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
 			}
 		};
+
+		AwardCeremony = await esmock(
+			'../../src/models/AwardCeremony.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	});
 
@@ -30,14 +39,7 @@ describe('AwardCeremony model', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/AwardCeremony.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new AwardCeremony(props);
 
 	context('name value is empty string', () => {
 
@@ -45,9 +47,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({ name: '' });
+				const instance = createInstance({ name: '' });
 
 				const result = await instance[method]();
 
@@ -83,9 +83,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -121,9 +119,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2020',
 					award: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -164,9 +160,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2020',
 					award: {
 						name: 'Laurence Olivier Awards',
@@ -208,9 +202,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2020',
 					categories: [
 						{
@@ -259,9 +251,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2020',
 					categories: [
 						{
@@ -338,9 +328,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -414,9 +402,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -479,9 +465,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -555,9 +539,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -632,9 +614,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -710,9 +690,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -789,9 +767,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -943,9 +919,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1033,9 +1007,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1123,9 +1095,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1214,9 +1184,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1288,9 +1256,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1380,9 +1346,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1456,9 +1420,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{
@@ -1533,9 +1495,7 @@ describe('AwardCeremony model', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const AwardCeremony = await createSubject();
-
-				const instance = new AwardCeremony({
+				const instance = createInstance({
 					name: '2010',
 					categories: [
 						{

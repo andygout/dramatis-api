@@ -7,6 +7,7 @@ import { AwardCeremony } from '../../../src/models/index.js';
 describe('Award ceremonies controller', () => {
 
 	let stubs;
+	let awardCeremoniesController;
 
 	const AwardCeremonyStub = function () {
 
@@ -14,7 +15,7 @@ describe('Award ceremonies controller', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			callClassMethodsModule: {
@@ -30,6 +31,15 @@ describe('Award ceremonies controller', () => {
 			next: stub()
 		};
 
+		awardCeremoniesController = await esmock(
+			'../../../src/controllers/award-ceremonies.js',
+			{
+				'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -38,16 +48,7 @@ describe('Award ceremonies controller', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock('../../../src/controllers/award-ceremonies.js', {
-			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-			'../../../src/models/index.js': stubs.models
-		});
-
 	const callFunction = async functionName => {
-
-		const awardCeremoniesController = await createSubject();
 
 		return awardCeremoniesController[functionName](stubs.request, stubs.response, stubs.next);
 

@@ -4,10 +4,11 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('SubMaterial model', () => {
 
 	let stubs;
+	let SubMaterial;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
@@ -21,16 +22,7 @@ describe('SubMaterial model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		SubMaterial = await esmock(
 			'../../../src/models/SubMaterial.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -41,6 +33,14 @@ describe('SubMaterial model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
+
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
 
 	describe('runDatabaseValidations method', () => {
 
@@ -54,8 +54,6 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
-
-				const SubMaterial = await createSubject();
 
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
@@ -99,8 +97,6 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: false
 				});
-
-				const SubMaterial = await createSubject();
 
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
@@ -154,8 +150,6 @@ describe('SubMaterial model', () => {
 					isSubjectMaterialASubSubMaterial: false
 				});
 
-				const SubMaterial = await createSubject();
-
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
 				spy(instance, 'addPropertyError');
@@ -208,8 +202,6 @@ describe('SubMaterial model', () => {
 					isSubjectMaterialASubSubMaterial: false
 				});
 
-				const SubMaterial = await createSubject();
-
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
 				spy(instance, 'addPropertyError');
@@ -261,8 +253,6 @@ describe('SubMaterial model', () => {
 					isSurMaterialOfSubjectMaterial: false,
 					isSubjectMaterialASubSubMaterial: true
 				});
-
-				const SubMaterial = await createSubject();
 
 				const instance = new SubMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 

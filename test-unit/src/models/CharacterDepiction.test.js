@@ -5,8 +5,9 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('CharacterDepiction model', () => {
 
 	let stubs;
+	let CharacterDepiction;
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			stringsModule: {
@@ -14,16 +15,7 @@ describe('CharacterDepiction model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		CharacterDepiction = await esmock(
 			'../../../src/models/CharacterDepiction.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -33,11 +25,17 @@ describe('CharacterDepiction model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
-			const CharacterDepiction = await createSubject();
 
 			new CharacterDepiction();
 
@@ -48,8 +46,6 @@ describe('CharacterDepiction model', () => {
 		describe('underlyingName property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const CharacterDepiction = await createSubject();
 
 				const instance = new CharacterDepiction({ underlyingName: 'King Henry V' });
 
@@ -63,8 +59,6 @@ describe('CharacterDepiction model', () => {
 		describe('qualifier property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const CharacterDepiction = await createSubject();
 
 				const instance = new CharacterDepiction({ qualifier: 'older' });
 
@@ -80,8 +74,6 @@ describe('CharacterDepiction model', () => {
 	describe('validateUnderlyingName method', () => {
 
 		it('will call validateStringForProperty method', async () => {
-
-			const CharacterDepiction = await createSubject();
 
 			const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 
@@ -106,8 +98,6 @@ describe('CharacterDepiction model', () => {
 
 				it('will not add properties to errors property', async () => {
 
-					const CharacterDepiction = await createSubject();
-
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: '' });
 
 					spy(instance, 'addPropertyError');
@@ -124,8 +114,6 @@ describe('CharacterDepiction model', () => {
 
 				it('will not add properties to errors property', async () => {
 
-					const CharacterDepiction = await createSubject();
-
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 
 					spy(instance, 'addPropertyError');
@@ -141,8 +129,6 @@ describe('CharacterDepiction model', () => {
 			context('no role name and no character name', () => {
 
 				it('will not add properties to errors property', async () => {
-
-					const CharacterDepiction = await createSubject();
 
 					const instance = new CharacterDepiction({ name: '', underlyingName: '' });
 
@@ -161,8 +147,6 @@ describe('CharacterDepiction model', () => {
 		context('invalid data', () => {
 
 			it('adds properties whose values are arrays to errors property', async () => {
-
-				const CharacterDepiction = await createSubject();
 
 				const instance = new CharacterDepiction({ name: 'King Henry V', underlyingName: 'King Henry V' });
 

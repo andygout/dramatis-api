@@ -7,6 +7,7 @@ import { CompanyWithMembers, Person } from '../../../src/models/index.js';
 describe('ProducerCredit model', () => {
 
 	let stubs;
+	let ProducerCredit;
 
 	const CompanyWithMembersStub = function () {
 
@@ -20,7 +21,7 @@ describe('ProducerCredit model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateEntityInfoModule: {
@@ -33,16 +34,7 @@ describe('ProducerCredit model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		ProducerCredit = await esmock(
 			'../../../src/models/ProducerCredit.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -53,13 +45,19 @@ describe('ProducerCredit model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('entities property', () => {
 
 			it('assigns empty array if absent from props', async () => {
-
-				const ProducerCredit = await createSubject();
 
 				const instance = new ProducerCredit({ name: 'in association with' });
 
@@ -68,8 +66,6 @@ describe('ProducerCredit model', () => {
 			});
 
 			it('assigns array of producers if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
-
-				const ProducerCredit = await createSubject();
 
 				const instance = new ProducerCredit({
 					name: 'in association with',
@@ -115,8 +111,6 @@ describe('ProducerCredit model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const ProducerCredit = await createSubject();
 
 			const instance = new ProducerCredit({
 				name: 'in association with',

@@ -5,14 +5,24 @@ import { restore, stub } from 'sinon';
 describe('Convert Neo4j Records To Objects module', () => {
 
 	let stubs;
+	let convertNeo4jRecordsToObjects;
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			convertNeo4jIntegersToNumbersModule: {
 				convertNeo4jIntegersToNumbers: stub().returnsArg(0)
 			}
 		};
+
+		const convertNeo4jRecordsToObjectsModule = await esmock(
+			'../../../src/neo4j/convert-neo4j-records-to-objects.js',
+			{
+				'../../../src/neo4j/convert-neo4j-integers-to-numbers.js': stubs.convertNeo4jIntegersToNumbersModule
+			}
+		);
+
+		convertNeo4jRecordsToObjects = convertNeo4jRecordsToObjectsModule.convertNeo4jRecordsToObjects;
 
 	});
 
@@ -21,11 +31,6 @@ describe('Convert Neo4j Records To Objects module', () => {
 		restore();
 
 	});
-
-	const createSubject = () =>
-		esmock('../../../src/neo4j/convert-neo4j-records-to-objects.js', {
-			'../../../src/neo4j/convert-neo4j-integers-to-numbers.js': stubs.convertNeo4jIntegersToNumbersModule
-		});
 
 	it('returns false if no error values present', async () => {
 
@@ -84,7 +89,6 @@ describe('Convert Neo4j Records To Objects module', () => {
 			}
 		];
 
-		const { convertNeo4jRecordsToObjects } = await createSubject();
 		const result = convertNeo4jRecordsToObjects(neo4Response);
 
 		expect(result).to.deep.equal(expectedResult);

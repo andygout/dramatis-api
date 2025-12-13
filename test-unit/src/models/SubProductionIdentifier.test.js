@@ -4,10 +4,11 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('SubProductionIdentifier model', () => {
 
 	let stubs;
+	let SubProductionIdentifier;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			cypherQueriesModule: {
@@ -20,16 +21,7 @@ describe('SubProductionIdentifier model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		SubProductionIdentifier = await esmock(
 			'../../../src/models/SubProductionIdentifier.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -40,6 +32,14 @@ describe('SubProductionIdentifier model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
+
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
 
 	describe('runDatabaseValidations method', () => {
 
@@ -54,8 +54,6 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
-
-				const SubProductionIdentifier = await createSubject();
 
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
@@ -97,8 +95,6 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
-
-				const SubProductionIdentifier = await createSubject();
 
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
@@ -145,8 +141,6 @@ describe('SubProductionIdentifier model', () => {
 					isSubjectProductionASubSubProduction: false
 				});
 
-				const SubProductionIdentifier = await createSubject();
-
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
 				spy(instance, 'addPropertyError');
@@ -191,8 +185,6 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: false
 				});
-
-				const SubProductionIdentifier = await createSubject();
 
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
@@ -239,8 +231,6 @@ describe('SubProductionIdentifier model', () => {
 					isSubjectProductionASubSubProduction: false
 				});
 
-				const SubProductionIdentifier = await createSubject();
-
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
 				spy(instance, 'addPropertyError');
@@ -285,8 +275,6 @@ describe('SubProductionIdentifier model', () => {
 					isSurProductionOfSubjectProduction: false,
 					isSubjectProductionASubSubProduction: true
 				});
-
-				const SubProductionIdentifier = await createSubject();
 
 				const instance = new SubProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
