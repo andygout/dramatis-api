@@ -53,7 +53,9 @@ describe('Call Class Methods module', () => {
 
 				const instanceMethodResponse = { property: 'value' };
 				stub(character, method).callsFake(() => { return Promise.resolve(instanceMethodResponse); });
+
 				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
+
 				assert.calledOnceWithExactly(
 					stubs.sendJsonResponse,
 					stubs.response, instanceMethodResponse
@@ -70,7 +72,9 @@ describe('Call Class Methods module', () => {
 			it('calls next() with error', async () => {
 
 				stub(character, method).callsFake(() => { return Promise.reject(error); });
+
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
+
 				assert.calledOnceWithExactly(stubs.next, error);
 				assert.notCalled(stubs.sendJsonResponse);
 
@@ -83,7 +87,9 @@ describe('Call Class Methods module', () => {
 			it('responds with 404 status and sends error message', async () => {
 
 				stub(character, method).callsFake(() => { return Promise.reject(notFoundError); });
+
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
+
 				expect(stubs.response.statusCode).to.equal(404);
 				expect(stubs.response._getData()).to.equal('Not Found'); // eslint-disable-line no-underscore-dangle
 				assert.notCalled(stubs.sendJsonResponse);
@@ -111,8 +117,10 @@ describe('Call Class Methods module', () => {
 
 				const staticListMethodResponse = [{ property: 'value' }];
 				stub(Character, method).callsFake(() => { return Promise.resolve(staticListMethodResponse); });
+
 				const result =
 					await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
+
 				assert.calledOnceWithExactly(
 					stubs.sendJsonResponse,
 					stubs.response, staticListMethodResponse
@@ -129,7 +137,9 @@ describe('Call Class Methods module', () => {
 			it('calls next() with error', async () => {
 
 				stub(Character, method).callsFake(() => { return Promise.reject(error); });
+
 				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
+
 				assert.calledOnceWithExactly(stubs.next, error);
 				assert.notCalled(stubs.sendJsonResponse);
 

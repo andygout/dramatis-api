@@ -59,6 +59,7 @@ describe('Seasons controller', () => {
 		it('calls sendJsonResponse module', async () => {
 
 			const result = await callFunction('newRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response, stubs.models.Season() // eslint-disable-line new-cap
@@ -74,6 +75,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('createRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'CREATE' // eslint-disable-line new-cap
@@ -89,6 +91,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('editRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'EDIT' // eslint-disable-line new-cap
@@ -104,6 +107,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('updateRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'UPDATE' // eslint-disable-line new-cap
@@ -119,6 +123,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('deleteRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'DELETE' // eslint-disable-line new-cap
@@ -134,6 +139,7 @@ describe('Seasons controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('showRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Season(), 'SHOW' // eslint-disable-line new-cap
@@ -149,6 +155,7 @@ describe('Seasons controller', () => {
 		it('calls callStaticListMethod module', async () => {
 
 			const result = await callFunction('listRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callStaticListMethod,
 				stubs.response, stubs.next, stubs.models.Season, 'SEASON'

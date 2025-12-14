@@ -9,7 +9,9 @@ describe('Has Errors module', () => {
 		it('returns false if no error values present', () => {
 
 			const instance = { errors: {}, venue: { errors: {} } };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.false;
 
 		});
@@ -17,7 +19,9 @@ describe('Has Errors module', () => {
 		it('returns false if no error properties present', () => {
 
 			const instance = { notErrors: {} };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.false;
 
 		});
@@ -25,7 +29,9 @@ describe('Has Errors module', () => {
 		it('returns false if errors present in form of null value', () => {
 
 			const instance = { errors: null };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.false;
 
 		});
@@ -33,7 +39,9 @@ describe('Has Errors module', () => {
 		it('returns false if errors present in form of array', () => {
 
 			const instance = { errors: ['Value is too short'] };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.false;
 
 		});
@@ -45,7 +53,9 @@ describe('Has Errors module', () => {
 		it('returns true', () => {
 
 			const instance = { errors: { name: ['Value is too short'] } };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.true;
 
 		});
@@ -57,7 +67,9 @@ describe('Has Errors module', () => {
 		it('returns true', () => {
 
 			const instance = { venue: { errors: { name: ['Value is too short'] } } };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.true;
 
 		});
@@ -69,7 +81,9 @@ describe('Has Errors module', () => {
 		it('returns true', () => {
 
 			const instance = { cast: [{ errors: { name: ['Value is too short'] } }] };
+
 			const result = hasErrors(instance);
+
 			expect(result).to.be.true;
 
 		});

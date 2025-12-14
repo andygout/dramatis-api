@@ -10,6 +10,7 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getCreateQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				CREATE (n:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })
 
@@ -32,6 +33,7 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getEditQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
@@ -50,6 +52,7 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getUpdateQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 					SET
@@ -75,6 +78,7 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getDeleteQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (:Venue { uuid: $uuid })
 
@@ -128,6 +132,7 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesShared.getListQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue)
 
