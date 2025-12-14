@@ -4,7 +4,7 @@ import { assert, createStubInstance, restore, stub } from 'sinon';
 
 import { FestivalSeries } from '../../../src/models/index.js';
 
-describe('Festival Serieses controller', () => {
+describe('Festival serieses controller', () => {
 
 	let stubs;
 

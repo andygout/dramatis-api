@@ -5,7 +5,7 @@ import { restore, stub } from 'sinon';
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
-describe('AwardCeremony model', () => {
+describe('Input validation failures: AwardCeremony instance', () => {
 
 	let stubs;
 
