@@ -38,7 +38,7 @@ const createConstraint = async label => {
 
 };
 
-export default async () => {
+const createConstraints = async () => {
 
 	const callDbConstraintsQuery = 'SHOW CONSTRAINTS';
 
@@ -76,3 +76,5 @@ export default async () => {
 	}
 
 };
+
+export default createConstraints;

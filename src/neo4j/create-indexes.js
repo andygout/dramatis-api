@@ -36,7 +36,7 @@ const createIndex = async label => {
 
 };
 
-export default async () => {
+const createIndexes = async () => {
 
 	const callDbIndexesQuery = 'SHOW RANGE INDEXES WHERE owningConstraint IS NULL';
 
@@ -77,3 +77,5 @@ export default async () => {
 	}
 
 };
+
+export default createIndexes;

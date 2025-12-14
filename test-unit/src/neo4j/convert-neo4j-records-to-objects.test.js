@@ -10,19 +10,15 @@ describe('Convert Neo4j Records To Objects module', () => {
 	beforeEach(async () => {
 
 		stubs = {
-			convertNeo4jIntegersToNumbersModule: {
-				convertNeo4jIntegersToNumbers: stub().returnsArg(0)
-			}
+			convertNeo4jIntegersToNumbers: stub().returnsArg(0)
 		};
 
-		const convertNeo4jRecordsToObjectsModule = await esmock(
+		convertNeo4jRecordsToObjects = await esmock(
 			'../../../src/neo4j/convert-neo4j-records-to-objects.js',
 			{
-				'../../../src/neo4j/convert-neo4j-integers-to-numbers.js': stubs.convertNeo4jIntegersToNumbersModule
+				'../../../src/neo4j/convert-neo4j-integers-to-numbers.js': stubs.convertNeo4jIntegersToNumbers
 			}
 		);
-
-		convertNeo4jRecordsToObjects = convertNeo4jRecordsToObjectsModule.convertNeo4jRecordsToObjects;
 
 	});
 
