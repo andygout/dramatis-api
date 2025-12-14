@@ -5,7 +5,7 @@ import { restore, stub } from 'sinon';
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
-describe('Input validation failures: Festival Series instance', () => {
+describe('Input validation failures: FestivalSeries instance', () => {
 
 	let stubs;
 
