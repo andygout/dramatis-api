@@ -48,6 +48,7 @@ describe('Search controller', () => {
 
 			const request = httpMocks.createRequest();
 			const result = await searchController(request, stubs.response, stubs.next);
+
 			assert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response, []
@@ -67,6 +68,7 @@ describe('Search controller', () => {
 
 			const request = httpMocks.createRequest({ query: { searchTerm: '' } });
 			const result = await searchController(request, stubs.response, stubs.next);
+
 			assert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response, []
@@ -87,6 +89,7 @@ describe('Search controller', () => {
 			it('calls getSearchQuery, neo4jQuery, then sendJsonResponse with the response object and the neo4jQuery response', async () => {
 
 				const result = await searchController(stubs.request, stubs.response, stubs.next);
+
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
 				assert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
@@ -120,6 +123,7 @@ describe('Search controller', () => {
 				stubs.neo4jQueryModule.neo4jQuery.rejects(neo4jQueryError);
 
 				await searchController(stubs.request, stubs.response, stubs.next);
+
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
 				assert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,

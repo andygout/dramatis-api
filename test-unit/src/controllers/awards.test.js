@@ -58,6 +58,7 @@ describe('Awards controller', () => {
 		it('calls sendJsonResponse module', async () => {
 
 			const result = await callFunction('newRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response, stubs.models.Award() // eslint-disable-line new-cap
@@ -73,6 +74,7 @@ describe('Awards controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('createRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Award(), 'CREATE' // eslint-disable-line new-cap
@@ -88,6 +90,7 @@ describe('Awards controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('editRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Award(), 'EDIT' // eslint-disable-line new-cap
@@ -103,6 +106,7 @@ describe('Awards controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('updateRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Award(), 'UPDATE' // eslint-disable-line new-cap
@@ -118,6 +122,7 @@ describe('Awards controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('deleteRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Award(), 'DELETE' // eslint-disable-line new-cap
@@ -133,6 +138,7 @@ describe('Awards controller', () => {
 		it('calls callInstanceMethod module', async () => {
 
 			const result = await callFunction('showRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response, stubs.next, stubs.models.Award(), 'SHOW' // eslint-disable-line new-cap
@@ -148,6 +154,7 @@ describe('Awards controller', () => {
 		it('calls callStaticListMethod module', async () => {
 
 			const result = await callFunction('listRoute');
+
 			assert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callStaticListMethod,
 				stubs.response, stubs.next, stubs.models.Award, 'AWARD'

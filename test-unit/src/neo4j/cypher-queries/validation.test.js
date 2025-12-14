@@ -10,6 +10,7 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesValidation.getDuplicateRecordCheckQuery('VENUE', undefined);
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { name: $name })
 					WHERE
@@ -34,6 +35,7 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesValidation.getExistenceCheckQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
@@ -49,6 +51,7 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesValidation.getSubMaterialChecksQuery();
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (m:Material { name: $name })
 					WHERE
@@ -90,6 +93,7 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesValidation.getSubProductionChecksQuery('VENUE');
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (p:Production { uuid: $uuid })
 
@@ -127,6 +131,7 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 
 			const result = cypherQueriesValidation.getSubVenueChecksQuery();
+
 			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
 				MATCH (v:Venue { name: $name })
 					WHERE

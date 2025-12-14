@@ -12,7 +12,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = neo4j.int(1);
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.equal(1);
 
 			});
@@ -24,7 +26,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = { foo: neo4j.int(1) };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: 1 });
 
 			});
@@ -36,7 +40,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = [{ foo: neo4j.int(1) }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: 1 }]);
 
 			});
@@ -48,7 +54,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = { foo: { bar: neo4j.int(1) } };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: { bar: 1 } });
 
 			});
@@ -60,7 +68,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = [{ foo: { bar: neo4j.int(1) } }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: { bar: 1 } }]);
 
 			});
@@ -72,7 +82,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = { foo: [{ bar: neo4j.int(1) }] };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: [{ bar: 1 }] });
 
 			});
@@ -84,7 +96,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = [{ foo: [{ bar: neo4j.int(1) }] }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: [{ bar: 1 }] }]);
 
 			});
@@ -96,7 +110,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = { foo: { bar: [{ baz: neo4j.int(1) }] } };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: { bar: [{ baz: 1 }] } });
 
 			});
@@ -108,7 +124,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = [{ foo: { bar: [{ baz: neo4j.int(1) }] } }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: { bar: [{ baz: 1 }] } }]);
 
 			});
@@ -120,7 +138,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = { foo: [{ bar: [{ baz: neo4j.int(1) }] }] };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: [{ bar: [{ baz: 1 }] }] });
 
 			});
@@ -132,7 +152,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('converts Neo4j integer to number', () => {
 
 				const inputValue = [{ foo: [{ bar: [{ baz: neo4j.int(1) }] }] }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: [{ bar: [{ baz: 1 }] }] }]);
 
 			});
@@ -148,7 +170,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = [{}];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{}]);
 
 			});
@@ -160,7 +184,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = { foo: [{}] };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: [{}] });
 
 			});
@@ -172,7 +198,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = [{ foo: [{}] }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: [{}] }]);
 
 			});
@@ -184,7 +212,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = { foo: { bar: [{}] } };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: { bar: [{}] } });
 
 			});
@@ -196,7 +226,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = [{ foo: { bar: [{}] } }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: { bar: [{}] } }]);
 
 			});
@@ -208,7 +240,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = { foo: [{ bar: [{}] }] };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: [{ bar: [{}] }] });
 
 			});
@@ -220,7 +254,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves empty object value untouched', () => {
 
 				const inputValue = [{ foo: [{ bar: [{}] }] }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: [{ bar: [{}] }] }]);
 
 			});
@@ -236,7 +272,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = ['string'];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal(['string']);
 
 			});
@@ -248,7 +286,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = { foo: ['string'] };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: ['string'] });
 
 			});
@@ -260,7 +300,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = [{ foo: ['string'] }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: ['string'] }]);
 
 			});
@@ -272,7 +314,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = { foo: { bar: ['string'] } };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: { bar: ['string'] } });
 
 			});
@@ -284,7 +328,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = [{ foo: { bar: ['string'] } }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: { bar: ['string'] } }]);
 
 			});
@@ -296,7 +342,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = { foo: [{ bar: ['string'] }] };
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal({ foo: [{ bar: ['string'] }] });
 
 			});
@@ -308,7 +356,9 @@ describe('Convert Neo4j Integers To Numbers module', () => {
 			it('leaves string value untouched', () => {
 
 				const inputValue = [{ foo: [{ bar: ['string'] }] }];
+
 				const result = convertNeo4jIntegersToNumbers(inputValue);
+
 				expect(result).to.deep.equal([{ foo: [{ bar: ['string'] }] }]);
 
 			});
