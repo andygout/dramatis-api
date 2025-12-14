@@ -80,7 +80,7 @@ const createFullTextIndex = async fullTextIndexName => {
 
 };
 
-export default async () => {
+const createFullTextIndexes = async () => {
 
 	const callDbIndexesQuery = 'SHOW FULLTEXT INDEXES';
 
@@ -132,3 +132,5 @@ export default async () => {
 	}
 
 };
+
+export default createFullTextIndexes;

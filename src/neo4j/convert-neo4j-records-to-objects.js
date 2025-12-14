@@ -1,6 +1,6 @@
-import { convertNeo4jIntegersToNumbers } from './convert-neo4j-integers-to-numbers.js';
+import convertNeo4jIntegersToNumbers from './convert-neo4j-integers-to-numbers.js';
 
-export const convertNeo4jRecordsToObjects = response => {
+const convertNeo4jRecordsToObjects = response => {
 
 	const records = response.records || [];
 
@@ -21,3 +21,5 @@ export const convertNeo4jRecordsToObjects = response => {
 	}, []);
 
 };
+
+export default convertNeo4jRecordsToObjects;

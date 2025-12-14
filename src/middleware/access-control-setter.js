@@ -1,4 +1,4 @@
-export default (request, response, next) => {
+const accessControlSetter = (request, response, next) => {
 
 	response.header('Access-Control-Allow-Origin', '*');
 	response.header('Access-Control-Allow-Headers', 'content-type');
@@ -14,3 +14,5 @@ export default (request, response, next) => {
 	next();
 
 };
+
+export default accessControlSetter;

@@ -2,7 +2,7 @@ import neo4j from 'neo4j-driver';
 
 import isObjectWithKeys from '../lib/is-object-with-keys.js';
 
-export const convertNeo4jIntegersToNumbers = inputValue => {
+const convertNeo4jIntegersToNumbers = inputValue => {
 
 	const applyModifications = object => {
 
@@ -41,3 +41,5 @@ export const convertNeo4jIntegersToNumbers = inputValue => {
 	return modifiedValue;
 
 };
+
+export default convertNeo4jIntegersToNumbers;
