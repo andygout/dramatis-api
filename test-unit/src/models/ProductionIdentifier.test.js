@@ -5,8 +5,9 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('ProductionIdentifier model', () => {
 
 	let stubs;
+	let ProductionIdentifier;
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			stringsModule: {
@@ -14,16 +15,7 @@ describe('ProductionIdentifier model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		ProductionIdentifier = await esmock(
 			'../../../src/models/ProductionIdentifier.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -33,11 +25,17 @@ describe('ProductionIdentifier model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
-			const ProductionIdentifier = await createSubject();
 
 			new ProductionIdentifier();
 
@@ -48,8 +46,6 @@ describe('ProductionIdentifier model', () => {
 		describe('uuid property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const ProductionIdentifier = await createSubject();
 
 				const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
@@ -69,8 +65,6 @@ describe('ProductionIdentifier model', () => {
 	describe('validateUuid method', () => {
 
 		it('will call validateStringForProperty method', async () => {
-
-			const ProductionIdentifier = await createSubject();
 
 			const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 

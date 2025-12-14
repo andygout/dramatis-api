@@ -8,19 +8,28 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('Input validation failures: Festival instance', () => {
 
 	let stubs;
+	let Festival;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
 			}
 		};
+
+		Festival = await esmock(
+			'../../src/models/Festival.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
 
 	});
 
@@ -30,14 +39,7 @@ describe('Input validation failures: Festival instance', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/Festival.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new Festival(props);
 
 	context('name value is empty string', () => {
 
@@ -45,9 +47,7 @@ describe('Input validation failures: Festival instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Festival = await createSubject();
-
-				const instance = new Festival({
+				const instance = createInstance({
 					name: ''
 				});
 
@@ -85,9 +85,7 @@ describe('Input validation failures: Festival instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Festival = await createSubject();
-
-				const instance = new Festival({
+				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
 
@@ -125,9 +123,7 @@ describe('Input validation failures: Festival instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Festival = await createSubject();
-
-				const instance = new Festival({
+				const instance = createInstance({
 					name: 'The Complete Works',
 					differentiator: ABOVE_MAX_LENGTH_STRING
 				});
@@ -166,9 +162,7 @@ describe('Input validation failures: Festival instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Festival = await createSubject();
-
-				const instance = new Festival({
+				const instance = createInstance({
 					name: '2008',
 					festivalSeries: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -209,9 +203,7 @@ describe('Input validation failures: Festival instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Festival = await createSubject();
-
-				const instance = new Festival({
+				const instance = createInstance({
 					name: '2008',
 					festivalSeries: {
 						name: 'Edinburgh International Festival',

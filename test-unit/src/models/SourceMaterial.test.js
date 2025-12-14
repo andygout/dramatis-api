@@ -4,10 +4,11 @@ import { assert, restore, spy, stub } from 'sinon';
 describe('SourceMaterial model', () => {
 
 	let stubs;
+	let SourceMaterial;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
@@ -21,16 +22,7 @@ describe('SourceMaterial model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		SourceMaterial = await esmock(
 			'../../../src/models/SourceMaterial.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -42,19 +34,25 @@ describe('SourceMaterial model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('runDatabaseValidations method', () => {
 
 		context('valid data', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				const SourceMaterial = await createSubject();
-
-				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: false
 				});
+
+				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
 				spy(instance, 'addPropertyError');
 
@@ -93,8 +91,6 @@ describe('SourceMaterial model', () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: true
 				});
-
-				const SourceMaterial = await createSubject();
 
 				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 

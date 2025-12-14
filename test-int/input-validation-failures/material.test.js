@@ -9,13 +9,14 @@ const INVALID_YEAR_STRING = 'Nineteen Fifty-Nine';
 describe('Input validation failures: Material instance', () => {
 
 	let stubs;
+	let Material;
 
 	const methods = [
 		'create',
 		'update'
 	];
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			neo4jQueryModule: {
@@ -34,6 +35,14 @@ describe('Input validation failures: Material instance', () => {
 			}
 		};
 
+		Material = await esmock(
+			'../../src/models/Material.js',
+			{},
+			{
+				'../../src/neo4j/query.js': stubs.neo4jQueryModule
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -42,14 +51,7 @@ describe('Input validation failures: Material instance', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock(
-			'../../src/models/Material.js',
-			{},
-			{
-				'../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
+	const createInstance = props => new Material(props);
 
 	context('name value is empty string', () => {
 
@@ -57,9 +59,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({ name: '' });
+				const instance = createInstance({ name: '' });
 
 				const result = await instance[method]();
 
@@ -101,9 +101,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({ name: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -145,9 +143,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({ name: 'Rosmersholm', differentiator: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: 'Rosmersholm', differentiator: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -189,9 +185,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({ name: 'Rosmersholm', subtitle: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: 'Rosmersholm', subtitle: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -233,9 +227,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({ name: 'Rosmersholm', format: ABOVE_MAX_LENGTH_STRING });
+				const instance = createInstance({ name: 'Rosmersholm', format: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
 
@@ -277,9 +269,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({ name: 'Rosmersholm', year: INVALID_YEAR_STRING });
+				const instance = createInstance({ name: 'Rosmersholm', year: INVALID_YEAR_STRING });
 
 				const result = await instance[method]();
 
@@ -321,9 +311,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
 						name: ABOVE_MAX_LENGTH_STRING
@@ -370,9 +358,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
 						name: 'Rosmersholm',
@@ -420,9 +406,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
 						name: 'Rosmersholm'
@@ -472,9 +456,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -530,9 +512,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -601,9 +581,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -670,9 +648,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -740,9 +716,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -810,9 +784,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -881,9 +853,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -951,9 +921,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -1022,9 +990,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -1131,9 +1097,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
 						{
@@ -1204,9 +1168,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
@@ -1262,9 +1224,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
@@ -1321,9 +1281,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
@@ -1382,9 +1340,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
 						{
@@ -1479,9 +1435,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1536,9 +1490,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1606,9 +1558,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1677,9 +1627,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1748,9 +1696,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1819,9 +1765,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{
@@ -1890,9 +1834,7 @@ describe('Input validation failures: Material instance', () => {
 
 			it(`assigns appropriate error (${method} method)`, async () => {
 
-				const Material = await createSubject();
-
-				const instance = new Material({
+				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
 						{

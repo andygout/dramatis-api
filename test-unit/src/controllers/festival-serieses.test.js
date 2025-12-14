@@ -7,6 +7,7 @@ import { FestivalSeries } from '../../../src/models/index.js';
 describe('Festival serieses controller', () => {
 
 	let stubs;
+	let festivalSeriesController;
 
 	const FestivalSeriesStub = function () {
 
@@ -14,7 +15,7 @@ describe('Festival serieses controller', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			callClassMethodsModule: {
@@ -30,6 +31,15 @@ describe('Festival serieses controller', () => {
 			next: stub()
 		};
 
+		festivalSeriesController = await esmock(
+			'../../../src/controllers/festival-serieses.js',
+			{
+				'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
+				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+				'../../../src/models/index.js': stubs.models
+			}
+		);
+
 	});
 
 	afterEach(() => {
@@ -38,16 +48,7 @@ describe('Festival serieses controller', () => {
 
 	});
 
-	const createSubject = () =>
-		esmock('../../../src/controllers/festival-serieses.js', {
-			'../../../src/lib/call-class-methods.js': stubs.callClassMethodsModule,
-			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-			'../../../src/models/index.js': stubs.models
-		});
-
 	const callFunction = async functionName => {
-
-		const festivalSeriesController = await createSubject();
 
 		return festivalSeriesController[functionName](stubs.request, stubs.response, stubs.next);
 

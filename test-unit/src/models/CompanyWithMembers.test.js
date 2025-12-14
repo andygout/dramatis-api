@@ -7,6 +7,7 @@ import { Person } from '../../../src/models/index.js';
 describe('CompanyWithMembers model', () => {
 
 	let stubs;
+	let CompanyWithMembers;
 
 	const PersonStub = function () {
 
@@ -14,7 +15,7 @@ describe('CompanyWithMembers model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateEntityInfoModule: {
@@ -25,16 +26,7 @@ describe('CompanyWithMembers model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		CompanyWithMembers = await esmock(
 			'../../../src/models/CompanyWithMembers.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -45,13 +37,19 @@ describe('CompanyWithMembers model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('members property', () => {
 
 			it('assigns empty array if absent from props', async () => {
-
-				const CompanyWithMembers = await createSubject();
 
 				const instance = new CompanyWithMembers({ name: 'Autograph' });
 
@@ -60,8 +58,6 @@ describe('CompanyWithMembers model', () => {
 			});
 
 			it('assigns array of members if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const CompanyWithMembers = await createSubject();
 
 				const instance = new CompanyWithMembers({
 					name: 'Autograph',
@@ -92,8 +88,6 @@ describe('CompanyWithMembers model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const CompanyWithMembers = await createSubject();
 
 			const instance = new CompanyWithMembers({
 				name: 'Fiery Angel',

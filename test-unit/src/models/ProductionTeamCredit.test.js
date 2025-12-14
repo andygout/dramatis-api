@@ -7,6 +7,7 @@ import { CompanyWithMembers, Person } from '../../../src/models/index.js';
 describe('ProductionTeamCredit model', () => {
 
 	let stubs;
+	let ProductionTeamCredit;
 
 	const CompanyWithMembersStub = function () {
 
@@ -20,7 +21,7 @@ describe('ProductionTeamCredit model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateEntityInfoModule: {
@@ -33,16 +34,7 @@ describe('ProductionTeamCredit model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		ProductionTeamCredit = await esmock(
 			'../../../src/models/ProductionTeamCredit.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -53,13 +45,19 @@ describe('ProductionTeamCredit model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('entities property', () => {
 
 			it('assigns empty array if absent from props', async () => {
-
-				const ProductionTeamCredit = await createSubject();
 
 				const instance = new ProductionTeamCredit({ name: 'Sound Designers' });
 
@@ -68,8 +66,6 @@ describe('ProductionTeamCredit model', () => {
 			});
 
 			it('assigns array of entities (people, companies) if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
-
-				const ProductionTeamCredit = await createSubject();
 
 				const instance = new ProductionTeamCredit({
 					name: 'Assistant Stage Managers',
@@ -115,8 +111,6 @@ describe('ProductionTeamCredit model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const ProductionTeamCredit = await createSubject();
 
 			const instance = new ProductionTeamCredit({
 				name: 'Assistant Stage Managers',

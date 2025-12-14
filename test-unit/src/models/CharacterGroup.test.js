@@ -7,6 +7,7 @@ import { CharacterDepiction } from '../../../src/models/index.js';
 describe('CharacterGroup model', () => {
 
 	let stubs;
+	let CharacterGroup;
 
 	const CharacterDepictionStub = function () {
 
@@ -14,7 +15,7 @@ describe('CharacterGroup model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateIndicesModule: {
@@ -25,16 +26,7 @@ describe('CharacterGroup model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		CharacterGroup = await esmock(
 			'../../../src/models/CharacterGroup.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -45,13 +37,19 @@ describe('CharacterGroup model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('characters property', () => {
 
 			it('assigns empty array if absent from props', async () => {
-
-				const CharacterGroup = await createSubject();
 
 				const instance = new CharacterGroup({ name: 'Montagues' });
 
@@ -60,8 +58,6 @@ describe('CharacterGroup model', () => {
 			});
 
 			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const CharacterGroup = await createSubject();
 
 				const instance = new CharacterGroup({
 					name: 'Montagues',
@@ -92,8 +88,6 @@ describe('CharacterGroup model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const CharacterGroup = await createSubject();
 
 			const instance = new CharacterGroup({
 				name: 'Montagues',

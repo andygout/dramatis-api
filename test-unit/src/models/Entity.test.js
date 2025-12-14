@@ -497,16 +497,16 @@ describe('Entity model', () => {
 
 			it('will not call addPropertyError method', async () => {
 
-				const Entity = await createSubject();
-
-				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
+
+				const Entity = await createSubject();
+
+				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				spy(instance, 'addPropertyError');
 
@@ -543,16 +543,16 @@ describe('Entity model', () => {
 
 			it('will call addPropertyError method', async () => {
 
-				const Entity = await createSubject();
-
-				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
 				});
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
+
+				const Entity = await createSubject();
+
+				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				spy(instance, 'addPropertyError');
 
@@ -620,11 +620,11 @@ describe('Entity model', () => {
 
 			it('confirms existence of instance in database using model value of instance', async () => {
 
+				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+
 				const Person = await createSubject('Person');
 
 				const instance = new Person({ name: 'Antony Sher' });
-
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
 
 				await instance.confirmExistenceInDatabase();
 
@@ -649,13 +649,13 @@ describe('Entity model', () => {
 
 			it('confirms existence of instance in database using provided model value', async () => {
 
+				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				const model = 'PRODUCTION';
-
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
 
 				await instance.confirmExistenceInDatabase({ model });
 
@@ -677,13 +677,13 @@ describe('Entity model', () => {
 
 			it('returns the isExistent value from the database response', async () => {
 
+				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				const model = 'PRODUCTION';
-
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
 
 				const result = await instance.confirmExistenceInDatabase({ model });
 
@@ -697,13 +697,13 @@ describe('Entity model', () => {
 
 			it('returns the isExistent value from the database response', async () => {
 
+				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: false });
+
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				const model = 'PRODUCTION';
-
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: false });
 
 				const result = await instance.confirmExistenceInDatabase({ model });
 
@@ -721,10 +721,6 @@ describe('Entity model', () => {
 
 			it('creates', async () => {
 
-				const Entity = await createSubject();
-
-				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 				stubs.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
@@ -732,6 +728,10 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					})
 					.onSecondCall().returns('prepareAsParams response');
+
+				const Entity = await createSubject();
+
+				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
@@ -778,10 +778,6 @@ describe('Entity model', () => {
 
 			it('updates', async () => {
 
-				const Entity = await createSubject();
-
-				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 				stubs.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
@@ -789,6 +785,10 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					})
 					.onSecondCall().returns('prepareAsParams response');
+
+				const Entity = await createSubject();
+
+				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				spy(instance, 'runInputValidations');
 				spy(instance, 'runDatabaseValidations');
@@ -838,10 +838,6 @@ describe('Entity model', () => {
 
 			it('returns instance without creating/updating', async () => {
 
-				const Entity = await createSubject();
-
-				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 				stubs.prepareAsParams
 					.onFirstCall().returns({
 						uuid: 'UUID_VALUE',
@@ -849,6 +845,10 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					});
 				stubs.hasErrors.returns(true);
+
+				const Entity = await createSubject();
+
+				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				const getCreateUpdateQueryStub = stub();
 
@@ -1095,10 +1095,6 @@ describe('Entity model', () => {
 
 				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async () => {
 
-					const Entity = await createSubject();
-
-					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
 						name: 'Almeida Theatre',
@@ -1106,6 +1102,10 @@ describe('Entity model', () => {
 						isDeleted: true,
 						associatedModels: []
 					});
+
+					const Entity = await createSubject();
+
+					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 					instance.differentiator = '';
 
@@ -1149,10 +1149,6 @@ describe('Entity model', () => {
 
 				it('deletes instance and returns newly instantiated instance with assigned name property', async () => {
 
-					const Production = await createSubject('Production');
-
-					const instance = new Production();
-
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
 						name: 'Hamlet',
@@ -1160,6 +1156,10 @@ describe('Entity model', () => {
 						isDeleted: true,
 						associatedModels: []
 					});
+
+					const Production = await createSubject('Production');
+
+					const instance = new Production();
 
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');
@@ -1235,10 +1235,6 @@ describe('Entity model', () => {
 
 				it('returns instance without deleting', async () => {
 
-					const Entity = await createSubject();
-
-					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
-
 					stubs.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
@@ -1247,6 +1243,10 @@ describe('Entity model', () => {
 						isDeleted: false,
 						associatedModels: ['Production']
 					});
+
+					const Entity = await createSubject();
+
+					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 					instance.differentiator = '';
 
@@ -1295,10 +1295,6 @@ describe('Entity model', () => {
 
 				it('returns instance without deleting', async () => {
 
-					const Production = await createSubject('Production');
-
-					const instance = new Production({ name: 'Foobar' });
-
 					stubs.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
@@ -1307,6 +1303,10 @@ describe('Entity model', () => {
 						isDeleted: false,
 						associatedModels: ['Venue']
 					});
+
+					const Production = await createSubject('Production');
+
+					const instance = new Production({ name: 'Foobar' });
 
 					spy(instance, 'constructor');
 					spy(instance, 'addPropertyError');

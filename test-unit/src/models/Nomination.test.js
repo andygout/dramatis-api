@@ -7,6 +7,7 @@ import { CompanyWithMembers, MaterialBase, NominatedProductionIdentifier, Person
 describe('Nomination model', () => {
 
 	let stubs;
+	let Nomination;
 
 	const CompanyWithMembersStub = function () {
 
@@ -32,7 +33,7 @@ describe('Nomination model', () => {
 
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 
 		stubs = {
 			getDuplicateEntityInfoModule: {
@@ -54,16 +55,7 @@ describe('Nomination model', () => {
 			}
 		};
 
-	});
-
-	afterEach(() => {
-
-		restore();
-
-	});
-
-	const createSubject = () =>
-		esmock(
+		Nomination = await esmock(
 			'../../../src/models/Nomination.js',
 			{},
 			// globalmocks: mock definitions imported everywhere.
@@ -76,13 +68,19 @@ describe('Nomination model', () => {
 			}
 		);
 
+	});
+
+	afterEach(() => {
+
+		restore();
+
+	});
+
 	describe('constructor method', () => {
 
 		describe('isWinner property', () => {
 
 			it('assigns false if absent from props', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({});
 
@@ -92,8 +90,6 @@ describe('Nomination model', () => {
 
 			it('assigns false if included in props but value evaluates to false', async () => {
 
-				const Nomination = await createSubject();
-
 				const instance = new Nomination({ isWinner: null });
 
 				expect(instance.isWinner).to.equal(false);
@@ -101,8 +97,6 @@ describe('Nomination model', () => {
 			});
 
 			it('assigns false if included in props but value is false', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({ isWinner: false });
 
@@ -112,8 +106,6 @@ describe('Nomination model', () => {
 
 			it('assigns true if included in props and value evaluates to true', async () => {
 
-				const Nomination = await createSubject();
-
 				const instance = new Nomination({ isWinner: 'foobar' });
 
 				expect(instance.isWinner).to.equal(true);
@@ -121,8 +113,6 @@ describe('Nomination model', () => {
 			});
 
 			it('assigns true if included in props and is true', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({ isWinner: true });
 
@@ -134,8 +124,6 @@ describe('Nomination model', () => {
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 
-			const Nomination = await createSubject();
-
 			new Nomination();
 
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(1);
@@ -145,8 +133,6 @@ describe('Nomination model', () => {
 		describe('customType property', () => {
 
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({ customType: 'Shortlisted' });
 
@@ -161,8 +147,6 @@ describe('Nomination model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Nomination = await createSubject();
-
 				const instance = new Nomination({});
 
 				expect(instance.entities).to.deep.equal([]);
@@ -170,8 +154,6 @@ describe('Nomination model', () => {
 			});
 
 			it('assigns array of entities if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({
 					entities: [
@@ -215,8 +197,6 @@ describe('Nomination model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Nomination = await createSubject();
-
 				const instance = new Nomination({});
 
 				expect(instance.productions).to.deep.equal([]);
@@ -224,8 +204,6 @@ describe('Nomination model', () => {
 			});
 
 			it('assigns array of productions if included in props, retaining those with empty or whitespace-only string uuids', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({
 					productions: [
@@ -254,8 +232,6 @@ describe('Nomination model', () => {
 
 			it('assigns empty array if absent from props', async () => {
 
-				const Nomination = await createSubject();
-
 				const instance = new Nomination({});
 
 				expect(instance.materials).to.deep.equal([]);
@@ -263,8 +239,6 @@ describe('Nomination model', () => {
 			});
 
 			it('assigns array of materials if included in props, retaining those with empty or whitespace-only string names', async () => {
-
-				const Nomination = await createSubject();
 
 				const instance = new Nomination({
 					materials: [
@@ -294,8 +268,6 @@ describe('Nomination model', () => {
 	describe('runInputValidations method', () => {
 
 		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
-			const Nomination = await createSubject();
 
 			const instance = new Nomination({
 				customType: 'Shortlisted',
@@ -393,8 +365,6 @@ describe('Nomination model', () => {
 
 		it('will call validateStringForProperty method', async () => {
 
-			const Nomination = await createSubject();
-
 			const instance = new Nomination({ customType: 'Shortlisted' });
 
 			spy(instance, 'validateStringForProperty');
@@ -413,8 +383,6 @@ describe('Nomination model', () => {
 	describe('runDatabaseValidations method', () => {
 
 		it('calls associated productions\' runDatabaseValidations method', async () => {
-
-			const Nomination = await createSubject();
 
 			const instance = new Nomination({
 				productions: [
