@@ -33,7 +33,7 @@ export default (instanceProps = {}) => {
 
 	const { model, name, differentiator } = instanceProps;
 
-	let stubUuid = constructStubUuid([name, differentiator, model]);
+	let stubUuid = constructStubUuid([name, model, differentiator]);
 
 	if (differentiator === undefined) {
 
@@ -46,7 +46,7 @@ export default (instanceProps = {}) => {
 
 		if (stubUuidToCountMapClient.get(stubUuid) > 1) {
 
-			stubUuid = constructStubUuid([name, stubUuidToCountMapClient.get(stubUuid).toString(), model]);
+			stubUuid = constructStubUuid([name, model, stubUuidToCountMapClient.get(stubUuid).toString()]);
 
 		}
 
