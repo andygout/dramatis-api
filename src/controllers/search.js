@@ -15,7 +15,7 @@ export default async (request, response, next) => {
 		const searchResults = await neo4jQuery(
 			{
 				query: getSearchQuery(),
-				params: { searchTerm }
+				params: { searchTerm: searchTerm.trim() }
 			},
 			{
 				isOptionalResult: true,
