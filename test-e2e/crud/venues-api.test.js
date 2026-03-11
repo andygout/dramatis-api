@@ -10,13 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
-
 	describe('GET new endpoint', () => {
-
 		it('responds with data required to prepare new venue', async () => {
-
-			const response = await request.execute(app)
-				.get('/venues/new');
+			const response = await request.execute(app).get('/venues/new');
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -35,32 +31,24 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('CRUD with minimum range of attributes assigned values', () => {
-
 		const VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates venue', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
-			const response = await request.execute(app)
-				.post('/venues')
-				.send({
-					name: 'National Theatre'
-				});
+			const response = await request.execute(app).post('/venues').send({
+				name: 'National Theatre'
+			});
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -81,13 +69,10 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
-
 		});
 
 		it('gets data required to edit specific venue', async () => {
-
-			const response = await request.execute(app)
-				.get(`/venues/${VENUE_UUID}/edit`);
+			const response = await request.execute(app).get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -107,18 +92,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates venue', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/venues/${VENUE_UUID}`)
-				.send({
-					name: 'Almeida Theatre'
-				});
+			const response = await request.execute(app).put(`/venues/${VENUE_UUID}`).send({
+				name: 'Almeida Theatre'
+			});
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -139,13 +120,10 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
-
 		});
 
 		it('shows venue', async () => {
-
-			const response = await request.execute(app)
-				.get(`/venues/${VENUE_UUID}`);
+			const response = await request.execute(app).get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -159,15 +137,12 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('deletes venue', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/venues/${VENUE_UUID}`);
+			const response = await request.execute(app).delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -180,13 +155,10 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
-
 		});
-
 	});
 
 	describe('CRUD with full range of attributes assigned values', () => {
-
 		const VENUE_UUID = 'NATIONAL_THEATRE_VENUE_1_UUID';
 		const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_1_UUID';
 		const LYTTELTON_THEATRE_VENUE_UUID = 'LYTTELTON_THEATRE_VENUE_1_UUID';
@@ -195,18 +167,16 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 		const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = 'JERWOOD_THEATRE_UPSTAIRS_VENUE_1_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates venue', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(0);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.post('/venues')
 				.send({
 					name: 'National Theatre',
@@ -264,13 +234,10 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
-
 		});
 
 		it('shows venue (post-creation)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/venues/${VENUE_UUID}`);
+			const response = await request.execute(app).get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -300,13 +267,10 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('gets data required to edit specific venue', async () => {
-
-			const response = await request.execute(app)
-				.get(`/venues/${VENUE_UUID}/edit`);
+			const response = await request.execute(app).get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -344,14 +308,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates venue (with existing data)', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'National Theatre',
@@ -409,14 +372,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
-
 		});
 
 		it('updates venue (with new data)', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(4);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'Royal Court Theatre',
@@ -464,13 +426,10 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(6);
-
 		});
 
 		it('shows venue (post-update)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/venues/${VENUE_UUID}`);
+			const response = await request.execute(app).get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -495,19 +454,15 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates venue to remove all associations prior to deletion', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(6);
 
-			const response = await request.execute(app)
-				.put(`/venues/${VENUE_UUID}`)
-				.send({
-					name: 'Royal Court Theatre',
-					differentiator: '1'
-				});
+			const response = await request.execute(app).put(`/venues/${VENUE_UUID}`).send({
+				name: 'Royal Court Theatre',
+				differentiator: '1'
+			});
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -528,15 +483,12 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(6);
-
 		});
 
 		it('deletes venue', async () => {
-
 			expect(await countNodesWithLabel('Venue')).to.equal(6);
 
-			const response = await request.execute(app)
-				.delete(`/venues/${VENUE_UUID}`);
+			const response = await request.execute(app).delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -549,47 +501,34 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Venue')).to.equal(5);
-
 		});
-
 	});
 
 	describe('GET list endpoint', () => {
-
 		const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 		const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_VENUE_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
-				.post('/venues')
-				.send({
-					name: 'Donmar Warehouse'
-				});
+			await request.execute(app).post('/venues').send({
+				name: 'Donmar Warehouse'
+			});
 
-			await request.execute(app)
-				.post('/venues')
-				.send({
-					name: 'National Theatre'
-				});
+			await request.execute(app).post('/venues').send({
+				name: 'National Theatre'
+			});
 
-			await request.execute(app)
-				.post('/venues')
-				.send({
-					name: 'Almeida Theatre'
-				});
-
+			await request.execute(app).post('/venues').send({
+				name: 'Almeida Theatre'
+			});
 		});
 
 		it('lists all venues ordered by name', async () => {
-
-			const response = await request.execute(app)
-				.get('/venues');
+			const response = await request.execute(app).get('/venues');
 
 			const expectedResponseBody = [
 				{
@@ -614,9 +553,6 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

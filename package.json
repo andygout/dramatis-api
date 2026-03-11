@@ -7,6 +7,7 @@
   "license": "MS-RSL",
   "main": "src/app.js",
   "scripts": {
+    "format": "prettier \"**/*.{js,jsx,json,css,md,yml}\" --write",
     "lint": "eslint",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",
@@ -20,6 +21,7 @@
     "start": "npm run setup && node --watch-path=src --watch-preserve-output src/app.js"
   },
   "pre-commit": [
+    "format",
     "lint-check",
     "unit-test",
     "int-test"
@@ -43,6 +45,7 @@
     "chai": "6.0.1",
     "chai-http": "5.1.2",
     "eslint": "9.36.0",
+    "eslint-config-prettier": "10.1.8",
     "eslint-plugin-mocha": "11.1.0",
     "esmock": "2.7.3",
     "globals": "16.4.0",
@@ -51,6 +54,7 @@
     "mocha": "11.7.2",
     "node-mocks-http": "1.17.2",
     "pre-commit": "1.2.2",
+    "prettier": "3.8.1",
     "sinon": "21.0.0"
   }
 }

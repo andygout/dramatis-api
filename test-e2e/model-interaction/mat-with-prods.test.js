@@ -27,14 +27,13 @@ let twelfthNightDonmarProduction;
 let twelfthNightNationalProduction;
 
 describe('Material with multiple productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Twelfth Night',
@@ -48,14 +47,15 @@ describe('Material with multiple productions', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
@@ -65,11 +65,12 @@ describe('Material with multiple productions', () => {
 					name: 'Twelfth Night'
 				},
 				venue: {
-					name: 'Shakespeare\'s Globe'
+					name: "Shakespeare's Globe"
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night, or What You Will',
@@ -84,7 +85,8 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
@@ -99,30 +101,27 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		twelfthNightMaterial = await request.execute(app)
-			.get(`/materials/${TWELFTH_NIGHT_MATERIAL_UUID}`);
+		twelfthNightMaterial = await request.execute(app).get(`/materials/${TWELFTH_NIGHT_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await request.execute(app)
-			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
+		williamShakespearePerson = await request.execute(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		theKingsMenCompany = await request.execute(app)
-			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
+		theKingsMenCompany = await request.execute(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
-		twelfthNightGlobeProduction = await request.execute(app)
+		twelfthNightGlobeProduction = await request
+			.execute(app)
 			.get(`/productions/${TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID}`);
 
-		twelfthNightDonmarProduction = await request.execute(app)
+		twelfthNightDonmarProduction = await request
+			.execute(app)
 			.get(`/productions/${TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID}`);
 
-		twelfthNightNationalProduction = await request.execute(app)
+		twelfthNightNationalProduction = await request
+			.execute(app)
 			.get(`/productions/${TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID}`);
-
 	});
 
 	describe('Twelfth Night (material)', () => {
-
 		it('includes productions of material ordered by production name then venue name', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -133,7 +132,7 @@ describe('Material with multiple productions', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null
@@ -171,15 +170,11 @@ describe('Material with multiple productions', () => {
 			const { productions } = twelfthNightMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('William Shakespeare (person)', () => {
-
 		it('includes productions of materials they have written', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -190,7 +185,7 @@ describe('Material with multiple productions', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null
@@ -228,15 +223,11 @@ describe('Material with multiple productions', () => {
 			const { materialProductions } = williamShakespearePerson.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
-	describe('The King\'s Men (company)', () => {
-
+	describe("The King's Men (company)", () => {
 		it('includes productions of materials they have written', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -247,7 +238,7 @@ describe('Material with multiple productions', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null
@@ -285,15 +276,11 @@ describe('Material with multiple productions', () => {
 			const { materialProductions } = theKingsMenCompany.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
-	describe('Twelfth Night at Shakespeare\'s Globe (production)', () => {
-
+	describe("Twelfth Night at Shakespeare's Globe (production)", () => {
 		it('attributes material as Twelfth Night', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
@@ -314,7 +301,7 @@ describe('Material with multiple productions', () => {
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -324,15 +311,11 @@ describe('Material with multiple productions', () => {
 			const { material } = twelfthNightGlobeProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Twelfth Night at Donmar Warehouse (production)', () => {
-
 		it('attributes material as Twelfth Night', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
@@ -353,7 +336,7 @@ describe('Material with multiple productions', () => {
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -363,15 +346,11 @@ describe('Material with multiple productions', () => {
 			const { material } = twelfthNightDonmarProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Twelfth Night at National Theatre (production)', () => {
-
 		it('attributes material as Twelfth Night', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: TWELFTH_NIGHT_MATERIAL_UUID,
@@ -392,7 +371,7 @@ describe('Material with multiple productions', () => {
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -402,9 +381,6 @@ describe('Material with multiple productions', () => {
 			const { material } = twelfthNightNationalProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
-
 });

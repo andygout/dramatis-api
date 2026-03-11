@@ -14,21 +14,12 @@ import {
 import { neo4jQuery } from '../neo4j/query.js';
 import { MODELS } from '../utils/constants.js';
 
-const DIFFERENTIATOR_EXEMPT_MODELS = new Set([
-	MODELS.AWARD_CEREMONY,
-	MODELS.PRODUCTION,
-	MODELS.PRODUCTION_IDENTIFIER
-]);
+const DIFFERENTIATOR_EXEMPT_MODELS = new Set([MODELS.AWARD_CEREMONY, MODELS.PRODUCTION, MODELS.PRODUCTION_IDENTIFIER]);
 
-const ASSOCIATION_WITH_SELF_NON_EMPTY_COMPARISON_KEYS = new Set([
-	'uuid',
-	'name'
-]);
+const ASSOCIATION_WITH_SELF_NON_EMPTY_COMPARISON_KEYS = new Set(['uuid', 'name']);
 
 export default class Entity extends Base {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { uuid, differentiator } = props;
@@ -36,64 +27,47 @@ export default class Entity extends Base {
 		this.uuid = uuid;
 
 		if (!DIFFERENTIATOR_EXEMPT_MODELS.has(this.model)) {
-
 			this.differentiator = getTrimmedOrEmptyString(differentiator);
-
 		}
-
 	}
 
-	hasDifferentiatorProperty () {
-
+	hasDifferentiatorProperty() {
 		return Object.hasOwn(this, 'differentiator');
-
 	}
 
-	runInputValidations () {
-
+	runInputValidations() {
 		this.validateName({ isRequired: true });
 
 		this.validateDifferentiator();
-
 	}
 
-	validateDifferentiator () {
-
+	validateDifferentiator() {
 		this.validateStringForProperty('differentiator', { isRequired: false });
-
 	}
 
-	validateSubtitle () {
-
+	validateSubtitle() {
 		this.validateStringForProperty('subtitle', { isRequired: false });
-
 	}
 
-	validateNoAssociationWithSelf (association) {
-
-		const hasAssociationWithSelf = Object.entries(association).every(([key, value]) =>
-			(ASSOCIATION_WITH_SELF_NON_EMPTY_COMPARISON_KEYS.has(key) ? Boolean(value) : true) &&
-			this[key] === value
+	validateNoAssociationWithSelf(association) {
+		const hasAssociationWithSelf = Object.entries(association).every(
+			([key, value]) =>
+				(ASSOCIATION_WITH_SELF_NON_EMPTY_COMPARISON_KEYS.has(key) ? Boolean(value) : true) &&
+				this[key] === value
 		);
 
 		if (hasAssociationWithSelf) {
-
 			for (const key of Object.keys(association)) {
 				this.addPropertyError(key, 'Instance cannot form association with itself');
 			}
-
 		}
-
 	}
 
-	async runDatabaseValidations () {
-
+	async runDatabaseValidations() {
 		await this.validateUniquenessInDatabase();
-
 	}
 
-	async validateUniquenessInDatabase () {
-
+	async validateUniquenessInDatabase() {
 		const { getDuplicateRecordCheckQuery } = validationQueries;
 
 		const preparedParams = prepareAsParams(this);
@@ -108,24 +82,18 @@ export default class Entity extends Base {
 		});
 
 		if (isDuplicateRecord) {
-
 			const uniquenessErrorMessage = 'Name and differentiator combination already exists';
 
 			this.addPropertyError('name', uniquenessErrorMessage);
 			this.addPropertyError('differentiator', uniquenessErrorMessage);
-
 		}
-
 	}
 
-	setErrorStatus () {
-
+	setErrorStatus() {
 		this.hasErrors = hasErrors(this);
-
 	}
 
-	async confirmExistenceInDatabase (opts = {}) {
-
+	async confirmExistenceInDatabase(opts = {}) {
 		const { getExistenceCheckQuery } = validationQueries;
 
 		const { isExistent } = await neo4jQuery({
@@ -134,11 +102,9 @@ export default class Entity extends Base {
 		});
 
 		return isExistent;
-
 	}
 
-	async createUpdate (getCreateUpdateQuery) {
-
+	async createUpdate(getCreateUpdateQuery) {
 		this.runInputValidations();
 
 		await this.runDatabaseValidations();
@@ -153,19 +119,15 @@ export default class Entity extends Base {
 		});
 
 		return new this.constructor(neo4jInstance);
-
 	}
 
-	create () {
-
+	create() {
 		const { getCreateQuery } = sharedQueries;
 
 		return this.createUpdate(getCreateQueries[this.model] || getCreateQuery);
-
 	}
 
-	async edit () {
-
+	async edit() {
 		const { getEditQuery } = sharedQueries;
 
 		const neo4jInstance = await neo4jQuery({
@@ -174,11 +136,9 @@ export default class Entity extends Base {
 		});
 
 		return new this.constructor(neo4jInstance);
-
 	}
 
-	async update () {
-
+	async update() {
 		const isExistent = await this.confirmExistenceInDatabase();
 
 		if (!isExistent) throw new Error('Not Found');
@@ -186,11 +146,9 @@ export default class Entity extends Base {
 		const { getUpdateQuery } = sharedQueries;
 
 		return this.createUpdate(getUpdateQueries[this.model] || getUpdateQuery);
-
 	}
 
-	async delete () {
-
+	async delete() {
 		const { getDeleteQuery } = sharedQueries;
 
 		const { name, differentiator, isDeleted, associatedModels } = await neo4jQuery({
@@ -199,45 +157,37 @@ export default class Entity extends Base {
 		});
 
 		if (isDeleted) {
-
 			return new this.constructor({
 				name,
 				...(this.hasDifferentiatorProperty() && { differentiator })
 			});
-
 		}
 
 		this.name = name;
 
 		if (this.hasDifferentiatorProperty()) this.differentiator = differentiator;
 
-		associatedModels.forEach(associatedModel => this.addPropertyError('associations', associatedModel));
+		associatedModels.forEach((associatedModel) => this.addPropertyError('associations', associatedModel));
 
 		this.setErrorStatus();
 
 		return this;
-
 	}
 
-	async show () {
-
-		const showQueryPromises =
-			getShowQueries[this.model]()
-				.map(showQuery =>
-					neo4jQuery({
-						query: showQuery,
-						params: { uuid: this.uuid }
-					})
-				);
+	async show() {
+		const showQueryPromises = getShowQueries[this.model]().map((showQuery) =>
+			neo4jQuery({
+				query: showQuery,
+				params: { uuid: this.uuid }
+			})
+		);
 
 		const showQueryResponses = await Promise.all(showQueryPromises);
 
 		return Object.assign({}, ...showQueryResponses);
-
 	}
 
-	static list (model) {
-
+	static list(model) {
 		const { getListQuery } = sharedQueries;
 
 		return neo4jQuery(
@@ -249,7 +199,5 @@ export default class Entity extends Base {
 				isArrayResult: true
 			}
 		);
-
 	}
-
 }

@@ -18,26 +18,18 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('Instance validation failures: Productions API', () => {
-
 	describe('attempt to create instance', () => {
-
 		before(async () => {
-
 			await purgeDatabase();
-
 		});
 
 		context('instance has input validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await request.execute(app)
-					.post('/productions')
-					.send({
-						name: ''
-					});
+				const response = await request.execute(app).post('/productions').send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
@@ -48,9 +40,7 @@ describe('Instance validation failures: Productions API', () => {
 					endDate: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					material: {
 						model: 'MATERIAL',
@@ -87,18 +77,15 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(0);
-
 			});
-
 		});
 
 		context('instance has database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Macbeth',
@@ -147,9 +134,7 @@ describe('Instance validation failures: Productions API', () => {
 							model: 'PRODUCTION_IDENTIFIER',
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 							errors: {
-								uuid: [
-									'Production with this UUID does not exist'
-								]
+								uuid: ['Production with this UUID does not exist']
 							}
 						}
 					],
@@ -163,18 +148,15 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(0);
-
 			});
-
 		});
 
 		context('instance has both input and database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(0);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.post('/productions')
 					.send({
 						name: 'Macbeth',
@@ -202,9 +184,7 @@ describe('Instance validation failures: Productions API', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					venue: {
@@ -230,9 +210,7 @@ describe('Instance validation failures: Productions API', () => {
 							model: 'PRODUCTION_IDENTIFIER',
 							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
 							errors: {
-								uuid: [
-									'Production with this UUID does not exist'
-								]
+								uuid: ['Production with this UUID does not exist']
 							}
 						}
 					],
@@ -246,19 +224,14 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(0);
-
 			});
-
 		});
-
 	});
 
 	describe('attempt to update instance', () => {
-
 		const MACBETH_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -266,20 +239,15 @@ describe('Instance validation failures: Productions API', () => {
 				uuid: MACBETH_PRODUCTION_UUID,
 				name: 'Macbeth'
 			});
-
 		});
 
 		context('instance has input validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await request.execute(app)
-					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
-					.send({
-						name: ''
-					});
+				const response = await request.execute(app).put(`/productions/${MACBETH_PRODUCTION_UUID}`).send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
@@ -291,9 +259,7 @@ describe('Instance validation failures: Productions API', () => {
 					endDate: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					material: {
 						model: 'MATERIAL',
@@ -330,23 +296,22 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(1);
-				expect(await isNodeExistent({
-					label: 'Production',
-					name: 'Macbeth',
-					uuid: MACBETH_PRODUCTION_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'Production',
+						name: 'Macbeth',
+						uuid: MACBETH_PRODUCTION_UUID
+					})
+				).to.be.true;
 			});
-
 		});
 
 		context('instance has database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: 'Macbeth',
@@ -396,9 +361,7 @@ describe('Instance validation failures: Productions API', () => {
 							model: 'PRODUCTION_IDENTIFIER',
 							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
 							errors: {
-								uuid: [
-									'Production with this UUID does not exist'
-								]
+								uuid: ['Production with this UUID does not exist']
 							}
 						}
 					],
@@ -412,18 +375,15 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(1);
-
 			});
-
 		});
 
 		context('instance has both input and database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: 'Macbeth',
@@ -452,9 +412,7 @@ describe('Instance validation failures: Productions API', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					venue: {
@@ -480,9 +438,7 @@ describe('Instance validation failures: Productions API', () => {
 							model: 'PRODUCTION_IDENTIFIER',
 							uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
 							errors: {
-								uuid: [
-									'Production with this UUID does not exist'
-								]
+								uuid: ['Production with this UUID does not exist']
 							}
 						}
 					],
@@ -496,21 +452,16 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(1);
-
 			});
-
 		});
-
 	});
 
 	describe('attempt to delete instance', () => {
-
 		const OTHELLO_DONMAR_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const DONMAR_WAREHOUSE_VENUE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 		const OTHELLO_MATERIAL_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -546,17 +497,13 @@ describe('Instance validation failures: Productions API', () => {
 				destinationUuid: OTHELLO_MATERIAL_UUID,
 				relationshipName: 'PRODUCTION_OF'
 			});
-
 		});
 
 		context('instance has associations', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Production')).to.equal(1);
 
-				const response = await request.execute(app)
-					.delete(`/productions/${OTHELLO_DONMAR_PRODUCTION_UUID}`);
+				const response = await request.execute(app).delete(`/productions/${OTHELLO_DONMAR_PRODUCTION_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
@@ -568,10 +515,7 @@ describe('Instance validation failures: Productions API', () => {
 					endDate: '',
 					hasErrors: true,
 					errors: {
-						associations: [
-							'Material',
-							'Venue'
-						]
+						associations: ['Material', 'Venue']
 					},
 					material: {
 						model: 'MATERIAL',
@@ -608,11 +552,7 @@ describe('Instance validation failures: Productions API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Production')).to.equal(1);
-
 			});
-
 		});
-
 	});
-
 });

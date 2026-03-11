@@ -4,11 +4,8 @@ import * as cypherQueriesAwardCeremonies from '../../../../src/neo4j/cypher-quer
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Award Ceremony module', () => {
-
 	describe('getCreateQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesAwardCeremonies.getCreateQuery();
 
 			const compactedResult = removeExcessWhitespace(result);
@@ -43,15 +40,11 @@ describe('Cypher Queries Award Ceremony module', () => {
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
 			expect(compactedResult.includes(middleSegment)).to.be.true;
 			expect(compactedResult.endsWith(endSegment)).to.be.true;
-
 		});
-
 	});
 
 	describe('getUpdateQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesAwardCeremonies.getUpdateQuery();
 
 			const compactedResult = removeExcessWhitespace(result);
@@ -100,9 +93,6 @@ describe('Cypher Queries Award Ceremony module', () => {
 			expect(compactedResult.startsWith(startSegment)).to.be.true;
 			expect(compactedResult.includes(middleSegment)).to.be.true;
 			expect(compactedResult.endsWith(endSegment)).to.be.true;
-
 		});
-
 	});
-
 });

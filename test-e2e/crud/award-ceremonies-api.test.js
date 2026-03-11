@@ -10,13 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
-
 	describe('GET new endpoint', () => {
-
 		it('responds with data required to prepare new award ceremony', async () => {
-
-			const response = await request.execute(app)
-				.get('/award-ceremonies/new');
+			const response = await request.execute(app).get('/award-ceremonies/new');
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -70,32 +66,24 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('CRUD with minimum range of attributes assigned values', () => {
-
 		const AWARD_CEREMONY_UUID = '2020_AWARD_CEREMONY_2_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates award ceremony', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
 
-			const response = await request.execute(app)
-				.post('/award-ceremonies')
-				.send({
-					name: '2020'
-				});
+			const response = await request.execute(app).post('/award-ceremonies').send({
+				name: '2020'
+			});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -151,13 +139,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-
 		});
 
 		it('gets data required to edit specific award ceremony', async () => {
-
-			const response = await request.execute(app)
-				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}/edit`);
+			const response = await request.execute(app).get(`/award-ceremonies/${AWARD_CEREMONY_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -212,18 +197,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates award ceremony', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
-				.send({
-					name: '2019'
-				});
+			const response = await request.execute(app).put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`).send({
+				name: '2019'
+			});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -279,13 +260,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-
 		});
 
 		it('shows award ceremony', async () => {
-
-			const response = await request.execute(app)
-				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
+			const response = await request.execute(app).get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -297,15 +275,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('deletes award ceremony', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
+			const response = await request.execute(app).delete(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -323,13 +298,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
-
 		});
-
 	});
 
 	describe('CRUD with full range of attributes assigned values', () => {
-
 		const HAIRSPRAY_SHAFTESBURY_PRODUCTION_UUID = 'HAIRSPRAY_PRODUCTION_UUID';
 		const SHAFTESBURY_THEATRE_VENUE_UUID = 'SHAFTESBURY_THEATRE_VENUE_UUID';
 		const GARPLY_LYTTELTON_PRODUCTION_UUID = 'GARPLY_PRODUCTION_UUID';
@@ -353,10 +325,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		const SAINT_JOAN_MATERIAL_UUID = 'SAINT_JOAN_MATERIAL_1_UUID';
 		const AUTOGRAPH_COMPANY_UUID = 'AUTOGRAPH_COMPANY_1_UUID';
 		const TERRY_JARDINE_PERSON_UUID = 'TERRY_JARDINE_PERSON_1_UUID';
-		const NICK_LIDSTER_PERSON_UUID ='NICK_LIDSTER_PERSON_1_UUID';
+		const NICK_LIDSTER_PERSON_UUID = 'NICK_LIDSTER_PERSON_1_UUID';
 		const PARADE_MATERIAL_UUID = 'PARADE_MATERIAL_1_UUID';
 		const AUDIO_CREATIVE_LTD_COMPANY_UUID = 'AUDIO_CREATIVE_LTD_COMPANY_1_UUID';
-		const SIMON_BAKER_PERSON_UUID ='SIMON_BAKER_PERSON_1_UUID';
+		const SIMON_BAKER_PERSON_UUID = 'SIMON_BAKER_PERSON_1_UUID';
 		const ROB_ASHFORD_PERSON_UUID = 'ROB_ASHFORD_PERSON_1_UUID';
 		const MARIANNE_ELLIOTT_PERSON_UUID = 'MARIANNE_ELLIOTT_PERSON_1_UUID';
 		const TOM_MORRIS_PERSON_UUID = 'TOM_MORRIS_PERSON_1_UUID';
@@ -398,18 +370,16 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		const OUR_CLASS_MATERIAL_UUID = 'OUR_CLASS_MATERIAL_1_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates award ceremony', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hairspray',
@@ -420,7 +390,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Garply',
@@ -431,18 +402,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Garply',
 					startDate: '2007-11-01',
 					endDate: '2007-11-30',
 					venue: {
-						name: 'Wyndham\'s Theatre'
+						name: "Wyndham's Theatre"
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Saint Joan',
@@ -453,7 +426,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Parade',
@@ -464,7 +438,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Grault',
@@ -475,7 +450,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2008',
@@ -1571,13 +1547,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-
 		});
 
 		it('shows award ceremony (post-creation)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
+			const response = await request.execute(app).get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -1668,7 +1641,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										venue: {
 											model: 'VENUE',
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-											name: 'Wyndham\'s Theatre',
+											name: "Wyndham's Theatre",
 											surVenue: null
 										},
 										surProduction: null
@@ -1828,7 +1801,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										venue: {
 											model: 'VENUE',
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-											name: 'Wyndham\'s Theatre',
+											name: "Wyndham's Theatre",
 											surVenue: null
 										},
 										surProduction: null
@@ -1934,7 +1907,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										venue: {
 											model: 'VENUE',
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-											name: 'Wyndham\'s Theatre',
+											name: "Wyndham's Theatre",
 											surVenue: null
 										},
 										surProduction: null
@@ -2060,13 +2033,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('gets data required to edit specific award ceremony', async () => {
-
-			const response = await request.execute(app)
-				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}/edit`);
+			const response = await request.execute(app).get(`/award-ceremonies/${AWARD_CEREMONY_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -2918,14 +2888,13 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates award ceremony (with existing data)', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2008',
@@ -4021,14 +3990,13 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-
 		});
 
 		it('updates award ceremony (with new data)', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'The Chalk Garden',
@@ -4039,7 +4007,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Piaf',
@@ -4050,7 +4019,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Piaf',
@@ -4061,18 +4031,20 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Ivanov',
 					startDate: '2008-09-12',
 					endDate: '2008-11-29',
 					venue: {
-						name: 'Wyndham\'s Theatre'
+						name: "Wyndham's Theatre"
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Waldo',
@@ -4083,7 +4055,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Waldo',
@@ -4094,7 +4067,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Fred',
@@ -4105,7 +4079,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2009',
@@ -5217,13 +5192,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-
 		});
 
 		it('shows award ceremony (post-update)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
+			const response = await request.execute(app).get(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -5358,7 +5330,7 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 										venue: {
 											model: 'VENUE',
 											uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-											name: 'Wyndham\'s Theatre',
+											name: "Wyndham's Theatre",
 											surVenue: null
 										},
 										surProduction: null
@@ -5734,18 +5706,14 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates award ceremony to remove all associations prior to deletion', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`)
-				.send({
-					name: '2009'
-				});
+			const response = await request.execute(app).put(`/award-ceremonies/${AWARD_CEREMONY_UUID}`).send({
+				name: '2009'
+			});
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -5801,15 +5769,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-
 		});
 
 		it('deletes awards ceremony', async () => {
-
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
+			const response = await request.execute(app).delete(`/award-ceremonies/${AWARD_CEREMONY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD_CEREMONY',
@@ -5827,13 +5792,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
-
 		});
-
 	});
 
 	describe('GET list endpoint', () => {
-
 		const LAURENCE_OLIVIER_AWARDS_2019_AWARD_CEREMONY_UUID = '2019_AWARD_CEREMONY_2_UUID';
 		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'LAURENCE_OLIVIER_AWARDS_AWARD_UUID';
 		const LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID = '2020_AWARD_CEREMONY_2_UUID';
@@ -5844,12 +5806,12 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 		const EVENING_STANDARD_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID = '2018_AWARD_CEREMONY_4_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2019',
@@ -5858,7 +5820,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2020',
@@ -5867,7 +5830,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2018',
@@ -5876,7 +5840,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2019',
@@ -5885,7 +5850,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2020',
@@ -5894,7 +5860,8 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/award-ceremonies')
 				.send({
 					name: '2018',
@@ -5902,13 +5869,10 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 						name: 'Evening Standard Theatre Awards'
 					}
 				});
-
 		});
 
 		it('lists all award ceremonies ordered by name then award name', async () => {
-
-			const response = await request.execute(app)
-				.get('/award-ceremonies');
+			const response = await request.execute(app).get('/award-ceremonies');
 
 			const expectedResponseBody = [
 				{
@@ -5975,9 +5939,6 @@ describe('CRUD (Create, Read, Update, Delete): Award ceremonies API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

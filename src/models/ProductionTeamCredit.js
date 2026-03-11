@@ -4,28 +4,24 @@ import { CompanyWithMembers, Person } from './index.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class ProductionTeamCredit extends Base {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { entities } = props;
 
 		this.entities = entities
-			? entities.map(entity => {
-				switch (entity.model) {
-					case MODELS.COMPANY:
-						return new CompanyWithMembers(entity);
-					default:
-						return new Person(entity);
-				}
-			})
+			? entities.map((entity) => {
+					switch (entity.model) {
+						case MODELS.COMPANY:
+							return new CompanyWithMembers(entity);
+						default:
+							return new Person(entity);
+					}
+				})
 			: [];
-
 	}
 
-	runInputValidations (opts) {
-
+	runInputValidations(opts) {
 		this.validateName({ isRequired: false });
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
@@ -34,8 +30,7 @@ export default class ProductionTeamCredit extends Base {
 
 		const duplicateEntities = getDuplicateEntities(this.entities);
 
-		this.entities.forEach(entity => {
-
+		this.entities.forEach((entity) => {
 			entity.validateName({ isRequired: false });
 
 			entity.validateDifferentiator();
@@ -43,9 +38,6 @@ export default class ProductionTeamCredit extends Base {
 			entity.validateUniquenessInGroup({ isDuplicate: isEntityInArray(entity, duplicateEntities) });
 
 			if (entity.model === MODELS.COMPANY) entity.runInputValidations({ duplicateEntities });
-
 		});
-
 	}
-
 }

@@ -11,36 +11,26 @@ import {
 } from '../../../src/models/index.js';
 
 describe('Material model', () => {
-
 	let stubs;
 	let Material;
 
 	const CharacterGroupStub = function () {
-
 		return createStubInstance(CharacterGroup);
-
 	};
 
 	const OriginalVersionMaterialStub = function () {
-
 		return createStubInstance(OriginalVersionMaterial);
-
 	};
 
 	const SubMaterialStub = function () {
-
 		return createStubInstance(SubMaterial);
-
 	};
 
 	const WritingCreditStub = function () {
-
 		return createStubInstance(WritingCredit);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
@@ -48,7 +38,7 @@ describe('Material model', () => {
 			},
 			isValidYear: stub().returns(false),
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
 			},
 			models: {
 				CharacterGroup: CharacterGroupStub,
@@ -72,111 +62,82 @@ describe('Material model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
 			new Material();
 
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(5);
-
 		});
 
 		describe('subtitle property', () => {
-
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 				const instance = new Material({ subtitle: 'Prince of Denmark' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
-
 			});
-
 		});
 
 		describe('format property', () => {
-
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 				const instance = new Material({ format: 'play' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'play');
 				expect(instance.format).to.equal('play');
-
 			});
-
 		});
 
 		describe('year property', () => {
-
 			context('value cannot be parsed as integer', () => {
-
 				it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 					const instance = new Material({ year: 'Nineteen Fifty-Nine' });
 
-					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), 'Nineteen Fifty-Nine');
+					assert.calledWithExactly(
+						stubs.stringsModule.getTrimmedOrEmptyString.getCall(4),
+						'Nineteen Fifty-Nine'
+					);
 					expect(instance.year).to.equal('Nineteen Fifty-Nine');
-
 				});
-
 			});
 
 			context('value can be parsed as integer', () => {
-
 				it('assigns value converted to integer if included in props and value can be parsed as integer', async () => {
-
 					const instance = new Material({ year: '1959' });
 
 					expect(instance.year).to.equal(1959);
-
 				});
 
 				it('assigns value with flanking whitespace converted to integer if included in props and value can be parsed as integer', async () => {
-
 					const instance = new Material({ year: ' 1959 ' });
 
 					expect(instance.year).to.equal(1959);
-
 				});
 
 				it('assigns value if included in props and is an integer', async () => {
-
 					const instance = new Material({ year: 1959 });
 
 					expect(instance.year).to.equal(1959);
-
 				});
-
 			});
-
 		});
 
 		describe('originalVersionMaterial property', () => {
-
 			it('assigns instance if absent from props', async () => {
-
 				const instance = new Material({
 					name: 'The Seagull',
 					differentiator: '2'
 				});
 
 				expect(instance.originalVersionMaterial instanceof MaterialBase).to.be.true;
-
 			});
 
 			it('assigns instance if included in props', async () => {
-
 				const instance = new Material({
 					name: 'The Seagull',
 					differentiator: '2',
@@ -187,23 +148,17 @@ describe('Material model', () => {
 				});
 
 				expect(instance.originalVersionMaterial instanceof MaterialBase).to.be.true;
-
 			});
-
 		});
 
 		describe('writingCredits property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Material({ name: 'The Tragedy of Hamlet' });
 
 				expect(instance.writingCredits).to.deep.equal([]);
-
 			});
 
 			it('assigns array of writingCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Material({
 					name: 'The Tragedy of Hamlet',
 					writingCredits: [
@@ -223,23 +178,17 @@ describe('Material model', () => {
 				expect(instance.writingCredits[0] instanceof WritingCredit).to.be.true;
 				expect(instance.writingCredits[1] instanceof WritingCredit).to.be.true;
 				expect(instance.writingCredits[2] instanceof WritingCredit).to.be.true;
-
 			});
-
 		});
 
 		describe('subMaterials property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Material({ name: 'The Coast of Utopia' });
 
 				expect(instance.subMaterials).to.deep.equal([]);
-
 			});
 
 			it('assigns array of subMaterials if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Material({
 					name: 'The Coast of Utopia',
 					subMaterials: [
@@ -259,23 +208,17 @@ describe('Material model', () => {
 				expect(instance.subMaterials[0] instanceof SubMaterial).to.be.true;
 				expect(instance.subMaterials[1] instanceof SubMaterial).to.be.true;
 				expect(instance.subMaterials[2] instanceof SubMaterial).to.be.true;
-
 			});
-
 		});
 
 		describe('characterGroups property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Material({ name: 'The Tragedy of Hamlet' });
 
 				expect(instance.characterGroups).to.deep.equal([]);
-
 			});
 
 			it('assigns array of characterGroups if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Material({
 					name: 'The Tragedy of Hamlet',
 					characterGroups: [
@@ -295,17 +238,12 @@ describe('Material model', () => {
 				expect(instance.characterGroups[0] instanceof CharacterGroup).to.be.true;
 				expect(instance.characterGroups[1] instanceof CharacterGroup).to.be.true;
 				expect(instance.characterGroups[2] instanceof CharacterGroup).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new Material({
 				name: 'The Tragedy of Hamlet',
 				differentiator: '1',
@@ -363,61 +301,43 @@ describe('Material model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices,
 				instance.writingCredits
 			);
-			assert.calledOnceWithExactly(
-				instance.writingCredits[0].runInputValidations,
-				{
-					isDuplicate: false,
-					subject: {
-						name: 'The Tragedy of Hamlet',
-						differentiator: '1'
-					}
+			assert.calledOnceWithExactly(instance.writingCredits[0].runInputValidations, {
+				isDuplicate: false,
+				subject: {
+					name: 'The Tragedy of Hamlet',
+					differentiator: '1'
 				}
-			);
+			});
 			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.subMaterials
 			);
 			assert.calledOnceWithExactly(instance.subMaterials[0].validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.subMaterials[0].validateDifferentiator);
-			assert.calledOnceWithExactly(
-				instance.subMaterials[0].validateNoAssociationWithSelf,
-				{ name: 'The Tragedy of Hamlet', differentiator: '1' }
-			);
-			assert.calledOnceWithExactly(
-				instance.subMaterials[0].validateUniquenessInGroup,
-				{ isDuplicate: false }
-			);
+			assert.calledOnceWithExactly(instance.subMaterials[0].validateNoAssociationWithSelf, {
+				name: 'The Tragedy of Hamlet',
+				differentiator: '1'
+			});
+			assert.calledOnceWithExactly(instance.subMaterials[0].validateUniquenessInGroup, { isDuplicate: false });
 			assert.calledOnceWithExactly(instance.characterGroups[0].runInputValidations);
-
 		});
-
 	});
 
 	describe('validateFormat method', () => {
-
 		it('will call validateStringForProperty method', async () => {
-
 			const instance = new Material({ name: 'The Tragedy of Hamlet', format: 'play' });
 
 			spy(instance, 'validateStringForProperty');
 
 			instance.validateFormat({ isRequired: false });
 
-			assert.calledOnceWithExactly(
-				instance.validateStringForProperty,
-				'format', { isRequired: false }
-			);
-
+			assert.calledOnceWithExactly(instance.validateStringForProperty, 'format', { isRequired: false });
 		});
-
 	});
 
 	describe('validateYear method', () => {
-
 		context('year value equates to false', () => {
-
 			it('will not call isValidYear function or addPropertyError method', async () => {
-
 				const instance = new Material({ name: 'The Caretaker', year: '' });
 
 				spy(instance, 'addPropertyError');
@@ -426,15 +346,11 @@ describe('Material model', () => {
 
 				assert.notCalled(stubs.isValidYear);
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
 		context('year value is not a valid year', () => {
-
 			it('will call isValidYear function and addPropertyError method', async () => {
-
 				const instance = new Material({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
 
 				spy(instance, 'addPropertyError');
@@ -442,19 +358,12 @@ describe('Material model', () => {
 				instance.validateYear();
 
 				assert.calledOnceWithExactly(stubs.isValidYear, 'Nineteen Fifty-Nine');
-				assert.calledOnceWithExactly(
-					instance.addPropertyError,
-					'year', 'Value must be a valid year'
-				);
-
+				assert.calledOnceWithExactly(instance.addPropertyError, 'year', 'Value must be a valid year');
 			});
-
 		});
 
 		context('year value is a valid year', () => {
-
 			it('will call isValidYear function but not addPropertyError method', async () => {
-
 				const instance = new Material({ name: 'The Caretaker', year: 1959 });
 
 				spy(instance, 'addPropertyError');
@@ -463,17 +372,12 @@ describe('Material model', () => {
 
 				assert.calledOnceWithExactly(stubs.isValidYear, 1959);
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
-		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
-
+		it("calls associated subMaterials' runDatabaseValidations method", async () => {
 			const instance = new Material({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'Foo',
@@ -498,21 +402,15 @@ describe('Material model', () => {
 			await instance.runDatabaseValidations();
 
 			assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
-			assert.calledOnceWithExactly(
-				instance.originalVersionMaterial.runDatabaseValidations,
-				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-			assert.calledOnceWithExactly(
-				instance.writingCredits[0].runDatabaseValidations,
-				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-			assert.calledOnceWithExactly(
-				instance.subMaterials[0].runDatabaseValidations,
-				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-
+			assert.calledOnceWithExactly(instance.originalVersionMaterial.runDatabaseValidations, {
+				subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
+			assert.calledOnceWithExactly(instance.writingCredits[0].runDatabaseValidations, {
+				subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
+			assert.calledOnceWithExactly(instance.subMaterials[0].runDatabaseValidations, {
+				subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
 		});
-
 	});
-
 });

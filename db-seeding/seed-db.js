@@ -12,18 +12,17 @@ const BASE_URL = 'http://localhost:3000';
 
 const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	'award-ceremonies': '🏆',
-	'festivals': '🎪',
-	'materials': '📖',
-	'productions': '🎭',
-	'venues': '🏛️'
+	festivals: '🎪',
+	materials: '📖',
+	productions: '🎭',
+	venues: '🏛️'
 };
 
 const PAUSE_DURATION_IN_MILLISECONDS = 500;
 
-const pause = duration => new Promise(resolve => setTimeout(resolve, duration));
+const pause = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
 
-async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
-
+async function performFetch(url, instance, modelEmoji, filenamePathSlug) {
 	const settings = {
 		headers: {
 			'Content-Type': 'application/json'
@@ -46,11 +45,9 @@ async function performFetch (url, instance, modelEmoji, filenamePathSlug) {
 	console.log(`${resultIndicator} Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`);
 
 	return;
-
 }
 
-async function seedInstances (pluralisedModel) {
-
+async function seedInstances(pluralisedModel) {
 	const directoryName = pluralisedModel;
 	const modelUrlRoute = pluralisedModel;
 
@@ -61,60 +58,47 @@ async function seedInstances (pluralisedModel) {
 	const seedFilenames = fs.readdirSync(directoryPath);
 
 	// eslint-disable-next-line no-console
-	console.log(`🟢 Seeding Neo4j database: ${modelEmoji} Commenced sowing ${seedFilenames.length} ${pluralisedModel} seeds`);
+	console.log(
+		`🟢 Seeding Neo4j database: ${modelEmoji} Commenced sowing ${seedFilenames.length} ${pluralisedModel} seeds`
+	);
 
-	const createInstanceFunctions =
-		seedFilenames
-			.map(filename => () => {
+	const createInstanceFunctions = seedFilenames.map((filename) => () => {
+		const filenamePathSlug = `${directoryName}/${filename}`;
 
-				const filenamePathSlug = `${directoryName}/${filename}`;
+		const modelEmoji = PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel];
 
-				const modelEmoji = PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel];
+		try {
+			const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
 
-				try {
+			let instance;
 
-					const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
+			try {
+				// Parse with jsonlint rather than JSON.parse() because
+				// its errors specify the line of parse errors.
+				instance = jsonlint.parse(rawData.toString());
+			} catch (parsingError) {
+				// eslint-disable-next-line no-console
+				console.log(`❌ Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`);
+				// eslint-disable-next-line no-console
+				console.log(parsingError);
 
-					let instance;
+				return Promise.resolve();
+			}
 
-					try {
-						// Parse with jsonlint rather than JSON.parse() because
-						// its errors specify the line of parse errors.
-						instance = jsonlint.parse(rawData.toString());
-					} catch (parsingError) {
-						// eslint-disable-next-line no-console
-						console.log(`❌ Seeding Neo4j database: ${modelEmoji} ${filenamePathSlug}`);
-						// eslint-disable-next-line no-console
-						console.log(parsingError);
+			const url = `${BASE_URL}/${modelUrlRoute}`;
 
-						return Promise.resolve();
-					}
-
-					const url = `${BASE_URL}/${modelUrlRoute}`;
-
-					return performFetch(
-						url,
-						instance,
-						modelEmoji,
-						filenamePathSlug
-					);
-
-				} catch (error) {
-
-					throw new Error(`${filenamePathSlug}: ${error.message}`, { cause: error });
-
-				}
-
-			});
+			return performFetch(url, instance, modelEmoji, filenamePathSlug);
+		} catch (error) {
+			throw new Error(`${filenamePathSlug}: ${error.message}`, { cause: error });
+		}
+	});
 
 	await directly(1, createInstanceFunctions);
 
 	return;
-
 }
 
-async function seedDatabase () {
-
+async function seedDatabase() {
 	// eslint-disable-next-line no-console
 	console.log('🟢 Seeding Neo4j database: Commenced');
 
@@ -141,13 +125,14 @@ async function seedDatabase () {
 	await seedInstances('award-ceremonies');
 
 	// eslint-disable-next-line no-console
-	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['award-ceremonies']} Award ceremony seeds sown`);
+	console.log(
+		`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['award-ceremonies']} Award ceremony seeds sown`
+	);
 
 	// eslint-disable-next-line no-console
 	console.log('🆗 Seeding Neo4j database: Complete');
 
 	return;
-
 }
 
 seedDatabase();

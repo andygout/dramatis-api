@@ -8,7 +8,6 @@ import { getDriver as getNeo4jDriver } from './neo4j/get-driver.js';
 const neo4jDriver = getNeo4jDriver();
 
 (async () => {
-
 	await createNeo4jConstraints();
 
 	await createNeo4jIndexes();
@@ -18,5 +17,4 @@ const neo4jDriver = getNeo4jDriver();
 	await neo4jDriver.close();
 
 	return;
-
 })();

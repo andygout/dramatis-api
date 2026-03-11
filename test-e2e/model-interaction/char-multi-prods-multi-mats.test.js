@@ -35,14 +35,13 @@ let henryIVPart2Material;
 let merryWivesOfWindsorMaterial;
 
 describe('Character in multiple productions of multiple materials', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -59,7 +58,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -76,7 +76,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -93,7 +94,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -118,7 +120,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -143,7 +146,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -168,7 +172,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -179,7 +184,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 1'
 				},
 				venue: {
-					name: 'Shakespeare\'s Globe'
+					name: "Shakespeare's Globe"
 				},
 				cast: [
 					{
@@ -193,7 +198,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -204,7 +210,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'Henry IV, Part 2'
 				},
 				venue: {
-					name: 'Shakespeare\'s Globe'
+					name: "Shakespeare's Globe"
 				},
 				cast: [
 					{
@@ -218,7 +224,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -229,7 +236,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					name: 'The Merry Wives of Windsor'
 				},
 				venue: {
-					name: 'Shakespeare\'s Globe'
+					name: "Shakespeare's Globe"
 				},
 				cast: [
 					{
@@ -243,7 +250,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -268,7 +276,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -293,7 +302,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -318,24 +328,19 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		sirJohnFalstaffCharacter = await request.execute(app)
-			.get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
+		sirJohnFalstaffCharacter = await request.execute(app).get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
-		henryIVPart1Material = await request.execute(app)
-			.get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
+		henryIVPart1Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Material = await request.execute(app)
-			.get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
+		henryIVPart2Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		merryWivesOfWindsorMaterial = await request.execute(app)
+		merryWivesOfWindsorMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID}`);
-
 	});
 
 	describe('Sir John Falstaff (character)', () => {
-
 		it('includes materials in which character is depicted', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -372,11 +377,9 @@ describe('Character in multiple productions of multiple materials', () => {
 			const { materials } = sirJohnFalstaffCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes productions of materials in which character is portrayed (including cast member who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -387,7 +390,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null,
@@ -412,7 +415,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null,
@@ -437,7 +440,7 @@ describe('Character in multiple productions of multiple materials', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null,
@@ -608,15 +611,11 @@ describe('Character in multiple productions of multiple materials', () => {
 			const { productions } = sirJohnFalstaffCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 1 (material)', () => {
-
 		it('includes Sir John Falstaff in its characters', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -626,18 +625,16 @@ describe('Character in multiple productions of multiple materials', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryIVPart1Material.body;
+			const {
+				characterGroups: [{ characters }]
+			} = henryIVPart1Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 2 (material)', () => {
-
 		it('includes Sir John Falstaff in its characters', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -647,18 +644,16 @@ describe('Character in multiple productions of multiple materials', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryIVPart2Material.body;
+			const {
+				characterGroups: [{ characters }]
+			} = henryIVPart2Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('The Merry Wives of Windsor (material)', () => {
-
 		it('includes Sir John Falstaff in its characters', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -668,12 +663,11 @@ describe('Character in multiple productions of multiple materials', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = merryWivesOfWindsorMaterial.body;
+			const {
+				characterGroups: [{ characters }]
+			} = merryWivesOfWindsorMaterial.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
-
 });

@@ -20,14 +20,13 @@ let lifeIsADreamDonmarProduction;
 let redDonmarProduction;
 
 describe('Venue with multiple productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'A Streetcar Named Desire',
@@ -39,7 +38,8 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Life is a Dream',
@@ -51,7 +51,8 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Red',
@@ -63,24 +64,21 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		donmarWarehouseVenue = await request.execute(app)
-			.get(`/venues/${DONMAR_WAREHOUSE_VENUE_UUID}`);
+		donmarWarehouseVenue = await request.execute(app).get(`/venues/${DONMAR_WAREHOUSE_VENUE_UUID}`);
 
-		streetcarNamedDesireDonmarProduction = await request.execute(app)
+		streetcarNamedDesireDonmarProduction = await request
+			.execute(app)
 			.get(`/productions/${A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`);
 
-		lifeIsADreamDonmarProduction = await request.execute(app)
+		lifeIsADreamDonmarProduction = await request
+			.execute(app)
 			.get(`/productions/${LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID}`);
 
-		redDonmarProduction = await request.execute(app)
-			.get(`/productions/${RED_DONMAR_PRODUCTION_UUID}`);
-
+		redDonmarProduction = await request.execute(app).get(`/productions/${RED_DONMAR_PRODUCTION_UUID}`);
 	});
 
 	describe('Donmar Warehouse (venue)', () => {
-
 		it('includes productions at this venue', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -114,15 +112,11 @@ describe('Venue with multiple productions', () => {
 			const { productions } = donmarWarehouseVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('A Streetcar Named Desire at Donmar Warehouse (production)', () => {
-
 		it('attributes venue as Donmar Warehouse', () => {
-
 			const expectedVenue = {
 				model: 'VENUE',
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
@@ -133,15 +127,11 @@ describe('Venue with multiple productions', () => {
 			const { venue } = streetcarNamedDesireDonmarProduction.body;
 
 			expect(venue).to.deep.equal(expectedVenue);
-
 		});
-
 	});
 
 	describe('Life is a Dream at Donmar Warehouse (production)', () => {
-
 		it('attributes venue as Donmar Warehouse', () => {
-
 			const expectedVenue = {
 				model: 'VENUE',
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
@@ -152,15 +142,11 @@ describe('Venue with multiple productions', () => {
 			const { venue } = lifeIsADreamDonmarProduction.body;
 
 			expect(venue).to.deep.equal(expectedVenue);
-
 		});
-
 	});
 
 	describe('Red at Donmar Warehouse (production)', () => {
-
 		it('attributes venue as Donmar Warehouse', () => {
-
 			const expectedVenue = {
 				model: 'VENUE',
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
@@ -171,9 +157,6 @@ describe('Venue with multiple productions', () => {
 			const { venue } = redDonmarProduction.body;
 
 			expect(venue).to.deep.equal(expectedVenue);
-
 		});
-
 	});
-
 });

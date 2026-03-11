@@ -5,8 +5,7 @@ import sendJsonResponse from '../lib/send-json-response.js';
 import { Award } from '../models/index.js';
 import { ACTIONS, MODELS } from '../utils/constants.js';
 
-const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new Award());
+const newRoute = (request, response, next) => sendJsonResponse(response, new Award());
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Award(request.body), ACTIONS.CREATE);
@@ -23,15 +22,6 @@ const deleteRoute = (request, response, next) =>
 const showRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Award(request.params), ACTIONS.SHOW);
 
-const listRoute = (request, response, next) =>
-	callStaticListMethod(response, next, Award, MODELS.AWARD);
+const listRoute = (request, response, next) => callStaticListMethod(response, next, Award, MODELS.AWARD);
 
-export {
-	newRoute,
-	createRoute,
-	editRoute,
-	updateRoute,
-	deleteRoute,
-	showRoute,
-	listRoute
-};
+export { newRoute, createRoute, editRoute, updateRoute, deleteRoute, showRoute, listRoute };

@@ -24,16 +24,21 @@ const THE_WOLF_HALL_TRILOGY_SWAN_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_PRODUC
 const BRING_UP_THE_BODIES_ALDWYCH_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_PRODUCTION_2_UUID';
 const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
 const THE_WOLF_HALL_TRILOGY_ALDWYCH_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_PRODUCTION_2_UUID';
-const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_MATERIAL_1_UUID';
+const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID =
+	'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_MATERIAL_1_UUID';
 const CHARLES_DICKENS_PERSON_UUID = 'CHARLES_DICKENS_PERSON_UUID';
 const DOMBEY_AND_SON_LTD_COMPANY_UUID = 'DOMBEY_AND_SON_LTD_COMPANY_UUID';
-const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PLAY_MATERIAL_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_MATERIAL_UUID';
+const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PLAY_MATERIAL_UUID =
+	'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_MATERIAL_UUID';
 const DAVID_EDGAR_PERSON_UUID = 'DAVID_EDGAR_PERSON_UUID';
 const EDGAR_WORKS_LTD_COMPANY_UUID = 'EDGAR_WORKS_LTD_COMPANY_UUID';
-const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PLAYS_MATERIAL_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_MATERIAL_2_UUID';
-const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PRODUCTION_UUID';
+const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PLAYS_MATERIAL_UUID =
+	'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_MATERIAL_2_UUID';
+const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_GIELGUD_PRODUCTION_UUID =
+	'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PART_I_PRODUCTION_UUID';
 const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
-const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_PRODUCTION_UUID = 'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PRODUCTION_UUID';
+const THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_GIELGUD_PRODUCTION_UUID =
+	'THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_PRODUCTION_UUID';
 const WALDO_MATERIAL_UUID = 'WALDO_MATERIAL_UUID';
 const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
 const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
@@ -62,14 +67,13 @@ let janeRoePerson;
 let fictioneersLtdCompany;
 
 describe('Material with sub-materials and source materials thereof', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -91,7 +95,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -119,7 +124,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -160,7 +166,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -198,7 +205,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -214,7 +222,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -235,7 +244,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -251,7 +261,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -272,7 +283,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -294,7 +306,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
@@ -326,7 +339,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -364,7 +378,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
@@ -379,7 +394,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -400,7 +416,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -421,7 +438,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble',
@@ -451,7 +469,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -486,7 +505,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -516,7 +536,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble',
@@ -531,7 +552,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -551,48 +573,41 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		bringUpTheBodiesNovelMaterial = await request.execute(app)
+		bringUpTheBodiesNovelMaterial = await request
+			.execute(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
 
-		bringUpTheBodiesPlayMaterial = await request.execute(app)
+		bringUpTheBodiesPlayMaterial = await request
+			.execute(app)
 			.get(`/materials/${BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID}`);
 
-		hilaryMantelPerson = await request.execute(app)
-			.get(`/people/${HILARY_MANTEL_PERSON_UUID}`);
+		hilaryMantelPerson = await request.execute(app).get(`/people/${HILARY_MANTEL_PERSON_UUID}`);
 
-		mikePoultonPerson = await request.execute(app)
-			.get(`/people/${MIKE_POULTON_PERSON_UUID}`);
+		mikePoultonPerson = await request.execute(app).get(`/people/${MIKE_POULTON_PERSON_UUID}`);
 
-		theMantelGroupCompany = await request.execute(app)
-			.get(`/companies/${THE_MANTEL_GROUP_COMPANY_UUID}`);
+		theMantelGroupCompany = await request.execute(app).get(`/companies/${THE_MANTEL_GROUP_COMPANY_UUID}`);
 
-		royalShakespeareCompany = await request.execute(app)
-			.get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
+		royalShakespeareCompany = await request.execute(app).get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
-		bringUpTheBodiesSwanTheatreProduction = await request.execute(app)
+		bringUpTheBodiesSwanTheatreProduction = await request
+			.execute(app)
 			.get(`/productions/${BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID}`);
 
-		thomasCromwellCharacter = await request.execute(app)
-			.get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
+		thomasCromwellCharacter = await request.execute(app).get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
 
-		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await request.execute(app)
+		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`);
 
-		waldoMaterial = await request.execute(app)
-			.get(`/materials/${WALDO_MATERIAL_UUID}`);
+		waldoMaterial = await request.execute(app).get(`/materials/${WALDO_MATERIAL_UUID}`);
 
-		janeRoePerson = await request.execute(app)
-			.get(`/people/${JANE_ROE_PERSON_UUID}`);
+		janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await request.execute(app)
-			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
-
+		fictioneersLtdCompany = await request.execute(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Bring Up the Bodies (novel) (material)', () => {
-
 		it('includes materials that used it as source material, with corresponding sur-material', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -667,11 +682,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = bringUpTheBodiesNovelMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of material that used it as source material, including the sur-production', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -716,15 +729,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = bringUpTheBodiesNovelMaterial.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Bring Up the Bodies (play) (material)', () => {
-
 		it('includes writers of this material and its source material (with corresponding sur-material) grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -784,11 +793,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { writingCredits } = bringUpTheBodiesPlayMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
 
-		it('includes writers and source material of this material\'s sur-material', () => {
-
+		it("includes writers and source material of this material's sur-material", () => {
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
@@ -854,15 +861,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { surMaterial } = bringUpTheBodiesPlayMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
-
 	});
 
 	describe('Hilary Mantel (person)', () => {
-
 		it('includes materials that used their work as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -937,11 +940,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = hilaryMantelPerson.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -986,15 +987,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = hilaryMantelPerson.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('The Mantel Group (company)', () => {
-
 		it('includes materials that used their work as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1069,11 +1066,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theMantelGroupCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1118,15 +1113,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = theMantelGroupCompany.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Mike Poulton (person)', () => {
-
 		it('includes materials they have written, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1201,15 +1192,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { materials } = mikePoultonPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Royal Shakespeare Company (company)', () => {
-
 		it('includes materials it has written, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1284,15 +1271,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { materials } = royalShakespeareCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Bring Up the Bodies at Swan Theatre (production)', () => {
-
 		it('includes in its material data the writers of the material and its source material (with corresponding sur-material)', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID,
@@ -1365,15 +1348,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { material } = bringUpTheBodiesSwanTheatreProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Thomas Cromwell (character)', () => {
-
 		it('includes in its material data the writers of the material and its source material (with corresponding sur-material)', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1449,15 +1428,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { materials } = thomasCromwellCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('The Life and Adventures of Nicholas Nickleby (novel) (material): single source material is attached to multiple tiers of sourcing material', () => {
-
 		it('includes materials that used it as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1527,11 +1502,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theLifeAndAdventuresOfNicholasNicklebyNovelMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of material that used it as source material, including the sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1557,15 +1530,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = theLifeAndAdventuresOfNicholasNicklebyNovelMaterial.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Waldo (novel, 1974) (material): single source material is attached to multiple tiers of sourcing material, and a separate sourcing material is attached to multiple tiers of a production', () => {
-
 		it('includes materials that used it as source material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1693,11 +1662,9 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = waldoMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1723,15 +1690,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = waldoMaterial.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Jane Roe (person): single material that used their work as source material is attached to multiple tiers of a production', () => {
-
 		it('includes productions of material that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1757,15 +1720,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = janeRoePerson.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Fictioneers Ltd (company): single material that used their work as source material is attached to multiple tiers of a production', () => {
-
 		it('includes productions of material that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1791,17 +1750,12 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = fictioneersLtdCompany.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('materials list', () => {
-
 		it('includes writers of the materials and their corresponding source material (with corresponding sur-material)', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials');
+			const response = await request.execute(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -2143,9 +2097,6 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

@@ -16,72 +16,50 @@ import {
 } from '../../../src/models/index.js';
 
 describe('Production model', () => {
-
 	let stubs;
 	let Production;
 
 	const CastMemberStub = function () {
-
 		return createStubInstance(CastMember);
-
 	};
 
 	const CreativeCreditStub = function () {
-
 		return createStubInstance(CreativeCredit);
-
 	};
 
 	const CrewCreditStub = function () {
-
 		return createStubInstance(CrewCredit);
-
 	};
 
 	const FestivalBaseStub = function () {
-
 		return createStubInstance(FestivalBase);
-
 	};
 
 	const MaterialBaseStub = function () {
-
 		return createStubInstance(MaterialBase);
-
 	};
 
 	const ProducerCreditStub = function () {
-
 		return createStubInstance(ProducerCredit);
-
 	};
 
 	const ReviewStub = function () {
-
 		return createStubInstance(Review);
-
 	};
 
 	const SeasonStub = function () {
-
 		return createStubInstance(Season);
-
 	};
 
 	const SubProductionIdentifierStub = function () {
-
 		return createStubInstance(SubProductionIdentifier);
-
 	};
 
 	const VenueBaseStub = function () {
-
 		return createStubInstance(VenueBase);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
@@ -91,7 +69,7 @@ describe('Production model', () => {
 			},
 			isValidDate: stub().returns(false),
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
 			},
 			models: {
 				CastMember: CastMemberStub,
@@ -119,89 +97,63 @@ describe('Production model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
 			new Production();
 
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(5);
-
 		});
 
 		describe('subtitle property', () => {
-
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 				const instance = new Production({ subtitle: 'Prince of Denmark' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Prince of Denmark');
 				expect(instance.subtitle).to.equal('Prince of Denmark');
-
 			});
-
 		});
 
 		describe('startDate property', () => {
-
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 				const instance = new Production({ startDate: '2010-09-30' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-09-30');
 				expect(instance.startDate).to.equal('2010-09-30');
-
 			});
-
 		});
 
 		describe('pressDate property', () => {
-
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 				const instance = new Production({ pressDate: '2010-10-07' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2010-10-07');
 				expect(instance.pressDate).to.equal('2010-10-07');
-
 			});
-
 		});
 
 		describe('endDate property', () => {
-
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 				const instance = new Production({ endDate: '2011-01-26' });
 
 				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), '2011-01-26');
 				expect(instance.endDate).to.equal('2011-01-26');
-
 			});
-
 		});
 
 		describe('material property', () => {
-
 			it('assigns instance if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.material instanceof MaterialBase).to.be.true;
-
 			});
 
 			it('assigns instance if included in props', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					material: {
@@ -210,23 +162,17 @@ describe('Production model', () => {
 				});
 
 				expect(instance.material instanceof MaterialBase).to.be.true;
-
 			});
-
 		});
 
 		describe('venue property', () => {
-
 			it('assigns instance if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.venue instanceof VenueBase).to.be.true;
-
 			});
 
 			it('assigns instance if included in props', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					venue: {
@@ -235,23 +181,17 @@ describe('Production model', () => {
 				});
 
 				expect(instance.venue instanceof VenueBase).to.be.true;
-
 			});
-
 		});
 
 		describe('season property', () => {
-
 			it('assigns instance if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.season instanceof Season).to.be.true;
-
 			});
 
 			it('assigns instance if included in props', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					season: {
@@ -260,23 +200,17 @@ describe('Production model', () => {
 				});
 
 				expect(instance.season instanceof Season).to.be.true;
-
 			});
-
 		});
 
 		describe('festival property', () => {
-
 			it('assigns instance if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.festival instanceof FestivalBase).to.be.true;
-
 			});
 
 			it('assigns instance if included in props', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					festival: {
@@ -285,23 +219,17 @@ describe('Production model', () => {
 				});
 
 				expect(instance.festival instanceof FestivalBase).to.be.true;
-
 			});
-
 		});
 
 		describe('subProductions property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Production({});
 
 				expect(instance.subProductions).to.deep.equal([]);
-
 			});
 
 			it('assigns array of subProductions if included in props, retaining those with empty or whitespace-only string uuids', async () => {
-
 				const instance = new Production({
 					subProductions: [
 						{
@@ -320,23 +248,17 @@ describe('Production model', () => {
 				expect(instance.subProductions[0] instanceof SubProductionIdentifier).to.be.true;
 				expect(instance.subProductions[1] instanceof SubProductionIdentifier).to.be.true;
 				expect(instance.subProductions[2] instanceof SubProductionIdentifier).to.be.true;
-
 			});
-
 		});
 
 		describe('producerCredits property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.producerCredits).to.deep.equal([]);
-
 			});
 
 			it('assigns array of produucerCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					producerCredits: [
@@ -356,23 +278,17 @@ describe('Production model', () => {
 				expect(instance.producerCredits[0] instanceof ProducerCredit).to.be.true;
 				expect(instance.producerCredits[1] instanceof ProducerCredit).to.be.true;
 				expect(instance.producerCredits[2] instanceof ProducerCredit).to.be.true;
-
 			});
-
 		});
 
 		describe('cast property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.cast).to.deep.equal([]);
-
 			});
 
 			it('assigns array of cast if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					cast: [
@@ -392,23 +308,17 @@ describe('Production model', () => {
 				expect(instance.cast[0] instanceof CastMember).to.be.true;
 				expect(instance.cast[1] instanceof CastMember).to.be.true;
 				expect(instance.cast[2] instanceof CastMember).to.be.true;
-
 			});
-
 		});
 
 		describe('creativeCredits property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.creativeCredits).to.deep.equal([]);
-
 			});
 
 			it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -428,23 +338,17 @@ describe('Production model', () => {
 				expect(instance.creativeCredits[0] instanceof CreativeCredit).to.be.true;
 				expect(instance.creativeCredits[1] instanceof CreativeCredit).to.be.true;
 				expect(instance.creativeCredits[2] instanceof CreativeCredit).to.be.true;
-
 			});
-
 		});
 
 		describe('crewCredits property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.crewCredits).to.deep.equal([]);
-
 			});
 
 			it('assigns array of crewCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					crewCredits: [
@@ -464,23 +368,17 @@ describe('Production model', () => {
 				expect(instance.crewCredits[0] instanceof CrewCredit).to.be.true;
 				expect(instance.crewCredits[1] instanceof CrewCredit).to.be.true;
 				expect(instance.crewCredits[2] instanceof CrewCredit).to.be.true;
-
 			});
-
 		});
 
 		describe('reviews property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Production({ name: 'Hamlet' });
 
 				expect(instance.reviews).to.deep.equal([]);
-
 			});
 
 			it('assigns array of reviews if included in props, retaining those with empty or whitespace-only string urls', async () => {
-
 				const instance = new Production({
 					name: 'Hamlet',
 					reviews: [
@@ -500,17 +398,12 @@ describe('Production model', () => {
 				expect(instance.reviews[0] instanceof Review).to.be.true;
 				expect(instance.reviews[1] instanceof Review).to.be.true;
 				expect(instance.reviews[2] instanceof Review).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new Production({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'Hamlet',
@@ -598,71 +491,47 @@ describe('Production model', () => {
 			assert.calledOnceWithExactly(instance.festival.validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.festival.validateDifferentiator);
 			assert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices, instance.subProductions
+				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices,
+				instance.subProductions
 			);
 			assert.calledOnceWithExactly(instance.subProductions[0].validateUuid);
-			assert.calledOnceWithExactly(
-				instance.subProductions[0].validateNoAssociationWithSelf,
-				{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-			assert.calledOnceWithExactly(
-				instance.subProductions[0].validateUniquenessInGroup,
-				{ isDuplicate: false, properties: new Set(['uuid']) }
-			);
+			assert.calledOnceWithExactly(instance.subProductions[0].validateNoAssociationWithSelf, {
+				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
+			assert.calledOnceWithExactly(instance.subProductions[0].validateUniquenessInGroup, {
+				isDuplicate: false,
+				properties: new Set(['uuid'])
+			});
 			assert.calledThrice(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
 			assert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.firstCall,
 				instance.producerCredits
 			);
-			assert.calledOnceWithExactly(
-				instance.producerCredits[0].runInputValidations,
-				{ isDuplicate: false }
-			);
+			assert.calledOnceWithExactly(instance.producerCredits[0].runInputValidations, { isDuplicate: false });
 			assert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast
 			);
-			assert.calledOnceWithExactly(
-				instance.cast[0].runInputValidations,
-				{ isDuplicate: false }
-			);
+			assert.calledOnceWithExactly(instance.cast[0].runInputValidations, { isDuplicate: false });
 			assert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.secondCall,
 				instance.creativeCredits
 			);
-			assert.calledOnceWithExactly(
-				instance.creativeCredits[0].runInputValidations,
-				{ isDuplicate: false }
-			);
+			assert.calledOnceWithExactly(instance.creativeCredits[0].runInputValidations, { isDuplicate: false });
 			assert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.thirdCall,
 				instance.crewCredits
 			);
-			assert.calledOnceWithExactly(
-				instance.crewCredits[0].runInputValidations,
-				{ isDuplicate: false }
-			);
-			assert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
-				instance.reviews
-			);
-			assert.calledOnceWithExactly(
-				instance.reviews[0].runInputValidations,
-				{ isDuplicate: false }
-			);
-
+			assert.calledOnceWithExactly(instance.crewCredits[0].runInputValidations, { isDuplicate: false });
+			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUrlIndices, instance.reviews);
+			assert.calledOnceWithExactly(instance.reviews[0].runInputValidations, { isDuplicate: false });
 		});
-
 	});
 
 	describe('validateDates method', () => {
-
 		context('valid data', () => {
-
 			context('startDate with empty string values', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					const instance = new Production({ name: 'Hamlet', startDate: '' });
 
 					spy(instance, 'addPropertyError');
@@ -674,15 +543,11 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('startDate with valid date format', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					stubs.isValidDate.onFirstCall().returns(true);
 
 					const instance = new Production({ name: 'Hamlet', startDate: '2010-09-30' });
@@ -696,15 +561,11 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('pressDate with empty string values', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					const instance = new Production({ name: 'Hamlet', pressDate: '' });
 
 					spy(instance, 'addPropertyError');
@@ -716,15 +577,11 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('pressDate with valid date format', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					stubs.isValidDate.onSecondCall().returns(true);
 
 					const instance = new Production({ name: 'Hamlet', pressDate: '2010-10-07' });
@@ -738,15 +595,11 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('endDate with empty string values', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					const instance = new Production({ name: 'Hamlet', endDate: '' });
 
 					spy(instance, 'addPropertyError');
@@ -758,15 +611,11 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('endDate with valid date format', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					stubs.isValidDate.onThirdCall().returns(true);
 
 					const instance = new Production({ name: 'Hamlet', endDate: '2011-01-26' });
@@ -780,18 +629,12 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('startDate and endDate with valid date format with startDate before endDate', () => {
-
 				it('will not call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onThirdCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -808,18 +651,12 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('startDate and endDate with valid date format with startDate same as endDate', () => {
-
 				it('will not call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onThirdCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -836,18 +673,12 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('startDate and pressDate with valid date format with startDate before pressDate', () => {
-
 				it('will not call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onSecondCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -864,18 +695,12 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('startDate and pressDate with valid date format with startDate same as pressDate', () => {
-
 				it('will not call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onSecondCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -892,18 +717,12 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('pressDate and endDate with valid date format with pressDate before endDate', () => {
-
 				it('will not call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onSecondCall().returns(true)
-						.onThirdCall().returns(true);
+					stubs.isValidDate.onSecondCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -920,18 +739,12 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('pressDate and endDate with valid date format with pressDate same as endDate', () => {
-
 				it('will not call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onSecondCall().returns(true)
-						.onThirdCall().returns(true);
+					stubs.isValidDate.onSecondCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -948,15 +761,11 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
 			context('startDate, pressDate, and endDate with empty string values', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					const instance = new Production({
 						name: 'Hamlet',
 						startDate: '',
@@ -973,49 +782,50 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
 
-			context('startDate, pressDate, and endDate with valid date format with startDate before pressDate and pressDate before endDate', () => {
+			context(
+				'startDate, pressDate, and endDate with valid date format with startDate before pressDate and pressDate before endDate',
+				() => {
+					it('will not call addPropertyError method', async () => {
+						stubs.isValidDate
+							.onFirstCall()
+							.returns(true)
+							.onSecondCall()
+							.returns(true)
+							.onThirdCall()
+							.returns(true);
 
-				it('will not call addPropertyError method', async () => {
+						const instance = new Production({
+							name: 'Hamlet',
+							startDate: '2010-09-30',
+							pressDate: '2010-10-07',
+							endDate: '2011-01-26'
+						});
 
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onSecondCall().returns(true)
-						.onThirdCall().returns(true);
+						spy(instance, 'addPropertyError');
 
-					const instance = new Production({
-						name: 'Hamlet',
-						startDate: '2010-09-30',
-						pressDate: '2010-10-07',
-						endDate: '2011-01-26'
+						instance.validateDates();
+
+						expect(stubs.isValidDate.callCount).to.equal(3);
+						assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+						assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+						assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
+						assert.notCalled(instance.addPropertyError);
 					});
-
-					spy(instance, 'addPropertyError');
-
-					instance.validateDates();
-
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
-					assert.notCalled(instance.addPropertyError);
-
-				});
-
-			});
+				}
+			);
 
 			context('startDate, pressDate, and endDate with valid date format all with same value', () => {
-
 				it('will not call addPropertyError method', async () => {
-
 					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onSecondCall().returns(true)
-						.onThirdCall().returns(true);
+						.onFirstCall()
+						.returns(true)
+						.onSecondCall()
+						.returns(true)
+						.onThirdCall()
+						.returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1033,19 +843,13 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
 					assert.notCalled(instance.addPropertyError);
-
 				});
-
 			});
-
 		});
 
 		context('invalid data', () => {
-
 			context('startDate with invalid date format', () => {
-
 				it('will call addPropertyError method', async () => {
-
 					const instance = new Production({ name: 'Hamlet', startDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -1058,17 +862,14 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
-						'startDate', 'Value must be in date format'
+						'startDate',
+						'Value must be in date format'
 					);
-
 				});
-
 			});
 
 			context('pressDate with invalid date format', () => {
-
 				it('will call addPropertyError method', async () => {
-
 					const instance = new Production({ name: 'Hamlet', pressDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -1081,17 +882,14 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
-						'pressDate', 'Value must be in date format'
+						'pressDate',
+						'Value must be in date format'
 					);
-
 				});
-
 			});
 
 			context('endDate with invalid date format', () => {
-
 				it('will call addPropertyError method', async () => {
-
 					const instance = new Production({ name: 'Hamlet', endDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -1102,22 +900,13 @@ describe('Production model', () => {
 					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
 					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
 					assert.calledWithExactly(stubs.isValidDate.thirdCall, 'foobar');
-					assert.calledOnceWithExactly(
-						instance.addPropertyError,
-						'endDate', 'Value must be in date format'
-					);
-
+					assert.calledOnceWithExactly(instance.addPropertyError, 'endDate', 'Value must be in date format');
 				});
-
 			});
 
 			context('startDate and endDate with valid date format with startDate after endDate', () => {
-
 				it('will call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onThirdCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1136,24 +925,20 @@ describe('Production model', () => {
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
-						'startDate', 'Start date must not be after end date'
+						'startDate',
+						'Start date must not be after end date'
 					);
 					assert.calledWithExactly(
 						instance.addPropertyError.secondCall,
-						'endDate', 'End date must not be before start date'
+						'endDate',
+						'End date must not be before start date'
 					);
-
 				});
-
 			});
 
 			context('startDate and pressDate with valid date format with startDate after pressDate', () => {
-
 				it('will call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onSecondCall().returns(true);
+					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1172,24 +957,20 @@ describe('Production model', () => {
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
-						'startDate', 'Start date must not be after press date'
+						'startDate',
+						'Start date must not be after press date'
 					);
 					assert.calledWithExactly(
 						instance.addPropertyError.secondCall,
-						'pressDate', 'Press date must not be before start date'
+						'pressDate',
+						'Press date must not be before start date'
 					);
-
 				});
-
 			});
 
 			context('pressDate and endDate with valid date format with pressDate after endDate', () => {
-
 				it('will call addPropertyError method', async () => {
-
-					stubs.isValidDate
-						.onSecondCall().returns(true)
-						.onThirdCall().returns(true);
+					stubs.isValidDate.onSecondCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
 						name: 'Hamlet',
@@ -1208,79 +989,83 @@ describe('Production model', () => {
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
-						'pressDate', 'Press date must not be after end date'
+						'pressDate',
+						'Press date must not be after end date'
 					);
 					assert.calledWithExactly(
 						instance.addPropertyError.secondCall,
-						'endDate', 'End date must not be before press date'
+						'endDate',
+						'End date must not be before press date'
 					);
-
 				});
-
 			});
 
-			context('startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate', () => {
+			context(
+				'startDate, pressDate, and endDate with valid date format with startDate after pressDate and pressDate after endDate',
+				() => {
+					it('will call addPropertyError method', async () => {
+						stubs.isValidDate
+							.onFirstCall()
+							.returns(true)
+							.onSecondCall()
+							.returns(true)
+							.onThirdCall()
+							.returns(true);
 
-				it('will call addPropertyError method', async () => {
+						const instance = new Production({
+							name: 'Hamlet',
+							startDate: '2011-01-26',
+							pressDate: '2010-10-07',
+							endDate: '2010-09-30'
+						});
 
-					stubs.isValidDate
-						.onFirstCall().returns(true)
-						.onSecondCall().returns(true)
-						.onThirdCall().returns(true);
+						spy(instance, 'addPropertyError');
 
-					const instance = new Production({
-						name: 'Hamlet',
-						startDate: '2011-01-26',
-						pressDate: '2010-10-07',
-						endDate: '2010-09-30'
+						instance.validateDates();
+
+						expect(stubs.isValidDate.callCount).to.equal(3);
+						assert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
+						assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+						assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
+						expect(instance.addPropertyError.callCount).to.equal(6);
+						assert.calledWithExactly(
+							instance.addPropertyError.firstCall,
+							'startDate',
+							'Start date must not be after end date'
+						);
+						assert.calledWithExactly(
+							instance.addPropertyError.secondCall,
+							'endDate',
+							'End date must not be before start date'
+						);
+						assert.calledWithExactly(
+							instance.addPropertyError.thirdCall,
+							'startDate',
+							'Start date must not be after press date'
+						);
+						assert.calledWithExactly(
+							instance.addPropertyError.getCall(3),
+							'pressDate',
+							'Press date must not be before start date'
+						);
+						assert.calledWithExactly(
+							instance.addPropertyError.getCall(4),
+							'pressDate',
+							'Press date must not be after end date'
+						);
+						assert.calledWithExactly(
+							instance.addPropertyError.getCall(5),
+							'endDate',
+							'End date must not be before press date'
+						);
 					});
-
-					spy(instance, 'addPropertyError');
-
-					instance.validateDates();
-
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
-					expect(instance.addPropertyError.callCount).to.equal(6);
-					assert.calledWithExactly(
-						instance.addPropertyError.firstCall,
-						'startDate', 'Start date must not be after end date'
-					);
-					assert.calledWithExactly(
-						instance.addPropertyError.secondCall,
-						'endDate', 'End date must not be before start date'
-					);
-					assert.calledWithExactly(
-						instance.addPropertyError.thirdCall,
-						'startDate', 'Start date must not be after press date'
-					);
-					assert.calledWithExactly(
-						instance.addPropertyError.getCall(3),
-						'pressDate', 'Press date must not be before start date'
-					);
-					assert.calledWithExactly(
-						instance.addPropertyError.getCall(4),
-						'pressDate', 'Press date must not be after end date'
-					);
-					assert.calledWithExactly(
-						instance.addPropertyError.getCall(5),
-						'endDate', 'End date must not be before press date'
-					);
-
-				});
-
-			});
-
+				}
+			);
 		});
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
-		it('calls associated subProductions\' runDatabaseValidations method', async () => {
-
+		it("calls associated subProductions' runDatabaseValidations method", async () => {
 			const instance = new Production({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				subProductions: [
@@ -1292,13 +1077,9 @@ describe('Production model', () => {
 
 			await instance.runDatabaseValidations();
 
-			assert.calledOnceWithExactly(
-				instance.subProductions[0].runDatabaseValidations,
-				{ subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-
+			assert.calledOnceWithExactly(instance.subProductions[0].runDatabaseValidations, {
+				subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
 		});
-
 	});
-
 });

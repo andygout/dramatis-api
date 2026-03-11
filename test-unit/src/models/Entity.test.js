@@ -3,18 +3,16 @@ import esmock from 'esmock';
 import { assert, restore, spy, stub } from 'sinon';
 
 describe('Entity model', () => {
-
 	let stubs;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(() => {
-
 		stubs = {
 			hasErrors: stub().returns(false),
 			prepareAsParams: stub().returns('prepareAsParams response'),
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake(arg => arg?.trim() || '')
+				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
 			},
 			cypherQueriesModule: {
 				getCreateQueries: {
@@ -46,13 +44,10 @@ describe('Entity model', () => {
 				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
 			}
 		};
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	const createSubject = (model = 'Entity') =>
@@ -71,82 +66,59 @@ describe('Entity model', () => {
 		);
 
 	describe('constructor method', () => {
-
 		describe('uuid property', () => {
-
 			it('assigns value', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
 				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
-
 			});
-
 		});
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
-
 			const Entity = await createSubject();
 
 			new Entity({ differentiator: '1' });
 
 			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
-
 		});
 
 		describe('differentiator property', () => {
-
 			context('model is not exempt', () => {
-
 				it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
-
 					const Entity = await createSubject();
 
 					const instance = new Entity({ differentiator: '1' });
 
 					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
 					expect(instance.differentiator).to.equal('1');
-
 				});
-
 			});
 
 			context('model is exempt', () => {
-
 				context('model is AwardCeremony', () => {
-
 					it('does not assign differentiator property', async () => {
-
 						const AwardCeremony = await createSubject('AwardCeremony');
 
 						const instance = new AwardCeremony({ differentiator: '1' });
 
 						expect(instance).to.not.have.property('differentiator');
-
 					});
-
 				});
 
 				context('model is Production', () => {
-
 					it('does not assign differentiator property', async () => {
-
 						const Production = await createSubject('Production');
 
 						const instance = new Production({ differentiator: '1' });
 
 						expect(instance).to.not.have.property('differentiator');
-
 					});
-
 				});
 
 				context('model is ProductionIdentifier', () => {
-
 					it('does not assign differentiator property', async () => {
-
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 						const instance = new ProductionIdentifier({
@@ -155,23 +127,15 @@ describe('Entity model', () => {
 						});
 
 						expect(instance).to.not.have.property('differentiator');
-
 					});
-
 				});
-
 			});
-
 		});
-
 	});
 
 	describe('hasDifferentiatorProperty method', () => {
-
 		context('instance has differentiator property', () => {
-
 			it('returns true', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -181,15 +145,11 @@ describe('Entity model', () => {
 				const result = instance.hasDifferentiatorProperty();
 
 				expect(result).to.be.true;
-
 			});
-
 		});
 
 		context('instance does not have differentiator property', () => {
-
 			it('returns false', async () => {
-
 				const Production = await createSubject('Production');
 
 				const instance = new Production({ name: 'Foobar', differentiator: '1' });
@@ -197,17 +157,12 @@ describe('Entity model', () => {
 				const result = instance.hasDifferentiatorProperty();
 
 				expect(result).to.be.false;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods', async () => {
-
+		it("calls instance's validate methods", async () => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -219,15 +174,11 @@ describe('Entity model', () => {
 
 			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
 			assert.calledOnceWithExactly(instance.validateDifferentiator);
-
 		});
-
 	});
 
 	describe('validateDifferentiator method', () => {
-
 		it('will call validateStringForProperty method', async () => {
-
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -236,19 +187,12 @@ describe('Entity model', () => {
 
 			instance.validateDifferentiator();
 
-			assert.calledOnceWithExactly(
-				instance.validateStringForProperty,
-				'differentiator', { isRequired: false }
-			);
-
+			assert.calledOnceWithExactly(instance.validateStringForProperty, 'differentiator', { isRequired: false });
 		});
-
 	});
 
 	describe('validateSubtitle method', () => {
-
 		it('will call validateStringForProperty method', async () => {
-
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -257,25 +201,15 @@ describe('Entity model', () => {
 
 			instance.validateSubtitle();
 
-			assert.calledOnceWithExactly(
-				instance.validateStringForProperty,
-				'subtitle', { isRequired: false }
-			);
-
+			assert.calledOnceWithExactly(instance.validateStringForProperty, 'subtitle', { isRequired: false });
 		});
-
 	});
 
 	describe('validateNoAssociationWithSelf method', () => {
-
 		context('valid data', () => {
-
 			context('name and differentiator comparison', () => {
-
 				context('association has name value of empty string', () => {
-
 					it('will not add properties to errors property', async () => {
-
 						const Entity = await createSubject();
 
 						const instance = new Entity({ name: 'National Theatre' });
@@ -287,35 +221,30 @@ describe('Entity model', () => {
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
 
 						assert.notCalled(instance.addPropertyError);
-
 					});
-
 				});
 
-				context('association name and differentiator combination different to instance name and differentiator combination', () => {
+				context(
+					'association name and differentiator combination different to instance name and differentiator combination',
+					() => {
+						it('will not add properties to errors property', async () => {
+							const Entity = await createSubject();
 
-					it('will not add properties to errors property', async () => {
+							const instance = new Entity({ name: 'Olivier Theatre' });
 
-						const Entity = await createSubject();
+							instance.differentiator = '';
 
-						const instance = new Entity({ name: 'Olivier Theatre' });
+							spy(instance, 'addPropertyError');
 
-						instance.differentiator = '';
+							instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
 
-						spy(instance, 'addPropertyError');
-
-						instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
-
-						assert.notCalled(instance.addPropertyError);
-
-					});
-
-				});
+							assert.notCalled(instance.addPropertyError);
+						});
+					}
+				);
 
 				context('instance and association have empty name and differentiator values', () => {
-
 					it('will not add properties to errors property', async () => {
-
 						const Entity = await createSubject();
 
 						const instance = new Entity({ name: '', differentiator: '' });
@@ -327,39 +256,32 @@ describe('Entity model', () => {
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
 
 						assert.notCalled(instance.addPropertyError);
-
 					});
-
 				});
 
-				context('instance and association have matching non-empty differentiator value but empty name value', () => {
+				context(
+					'instance and association have matching non-empty differentiator value but empty name value',
+					() => {
+						it('will not add properties to errors property', async () => {
+							const Entity = await createSubject();
 
-					it('will not add properties to errors property', async () => {
+							const instance = new Entity({ name: '', differentiator: '1' });
 
-						const Entity = await createSubject();
+							instance.differentiator = '';
 
-						const instance = new Entity({ name: '', differentiator: '1' });
+							spy(instance, 'addPropertyError');
 
-						instance.differentiator = '';
+							instance.validateNoAssociationWithSelf({ name: '', differentiator: '1' });
 
-						spy(instance, 'addPropertyError');
-
-						instance.validateNoAssociationWithSelf({ name: '', differentiator: '1' });
-
-						assert.notCalled(instance.addPropertyError);
-
-					});
-
-				});
-
+							assert.notCalled(instance.addPropertyError);
+						});
+					}
+				);
 			});
 
 			context('uuid comparison', () => {
-
 				context('association has not yet been assigned uuid value', () => {
-
 					it('will not add properties to errors property', async () => {
-
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
@@ -369,15 +291,11 @@ describe('Entity model', () => {
 						instance.validateNoAssociationWithSelf({ uuid: undefined });
 
 						assert.notCalled(instance.addPropertyError);
-
 					});
-
 				});
 
 				context('association uuid different to instance uuid', () => {
-
 					it('will not add properties to errors property', async () => {
-
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
@@ -387,21 +305,14 @@ describe('Entity model', () => {
 						instance.validateNoAssociationWithSelf({ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' });
 
 						assert.notCalled(instance.addPropertyError);
-
 					});
-
 				});
-
 			});
-
 		});
 
 		context('invalid data', () => {
-
 			context('name and differentiator comparison', () => {
-
 				it('adds properties whose values are arrays to errors property', async () => {
-
 					const Entity = await createSubject();
 
 					const instance = new Entity({ name: 'National Theatre' });
@@ -415,21 +326,19 @@ describe('Entity model', () => {
 					assert.calledTwice(instance.addPropertyError);
 					assert.calledWithExactly(
 						instance.addPropertyError.firstCall,
-						'name', 'Instance cannot form association with itself'
+						'name',
+						'Instance cannot form association with itself'
 					);
 					assert.calledWithExactly(
 						instance.addPropertyError.secondCall,
-						'differentiator', 'Instance cannot form association with itself'
+						'differentiator',
+						'Instance cannot form association with itself'
 					);
-
 				});
-
 			});
 
 			context('uuid comparison', () => {
-
 				it('adds properties whose values are arrays to errors property', async () => {
-
 					const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 					const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
@@ -440,23 +349,17 @@ describe('Entity model', () => {
 
 					assert.calledOnceWithExactly(
 						instance.addPropertyError,
-						'uuid', 'Instance cannot form association with itself'
+						'uuid',
+						'Instance cannot form association with itself'
 					);
-
 				});
-
 			});
-
 		});
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
 		context('model is not exempt', () => {
-
 			it('will call validateUniquenessInDatabase method', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -466,15 +369,11 @@ describe('Entity model', () => {
 				await instance.runDatabaseValidations();
 
 				assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
-
 			});
-
 		});
 
 		context('model is exempt', () => {
-
 			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
-
 				const Production = await createSubject('Production');
 
 				const instance = new Production();
@@ -484,19 +383,13 @@ describe('Entity model', () => {
 				await instance.runDatabaseValidations();
 
 				assert.notCalled(instance.validateUniquenessInDatabase);
-
 			});
-
 		});
-
 	});
 
 	describe('validateUniquenessInDatabase method', () => {
-
 		context('valid data (results returned that indicate name does not already exist)', () => {
-
 			it('will not call addPropertyError method', async () => {
-
 				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
@@ -522,27 +415,20 @@ describe('Entity model', () => {
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					instance.model
 				);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getDuplicateRecordCheckQuery response',
-						params: {
-							uuid: 'UUID_VALUE',
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getDuplicateRecordCheckQuery response',
+					params: {
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				);
+				});
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
 		context('invalid data (results returned that indicate name already exists)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
@@ -569,37 +455,31 @@ describe('Entity model', () => {
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					instance.model
 				);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getDuplicateRecordCheckQuery response',
-						params: {
-							uuid: 'UUID_VALUE',
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getDuplicateRecordCheckQuery response',
+					params: {
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Name and differentiator combination already exists'
+					'name',
+					'Name and differentiator combination already exists'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Name and differentiator combination already exists'
+					'differentiator',
+					'Name and differentiator combination already exists'
 				);
-
 			});
-
 		});
-
 	});
 
 	describe('setErrorStatus method', () => {
-
-		it('will call hasErrors function and assign its return value to the instance\'s hasErrors property', async () => {
-
+		it("will call hasErrors function and assign its return value to the instance's hasErrors property", async () => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -609,17 +489,12 @@ describe('Entity model', () => {
 			assert.calledOnceWithExactly(stubs.hasErrors, instance);
 
 			expect(instance.hasErrors).to.be.false;
-
 		});
-
 	});
 
 	describe('confirmExistenceInDatabase method', () => {
-
 		context('opts argument is not provided', () => {
-
 			it('confirms existence of instance in database using model value of instance', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
 
 				const Person = await createSubject('Person');
@@ -636,19 +511,15 @@ describe('Entity model', () => {
 					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
 					instance.model
 				);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{ query: 'getExistenceCheckQuery response', params: { uuid: instance.uuid } }
-				);
-
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getExistenceCheckQuery response',
+					params: { uuid: instance.uuid }
+				});
 			});
-
 		});
 
 		context('model value is provided in opts argument', () => {
-
 			it('confirms existence of instance in database using provided model value', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
 
 				const Entity = await createSubject();
@@ -664,19 +535,15 @@ describe('Entity model', () => {
 					stubs.neo4jQueryModule.neo4jQuery
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery, model);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{ query: 'getExistenceCheckQuery response', params: { uuid: instance.uuid } }
-				);
-
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getExistenceCheckQuery response',
+					params: { uuid: instance.uuid }
+				});
 			});
-
 		});
 
 		context('instance is found in database', () => {
-
 			it('returns the isExistent value from the database response', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
 
 				const Entity = await createSubject();
@@ -688,15 +555,11 @@ describe('Entity model', () => {
 				const result = await instance.confirmExistenceInDatabase({ model });
 
 				expect(result).to.equal(true);
-
 			});
-
 		});
 
 		context('instance is not found in database', () => {
-
 			it('returns the isExistent value from the database response', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: false });
 
 				const Entity = await createSubject();
@@ -708,26 +571,22 @@ describe('Entity model', () => {
 				const result = await instance.confirmExistenceInDatabase({ model });
 
 				expect(result).to.equal(false);
-
 			});
-
 		});
-
 	});
 
 	describe('createUpdate method', () => {
-
 		context('valid data', () => {
-
 			it('creates', async () => {
-
 				stubs.prepareAsParams
-					.onFirstCall().returns({
+					.onFirstCall()
+					.returns({
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					})
-					.onSecondCall().returns('prepareAsParams response');
+					.onSecondCall()
+					.returns('prepareAsParams response');
 
 				const Entity = await createSubject();
 
@@ -756,35 +615,32 @@ describe('Entity model', () => {
 				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
 				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
 				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery.firstCall,
-					{
-						query: 'getDuplicateRecordCheckQuery response',
-						params: {
-							uuid: 'UUID_VALUE',
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE'
-						}
+				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+					query: 'getDuplicateRecordCheckQuery response',
+					params: {
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				);
-				assert.calledWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery.secondCall,
-					{ query: 'getCreateQuery response', params: 'prepareAsParams response' }
-				);
+				});
+				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+					query: 'getCreateQuery response',
+					params: 'prepareAsParams response'
+				});
 				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
-
 			});
 
 			it('updates', async () => {
-
 				stubs.prepareAsParams
-					.onFirstCall().returns({
+					.onFirstCall()
+					.returns({
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					})
-					.onSecondCall().returns('prepareAsParams response');
+					.onSecondCall()
+					.returns('prepareAsParams response');
 
 				const Entity = await createSubject();
 
@@ -812,38 +668,30 @@ describe('Entity model', () => {
 				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
 				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
 				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery.firstCall,
-					{
-						query: 'getDuplicateRecordCheckQuery response',
-						params: {
-							uuid: 'UUID_VALUE',
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE'
-						}
-					}
-				);
-				assert.calledWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery.secondCall,
-					{ query: 'getUpdateQuery response', params: 'prepareAsParams response' }
-				);
-				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
-				expect(result instanceof Entity).to.be.true;
-
-			});
-
-		});
-
-		context('invalid data', () => {
-
-			it('returns instance without creating/updating', async () => {
-
-				stubs.prepareAsParams
-					.onFirstCall().returns({
+				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+					query: 'getDuplicateRecordCheckQuery response',
+					params: {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
-					});
+					}
+				});
+				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+					query: 'getUpdateQuery response',
+					params: 'prepareAsParams response'
+				});
+				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				expect(result instanceof Entity).to.be.true;
+			});
+		});
+
+		context('invalid data', () => {
+			it('returns instance without creating/updating', async () => {
+				stubs.prepareAsParams.onFirstCall().returns({
+					uuid: 'UUID_VALUE',
+					name: 'NAME_VALUE',
+					differentiator: 'DIFFERENTIATOR_VALUE'
+				});
 				stubs.hasErrors.returns(true);
 
 				const Entity = await createSubject();
@@ -871,17 +719,14 @@ describe('Entity model', () => {
 				assert.calledOnceWithExactly(instance.setErrorStatus);
 				assert.notCalled(getCreateUpdateQueryStub);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getDuplicateRecordCheckQuery response',
-						params: {
-							uuid: 'UUID_VALUE',
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getDuplicateRecordCheckQuery response',
+					params: {
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				);
+				});
 				assert.notCalled(instance.constructor);
 				expect(result).to.deep.equal(instance);
 				expect(result).to.deep.equal({
@@ -892,19 +737,13 @@ describe('Entity model', () => {
 					errors: {},
 					hasErrors: true
 				});
-
 			});
-
 		});
-
 	});
 
 	describe('create method', () => {
-
 		context('instance requires a model-specific query', () => {
-
 			it('calls createUpdate method with function to get model-specific create query as argument', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -919,15 +758,11 @@ describe('Entity model', () => {
 					instance.createUpdate,
 					stubs.cypherQueriesModule.getCreateQueries[instance.model]
 				);
-
 			});
-
 		});
 
 		context('instance can use shared query', () => {
-
 			it('calls createUpdate method with function to get shared create query as argument', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -940,19 +775,13 @@ describe('Entity model', () => {
 					instance.createUpdate,
 					stubs.cypherQueriesModule.sharedQueries.getCreateQuery
 				);
-
 			});
-
 		});
-
 	});
 
 	describe('edit method', () => {
-
 		context('instance requires a model-specific query', () => {
-
 			it('gets edit data using model-specific query', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -965,21 +794,17 @@ describe('Entity model', () => {
 
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getEditQueries[instance.model]);
 				assert.notCalled(stubs.cypherQueriesModule.sharedQueries.getEditQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{ query: 'getEditProductionQuery response', params: { uuid: instance.uuid } }
-				);
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getEditProductionQuery response',
+					params: { uuid: instance.uuid }
+				});
 				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
-
 			});
-
 		});
 
 		context('instance can use shared query', () => {
-
 			it('gets edit data using shared query', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -990,25 +815,19 @@ describe('Entity model', () => {
 
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getEditQuery, instance.model);
 				assert.notCalled(stubs.cypherQueriesModule.getEditQueries.PRODUCTION);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{ query: 'getEditQuery response', params: { uuid: instance.uuid } }
-				);
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getEditQuery response',
+					params: { uuid: instance.uuid }
+				});
 				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
 				expect(result instanceof Entity).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('update method', () => {
-
 		context('instance does not exist', () => {
-
 			it('throws a Not Found error and does not call the createUpdate method', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -1026,17 +845,12 @@ describe('Entity model', () => {
 					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
 					assert.notCalled(instance.createUpdate);
 				}
-
 			});
-
 		});
 
 		context('instance exists', () => {
-
 			context('instance requires a model-specific query', () => {
-
 				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
-
 					const Entity = await createSubject();
 
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -1054,15 +868,11 @@ describe('Entity model', () => {
 						instance.createUpdate,
 						stubs.cypherQueriesModule.getUpdateQueries[instance.model]
 					);
-
 				});
-
 			});
 
 			context('instance can use shared query', () => {
-
 				it('calls createUpdate method with function to get shared update query as argument', async () => {
-
 					const Entity = await createSubject();
 
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -1078,23 +888,15 @@ describe('Entity model', () => {
 						instance.createUpdate,
 						stubs.cypherQueriesModule.sharedQueries.getUpdateQuery
 					);
-
 				});
-
 			});
-
 		});
-
 	});
 
 	describe('delete method', () => {
-
 		context('instance has no associations', () => {
-
 			context('instance has differentiator property', () => {
-
 				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async () => {
-
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
 						name: 'Almeida Theatre',
@@ -1123,14 +925,14 @@ describe('Entity model', () => {
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(
-						stubs.neo4jQueryModule.neo4jQuery,
-						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
-					);
-					assert.calledOnceWithExactly(
-						instance.constructor,
-						{ name: 'Almeida Theatre', differentiator: null }
-					);
+					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+						query: 'getDeleteQuery response',
+						params: { uuid: instance.uuid }
+					});
+					assert.calledOnceWithExactly(instance.constructor, {
+						name: 'Almeida Theatre',
+						differentiator: null
+					});
 					assert.notCalled(instance.addPropertyError);
 					assert.notCalled(instance.setErrorStatus);
 					expect(result instanceof Entity).to.be.true;
@@ -1140,15 +942,11 @@ describe('Entity model', () => {
 						differentiator: '',
 						errors: {}
 					});
-
 				});
-
 			});
 
 			context('instance does not have differentiator property', () => {
-
 				it('deletes instance and returns newly instantiated instance with assigned name property', async () => {
-
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
 						name: 'Hamlet',
@@ -1175,10 +973,10 @@ describe('Entity model', () => {
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(
-						stubs.neo4jQueryModule.neo4jQuery,
-						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
-					);
+					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+						query: 'getDeleteQuery response',
+						params: { uuid: instance.uuid }
+					});
 					assert.calledOnceWithExactly(instance.constructor, { name: 'Hamlet' });
 					assert.notCalled(instance.addPropertyError);
 					assert.notCalled(instance.setErrorStatus);
@@ -1194,7 +992,7 @@ describe('Entity model', () => {
 						material: {
 							uuid: undefined,
 							name: '',
-							differentiator	: '',
+							differentiator: '',
 							errors: {}
 						},
 						venue: {
@@ -1222,19 +1020,13 @@ describe('Entity model', () => {
 						crewCredits: [],
 						reviews: []
 					});
-
 				});
-
 			});
-
 		});
 
 		context('instance has associations', () => {
-
 			context('instance has differentiator property', () => {
-
 				it('returns instance without deleting', async () => {
-
 					stubs.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'VENUE',
@@ -1264,15 +1056,12 @@ describe('Entity model', () => {
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(
-						stubs.neo4jQueryModule.neo4jQuery,
-						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
-					);
+					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+						query: 'getDeleteQuery response',
+						params: { uuid: instance.uuid }
+					});
 					assert.notCalled(instance.constructor);
-					assert.calledOnceWithExactly(
-						instance.addPropertyError,
-						'associations', 'Production'
-					);
+					assert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Production');
 					assert.calledOnceWithExactly(instance.setErrorStatus);
 					expect(result).to.deep.equal(instance);
 					expect(result).to.deep.equal({
@@ -1281,20 +1070,14 @@ describe('Entity model', () => {
 						differentiator: null,
 						hasErrors: true,
 						errors: {
-							associations: [
-								'Production'
-							]
+							associations: ['Production']
 						}
 					});
-
 				});
-
 			});
 
 			context('instance does not have differentiator property', () => {
-
 				it('returns instance without deleting', async () => {
-
 					stubs.hasErrors.returns(true);
 					stubs.neo4jQueryModule.neo4jQuery.resolves({
 						model: 'PRODUCTION',
@@ -1322,15 +1105,12 @@ describe('Entity model', () => {
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(
-						stubs.neo4jQueryModule.neo4jQuery,
-						{ query: 'getDeleteQuery response', params: { uuid: instance.uuid } }
-					);
+					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+						query: 'getDeleteQuery response',
+						params: { uuid: instance.uuid }
+					});
 					assert.notCalled(instance.constructor);
-					assert.calledOnceWithExactly(
-						instance.addPropertyError,
-						'associations', 'Venue'
-					);
+					assert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Venue');
 					assert.calledOnceWithExactly(instance.setErrorStatus);
 					expect(result).to.deep.equal(instance);
 					expect(result).to.deep.equal({
@@ -1342,14 +1122,12 @@ describe('Entity model', () => {
 						endDate: '',
 						hasErrors: true,
 						errors: {
-							associations: [
-								'Venue'
-							]
+							associations: ['Venue']
 						},
 						material: {
 							uuid: undefined,
 							name: '',
-							differentiator	: '',
+							differentiator: '',
 							errors: {}
 						},
 						venue: {
@@ -1377,21 +1155,14 @@ describe('Entity model', () => {
 						crewCredits: [],
 						reviews: []
 					});
-
 				});
-
 			});
-
 		});
-
 	});
 
 	describe('show method', () => {
-
 		context('model requires single show query', () => {
-
 			it('gets show data', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -1401,20 +1172,16 @@ describe('Entity model', () => {
 				const result = await instance.show();
 
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.VENUE);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{ query: 'showVenueQuery', params: { uuid: instance.uuid } }
-				);
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'showVenueQuery',
+					params: { uuid: instance.uuid }
+				});
 				expect(result).to.deep.equal(neo4jQueryMockResponse);
-
 			});
-
 		});
 
 		context('model requires multiple show queries', () => {
-
 			it('gets show data', async () => {
-
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -1425,26 +1192,21 @@ describe('Entity model', () => {
 
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.PRODUCTION);
 				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery.firstCall,
-					{ query: 'showProductionQuery', params: { uuid: instance.uuid } }
-				);
-				assert.calledWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery.secondCall,
-					{ query: 'showProductionAwardsQuery', params: { uuid: instance.uuid } }
-				);
+				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+					query: 'showProductionQuery',
+					params: { uuid: instance.uuid }
+				});
+				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+					query: 'showProductionAwardsQuery',
+					params: { uuid: instance.uuid }
+				});
 				expect(result).to.deep.equal(neo4jQueryMockResponse);
-
 			});
-
 		});
-
 	});
 
 	describe('list method', () => {
-
 		it('gets list data', async () => {
-
 			const Entity = await createSubject();
 
 			const result = await Entity.list('model');
@@ -1452,12 +1214,10 @@ describe('Entity model', () => {
 			assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getListQuery, 'model');
 			assert.calledOnceWithExactly(
 				stubs.neo4jQueryModule.neo4jQuery,
-				{ query: 'getListQuery response' }, { isOptionalResult: true, isArrayResult: true }
+				{ query: 'getListQuery response' },
+				{ isOptionalResult: true, isArrayResult: true }
 			);
 			expect(result).to.deep.equal(neo4jQueryMockResponse);
-
 		});
-
 	});
-
 });

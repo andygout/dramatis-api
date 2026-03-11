@@ -3,17 +3,12 @@ import { validationQueries } from '../neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../neo4j/query.js';
 
 export default class SubProductionIdentifier extends ProductionIdentifier {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
-
 	}
 
-	async runDatabaseValidations ({ subjectProductionUuid = null }) {
-
+	async runDatabaseValidations({ subjectProductionUuid = null }) {
 		if (this.uuid) {
-
 			const { getSubProductionChecksQuery } = validationQueries;
 
 			const {
@@ -46,7 +41,7 @@ export default class SubProductionIdentifier extends ProductionIdentifier {
 			}
 
 			if (isSurProductionOfSubjectProduction) {
-				this.addPropertyError('uuid', 'Production with this UUID is this production\'s sur-production');
+				this.addPropertyError('uuid', "Production with this UUID is this production's sur-production");
 			}
 
 			if (isSubjectProductionASubSubProduction) {
@@ -55,11 +50,8 @@ export default class SubProductionIdentifier extends ProductionIdentifier {
 					'Sub-production cannot be assigned to a three-tiered production collection'
 				);
 			}
-
 		}
 
 		return;
-
 	}
-
 }

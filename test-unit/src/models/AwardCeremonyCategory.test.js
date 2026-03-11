@@ -4,33 +4,21 @@ import { assert, restore, spy } from 'sinon';
 import { AwardCeremonyCategory, Nomination } from '../../../src/models/index.js';
 
 describe('AwardCeremonyCategory model', () => {
-
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		describe('nominations property', () => {
-
 			it('assigns empty array if absent from props', () => {
-
 				const instance = new AwardCeremonyCategory({});
 
 				expect(instance.nominations).to.deep.equal([]);
-
 			});
 
 			it('assigns array of nominations if included in props', () => {
-
 				const props = {
-					nominations: [
-						{},
-						{},
-						{}
-					]
+					nominations: [{}, {}, {}]
 				};
 
 				const instance = new AwardCeremonyCategory(props);
@@ -39,17 +27,12 @@ describe('AwardCeremonyCategory model', () => {
 				expect(instance.nominations[0] instanceof Nomination).to.be.true;
 				expect(instance.nominations[1] instanceof Nomination).to.be.true;
 				expect(instance.nominations[2] instanceof Nomination).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', () => {
-
+		it("calls instance's validate methods and associated models' validate methods", () => {
 			const props = {
 				name: 'Best New Play',
 				nominations: [{}]
@@ -70,15 +53,11 @@ describe('AwardCeremonyCategory model', () => {
 			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
 			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, []);
 			assert.calledOnceWithExactly(instance.nominations[0].runInputValidations);
-
 		});
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
-		it('calls associated nominations\' runDatabaseValidations method', async () => {
-
+		it("calls associated nominations' runDatabaseValidations method", async () => {
 			const props = {
 				nominations: [{}]
 			};
@@ -86,9 +65,6 @@ describe('AwardCeremonyCategory model', () => {
 			spy(instance.nominations[0], 'runDatabaseValidations');
 			await instance.runDatabaseValidations();
 			assert.calledOnceWithExactly(instance.nominations[0].runDatabaseValidations);
-
 		});
-
 	});
-
 });

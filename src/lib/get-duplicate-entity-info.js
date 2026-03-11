@@ -1,9 +1,7 @@
-const getDuplicateEntities = arrayOfEntities => {
-
+const getDuplicateEntities = (arrayOfEntities) => {
 	const duplicateEntities = [];
 
 	const pushIntoRequisiteArray = (entity, accumulator) => {
-
 		if (!entity.name.length) return;
 
 		const isEntityInAccumulator = isEntityInArray(entity, accumulator);
@@ -15,39 +13,31 @@ const getDuplicateEntities = arrayOfEntities => {
 		if (isEntityInAccumulator && !isEntityInDuplicateEntities) duplicateEntities.push(entity);
 
 		return;
-
 	};
 
 	arrayOfEntities.reduce((accumulator, entity) => {
-
 		Object.hasOwn(entity, 'members') &&
-		entity.members.forEach(nestedEntity => pushIntoRequisiteArray(nestedEntity, accumulator));
+			entity.members.forEach((nestedEntity) => pushIntoRequisiteArray(nestedEntity, accumulator));
 
 		pushIntoRequisiteArray(entity, accumulator);
 
 		return accumulator;
-
 	}, []);
 
 	return duplicateEntities;
-
 };
 
 const isEntityInArray = (entity, array) => {
-
 	const foundEntity =
 		Boolean(entity.name) &&
-		array.find(comparisonEntity =>
-			entity.name === comparisonEntity.name &&
-			entity.differentiator === comparisonEntity.differentiator &&
-			entity.model === comparisonEntity.model
+		array.find(
+			(comparisonEntity) =>
+				entity.name === comparisonEntity.name &&
+				entity.differentiator === comparisonEntity.differentiator &&
+				entity.model === comparisonEntity.model
 		);
 
 	return Boolean(foundEntity);
-
 };
 
-export {
-	getDuplicateEntities,
-	isEntityInArray
-};
+export { getDuplicateEntities, isEntityInArray };

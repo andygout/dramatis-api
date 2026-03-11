@@ -3,33 +3,23 @@ import Company from './Company.js';
 import { Person } from './index.js';
 
 export default class CompanyWithMembers extends Company {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { members } = props;
 
-		this.members = members
-			? members.map(member => new Person(member))
-			: [];
-
+		this.members = members ? members.map((member) => new Person(member)) : [];
 	}
 
-	runInputValidations (opts) {
-
+	runInputValidations(opts) {
 		this.validateNamePresenceIfNamedChildren(this.members);
 
-		this.members.forEach(member => {
-
+		this.members.forEach((member) => {
 			member.validateName({ isRequired: false });
 
 			member.validateDifferentiator();
 
 			member.validateUniquenessInGroup({ isDuplicate: isEntityInArray(member, opts.duplicateEntities) });
-
 		});
-
 	}
-
 }

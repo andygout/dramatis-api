@@ -39,14 +39,13 @@ let conorCorgePerson;
 let scribesLtdCompany;
 
 describe('Material with sub-materials', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Voyage',
@@ -77,7 +76,8 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Shipwreck',
@@ -108,7 +108,8 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Salvage',
@@ -139,7 +140,8 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Coast of Utopia',
@@ -181,7 +183,8 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -196,7 +199,8 @@ describe('Material with sub-materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -216,7 +220,8 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -237,7 +242,8 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Garply',
@@ -247,11 +253,12 @@ describe('Material with sub-materials', () => {
 					name: 'Garply'
 				},
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Garply',
@@ -261,7 +268,7 @@ describe('Material with sub-materials', () => {
 					name: 'Garply'
 				},
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				},
 				subProductions: [
 					{
@@ -270,45 +277,33 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		theCoastOfUtopiaMaterial = await request.execute(app)
-			.get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
+		theCoastOfUtopiaMaterial = await request.execute(app).get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
 
-		voyageMaterial = await request.execute(app)
-			.get(`/materials/${VOYAGE_MATERIAL_UUID}`);
+		voyageMaterial = await request.execute(app).get(`/materials/${VOYAGE_MATERIAL_UUID}`);
 
-		alexanderHerzenCharacter = await request.execute(app)
-			.get(`/characters/${ALEXANDER_HERZEN_CHARACTER_UUID}`);
+		alexanderHerzenCharacter = await request.execute(app).get(`/characters/${ALEXANDER_HERZEN_CHARACTER_UUID}`);
 
-		ivanTurgunevCharacter = await request.execute(app)
-			.get(`/characters/${IVAN_TURGENEV_CHARACTER_UUID}`);
+		ivanTurgunevCharacter = await request.execute(app).get(`/characters/${IVAN_TURGENEV_CHARACTER_UUID}`);
 
-		theCoastOfUtopiaOlivierProduction = await request.execute(app)
+		theCoastOfUtopiaOlivierProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID}`);
 
-		voyageOlivierProduction = await request.execute(app)
-			.get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
+		voyageOlivierProduction = await request.execute(app).get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
 
-		tomStoppardPerson = await request.execute(app)
-			.get(`/people/${TOM_STOPPARD_PERSON_UUID}`);
+		tomStoppardPerson = await request.execute(app).get(`/people/${TOM_STOPPARD_PERSON_UUID}`);
 
-		theSträusslerGroupCompany = await request.execute(app)
-			.get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
+		theSträusslerGroupCompany = await request.execute(app).get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
 
-		garplyMaterial = await request.execute(app)
-			.get(`/materials/${GARPLY_MATERIAL_UUID}`);
+		garplyMaterial = await request.execute(app).get(`/materials/${GARPLY_MATERIAL_UUID}`);
 
-		conorCorgePerson = await request.execute(app)
-			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
+		conorCorgePerson = await request.execute(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		scribesLtdCompany = await request.execute(app)
-			.get(`/companies/${SCRIBES_LTD_COMPANY_UUID}`);
-
+		scribesLtdCompany = await request.execute(app).get(`/companies/${SCRIBES_LTD_COMPANY_UUID}`);
 	});
 
 	describe('The Coast of Utopia (material with sub-materials)', () => {
-
 		it('includes its sub-materials', () => {
-
 			const expectedSubMaterials = [
 				{
 					model: 'MATERIAL',
@@ -444,15 +439,11 @@ describe('Material with sub-materials', () => {
 			const { subMaterials } = theCoastOfUtopiaMaterial.body;
 
 			expect(subMaterials).to.deep.equal(expectedSubMaterials);
-
 		});
-
 	});
 
 	describe('Voyage (material with sur-material)', () => {
-
 		it('includes The Coast of Utopia as its sur-material', () => {
-
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
@@ -500,15 +491,11 @@ describe('Material with sub-materials', () => {
 			const { surMaterial } = voyageMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
-
 	});
 
 	describe('Alexander Herzen (character)', () => {
-
 		it('includes materials in which character was depicted, including the sur-material', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -611,15 +598,11 @@ describe('Material with sub-materials', () => {
 			const { materials } = alexanderHerzenCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Ivan Turgenev (character)', () => {
-
 		it('includes materials in which character was depicted, but with no sur-material as does not apply', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -653,15 +636,11 @@ describe('Material with sub-materials', () => {
 			const { materials } = ivanTurgunevCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('The Coast of Utopia at Olivier Theatre (production)', () => {
-
 		it('includes the material (but with no sur-material as does not apply)', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
@@ -692,15 +671,11 @@ describe('Material with sub-materials', () => {
 			const { material } = theCoastOfUtopiaOlivierProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Voyage at Olivier Theatre (production)', () => {
-
 		it('includes the material and its sur-material', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: VOYAGE_MATERIAL_UUID,
@@ -736,15 +711,11 @@ describe('Material with sub-materials', () => {
 			const { material } = voyageOlivierProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Tom Stoppard (person)', () => {
-
 		it('includes materials with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -844,15 +815,11 @@ describe('Material with sub-materials', () => {
 			const { materials } = tomStoppardPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('The Sträussler Group (company)', () => {
-
 		it('includes materials with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -952,15 +919,11 @@ describe('Material with sub-materials', () => {
 			const { materials } = theSträusslerGroupCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Garply (material): single material is attached to multiple tiers of a production', () => {
-
 		it('includes productions of materials that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -971,7 +934,7 @@ describe('Material with sub-materials', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: {
@@ -986,15 +949,11 @@ describe('Material with sub-materials', () => {
 			const { productions } = garplyMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Conor Corge (person): single instance of their work is attached to multiple tiers of a production', () => {
-
 		it('includes materials, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1005,7 +964,7 @@ describe('Material with sub-materials', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: {
@@ -1020,15 +979,11 @@ describe('Material with sub-materials', () => {
 			const { materialProductions } = conorCorgePerson.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
 	describe('Scribes Ltd (company): single instance of their work is attached to multiple tiers of a production', () => {
-
 		it('includes materials, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1039,7 +994,7 @@ describe('Material with sub-materials', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: {
@@ -1054,17 +1009,12 @@ describe('Material with sub-materials', () => {
 			const { materialProductions } = scribesLtdCompany.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
 	describe('materials list', () => {
-
 		it('includes materials and, where applicable, corresponding sur-material; will exclude sur-materials as these will be included via sub-material association', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials');
+			const response = await request.execute(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -1190,9 +1140,6 @@ describe('Material with sub-materials', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

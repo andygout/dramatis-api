@@ -46,14 +46,13 @@ let cliveWoodPerson;
 let jonathanSlingerPerson;
 
 describe('Different characters with the same name from the same material', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Julius Caesar',
@@ -76,10 +75,11 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'Shakespeare\'s Romans',
+				name: "Shakespeare's Romans",
 				characterGroups: [
 					{
 						characters: [
@@ -98,7 +98,8 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -136,7 +137,8 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -173,7 +175,8 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry VI, Part 2',
@@ -196,7 +199,8 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry VI, Part 2',
@@ -234,54 +238,45 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		cinnaCharacter1 = await request.execute(app)
-			.get(`/characters/${CINNA_CHARACTER_1_UUID}`);
+		cinnaCharacter1 = await request.execute(app).get(`/characters/${CINNA_CHARACTER_1_UUID}`);
 
-		cinnaCharacter2 = await request.execute(app)
-			.get(`/characters/${CINNA_CHARACTER_2_UUID}`);
+		cinnaCharacter2 = await request.execute(app).get(`/characters/${CINNA_CHARACTER_2_UUID}`);
 
-		volumniusCharacter = await request.execute(app)
-			.get(`/characters/${VOLUMNIUS_CHARACTER_UUID}`);
+		volumniusCharacter = await request.execute(app).get(`/characters/${VOLUMNIUS_CHARACTER_UUID}`);
 
-		juliusCaesarMaterial = await request.execute(app)
-			.get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
+		juliusCaesarMaterial = await request.execute(app).get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
 
-		juliusCaesarBarbicanProduction = await request.execute(app)
+		juliusCaesarBarbicanProduction = await request
+			.execute(app)
 			.get(`/productions/${JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID}`);
 
-		paulShearerPerson = await request.execute(app)
-			.get(`/people/${PAUL_SHEARER_PERSON_UUID}`);
+		paulShearerPerson = await request.execute(app).get(`/people/${PAUL_SHEARER_PERSON_UUID}`);
 
-		leoWringerPerson = await request.execute(app)
-			.get(`/people/${LEO_WRINGER_PERSON_UUID}`);
+		leoWringerPerson = await request.execute(app).get(`/people/${LEO_WRINGER_PERSON_UUID}`);
 
-		richardPlantagenetDukeOfYorkCharacter = await request.execute(app)
+		richardPlantagenetDukeOfYorkCharacter = await request
+			.execute(app)
 			.get(`/characters/${RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID}`);
 
-		richardPlantagenetCharacter = await request.execute(app)
+		richardPlantagenetCharacter = await request
+			.execute(app)
 			.get(`/characters/${RICHARD_PLANTAGENET_CHARACTER_UUID}`);
 
-		jackCadeCharacter = await request.execute(app)
-			.get(`/characters/${JACK_CADE_CHARACTER_UUID}`);
+		jackCadeCharacter = await request.execute(app).get(`/characters/${JACK_CADE_CHARACTER_UUID}`);
 
-		henryVIPart2Material = await request.execute(app)
-			.get(`/materials/${HENRY_VI_PART_2_MATERIAL_UUID}`);
+		henryVIPart2Material = await request.execute(app).get(`/materials/${HENRY_VI_PART_2_MATERIAL_UUID}`);
 
-		henryVIPart2CourtyardProduction = await request.execute(app)
+		henryVIPart2CourtyardProduction = await request
+			.execute(app)
 			.get(`/productions/${HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID}`);
 
-		cliveWoodPerson = await request.execute(app)
-			.get(`/people/${CLIVE_WOOD_PERSON_UUID}`);
+		cliveWoodPerson = await request.execute(app).get(`/people/${CLIVE_WOOD_PERSON_UUID}`);
 
-		jonathanSlingerPerson = await request.execute(app)
-			.get(`/people/${JONATHAN_SLINGER_PERSON_UUID}`);
-
+		jonathanSlingerPerson = await request.execute(app).get(`/people/${JONATHAN_SLINGER_PERSON_UUID}`);
 	});
 
 	describe('Cinna (character) (#1)', () => {
-
 		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with same name)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -346,39 +341,27 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = cinnaCharacter1.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
 
 		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
-
-			const expectedVariantNamedDepictions = [
-				'Lucius Cinna'
-			];
+			const expectedVariantNamedDepictions = ['Lucius Cinna'];
 
 			const { variantNamedDepictions } = cinnaCharacter1.body;
 
 			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
-
 		});
 
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
-
-			const expectedVariantNamedPortrayals = [
-				'Lucius Cornelius Cinna'
-			];
+			const expectedVariantNamedPortrayals = ['Lucius Cornelius Cinna'];
 
 			const { variantNamedPortrayals } = cinnaCharacter1.body;
 
 			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
-
 		});
-
 	});
 
 	describe('Cinna (character) (#2)', () => {
-
 		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with same name)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -435,39 +418,27 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = cinnaCharacter2.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
 
 		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
-
-			const expectedVariantNamedDepictions = [
-				'Gaius Helvius Cinna'
-			];
+			const expectedVariantNamedDepictions = ['Gaius Helvius Cinna'];
 
 			const { variantNamedDepictions } = cinnaCharacter2.body;
 
 			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
-
 		});
 
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
-
-			const expectedVariantNamedPortrayals = [
-				'Cinna the poet'
-			];
+			const expectedVariantNamedPortrayals = ['Cinna the poet'];
 
 			const { variantNamedPortrayals } = cinnaCharacter2.body;
 
 			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
-
 		});
-
 	});
 
 	describe('Volumnius (character)', () => {
-
-		it('includes productions in which character was portrayed including in portrayer\'s other roles the correct duplicate-named character', () => {
-
+		it("includes productions in which character was portrayed including in portrayer's other roles the correct duplicate-named character", () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -507,15 +478,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = volumniusCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Julius Caesar (material)', () => {
-
 		it('includes Cinna (#1) and Cinna (#2) in its characters', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -537,18 +504,16 @@ describe('Different characters with the same name from the same material', () =>
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = juliusCaesarMaterial.body;
+			const {
+				characterGroups: [{ characters }]
+			} = juliusCaesarMaterial.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Julius Caesar at Barbican (production)', () => {
-
 		it('includes cast with Paul Shearer as Cinna (#1) and Leo Wringer as Cinna (#2)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -590,15 +555,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { cast } = juliusCaesarBarbicanProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Paul Shearer (person)', () => {
-
 		it('includes in their production credits their portrayal of Cinna (#1) (i.e. and not Cinna (#2))', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -635,15 +596,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { castMemberProductions } = paulShearerPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Leo Wringer (person)', () => {
-
 		it('includes in their production credits their portrayal of Cinna (#2) (i.e. and not Cinna (#1))', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -673,15 +630,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { castMemberProductions } = leoWringerPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) (character)', () => {
-
 		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with matching portrayal role name but different portrayal characterName)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -721,15 +674,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = richardPlantagenetDukeOfYorkCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III) (character)', () => {
-
 		it('includes productions in which character was portrayed including performers who portrayed them (i.e. excludes portrayers of different character with same name as portrayal role name)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -761,15 +710,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = richardPlantagenetCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Jack Cade (character)', () => {
-
-		it('includes productions in which character was portrayed including in portrayer\'s other roles the correct duplicate-named character', () => {
-
+		it("includes productions in which character was portrayed including in portrayer's other roles the correct duplicate-named character", () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -809,15 +754,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { productions } = jackCadeCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Henry VI, Part 2 (material)', () => {
-
 		it('includes Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) and Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III) in its characters', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -839,18 +780,16 @@ describe('Different characters with the same name from the same material', () =>
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryVIPart2Material.body;
+			const {
+				characterGroups: [{ characters }]
+			} = henryVIPart2Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Henry VI, Part 2 at Courtyard Theatre (production)', () => {
-
 		it('includes cast with Clive Wood as Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) and Jonathan Slinger as Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -892,15 +831,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { cast } = henryVIPart2CourtyardProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Clive Wood (person)', () => {
-
 		it('includes in their production credits their portrayal of Richard Plantagenet, Duke of York (i.e. 3rd Duke of York) (i.e. and not Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III))', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -937,15 +872,11 @@ describe('Different characters with the same name from the same material', () =>
 			const { castMemberProductions } = cliveWoodPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Jonathan Slinger (person)', () => {
-
 		it('includes in their production credits their portrayal of Richard Plantagenet (i.e. later Duke of Gloucester and King Richard III) (i.e. and not Richard Plantagenet, Duke of York (i.e. 3rd Duke of York))', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -975,9 +906,6 @@ describe('Different characters with the same name from the same material', () =>
 			const { castMemberProductions } = jonathanSlingerPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

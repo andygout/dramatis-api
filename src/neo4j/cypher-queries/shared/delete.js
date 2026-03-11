@@ -1,7 +1,6 @@
 import { MODEL_TO_NODE_LABEL_MAP } from '../../../utils/constants.js';
 
-export default model => {
-
+export default (model) => {
 	const label = MODEL_TO_NODE_LABEL_MAP[model];
 
 	return `
@@ -47,5 +46,4 @@ export default model => {
 			isDeleted,
 			associatedModels
 	`;
-
 };

@@ -4,14 +4,12 @@ import * as cypherQueriesShared from '../../../../src/neo4j/cypher-queries/share
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Shared module', () => {
-
 	describe('getCreateQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesShared.getCreateQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				CREATE (n:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })
 
 				WITH n
@@ -22,38 +20,34 @@ describe('Cypher Queries Shared module', () => {
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getEditQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesShared.getEditQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getUpdateQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesShared.getUpdateQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 					SET
 						n.name = $name,
@@ -67,19 +61,17 @@ describe('Cypher Queries Shared module', () => {
 					n.uuid AS uuid,
 					n.name AS name,
 					n.differentiator AS differentiator
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getDeleteQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesShared.getDeleteQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (:Venue { uuid: $uuid })
 
 				OPTIONAL MATCH (deletableInstance:Venue { uuid: $uuid })
@@ -121,19 +113,17 @@ describe('Cypher Queries Shared module', () => {
 						END AS differentiator,
 						isDeleted,
 						associatedModels
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getListQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesShared.getListQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (n:Venue)
 
 				RETURN
@@ -145,10 +135,8 @@ describe('Cypher Queries Shared module', () => {
 					n.name
 
 				LIMIT 1000
-			`));
-
+			`)
+			);
 		});
-
 	});
-
 });

@@ -4,7 +4,6 @@ import { getDriver } from './get-driver.js';
 const driver = getDriver();
 
 export const neo4jQuery = async (queryData, opts = {}) => {
-
 	const { query, params } = queryData;
 
 	const isOptionalResult = Boolean(opts.isOptionalResult);
@@ -20,8 +19,5 @@ export const neo4jQuery = async (queryData, opts = {}) => {
 
 	if (!resultObjects.length && !isOptionalResult) throw new Error('Not Found');
 
-	return isArrayResult
-		? resultObjects
-		: resultObjects[0];
-
+	return isArrayResult ? resultObjects : resultObjects[0];
 };

@@ -1,33 +1,23 @@
 export default {
-	subProductions: [
-		{}
-	],
+	subProductions: [{}],
 	producerCredits: [
 		{
-			entities: [
-				{}
-			]
+			entities: [{}]
 		}
 	],
 	cast: [
 		{
-			roles: [
-				{}
-			]
+			roles: [{}]
 		}
 	],
 	creativeCredits: [
 		{
-			entities: [
-				{}
-			]
+			entities: [{}]
 		}
 	],
 	crewCredits: [
 		{
-			entities: [
-				{}
-			]
+			entities: [{}]
 		}
 	],
 	reviews: [

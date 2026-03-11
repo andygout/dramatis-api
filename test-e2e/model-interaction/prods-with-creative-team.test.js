@@ -49,14 +49,13 @@ let mesmerCompany;
 let fiftyNineProductionsCompany;
 
 describe('Productions with creative team', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -73,7 +72,8 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -124,7 +124,7 @@ describe('Productions with creative team', () => {
 										name: 'Ian William Galloway'
 									},
 									{
-										name: 'John O\'Connell'
+										name: "John O'Connell"
 									}
 								]
 							},
@@ -158,7 +158,8 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -248,7 +249,8 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Happy Days',
@@ -332,7 +334,8 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -391,45 +394,41 @@ describe('Productions with creative team', () => {
 				]
 			});
 
-		juliusCaesarBarbicanProduction = await request.execute(app)
+		juliusCaesarBarbicanProduction = await request
+			.execute(app)
 			.get(`/productions/${JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID}`);
 
-		motherCourageAndHerChildrenOlivierProduction = await request.execute(app)
+		motherCourageAndHerChildrenOlivierProduction = await request
+			.execute(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
 
-		happyDaysLytteltonProduction = await request.execute(app)
+		happyDaysLytteltonProduction = await request
+			.execute(app)
 			.get(`/productions/${HAPPY_DAYS_LYTTELTON_PRODUCTION_UUID}`);
 
-		richardIICottesloeProduction = await request.execute(app)
+		richardIICottesloeProduction = await request
+			.execute(app)
 			.get(`/productions/${RICHARD_II_COTTESLOE_PRODUCTION_UUID}`);
 
-		deborahWarnerPerson = await request.execute(app)
-			.get(`/people/${DEBORAH_WARNER_PERSON_UUID}`);
+		deborahWarnerPerson = await request.execute(app).get(`/people/${DEBORAH_WARNER_PERSON_UUID}`);
 
-		ninaDunnPerson = await request.execute(app)
-			.get(`/people/${NINA_DUNN_PERSON_UUID}`);
+		ninaDunnPerson = await request.execute(app).get(`/people/${NINA_DUNN_PERSON_UUID}`);
 
-		leoWarnerPerson = await request.execute(app)
-			.get(`/people/${LEO_WARNER_PERSON_UUID}`);
+		leoWarnerPerson = await request.execute(app).get(`/people/${LEO_WARNER_PERSON_UUID}`);
 
-		annaJamesonPerson = await request.execute(app)
-			.get(`/people/${ANNA_JAMESON_PERSON_UUID}`);
+		annaJamesonPerson = await request.execute(app).get(`/people/${ANNA_JAMESON_PERSON_UUID}`);
 
-		autographCompany = await request.execute(app)
-			.get(`/companies/${AUTOGRAPH_COMPANY_UUID}`);
+		autographCompany = await request.execute(app).get(`/companies/${AUTOGRAPH_COMPANY_UUID}`);
 
-		mesmerCompany = await request.execute(app)
-			.get(`/companies/${MESMER_COMPANY_UUID}`);
+		mesmerCompany = await request.execute(app).get(`/companies/${MESMER_COMPANY_UUID}`);
 
-		fiftyNineProductionsCompany = await request.execute(app)
+		fiftyNineProductionsCompany = await request
+			.execute(app)
 			.get(`/companies/${FIFTY_NINE_PRODUCTIONS_COMPANY_UUID}`);
-
 	});
 
 	describe('Julius Caesar at Barbican Theatre (production)', () => {
-
 		it('includes creative team credits', () => {
-
 			const expectedCreativeCredits = [
 				{
 					model: 'CREATIVE_CREDIT',
@@ -488,7 +487,7 @@ describe('Productions with creative team', () => {
 								{
 									model: 'PERSON',
 									uuid: JOHN_O_CONNELL_PERSON_UUID,
-									name: 'John O\'Connell'
+									name: "John O'Connell"
 								}
 							]
 						},
@@ -537,15 +536,11 @@ describe('Productions with creative team', () => {
 			const { creativeCredits } = juliusCaesarBarbicanProduction.body;
 
 			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
-
 		});
-
 	});
 
 	describe('Mother Courage and Her Children at Olivier Theatre (production)', () => {
-
 		it('includes creative team credits', () => {
-
 			const expectedCreativeCredits = [
 				{
 					model: 'CREATIVE_CREDIT',
@@ -659,15 +654,11 @@ describe('Productions with creative team', () => {
 			const { creativeCredits } = motherCourageAndHerChildrenOlivierProduction.body;
 
 			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
-
 		});
-
 	});
 
 	describe('Happy Days at Lyttelton Theatre (production)', () => {
-
 		it('includes creative team credits', () => {
-
 			const expectedCreativeCredits = [
 				{
 					model: 'CREATIVE_CREDIT',
@@ -774,15 +765,11 @@ describe('Productions with creative team', () => {
 			const { creativeCredits } = happyDaysLytteltonProduction.body;
 
 			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
-
 		});
-
 	});
 
 	describe('Richard II at Cottesloe Theatre (production)', () => {
-
 		it('includes creative team credits', () => {
-
 			const expectedCreativeCredits = [
 				{
 					model: 'CREATIVE_CREDIT',
@@ -855,15 +842,11 @@ describe('Productions with creative team', () => {
 			const { creativeCredits } = richardIICottesloeProduction.body;
 
 			expect(creativeCredits).to.deep.equal(expectedCreativeCredits);
-
 		});
-
 	});
 
 	describe('Deborah Warner (person)', () => {
-
 		it('includes productions for which they have a creative team credit', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -944,15 +927,11 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = deborahWarnerPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Nina Dunn (person)', () => {
-
 		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1161,7 +1140,7 @@ describe('Productions with creative team', () => {
 										{
 											model: 'PERSON',
 											uuid: JOHN_O_CONNELL_PERSON_UUID,
-											name: 'John O\'Connell'
+											name: "John O'Connell"
 										}
 									]
 								},
@@ -1289,15 +1268,11 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = ninaDunnPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Leo Warner (person)', () => {
-
 		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1525,7 +1500,7 @@ describe('Productions with creative team', () => {
 										{
 											model: 'PERSON',
 											uuid: JOHN_O_CONNELL_PERSON_UUID,
-											name: 'John O\'Connell'
+											name: "John O'Connell"
 										}
 									]
 								},
@@ -1635,15 +1610,11 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = leoWarnerPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Anna Jameson (person)', () => {
-
 		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1731,15 +1702,11 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = annaJamesonPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Autograph (company)', () => {
-
 		it('includes productions for which they have a creative team credit', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1826,15 +1793,11 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = autographCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Mesmer (company)', () => {
-
 		it('includes productions for which they have a creative team credit', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2029,7 +1992,7 @@ describe('Productions with creative team', () => {
 								{
 									model: 'PERSON',
 									uuid: JOHN_O_CONNELL_PERSON_UUID,
-									name: 'John O\'Connell'
+									name: "John O'Connell"
 								}
 							],
 							coEntities: [
@@ -2161,15 +2124,11 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = mesmerCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('59 Productions (company)', () => {
-
 		it('includes productions for which they have a creative team credit, included co-credited entities', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2398,7 +2357,7 @@ describe('Productions with creative team', () => {
 										{
 											model: 'PERSON',
 											uuid: JOHN_O_CONNELL_PERSON_UUID,
-											name: 'John O\'Connell'
+											name: "John O'Connell"
 										}
 									]
 								},
@@ -2508,9 +2467,6 @@ describe('Productions with creative team', () => {
 			const { creativeProductions } = fiftyNineProductionsCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
-
 });

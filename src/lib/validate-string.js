@@ -1,5 +1,4 @@
 const validateString = (stringValue, opts) => {
-
 	const STRING_MAX_LENGTH = 1000;
 
 	let errorText;
@@ -8,14 +7,11 @@ const validateString = (stringValue, opts) => {
 
 	if (opts.isRequired && !isStringWithLength) errorText = 'Value is too short';
 
-	const isStringExceedingMaxLength =
-		isStringWithLength &&
-		stringValue.length > STRING_MAX_LENGTH;
+	const isStringExceedingMaxLength = isStringWithLength && stringValue.length > STRING_MAX_LENGTH;
 
 	if (isStringExceedingMaxLength) errorText = 'Value is too long';
 
 	return errorText;
-
 };
 
 export default validateString;

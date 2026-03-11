@@ -1,7 +1,6 @@
 import { neo4jQuery } from '../../../src/neo4j/query.js';
 
-export default async opts => {
-
+export default async (opts) => {
 	const { label, name, uuid } = opts;
 
 	const params = {
@@ -10,7 +9,9 @@ export default async opts => {
 	};
 
 	const query = `
-		MATCH (n:${label} { ${Object.keys(params).map(key => `${key}: $${key}`).join(', ')} })
+		MATCH (n:${label} { ${Object.keys(params)
+			.map((key) => `${key}: $${key}`)
+			.join(', ')} })
 
 		RETURN TOBOOLEAN(COUNT(n)) AS isExistent
 	`;
@@ -18,5 +19,4 @@ export default async opts => {
 	const { isExistent } = await neo4jQuery({ query, params });
 
 	return isExistent;
-
 };

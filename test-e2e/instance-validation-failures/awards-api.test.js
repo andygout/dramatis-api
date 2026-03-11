@@ -15,13 +15,10 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('Instance validation failures: Awards API', () => {
-
 	describe('attempt to create instance', () => {
-
 		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -29,20 +26,15 @@ describe('Instance validation failures: Awards API', () => {
 				uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 				name: 'Laurence Olivier Awards'
 			});
-
 		});
 
 		context('instance has input validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Award')).to.equal(1);
 
-				const response = await request.execute(app)
-					.post('/awards')
-					.send({
-						name: ''
-					});
+				const response = await request.execute(app).post('/awards').send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'AWARD',
@@ -50,31 +42,23 @@ describe('Instance validation failures: Awards API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					}
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Award')).to.equal(1);
-
 			});
-
 		});
 
 		context('instance has database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Award')).to.equal(1);
 
-				const response = await request.execute(app)
-					.post('/awards')
-					.send({
-						name: 'Laurence Olivier Awards'
-					});
+				const response = await request.execute(app).post('/awards').send({
+					name: 'Laurence Olivier Awards'
+				});
 
 				const expectedResponseBody = {
 					model: 'AWARD',
@@ -82,32 +66,23 @@ describe('Instance validation failures: Awards API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists']
 					}
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Award')).to.equal(1);
-
 			});
-
 		});
-
 	});
 
 	describe('attempt to update instance', () => {
-
 		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -121,16 +96,14 @@ describe('Instance validation failures: Awards API', () => {
 				uuid: LAURENCE_OLIVIER_AWARDS_AWARD_UUID,
 				name: 'Laurence Olivier Awards'
 			});
-
 		});
 
 		context('instance has input validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Award')).to.equal(2);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`)
 					.send({
 						name: ''
@@ -143,32 +116,29 @@ describe('Instance validation failures: Awards API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					}
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Award')).to.equal(2);
-				expect(await isNodeExistent({
-					label: 'Award',
-					name: 'Evening Standard Theatre Awards',
-					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'Award',
+						name: 'Evening Standard Theatre Awards',
+						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID
+					})
+				).to.be.true;
 			});
-
 		});
 
 		context('instance has database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Award')).to.equal(2);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`)
 					.send({
 						name: 'Laurence Olivier Awards'
@@ -181,37 +151,30 @@ describe('Instance validation failures: Awards API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists']
 					}
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Award')).to.equal(2);
-				expect(await isNodeExistent({
-					label: 'Award',
-					name: 'Evening Standard Theatre Awards',
-					uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'Award',
+						name: 'Evening Standard Theatre Awards',
+						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID
+					})
+				).to.be.true;
 			});
-
 		});
-
 	});
 
 	describe('attempt to delete instance', () => {
-
 		const EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const TWO_THOUSAND_AND_NINETEEN_AWARD_CEREMONY_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -233,16 +196,14 @@ describe('Instance validation failures: Awards API', () => {
 				destinationUuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID,
 				relationshipName: 'PRESENTED_AT'
 			});
-
 		});
 
 		context('instance has associations', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Award')).to.equal(1);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.delete(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
 
 				const expectedResponseBody = {
@@ -252,20 +213,14 @@ describe('Instance validation failures: Awards API', () => {
 					differentiator: null,
 					hasErrors: true,
 					errors: {
-						associations: [
-							'AwardCeremony'
-						]
+						associations: ['AwardCeremony']
 					}
 				};
 
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Award')).to.equal(1);
-
 			});
-
 		});
-
 	});
-
 });

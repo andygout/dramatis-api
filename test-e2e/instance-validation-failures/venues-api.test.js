@@ -18,13 +18,10 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('Instance validation failures: Venues API', () => {
-
 	describe('attempt to create instance', () => {
-
 		const DONMAR_WAREHOUSE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -32,20 +29,15 @@ describe('Instance validation failures: Venues API', () => {
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse'
 			});
-
 		});
 
 		context('instance has input validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-				const response = await request.execute(app)
-					.post('/venues')
-					.send({
-						name: ''
-					});
+				const response = await request.execute(app).post('/venues').send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'VENUE',
@@ -53,9 +45,7 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					subVenues: []
 				};
@@ -63,22 +53,16 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
-
 			});
-
 		});
 
 		context('instance has database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-				const response = await request.execute(app)
-					.post('/venues')
-					.send({
-						name: 'Donmar Warehouse'
-					});
+				const response = await request.execute(app).post('/venues').send({
+					name: 'Donmar Warehouse'
+				});
 
 				const expectedResponseBody = {
 					model: 'VENUE',
@@ -86,12 +70,8 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists']
 					},
 					subVenues: []
 				};
@@ -99,18 +79,15 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
-
 			});
-
 		});
 
 		context('instance has both input and database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.post('/venues')
 					.send({
 						name: 'Donmar Warehouse',
@@ -127,12 +104,8 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists']
 					},
 					subVenues: [
 						{
@@ -140,9 +113,7 @@ describe('Instance validation failures: Venues API', () => {
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							}
 						}
 					]
@@ -151,20 +122,15 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
-
 			});
-
 		});
-
 	});
 
 	describe('attempt to update instance', () => {
-
 		const ALMEIDA_THEATRE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const DONMAR_WAREHOUSE_VENUE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -178,20 +144,15 @@ describe('Instance validation failures: Venues API', () => {
 				uuid: DONMAR_WAREHOUSE_VENUE_UUID,
 				name: 'Donmar Warehouse'
 			});
-
 		});
 
 		context('instance has input validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-				const response = await request.execute(app)
-					.put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`)
-					.send({
-						name: ''
-					});
+				const response = await request.execute(app).put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`).send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'VENUE',
@@ -200,9 +161,7 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					subVenues: []
 				};
@@ -210,27 +169,23 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
-				expect(await isNodeExistent({
-					label: 'Venue',
-					name: 'Almeida Theatre',
-					uuid: ALMEIDA_THEATRE_VENUE_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'Venue',
+						name: 'Almeida Theatre',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID
+					})
+				).to.be.true;
 			});
-
 		});
 
 		context('instance has database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-				const response = await request.execute(app)
-					.put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`)
-					.send({
-						name: 'Donmar Warehouse'
-					});
+				const response = await request.execute(app).put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`).send({
+					name: 'Donmar Warehouse'
+				});
 
 				const expectedResponseBody = {
 					model: 'VENUE',
@@ -239,12 +194,8 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists']
 					},
 					subVenues: []
 				};
@@ -252,23 +203,22 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
-				expect(await isNodeExistent({
-					label: 'Venue',
-					name: 'Almeida Theatre',
-					uuid: ALMEIDA_THEATRE_VENUE_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'Venue',
+						name: 'Almeida Theatre',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID
+					})
+				).to.be.true;
 			});
-
 		});
 
 		context('instance has both input and database validation failures', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.put(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`)
 					.send({
 						name: 'Donmar Warehouse',
@@ -286,12 +236,8 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Name and differentiator combination already exists'
-						],
-						differentiator: [
-							'Name and differentiator combination already exists'
-						]
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists']
 					},
 					subVenues: [
 						{
@@ -299,9 +245,7 @@ describe('Instance validation failures: Venues API', () => {
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							}
 						}
 					]
@@ -310,25 +254,22 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(2);
-				expect(await isNodeExistent({
-					label: 'Venue',
-					name: 'Almeida Theatre',
-					uuid: ALMEIDA_THEATRE_VENUE_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'Venue',
+						name: 'Almeida Theatre',
+						uuid: ALMEIDA_THEATRE_VENUE_UUID
+					})
+				).to.be.true;
 			});
-
 		});
-
 	});
 
 	describe('attempt to delete instance', () => {
-
 		const ALMEIDA_THEATRE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 		const THE_MERCHANT_OF_VENICE_ALMEIDA_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -350,17 +291,13 @@ describe('Instance validation failures: Venues API', () => {
 				destinationUuid: ALMEIDA_THEATRE_VENUE_UUID,
 				relationshipName: 'PLAYS_AT'
 			});
-
 		});
 
 		context('instance has associations', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
 
-				const response = await request.execute(app)
-					.delete(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`);
+				const response = await request.execute(app).delete(`/venues/${ALMEIDA_THEATRE_VENUE_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'VENUE',
@@ -369,9 +306,7 @@ describe('Instance validation failures: Venues API', () => {
 					differentiator: null,
 					hasErrors: true,
 					errors: {
-						associations: [
-							'Production'
-						]
+						associations: ['Production']
 					},
 					subVenues: []
 				};
@@ -379,11 +314,7 @@ describe('Instance validation failures: Venues API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('Venue')).to.equal(1);
-
 			});
-
 		});
-
 	});
-
 });

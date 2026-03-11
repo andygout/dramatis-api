@@ -7,17 +7,12 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 const INVALID_YEAR_STRING = 'Nineteen Fifty-Nine';
 
 describe('Input validation failures: Material instance', () => {
-
 	let stubs;
 	let Material;
 
-	const methods = [
-		'create',
-		'update'
-	];
+	const methods = ['create', 'update'];
 
 	beforeEach(async () => {
-
 		stubs = {
 			neo4jQueryModule: {
 				// Stub with a contrived resolution that ensures various
@@ -42,23 +37,17 @@ describe('Input validation failures: Material instance', () => {
 				'../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
-	const createInstance = props => new Material(props);
+	const createInstance = (props) => new Material(props);
 
 	context('name value is empty string', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: '' });
 
 				const result = await instance[method]();
@@ -72,9 +61,7 @@ describe('Input validation failures: Material instance', () => {
 					year: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					originalVersionMaterial: {
 						uuid: undefined,
@@ -88,19 +75,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -114,9 +95,7 @@ describe('Input validation failures: Material instance', () => {
 					year: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too long'
-						]
+						name: ['Value is too long']
 					},
 					originalVersionMaterial: {
 						uuid: undefined,
@@ -130,19 +109,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: 'Rosmersholm', differentiator: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -156,9 +129,7 @@ describe('Input validation failures: Material instance', () => {
 					year: '',
 					hasErrors: true,
 					errors: {
-						differentiator: [
-							'Value is too long'
-						]
+						differentiator: ['Value is too long']
 					},
 					originalVersionMaterial: {
 						uuid: undefined,
@@ -172,19 +143,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('subtitle value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: 'Rosmersholm', subtitle: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -198,9 +163,7 @@ describe('Input validation failures: Material instance', () => {
 					year: '',
 					hasErrors: true,
 					errors: {
-						subtitle: [
-							'Value is too long'
-						]
+						subtitle: ['Value is too long']
 					},
 					originalVersionMaterial: {
 						uuid: undefined,
@@ -214,19 +177,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('format value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: 'Rosmersholm', format: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -240,9 +197,7 @@ describe('Input validation failures: Material instance', () => {
 					year: '',
 					hasErrors: true,
 					errors: {
-						format: [
-							'Value is too long'
-						]
+						format: ['Value is too long']
 					},
 					originalVersionMaterial: {
 						uuid: undefined,
@@ -256,19 +211,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('year value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: 'Rosmersholm', year: INVALID_YEAR_STRING });
 
 				const result = await instance[method]();
@@ -282,9 +231,7 @@ describe('Input validation failures: Material instance', () => {
 					year: INVALID_YEAR_STRING,
 					hasErrors: true,
 					errors: {
-						year: [
-							'Value must be a valid year'
-						]
+						year: ['Value must be a valid year']
 					},
 					originalVersionMaterial: {
 						uuid: undefined,
@@ -298,19 +245,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('original version material name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
@@ -334,9 +275,7 @@ describe('Input validation failures: Material instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					writingCredits: [],
@@ -345,19 +284,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('original version material differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
@@ -382,9 +315,7 @@ describe('Input validation failures: Material instance', () => {
 						name: 'Rosmersholm',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					},
 					writingCredits: [],
@@ -393,19 +324,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('material instance assigns itself as the original version material', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					originalVersionMaterial: {
@@ -429,12 +354,8 @@ describe('Input validation failures: Material instance', () => {
 						name: 'Rosmersholm',
 						differentiator: '',
 						errors: {
-							name: [
-								'Instance cannot form association with itself'
-							],
-							differentiator: [
-								'Instance cannot form association with itself'
-							]
+							name: ['Instance cannot form association with itself'],
+							differentiator: ['Instance cannot form association with itself']
 						}
 					},
 					writingCredits: [],
@@ -443,19 +364,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writingCredit name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -487,9 +402,7 @@ describe('Input validation failures: Material instance', () => {
 							name: ABOVE_MAX_LENGTH_STRING,
 							creditType: null,
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							entities: []
 						}
@@ -499,19 +412,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate writingCredits', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -546,9 +453,7 @@ describe('Input validation failures: Material instance', () => {
 							name: 'version by',
 							creditType: null,
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						},
@@ -556,9 +461,7 @@ describe('Input validation failures: Material instance', () => {
 							name: 'version by',
 							creditType: null,
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						}
@@ -568,19 +471,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writing entity (person) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -622,9 +519,7 @@ describe('Input validation failures: Material instance', () => {
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -635,19 +530,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writing entity (person) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -690,9 +579,7 @@ describe('Input validation failures: Material instance', () => {
 									name: 'Henrik Ibsen',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -703,19 +590,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writing entity (company) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -758,9 +639,7 @@ describe('Input validation failures: Material instance', () => {
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -771,19 +650,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writing entity (company) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -827,9 +700,7 @@ describe('Input validation failures: Material instance', () => {
 									name: 'Ibsen Theatre Company',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -840,19 +711,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writing entity (source material) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -895,9 +760,7 @@ describe('Input validation failures: Material instance', () => {
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -908,19 +771,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('writing entity (source material) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -964,9 +821,7 @@ describe('Input validation failures: Material instance', () => {
 									name: 'Rosmersholm',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -977,19 +832,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate entities', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -1041,12 +890,8 @@ describe('Input validation failures: Material instance', () => {
 									name: 'Henrik Ibsen',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -1060,12 +905,8 @@ describe('Input validation failures: Material instance', () => {
 									name: 'Henrik Ibsen',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -1084,19 +925,13 @@ describe('Input validation failures: Material instance', () => {
 				expect(result).to.deep.equal(expectedResponseBody);
 				expect(result.writingCredits[0].entities[1].model).to.equal('PERSON');
 				expect(result.writingCredits[0].entities[3].model).to.equal('COMPANY');
-
 			});
-
 		}
-
 	});
 
 	context('material instance assigns itself as source material', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					writingCredits: [
@@ -1139,12 +974,8 @@ describe('Input validation failures: Material instance', () => {
 									name: 'Rosmersholm',
 									differentiator: '',
 									errors: {
-										name: [
-											'Instance cannot form association with itself'
-										],
-										differentiator: [
-											'Instance cannot form association with itself'
-										]
+										name: ['Instance cannot form association with itself'],
+										differentiator: ['Instance cannot form association with itself']
 									}
 								}
 							]
@@ -1155,19 +986,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('sub-material name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
@@ -1201,9 +1026,7 @@ describe('Input validation failures: Material instance', () => {
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							}
 						}
 					],
@@ -1211,19 +1034,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('sub-material differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
@@ -1258,9 +1075,7 @@ describe('Input validation failures: Material instance', () => {
 							name: 'Voyage',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								differentiator: [
-									'Value is too long'
-								]
+								differentiator: ['Value is too long']
 							}
 						}
 					],
@@ -1268,19 +1083,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('material instance assigns itself as a sub-material', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
@@ -1314,12 +1123,8 @@ describe('Input validation failures: Material instance', () => {
 							name: 'The Coast of Utopia',
 							differentiator: '',
 							errors: {
-								name: [
-									'Instance cannot form association with itself'
-								],
-								differentiator: [
-									'Instance cannot form association with itself'
-								]
+								name: ['Instance cannot form association with itself'],
+								differentiator: ['Instance cannot form association with itself']
 							}
 						}
 					],
@@ -1327,19 +1132,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate sub-materials', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subMaterials: [
@@ -1384,12 +1183,8 @@ describe('Input validation failures: Material instance', () => {
 							name: 'Voyage',
 							differentiator: '',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group'],
+								differentiator: ['This item has been duplicated within the group']
 							}
 						},
 						{
@@ -1403,12 +1198,8 @@ describe('Input validation failures: Material instance', () => {
 							name: 'Voyage',
 							differentiator: '',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group'],
+								differentiator: ['This item has been duplicated within the group']
 							}
 						},
 						{
@@ -1422,19 +1213,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('characterGroup name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1467,9 +1252,7 @@ describe('Input validation failures: Material instance', () => {
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							characters: []
 						}
@@ -1477,19 +1260,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('character name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1534,9 +1311,7 @@ describe('Input validation failures: Material instance', () => {
 									differentiator: '',
 									qualifier: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -1545,19 +1320,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('character underlyingName value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1603,9 +1372,7 @@ describe('Input validation failures: Material instance', () => {
 									differentiator: '',
 									qualifier: '',
 									errors: {
-										underlyingName: [
-											'Value is too long'
-										]
+										underlyingName: ['Value is too long']
 									}
 								}
 							]
@@ -1614,19 +1381,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('character differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1672,9 +1433,7 @@ describe('Input validation failures: Material instance', () => {
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									qualifier: '',
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -1683,19 +1442,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('character qualifier value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1741,9 +1494,7 @@ describe('Input validation failures: Material instance', () => {
 									differentiator: '',
 									qualifier: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										qualifier: [
-											'Value is too long'
-										]
+										qualifier: ['Value is too long']
 									}
 								}
 							]
@@ -1752,19 +1503,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('character name and underlyingName values are the same', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1821,19 +1566,13 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate characters', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Rosmersholm',
 					characterGroups: [
@@ -1889,18 +1628,10 @@ describe('Input validation failures: Material instance', () => {
 									differentiator: '',
 									qualifier: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										underlyingName: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										],
-										qualifier: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										underlyingName: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group'],
+										qualifier: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -1918,18 +1649,10 @@ describe('Input validation failures: Material instance', () => {
 									differentiator: '',
 									qualifier: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										underlyingName: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										],
-										qualifier: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										underlyingName: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group'],
+										qualifier: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -1946,11 +1669,7 @@ describe('Input validation failures: Material instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
-
 });

@@ -18,14 +18,13 @@ let person;
 let company;
 
 describe('Material with entities credited multiple times', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -58,21 +57,15 @@ describe('Material with entities credited multiple times', () => {
 				]
 			});
 
-		material = await request.execute(app)
-			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
+		material = await request.execute(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
-		person = await request.execute(app)
-			.get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
+		person = await request.execute(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
-		company = await request.execute(app)
-			.get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
-
+		company = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Material', () => {
-
 		it('includes writers of this material grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -111,15 +104,11 @@ describe('Material with entities credited multiple times', () => {
 			const { writingCredits } = material.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
-
 	});
 
 	describe('Person', () => {
-
 		it('includes materials they have written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -168,15 +157,11 @@ describe('Material with entities credited multiple times', () => {
 			const { materials } = person.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Company', () => {
-
 		it('includes materials it has written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -225,9 +210,6 @@ describe('Material with entities credited multiple times', () => {
 			const { materials } = company.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
-
 });

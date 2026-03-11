@@ -2,14 +2,12 @@ import esmock from 'esmock';
 import { assert, restore, spy, stub } from 'sinon';
 
 describe('SubVenue model', () => {
-
 	let stubs;
 	let SubVenue;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(async () => {
-
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
 			cypherQueriesModule: {
@@ -33,21 +31,15 @@ describe('SubVenue model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
 		context('valid data', () => {
-
 			it('will not call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,
@@ -69,27 +61,20 @@ describe('SubVenue model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubVenueChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubVenueChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
 		context('invalid data (instance is already assigned to another sur-venue)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: true,
 					isSurVenue: false,
@@ -112,35 +97,30 @@ describe('SubVenue model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubVenueChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubVenueChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Venue with these attributes is already assigned to another sur-venue'
+					'name',
+					'Venue with these attributes is already assigned to another sur-venue'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Venue with these attributes is already assigned to another sur-venue'
+					'differentiator',
+					'Venue with these attributes is already assigned to another sur-venue'
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance is the sur-most venue of a two-tiered venue collection)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: true,
@@ -163,35 +143,30 @@ describe('SubVenue model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubVenueChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubVenueChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					'name',
+					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					'differentiator',
+					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance cannot be assigned to a two-tiered venue collection)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,
@@ -214,31 +189,26 @@ describe('SubVenue model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubVenueChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubVenueChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Sub-venue cannot be assigned to a two-tiered venue collection'
+					'name',
+					'Sub-venue cannot be assigned to a two-tiered venue collection'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Sub-venue cannot be assigned to a two-tiered venue collection'
+					'differentiator',
+					'Sub-venue cannot be assigned to a two-tiered venue collection'
 				);
-
 			});
-
 		});
-
 	});
-
 });

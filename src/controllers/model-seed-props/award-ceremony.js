@@ -3,15 +3,9 @@ export default {
 		{
 			nominations: [
 				{
-					entities: [
-						{}
-					],
-					productions: [
-						{}
-					],
-					materials: [
-						{}
-					]
+					entities: [{}],
+					productions: [{}],
+					materials: [{}]
 				}
 			]
 		}

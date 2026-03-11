@@ -4,24 +4,17 @@ import { validationQueries } from '../neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../neo4j/query.js';
 
 export default class SourceMaterial extends MaterialBase {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
-
 	}
 
-	async runDatabaseValidations ({ subjectMaterialUuid = null }) {
-
+	async runDatabaseValidations({ subjectMaterialUuid = null }) {
 		if (this.name) {
-
 			const { getSourceMaterialChecksQuery } = validationQueries;
 
 			const preparedParams = prepareAsParams(this);
 
-			const {
-				isSourcingMaterialOfSubjectMaterial
-			} = await neo4jQuery({
+			const { isSourcingMaterialOfSubjectMaterial } = await neo4jQuery({
 				query: getSourceMaterialChecksQuery(),
 				params: {
 					name: preparedParams.name,
@@ -31,20 +24,14 @@ export default class SourceMaterial extends MaterialBase {
 			});
 
 			if (isSourcingMaterialOfSubjectMaterial) {
-				this.addPropertyError(
-					'name',
-					'Material with these attributes is this material\'s sourcing material'
-				);
+				this.addPropertyError('name', "Material with these attributes is this material's sourcing material");
 				this.addPropertyError(
 					'differentiator',
-					'Material with these attributes is this material\'s sourcing material'
+					"Material with these attributes is this material's sourcing material"
 				);
 			}
-
 		}
 
 		return;
-
 	}
-
 }

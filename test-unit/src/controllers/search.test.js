@@ -4,12 +4,10 @@ import httpMocks from 'node-mocks-http';
 import { assert, restore, stub } from 'sinon';
 
 describe('Search controller', () => {
-
 	let stubs;
 	let searchController;
 
 	beforeEach(async () => {
-
 		stubs = {
 			sendJsonResponse: stub().returns('sendJsonResponse response'),
 			cypherQueriesModule: {
@@ -25,69 +23,46 @@ describe('Search controller', () => {
 			next: stub()
 		};
 
-		searchController = await esmock(
-			'../../../src/controllers/search.js',
-			{
-				'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
-				'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
-				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
-			}
-		);
-
+		searchController = await esmock('../../../src/controllers/search.js', {
+			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
+			'../../../src/neo4j/cypher-queries/index.js': stubs.cypherQueriesModule,
+			'../../../src/neo4j/query.js': stubs.neo4jQueryModule
+		});
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	context('searchTerm is not present in request.query', () => {
-
 		it('calls sendJsonResponse with the response object and an empty array; does not call neo4jQuery', async () => {
-
 			const request = httpMocks.createRequest();
 			const result = await searchController(request, stubs.response, stubs.next);
 
-			assert.calledOnceWithExactly(
-				stubs.sendJsonResponse,
-				stubs.response, []
-			);
+			assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, []);
 			expect(result).to.equal('sendJsonResponse response');
 			assert.notCalled(stubs.neo4jQueryModule.neo4jQuery);
 			assert.notCalled(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
 			assert.notCalled(stubs.next);
-
 		});
-
 	});
 
 	context('searchTerm is present in request.query and is an empty string', () => {
-
 		it('calls sendJsonResponse with the response object and an empty array; does not call neo4jQuery', async () => {
-
 			const request = httpMocks.createRequest({ query: { searchTerm: '' } });
 			const result = await searchController(request, stubs.response, stubs.next);
 
-			assert.calledOnceWithExactly(
-				stubs.sendJsonResponse,
-				stubs.response, []
-			);
+			assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, []);
 			expect(result).to.equal('sendJsonResponse response');
 			assert.notCalled(stubs.neo4jQueryModule.neo4jQuery);
 			assert.notCalled(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
 			assert.notCalled(stubs.next);
-
 		});
-
 	});
 
 	context('searchTerm is present in request.query and is a non-empty string', () => {
-
 		context('neo4jQuery responds as expected', () => {
-
 			it('calls getSearchQuery, neo4jQuery, then sendJsonResponse with the response object and the neo4jQuery response', async () => {
-
 				const result = await searchController(stubs.request, stubs.response, stubs.next);
 
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
@@ -104,21 +79,14 @@ describe('Search controller', () => {
 						isArrayResult: true
 					}
 				);
-				assert.calledOnceWithExactly(
-					stubs.sendJsonResponse,
-					stubs.response, ['foo bar']
-				);
+				assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, ['foo bar']);
 				expect(result).to.equal('sendJsonResponse response');
 				assert.notCalled(stubs.next);
-
 			});
-
 		});
 
 		context('neo4jQuery throws an error', () => {
-
 			it('calls getSearchQuery, neo4jQuery, then next with the error object', async () => {
-
 				const neo4jQueryError = new Error('neo4jQuery error');
 				stubs.neo4jQueryModule.neo4jQuery.rejects(neo4jQueryError);
 
@@ -140,11 +108,7 @@ describe('Search controller', () => {
 				);
 				assert.notCalled(stubs.sendJsonResponse);
 				assert.calledOnceWithExactly(stubs.next, neo4jQueryError);
-
 			});
-
 		});
-
 	});
-
 });

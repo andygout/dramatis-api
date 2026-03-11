@@ -41,14 +41,13 @@ let peerGyntCharacter;
 let peerGyntBarbicanProduction;
 
 describe('Material with subsequent versions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Barbican Centre',
@@ -59,7 +58,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -70,7 +70,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Peer Gynt',
@@ -101,7 +102,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Peer Gynt',
@@ -144,7 +146,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Peer Gynt',
@@ -202,7 +205,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Ghosts',
@@ -224,7 +228,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Ghosts',
@@ -273,7 +278,8 @@ describe('Material with subsequent versions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Peer Gynt',
@@ -289,7 +295,8 @@ describe('Material with subsequent versions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Peer Gynt',
@@ -304,7 +311,8 @@ describe('Material with subsequent versions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Ghosts',
@@ -320,36 +328,31 @@ describe('Material with subsequent versions', () => {
 				}
 			});
 
-		peerGyntOriginalVersionMaterial = await request.execute(app)
+		peerGyntOriginalVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		peerGyntSubsequentVersion2Material = await request.execute(app)
+		peerGyntSubsequentVersion2Material = await request
+			.execute(app)
 			.get(`/materials/${PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID}`);
 
-		henrikIbsenPerson = await request.execute(app)
-			.get(`/people/${HENRIK_IBSEN_PERSON_UUID}`);
+		henrikIbsenPerson = await request.execute(app).get(`/people/${HENRIK_IBSEN_PERSON_UUID}`);
 
-		gerryBammanPerson = await request.execute(app)
-			.get(`/people/${GERRY_BAMMAN_PERSON_UUID}`);
+		gerryBammanPerson = await request.execute(app).get(`/people/${GERRY_BAMMAN_PERSON_UUID}`);
 
-		ibsenTheatreCompany = await request.execute(app)
-			.get(`/companies/${IBSEN_THEATRE_COMPANY_UUID}`);
+		ibsenTheatreCompany = await request.execute(app).get(`/companies/${IBSEN_THEATRE_COMPANY_UUID}`);
 
-		bammanTheatreCompany = await request.execute(app)
-			.get(`/companies/${BAMMAN_THEATRE_COMPANY_UUID}`);
+		bammanTheatreCompany = await request.execute(app).get(`/companies/${BAMMAN_THEATRE_COMPANY_UUID}`);
 
-		peerGyntCharacter = await request.execute(app)
-			.get(`/characters/${PEER_GYNT_CHARACTER_UUID}`);
+		peerGyntCharacter = await request.execute(app).get(`/characters/${PEER_GYNT_CHARACTER_UUID}`);
 
-		peerGyntBarbicanProduction = await request.execute(app)
+		peerGyntBarbicanProduction = await request
+			.execute(app)
 			.get(`/productions/${PEER_GYNT_BARBICAN_PRODUCTION_UUID}`);
-
 	});
 
 	describe('Peer Gynt (original version) (material)', () => {
-
 		it('includes subsequent versions of this material; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -419,11 +422,9 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterials } = peerGyntOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes writers of this material grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -446,11 +447,9 @@ describe('Material with subsequent versions', () => {
 			const { writingCredits } = peerGyntOriginalVersionMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
 
-		it('includes productions of material\'s subsequent versions', () => {
-
+		it("includes productions of material's subsequent versions", () => {
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -493,15 +492,11 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterialProductions } = peerGyntOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Peer Gynt (subsequent version) (material)', () => {
-
 		it('includes original version of this material, with corresponding writers', () => {
-
 			const expectedOriginalVersionMaterial = {
 				model: 'MATERIAL',
 				uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
@@ -532,11 +527,9 @@ describe('Material with subsequent versions', () => {
 			const { originalVersionMaterial } = peerGyntSubsequentVersion2Material.body;
 
 			expect(originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterial);
-
 		});
 
 		it('includes writers of this material grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -591,15 +584,11 @@ describe('Material with subsequent versions', () => {
 			const { writingCredits } = peerGyntSubsequentVersion2Material.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
-
 	});
 
 	describe('Henrik Ibsen (person)', () => {
-
 		it('includes materials they have written', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -658,11 +647,9 @@ describe('Material with subsequent versions', () => {
 			const { materials } = henrikIbsenPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes subsequent versions of materials they originally wrote; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -774,11 +761,9 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterials } = henrikIbsenPerson.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of materials they originally wrote', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -835,15 +820,11 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterialProductions } = henrikIbsenPerson.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Gerry Bamman (person)', () => {
-
 		it('includes materials they have written', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -966,15 +947,11 @@ describe('Material with subsequent versions', () => {
 			const { materials } = gerryBammanPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Ibsen Theatre Company (company)', () => {
-
 		it('includes materials it has written', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1033,11 +1010,9 @@ describe('Material with subsequent versions', () => {
 			const { materials } = ibsenTheatreCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes subsequent versions of materials it originally wrote; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1149,11 +1124,9 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterials } = ibsenTheatreCompany.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of materials they originally wrote', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1210,15 +1183,11 @@ describe('Material with subsequent versions', () => {
 			const { subsequentVersionMaterialProductions } = ibsenTheatreCompany.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Bamman Theatre Company (company)', () => {
-
 		it('includes materials it has written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1341,15 +1310,11 @@ describe('Material with subsequent versions', () => {
 			const { materials } = bammanTheatreCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Peer Gynt at Barbican (production)', () => {
-
 		it('includes in its material data the writers of the material', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
@@ -1412,15 +1377,11 @@ describe('Material with subsequent versions', () => {
 			const { material } = peerGyntBarbicanProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Peer Gynt (character)', () => {
-
 		it('includes in its material data the writers of the material', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1551,17 +1512,12 @@ describe('Material with subsequent versions', () => {
 			const { materials } = peerGyntCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('materials list', () => {
-
 		it('includes writers', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials');
+			const response = await request.execute(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -1773,9 +1729,6 @@ describe('Material with subsequent versions', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

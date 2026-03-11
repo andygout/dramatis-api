@@ -1,8 +1,7 @@
 import { getEditQuery } from './index.js';
 import { ACTIONS } from '../../../utils/constants.js';
 
-const getCreateUpdateQuery = action => {
-
+const getCreateUpdateQuery = (action) => {
 	const createUpdateQueryOpeningMap = {
 		[ACTIONS.CREATE]: `
 			CREATE (festival:Festival { uuid: $uuid, name: $name, differentiator: $differentiator })
@@ -46,14 +45,10 @@ const getCreateUpdateQuery = action => {
 
 		${getEditQuery()}
 	`;
-
 };
 
 const getCreateQuery = () => getCreateUpdateQuery(ACTIONS.CREATE);
 
 const getUpdateQuery = () => getCreateUpdateQuery(ACTIONS.UPDATE);
 
-export {
-	getCreateQuery,
-	getUpdateQuery
-};
+export { getCreateQuery, getUpdateQuery };

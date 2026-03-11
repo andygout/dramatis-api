@@ -19,14 +19,16 @@ const SUB_INKISTS_LTD_COMPANY_UUID = 'SUB_INKISTS_LTD_COMPANY_UUID';
 const BAR_JR_CHARACTER_UUID = 'BAR_JR_CHARACTER_UUID';
 const DURANDS_LINE_MATERIAL_UUID = 'DURANDS_LINE_MATERIAL_UUID';
 const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
-const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
+const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID =
+	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
 const MID_INKISTS_LTD_COMPANY_UUID = 'MID_INKISTS_LTD_COMPANY_UUID';
 const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
 const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
 const BLOOD_AND_GIFTS_MATERIAL_UUID = 'BLOOD_AND_GIFTS_MATERIAL_UUID';
 const MINISKIRTS_OF_KABUL_MATERIAL_UUID = 'MINISKIRTS_OF_KABUL_MATERIAL_UUID';
-const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
+const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID =
+	'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
 const HONEY_MATERIAL_UUID = 'HONEY_MATERIAL_UUID';
 const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID';
 const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID';
@@ -51,7 +53,8 @@ const THE_SUB_GUARDIAN_COMPANY_UUID = 'THE_SUB_GUARDIAN_COMPANY_UUID';
 const MICHAEL_BILLINGTON_JR_PERSON_UUID = 'MICHAEL_BILLINGTON_JR_PERSON_UUID';
 const DURANDS_LINE_RODA_PRODUCTION_UUID = 'DURANDS_LINE_PRODUCTION_UUID';
 const CAMPAIGN_RODA_PRODUCTION_UUID = 'CAMPAIGN_PRODUCTION_UUID';
-const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
+const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID =
+	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
 const NICOLAS_KENT_PERSON_UUID = 'NICOLAS_KENT_PERSON_UUID';
 const MID_TRICYCLE_THEATRE_COMPANY_UUID = 'MID_TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
 const ZOË_INGENHAAG_PERSON_UUID = 'ZOE_INGENHAAG_PERSON_UUID';
@@ -67,11 +70,14 @@ const MICHAEL_BILLINGTON_PERSON_UUID = 'MICHAEL_BILLINGTON_PERSON_UUID';
 const BLACK_TULIPS_RODA_PRODUCTION_UUID = 'BLACK_TULIPS_PRODUCTION_UUID';
 const BLOOD_AND_GIFTS_RODA_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_PRODUCTION_UUID';
 const MINISKIRTS_OF_KABUL_RODA_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_UUID';
-const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
+const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_RODA_PRODUCTION_UUID =
+	'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
 const HONEY_RODA_PRODUCTION_UUID = 'HONEY_PRODUCTION_UUID';
-const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
+const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_RODA_PRODUCTION_UUID =
+	'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
 const ON_THE_SIDE_OF_THE_ANGELS_RODA_PRODUCTION_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_PRODUCTION_UUID';
-const PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
+const PART_THREE_ENDURING_FREEDOM_1996_2009_RODA_PRODUCTION_UUID =
+	'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
 const THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_PRODUCTION_UUID';
 const NICOLAS_KENT_SR_PERSON_UUID = 'NICOLAS_KENT_SR_PERSON_UUID';
 const SUR_TRICYCLE_THEATRE_COMPANY_UUID = 'SUR_TRICYCLE_THEATRE_COMPANY_COMPANY_UUID';
@@ -90,15 +96,19 @@ const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
 const WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID = 'WORLD_POLITICS_FESTIVAL_FESTIVAL_UUID';
 const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = 'DURANDS_LINE_PRODUCTION_2_UUID';
 const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = 'CAMPAIGN_PRODUCTION_2_UUID';
-const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_2_UUID';
+const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID =
+	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_2_UUID';
 const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = 'BLACK_TULIPS_PRODUCTION_2_UUID';
 const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_PRODUCTION_2_UUID';
 const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_2_UUID';
-const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_2_UUID';
+const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID =
+	'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_2_UUID';
 const HONEY_TRICYCLE_PRODUCTION_UUID = 'HONEY_PRODUCTION_2_UUID';
-const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_2_UUID';
+const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID =
+	'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_2_UUID';
 const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_PRODUCTION_2_UUID';
-const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_2_UUID';
+const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID =
+	'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_2_UUID';
 const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_PRODUCTION_2_UUID';
 
 let theGreatGameAfghanistanRodaProduction;
@@ -131,14 +141,13 @@ let michaelBillingtonJrPerson;
 let barJrCharacter;
 
 describe('Production with sub-sub-productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Berkeley Repertory Theatre',
@@ -149,7 +158,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -158,7 +168,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -188,10 +199,11 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'Durand\'s Line',
+				name: "Durand's Line",
 				format: 'play',
 				year: '2009',
 				writingCredits: [
@@ -218,7 +230,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -248,7 +261,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -272,7 +286,7 @@ describe('Production with sub-sub-productions', () => {
 						name: 'Bugles at the Gates of Jalalabad'
 					},
 					{
-						name: 'Durand\'s Line'
+						name: "Durand's Line"
 					},
 					{
 						name: 'Campaign'
@@ -289,7 +303,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -319,7 +334,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -349,7 +365,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -379,7 +396,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -420,7 +438,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -450,7 +469,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -480,7 +500,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -510,7 +531,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -551,7 +573,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -592,7 +615,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -692,16 +716,17 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Durand\'s Line',
-				subtitle: 'Durand\'s Line subtitle',
+				name: "Durand's Line",
+				subtitle: "Durand's Line subtitle",
 				startDate: '2010-10-22',
 				pressDate: '2010-10-25',
 				endDate: '2010-11-07',
 				material: {
-					name: 'Durand\'s Line'
+					name: "Durand's Line"
 				},
 				venue: {
 					name: 'Roda Theatre'
@@ -792,7 +817,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -892,7 +918,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -1003,7 +1030,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -1103,7 +1131,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -1203,7 +1232,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -1303,7 +1333,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -1414,7 +1445,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -1514,7 +1546,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -1614,7 +1647,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -1714,7 +1748,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -1825,7 +1860,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -1936,7 +1972,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -1955,16 +1992,17 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Durand\'s Line',
-				subtitle: 'Durand\'s Line subtitle',
+				name: "Durand's Line",
+				subtitle: "Durand's Line subtitle",
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Durand\'s Line'
+					name: "Durand's Line"
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -1974,7 +2012,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -1993,7 +2032,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -2023,7 +2063,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -2042,7 +2083,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -2061,7 +2103,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -2080,7 +2123,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -2110,7 +2154,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -2129,7 +2174,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -2148,7 +2194,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -2167,7 +2214,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -2197,7 +2245,8 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -2227,96 +2276,91 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		theGreatGameAfghanistanRodaProduction = await request.execute(app)
+		theGreatGameAfghanistanRodaProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID}`);
 
-		partOneInvasionsAndIndependenceRodaProduction = await request.execute(app)
+		partOneInvasionsAndIndependenceRodaProduction = await request
+			.execute(app)
 			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID}`);
 
-		buglesAtTheGatesOfJalalabadRodaProduction = await request.execute(app)
+		buglesAtTheGatesOfJalalabadRodaProduction = await request
+			.execute(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID}`);
 
-		theGreatGameAfghanistanTricycleProduction = await request.execute(app)
+		theGreatGameAfghanistanTricycleProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
 
-		partOneInvasionsAndIndependenceTricycleProduction = await request.execute(app)
+		partOneInvasionsAndIndependenceTricycleProduction = await request
+			.execute(app)
 			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
 
-		buglesAtTheGatesOfJalalabadTricycleProduction = await request.execute(app)
+		buglesAtTheGatesOfJalalabadTricycleProduction = await request
+			.execute(app)
 			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
 
-		theGreatGameAfghanistanMaterial = await request.execute(app)
+		theGreatGameAfghanistanMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
 
-		partOneInvasionsAndIndependenceMaterial = await request.execute(app)
+		partOneInvasionsAndIndependenceMaterial = await request
+			.execute(app)
 			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
 
-		buglesAtTheGatesOfJalalabadMaterial = await request.execute(app)
+		buglesAtTheGatesOfJalalabadMaterial = await request
+			.execute(app)
 			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
 
-		ferdinandFooJrPerson = await request.execute(app)
-			.get(`/people/${FERDINAND_FOO_JR_PERSON_UUID}`);
+		ferdinandFooJrPerson = await request.execute(app).get(`/people/${FERDINAND_FOO_JR_PERSON_UUID}`);
 
-		subInkistsLtdCompany = await request.execute(app)
-			.get(`/companies/${SUB_INKISTS_LTD_COMPANY_UUID}`);
+		subInkistsLtdCompany = await request.execute(app).get(`/companies/${SUB_INKISTS_LTD_COMPANY_UUID}`);
 
-		berkeleyRepertoryTheatreVenue = await request.execute(app)
+		berkeleyRepertoryTheatreVenue = await request
+			.execute(app)
 			.get(`/venues/${BERKELEY_REPERTORY_THEATRE_VENUE_UUID}`);
 
-		rodaTheatreVenue = await request.execute(app)
-			.get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
+		rodaTheatreVenue = await request.execute(app).get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
 
-		afghanHistorySeason = await request.execute(app)
-			.get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
+		afghanHistorySeason = await request.execute(app).get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
 
-		afghanHistoryFestival2009 = await request.execute(app)
+		afghanHistoryFestival2009 = await request
+			.execute(app)
 			.get(`/festivals/${AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID}`);
 
-		nicolasKentJrPerson = await request.execute(app)
-			.get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
+		nicolasKentJrPerson = await request.execute(app).get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
 
-		subTricycleTheatreCompany = await request.execute(app)
-			.get(`/companies/${SUB_TRICYCLE_THEATRE_COMPANY_UUID}`);
+		subTricycleTheatreCompany = await request.execute(app).get(`/companies/${SUB_TRICYCLE_THEATRE_COMPANY_UUID}`);
 
-		zoëIngenhaagJrPerson = await request.execute(app)
-			.get(`/people/${ZOË_INGENHAAG_JR_PERSON_UUID}`);
+		zoëIngenhaagJrPerson = await request.execute(app).get(`/people/${ZOË_INGENHAAG_JR_PERSON_UUID}`);
 
-		rickWardenJrPerson = await request.execute(app)
-			.get(`/people/${RICK_WARDEN_JR_PERSON_UUID}`);
+		rickWardenJrPerson = await request.execute(app).get(`/people/${RICK_WARDEN_JR_PERSON_UUID}`);
 
-		howardHarrisonJrPerson = await request.execute(app)
-			.get(`/people/${HOWARD_HARRISON_JR_PERSON_UUID}`);
+		howardHarrisonJrPerson = await request.execute(app).get(`/people/${HOWARD_HARRISON_JR_PERSON_UUID}`);
 
-		subLightingDesignLtdCompany = await request.execute(app)
+		subLightingDesignLtdCompany = await request
+			.execute(app)
 			.get(`/companies/${SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
 
-		jackKnowlesJrPerson = await request.execute(app)
-			.get(`/people/${JACK_KNOWLES_JR_PERSON_UUID}`);
+		jackKnowlesJrPerson = await request.execute(app).get(`/people/${JACK_KNOWLES_JR_PERSON_UUID}`);
 
-		lizzieChapmanJrPerson = await request.execute(app)
-			.get(`/people/${LIZZIE_CHAPMAN_JR_PERSON_UUID}`);
+		lizzieChapmanJrPerson = await request.execute(app).get(`/people/${LIZZIE_CHAPMAN_JR_PERSON_UUID}`);
 
-		subStageManagementLtdCompany = await request.execute(app)
+		subStageManagementLtdCompany = await request
+			.execute(app)
 			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		charlottePadghamJrPerson = await request.execute(app)
-			.get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
+		charlottePadghamJrPerson = await request.execute(app).get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
 
-		theSubGuardianCompany = await request.execute(app)
-			.get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
+		theSubGuardianCompany = await request.execute(app).get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
 
-		michaelBillingtonJrPerson = await request.execute(app)
-			.get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
+		michaelBillingtonJrPerson = await request.execute(app).get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
 
-		barJrCharacter = await request.execute(app)
-			.get(`/characters/${BAR_JR_CHARACTER_UUID}`);
-
+		barJrCharacter = await request.execute(app).get(`/characters/${BAR_JR_CHARACTER_UUID}`);
 	});
 
 	describe('The Great Game: Afghanistan at Roda Theatre (production with sub-sub-productions that have a sur-venue)', () => {
-
 		it('includes its sub-productions and sub-sub-productions', () => {
-
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2563,15 +2607,15 @@ describe('Production with sub-sub-productions', () => {
 						{
 							model: 'PRODUCTION',
 							uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-							name: 'Durand\'s Line',
-							subtitle: 'Durand\'s Line subtitle',
+							name: "Durand's Line",
+							subtitle: "Durand's Line subtitle",
 							startDate: '2010-10-22',
 							pressDate: '2010-10-25',
 							endDate: '2010-11-07',
 							material: {
 								model: 'MATERIAL',
 								uuid: DURANDS_LINE_MATERIAL_UUID,
-								name: 'Durand\'s Line',
+								name: "Durand's Line",
 								format: 'play',
 								year: 2009,
 								surMaterial: {
@@ -4441,15 +4485,11 @@ describe('Production with sub-sub-productions', () => {
 			const { subProductions } = theGreatGameAfghanistanRodaProduction.body;
 
 			expect(subProductions).to.deep.equal(expectedSubProductions);
-
 		});
-
 	});
 
 	describe('Part One — Invasions and Independence (1842-1930) at Roda Theatre (production with sur-production and sub-productions that have a sur-venue)', () => {
-
 		it('includes The Great Game at Roda Theatre as its sur-production', () => {
-
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID,
@@ -4623,11 +4663,9 @@ describe('Production with sub-sub-productions', () => {
 			const { surProduction } = partOneInvasionsAndIndependenceRodaProduction.body;
 
 			expect(surProduction).to.deep.equal(expectedSurProduction);
-
 		});
 
 		it('includes its sub-productions', () => {
-
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
@@ -4810,15 +4848,15 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					subtitle: 'Durand\'s Line subtitle',
+					name: "Durand's Line",
+					subtitle: "Durand's Line subtitle",
 					startDate: '2010-10-22',
 					pressDate: '2010-10-25',
 					endDate: '2010-11-07',
 					material: {
 						model: 'MATERIAL',
 						uuid: DURANDS_LINE_MATERIAL_UUID,
-						name: 'Durand\'s Line',
+						name: "Durand's Line",
 						format: 'play',
 						year: 2009,
 						surMaterial: {
@@ -5168,15 +5206,11 @@ describe('Production with sub-sub-productions', () => {
 			const { subProductions } = partOneInvasionsAndIndependenceRodaProduction.body;
 
 			expect(subProductions).to.deep.equal(expectedSubProductions);
-
 		});
-
 	});
 
 	describe('Bugles at the Gates of Jalalabad at Roda Theatre', () => {
-
 		it('includes Part One — Invasions and Independence (1842-1930) at Roda Theatre as its sur-production and The Great Game: Afghanistan at Roda Theatre as its sur-sur-production', () => {
-
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID,
@@ -5522,15 +5556,11 @@ describe('Production with sub-sub-productions', () => {
 			const { surProduction } = buglesAtTheGatesOfJalalabadRodaProduction.body;
 
 			expect(surProduction).to.deep.equal(expectedSurProduction);
-
 		});
-
 	});
 
 	describe('The Great Game: Afghanistan at Tricycle Theatre (production with sub-sub-productions that do not have a sur-venue)', () => {
-
 		it('includes its sub-productions and sub-sub-productions', () => {
-
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
@@ -5650,15 +5680,15 @@ describe('Production with sub-sub-productions', () => {
 						{
 							model: 'PRODUCTION',
 							uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-							name: 'Durand\'s Line',
-							subtitle: 'Durand\'s Line subtitle',
+							name: "Durand's Line",
+							subtitle: "Durand's Line subtitle",
 							startDate: '2009-04-17',
 							pressDate: '2009-04-24',
 							endDate: '2009-06-14',
 							material: {
 								model: 'MATERIAL',
 								uuid: DURANDS_LINE_MATERIAL_UUID,
-								name: 'Durand\'s Line',
+								name: "Durand's Line",
 								format: 'play',
 								year: 2009,
 								surMaterial: {
@@ -6275,15 +6305,11 @@ describe('Production with sub-sub-productions', () => {
 			const { subProductions } = theGreatGameAfghanistanTricycleProduction.body;
 
 			expect(subProductions).to.deep.equal(expectedSubProductions);
-
 		});
-
 	});
 
 	describe('Part One — Invasions and Independence (1842-1930) at Tricycle Theatre (production with sur-production and sub-productions that do not have a sur-venue)', () => {
-
 		it('includes The Great Game at Tricycle Theatre as its sur-production', () => {
-
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID,
@@ -6342,11 +6368,9 @@ describe('Production with sub-sub-productions', () => {
 			const { surProduction } = partOneInvasionsAndIndependenceTricycleProduction.body;
 
 			expect(surProduction).to.deep.equal(expectedSurProduction);
-
 		});
 
 		it('includes its sub-productions', () => {
-
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
@@ -6414,15 +6438,15 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
-					subtitle: 'Durand\'s Line subtitle',
+					name: "Durand's Line",
+					subtitle: "Durand's Line subtitle",
 					startDate: '2009-04-17',
 					pressDate: '2009-04-24',
 					endDate: '2009-06-14',
 					material: {
 						model: 'MATERIAL',
 						uuid: DURANDS_LINE_MATERIAL_UUID,
-						name: 'Durand\'s Line',
+						name: "Durand's Line",
 						format: 'play',
 						year: 2009,
 						surMaterial: {
@@ -6542,15 +6566,11 @@ describe('Production with sub-sub-productions', () => {
 			const { subProductions } = partOneInvasionsAndIndependenceTricycleProduction.body;
 
 			expect(subProductions).to.deep.equal(expectedSubProductions);
-
 		});
-
 	});
 
 	describe('Bugles at the Gates of Jalalabad at Tricycle Theatre', () => {
-
 		it('includes Part One — Invasions and Independence (1842-1930) at Tricycle Theatre as its sur-production and The Great Game: Afghanistan at Tricycle Theatre as its sur-sur-production', () => {
-
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID,
@@ -6666,15 +6686,11 @@ describe('Production with sub-sub-productions', () => {
 			const { surProduction } = buglesAtTheGatesOfJalalabadTricycleProduction.body;
 
 			expect(surProduction).to.deep.equal(expectedSurProduction);
-
 		});
-
 	});
 
 	describe('The Great Game: Afghanistan (material)', () => {
-
 		it('includes its productions (but with no sur-productions as does not apply)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -6713,15 +6729,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = theGreatGameAfghanistanMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Part One — Invasions and Independence (1842-1930) (material)', () => {
-
 		it('includes its productions and their sur-productions', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -6770,15 +6782,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = partOneInvasionsAndIndependenceMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Bugles at the Gates of Jalalabad (material)', () => {
-
 		it('includes its productions and their sur-productions and sur-sur-productions', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -6835,15 +6843,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = buglesAtTheGatesOfJalalabadMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Ferdinand Foo Jr (person)', () => {
-
 		it('includes productions of materials have written, including the sur-production and sur-sur-production', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -7037,7 +7041,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7252,7 +7256,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7300,15 +7304,11 @@ describe('Production with sub-sub-productions', () => {
 			const { materialProductions } = ferdinandFooJrPerson.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
 	describe('Sub-Inkists Ltd (company)', () => {
-
 		it('includes productions of materials have written, including the sur-production and sur-sur-production', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -7502,7 +7502,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -7717,7 +7717,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7765,15 +7765,11 @@ describe('Production with sub-sub-productions', () => {
 			const { materialProductions } = subInkistsLtdCompany.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
 	describe('Berkeley Repertory Theatre (venue)', () => {
-
 		it('includes productions at this venue, including the specific sub-venue and corresponding sur-productions and sur-sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -7932,7 +7928,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: {
@@ -7978,15 +7974,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = berkeleyRepertoryTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Roda Theatre (venue)', () => {
-
 		it('includes productions at this venue and corresponding sur-productions and sur-sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -8117,7 +8109,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					subVenue: null,
@@ -8155,15 +8147,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = rodaTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Afghan History Season (season)', () => {
-
 		it('includes productions in this season and corresponding sur-productions and sur-sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -8357,7 +8345,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -8413,15 +8401,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = afghanHistorySeason.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Afghan History Festival (festival)', () => {
-
 		it('includes productions in this festival and corresponding sur-productions and sur-sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -8615,7 +8599,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -8671,15 +8655,11 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = afghanHistoryFestival2009.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Nicolas Kent Jr (person)', () => {
-
 		it('includes productions for which they have a producer credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -9048,7 +9028,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -9154,15 +9134,11 @@ describe('Production with sub-sub-productions', () => {
 			const { producerProductions } = nicolasKentJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Sub-Tricycle Theatre Company (company)', () => {
-
 		it('includes productions for which they have a producer credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -9531,7 +9507,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -9637,15 +9613,11 @@ describe('Production with sub-sub-productions', () => {
 			const { producerProductions } = subTricycleTheatreCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Zoë Ingenhaag Jr (person)', () => {
-
 		it('includes productions for which they have a producer credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -10014,7 +9986,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -10120,15 +10092,11 @@ describe('Production with sub-sub-productions', () => {
 			const { producerProductions } = zoëIngenhaagJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Rick Warden Jr (person)', () => {
-
 		it('includes productions for which they have a cast credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -10385,7 +10353,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -10459,15 +10427,11 @@ describe('Production with sub-sub-productions', () => {
 			const { castMemberProductions } = rickWardenJrPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Howard Harrison Jr (person)', () => {
-
 		it('includes productions for which they have a creative team credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -10808,7 +10772,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -10906,15 +10870,11 @@ describe('Production with sub-sub-productions', () => {
 			const { creativeProductions } = howardHarrisonJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Sub-Lighting Design Ltd (company)', () => {
-
 		it('includes productions for which they have a creative team credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -11248,7 +11208,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -11344,15 +11304,11 @@ describe('Production with sub-sub-productions', () => {
 			const { creativeProductions } = subLightingDesignLtdCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Jack Knowles Jr (person)', () => {
-
 		it('includes productions for which they have a creative team credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -11679,7 +11635,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -11773,15 +11729,11 @@ describe('Production with sub-sub-productions', () => {
 			const { creativeProductions } = jackKnowlesJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Lizzie Chapman Jr (person)', () => {
-
 		it('includes productions for which they have a crew credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -12122,7 +12074,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -12220,15 +12172,11 @@ describe('Production with sub-sub-productions', () => {
 			const { crewProductions } = lizzieChapmanJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Sub-Stage Management Ltd (company)', () => {
-
 		it('includes productions for which they have a crew credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -12562,7 +12510,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -12658,15 +12606,11 @@ describe('Production with sub-sub-productions', () => {
 			const { crewProductions } = subStageManagementLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Charlotte Padgham Jr (person)', () => {
-
 		it('includes productions for which they have a crew credit, including the sur-production and sur-sur-production', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -12993,7 +12937,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -13087,15 +13031,11 @@ describe('Production with sub-sub-productions', () => {
 			const { crewProductions } = charlottePadghamJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('The Sub-Guardian (company)', () => {
-
 		it('includes productions they have reviewed as a publication, including the sur-production and sur-sur-production', () => {
-
 			const expectedReviewPublicationProductions = [
 				{
 					model: 'PRODUCTION',
@@ -13359,7 +13299,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -13435,15 +13375,11 @@ describe('Production with sub-sub-productions', () => {
 			const { reviewPublicationProductions } = theSubGuardianCompany.body;
 
 			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
-
 		});
-
 	});
 
 	describe('Michael Billington Jr (person)', () => {
-
 		it('includes productions they have reviewed as a critic, including the sur-production and sur-sur-production', () => {
-
 			const expectedReviewCriticProductions = [
 				{
 					model: 'PRODUCTION',
@@ -13707,7 +13643,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -13783,15 +13719,11 @@ describe('Production with sub-sub-productions', () => {
 			const { reviewCriticProductions } = michaelBillingtonJrPerson.body;
 
 			expect(reviewCriticProductions).to.deep.equal(expectedReviewCriticProductions);
-
 		});
-
 	});
 
 	describe('Bar Jr (character)', () => {
-
 		it('includes productions in which character was portrayed, including the sur-production and sur-sur-production', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -14062,7 +13994,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -14140,17 +14072,12 @@ describe('Production with sub-sub-productions', () => {
 			const { productions } = barJrCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('productions list', () => {
-
 		it('includes productions and corresponding sur-productions and sur-sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
-
-			const response = await request.execute(app)
-				.get('/productions');
+			const response = await request.execute(app).get('/productions');
 
 			const expectedResponseBody = [
 				{
@@ -14345,7 +14272,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_RODA_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2010-10-22',
 					endDate: '2010-11-07',
 					venue: {
@@ -14560,7 +14487,7 @@ describe('Production with sub-sub-productions', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -14607,9 +14534,6 @@ describe('Production with sub-sub-productions', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

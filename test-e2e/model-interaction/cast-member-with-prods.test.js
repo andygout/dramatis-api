@@ -23,14 +23,13 @@ let cityOfAngelsPrinceOfWalesProduction;
 let enronChichesterFestivalProduction;
 
 describe('Cast member with multiple production credits', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Greeks',
@@ -55,7 +54,8 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'City of Angels',
@@ -80,7 +80,8 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Enron',
@@ -108,24 +109,23 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		susannahFellowsPerson = await request.execute(app)
-			.get(`/people/${SUSANNAH_FELLOWS_PERSON_UUID}`);
+		susannahFellowsPerson = await request.execute(app).get(`/people/${SUSANNAH_FELLOWS_PERSON_UUID}`);
 
-		theGreeksAldwychProduction = await request.execute(app)
+		theGreeksAldwychProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_GREEKS_ALDWYCH_PRODUCTION_UUID}`);
 
-		cityOfAngelsPrinceOfWalesProduction = await request.execute(app)
+		cityOfAngelsPrinceOfWalesProduction = await request
+			.execute(app)
 			.get(`/productions/${CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID}`);
 
-		enronChichesterFestivalProduction = await request.execute(app)
+		enronChichesterFestivalProduction = await request
+			.execute(app)
 			.get(`/productions/${ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID}`);
-
 	});
 
 	describe('Susannah Fellows (person)', () => {
-
 		it('includes productions in which cast member performed (including characters they portrayed)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -229,15 +229,11 @@ describe('Cast member with multiple production credits', () => {
 			const { castMemberProductions } = susannahFellowsPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('The Greeks at Aldwych Theatre (production)', () => {
-
 		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -265,15 +261,11 @@ describe('Cast member with multiple production credits', () => {
 			const { cast } = theGreeksAldwychProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('City of Angels at Prince of Wales Theatre (production)', () => {
-
 		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -301,15 +293,11 @@ describe('Cast member with multiple production credits', () => {
 			const { cast } = cityOfAngelsPrinceOfWalesProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Enron at Chichester Festival Theatre (production)', () => {
-
 		it('includes Susannah Fellows in its cast (including characters she portrayed)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -344,9 +332,6 @@ describe('Cast member with multiple production credits', () => {
 			const { cast } = enronChichesterFestivalProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
-
 });

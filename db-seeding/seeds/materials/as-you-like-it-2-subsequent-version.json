@@ -26,7 +26,7 @@
 	],
 	"characterGroups": [
 		{
-			"name" : "Exiled court of Duke Senior in the Forest of Arden",
+			"name": "Exiled court of Duke Senior in the Forest of Arden",
 			"characters": [
 				{
 					"name": "Duke Senior"
@@ -37,7 +37,7 @@
 			]
 		},
 		{
-			"name" : "Court of Duke Frederick",
+			"name": "Court of Duke Frederick",
 			"characters": [
 				{
 					"name": "Duke Frederick"
@@ -59,7 +59,7 @@
 			]
 		},
 		{
-			"name" : "Household of Sir Rowland de Boys",
+			"name": "Household of Sir Rowland de Boys",
 			"characters": [
 				{
 					"name": "Oliver",
@@ -72,7 +72,7 @@
 			]
 		},
 		{
-			"name" : "Country folk in the Forest of Arden",
+			"name": "Country folk in the Forest of Arden",
 			"characters": [
 				{
 					"name": "Audrey"

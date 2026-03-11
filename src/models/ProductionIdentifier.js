@@ -3,25 +3,17 @@ import Entity from './Entity.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class ProductionIdentifier extends Entity {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		this.uuid = getTrimmedOrEmptyString(props.uuid);
-
 	}
 
-	get model () {
-
+	get model() {
 		return MODELS.PRODUCTION_IDENTIFIER;
-
 	}
 
-	validateUuid () {
-
+	validateUuid() {
 		this.validateStringForProperty('uuid', { isRequired: false });
-
 	}
-
 }

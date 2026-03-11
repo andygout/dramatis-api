@@ -1,4 +1,5 @@
-export default () => [`
+export default () => [
+	`
 	MATCH (festivalSeries:FestivalSeries { uuid: $uuid })
 
 	OPTIONAL MATCH (festivalSeries)<-[:PART_OF_FESTIVAL_SERIES]-(festival:Festival)
@@ -17,4 +18,5 @@ export default () => [`
 				ELSE festival { model: 'FESTIVAL', .uuid, .name }
 			END
 		) AS festivals
-`];
+`
+];

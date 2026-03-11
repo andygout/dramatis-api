@@ -7,29 +7,21 @@ import { neo4jQuery } from '../neo4j/query.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class AwardCeremony extends Entity {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { award, categories } = props;
 
 		this.award = new Award(award);
 
-		this.categories = categories
-			? categories.map(category => new AwardCeremonyCategory(category))
-			: [];
-
+		this.categories = categories ? categories.map((category) => new AwardCeremonyCategory(category)) : [];
 	}
 
-	get model () {
-
+	get model() {
 		return MODELS.AWARD_CEREMONY;
-
 	}
 
-	runInputValidations () {
-
+	runInputValidations() {
 		this.validateName({ isRequired: true });
 
 		this.award.validateName({ isRequired: false });
@@ -41,19 +33,15 @@ export default class AwardCeremony extends Entity {
 		this.categories.forEach((category, index) =>
 			category.runInputValidations({ isDuplicate: duplicateCategoryIndices.includes(index) })
 		);
-
 	}
 
-	async runDatabaseValidations () {
-
+	async runDatabaseValidations() {
 		await this.validateAwardContextualUniquenessInDatabase();
 
 		for (const category of this.categories) await category.runDatabaseValidations();
-
 	}
 
-	async validateAwardContextualUniquenessInDatabase () {
-
+	async validateAwardContextualUniquenessInDatabase() {
 		const { getAwardContextualDuplicateRecordCheckQuery } = validationQueries;
 
 		const preparedParams = prepareAsParams(this);
@@ -71,7 +59,6 @@ export default class AwardCeremony extends Entity {
 		});
 
 		if (isDuplicateRecord) {
-
 			const uniquenessErrorMessage = 'Award ceremony already exists for given award';
 
 			this.addPropertyError('name', uniquenessErrorMessage);
@@ -79,9 +66,6 @@ export default class AwardCeremony extends Entity {
 			this.award.addPropertyError('name', uniquenessErrorMessage);
 
 			this.award.addPropertyError('differentiator', uniquenessErrorMessage);
-
 		}
-
 	}
-
 }

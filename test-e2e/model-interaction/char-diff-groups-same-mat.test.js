@@ -37,14 +37,13 @@ let alexPricePerson;
 let bebeSandersPerson;
 
 describe('Character with multiple appearances in different character groups of the same material', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: '3 Winters',
@@ -90,7 +89,8 @@ describe('Character with multiple appearances in different character groups of t
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: '3 Winters',
@@ -159,48 +159,35 @@ describe('Character with multiple appearances in different character groups of t
 				]
 			});
 
-		alisaKosCharacter = await request.execute(app)
-			.get(`/characters/${ALISA_KOS_CHARACTER_UUID}`);
+		alisaKosCharacter = await request.execute(app).get(`/characters/${ALISA_KOS_CHARACTER_UUID}`);
 
-		mašaKosCharacter = await request.execute(app)
-			.get(`/characters/${MAŠA_KOS_CHARACTER_UUID}`);
+		mašaKosCharacter = await request.execute(app).get(`/characters/${MAŠA_KOS_CHARACTER_UUID}`);
 
-		aleksanderKingCharacter = await request.execute(app)
-			.get(`/characters/${ALEKSANDER_KING_CHARACTER_UUID}`);
+		aleksanderKingCharacter = await request.execute(app).get(`/characters/${ALEKSANDER_KING_CHARACTER_UUID}`);
 
-		roseKingCharacter = await request.execute(app)
-			.get(`/characters/${ROSE_KING_CHARACTER_UUID}`);
+		roseKingCharacter = await request.execute(app).get(`/characters/${ROSE_KING_CHARACTER_UUID}`);
 
-		threeWintersMaterial = await request.execute(app)
-			.get(`/materials/${THREE_WINTERS_MATERIAL_UUID}`);
+		threeWintersMaterial = await request.execute(app).get(`/materials/${THREE_WINTERS_MATERIAL_UUID}`);
 
-		threeWintersNationalProduction = await request.execute(app)
+		threeWintersNationalProduction = await request
+			.execute(app)
 			.get(`/productions/${THREE_WINTERS_NATIONAL_PRODUCTION_UUID}`);
 
-		siobhanFinneranPerson = await request.execute(app)
-			.get(`/people/${SIOBHAN_FINNERAN_PERSON_UUID}`);
+		siobhanFinneranPerson = await request.execute(app).get(`/people/${SIOBHAN_FINNERAN_PERSON_UUID}`);
 
-		joHerbertPerson = await request.execute(app)
-			.get(`/people/${JO_HERBERT_PERSON_UUID}`);
+		joHerbertPerson = await request.execute(app).get(`/people/${JO_HERBERT_PERSON_UUID}`);
 
-		jamesLaurensonPerson = await request.execute(app)
-			.get(`/people/${JAMES_LAURENSON_PERSON_UUID}`);
+		jamesLaurensonPerson = await request.execute(app).get(`/people/${JAMES_LAURENSON_PERSON_UUID}`);
 
-		jodieMcNeePerson = await request.execute(app)
-			.get(`/people/${JODIE_MCNEE_PERSON_UUID}`);
+		jodieMcNeePerson = await request.execute(app).get(`/people/${JODIE_MCNEE_PERSON_UUID}`);
 
-		alexPricePerson = await request.execute(app)
-			.get(`/people/${ALEX_PRICE_PERSON_UUID}`);
+		alexPricePerson = await request.execute(app).get(`/people/${ALEX_PRICE_PERSON_UUID}`);
 
-		bebeSandersPerson = await request.execute(app)
-			.get(`/people/${BEBE_SANDERS_PERSON_UUID}`);
-
+		bebeSandersPerson = await request.execute(app).get(`/people/${BEBE_SANDERS_PERSON_UUID}`);
 	});
 
 	describe('Alisa Kos (character)', () => {
-
 		it('includes materials in which character is depicted, including the groups applied', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -228,11 +215,9 @@ describe('Character with multiple appearances in different character groups of t
 			const { materials } = alisaKosCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and in which group', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -273,15 +258,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { productions } = alisaKosCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Maša Kos (character)', () => {
-
 		it('includes materials in which character is depicted, including the groups applied', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -309,11 +290,9 @@ describe('Character with multiple appearances in different character groups of t
 			const { materials } = mašaKosCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and excluding group as not applied', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -345,15 +324,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { productions } = mašaKosCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Aleksander King (character)', () => {
-
 		it('includes materials in which character is depicted, including the groups applied', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -381,11 +356,9 @@ describe('Character with multiple appearances in different character groups of t
 			const { materials } = aleksanderKingCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and in which group', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -426,15 +399,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { productions } = aleksanderKingCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Rose King (character)', () => {
-
 		it('includes materials in which character is depicted, including the groups applied', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -457,11 +426,9 @@ describe('Character with multiple appearances in different character groups of t
 			const { materials } = roseKingCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and excluding group as not applied', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -493,15 +460,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { productions } = roseKingCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('3 Winters (material)', () => {
-
 		it('includes characters in their respective groups', () => {
-
 			const expectedCharacterGroups = [
 				{
 					model: 'CHARACTER_GROUP',
@@ -571,15 +534,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { characterGroups } = threeWintersMaterial.body;
 
 			expect(characterGroups).to.deep.equal(expectedCharacterGroups);
-
 		});
-
 	});
 
 	describe('3 Winters at National Theatre (production)', () => {
-
 		it('includes the portrayers of the characters in its cast with their corresponding qualifiers', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -670,15 +629,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { cast } = threeWintersNationalProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Siobhan Finneran (person)', () => {
-
 		it('includes in their production credits their portrayal of Maša Kos without a qualifier (as it is not required)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -708,15 +663,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { castMemberProductions } = siobhanFinneranPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Jo Herbert (person)', () => {
-
 		it('includes in their production credits their portrayal of Rose King without a qualifier (as it is not required)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -746,15 +697,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { castMemberProductions } = joHerbertPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('James Laurenson (person)', () => {
-
 		it('includes in their production credits their portrayal of Aleksander King with its corresponding qualifier (i.e. 1990)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -784,15 +731,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { castMemberProductions } = jamesLaurensonPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Jodie McNee (person)', () => {
-
 		it('includes in their production credits their portrayal of Alisa Kos with its corresponding qualifier (i.e. 2011)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -822,15 +765,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { castMemberProductions } = jodieMcNeePerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Alex Price (person)', () => {
-
 		it('includes in their production credits their portrayal of Aleksander King with its corresponding qualifier (i.e. 1945)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -860,15 +799,11 @@ describe('Character with multiple appearances in different character groups of t
 			const { castMemberProductions } = alexPricePerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Bebe Sanders (person)', () => {
-
 		it('includes in their production credits their portrayal of Alisa Kos with its corresponding qualifier (i.e. 1990)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -898,9 +833,6 @@ describe('Character with multiple appearances in different character groups of t
 			const { castMemberProductions } = bebeSandersPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

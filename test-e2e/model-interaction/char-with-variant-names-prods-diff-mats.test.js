@@ -19,7 +19,8 @@ const HAMLET_NATIONAL_PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
 const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 const RORY_KINNEAR_PERSON_UUID = 'RORY_KINNEAR_PERSON_UUID';
 const PATRICK_MALAHIDE_PERSON_UUID = 'PATRICK_MALAHIDE_PERSON_UUID';
-const ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID = 'ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_PRODUCTION_UUID';
+const ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID =
+	'ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_PRODUCTION_UUID';
 const THEATRE_ROYAL_HAYMARKET_VENUE_UUID = 'THEATRE_ROYAL_HAYMARKET_VENUE_UUID';
 const JACK_HAWKINS_PERSON_UUID = 'JACK_HAWKINS_PERSON_UUID';
 const JAMES_SIMMONS_PERSON_UUID = 'JAMES_SIMMONS_PERSON_UUID';
@@ -43,14 +44,13 @@ let donReillyPerson;
 let gabrieleCicirelloPerson;
 
 describe('Character with variant names from productions of different materials', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hamlet',
@@ -70,7 +70,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
@@ -90,7 +91,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fortinbras',
@@ -110,7 +112,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hamletmachine',
@@ -130,7 +133,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -165,7 +169,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
@@ -200,7 +205,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fortinbras',
@@ -235,7 +241,8 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamletmachine',
@@ -269,39 +276,33 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		hamletCharacter = await request.execute(app)
-			.get(`/characters/${HAMLET_CHARACTER_UUID}`);
+		hamletCharacter = await request.execute(app).get(`/characters/${HAMLET_CHARACTER_UUID}`);
 
-		hamletNationalProduction = await request.execute(app)
-			.get(`/productions/${HAMLET_NATIONAL_PRODUCTION_UUID}`);
+		hamletNationalProduction = await request.execute(app).get(`/productions/${HAMLET_NATIONAL_PRODUCTION_UUID}`);
 
-		rosencrantzAndGuildensternAreDeadHaymarketProduction = await request.execute(app)
+		rosencrantzAndGuildensternAreDeadHaymarketProduction = await request
+			.execute(app)
 			.get(`/productions/${ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID}`);
 
-		fortinbrasLaJollaProduction = await request.execute(app)
+		fortinbrasLaJollaProduction = await request
+			.execute(app)
 			.get(`/productions/${FORTINBRAS_LA_JOLLA_PRODUCTION_UUID}`);
 
-		hamletmachineTetroSanNicolòProduction = await request.execute(app)
+		hamletmachineTetroSanNicolòProduction = await request
+			.execute(app)
 			.get(`/productions/${HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID}`);
 
-		roryKinnearPerson = await request.execute(app)
-			.get(`/people/${RORY_KINNEAR_PERSON_UUID}`);
+		roryKinnearPerson = await request.execute(app).get(`/people/${RORY_KINNEAR_PERSON_UUID}`);
 
-		jackHawkinsPerson = await request.execute(app)
-			.get(`/people/${JACK_HAWKINS_PERSON_UUID}`);
+		jackHawkinsPerson = await request.execute(app).get(`/people/${JACK_HAWKINS_PERSON_UUID}`);
 
-		donReillyPerson = await request.execute(app)
-			.get(`/people/${DON_REILLY_PERSON_UUID}`);
+		donReillyPerson = await request.execute(app).get(`/people/${DON_REILLY_PERSON_UUID}`);
 
-		gabrieleCicirelloPerson = await request.execute(app)
-			.get(`/people/${GABRIELE_CICIRELLO_PERSON_UUID}`);
-
+		gabrieleCicirelloPerson = await request.execute(app).get(`/people/${GABRIELE_CICIRELLO_PERSON_UUID}`);
 	});
 
 	describe('Hamlet (character)', () => {
-
 		it('includes materials in which character is depicted', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -348,25 +349,17 @@ describe('Character with variant names from productions of different materials',
 			const { materials } = hamletCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
-
-			const expectedVariantNamedPortrayals = [
-				'Hamlet, Prince of Denmark',
-				'Prince Hamlet',
-				'Spirit of Hamlet'
-			];
+			const expectedVariantNamedPortrayals = ['Hamlet, Prince of Denmark', 'Prince Hamlet', 'Spirit of Hamlet'];
 
 			const { variantNamedPortrayals } = hamletCharacter.body;
 
 			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
-
 		});
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -473,15 +466,11 @@ describe('Character with variant names from productions of different materials',
 			const { productions } = hamletCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Hamlet at National Theatre (production)', () => {
-
 		it('includes cast with Rory Kinnear as Hamlet and Patrick Malahide as Claudius under variant names', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -516,15 +505,11 @@ describe('Character with variant names from productions of different materials',
 			const { cast } = hamletNationalProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Rosencrantz and Guildenstern Are Dead at Theatre Royal Haymarket (production)', () => {
-
 		it('includes cast with Jack Hawkins as Hamlet and James Simmons as Claudius under variant names', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -559,15 +544,11 @@ describe('Character with variant names from productions of different materials',
 			const { cast } = rosencrantzAndGuildensternAreDeadHaymarketProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Fortinbras at La Jolla Playhouse (production)', () => {
-
 		it('includes cast with Don Reilly as Hamlet and Jonathan Freeman as Claudius under variant names', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -602,15 +583,11 @@ describe('Character with variant names from productions of different materials',
 			const { cast } = fortinbrasLaJollaProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Hamletmachine at Teatro San Nicolò (production)', () => {
-
 		it('includes cast with Gabriele Cicirello as Hamlet and Renato Civello as Claudius under variant names', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -645,15 +622,11 @@ describe('Character with variant names from productions of different materials',
 			const { cast } = hamletmachineTetroSanNicolòProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Rory Kinnear (person)', () => {
-
 		it('includes production with their portrayal of Hamlet under a variant name (Hamlet, Prince of Denmark)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -683,15 +656,11 @@ describe('Character with variant names from productions of different materials',
 			const { castMemberProductions } = roryKinnearPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Jack Hawkins (person)', () => {
-
 		it('includes production with their portrayal of Hamlet under a variant name (Prince Hamlet)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -721,15 +690,11 @@ describe('Character with variant names from productions of different materials',
 			const { castMemberProductions } = jackHawkinsPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Don Reilly (person)', () => {
-
 		it('includes production with their portrayal of Hamlet under a variant name (Spirit of Hamlet)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -759,15 +724,11 @@ describe('Character with variant names from productions of different materials',
 			const { castMemberProductions } = donReillyPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Gabriele Cicirello (person)', () => {
-
 		it('includes production with their portrayal of Hamlet under a variant name (Hamlet, Prince of Denmark)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -797,9 +758,6 @@ describe('Character with variant names from productions of different materials',
 			const { castMemberProductions } = gabrieleCicirelloPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

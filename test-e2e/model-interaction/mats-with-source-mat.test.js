@@ -55,14 +55,13 @@ let theIndianBoyCharacter;
 let iagoCharacter;
 
 describe('Materials with source material', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Shakespeare Theatre',
@@ -73,10 +72,11 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				format: 'play',
 				year: '1595',
 				writingCredits: [
@@ -87,14 +87,15 @@ describe('Materials with source material', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Donkey Show',
@@ -117,14 +118,15 @@ describe('Materials with source material', () => {
 						entities: [
 							{
 								model: 'MATERIAL',
-								name: 'A Midsummer Night\'s Dream'
+								name: "A Midsummer Night's Dream"
 							}
 						]
 					}
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Indian Boy',
@@ -147,7 +149,7 @@ describe('Materials with source material', () => {
 						entities: [
 							{
 								model: 'MATERIAL',
-								name: 'A Midsummer Night\'s Dream'
+								name: "A Midsummer Night's Dream"
 							}
 						]
 					}
@@ -163,10 +165,11 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'Shakespeare\'s Villains',
+				name: "Shakespeare's Villains",
 				format: 'play',
 				year: '1998',
 				writingCredits: [
@@ -190,7 +193,7 @@ describe('Materials with source material', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -206,7 +209,8 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'A Moorish Captain',
@@ -221,14 +225,15 @@ describe('Materials with source material', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Othello',
@@ -243,7 +248,7 @@ describe('Materials with source material', () => {
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -268,22 +273,24 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				startDate: '2006-02-02',
 				pressDate: '2006-02-07',
 				endDate: '2006-02-25',
 				material: {
-					name: 'A Midsummer Night\'s Dream'
+					name: "A Midsummer Night's Dream"
 				},
 				venue: {
 					name: 'Novello Theatre'
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Donkey Show',
@@ -298,7 +305,8 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Indian Boy',
@@ -313,22 +321,24 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Shakespeare\'s Villains',
+				name: "Shakespeare's Villains",
 				startDate: '1998-06-30',
 				pressDate: '1998-07-07',
 				endDate: '1998-08-08',
 				material: {
-					name: 'Shakespeare\'s Villains'
+					name: "Shakespeare's Villains"
 				},
 				venue: {
 					name: 'Theatre Royal Haymarket'
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Othello',
@@ -343,60 +353,51 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		aMidsummerNightsDreamMaterial = await request.execute(app)
+		aMidsummerNightsDreamMaterial = await request
+			.execute(app)
 			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
-		theIndianBoyMaterial = await request.execute(app)
-			.get(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`);
+		theIndianBoyMaterial = await request.execute(app).get(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`);
 
-		shakespearesVillainsMaterial = await request.execute(app)
+		shakespearesVillainsMaterial = await request
+			.execute(app)
 			.get(`/materials/${SHAKESPEARES_VILLAINS_MATERIAL_UUID}`);
 
-		aMoorishCaptainMaterial = await request.execute(app)
-			.get(`/materials/${A_MOORISH_CAPTAIN_MATERIAL_UUID}`);
+		aMoorishCaptainMaterial = await request.execute(app).get(`/materials/${A_MOORISH_CAPTAIN_MATERIAL_UUID}`);
 
-		othelloMaterial = await request.execute(app)
-			.get(`/materials/${OTHELLO_MATERIAL_UUID}`);
+		othelloMaterial = await request.execute(app).get(`/materials/${OTHELLO_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await request.execute(app)
-			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
+		williamShakespearePerson = await request.execute(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		ronaMunroPerson = await request.execute(app)
-			.get(`/people/${RONA_MUNRO_PERSON_UUID}`);
+		ronaMunroPerson = await request.execute(app).get(`/people/${RONA_MUNRO_PERSON_UUID}`);
 
-		stevenBerkoffPerson = await request.execute(app)
-			.get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
+		stevenBerkoffPerson = await request.execute(app).get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
 
-		theKingsMenCompany = await request.execute(app)
-			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
+		theKingsMenCompany = await request.execute(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
-		royalShakespeareCompany = await request.execute(app)
-			.get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
+		royalShakespeareCompany = await request.execute(app).get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
-		eastProductionsCompany = await request.execute(app)
-			.get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
+		eastProductionsCompany = await request.execute(app).get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
 
-		theIndianBoyRoyalShakespeareTheatreProduction = await request.execute(app)
+		theIndianBoyRoyalShakespeareTheatreProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		shakespearesVillainsTheatreRoyalHaymarketProduction = await request.execute(app)
+		shakespearesVillainsTheatreRoyalHaymarketProduction = await request
+			.execute(app)
 			.get(`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`);
 
-		othelloDonmarWarehouseProduction = await request.execute(app)
+		othelloDonmarWarehouseProduction = await request
+			.execute(app)
 			.get(`/productions/${OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID}`);
 
-		theIndianBoyCharacter = await request.execute(app)
-			.get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
+		theIndianBoyCharacter = await request.execute(app).get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
 
-		iagoCharacter = await request.execute(app)
-			.get(`/characters/${IAGO_CHARACTER_UUID}`);
-
+		iagoCharacter = await request.execute(app).get(`/characters/${IAGO_CHARACTER_UUID}`);
 	});
 
-	describe('A Midsummer Night\'s Dream (material)', () => {
-
+	describe("A Midsummer Night's Dream (material)", () => {
 		it('includes materials that used it as source material, with corresponding writers', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -429,7 +430,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -446,7 +447,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -487,7 +488,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -504,7 +505,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -519,16 +520,14 @@ describe('Materials with source material', () => {
 			const { sourcingMaterials } = aMidsummerNightsDreamMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of material', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
 					venue: {
@@ -544,11 +543,9 @@ describe('Materials with source material', () => {
 			const { productions } = aMidsummerNightsDreamMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
 
 		it('includes productions of materials that used it as source material', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -587,15 +584,11 @@ describe('Materials with source material', () => {
 			const { sourcingMaterialProductions } = aMidsummerNightsDreamMaterial.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('The Indian Boy (material)', () => {
-
 		it('includes writers of this material and its source material grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -620,7 +613,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'MATERIAL',
 							uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-							name: 'A Midsummer Night\'s Dream',
+							name: "A Midsummer Night's Dream",
 							format: 'play',
 							year: 1595,
 							surMaterial: null,
@@ -637,7 +630,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'COMPANY',
 											uuid: THE_KINGS_MEN_COMPANY_UUID,
-											name: 'The King\'s Men'
+											name: "The King's Men"
 										}
 									]
 								}
@@ -650,15 +643,11 @@ describe('Materials with source material', () => {
 			const { writingCredits } = theIndianBoyMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
-
 	});
 
-	describe('Shakespeare\'s Villains (material)', () => {
-
+	describe("Shakespeare's Villains (material)", () => {
 		it('includes writers of this material and its source material grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -688,7 +677,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'COMPANY',
 							uuid: THE_KINGS_MEN_COMPANY_UUID,
-							name: 'The King\'s Men'
+							name: "The King's Men"
 						}
 					]
 				}
@@ -697,15 +686,11 @@ describe('Materials with source material', () => {
 			const { writingCredits } = shakespearesVillainsMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
-
 	});
 
 	describe('A Moorish Captain (material)', () => {
-
 		it('includes writers of this material and its source material grouped by their respective credits', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -727,7 +712,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -755,7 +740,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -770,15 +755,11 @@ describe('Materials with source material', () => {
 			const { sourcingMaterials } = aMoorishCaptainMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
-
 	});
 
 	describe('Othello (material)', () => {
-
 		it('includes writers of this material and its source material grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -792,7 +773,7 @@ describe('Materials with source material', () => {
 						{
 							model: 'COMPANY',
 							uuid: THE_KINGS_MEN_COMPANY_UUID,
-							name: 'The King\'s Men'
+							name: "The King's Men"
 						}
 					]
 				},
@@ -820,7 +801,7 @@ describe('Materials with source material', () => {
 										{
 											model: 'COMPANY',
 											uuid: THE_KINGS_MEN_COMPANY_UUID,
-											name: 'The King\'s Men'
+											name: "The King's Men"
 										}
 									]
 								}
@@ -833,11 +814,9 @@ describe('Materials with source material', () => {
 			const { writingCredits } = othelloMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
 
 		it('includes productions of material', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -858,15 +837,11 @@ describe('Materials with source material', () => {
 			const { productions } = othelloMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('William Shakespeare (person)', () => {
-
 		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -899,7 +874,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -916,7 +891,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -957,7 +932,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -974,7 +949,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -987,7 +962,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'MATERIAL',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					format: 'play',
 					year: 1998,
 					surMaterial: null,
@@ -1020,7 +995,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -1046,7 +1021,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -1074,7 +1049,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1089,11 +1064,9 @@ describe('Materials with source material', () => {
 			const { sourcingMaterials } = williamShakespearePerson.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used their work as source material (both specific and non-specific)', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1144,7 +1117,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					startDate: '1998-06-30',
 					endDate: '1998-08-08',
 					venue: {
@@ -1160,15 +1133,11 @@ describe('Materials with source material', () => {
 			const { sourcingMaterialProductions } = williamShakespearePerson.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
-	describe('The King\'s Men (company)', () => {
-
+	describe("The King's Men (company)", () => {
 		it('includes materials that used their work as source material (both specific and non-specific), with corresponding writers', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1201,7 +1170,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -1218,7 +1187,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1259,7 +1228,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -1276,7 +1245,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1289,7 +1258,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'MATERIAL',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					format: 'play',
 					year: 1998,
 					surMaterial: null,
@@ -1322,7 +1291,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -1348,7 +1317,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -1376,7 +1345,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1391,11 +1360,9 @@ describe('Materials with source material', () => {
 			const { sourcingMaterials } = theKingsMenCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used their work as source material (both specific and non-specific)', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1446,7 +1413,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					startDate: '1998-06-30',
 					endDate: '1998-08-08',
 					venue: {
@@ -1462,15 +1429,11 @@ describe('Materials with source material', () => {
 			const { sourcingMaterialProductions } = theKingsMenCompany.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Rona Munro (person)', () => {
-
 		it('includes materials they have written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1503,7 +1466,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -1520,7 +1483,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1535,15 +1498,11 @@ describe('Materials with source material', () => {
 			const { materials } = ronaMunroPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Royal Shakespeare Company (company)', () => {
-
 		it('includes materials it has written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1576,7 +1535,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -1593,7 +1552,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1608,20 +1567,16 @@ describe('Materials with source material', () => {
 			const { materials } = royalShakespeareCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Steven Berkoff (person)', () => {
-
 		it('includes materials they have written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					format: 'play',
 					year: 1998,
 					surMaterial: null,
@@ -1654,7 +1609,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -1665,20 +1620,16 @@ describe('Materials with source material', () => {
 			const { materials } = stevenBerkoffPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('East Productions (company)', () => {
-
 		it('includes materials it has written, with corresponding writers', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					format: 'play',
 					year: 1998,
 					surMaterial: null,
@@ -1711,7 +1662,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -1722,15 +1673,11 @@ describe('Materials with source material', () => {
 			const { materials } = eastProductionsCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('The Indian Boy at Royal Shakespeare Theatre (production)', () => {
-
 		it('includes in its material data the writers of the material and its source material', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_INDIAN_BOY_MATERIAL_UUID,
@@ -1762,7 +1709,7 @@ describe('Materials with source material', () => {
 							{
 								model: 'MATERIAL',
 								uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-								name: 'A Midsummer Night\'s Dream',
+								name: "A Midsummer Night's Dream",
 								format: 'play',
 								year: 1595,
 								surMaterial: null,
@@ -1779,7 +1726,7 @@ describe('Materials with source material', () => {
 											{
 												model: 'COMPANY',
 												uuid: THE_KINGS_MEN_COMPANY_UUID,
-												name: 'The King\'s Men'
+												name: "The King's Men"
 											}
 										]
 									}
@@ -1793,19 +1740,15 @@ describe('Materials with source material', () => {
 			const { material } = theIndianBoyRoyalShakespeareTheatreProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
-	describe('Shakespeare\'s Villains at Theatre Royal Haymarket (production)', () => {
-
+	describe("Shakespeare's Villains at Theatre Royal Haymarket (production)", () => {
 		it('includes in its material data the writers of the material and its source material', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-				name: 'Shakespeare\'s Villains',
+				name: "Shakespeare's Villains",
 				format: 'play',
 				year: 1998,
 				surMaterial: null,
@@ -1838,7 +1781,7 @@ describe('Materials with source material', () => {
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -1848,15 +1791,11 @@ describe('Materials with source material', () => {
 			const { material } = shakespearesVillainsTheatreRoyalHaymarketProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('Othello at Donmar Warehouse (production)', () => {
-
 		it('includes in its material data the writers of the material and its source material', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: OTHELLO_MATERIAL_UUID,
@@ -1877,7 +1816,7 @@ describe('Materials with source material', () => {
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -1905,7 +1844,7 @@ describe('Materials with source material', () => {
 											{
 												model: 'COMPANY',
 												uuid: THE_KINGS_MEN_COMPANY_UUID,
-												name: 'The King\'s Men'
+												name: "The King's Men"
 											}
 										]
 									}
@@ -1919,15 +1858,11 @@ describe('Materials with source material', () => {
 			const { material } = othelloDonmarWarehouseProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('The Indian Boy (character)', () => {
-
 		it('includes in its material data the writers of the material and its source material', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1960,7 +1895,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -1977,7 +1912,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -1993,20 +1928,16 @@ describe('Materials with source material', () => {
 			const { materials } = theIndianBoyCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Iago (character)', () => {
-
 		it('includes in its material data the writers of the material and its source material', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					format: 'play',
 					year: 1998,
 					surMaterial: null,
@@ -2039,7 +1970,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -2066,7 +1997,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -2094,7 +2025,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -2110,17 +2041,12 @@ describe('Materials with source material', () => {
 			const { materials } = iagoCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('materials list', () => {
-
 		it('includes writers of the materials and their corresponding source material', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials');
+			const response = await request.execute(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -2154,7 +2080,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -2171,7 +2097,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -2212,7 +2138,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'MATERIAL',
 									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-									name: 'A Midsummer Night\'s Dream',
+									name: "A Midsummer Night's Dream",
 									format: 'play',
 									year: 1595,
 									surMaterial: null,
@@ -2229,7 +2155,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -2242,7 +2168,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'MATERIAL',
 					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
-					name: 'Shakespeare\'s Villains',
+					name: "Shakespeare's Villains",
 					format: 'play',
 					year: 1998,
 					surMaterial: null,
@@ -2275,7 +2201,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -2301,7 +2227,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -2329,7 +2255,7 @@ describe('Materials with source material', () => {
 												{
 													model: 'COMPANY',
 													uuid: THE_KINGS_MEN_COMPANY_UUID,
-													name: 'The King\'s Men'
+													name: "The King's Men"
 												}
 											]
 										}
@@ -2342,7 +2268,7 @@ describe('Materials with source material', () => {
 				{
 					model: 'MATERIAL',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					format: 'play',
 					year: 1595,
 					surMaterial: null,
@@ -2359,7 +2285,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -2385,7 +2311,7 @@ describe('Materials with source material', () => {
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -2395,9 +2321,6 @@ describe('Materials with source material', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

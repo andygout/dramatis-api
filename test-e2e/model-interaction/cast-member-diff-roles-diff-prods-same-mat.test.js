@@ -28,14 +28,13 @@ let antonySherPerson;
 let grahamTurnerPerson;
 
 describe('Cast member performing different roles in different productions of same material', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Tragedy of King Lear',
@@ -53,7 +52,8 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'King Lear',
@@ -86,7 +86,8 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'King Lear',
@@ -119,33 +120,27 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		kingLearCharacter = await request.execute(app)
-			.get(`/characters/${KING_LEAR_CHARACTER_UUID}`);
+		kingLearCharacter = await request.execute(app).get(`/characters/${KING_LEAR_CHARACTER_UUID}`);
 
-		foolCharacter = await request.execute(app)
-			.get(`/characters/${FOOL_CHARACTER_UUID}`);
+		foolCharacter = await request.execute(app).get(`/characters/${FOOL_CHARACTER_UUID}`);
 
-		kingLearRoyalShakespeareProduction = await request.execute(app)
+		kingLearRoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		kingLearBarbicanProduction = await request.execute(app)
+		kingLearBarbicanProduction = await request
+			.execute(app)
 			.get(`/productions/${KING_LEAR_BARBICAN_PRODUCTION_UUID}`);
 
-		michaelGambonPerson = await request.execute(app)
-			.get(`/people/${MICHAEL_GAMBON_PERSON_UUID}`);
+		michaelGambonPerson = await request.execute(app).get(`/people/${MICHAEL_GAMBON_PERSON_UUID}`);
 
-		antonySherPerson = await request.execute(app)
-			.get(`/people/${ANTONY_SHER_PERSON_UUID}`);
+		antonySherPerson = await request.execute(app).get(`/people/${ANTONY_SHER_PERSON_UUID}`);
 
-		grahamTurnerPerson = await request.execute(app)
-			.get(`/people/${GRAHAM_TURNER_PERSON_UUID}`);
-
+		grahamTurnerPerson = await request.execute(app).get(`/people/${GRAHAM_TURNER_PERSON_UUID}`);
 	});
 
 	describe('King Lear (character)', () => {
-
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -202,15 +197,11 @@ describe('Cast member performing different roles in different productions of sam
 			const { productions } = kingLearCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Fool (character)', () => {
-
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -267,15 +258,11 @@ describe('Cast member performing different roles in different productions of sam
 			const { productions } = foolCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('King Lear at Royal Shakespeare Theatre (production)', () => {
-
 		it('includes cast with Michael Gambon as King Lear and Antony Sher as Fool', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -310,15 +297,11 @@ describe('Cast member performing different roles in different productions of sam
 			const { cast } = kingLearRoyalShakespeareProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('King Lear at Barbican (production)', () => {
-
 		it('includes cast with Antony Sher as King Lear and Graham Turner as Fool', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -353,15 +336,11 @@ describe('Cast member performing different roles in different productions of sam
 			const { cast } = kingLearBarbicanProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Michael Gambon (person)', () => {
-
 		it('includes production with his portrayal of King Lear', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -391,15 +370,11 @@ describe('Cast member performing different roles in different productions of sam
 			const { castMemberProductions } = michaelGambonPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Antony Sher (person)', () => {
-
 		it('includes production with his respective portrayals of King Lear and the Fool', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -452,15 +427,11 @@ describe('Cast member performing different roles in different productions of sam
 			const { castMemberProductions } = antonySherPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Graham Turner (person)', () => {
-
 		it('includes production with his portrayal of the Fool', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -490,9 +461,6 @@ describe('Cast member performing different roles in different productions of sam
 			const { castMemberProductions } = grahamTurnerPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

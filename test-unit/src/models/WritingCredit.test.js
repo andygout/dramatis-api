@@ -5,30 +5,22 @@ import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 import { Company, Person, SourceMaterial } from '../../../src/models/index.js';
 
 describe('WritingCredit model', () => {
-
 	let stubs;
 	let WritingCredit;
 
 	const CompanyStub = function () {
-
 		return createStubInstance(Company);
-
 	};
 
 	const SourceMaterialStub = function () {
-
 		return createStubInstance(SourceMaterial);
-
 	};
 
 	const PersonStub = function () {
-
 		return createStubInstance(Person);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateEntityIndices: stub().returns([])
@@ -50,66 +42,45 @@ describe('WritingCredit model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		describe('creditType property', () => {
-
 			it('assigns null if absent from props', async () => {
-
 				const instance = new WritingCredit({ name: '' });
 
 				expect(instance.creditType).to.equal(null);
-
 			});
 
 			it('assigns null if included in props but value is not an accepted credit type', async () => {
-
 				const instance = new WritingCredit({ name: '', creditType: 'foobar' });
 
 				expect(instance.creditType).to.equal(null);
-
 			});
 
 			it('assigns value if included in props and is an accepted credit type', async () => {
-
-				const creditTypes = [
-					'NON_SPECIFIC_SOURCE_MATERIAL',
-					'RIGHTS_GRANTOR'
-				];
+				const creditTypes = ['NON_SPECIFIC_SOURCE_MATERIAL', 'RIGHTS_GRANTOR'];
 
 				for (const creditType of creditTypes) {
-
 					const instance = new WritingCredit({ name: '', creditType });
 
 					expect(instance.creditType).to.equal(creditType);
-
 				}
-
 			});
-
 		});
 
 		describe('entities property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new WritingCredit({ name: 'version by' });
 
 				expect(instance.entities).to.deep.equal([]);
-
 			});
 
 			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new WritingCredit({
 					name: 'version by',
 					entities: [
@@ -122,7 +93,7 @@ describe('WritingCredit model', () => {
 						},
 						{
 							model: 'MATERIAL',
-							name: 'A Midsummer Night\'s Dream'
+							name: "A Midsummer Night's Dream"
 						},
 						{
 							name: ''
@@ -159,17 +130,12 @@ describe('WritingCredit model', () => {
 				expect(instance.entities[6] instanceof Person).to.be.true;
 				expect(instance.entities[7] instanceof Company).to.be.true;
 				expect(instance.entities[8] instanceof SourceMaterial).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
@@ -182,7 +148,7 @@ describe('WritingCredit model', () => {
 					},
 					{
 						model: 'MATERIAL',
-						name: 'A Midsummer Night\'s Dream'
+						name: "A Midsummer Night's Dream"
 					}
 				]
 			});
@@ -190,9 +156,10 @@ describe('WritingCredit model', () => {
 			spy(instance, 'validateName');
 			spy(instance, 'validateUniquenessInGroup');
 
-			instance.runInputValidations(
-				{ isDuplicate: false, subject: { name: 'The Indian Boy', differentiator: '1' } }
-			);
+			instance.runInputValidations({
+				isDuplicate: false,
+				subject: { name: 'The Indian Boy', differentiator: '1' }
+			});
 
 			assert.callOrder(
 				instance.validateName,
@@ -210,10 +177,7 @@ describe('WritingCredit model', () => {
 				instance.entities[2].validateNoAssociationWithSelf
 			);
 			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
-				instance.entities
-			);
+			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices, instance.entities);
 			assert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
 			assert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
@@ -225,19 +189,15 @@ describe('WritingCredit model', () => {
 			assert.calledOnceWithExactly(instance.entities[2].validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.entities[2].validateDifferentiator);
 			assert.calledOnceWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnceWithExactly(
-				instance.entities[2].validateNoAssociationWithSelf,
-				{ name: 'The Indian Boy', differentiator: '1' }
-			);
-
+			assert.calledOnceWithExactly(instance.entities[2].validateNoAssociationWithSelf, {
+				name: 'The Indian Boy',
+				differentiator: '1'
+			});
 		});
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
-		it('calls associated subMaterials\' runDatabaseValidations method', async () => {
-
+		it("calls associated subMaterials' runDatabaseValidations method", async () => {
 			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
@@ -250,7 +210,7 @@ describe('WritingCredit model', () => {
 					},
 					{
 						model: 'MATERIAL',
-						name: 'A Midsummer Night\'s Dream'
+						name: "A Midsummer Night's Dream"
 					}
 				]
 			});
@@ -259,13 +219,9 @@ describe('WritingCredit model', () => {
 
 			assert.notCalled(instance.entities[0].runDatabaseValidations);
 			assert.notCalled(instance.entities[1].runDatabaseValidations);
-			assert.calledOnceWithExactly(
-				instance.entities[2].runDatabaseValidations,
-				{ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-
+			assert.calledOnceWithExactly(instance.entities[2].runDatabaseValidations, {
+				subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
 		});
-
 	});
-
 });

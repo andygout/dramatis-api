@@ -26,14 +26,13 @@ let juliusCaesarRoyalShakespeareProduction;
 let troilusAndCressidaKingsProduction;
 
 describe('Festival with multiple productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Antony and Cleopatra',
@@ -48,7 +47,8 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -63,7 +63,8 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Romeo and Juliet',
@@ -78,7 +79,8 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2006',
@@ -87,41 +89,42 @@ describe('Festival with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Troilus and Cressida',
 				startDate: '2006-08-14',
 				endDate: '2006-08-26',
 				venue: {
-					name: 'King\'s Theatre'
+					name: "King's Theatre"
 				},
 				festival: {
 					name: '2006'
 				}
 			});
 
-		theCompleteWorksFestival = await request.execute(app)
-			.get(`/festivals/${THE_COMPLETE_WORKS_FESTIVAL_UUID}`);
+		theCompleteWorksFestival = await request.execute(app).get(`/festivals/${THE_COMPLETE_WORKS_FESTIVAL_UUID}`);
 
-		romeoAndJulietRoyalShakespeareProduction = await request.execute(app)
+		romeoAndJulietRoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		antonyAndCleopatraSwanProduction = await request.execute(app)
+		antonyAndCleopatraSwanProduction = await request
+			.execute(app)
 			.get(`/productions/${ANTONY_AND_CLEOPATRA_SWAN_PRODUCTION_UUID}`);
 
-		juliusCaesarRoyalShakespeareProduction = await request.execute(app)
+		juliusCaesarRoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${JULIUS_CAESAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		troilusAndCressidaKingsProduction = await request.execute(app)
+		troilusAndCressidaKingsProduction = await request
+			.execute(app)
 			.get(`/productions/${TROILUS_AND_CRESSIDA_KINGS_PRODUCTION_UUID}`);
-
 	});
 
 	describe('The Complete Works (festival)', () => {
-
 		it('includes productions in this festival', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -170,15 +173,11 @@ describe('Festival with multiple productions', () => {
 			const { productions } = theCompleteWorksFestival.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Romeo and Juliet at Royal Shakespeare Theatre (production)', () => {
-
 		it('attributes festival as The Complete Works', () => {
-
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
@@ -189,15 +188,11 @@ describe('Festival with multiple productions', () => {
 			const { festival } = romeoAndJulietRoyalShakespeareProduction.body;
 
 			expect(festival).to.deep.equal(expectedFestival);
-
 		});
-
 	});
 
 	describe('Antony and Cleopatra at Swan Theatre (production)', () => {
-
 		it('attributes festival as The Complete Works', () => {
-
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
@@ -208,15 +203,11 @@ describe('Festival with multiple productions', () => {
 			const { festival } = antonyAndCleopatraSwanProduction.body;
 
 			expect(festival).to.deep.equal(expectedFestival);
-
 		});
-
 	});
 
 	describe('Julius Caesar at Royal Shakespeare Theatre (production)', () => {
-
 		it('attributes festival as The Complete Works', () => {
-
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: THE_COMPLETE_WORKS_FESTIVAL_UUID,
@@ -227,15 +218,11 @@ describe('Festival with multiple productions', () => {
 			const { festival } = juliusCaesarRoyalShakespeareProduction.body;
 
 			expect(festival).to.deep.equal(expectedFestival);
-
 		});
-
 	});
 
-	describe('Troilus and Cressida at King\'s Theatre (production)', () => {
-
+	describe("Troilus and Cressida at King's Theatre (production)", () => {
 		it('attributes festival as The Complete Works', () => {
-
 			const expectedFestival = {
 				model: 'FESTIVAL',
 				uuid: EDINBURGH_INTERNATIONAL_FESTIVAL_2006_FESTIVAL_UUID,
@@ -250,9 +237,6 @@ describe('Festival with multiple productions', () => {
 			const { festival } = troilusAndCressidaKingsProduction.body;
 
 			expect(festival).to.deep.equal(expectedFestival);
-
 		});
-
 	});
-
 });
