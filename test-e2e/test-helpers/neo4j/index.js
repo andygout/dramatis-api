@@ -5,11 +5,4 @@ import deleteRelationship from './delete-relationship.js';
 import isNodeExistent from './is-node-existent.js';
 import purgeDatabase from './purge-database.js';
 
-export {
-	countNodesWithLabel,
-	createNode,
-	createRelationship,
-	deleteRelationship,
-	isNodeExistent,
-	purgeDatabase
-};
+export { countNodesWithLabel, createNode, createRelationship, deleteRelationship, isNodeExistent, purgeDatabase };

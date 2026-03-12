@@ -49,14 +49,13 @@ let royalCourtTheatreCompany;
 let playfulProductionsCompany;
 
 describe('Productions with producers', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -73,7 +72,8 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hangmen',
@@ -81,7 +81,7 @@ describe('Productions with producers', () => {
 				pressDate: '2015-12-07',
 				endDate: '2016-03-05',
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				},
 				producerCredits: [
 					{
@@ -157,7 +157,8 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'White Pearl',
@@ -241,7 +242,8 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Pah-La',
@@ -331,7 +333,8 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Lights Out',
@@ -389,45 +392,39 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		hangmenWyndhamsProduction = await request.execute(app)
-			.get(`/productions/${HANGMEN_WYNDHAMS_PRODUCTION_UUID}`);
+		hangmenWyndhamsProduction = await request.execute(app).get(`/productions/${HANGMEN_WYNDHAMS_PRODUCTION_UUID}`);
 
-		whitePearlJerwoodTheatreDownstairsProduction = await request.execute(app)
+		whitePearlJerwoodTheatreDownstairsProduction = await request
+			.execute(app)
 			.get(`/productions/${WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID}`);
 
-		pahLaJerwoodTheatreUpstairsProduction = await request.execute(app)
+		pahLaJerwoodTheatreUpstairsProduction = await request
+			.execute(app)
 			.get(`/productions/${PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
 
-		lightsOutTheSiteProduction = await request.execute(app)
+		lightsOutTheSiteProduction = await request
+			.execute(app)
 			.get(`/productions/${LIGHTS_OUT_THE_SITE_PRODUCTION_UUID}`);
 
-		robertFoxPerson = await request.execute(app)
-			.get(`/people/${ROBERT_FOX_PERSON_UUID}`);
+		robertFoxPerson = await request.execute(app).get(`/people/${ROBERT_FOX_PERSON_UUID}`);
 
-		ericAbrahamPerson = await request.execute(app)
-			.get(`/people/${ERIC_ABRAHAM_PERSON_UUID}`);
+		ericAbrahamPerson = await request.execute(app).get(`/people/${ERIC_ABRAHAM_PERSON_UUID}`);
 
-		matthewByamShawPerson = await request.execute(app)
-			.get(`/people/${MATTHEW_BYAM_SHAW_PERSON_UUID}`);
+		matthewByamShawPerson = await request.execute(app).get(`/people/${MATTHEW_BYAM_SHAW_PERSON_UUID}`);
 
-		rogerChapmanPerson = await request.execute(app)
-			.get(`/people/${ROGER_CHAPMAN_PERSON_UUID}`);
+		rogerChapmanPerson = await request.execute(app).get(`/people/${ROGER_CHAPMAN_PERSON_UUID}`);
 
-		soniaFriedmanProductionsCompany = await request.execute(app)
+		soniaFriedmanProductionsCompany = await request
+			.execute(app)
 			.get(`/companies/${SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID}`);
 
-		royalCourtTheatreCompany = await request.execute(app)
-			.get(`/companies/${ROYAL_COURT_THEATRE_COMPANY_UUID}`);
+		royalCourtTheatreCompany = await request.execute(app).get(`/companies/${ROYAL_COURT_THEATRE_COMPANY_UUID}`);
 
-		playfulProductionsCompany = await request.execute(app)
-			.get(`/companies/${PLAYFUL_PRODUCTIONS_COMPANY_UUID}`);
-
+		playfulProductionsCompany = await request.execute(app).get(`/companies/${PLAYFUL_PRODUCTIONS_COMPANY_UUID}`);
 	});
 
-	describe('Hangmen at Wyndham\'s Theatre (production)', () => {
-
+	describe("Hangmen at Wyndham's Theatre (production)", () => {
 		it('includes producer credits', () => {
-
 			const expectedProducerCredits = [
 				{
 					model: 'PRODUCER_CREDIT',
@@ -535,15 +532,11 @@ describe('Productions with producers', () => {
 			const { producerCredits } = hangmenWyndhamsProduction.body;
 
 			expect(producerCredits).to.deep.equal(expectedProducerCredits);
-
 		});
-
 	});
 
 	describe('White Pearl at Jerwood Theatre Downstairs (production)', () => {
-
 		it('includes producer credits', () => {
-
 			const expectedProducerCredits = [
 				{
 					model: 'PRODUCER_CREDIT',
@@ -650,15 +643,11 @@ describe('Productions with producers', () => {
 			const { producerCredits } = whitePearlJerwoodTheatreDownstairsProduction.body;
 
 			expect(producerCredits).to.deep.equal(expectedProducerCredits);
-
 		});
-
 	});
 
 	describe('Pah-La at Jerwood Theatre Upstairs (production)', () => {
-
 		it('includes producer credits', () => {
-
 			const expectedProducerCredits = [
 				{
 					model: 'PRODUCER_CREDIT',
@@ -772,15 +761,11 @@ describe('Productions with producers', () => {
 			const { producerCredits } = pahLaJerwoodTheatreUpstairsProduction.body;
 
 			expect(producerCredits).to.deep.equal(expectedProducerCredits);
-
 		});
-
 	});
 
 	describe('Lights Out at The Site (production)', () => {
-
 		it('includes producer credits', () => {
-
 			const expectedProducerCredits = [
 				{
 					model: 'PRODUCER_CREDIT',
@@ -853,15 +838,11 @@ describe('Productions with producers', () => {
 			const { producerCredits } = lightsOutTheSiteProduction.body;
 
 			expect(producerCredits).to.deep.equal(expectedProducerCredits);
-
 		});
-
 	});
 
 	describe('Robert Fox (person)', () => {
-
 		it('includes productions for which they have a producer credit', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1119,7 +1100,7 @@ describe('Productions with producers', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -1232,15 +1213,11 @@ describe('Productions with producers', () => {
 			const { producerProductions } = robertFoxPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Eric Abraham (person)', () => {
-
 		it('includes productions for which they have a producer credit, included co-credited entities', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1584,7 +1561,7 @@ describe('Productions with producers', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -1697,15 +1674,11 @@ describe('Productions with producers', () => {
 			const { producerProductions } = ericAbrahamPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Matthew Byam Shaw (person)', () => {
-
 		it('includes productions for which they have a producer credit, included co-credited entities', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2049,7 +2022,7 @@ describe('Productions with producers', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -2162,15 +2135,11 @@ describe('Productions with producers', () => {
 			const { producerProductions } = matthewByamShawPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Roger Chapman (person)', () => {
-
 		it('includes productions for which they have a producer credit, included co-credited entities', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2304,15 +2273,11 @@ describe('Productions with producers', () => {
 			const { producerProductions } = rogerChapmanPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Sonia Friedman Productions (company)', () => {
-
 		it('includes productions for which they have a producer credit', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2570,7 +2535,7 @@ describe('Productions with producers', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -2683,15 +2648,11 @@ describe('Productions with producers', () => {
 			const { producerProductions } = soniaFriedmanProductionsCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Royal Court Theatre (company)', () => {
-
 		it('includes productions for which they have a producer credit', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3035,7 +2996,7 @@ describe('Productions with producers', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -3148,15 +3109,11 @@ describe('Productions with producers', () => {
 			const { producerProductions } = royalCourtTheatreCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Playful Productions (company)', () => {
-
 		it('includes productions for which they have a producer credit, included co-credited entities', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3500,7 +3457,7 @@ describe('Productions with producers', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -3613,9 +3570,6 @@ describe('Productions with producers', () => {
 			const { producerProductions } = playfulProductionsCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
-
 });

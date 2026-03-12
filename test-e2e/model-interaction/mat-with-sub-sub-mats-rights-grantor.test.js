@@ -19,7 +19,8 @@ const THE_TOLKIEN_ESTATE_COMPANY_UUID = 'THE_TOLKIEN_ESTATE_COMPANY_UUID';
 const BAILLIE_TOLKIEN_PERSON_UUID = 'BAILLIE_TOLKIEN_PERSON_UUID';
 const THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_MATERIAL_2_UUID';
 const TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID = 'TOLKIENS_LEGENDARIUM_MATERIAL_2_UUID';
-const THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'THE_FELLOWSHIP_OF_THE_RING_PRODUCTION_UUID';
+const THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID =
+	'THE_FELLOWSHIP_OF_THE_RING_PRODUCTION_UUID';
 const THEATRE_ROYAL_DRURY_LANE_VENUE_UUID = 'THEATRE_ROYAL_DRURY_LANE_VENUE_UUID';
 const THE_LORD_OF_THE_RINGS_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'THE_LORD_OF_THE_RINGS_PRODUCTION_UUID';
 const TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID = 'TOLKIENS_LEGENDARIUM_PRODUCTION_UUID';
@@ -32,14 +33,13 @@ let theTolkienEstateCompany;
 let baillieTolkienPerson;
 
 describe('Material with sub-sub-materials and rights grantor credits thereof', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -57,7 +57,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lord of the Rings',
@@ -81,10 +82,11 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'Tolkien\'s Legendarium',
+				name: "Tolkien's Legendarium",
 				differentiator: '1',
 				format: 'body of writing',
 				year: '1977',
@@ -105,7 +107,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -146,7 +149,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lord of the Rings',
@@ -180,10 +184,11 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'Tolkien\'s Legendarium',
+				name: "Tolkien's Legendarium",
 				differentiator: '2',
 				format: 'collection of plays',
 				year: '2007',
@@ -200,7 +205,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						entities: [
 							{
 								model: 'MATERIAL',
-								name: 'Tolkien\'s Legendarium',
+								name: "Tolkien's Legendarium",
 								differentiator: '1'
 							}
 						]
@@ -214,7 +219,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -230,7 +236,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lord of the Rings',
@@ -251,15 +258,16 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Tolkien\'s Legendarium',
+				name: "Tolkien's Legendarium",
 				startDate: '2007-05-09',
 				pressDate: '2007-06-19',
 				endDate: '2008-07-20',
 				material: {
-					name: 'Tolkien\'s Legendarium',
+					name: "Tolkien's Legendarium",
 					differentiator: '2'
 				},
 				venue: {
@@ -272,7 +280,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -288,7 +297,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lord of the Rings',
@@ -309,15 +319,16 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Tolkien\'s Legendarium',
+				name: "Tolkien's Legendarium",
 				startDate: '2023-07-25',
 				pressDate: '2023-08-01',
 				endDate: '2023-10-15',
 				material: {
-					name: 'Tolkien\'s Legendarium',
+					name: "Tolkien's Legendarium",
 					differentiator: '2'
 				},
 				venue: {
@@ -330,18 +341,13 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		theTolkienEstateCompany = await request.execute(app)
-			.get(`/companies/${THE_TOLKIEN_ESTATE_COMPANY_UUID}`);
+		theTolkienEstateCompany = await request.execute(app).get(`/companies/${THE_TOLKIEN_ESTATE_COMPANY_UUID}`);
 
-		baillieTolkienPerson = await request.execute(app)
-			.get(`/people/${BAILLIE_TOLKIEN_PERSON_UUID}`);
-
+		baillieTolkienPerson = await request.execute(app).get(`/people/${BAILLIE_TOLKIEN_PERSON_UUID}`);
 	});
 
 	describe('The Tolkien Estate (company)', () => {
-
 		it('includes materials for which it has a rights grantor credit, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
@@ -356,7 +362,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
-							name: 'Tolkien\'s Legendarium'
+							name: "Tolkien's Legendarium"
 						}
 					},
 					writingCredits: [
@@ -388,7 +394,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 										surMaterial: {
 											model: 'MATERIAL',
 											uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
-											name: 'Tolkien\'s Legendarium'
+											name: "Tolkien's Legendarium"
 										}
 									},
 									writingCredits: [
@@ -430,11 +436,9 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const { rightsGrantorMaterials } = theTolkienEstateCompany.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -455,7 +459,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_PRODUCTION_UUID,
-							name: 'Tolkien\'s Legendarium'
+							name: "Tolkien's Legendarium"
 						}
 					}
 				},
@@ -478,7 +482,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
-							name: 'Tolkien\'s Legendarium'
+							name: "Tolkien's Legendarium"
 						}
 					}
 				}
@@ -487,15 +491,11 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const { rightsGrantorMaterialProductions } = theTolkienEstateCompany.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
 
 	describe('Baillie Tolkien (person)', () => {
-
 		it('includes materials for which they have a rights grantor credit, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
@@ -510,7 +510,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						surMaterial: {
 							model: 'MATERIAL',
 							uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
-							name: 'Tolkien\'s Legendarium'
+							name: "Tolkien's Legendarium"
 						}
 					},
 					writingCredits: [
@@ -542,7 +542,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 										surMaterial: {
 											model: 'MATERIAL',
 											uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
-											name: 'Tolkien\'s Legendarium'
+											name: "Tolkien's Legendarium"
 										}
 									},
 									writingCredits: [
@@ -584,11 +584,9 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const { rightsGrantorMaterials } = baillieTolkienPerson.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -609,7 +607,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: TOLKIENS_LEGENDARIUM_WATERMILL_PRODUCTION_UUID,
-							name: 'Tolkien\'s Legendarium'
+							name: "Tolkien's Legendarium"
 						}
 					}
 				},
@@ -632,7 +630,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						surProduction: {
 							model: 'PRODUCTION',
 							uuid: TOLKIENS_LEGENDARIUM_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID,
-							name: 'Tolkien\'s Legendarium'
+							name: "Tolkien's Legendarium"
 						}
 					}
 				}
@@ -641,9 +639,6 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const { rightsGrantorMaterialProductions } = baillieTolkienPerson.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
-
 });

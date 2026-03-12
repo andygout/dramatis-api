@@ -10,13 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
-
 	describe('GET new endpoint', () => {
-
 		it('responds with data required to prepare new character', async () => {
-
-			const response = await request.execute(app)
-				.get('/characters/new');
+			const response = await request.execute(app).get('/characters/new');
 
 			const expectedResponseBody = {
 				model: 'CHARACTER',
@@ -27,32 +23,24 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('CRUD', () => {
-
 		const CHARACTER_UUID = 'ROMEO_CHARACTER_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates character', async () => {
-
 			expect(await countNodesWithLabel('Character')).to.equal(0);
 
-			const response = await request.execute(app)
-				.post('/characters')
-				.send({
-					name: 'Romeo'
-				});
+			const response = await request.execute(app).post('/characters').send({
+				name: 'Romeo'
+			});
 
 			const expectedResponseBody = {
 				model: 'CHARACTER',
@@ -65,13 +53,10 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Character')).to.equal(1);
-
 		});
 
 		it('gets data required to edit specific character', async () => {
-
-			const response = await request.execute(app)
-				.get(`/characters/${CHARACTER_UUID}/edit`);
+			const response = await request.execute(app).get(`/characters/${CHARACTER_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'CHARACTER',
@@ -83,18 +68,14 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates character', async () => {
-
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/characters/${CHARACTER_UUID}`)
-				.send({
-					name: 'Juliet'
-				});
+			const response = await request.execute(app).put(`/characters/${CHARACTER_UUID}`).send({
+				name: 'Juliet'
+			});
 
 			const expectedResponseBody = {
 				model: 'CHARACTER',
@@ -107,13 +88,10 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Character')).to.equal(1);
-
 		});
 
 		it('shows character', async () => {
-
-			const response = await request.execute(app)
-				.get(`/characters/${CHARACTER_UUID}`);
+			const response = await request.execute(app).get(`/characters/${CHARACTER_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'CHARACTER',
@@ -128,15 +106,12 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('deletes character', async () => {
-
 			expect(await countNodesWithLabel('Character')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/characters/${CHARACTER_UUID}`);
+			const response = await request.execute(app).delete(`/characters/${CHARACTER_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'CHARACTER',
@@ -148,47 +123,34 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Character')).to.equal(0);
-
 		});
-
 	});
 
 	describe('GET list endpoint', () => {
-
 		const ROMEO_CHARACTER_UUID = 'ROMEO_CHARACTER_UUID';
 		const JULIET_CHARACTER_UUID = 'JULIET_CHARACTER_UUID';
 		const NURSE_CHARACTER_UUID = 'NURSE_CHARACTER_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
-				.post('/characters')
-				.send({
-					name: 'Romeo'
-				});
+			await request.execute(app).post('/characters').send({
+				name: 'Romeo'
+			});
 
-			await request.execute(app)
-				.post('/characters')
-				.send({
-					name: 'Juliet'
-				});
+			await request.execute(app).post('/characters').send({
+				name: 'Juliet'
+			});
 
-			await request.execute(app)
-				.post('/characters')
-				.send({
-					name: 'Nurse'
-				});
-
+			await request.execute(app).post('/characters').send({
+				name: 'Nurse'
+			});
 		});
 
 		it('lists all characters ordered by name', async () => {
-
-			const response = await request.execute(app)
-				.get('/characters');
+			const response = await request.execute(app).get('/characters');
 
 			const expectedResponseBody = [
 				{
@@ -210,9 +172,6 @@ describe('CRUD (Create, Read, Update, Delete): Characters API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

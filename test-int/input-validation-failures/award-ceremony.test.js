@@ -6,17 +6,12 @@ const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 describe('Input validation failures: AwardCeremony instance', () => {
-
 	let stubs;
 	let AwardCeremony;
 
-	const methods = [
-		'create',
-		'update'
-	];
+	const methods = ['create', 'update'];
 
 	beforeEach(async () => {
-
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
@@ -30,23 +25,17 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				'../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
-	const createInstance = props => new AwardCeremony(props);
+	const createInstance = (props) => new AwardCeremony(props);
 
 	context('name value is empty string', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: '' });
 
 				const result = await instance[method]();
@@ -56,9 +45,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 					name: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					award: {
 						uuid: undefined,
@@ -70,19 +57,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -92,9 +73,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 					name: ABOVE_MAX_LENGTH_STRING,
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too long'
-						]
+						name: ['Value is too long']
 					},
 					award: {
 						uuid: undefined,
@@ -106,19 +85,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('award name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2020',
 					award: {
@@ -138,28 +111,20 @@ describe('Input validation failures: AwardCeremony instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					categories: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('award differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2020',
 					award: {
@@ -180,28 +145,20 @@ describe('Input validation failures: AwardCeremony instance', () => {
 						name: 'Laurence Olivier Awards',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					},
 					categories: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2020',
 					categories: [
@@ -228,9 +185,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							nominations: []
 						}
@@ -238,19 +193,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate categories', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2020',
 					categories: [
@@ -286,9 +235,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 						{
 							name: 'Best New Play',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							nominations: []
 						},
@@ -300,9 +247,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 						{
 							name: 'Best New Play',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							nominations: []
 						},
@@ -315,19 +260,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category without name has named nomination entities', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -363,9 +302,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 						{
 							name: '',
 							errors: {
-								name: [
-									'Value is required if named children exist'
-								]
+								name: ['Value is required if named children exist']
 							},
 							nominations: [
 								{
@@ -389,19 +326,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination customType value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -441,9 +372,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 									productions: [],
 									materials: [],
 									errors: {
-										customType: [
-											'Value is too long'
-										]
+										customType: ['Value is too long']
 									}
 								}
 							]
@@ -452,19 +381,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination entity (person) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -510,9 +433,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
 											errors: {
-												name: [
-													'Value is too long'
-												]
+												name: ['Value is too long']
 											}
 										}
 									],
@@ -526,19 +447,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination entity (person) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -585,9 +500,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: 'Christopher Shutt',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											errors: {
-												differentiator: [
-													'Value is too long'
-												]
+												differentiator: ['Value is too long']
 											}
 										}
 									],
@@ -601,19 +514,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination entity (company) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -661,9 +568,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											differentiator: '',
 											members: [],
 											errors: {
-												name: [
-													'Value is too long'
-												]
+												name: ['Value is too long']
 											}
 										}
 									],
@@ -677,19 +582,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination entity (company) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -738,9 +637,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											members: [],
 											errors: {
-												differentiator: [
-													'Value is too long'
-												]
+												differentiator: ['Value is too long']
 											}
 										}
 									],
@@ -754,171 +651,148 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
-	context('duplicate category nomination entities, including category nomination entity (company) nominated members', () => {
-
-		for (const method of methods) {
-
-			it(`assigns appropriate error (${method} method)`, async () => {
-
-				const instance = createInstance({
-					name: '2010',
-					categories: [
-						{
-							name: 'Best Sound Design',
-							nominations: [
-								{
-									entities: [
-										{
-											model: 'COMPANY',
-											name: 'Autograph',
-											members: [
-												{
-													name: 'Ian Dickinson'
-												},
-												{
-													name: 'Foo'
-												}
-											]
-										},
-										{
-											name: 'Ian Dickinson'
-										},
-										{
-											model: 'COMPANY',
-											name: 'Autograph'
-										},
-										{
-											model: 'COMPANY',
-											name: 'Foo'
-										}
-									]
-								}
-							]
-						}
-					]
-				});
-
-				const result = await instance[method]();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: '2010',
-					hasErrors: true,
-					errors: {},
-					award: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					categories: [
-						{
-							name: 'Best Sound Design',
-							errors: {},
-							nominations: [
-								{
-									isWinner: false,
-									customType: '',
-									entities: [
-										{
-											uuid: undefined,
-											name: 'Autograph',
-											differentiator: '',
-											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
-											},
-											members: [
-												{
-													uuid: undefined,
-													name: 'Ian Dickinson',
-													differentiator: '',
-													errors: {
-														name: [
-															'This item has been duplicated within the group'
-														],
-														differentiator: [
-															'This item has been duplicated within the group'
-														]
+	context(
+		'duplicate category nomination entities, including category nomination entity (company) nominated members',
+		() => {
+			for (const method of methods) {
+				it(`assigns appropriate error (${method} method)`, async () => {
+					const instance = createInstance({
+						name: '2010',
+						categories: [
+							{
+								name: 'Best Sound Design',
+								nominations: [
+									{
+										entities: [
+											{
+												model: 'COMPANY',
+												name: 'Autograph',
+												members: [
+													{
+														name: 'Ian Dickinson'
+													},
+													{
+														name: 'Foo'
 													}
-												},
-												{
-													uuid: undefined,
-													name: 'Foo',
-													differentiator: '',
-													errors: {}
-												}
-											]
-										},
-										{
-											uuid: undefined,
-											name: 'Ian Dickinson',
-											differentiator: '',
-											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
-											}
-										},
-										{
-											uuid: undefined,
-											name: 'Autograph',
-											differentiator: '',
-											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
 												]
 											},
-											members: []
-										},
-										{
-											uuid: undefined,
-											name: 'Foo',
-											differentiator: '',
-											errors: {},
-											members: []
-										}
-									],
-									productions: [],
-									materials: [],
-									errors: {}
-								}
-							]
-						}
-					]
-				};
+											{
+												name: 'Ian Dickinson'
+											},
+											{
+												model: 'COMPANY',
+												name: 'Autograph'
+											},
+											{
+												model: 'COMPANY',
+												name: 'Foo'
+											}
+										]
+									}
+								]
+							}
+						]
+					});
 
-				expect(result).to.deep.equal(expectedResponseBody);
+					const result = await instance[method]();
 
-			});
+					const expectedResponseBody = {
+						uuid: undefined,
+						name: '2010',
+						hasErrors: true,
+						errors: {},
+						award: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						categories: [
+							{
+								name: 'Best Sound Design',
+								errors: {},
+								nominations: [
+									{
+										isWinner: false,
+										customType: '',
+										entities: [
+											{
+												uuid: undefined,
+												name: 'Autograph',
+												differentiator: '',
+												errors: {
+													name: ['This item has been duplicated within the group'],
+													differentiator: ['This item has been duplicated within the group']
+												},
+												members: [
+													{
+														uuid: undefined,
+														name: 'Ian Dickinson',
+														differentiator: '',
+														errors: {
+															name: ['This item has been duplicated within the group'],
+															differentiator: [
+																'This item has been duplicated within the group'
+															]
+														}
+													},
+													{
+														uuid: undefined,
+														name: 'Foo',
+														differentiator: '',
+														errors: {}
+													}
+												]
+											},
+											{
+												uuid: undefined,
+												name: 'Ian Dickinson',
+												differentiator: '',
+												errors: {
+													name: ['This item has been duplicated within the group'],
+													differentiator: ['This item has been duplicated within the group']
+												}
+											},
+											{
+												uuid: undefined,
+												name: 'Autograph',
+												differentiator: '',
+												errors: {
+													name: ['This item has been duplicated within the group'],
+													differentiator: ['This item has been duplicated within the group']
+												},
+												members: []
+											},
+											{
+												uuid: undefined,
+												name: 'Foo',
+												differentiator: '',
+												errors: {},
+												members: []
+											}
+										],
+										productions: [],
+										materials: [],
+										errors: {}
+									}
+								]
+							}
+						]
+					};
 
+					expect(result).to.deep.equal(expectedResponseBody);
+				});
+			}
 		}
-
-	});
+	);
 
 	context('category nomination entity (company) without name has named nominated members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -970,9 +844,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: '',
 											differentiator: '',
 											errors: {
-												name: [
-													'Value is required if named children exist'
-												]
+												name: ['Value is required if named children exist']
 											},
 											members: [
 												{
@@ -994,19 +866,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination entity (company) nominated member name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1064,9 +930,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 													name: ABOVE_MAX_LENGTH_STRING,
 													differentiator: '',
 													errors: {
-														name: [
-															'Value is too long'
-														]
+														name: ['Value is too long']
 													}
 												}
 											]
@@ -1082,19 +946,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination entity (company) nominated member differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1153,9 +1011,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 													name: 'Ian Dickinson',
 													differentiator: ABOVE_MAX_LENGTH_STRING,
 													errors: {
-														differentiator: [
-															'Value is too long'
-														]
+														differentiator: ['Value is too long']
 													}
 												}
 											]
@@ -1171,19 +1027,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination production uuid value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1228,9 +1078,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										{
 											uuid: ABOVE_MAX_LENGTH_STRING,
 											errors: {
-												uuid: [
-													'Value is too long'
-												]
+												uuid: ['Value is too long']
 											}
 										}
 									],
@@ -1243,19 +1091,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate category nomination productions', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1306,9 +1148,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										{
 											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 											errors: {
-												uuid: [
-													'This item has been duplicated within the group'
-												]
+												uuid: ['This item has been duplicated within the group']
 											}
 										},
 										{
@@ -1318,9 +1158,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 										{
 											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 											errors: {
-												uuid: [
-													'This item has been duplicated within the group'
-												]
+												uuid: ['This item has been duplicated within the group']
 											}
 										}
 									],
@@ -1333,19 +1171,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination material name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1391,9 +1223,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
 											errors: {
-												name: [
-													'Value is too long'
-												]
+												name: ['Value is too long']
 											}
 										}
 									],
@@ -1407,19 +1237,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('category nomination material differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1466,9 +1290,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: 'Jerusalem',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											errors: {
-												differentiator: [
-													'Value is too long'
-												]
+												differentiator: ['Value is too long']
 											}
 										}
 									],
@@ -1482,19 +1304,13 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate category nomination materials', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2010',
 					categories: [
@@ -1548,12 +1364,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: 'Jerusalem',
 											differentiator: '',
 											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
+												name: ['This item has been duplicated within the group'],
+												differentiator: ['This item has been duplicated within the group']
 											}
 										},
 										{
@@ -1567,12 +1379,8 @@ describe('Input validation failures: AwardCeremony instance', () => {
 											name: 'Jerusalem',
 											differentiator: '',
 											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
+												name: ['This item has been duplicated within the group'],
+												differentiator: ['This item has been duplicated within the group']
 											}
 										}
 									],
@@ -1584,11 +1392,7 @@ describe('Input validation failures: AwardCeremony instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
-
 });

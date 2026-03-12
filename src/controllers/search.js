@@ -3,9 +3,7 @@ import { searchQueries } from '../neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../neo4j/query.js';
 
 export default async (request, response, next) => {
-
 	try {
-
 		const searchTerm = request.query.searchTerm;
 
 		if (!searchTerm) return sendJsonResponse(response, []);
@@ -24,11 +22,7 @@ export default async (request, response, next) => {
 		);
 
 		return sendJsonResponse(response, searchResults);
-
 	} catch (error) {
-
 		return next(error);
-
 	}
-
 };

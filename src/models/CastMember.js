@@ -3,21 +3,15 @@ import Person from './Person.js';
 import { Role } from './index.js';
 
 export default class CastMember extends Person {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { roles } = props;
 
-		this.roles = roles
-			? roles.map(role => new Role(role))
-			: [];
-
+		this.roles = roles ? roles.map((role) => new Role(role)) : [];
 	}
 
-	runInputValidations (opts) {
-
+	runInputValidations(opts) {
 		this.validateName({ isRequired: false });
 
 		this.validateDifferentiator();
@@ -29,7 +23,6 @@ export default class CastMember extends Person {
 		const duplicateRoleIndices = getDuplicateRoleIndices(this.roles);
 
 		this.roles.forEach((role, index) => {
-
 			role.validateName({ isRequired: false });
 
 			role.validateCharacterName();
@@ -41,9 +34,6 @@ export default class CastMember extends Person {
 			role.validateRoleNameCharacterNameDisparity();
 
 			role.validateUniquenessInGroup({ isDuplicate: duplicateRoleIndices.includes(index) });
-
 		});
-
 	}
-
 }

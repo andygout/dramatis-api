@@ -25,14 +25,13 @@ let studioCanalCompany;
 let alisonMeesePerson;
 
 describe('Material with rights grantor credits', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Liverpool Everyman & Playhouse',
@@ -43,7 +42,8 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Ladykillers',
@@ -61,7 +61,8 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Ladykillers',
@@ -102,7 +103,8 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Ladykillers',
@@ -117,7 +119,8 @@ describe('Material with rights grantor credits', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Ladykillers',
@@ -133,18 +136,13 @@ describe('Material with rights grantor credits', () => {
 				}
 			});
 
-		studioCanalCompany = await request.execute(app)
-			.get(`/companies/${STUDIOCANAL_COMPANY_UUID}`);
+		studioCanalCompany = await request.execute(app).get(`/companies/${STUDIOCANAL_COMPANY_UUID}`);
 
-		alisonMeesePerson = await request.execute(app)
-			.get(`/people/${ALISON_MEESE_PERSON_UUID}`);
-
+		alisonMeesePerson = await request.execute(app).get(`/people/${ALISON_MEESE_PERSON_UUID}`);
 	});
 
 	describe('StudioCanal (company)', () => {
-
 		it('includes materials for which it has a rights grantor credit', () => {
-
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
@@ -215,11 +213,9 @@ describe('Material with rights grantor credits', () => {
 			const { rightsGrantorMaterials } = studioCanalCompany.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
 		});
 
 		it('includes productions of materials for which they have granted rights', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -258,15 +254,11 @@ describe('Material with rights grantor credits', () => {
 			const { rightsGrantorMaterialProductions } = studioCanalCompany.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
 
 	describe('Alison Meese (person)', () => {
-
 		it('includes materials for which they have a rights grantor credit', () => {
-
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
@@ -337,11 +329,9 @@ describe('Material with rights grantor credits', () => {
 			const { rightsGrantorMaterials } = alisonMeesePerson.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
 		});
 
 		it('includes productions of materials for which they have granted rights', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -380,9 +370,6 @@ describe('Material with rights grantor credits', () => {
 			const { rightsGrantorMaterialProductions } = alisonMeesePerson.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
-
 });

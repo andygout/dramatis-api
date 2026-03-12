@@ -37,14 +37,13 @@ let williamShakespearePerson;
 let theKingsMenCompany;
 
 describe('Material with sub-sub-materials and subsequent versions thereof', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Unicorn Theatre',
@@ -55,7 +54,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -70,14 +70,15 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The First Henriad',
@@ -92,7 +93,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -105,7 +106,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Henriad',
@@ -120,7 +122,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -133,7 +135,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -152,7 +155,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -171,7 +174,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The First Henriad',
@@ -190,7 +194,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -215,7 +219,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Henriad',
@@ -234,7 +239,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							},
 							{
 								model: 'COMPANY',
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -259,7 +264,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -275,7 +281,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The First Henriad',
@@ -296,7 +303,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Henriad',
@@ -317,7 +325,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -333,7 +342,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The First Henriad',
@@ -354,7 +364,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Henriad',
@@ -375,30 +386,29 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				]
 			});
 
-		richardIIOriginalVersionMaterial = await request.execute(app)
+		richardIIOriginalVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		richardIISubsequentVersionMaterial = await request.execute(app)
+		richardIISubsequentVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		theFirstHenriadSubsequentVersionMaterial = await request.execute(app)
+		theFirstHenriadSubsequentVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		theHenriadSubsequentVersionMaterial = await request.execute(app)
+		theHenriadSubsequentVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await request.execute(app)
-			.get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
+		williamShakespearePerson = await request.execute(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		theKingsMenCompany = await request.execute(app)
-			.get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
-
+		theKingsMenCompany = await request.execute(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 	});
 
 	describe('Richard II (original version) (material)', () => {
-
 		it('includes subsequent versions of this material, with corresponding sur-material and sur-sur-material; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -440,11 +450,9 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterials } = richardIIOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions, including the sur-production and sur-sur-production', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -501,15 +509,11 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterialProductions } = richardIIOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Richard II (subsequent version) (material)', () => {
-
 		it('includes original version of this material, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedOriginalVersionMaterial = {
 				model: 'MATERIAL',
 				uuid: RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID,
@@ -539,7 +543,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					}
@@ -549,11 +553,9 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { originalVersionMaterial } = richardIISubsequentVersionMaterial.body;
 
 			expect(originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterial);
-
 		});
 
 		it('includes its sur-material and sur-sur-material with their corresponding original versions', () => {
-
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -574,7 +576,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -614,7 +616,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -646,7 +648,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -686,7 +688,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 									{
 										model: 'COMPANY',
 										uuid: THE_KINGS_MEN_COMPANY_UUID,
-										name: 'The King\'s Men'
+										name: "The King's Men"
 									}
 								]
 							}
@@ -696,21 +698,16 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					characterGroups: []
 				},
 				characterGroups: []
-
 			};
 
 			const { surMaterial } = richardIISubsequentVersionMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
-
 	});
 
 	describe('The First Henriad (subsequent version) (material)', () => {
-
 		it('includes its sur-material with its corresponding original version', () => {
-
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -731,7 +728,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							{
 								model: 'COMPANY',
 								uuid: THE_KINGS_MEN_COMPANY_UUID,
-								name: 'The King\'s Men'
+								name: "The King's Men"
 							}
 						]
 					},
@@ -771,7 +768,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						}
@@ -780,17 +777,14 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 				},
 				surMaterial: null,
 				characterGroups: []
-
 			};
 
 			const { surMaterial } = theFirstHenriadSubsequentVersionMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
 
 		it('includes its sub-materials with their corresponding original versions', () => {
-
 			const expectedSubMaterials = [
 				{
 					model: 'MATERIAL',
@@ -812,7 +806,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -852,7 +846,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 									{
 										model: 'COMPANY',
 										uuid: THE_KINGS_MEN_COMPANY_UUID,
-										name: 'The King\'s Men'
+										name: "The King's Men"
 									}
 								]
 							}
@@ -870,22 +864,17 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					},
 					subMaterials: [],
 					characterGroups: []
-
 				}
 			];
 
 			const { subMaterials } = theFirstHenriadSubsequentVersionMaterial.body;
 
 			expect(subMaterials).to.deep.equal(expectedSubMaterials);
-
 		});
-
 	});
 
 	describe('The Henriad (subsequent version) (material)', () => {
-
 		it('includes its sub-materials and sub-sub-materials with their corresponding original versions', () => {
-
 			const expectedSubMaterials = [
 				{
 					model: 'MATERIAL',
@@ -907,7 +896,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 								{
 									model: 'COMPANY',
 									uuid: THE_KINGS_MEN_COMPANY_UUID,
-									name: 'The King\'s Men'
+									name: "The King's Men"
 								}
 							]
 						},
@@ -947,7 +936,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 									{
 										model: 'COMPANY',
 										uuid: THE_KINGS_MEN_COMPANY_UUID,
-										name: 'The King\'s Men'
+										name: "The King's Men"
 									}
 								]
 							}
@@ -980,7 +969,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 										{
 											model: 'COMPANY',
 											uuid: THE_KINGS_MEN_COMPANY_UUID,
-											name: 'The King\'s Men'
+											name: "The King's Men"
 										}
 									]
 								},
@@ -1020,7 +1009,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 											{
 												model: 'COMPANY',
 												uuid: THE_KINGS_MEN_COMPANY_UUID,
-												name: 'The King\'s Men'
+												name: "The King's Men"
 											}
 										]
 									}
@@ -1040,22 +1029,17 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						}
 					],
 					characterGroups: []
-
 				}
 			];
 
 			const { subMaterials } = theHenriadSubsequentVersionMaterial.body;
 
 			expect(subMaterials).to.deep.equal(expectedSubMaterials);
-
 		});
-
 	});
 
 	describe('William Shakespeare (person)', () => {
-
 		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1097,11 +1081,9 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterials } = williamShakespearePerson.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1158,15 +1140,11 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterialProductions } = williamShakespearePerson.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
-	describe('The King\'s Men (company)', () => {
-
+	describe("The King's Men (company)", () => {
 		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1208,11 +1186,9 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterials } = theKingsMenCompany.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-material and sur-sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1269,9 +1245,6 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			const { subsequentVersionMaterialProductions } = theKingsMenCompany.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
-
 });

@@ -6,17 +6,12 @@ const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 describe('Input validation failures: Venue instance', () => {
-
 	let stubs;
 	let Venue;
 
-	const methods = [
-		'create',
-		'update'
-	];
+	const methods = ['create', 'update'];
 
 	beforeEach(async () => {
-
 		stubs = {
 			neo4jQueryModule: {
 				// Stub with a contrived resolution that ensures various
@@ -38,23 +33,17 @@ describe('Input validation failures: Venue instance', () => {
 				'../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
-	const createInstance = props => new Venue(props);
+	const createInstance = (props) => new Venue(props);
 
 	context('name value is empty string', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: '' });
 
 				const result = await instance[method]();
@@ -65,27 +54,19 @@ describe('Input validation failures: Venue instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -96,27 +77,19 @@ describe('Input validation failures: Venue instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too long'
-						]
+						name: ['Value is too long']
 					},
 					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({ name: 'National Theatre', differentiator: ABOVE_MAX_LENGTH_STRING });
 
 				const result = await instance[method]();
@@ -127,27 +100,19 @@ describe('Input validation failures: Venue instance', () => {
 					differentiator: ABOVE_MAX_LENGTH_STRING,
 					hasErrors: true,
 					errors: {
-						differentiator: [
-							'Value is too long'
-						]
+						differentiator: ['Value is too long']
 					},
 					subVenues: []
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('sub-venue name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
@@ -171,28 +136,20 @@ describe('Input validation failures: Venue instance', () => {
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							}
 						}
 					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('sub-venue differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
@@ -217,28 +174,20 @@ describe('Input validation failures: Venue instance', () => {
 							name: 'Olivier Theatre',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								differentiator: [
-									'Value is too long'
-								]
+								differentiator: ['Value is too long']
 							}
 						}
 					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('venue instance assigns itself as a sub-venue', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
@@ -262,31 +211,21 @@ describe('Input validation failures: Venue instance', () => {
 							name: 'National Theatre',
 							differentiator: '',
 							errors: {
-								name: [
-									'Instance cannot form association with itself'
-								],
-								differentiator: [
-									'Instance cannot form association with itself'
-								]
+								name: ['Instance cannot form association with itself'],
+								differentiator: ['Instance cannot form association with itself']
 							}
 						}
 					]
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate sub-venues', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'National Theatre',
 					subVenues: [
@@ -321,12 +260,8 @@ describe('Input validation failures: Venue instance', () => {
 							name: 'Olivier Theatre',
 							differentiator: '',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group'],
+								differentiator: ['This item has been duplicated within the group']
 							}
 						},
 						{
@@ -340,12 +275,8 @@ describe('Input validation failures: Venue instance', () => {
 							name: 'Olivier Theatre',
 							differentiator: '',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group'],
+								differentiator: ['This item has been duplicated within the group']
 							}
 						},
 						{
@@ -358,11 +289,7 @@ describe('Input validation failures: Venue instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
-
 });

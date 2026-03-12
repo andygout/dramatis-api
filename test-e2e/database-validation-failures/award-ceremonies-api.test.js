@@ -15,22 +15,17 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('Database validation failures: Award ceremonies API', () => {
-
 	describe('attempt to create instance', () => {
-
 		before(async () => {
-
 			await purgeDatabase();
-
 		});
 
 		context('nominated production uuid does not exist in database', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.post('/award-ceremonies')
 					.send({
 						name: '2020',
@@ -81,9 +76,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 											model: 'PRODUCTION_IDENTIFIER',
 											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 											errors: {
-												uuid: [
-													'Production with this UUID does not exist'
-												]
+												uuid: ['Production with this UUID does not exist']
 											}
 										}
 									],
@@ -97,20 +90,15 @@ describe('Database validation failures: Award ceremonies API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
-
 			});
-
 		});
-
 	});
 
 	describe('attempt to update instance', () => {
-
 		const TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 		const LAURENCE_OLIVIER_AWARDS_AWARD_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
 		before(async () => {
-
 			await purgeDatabase();
 
 			await createNode({
@@ -132,16 +120,14 @@ describe('Database validation failures: Award ceremonies API', () => {
 				destinationUuid: TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID,
 				relationshipName: 'PRESENTED_AT'
 			});
-
 		});
 
 		context('nominated production uuid does not exist in database', () => {
-
 			it('returns instance with appropriate errors attached', async () => {
-
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
 
-				const response = await request.execute(app)
+				const response = await request
+					.execute(app)
 					.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: '2020',
@@ -193,9 +179,7 @@ describe('Database validation failures: Award ceremonies API', () => {
 											model: 'PRODUCTION_IDENTIFIER',
 											uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 											errors: {
-												uuid: [
-													'Production with this UUID does not exist'
-												]
+												uuid: ['Production with this UUID does not exist']
 											}
 										}
 									],
@@ -209,16 +193,14 @@ describe('Database validation failures: Award ceremonies API', () => {
 				expect(response).to.have.status(200);
 				expect(response.body).to.deep.equal(expectedResponseBody);
 				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-				expect(await isNodeExistent({
-					label: 'AwardCeremony',
-					name: '2020',
-					uuid: TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID
-				})).to.be.true;
-
+				expect(
+					await isNodeExistent({
+						label: 'AwardCeremony',
+						name: '2020',
+						uuid: TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID
+					})
+				).to.be.true;
 			});
-
 		});
-
 	});
-
 });

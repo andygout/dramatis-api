@@ -28,14 +28,13 @@ let financialTimesCompany;
 let sarahHemmingPerson;
 
 describe('Productions with reviews', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -46,15 +45,16 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Long Day\'s Journey Into Night',
+				name: "Long Day's Journey Into Night",
 				startDate: '2024-03-19',
 				pressDate: '2024-04-02',
 				endDate: '2024-06-08',
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				},
 				reviews: [
 					{
@@ -90,7 +90,8 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Nye',
@@ -134,7 +135,8 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Harry Clarke',
@@ -178,21 +180,17 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		aLongDaysJourneyIntoNightWyndhamsProduction = await request.execute(app)
+		aLongDaysJourneyIntoNightWyndhamsProduction = await request
+			.execute(app)
 			.get(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_WYNDHAMS_PRODUCTION_UUID}`);
 
-		financialTimesCompany = await request.execute(app)
-			.get(`/companies/${FINANCIAL_TIMES_COMPANY_UUID}`);
+		financialTimesCompany = await request.execute(app).get(`/companies/${FINANCIAL_TIMES_COMPANY_UUID}`);
 
-		sarahHemmingPerson = await request.execute(app)
-			.get(`/people/${SARAH_HEMMING_PERSON_UUID}`);
-
+		sarahHemmingPerson = await request.execute(app).get(`/people/${SARAH_HEMMING_PERSON_UUID}`);
 	});
 
-	describe('Long Day\'s Journey Into Night at Wyndham\'s Theatre (production)', () => {
-
+	describe("Long Day's Journey Into Night at Wyndham's Theatre (production)", () => {
 		it('includes reviews', () => {
-
 			const expectedReviews = [
 				{
 					model: 'REVIEW',
@@ -244,26 +242,22 @@ describe('Productions with reviews', () => {
 			const { reviews } = aLongDaysJourneyIntoNightWyndhamsProduction.body;
 
 			expect(reviews).to.deep.equal(expectedReviews);
-
 		});
-
 	});
 
 	describe('Financial Times (company)', () => {
-
 		it('includes productions they have reviewed as a publication', () => {
-
 			const expectedReviewPublicationProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: LONG_DAYS_JOURNEY_INTO_NIGHT_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Long Day\'s Journey Into Night',
+					name: "Long Day's Journey Into Night",
 					startDate: '2024-03-19',
 					endDate: '2024-06-08',
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -335,26 +329,22 @@ describe('Productions with reviews', () => {
 			const { reviewPublicationProductions } = financialTimesCompany.body;
 
 			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
-
 		});
-
 	});
 
 	describe('Sarah Hemming (person)', () => {
-
 		it('includes productions they have reviewed as a critic', () => {
-
 			const expectedReviewPublicationProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: LONG_DAYS_JOURNEY_INTO_NIGHT_WYNDHAMS_PRODUCTION_UUID,
-					name: 'Long Day\'s Journey Into Night',
+					name: "Long Day's Journey Into Night",
 					startDate: '2024-03-19',
 					endDate: '2024-06-08',
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -426,9 +416,6 @@ describe('Productions with reviews', () => {
 			const { reviewCriticProductions } = sarahHemmingPerson.body;
 
 			expect(reviewCriticProductions).to.deep.equal(expectedReviewPublicationProductions);
-
 		});
-
 	});
-
 });

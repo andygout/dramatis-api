@@ -1,9 +1,5 @@
-const getTrimmedOrEmptyString = value => {
-
+const getTrimmedOrEmptyString = (value) => {
 	return value?.trim() || '';
-
 };
 
-export {
-	getTrimmedOrEmptyString
-};
+export { getTrimmedOrEmptyString };

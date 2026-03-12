@@ -5,9 +5,7 @@ import { Company, Person } from './index.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class Review extends Base {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { url, date, publication, critic } = props;
@@ -19,17 +17,13 @@ export default class Review extends Base {
 		this.publication = new Company(publication);
 
 		this.critic = new Person(critic);
-
 	}
 
-	get model () {
-
+	get model() {
 		return MODELS.REVIEW;
-
 	}
 
-	runInputValidations (opts) {
-
+	runInputValidations(opts) {
 		this.validateUrl({ isRequired: false });
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate, properties: new Set(['url']) });
@@ -45,38 +39,26 @@ export default class Review extends Base {
 		this.critic.validateName({ isRequired: Boolean(this.url) });
 
 		this.critic.validateDifferentiator();
-
 	}
 
-	validateUrl (opts) {
-
+	validateUrl(opts) {
 		this.validateStringForProperty('url', { isRequired: opts.isRequired });
 
 		try {
-
 			new URL(this.url);
-
 		} catch {
-
 			const isStringWithLength = Boolean(this.url);
 
 			if (isStringWithLength) this.addPropertyError('url', 'URL must be a valid URL');
-
 		}
-
 	}
 
-	validateUrlPresenceIfNamedChildren (children) {
-
+	validateUrlPresenceIfNamedChildren(children) {
 		this.validatePropertyPresenceIfNamedChildren('url', children);
-
 	}
 
-	validateDate () {
-
+	validateDate() {
 		if (Boolean(this.date) && !isValidDate(this.date))
 			this.addPropertyError('date', 'Value must be in date format');
-
 	}
-
 }

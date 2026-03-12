@@ -19,10 +19,12 @@ const ADAM_PECK_PERSON_UUID = 'ADAM_PECK_PERSON_UUID';
 const C_S_LEWIS_SOCIETY_COMPANY_UUID = 'C_S_LEWIS_SOCIETY_COMPANY_UUID';
 const SARAH_SELDEN_PERSON_UUID = 'SARAH_SELDEN_PERSON_UUID';
 const THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID = 'THE_CHRONICLES_OF_NARNIA_MATERIAL_2_UUID';
-const THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_UUID';
+const THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID =
+	'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_UUID';
 const GILLIAN_LYNNE_THEATRE_VENUE_UUID = 'GILLIAN_LYNNE_THEATRE_VENUE_UUID';
 const THE_CHRONICLES_OF_NARNIA_GILLIAN_LYNNE_PRODUCTION_UUID = 'THE_CHRONICLES_OF_NARNIA_PRODUCTION_UUID';
-const THE_LION_THE_WITCH_AND_THE_WARDROBE_THE_HOUSE_PRODUCTION_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_2_UUID';
+const THE_LION_THE_WITCH_AND_THE_WARDROBE_THE_HOUSE_PRODUCTION_UUID =
+	'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_2_UUID';
 const THE_CHRONICLES_OF_NARNIA_THE_HOUSE_PRODUCTION_UUID = 'THE_CHRONICLES_OF_NARNIA_PRODUCTION_2_UUID';
 const CINERIGHTS_LTD_COMPANY_UUID = 'CINERIGHTS_LTD_COMPANY_UUID';
 const TALYSE_TATA_PERSON_UUID = 'TALYSE_TATA_PERSON_UUID';
@@ -36,14 +38,13 @@ let cinerightsLtdCompany;
 let talyseTataPerson;
 
 describe('Material with sub-materials and rights grantor credits thereof', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Birmingham Repertory Theatre',
@@ -54,7 +55,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -72,7 +74,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -96,7 +99,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -137,7 +141,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -171,7 +176,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -187,7 +193,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -208,7 +215,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -224,7 +232,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -245,7 +254,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -279,7 +289,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -293,7 +304,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -312,24 +324,17 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		cSLewisSocietyCompany = await request.execute(app)
-			.get(`/companies/${C_S_LEWIS_SOCIETY_COMPANY_UUID}`);
+		cSLewisSocietyCompany = await request.execute(app).get(`/companies/${C_S_LEWIS_SOCIETY_COMPANY_UUID}`);
 
-		sarahSeldenPerson = await request.execute(app)
-			.get(`/people/${SARAH_SELDEN_PERSON_UUID}`);
+		sarahSeldenPerson = await request.execute(app).get(`/people/${SARAH_SELDEN_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await request.execute(app)
-			.get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
+		cinerightsLtdCompany = await request.execute(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await request.execute(app)
-			.get(`/people/${TALYSE_TATA_PERSON_UUID}`);
-
+		talyseTataPerson = await request.execute(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 	});
 
 	describe('C S Lewis Society (company)', () => {
-
 		it('includes materials for which it has a rights grantor credit, with corresponding sur-material', () => {
-
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
@@ -410,11 +415,9 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterials } = cSLewisSocietyCompany.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -463,15 +466,11 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterialProductions } = cSLewisSocietyCompany.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
 
 	describe('Sarah Selden (person)', () => {
-
 		it('includes materials for which they have a rights grantor credit, with corresponding sur-material', () => {
-
 			const expectedRightsGrantorMaterials = [
 				{
 					model: 'MATERIAL',
@@ -552,11 +551,9 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterials } = sarahSeldenPerson.body;
 
 			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
-
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -605,15 +602,11 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterialProductions } = sarahSeldenPerson.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
 
 	describe('Cinerights Ltd (company): single material for which they have granted rights is attached to multiple tiers of a production', () => {
-
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -639,15 +632,11 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterialProductions } = cinerightsLtdCompany.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
 
 	describe('Talyse Tata (person): single material for which they have granted rights is attached to multiple tiers of a production', () => {
-
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedRightsGrantorMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -673,9 +662,6 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterialProductions } = talyseTataPerson.body;
 
 			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
-
 		});
-
 	});
-
 });

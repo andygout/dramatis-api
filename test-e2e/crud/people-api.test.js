@@ -10,13 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('CRUD (Create, Read, Update, Delete): People API', () => {
-
 	describe('GET new endpoint', () => {
-
 		it('responds with data required to prepare new person', async () => {
-
-			const response = await request.execute(app)
-				.get('/people/new');
+			const response = await request.execute(app).get('/people/new');
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -27,32 +23,24 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('CRUD', () => {
-
 		const PERSON_UUID = 'IAN_MCKELLEN_PERSON_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates person', async () => {
-
 			expect(await countNodesWithLabel('Person')).to.equal(0);
 
-			const response = await request.execute(app)
-				.post('/people')
-				.send({
-					name: 'Ian McKellen'
-				});
+			const response = await request.execute(app).post('/people').send({
+				name: 'Ian McKellen'
+			});
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -65,13 +53,10 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
-
 		});
 
 		it('gets data required to edit specific person', async () => {
-
-			const response = await request.execute(app)
-				.get(`/people/${PERSON_UUID}/edit`);
+			const response = await request.execute(app).get(`/people/${PERSON_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -83,18 +68,14 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates person', async () => {
-
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/people/${PERSON_UUID}`)
-				.send({
-					name: 'Patrick Stewart'
-				});
+			const response = await request.execute(app).put(`/people/${PERSON_UUID}`).send({
+				name: 'Patrick Stewart'
+			});
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -107,13 +88,10 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Person')).to.equal(1);
-
 		});
 
 		it('shows person', async () => {
-
-			const response = await request.execute(app)
-				.get(`/people/${PERSON_UUID}`);
+			const response = await request.execute(app).get(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -141,15 +119,12 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('deletes person', async () => {
-
 			expect(await countNodesWithLabel('Person')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/people/${PERSON_UUID}`);
+			const response = await request.execute(app).delete(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -161,47 +136,34 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Person')).to.equal(0);
-
 		});
-
 	});
 
 	describe('GET list endpoint', () => {
-
 		const IAN_MCKELLEN_PERSON_UUID = 'IAN_MCKELLEN_PERSON_UUID';
 		const PATRICK_STEWART_PERSON_UUID = 'PATRICK_STEWART_PERSON_UUID';
 		const MATTHEW_KELLY_PERSON_UUID = 'MATTHEW_KELLY_PERSON_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
-				.post('/people')
-				.send({
-					name: 'Ian McKellen'
-				});
+			await request.execute(app).post('/people').send({
+				name: 'Ian McKellen'
+			});
 
-			await request.execute(app)
-				.post('/people')
-				.send({
-					name: 'Patrick Stewart'
-				});
+			await request.execute(app).post('/people').send({
+				name: 'Patrick Stewart'
+			});
 
-			await request.execute(app)
-				.post('/people')
-				.send({
-					name: 'Matthew Kelly'
-				});
-
+			await request.execute(app).post('/people').send({
+				name: 'Matthew Kelly'
+			});
 		});
 
 		it('lists all people ordered by name', async () => {
-
-			const response = await request.execute(app)
-				.get('/people');
+			const response = await request.execute(app).get('/people');
 
 			const expectedResponseBody = [
 				{
@@ -223,9 +185,6 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

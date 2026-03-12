@@ -3,9 +3,7 @@ import Base from './Base.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class Role extends Base {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { characterName, characterDifferentiator, qualifier, isAlternate } = props;
@@ -17,35 +15,23 @@ export default class Role extends Base {
 		this.qualifier = getTrimmedOrEmptyString(qualifier);
 
 		this.isAlternate = Boolean(isAlternate);
-
 	}
 
-	get model () {
-
+	get model() {
 		return MODELS.ROLE;
-
 	}
 
-	validateCharacterName () {
-
+	validateCharacterName() {
 		this.validateStringForProperty('characterName', { isRequired: false });
-
 	}
 
-	validateCharacterDifferentiator () {
-
+	validateCharacterDifferentiator() {
 		this.validateStringForProperty('characterDifferentiator', { isRequired: false });
-
 	}
 
-	validateRoleNameCharacterNameDisparity () {
-
+	validateRoleNameCharacterNameDisparity() {
 		if (Boolean(this.characterName) && this.name === this.characterName) {
-
 			this.addPropertyError('characterName', 'Character name is only required if different from role name');
-
 		}
-
 	}
-
 }

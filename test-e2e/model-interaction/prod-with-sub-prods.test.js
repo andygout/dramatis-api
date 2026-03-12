@@ -86,14 +86,13 @@ let michaelBillingtonJrPerson;
 let alexanderHerzenJrCharacter;
 
 describe('Production with sub-productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -104,7 +103,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2002',
@@ -113,7 +113,8 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Voyage',
@@ -143,7 +144,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Shipwreck',
@@ -173,7 +175,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Salvage',
@@ -203,7 +206,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Coast of Utopia',
@@ -244,7 +248,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -344,7 +349,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Shipwreck',
@@ -444,7 +450,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Salvage',
@@ -544,7 +551,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -655,7 +663,8 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -674,7 +683,8 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Shipwreck',
@@ -693,7 +703,8 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Salvage',
@@ -712,7 +723,8 @@ describe('Production with sub-productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -741,87 +753,73 @@ describe('Production with sub-productions', () => {
 				]
 			});
 
-		theCoastOfUtopiaOlivierProduction = await request.execute(app)
+		theCoastOfUtopiaOlivierProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID}`);
 
-		voyageOlivierProduction = await request.execute(app)
-			.get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
+		voyageOlivierProduction = await request.execute(app).get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
 
-		theCoastOfUtopiaVivianBeaumontProduction = await request.execute(app)
+		theCoastOfUtopiaVivianBeaumontProduction = await request
+			.execute(app)
 			.get(`/productions/${THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID}`);
 
-		voyageVivianBeaumontProduction = await request.execute(app)
+		voyageVivianBeaumontProduction = await request
+			.execute(app)
 			.get(`/productions/${VOYAGE_VIVIAN_BEAUMONT_PRODUCTION_UUID}`);
 
-		theCoastOfUtopiaMaterial = await request.execute(app)
-			.get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
+		theCoastOfUtopiaMaterial = await request.execute(app).get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
 
-		voyageMaterial = await request.execute(app)
-			.get(`/materials/${VOYAGE_MATERIAL_UUID}`);
+		voyageMaterial = await request.execute(app).get(`/materials/${VOYAGE_MATERIAL_UUID}`);
 
-		tomStoppardJrPerson = await request.execute(app)
-			.get(`/people/${TOM_STOPPARD_JR_PERSON_UUID}`);
+		tomStoppardJrPerson = await request.execute(app).get(`/people/${TOM_STOPPARD_JR_PERSON_UUID}`);
 
-		theSubSträusslerGroupCompany = await request.execute(app)
+		theSubSträusslerGroupCompany = await request
+			.execute(app)
 			.get(`/companies/${THE_SUB_STRÄUSSLER_GROUP_COMPANY_UUID}`);
 
-		nationalTheatreVenue = await request.execute(app)
-			.get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
+		nationalTheatreVenue = await request.execute(app).get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
 
-		olivierTheatreVenue = await request.execute(app)
-			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
+		olivierTheatreVenue = await request.execute(app).get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
-		stoppardSeason = await request.execute(app)
-			.get(`/seasons/${STOPPARD_SEASON_UUID}`);
+		stoppardSeason = await request.execute(app).get(`/seasons/${STOPPARD_SEASON_UUID}`);
 
-		stoppardFestival2002 = await request.execute(app)
-			.get(`/festivals/${STOPPARD_FESTIVAL_2002_FESTIVAL_UUID}`);
+		stoppardFestival2002 = await request.execute(app).get(`/festivals/${STOPPARD_FESTIVAL_2002_FESTIVAL_UUID}`);
 
-		trevorNunnJrPerson = await request.execute(app)
-			.get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
+		trevorNunnJrPerson = await request.execute(app).get(`/people/${TREVOR_NUNN_JR_PERSON_UUID}`);
 
-		subNationalTheatreCompany = await request.execute(app)
-			.get(`/companies/${SUB_NATIONAL_THEATRE_COMPANY_UUID}`);
+		subNationalTheatreCompany = await request.execute(app).get(`/companies/${SUB_NATIONAL_THEATRE_COMPANY_UUID}`);
 
-		nickStarrJrPerson = await request.execute(app)
-			.get(`/people/${NICK_STARR_JR_PERSON_UUID}`);
+		nickStarrJrPerson = await request.execute(app).get(`/people/${NICK_STARR_JR_PERSON_UUID}`);
 
-		stephenDillaneJrPerson = await request.execute(app)
-			.get(`/people/${STEPHEN_DILLANE_JR_PERSON_UUID}`);
+		stephenDillaneJrPerson = await request.execute(app).get(`/people/${STEPHEN_DILLANE_JR_PERSON_UUID}`);
 
-		stevenEdisJrPerson = await request.execute(app)
-			.get(`/people/${STEVEN_EDIS_JR_PERSON_UUID}`);
+		stevenEdisJrPerson = await request.execute(app).get(`/people/${STEVEN_EDIS_JR_PERSON_UUID}`);
 
-		subMusicalDirectionLtdCompany = await request.execute(app)
+		subMusicalDirectionLtdCompany = await request
+			.execute(app)
 			.get(`/companies/${SUB_MUSICAL_DIRECTION_LTD_COMPANY_UUID}`);
 
-		markBousieJrPerson = await request.execute(app)
-			.get(`/people/${MARK_BOUSIE_JR_PERSON_UUID}`);
+		markBousieJrPerson = await request.execute(app).get(`/people/${MARK_BOUSIE_JR_PERSON_UUID}`);
 
-		fionaBardsleyJrPerson = await request.execute(app)
-			.get(`/people/${FIONA_BARDSLEY_JR_PERSON_UUID}`);
+		fionaBardsleyJrPerson = await request.execute(app).get(`/people/${FIONA_BARDSLEY_JR_PERSON_UUID}`);
 
-		subStageManagementLtdCompany = await request.execute(app)
+		subStageManagementLtdCompany = await request
+			.execute(app)
 			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		sueMillinJrPerson = await request.execute(app)
-			.get(`/people/${SUE_MILLIN_JR_PERSON_UUID}`);
+		sueMillinJrPerson = await request.execute(app).get(`/people/${SUE_MILLIN_JR_PERSON_UUID}`);
 
-		theSubGuardianCompany = await request.execute(app)
-			.get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
+		theSubGuardianCompany = await request.execute(app).get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
 
-		michaelBillingtonJrPerson = await request.execute(app)
-			.get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
+		michaelBillingtonJrPerson = await request.execute(app).get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
 
-		alexanderHerzenJrCharacter = await request.execute(app)
+		alexanderHerzenJrCharacter = await request
+			.execute(app)
 			.get(`/characters/${ALEXANDER_HERZEN_JR_CHARACTER_UUID}`);
-
 	});
 
 	describe('The Coast of Utopia at Olivier Theatre (production with sub-productions that have a sur-venue)', () => {
-
 		it('includes its sub-productions', () => {
-
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1350,15 +1348,11 @@ describe('Production with sub-productions', () => {
 			const { subProductions } = theCoastOfUtopiaOlivierProduction.body;
 
 			expect(subProductions).to.deep.equal(expectedSubProductions);
-
 		});
-
 	});
 
 	describe('Voyage at Olivier Theatre (production with sur-production that has a sur-venue)', () => {
-
 		it('includes The Coast of Utopia at Olivier Theatre as its sur-production', () => {
-
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID,
@@ -1375,22 +1369,22 @@ describe('Production with sub-productions', () => {
 					year: 2002,
 					surMaterial: null,
 					writingCredits: [
-							{
-								model: 'WRITING_CREDIT',
-								name: 'by',
-								entities: [
-									{
-										model: 'PERSON',
-										uuid: TOM_STOPPARD_SR_PERSON_UUID,
-										name: 'Tom Stoppard Sr'
-									},
-									{
-										model: 'COMPANY',
-										uuid: THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID,
-										name: 'The Sur-Sträussler Group'
-									}
-								]
-							}
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_SR_PERSON_UUID,
+									name: 'Tom Stoppard Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sur-Sträussler Group'
+								}
+							]
+						}
 					]
 				},
 				venue: {
@@ -1532,15 +1526,11 @@ describe('Production with sub-productions', () => {
 			const { surProduction } = voyageOlivierProduction.body;
 
 			expect(surProduction).to.deep.equal(expectedSurProduction);
-
 		});
-
 	});
 
 	describe('The Coast of Utopia at Vivian Beaumont Theatre (production with sub-productions that do not have a sur-venue)', () => {
-
 		it('includes its sub-productions', () => {
-
 			const expectedSubProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1724,15 +1714,11 @@ describe('Production with sub-productions', () => {
 			const { subProductions } = theCoastOfUtopiaVivianBeaumontProduction.body;
 
 			expect(subProductions).to.deep.equal(expectedSubProductions);
-
 		});
-
 	});
 
 	describe('Voyage at Vivian Beaumont Theatre (production with sur-production that does not have a sur-venue)', () => {
-
 		it('includes The Coast of Utopia at Olivier Theatre as its sur-production', () => {
-
 			const expectedSurProduction = {
 				model: 'PRODUCTION',
 				uuid: THE_COAST_OF_UTOPIA_VIVIAN_BEAUMONT_PRODUCTION_UUID,
@@ -1749,22 +1735,22 @@ describe('Production with sub-productions', () => {
 					year: 2002,
 					surMaterial: null,
 					writingCredits: [
-							{
-								model: 'WRITING_CREDIT',
-								name: 'by',
-								entities: [
-									{
-										model: 'PERSON',
-										uuid: TOM_STOPPARD_SR_PERSON_UUID,
-										name: 'Tom Stoppard Sr'
-									},
-									{
-										model: 'COMPANY',
-										uuid: THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID,
-										name: 'The Sur-Sträussler Group'
-									}
-								]
-							}
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_SR_PERSON_UUID,
+									name: 'Tom Stoppard Sr'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_SUR_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sur-Sträussler Group'
+								}
+							]
+						}
 					]
 				},
 				venue: {
@@ -1791,15 +1777,11 @@ describe('Production with sub-productions', () => {
 			const { surProduction } = voyageVivianBeaumontProduction.body;
 
 			expect(surProduction).to.deep.equal(expectedSurProduction);
-
 		});
-
 	});
 
 	describe('The Coast of Utopia (material)', () => {
-
 		it('includes its productions (but with no sur-productions as does not apply)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1838,15 +1820,11 @@ describe('Production with sub-productions', () => {
 			const { productions } = theCoastOfUtopiaMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Voyage (material)', () => {
-
 		it('includes its productions and their sur-productions', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1895,15 +1873,11 @@ describe('Production with sub-productions', () => {
 			const { productions } = voyageMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Tom Stoppard Jr (person)', () => {
-
 		it('includes productions of materials they have written, including the sur-production', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2036,15 +2010,11 @@ describe('Production with sub-productions', () => {
 			const { materialProductions } = tomStoppardJrPerson.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
 	describe('The Sub-Sträussler Group (company)', () => {
-
 		it('includes productions of materials they have written, including the sur-production', () => {
-
 			const expectedMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2177,15 +2147,11 @@ describe('Production with sub-productions', () => {
 			const { materialProductions } = theSubSträusslerGroupCompany.body;
 
 			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
-
 		});
-
 	});
 
 	describe('National Theatre (venue)', () => {
-
 		it('includes productions at this venue, including the specific sub-venue and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2246,15 +2212,11 @@ describe('Production with sub-productions', () => {
 			const { productions } = nationalTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Olivier Theatre (venue)', () => {
-
 		it('includes productions at this venue and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2303,15 +2265,11 @@ describe('Production with sub-productions', () => {
 			const { productions } = olivierTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Stoppard Season (season)', () => {
-
 		it('includes productions in this season and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2387,15 +2345,11 @@ describe('Production with sub-productions', () => {
 			const { productions } = stoppardSeason.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Stoppard Festival 2002 (festival)', () => {
-
 		it('includes productions in this festival and corresponding sur-productions; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2471,15 +2425,11 @@ describe('Production with sub-productions', () => {
 			const { productions } = stoppardFestival2002.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Trevor Nunn Jr (person)', () => {
-
 		it('includes productions for which they have a producer credit, including the sur-production', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2630,15 +2580,11 @@ describe('Production with sub-productions', () => {
 			const { producerProductions } = trevorNunnJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Sub-National Theatre Company (company)', () => {
-
 		it('includes productions for which they have a producer credit, including the sur-production', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2789,13 +2735,10 @@ describe('Production with sub-productions', () => {
 			const { producerProductions } = subNationalTheatreCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Nick Starr Jr (person)', () => {
-
 		it('includes productions for which they have a producer credit, including the sur-production', () => {
 			const expectedProducerProductions = [
 				{
@@ -2947,15 +2890,11 @@ describe('Production with sub-productions', () => {
 			const { producerProductions } = nickStarrJrPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Stephen Dillane Jr (person)', () => {
-
 		it('includes productions for which they have a cast credit, including the sur-production', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3058,15 +2997,11 @@ describe('Production with sub-productions', () => {
 			const { castMemberProductions } = stephenDillaneJrPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Steven Edis Jr (person)', () => {
-
 		it('includes productions for which they have a creative team credit, including the sur-production', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3205,15 +3140,11 @@ describe('Production with sub-productions', () => {
 			const { creativeProductions } = stevenEdisJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Sub-Musical Direction Ltd (company)', () => {
-
 		it('includes productions for which they have a creative team credit, including the sur-production', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3349,15 +3280,11 @@ describe('Production with sub-productions', () => {
 			const { creativeProductions } = subMusicalDirectionLtdCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Mark Bousie Jr (person)', () => {
-
 		it('includes productions for which they have a creative team credit, including the sur-production', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3490,15 +3417,11 @@ describe('Production with sub-productions', () => {
 			const { creativeProductions } = markBousieJrPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Fiona Bardsley Jr (person)', () => {
-
 		it('includes productions for which they have a crew credit, including the sur-production', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3637,15 +3560,11 @@ describe('Production with sub-productions', () => {
 			const { crewProductions } = fionaBardsleyJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Sub-Stage Management Ltd (company)', () => {
-
 		it('includes productions for which they have a crew credit, including the sur-production', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3781,15 +3700,11 @@ describe('Production with sub-productions', () => {
 			const { crewProductions } = subStageManagementLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Sue Millin Jr (person)', () => {
-
 		it('includes productions for which they have a crew credit, including the sur-production', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3922,15 +3837,11 @@ describe('Production with sub-productions', () => {
 			const { crewProductions } = sueMillinJrPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('The Sub-Guardian (company)', () => {
-
 		it('includes productions they have reviewed as a publication, including the sur-production', () => {
-
 			const expectedReviewPublicationProductions = [
 				{
 					model: 'PRODUCTION',
@@ -4036,15 +3947,11 @@ describe('Production with sub-productions', () => {
 			const { reviewPublicationProductions } = theSubGuardianCompany.body;
 
 			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
-
 		});
-
 	});
 
 	describe('Michael Billington Jr (person)', () => {
-
 		it('includes productions they have reviewed as a critic, including the sur-production', () => {
-
 			const expectedReviewCriticProductions = [
 				{
 					model: 'PRODUCTION',
@@ -4150,15 +4057,11 @@ describe('Production with sub-productions', () => {
 			const { reviewCriticProductions } = michaelBillingtonJrPerson.body;
 
 			expect(reviewCriticProductions).to.deep.equal(expectedReviewCriticProductions);
-
 		});
-
 	});
 
 	describe('Alexander Herzen Jr (character)', () => {
-
 		it('includes productions in which character was portrayed, including the sur-production', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -4267,17 +4170,12 @@ describe('Production with sub-productions', () => {
 			const { productions } = alexanderHerzenJrCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('productions list', () => {
-
 		it('includes productions and corresponding sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
-
-			const response = await request.execute(app)
-				.get('/productions');
+			const response = await request.execute(app).get('/productions');
 
 			const expectedResponseBody = [
 				{
@@ -4410,9 +4308,6 @@ describe('Production with sub-productions', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

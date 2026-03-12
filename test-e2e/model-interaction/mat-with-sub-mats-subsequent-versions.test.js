@@ -48,14 +48,13 @@ let francisFlobPerson;
 let curtainUpLtdCompany;
 
 describe('Material with sub-materials and subsequent versions thereof', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Trafalgar Studios',
@@ -66,7 +65,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Agamemnon',
@@ -88,7 +88,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Oresteia',
@@ -116,7 +117,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Agamemnon',
@@ -154,7 +156,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Oresteia',
@@ -198,7 +201,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Agamemnon',
@@ -214,7 +218,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Oresteia',
@@ -235,7 +240,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Agamemnon',
@@ -251,7 +257,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Oresteia',
@@ -272,7 +279,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Ur-Plugh',
@@ -293,7 +301,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh',
@@ -330,7 +339,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -372,7 +382,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -409,7 +420,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Plugh',
@@ -424,7 +436,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Plugh',
@@ -444,36 +457,35 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				]
 			});
 
-		agamemnonOriginalVersionMaterial = await request.execute(app)
+		agamemnonOriginalVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		agamemnonSubsequentVersionMaterial = await request.execute(app)
+		agamemnonSubsequentVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		theOresteiaSubsequentVersionMaterial = await request.execute(app)
+		theOresteiaSubsequentVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID}`);
 
-		aeschylusPerson = await request.execute(app)
-			.get(`/people/${AESCHYLUS_PERSON_UUID}`);
+		aeschylusPerson = await request.execute(app).get(`/people/${AESCHYLUS_PERSON_UUID}`);
 
-		theFathersOfTragedyCompany = await request.execute(app)
+		theFathersOfTragedyCompany = await request
+			.execute(app)
 			.get(`/companies/${THE_FATHERS_OF_TRAGEDY_COMPANY_UUID}`);
 
-		urPlughOriginalVersionMaterial = await request.execute(app)
+		urPlughOriginalVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		francisFlobPerson = await request.execute(app)
-			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+		francisFlobPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await request.execute(app)
-			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
-
+		curtainUpLtdCompany = await request.execute(app).get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Agamemnon (original version) (material)', () => {
-
 		it('includes subsequent versions of this material, with corresponding sur-material; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -511,11 +523,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterials } = agamemnonOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions, including the sur-production', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -564,15 +574,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = agamemnonOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Agamemnon (subsequent version) (material)', () => {
-
 		it('includes original version of this material, with corresponding sur-material; will omit original version writers', () => {
-
 			const expectedOriginalVersionMaterial = {
 				model: 'MATERIAL',
 				uuid: AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID,
@@ -608,11 +614,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { originalVersionMaterial } = agamemnonSubsequentVersionMaterial.body;
 
 			expect(originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterial);
-
 		});
 
 		it('includes its sur-material with its corresponding original version', () => {
-
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
@@ -682,21 +686,16 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				},
 				surMaterial: null,
 				characterGroups: []
-
 			};
 
 			const { surMaterial } = agamemnonSubsequentVersionMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
-
 	});
 
 	describe('The Oresteia (subsequent version) (material)', () => {
-
 		it('includes its sub-materials with their corresponding original versions', () => {
-
 			const expectedSubMaterials = [
 				{
 					model: 'MATERIAL',
@@ -772,22 +771,17 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					},
 					subMaterials: [],
 					characterGroups: []
-
 				}
 			];
 
 			const { subMaterials } = theOresteiaSubsequentVersionMaterial.body;
 
 			expect(subMaterials).to.deep.equal(expectedSubMaterials);
-
 		});
-
 	});
 
 	describe('Aeschylus (person)', () => {
-
 		it('includes subsequent versions of materials they originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -825,11 +819,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterials } = aeschylusPerson.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -878,15 +870,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = aeschylusPerson.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('The Fathers of Tragedy (company)', () => {
-
 		it('includes subsequent versions of materials it originally wrote, with corresponding sur-material; will exclude sur-materials when included via sub-material association; will omit original version writers', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -924,11 +912,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterials } = theFathersOfTragedyCompany.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -977,15 +963,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = theFathersOfTragedyCompany.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Ur-Plugh (original version, 1899) (material): single original version is attached to multiple tiers of subsequent version, and a separate subsequent version is attached to multiple tiers of a production', () => {
-
 		it('includes subsequent versions of this material, with corresponding sur-material; will exclude sur-materials when included via sub-material association', () => {
-
 			const expectedSubsequentVersionMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1049,11 +1031,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterials } = urPlughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterials).to.deep.equal(expectedSubsequentVersionMaterials);
-
 		});
 
 		it('includes productions of subsequent versions of material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1079,15 +1059,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = urPlughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Francis Flob (person): single subsequent version of their work is attached to multiple tiers of a production', () => {
-
 		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1113,15 +1089,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = francisFlobPerson.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
 
 	describe('Curtain Up Ltd (company): single subsequent version of their work is attached to multiple tiers of a production', () => {
-
 		it('includes productions of subsequent versions of materials they originally wrote, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSubsequentVersionMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1147,9 +1119,6 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = curtainUpLtdCompany.body;
 
 			expect(subsequentVersionMaterialProductions).to.deep.equal(expectedSubsequentVersionMaterialProductions);
-
 		});
-
 	});
-
 });

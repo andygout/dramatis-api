@@ -1,19 +1,13 @@
 export default {
 	writingCredits: [
 		{
-			entities: [
-				{}
-			]
+			entities: [{}]
 		}
 	],
-	subMaterials: [
-		{}
-	],
+	subMaterials: [{}],
 	characterGroups: [
 		{
-			characters: [
-				{}
-			]
+			characters: [{}]
 		}
 	]
 };

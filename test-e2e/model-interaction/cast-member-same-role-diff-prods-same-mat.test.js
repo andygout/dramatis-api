@@ -22,17 +22,16 @@ let aMidsummerNightsDreamRoseProduction;
 let judiDenchPerson;
 
 describe('Cast member performing same role in different productions of same material', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				characterGroups: [
 					{
 						characters: [
@@ -44,15 +43,16 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				startDate: '1962-04-10',
 				pressDate: '1962-04-17',
 				endDate: '1962-07-20',
 				material: {
-					name: 'A Midsummer Night\'s Dream'
+					name: "A Midsummer Night's Dream"
 				},
 				venue: {
 					name: 'Royal Shakespeare Theatre'
@@ -70,15 +70,16 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				startDate: '2010-02-09',
 				pressDate: '2010-02-15',
 				endDate: '2010-03-20',
 				material: {
-					name: 'A Midsummer Night\'s Dream'
+					name: "A Midsummer Night's Dream"
 				},
 				venue: {
 					name: 'Rose Theatre'
@@ -96,29 +97,26 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		titaniaCharacter = await request.execute(app)
-			.get(`/characters/${TITANIA_CHARACTER_UUID}`);
+		titaniaCharacter = await request.execute(app).get(`/characters/${TITANIA_CHARACTER_UUID}`);
 
-		aMidsummerNightsDreamRoyalShakespeareProduction = await request.execute(app)
+		aMidsummerNightsDreamRoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		aMidsummerNightsDreamRoseProduction = await request.execute(app)
+		aMidsummerNightsDreamRoseProduction = await request
+			.execute(app)
 			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID}`);
 
-		judiDenchPerson = await request.execute(app)
-			.get(`/people/${JUDI_DENCH_PERSON_UUID}`);
-
+		judiDenchPerson = await request.execute(app).get(`/people/${JUDI_DENCH_PERSON_UUID}`);
 	});
 
 	describe('Titania (character)', () => {
-
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '2010-02-09',
 					endDate: '2010-03-20',
 					venue: {
@@ -143,7 +141,7 @@ describe('Cast member performing same role in different productions of same mate
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '1962-04-10',
 					endDate: '1962-07-20',
 					venue: {
@@ -170,15 +168,11 @@ describe('Cast member performing same role in different productions of same mate
 			const { productions } = titaniaCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
-	describe('A Midsummer Night\'s Dream at Royal Shakespeare Theatre (production)', () => {
-
+	describe("A Midsummer Night's Dream at Royal Shakespeare Theatre (production)", () => {
 		it('includes cast with Judi Dench as Titania, Queen of the Fairies under a variant name (Titania)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -199,15 +193,11 @@ describe('Cast member performing same role in different productions of same mate
 			const { cast } = aMidsummerNightsDreamRoyalShakespeareProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
-	describe('A Midsummer Night\'s Dream at Rose Theatre (production)', () => {
-
+	describe("A Midsummer Night's Dream at Rose Theatre (production)", () => {
 		it('includes cast with Judi Dench as Titania, Queen of the Fairies under a variant name (Titania, Faerie Queene)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -228,20 +218,16 @@ describe('Cast member performing same role in different productions of same mate
 			const { cast } = aMidsummerNightsDreamRoseProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Judi Dench (person)', () => {
-
 		it('includes production with her respective portrayals of Titania', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '2010-02-09',
 					endDate: '2010-03-20',
 					venue: {
@@ -264,7 +250,7 @@ describe('Cast member performing same role in different productions of same mate
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '1962-04-10',
 					endDate: '1962-07-20',
 					venue: {
@@ -289,9 +275,6 @@ describe('Cast member performing same role in different productions of same mate
 			const { castMemberProductions } = judiDenchPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

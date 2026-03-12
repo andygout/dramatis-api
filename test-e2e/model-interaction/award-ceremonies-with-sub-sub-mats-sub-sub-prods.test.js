@@ -59,14 +59,13 @@ let midWibbleSectionIMaterial;
 let surWibbleMaterial;
 
 describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -77,15 +76,14 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
-			.post('/materials')
-			.send({
-				name: 'Sub-Hoge',
-				format: 'play',
-				year: '2019'
-			});
+		await request.execute(app).post('/materials').send({
+			name: 'Sub-Hoge',
+			format: 'play',
+			year: '2019'
+		});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Hoge',
@@ -98,7 +96,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Hoge',
@@ -111,23 +110,20 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
-			.post('/materials')
-			.send({
-				name: 'Sub-Wibble: Part I',
-				format: 'play',
-				year: '2019'
-			});
+		await request.execute(app).post('/materials').send({
+			name: 'Sub-Wibble: Part I',
+			format: 'play',
+			year: '2019'
+		});
 
-		await request.execute(app)
-			.post('/materials')
-			.send({
-				name: 'Sub-Wibble: Part II',
-				format: 'play',
-				year: '2019'
-			});
+		await request.execute(app).post('/materials').send({
+			name: 'Sub-Wibble: Part II',
+			format: 'play',
+			year: '2019'
+		});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Wibble: Section I',
@@ -143,15 +139,14 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
-			.post('/materials')
-			.send({
-				name: 'Mid-Wibble: Section II',
-				format: 'sub-collection of plays',
-				year: '2019'
-			});
+		await request.execute(app).post('/materials').send({
+			name: 'Mid-Wibble: Section II',
+			format: 'sub-collection of plays',
+			year: '2019'
+		});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -167,7 +162,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -178,7 +174,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Hoge',
@@ -194,7 +191,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -210,7 +208,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -221,7 +220,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble: Part II',
@@ -232,7 +232,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Wibble: Section I',
@@ -251,7 +252,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mid-Wibble: Section II',
@@ -262,7 +264,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -281,7 +284,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2020',
@@ -329,7 +333,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -378,12 +383,13 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
 				award: {
-					name: 'Critics\' Circle Theatre Awards'
+					name: "Critics' Circle Theatre Awards"
 				},
 				categories: [
 					{
@@ -427,7 +433,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
@@ -455,7 +462,8 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
@@ -484,57 +492,57 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 				]
 			});
 
-		laurenceOlivierAwards2020AwardCeremony = await request.execute(app)
+		laurenceOlivierAwards2020AwardCeremony = await request
+			.execute(app)
 			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`);
 
-		eveningStandardTheatreAwards2019AwardCeremony = await request.execute(app)
+		eveningStandardTheatreAwards2019AwardCeremony = await request
+			.execute(app)
 			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID}`);
 
-		criticsCircleTheatreAwards2018AwardCeremony = await request.execute(app)
+		criticsCircleTheatreAwards2018AwardCeremony = await request
+			.execute(app)
 			.get(`/award-ceremonies/${CRITICS_CIRCLE_THEATRE_AWARDS_2018_AWARD_CEREMONY_UUID}`);
 
-		conorCorgePerson = await request.execute(app)
-			.get(`/people/${CONOR_CORGE_PERSON_UUID}`);
+		conorCorgePerson = await request.execute(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await request.execute(app)
-			.get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
+		stagecraftLtdCompany = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		ferdinandFooPerson = await request.execute(app)
-			.get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
+		ferdinandFooPerson = await request.execute(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
-		subHogeNoëlCowardProduction = await request.execute(app)
+		subHogeNoëlCowardProduction = await request
+			.execute(app)
 			.get(`/productions/${SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
 
-		midHogeNoëlCowardProduction = await request.execute(app)
+		midHogeNoëlCowardProduction = await request
+			.execute(app)
 			.get(`/productions/${MID_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
 
-		surHogeNoëlCowardProduction = await request.execute(app)
+		surHogeNoëlCowardProduction = await request
+			.execute(app)
 			.get(`/productions/${SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
 
-		subWibblePartIJerwoodTheatreUpstairsProduction = await request.execute(app)
+		subWibblePartIJerwoodTheatreUpstairsProduction = await request
+			.execute(app)
 			.get(`/productions/${SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
 
-		midWibbleSectionIJerwoodTheatreUpstairsProduction = await request.execute(app)
+		midWibbleSectionIJerwoodTheatreUpstairsProduction = await request
+			.execute(app)
 			.get(`/productions/${MID_WIBBLE_SECTION_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
 
-		surWibbleJerwoodTheatreUpstairsProduction = await request.execute(app)
+		surWibbleJerwoodTheatreUpstairsProduction = await request
+			.execute(app)
 			.get(`/productions/${SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
 
-		subWibblePartIMaterial = await request.execute(app)
-			.get(`/materials/${SUB_WIBBLE_PART_I_MATERIAL_UUID}`);
+		subWibblePartIMaterial = await request.execute(app).get(`/materials/${SUB_WIBBLE_PART_I_MATERIAL_UUID}`);
 
-		midWibbleSectionIMaterial = await request.execute(app)
-			.get(`/materials/${MID_WIBBLE_SECTION_I_MATERIAL_UUID}`);
+		midWibbleSectionIMaterial = await request.execute(app).get(`/materials/${MID_WIBBLE_SECTION_I_MATERIAL_UUID}`);
 
-		surWibbleMaterial = await request.execute(app)
-			.get(`/materials/${SUR_WIBBLE_MATERIAL_UUID}`);
-
+		surWibbleMaterial = await request.execute(app).get(`/materials/${SUR_WIBBLE_MATERIAL_UUID}`);
 	});
 
 	describe('Laurence Olivier Awards 2020 (award ceremony)', () => {
-
 		it('includes its categories', () => {
-
 			const expectedCategories = [
 				{
 					model: 'AWARD_CEREMONY_CATEGORY',
@@ -661,15 +669,11 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { categories } = laurenceOlivierAwards2020AwardCeremony.body;
 
 			expect(categories).to.deep.equal(expectedCategories);
-
 		});
-
 	});
 
 	describe('Evening Standard Theatre Awards 2019 (award ceremony)', () => {
-
 		it('includes its categories', () => {
-
 			const expectedCategories = [
 				{
 					model: 'AWARD_CEREMONY_CATEGORY',
@@ -760,15 +764,11 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { categories } = eveningStandardTheatreAwards2019AwardCeremony.body;
 
 			expect(categories).to.deep.equal(expectedCategories);
-
 		});
-
 	});
 
-	describe('Critics\' Circle Theatre Awards 2018 (award ceremony)', () => {
-
+	describe("Critics' Circle Theatre Awards 2018 (award ceremony)", () => {
 		it('includes its categories', () => {
-
 			const expectedCategories = [
 				{
 					model: 'AWARD_CEREMONY_CATEGORY',
@@ -879,20 +879,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { categories } = criticsCircleTheatreAwards2018AwardCeremony.body;
 
 			expect(categories).to.deep.equal(expectedCategories);
-
 		});
-
 	});
 
 	describe('Conor Corge (person)', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -1226,20 +1222,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = conorCorgePerson.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Stagecraft Ltd (company)', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -1570,20 +1562,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = stagecraftLtdCompany.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Ferdinand Foo (person)', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -1911,20 +1899,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = ferdinandFooPerson.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Sub-Hoge at Noël Coward Theatre (production)', () => {
-
-		it('includes its and its sur-production\'s and sur-sur-production\'s award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sur-production's and sur-sur-production's award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -2245,20 +2229,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = subHogeNoëlCowardProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Mid-Hoge at Noël Coward Theatre (production)', () => {
-
-		it('includes its and its sur-production\'s and sub-productions\' award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sur-production's and sub-productions' award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -2579,20 +2559,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = midHogeNoëlCowardProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Sur-Hoge at Noël Coward Theatre (production)', () => {
-
-		it('includes its and its sub-productions\' and sub-sub-productions\' award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sub-productions' and sub-sub-productions' award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -2913,20 +2889,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = surHogeNoëlCowardProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Sub-Wibble: Part I at Jerwood Theatre Upstairs (production)', () => {
-
-		it('includes its and its sur-production\'s and sur-sur-production\'s award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sur-production's and sur-sur-production's award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -3243,20 +3215,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = subWibblePartIJerwoodTheatreUpstairsProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Mid-Wibble: Section I at Jerwood Theatre Upstairs (production)', () => {
-
-		it('includes its and its sur-production\'s and sub-productions\' award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sur-production's and sub-productions' award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -3638,20 +3606,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = midWibbleSectionIJerwoodTheatreUpstairsProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Sur-Wibble at Jerwood Theatre Upstairs (production)', () => {
-
-		it('includes its and its sub-productions\' and sub-sub-productions\' award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sub-productions' and sub-sub-productions' award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -4094,20 +4058,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = surWibbleJerwoodTheatreUpstairsProduction.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Sub-Wibble: Part I (play) (material)', () => {
-
-		it('includes its and its sur-material\'s and sur-sur-material\'s award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sur-material's and sur-sur-material's award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -4434,20 +4394,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = subWibblePartIMaterial.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Mid-Wibble: Section I (sub-collection of plays) (material)', () => {
-
-		it('includes its and its sur-material\'s and sub-materials\' award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sur-material's and sub-materials' award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -4839,20 +4795,16 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = midWibbleSectionIMaterial.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Sur-Wibble (collection of plays) (material)', () => {
-
-		it('includes its and its sub-materials\' and sub-sub-materials\' award nominations, in the latter case specifying the recipient', () => {
-
+		it("includes its and its sub-materials' and sub-sub-materials' award nominations, in the latter case specifying the recipient", () => {
 			const expectedAwards = [
 				{
 					model: 'AWARD',
 					uuid: CRITICS_CIRCLE_THEATRE_AWARDS_AWARD_UUID,
-					name: 'Critics\' Circle Theatre Awards',
+					name: "Critics' Circle Theatre Awards",
 					ceremonies: [
 						{
 							model: 'AWARD_CEREMONY',
@@ -5305,9 +5257,6 @@ describe('Award ceremonies with sub-sub-materials and sub-sub-productions', () =
 			const { awards } = surWibbleMaterial.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
-
 });

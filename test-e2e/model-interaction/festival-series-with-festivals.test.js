@@ -27,14 +27,13 @@ const GLOBE_TO_GLOBE_FESTIVAL_UUID = 'GLOBE_TO_GLOBE_FESTIVAL_UUID';
 let edinburghInternationalFestivalFestivalSeries;
 
 describe('Festival series with festivals', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -44,7 +43,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -54,7 +54,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -64,7 +65,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -74,7 +76,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -84,7 +87,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -94,7 +98,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -104,7 +109,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -114,7 +120,8 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -124,27 +131,21 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app)
-			.post('/festivals')
-			.send({
-				name: 'The Complete Works'
-			});
+		await request.execute(app).post('/festivals').send({
+			name: 'The Complete Works'
+		});
 
-		await request.execute(app)
-			.post('/festivals')
-			.send({
-				name: 'Globe to Globe'
-			});
+		await request.execute(app).post('/festivals').send({
+			name: 'Globe to Globe'
+		});
 
-		edinburghInternationalFestivalFestivalSeries = await request.execute(app)
+		edinburghInternationalFestivalFestivalSeries = await request
+			.execute(app)
 			.get(`/festival-serieses/${EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID}`);
-
 	});
 
 	describe('Edinburgh International Festival (festival series)', () => {
-
 		it('includes its festivals', () => {
-
 			const expectedFestivals = [
 				{
 					model: 'FESTIVAL',
@@ -166,17 +167,12 @@ describe('Festival series with festivals', () => {
 			const { festivals } = edinburghInternationalFestivalFestivalSeries.body;
 
 			expect(festivals).to.deep.equal(expectedFestivals);
-
 		});
-
 	});
 
 	describe('festival serieses list', () => {
-
 		it('includes festival series', async () => {
-
-			const response = await request.execute(app)
-				.get('/festival-serieses');
+			const response = await request.execute(app).get('/festival-serieses');
 
 			const expectedResponseBody = [
 				{
@@ -198,17 +194,12 @@ describe('Festival series with festivals', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('festivals list', () => {
-
 		it('includes festivals and (if applicable) corresponding festival series', async () => {
-
-			const response = await request.execute(app)
-				.get('/festivals');
+			const response = await request.execute(app).get('/festivals');
 
 			const expectedResponseBody = [
 				{
@@ -317,9 +308,6 @@ describe('Festival series with festivals', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

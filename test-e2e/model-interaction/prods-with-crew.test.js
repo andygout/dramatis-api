@@ -49,14 +49,13 @@ let crewDeputiesLtdCompany;
 let crewAssistantsLtdCompany;
 
 describe('Productions with crew', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -73,7 +72,8 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Waste',
@@ -158,7 +158,8 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Much Ado About Nothing',
@@ -248,7 +249,8 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Phèdre',
@@ -332,7 +334,8 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Pains of Youth',
@@ -391,45 +394,35 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		wasteAlmeidaProduction = await request.execute(app)
-			.get(`/productions/${WASTE_ALMEIDA_PRODUCTION_UUID}`);
+		wasteAlmeidaProduction = await request.execute(app).get(`/productions/${WASTE_ALMEIDA_PRODUCTION_UUID}`);
 
-		muchAdoAboutNothingOlivierProduction = await request.execute(app)
+		muchAdoAboutNothingOlivierProduction = await request
+			.execute(app)
 			.get(`/productions/${MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID}`);
 
-		phèdreLytteltonProduction = await request.execute(app)
-			.get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
+		phèdreLytteltonProduction = await request.execute(app).get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
 
-		painsOfYouthCottesloeProduction = await request.execute(app)
+		painsOfYouthCottesloeProduction = await request
+			.execute(app)
 			.get(`/productions/${PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID}`);
 
-		tariqHussainPerson = await request.execute(app)
-			.get(`/people/${TARIQ_HUSSAIN_PERSON_UUID}`);
+		tariqHussainPerson = await request.execute(app).get(`/people/${TARIQ_HUSSAIN_PERSON_UUID}`);
 
-		cassKirchnerPerson = await request.execute(app)
-			.get(`/people/${CASS_KIRCHNER_PERSON_UUID}`);
+		cassKirchnerPerson = await request.execute(app).get(`/people/${CASS_KIRCHNER_PERSON_UUID}`);
 
-		saraGunterPerson = await request.execute(app)
-			.get(`/people/${SARA_GUNTER_PERSON_UUID}`);
+		saraGunterPerson = await request.execute(app).get(`/people/${SARA_GUNTER_PERSON_UUID}`);
 
-		peterGregoryPerson = await request.execute(app)
-			.get(`/people/${PETER_GREGORY_PERSON_UUID}`);
+		peterGregoryPerson = await request.execute(app).get(`/people/${PETER_GREGORY_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await request.execute(app)
-			.get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
+		stagecraftLtdCompany = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		crewDeputiesLtdCompany = await request.execute(app)
-			.get(`/companies/${CREW_DEPUTIES_LTD_COMPANY_UUID}`);
+		crewDeputiesLtdCompany = await request.execute(app).get(`/companies/${CREW_DEPUTIES_LTD_COMPANY_UUID}`);
 
-		crewAssistantsLtdCompany = await request.execute(app)
-			.get(`/companies/${CREW_ASSISTANTS_LTD_COMPANY_UUID}`);
-
+		crewAssistantsLtdCompany = await request.execute(app).get(`/companies/${CREW_ASSISTANTS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Waste at Almeida Theatre (production)', () => {
-
 		it('includes crew credits', () => {
-
 			const expectedCrewCredits = [
 				{
 					model: 'CREW_CREDIT',
@@ -537,15 +530,11 @@ describe('Productions with crew', () => {
 			const { crewCredits } = wasteAlmeidaProduction.body;
 
 			expect(crewCredits).to.deep.equal(expectedCrewCredits);
-
 		});
-
 	});
 
 	describe('Phèdre at Lyttelton Theatre (production)', () => {
-
 		it('includes crew credits', () => {
-
 			const expectedCrewCredits = [
 				{
 					model: 'CREW_CREDIT',
@@ -652,15 +641,11 @@ describe('Productions with crew', () => {
 			const { crewCredits } = phèdreLytteltonProduction.body;
 
 			expect(crewCredits).to.deep.equal(expectedCrewCredits);
-
 		});
-
 	});
 
 	describe('Much Ado About Nothing at Olivier Theatre (production)', () => {
-
 		it('includes crew credits', () => {
-
 			const expectedCrewCredits = [
 				{
 					model: 'CREW_CREDIT',
@@ -774,15 +759,11 @@ describe('Productions with crew', () => {
 			const { crewCredits } = muchAdoAboutNothingOlivierProduction.body;
 
 			expect(crewCredits).to.deep.equal(expectedCrewCredits);
-
 		});
-
 	});
 
 	describe('Pains of Youth at Cottesloe Theatre (production)', () => {
-
 		it('includes crew credits', () => {
-
 			const expectedCrewCredits = [
 				{
 					model: 'CREW_CREDIT',
@@ -855,15 +836,11 @@ describe('Productions with crew', () => {
 			const { crewCredits } = painsOfYouthCottesloeProduction.body;
 
 			expect(crewCredits).to.deep.equal(expectedCrewCredits);
-
 		});
-
 	});
 
 	describe('Tariq Hussain (person)', () => {
-
 		it('includes productions for which they have a crew credit', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -944,15 +921,11 @@ describe('Productions with crew', () => {
 			const { crewProductions } = tariqHussainPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Cass Kirchner (person)', () => {
-
 		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1289,15 +1262,11 @@ describe('Productions with crew', () => {
 			const { crewProductions } = cassKirchnerPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Sara Gunter (person)', () => {
-
 		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1635,15 +1604,11 @@ describe('Productions with crew', () => {
 			const { crewProductions } = saraGunterPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Peter Gregory (person)', () => {
-
 		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1731,15 +1696,11 @@ describe('Productions with crew', () => {
 			const { crewProductions } = peterGregoryPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Stagecraft Ltd (company)', () => {
-
 		it('includes productions for which they have a crew credit', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1826,15 +1787,11 @@ describe('Productions with crew', () => {
 			const { crewProductions } = stagecraftLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Crew Deputies Ltd (company)', () => {
-
 		it('includes productions for which they have a crew credit', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2161,15 +2118,11 @@ describe('Productions with crew', () => {
 			const { crewProductions } = crewDeputiesLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Crew Assistants Ltd (company)', () => {
-
 		it('includes productions for which they have a crew credit, included co-credited entities', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2508,9 +2461,6 @@ describe('Productions with crew', () => {
 			const { crewProductions } = crewAssistantsLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
-
 });

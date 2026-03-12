@@ -17,14 +17,13 @@ const MESSENGER_CHARACTER_UUID = 'MESSENGER_CHARACTER_UUID';
 let juliusCaesarMaterial;
 
 describe('Nameless character groups grouping', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Julius Caesar',
@@ -37,7 +36,7 @@ describe('Nameless character groups grouping', () => {
 						]
 					},
 					{
-						name: 'Triumvirs after Caesar\'s death',
+						name: "Triumvirs after Caesar's death",
 						characters: [
 							{
 								name: 'Mark Antony'
@@ -54,15 +53,11 @@ describe('Nameless character groups grouping', () => {
 				]
 			});
 
-		juliusCaesarMaterial = await request.execute(app)
-			.get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
-
+		juliusCaesarMaterial = await request.execute(app).get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
 	});
 
 	describe('Julius Caesar (material)', () => {
-
 		it('keeps nameless character groups as distinct groups', () => {
-
 			const expectedCharacterGroups = [
 				{
 					model: 'CHARACTER_GROUP',
@@ -79,7 +74,7 @@ describe('Nameless character groups grouping', () => {
 				},
 				{
 					model: 'CHARACTER_GROUP',
-					name: 'Triumvirs after Caesar\'s death',
+					name: "Triumvirs after Caesar's death",
 					position: 1,
 					characters: [
 						{
@@ -108,9 +103,6 @@ describe('Nameless character groups grouping', () => {
 			const { characterGroups } = juliusCaesarMaterial.body;
 
 			expect(characterGroups).to.deep.equal(expectedCharacterGroups);
-
 		});
-
 	});
-
 });

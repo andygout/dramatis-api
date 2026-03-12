@@ -23,14 +23,13 @@ let cocoCharacter;
 let geordieCharacter;
 
 describe('Character portrayed with other roles', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'War Horse',
@@ -41,7 +40,7 @@ describe('Character portrayed with other roles', () => {
 								name: 'Major Nicholls'
 							},
 							{
-								name: 'Joey\'s mother'
+								name: "Joey's mother"
 							},
 							{
 								name: 'Dr Schweyk'
@@ -57,7 +56,8 @@ describe('Character portrayed with other roles', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'War Horse',
@@ -83,7 +83,7 @@ describe('Character portrayed with other roles', () => {
 						name: 'Stephen Harper',
 						roles: [
 							{
-								name: 'Joey\'s mother'
+								name: "Joey's mother"
 							},
 							{
 								name: 'Dr Schweyk'
@@ -99,24 +99,17 @@ describe('Character portrayed with other roles', () => {
 				]
 			});
 
-		joeysMotherCharacter = await request.execute(app)
-			.get(`/characters/${JOEYS_MOTHER_CHARACTER_UUID}`);
+		joeysMotherCharacter = await request.execute(app).get(`/characters/${JOEYS_MOTHER_CHARACTER_UUID}`);
 
-		drSchweykCharacter = await request.execute(app)
-			.get(`/characters/${DR_SCHWEYK_CHARACTER_UUID}`);
+		drSchweykCharacter = await request.execute(app).get(`/characters/${DR_SCHWEYK_CHARACTER_UUID}`);
 
-		cocoCharacter = await request.execute(app)
-			.get(`/characters/${COCO_CHARACTER_UUID}`);
+		cocoCharacter = await request.execute(app).get(`/characters/${COCO_CHARACTER_UUID}`);
 
-		geordieCharacter = await request.execute(app)
-			.get(`/characters/${GEORDIE_CHARACTER_UUID}`);
-
+		geordieCharacter = await request.execute(app).get(`/characters/${GEORDIE_CHARACTER_UUID}`);
 	});
 
-	describe('Joey\'s mother (character)', () => {
-
+	describe("Joey's mother (character)", () => {
 		it('includes performers who portrayed them and the other roles they also played', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -136,7 +129,7 @@ describe('Character portrayed with other roles', () => {
 							model: 'PERSON',
 							uuid: STEPHEN_HARPER_PERSON_UUID,
 							name: 'Stephen Harper',
-							roleName: 'Joey\'s mother',
+							roleName: "Joey's mother",
 							qualifier: null,
 							isAlternate: false,
 							otherRoles: [
@@ -170,15 +163,11 @@ describe('Character portrayed with other roles', () => {
 			const { productions } = joeysMotherCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Dr Schweyk (character)', () => {
-
 		it('includes performers who portrayed them and the other roles they also played', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -205,7 +194,7 @@ describe('Character portrayed with other roles', () => {
 								{
 									model: 'CHARACTER',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
-									name: 'Joey\'s mother',
+									name: "Joey's mother",
 									qualifier: null,
 									isAlternate: false
 								},
@@ -232,15 +221,11 @@ describe('Character portrayed with other roles', () => {
 			const { productions } = drSchweykCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Coco (character)', () => {
-
 		it('includes performers who portrayed them and the other roles they also played', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -267,7 +252,7 @@ describe('Character portrayed with other roles', () => {
 								{
 									model: 'CHARACTER',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
-									name: 'Joey\'s mother',
+									name: "Joey's mother",
 									qualifier: null,
 									isAlternate: false
 								},
@@ -294,15 +279,11 @@ describe('Character portrayed with other roles', () => {
 			const { productions } = cocoCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Geordie (character)', () => {
-
 		it('includes performers who portrayed them and the other roles they also played', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -329,7 +310,7 @@ describe('Character portrayed with other roles', () => {
 								{
 									model: 'CHARACTER',
 									uuid: JOEYS_MOTHER_CHARACTER_UUID,
-									name: 'Joey\'s mother',
+									name: "Joey's mother",
 									qualifier: null,
 									isAlternate: false
 								},
@@ -356,9 +337,6 @@ describe('Character portrayed with other roles', () => {
 			const { productions } = geordieCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
-
 });

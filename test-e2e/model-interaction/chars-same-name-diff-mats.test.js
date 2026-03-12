@@ -34,17 +34,16 @@ let oscarPearcePerson;
 let samAlexanderPerson;
 
 describe('Different characters with the same name from different materials', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				characterGroups: [
 					{
 						characters: [
@@ -60,7 +59,8 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Titus Andronicus',
@@ -79,15 +79,16 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'A Midsummer Night\'s Dream',
+				name: "A Midsummer Night's Dream",
 				startDate: '2006-02-02',
 				pressDate: '2006-02-07',
 				endDate: '2006-02-25',
 				material: {
-					name: 'A Midsummer Night\'s Dream'
+					name: "A Midsummer Night's Dream"
 				},
 				venue: {
 					name: 'Novello Theatre'
@@ -112,7 +113,8 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Titus Andronicus',
@@ -123,7 +125,7 @@ describe('Different characters with the same name from different materials', () 
 					name: 'Titus Andronicus'
 				},
 				venue: {
-					name: 'Shakespeare\'s Globe'
+					name: "Shakespeare's Globe"
 				},
 				cast: [
 					{
@@ -145,41 +147,36 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		demetriusCharacter1 = await request.execute(app)
-			.get(`/characters/${DEMETRIUS_CHARACTER_1_UUID}`);
+		demetriusCharacter1 = await request.execute(app).get(`/characters/${DEMETRIUS_CHARACTER_1_UUID}`);
 
-		demetriusCharacter2 = await request.execute(app)
-			.get(`/characters/${DEMETRIUS_CHARACTER_2_UUID}`);
+		demetriusCharacter2 = await request.execute(app).get(`/characters/${DEMETRIUS_CHARACTER_2_UUID}`);
 
-		aMidsummerNightsDreamMaterial = await request.execute(app)
+		aMidsummerNightsDreamMaterial = await request
+			.execute(app)
 			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
-		titusAndronicusMaterial = await request.execute(app)
-			.get(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`);
+		titusAndronicusMaterial = await request.execute(app).get(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`);
 
-		aMidsummerNightsDreamNovelloProduction = await request.execute(app)
+		aMidsummerNightsDreamNovelloProduction = await request
+			.execute(app)
 			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID}`);
 
-		titusAndronicusGlobeProduction = await request.execute(app)
+		titusAndronicusGlobeProduction = await request
+			.execute(app)
 			.get(`/productions/${TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID}`);
 
-		oscarPearcePerson = await request.execute(app)
-			.get(`/people/${OSCAR_PEARCE_PERSON_UUID}`);
+		oscarPearcePerson = await request.execute(app).get(`/people/${OSCAR_PEARCE_PERSON_UUID}`);
 
-		samAlexanderPerson = await request.execute(app)
-			.get(`/people/${SAM_ALEXANDER_PERSON_UUID}`);
-
+		samAlexanderPerson = await request.execute(app).get(`/people/${SAM_ALEXANDER_PERSON_UUID}`);
 	});
 
 	describe('Demetrius (character) (#1)', () => {
-
 		it('includes productions in which character was portrayed (i.e. excludes productions of different character with same name)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
 					venue: {
@@ -206,15 +203,11 @@ describe('Different characters with the same name from different materials', () 
 			const { productions } = demetriusCharacter1.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Demetrius (character) (#2)', () => {
-
 		it('includes productions in which character was portrayed (i.e. excludes productions of different character with same name)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -225,7 +218,7 @@ describe('Different characters with the same name from different materials', () 
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null,
@@ -246,15 +239,11 @@ describe('Different characters with the same name from different materials', () 
 			const { productions } = demetriusCharacter2.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
-	describe('A Midsummer Night\'s Dream (material)', () => {
-
+	describe("A Midsummer Night's Dream (material)", () => {
 		it('includes Demetrius (#1) in its characters (i.e. and not Demetrius (#2))', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -270,18 +259,16 @@ describe('Different characters with the same name from different materials', () 
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = aMidsummerNightsDreamMaterial.body;
+			const {
+				characterGroups: [{ characters }]
+			} = aMidsummerNightsDreamMaterial.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Titus Andronicus (material)', () => {
-
 		it('includes Demetrius (#2) in its characters (i.e. and not Demetrius (#1))', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -295,21 +282,18 @@ describe('Different characters with the same name from different materials', () 
 					name: 'Chiron',
 					qualifier: null
 				}
-
 			];
 
-			const { characterGroups: [{ characters }] } = titusAndronicusMaterial.body;
+			const {
+				characterGroups: [{ characters }]
+			} = titusAndronicusMaterial.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
-	describe('A Midsummer Night\'s Dream at Novello Theatre (production)', () => {
-
+	describe("A Midsummer Night's Dream at Novello Theatre (production)", () => {
 		it('includes cast with Oscar Pearce as Demetrius (#1)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -344,15 +328,11 @@ describe('Different characters with the same name from different materials', () 
 			const { cast } = aMidsummerNightsDreamNovelloProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
-	describe('Titus Andronicus at Shakespeare\'s Globe (production)', () => {
-
+	describe("Titus Andronicus at Shakespeare's Globe (production)", () => {
 		it('includes cast with Sam Alexander as Demetrius (#2)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -387,20 +367,16 @@ describe('Different characters with the same name from different materials', () 
 			const { cast } = titusAndronicusGlobeProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Oscar Pearce (person)', () => {
-
 		it('includes in their production credits their portrayal of Demetrius (#1) (i.e. and not Demetrius (#2))', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
 					uuid: A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID,
-					name: 'A Midsummer Night\'s Dream',
+					name: "A Midsummer Night's Dream",
 					startDate: '2006-02-02',
 					endDate: '2006-02-25',
 					venue: {
@@ -425,15 +401,11 @@ describe('Different characters with the same name from different materials', () 
 			const { castMemberProductions } = oscarPearcePerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Sam Alexander (person)', () => {
-
 		it('includes in their production credits their portrayal of Demetrius (#2) (i.e. and not Demetrius (#1))', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -444,7 +416,7 @@ describe('Different characters with the same name from different materials', () 
 					venue: {
 						model: 'VENUE',
 						uuid: SHAKESPEARES_GLOBE_VENUE_UUID,
-						name: 'Shakespeare\'s Globe',
+						name: "Shakespeare's Globe",
 						surVenue: null
 					},
 					surProduction: null,
@@ -463,9 +435,6 @@ describe('Different characters with the same name from different materials', () 
 			const { castMemberProductions } = samAlexanderPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

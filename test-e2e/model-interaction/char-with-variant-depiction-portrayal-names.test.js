@@ -54,14 +54,13 @@ let matthewMacfadyenPerson;
 let adrianLesterPerson;
 
 describe('Character with variant depiction and portrayal names', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -85,7 +84,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -109,7 +109,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Henry V',
@@ -132,7 +133,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -150,7 +152,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -186,7 +189,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -223,7 +227,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry V',
@@ -260,7 +265,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -297,7 +303,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -334,7 +341,8 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Henry V',
@@ -371,63 +379,53 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		kingHenryVCharacter = await request.execute(app)
-			.get(`/characters/${KING_HENRY_V_CHARACTER_UUID}`);
+		kingHenryVCharacter = await request.execute(app).get(`/characters/${KING_HENRY_V_CHARACTER_UUID}`);
 
-		sirJohnFalstaffCharacter = await request.execute(app)
-			.get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
+		sirJohnFalstaffCharacter = await request.execute(app).get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
-		messengerCharacter = await request.execute(app)
-			.get(`/characters/${MESSENGER_CHARACTER_UUID}`);
+		messengerCharacter = await request.execute(app).get(`/characters/${MESSENGER_CHARACTER_UUID}`);
 
-		attendantCharacter = await request.execute(app)
-			.get(`/characters/${ATTENDANT_CHARACTER_UUID}`);
+		attendantCharacter = await request.execute(app).get(`/characters/${ATTENDANT_CHARACTER_UUID}`);
 
-		soldierCharacter = await request.execute(app)
-			.get(`/characters/${SOLDIER_CHARACTER_UUID}`);
+		soldierCharacter = await request.execute(app).get(`/characters/${SOLDIER_CHARACTER_UUID}`);
 
-		henryIVPart1Material = await request.execute(app)
-			.get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
+		henryIVPart1Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Material = await request.execute(app)
-			.get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
+		henryIVPart2Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		henryVMaterial = await request.execute(app)
-			.get(`/materials/${HENRY_V_MATERIAL_UUID}`);
+		henryVMaterial = await request.execute(app).get(`/materials/${HENRY_V_MATERIAL_UUID}`);
 
-		henryIVPart1RoyalShakespeareProduction = await request.execute(app)
+		henryIVPart1RoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		henryIVPart2RoyalShakespeareProduction = await request.execute(app)
+		henryIVPart2RoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		henryVRoyalShakespeareProduction = await request.execute(app)
+		henryVRoyalShakespeareProduction = await request
+			.execute(app)
 			.get(`/productions/${HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
 
-		henryIVPart1NationalProduction = await request.execute(app)
+		henryIVPart1NationalProduction = await request
+			.execute(app)
 			.get(`/productions/${HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID}`);
 
-		henryIVPart2NationalProduction = await request.execute(app)
+		henryIVPart2NationalProduction = await request
+			.execute(app)
 			.get(`/productions/${HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID}`);
 
-		henryVNationalProduction = await request.execute(app)
-			.get(`/productions/${HENRY_V_NATIONAL_PRODUCTION_UUID}`);
+		henryVNationalProduction = await request.execute(app).get(`/productions/${HENRY_V_NATIONAL_PRODUCTION_UUID}`);
 
-		alexHassellPerson = await request.execute(app)
-			.get(`/people/${ALEX_HASSELL_PERSON_UUID}`);
+		alexHassellPerson = await request.execute(app).get(`/people/${ALEX_HASSELL_PERSON_UUID}`);
 
-		matthewMacfadyenPerson = await request.execute(app)
-			.get(`/people/${MATTHEW_MACFADYEN_PERSON_UUID}`);
+		matthewMacfadyenPerson = await request.execute(app).get(`/people/${MATTHEW_MACFADYEN_PERSON_UUID}`);
 
-		adrianLesterPerson = await request.execute(app)
-			.get(`/people/${ADRIAN_LESTER_PERSON_UUID}`);
-
+		adrianLesterPerson = await request.execute(app).get(`/people/${ADRIAN_LESTER_PERSON_UUID}`);
 	});
 
 	describe('King Henry V (character)', () => {
-
 		it('includes materials in which character is depicted', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -492,20 +490,14 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { materials } = kingHenryVCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
-
-			const expectedVariantNamedDepictions = [
-				'Henry, Prince of Wales',
-				'Prince Hal'
-			];
+			const expectedVariantNamedDepictions = ['Henry, Prince of Wales', 'Prince Hal'];
 
 			const { variantNamedDepictions } = kingHenryVCharacter.body;
 
 			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
-
 		});
 
 		// Even though 'Prince Hal' already appears in the variant depiction names (i.e. variant names from materials),
@@ -515,22 +507,14 @@ describe('Character with variant depiction and portrayal names', () => {
 		// was in a production of the material that used this name as the display name for King Henry V,
 		// and so this name instead only appears under variant depiction names.
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
-
-			const expectedVariantNamedPortrayals = [
-				'Hal',
-				'Hal, Prince of England',
-				'Henry V',
-				'Prince Hal'
-			];
+			const expectedVariantNamedPortrayals = ['Hal', 'Hal, Prince of England', 'Henry V', 'Prince Hal'];
 
 			const { variantNamedPortrayals } = kingHenryVCharacter.body;
 
 			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
-
 		});
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -735,39 +719,29 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { productions } = kingHenryVCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Sir John Falstaff (character)', () => {
-
 		it('includes no variant-named depictions where none exist', () => {
-
 			const expectedVariantNamedDepictions = [];
 
 			const { variantNamedDepictions } = sirJohnFalstaffCharacter.body;
 
 			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
-
 		});
 
 		it('includes no variant-named portrayals where none exist', () => {
-
 			const expectedVariantNamedPortrayals = [];
 
 			const { variantNamedPortrayals } = sirJohnFalstaffCharacter.body;
 
 			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
-
 		});
-
 	});
 
 	describe('Messenger (character)', () => {
-
-		it('includes productions in which character was portrayed (with portrayers\' other roles using uuid of King Henry V and specific display name)', () => {
-
+		it("includes productions in which character was portrayed (with portrayers' other roles using uuid of King Henry V and specific display name)", () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -840,15 +814,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { productions } = messengerCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Attendant (character)', () => {
-
-		it('includes productions in which character was portrayed (with portrayers\' other roles using uuid of King Henry V and specific display name)', () => {
-
+		it("includes productions in which character was portrayed (with portrayers' other roles using uuid of King Henry V and specific display name)", () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -921,15 +891,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { productions } = attendantCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Soldier (character)', () => {
-
-		it('includes productions in which character was portrayed (with portrayers\' other roles using uuid of King Henry V and specific display name)', () => {
-
+		it("includes productions in which character was portrayed (with portrayers' other roles using uuid of King Henry V and specific display name)", () => {
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1002,15 +968,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { productions } = soldierCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 1 (material)', () => {
-
 		it('includes Henry, Prince of Wales in its characters using the uuid value of King Henry V', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -1032,18 +994,16 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryIVPart1Material.body;
+			const {
+				characterGroups: [{ characters }]
+			} = henryIVPart1Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 2 (material)', () => {
-
 		it('includes Prince Hal in its characters using the uuid value of King Henry V', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -1065,18 +1025,16 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryIVPart2Material.body;
+			const {
+				characterGroups: [{ characters }]
+			} = henryIVPart2Material.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Henry V (material)', () => {
-
 		it('includes Henry V in its characters using the uuid value of King Henry V', () => {
-
 			const expectedCharacters = [
 				{
 					model: 'CHARACTER',
@@ -1098,18 +1056,16 @@ describe('Character with variant depiction and portrayal names', () => {
 				}
 			];
 
-			const { characterGroups: [{ characters }] } = henryVMaterial.body;
+			const {
+				characterGroups: [{ characters }]
+			} = henryVMaterial.body;
 
 			expect(characters).to.deep.equal(expectedCharacters);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 1 at Royal Shakespeare Theatre (production)', () => {
-
 		it('includes cast with Alex Hassell as Henry, Prince of Wales using the uuid value of King Henry V', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -1151,15 +1107,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { cast } = henryIVPart1RoyalShakespeareProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 2 at Royal Shakespeare Theatre (production)', () => {
-
 		it('includes cast with Alex Hassell as Hal using the uuid value of King Henry V', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -1201,15 +1153,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { cast } = henryIVPart2RoyalShakespeareProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Henry V at Royal Shakespeare Theatre (production)', () => {
-
 		it('includes cast with Alex Hassell as Henry V using the uuid value of King Henry V', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -1251,15 +1199,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { cast } = henryVRoyalShakespeareProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 1 at National Theatre (production)', () => {
-
 		it('includes cast with Matthew Macfadyen as Prince Hal using the uuid value of King Henry V', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -1301,15 +1245,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { cast } = henryIVPart1NationalProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Henry IV, Part 2 at National Theatre (production)', () => {
-
 		it('includes cast with Matthew Macfadyen as Hal, Prince of England using the uuid value of King Henry V', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -1351,15 +1291,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { cast } = henryIVPart2NationalProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Henry V at National Theatre (production)', () => {
-
 		it('includes cast with Adrian Lester as Henry V and using the uuid value of King Henry V', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -1401,15 +1337,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { cast } = henryVNationalProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Alex Hassell (person)', () => {
-
 		it('includes productions of their portrayals of King Henry V under variant names (Henry, Prince of Wales; Hal; Henry V) but using its uuid value', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1506,15 +1438,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { castMemberProductions } = alexHassellPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Matthew Macfadyen (person)', () => {
-
 		it('includes productions of their portrayals of King Henry V under variant names (Prince Hal; Hal, Prince of England) but using its uuid value', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1581,15 +1509,11 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { castMemberProductions } = matthewMacfadyenPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Adrian Lester (person)', () => {
-
 		it('includes productions of their portrayals of King Henry V under variant names (Henry V) but using its uuid value', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1626,9 +1550,6 @@ describe('Character with variant depiction and portrayal names', () => {
 			const { castMemberProductions } = adrianLesterPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

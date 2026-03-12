@@ -5,18 +5,14 @@ import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 import { CharacterDepiction } from '../../../src/models/index.js';
 
 describe('CharacterGroup model', () => {
-
 	let stubs;
 	let CharacterGroup;
 
 	const CharacterDepictionStub = function () {
-
 		return createStubInstance(CharacterDepiction);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateCharacterIndices: stub().returns([])
@@ -36,29 +32,21 @@ describe('CharacterGroup model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		describe('characters property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new CharacterGroup({ name: 'Montagues' });
 
 				expect(instance.characters).to.deep.equal([]);
-
 			});
 
 			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new CharacterGroup({
 					name: 'Montagues',
 					characters: [
@@ -78,17 +66,12 @@ describe('CharacterGroup model', () => {
 				expect(instance.characters[0] instanceof CharacterDepiction).to.be.true;
 				expect(instance.characters[1] instanceof CharacterDepiction).to.be.true;
 				expect(instance.characters[2] instanceof CharacterDepiction).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new CharacterGroup({
 				name: 'Montagues',
 				characters: [
@@ -123,9 +106,6 @@ describe('CharacterGroup model', () => {
 			assert.calledOnceWithExactly(instance.characters[0].validateQualifier);
 			assert.calledOnceWithExactly(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
 			assert.calledOnceWithExactly(instance.characters[0].validateUniquenessInGroup, { isDuplicate: false });
-
 		});
-
 	});
-
 });

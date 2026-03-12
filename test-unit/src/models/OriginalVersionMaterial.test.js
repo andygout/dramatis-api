@@ -2,20 +2,19 @@ import esmock from 'esmock';
 import { assert, restore, spy, stub } from 'sinon';
 
 describe('OriginalVersionMaterial model', () => {
-
 	let stubs;
 	let OriginalVersionMaterial;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(async () => {
-
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
 			cypherQueriesModule: {
 				validationQueries: {
-					getOriginalVersionMaterialChecksQuery:
-						stub().returns('getOriginalVersionMaterialChecksQuery response')
+					getOriginalVersionMaterialChecksQuery: stub().returns(
+						'getOriginalVersionMaterialChecksQuery response'
+					)
 				}
 			},
 			neo4jQueryModule: {
@@ -34,21 +33,15 @@ describe('OriginalVersionMaterial model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
 		context('valid data', () => {
-
 			it('will not call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: false
 				});
@@ -70,27 +63,20 @@ describe('OriginalVersionMaterial model', () => {
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
 				);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getOriginalVersionMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getOriginalVersionMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
-		context('invalid data (instance is the subject material\'s subsequent version material)', () => {
-
+		context("invalid data (instance is the subject material's subsequent version material)", () => {
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: true
 				});
@@ -111,31 +97,26 @@ describe('OriginalVersionMaterial model', () => {
 				assert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
 				);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getOriginalVersionMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getOriginalVersionMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Material with these attributes is this material\'s subsequent version material'
+					'name',
+					"Material with these attributes is this material's subsequent version material"
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Material with these attributes is this material\'s subsequent version material'
+					'differentiator',
+					"Material with these attributes is this material's subsequent version material"
 				);
-
 			});
-
 		});
-
 	});
-
 });

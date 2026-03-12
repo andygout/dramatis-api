@@ -2,52 +2,35 @@ import { getTrimmedOrEmptyString } from '../lib/strings.js';
 import validateString from '../lib/validate-string.js';
 import { MODELS } from '../utils/constants.js';
 
-const NAME_EXEMPT_MODELS = new Set([
-	MODELS.NOMINATION,
-	MODELS.PRODUCTION_IDENTIFIER,
-	MODELS.REVIEW
-]);
+const NAME_EXEMPT_MODELS = new Set([MODELS.NOMINATION, MODELS.PRODUCTION_IDENTIFIER, MODELS.REVIEW]);
 
 export default class Base {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		if (!NAME_EXEMPT_MODELS.has(this.model)) this.name = getTrimmedOrEmptyString(props.name);
 
 		this.errors = {};
-
 	}
 
-	toJSON () {
-
+	toJSON() {
 		return Object.assign({}, { model: this.model }, this);
-
 	}
 
-	validateName (opts) {
-
+	validateName(opts) {
 		this.validateStringForProperty('name', { isRequired: opts.isRequired });
-
 	}
 
-	validateQualifier () {
-
+	validateQualifier() {
 		this.validateStringForProperty('qualifier', { isRequired: false });
-
 	}
 
-	validateStringForProperty (property, opts) {
-
+	validateStringForProperty(property, opts) {
 		const stringErrorText = validateString(this[property], { isRequired: opts.isRequired });
 
 		if (stringErrorText) this.addPropertyError(property, stringErrorText);
-
 	}
 
-	validateUniquenessInGroup (opts) {
-
+	validateUniquenessInGroup(opts) {
 		if (opts.isDuplicate) {
-
 			const uniquenessErrorMessage = 'This item has been duplicated within the group';
 
 			const defaultProperties = new Set([
@@ -59,39 +42,23 @@ export default class Base {
 				'qualifier'
 			]);
 
-			(opts.properties || defaultProperties).forEach(property => {
-
-				if (Object.hasOwn(this, property))
-					this.addPropertyError(property, uniquenessErrorMessage);
-
+			(opts.properties || defaultProperties).forEach((property) => {
+				if (Object.hasOwn(this, property)) this.addPropertyError(property, uniquenessErrorMessage);
 			});
-
 		}
-
 	}
 
-	validateNamePresenceIfNamedChildren (children) {
-
+	validateNamePresenceIfNamedChildren(children) {
 		this.validatePropertyPresenceIfNamedChildren('name', children);
-
 	}
 
-	validatePropertyPresenceIfNamedChildren (property, children) {
-
-		if (this[property] === '' && children.some(child => Boolean(child.name))) {
-
+	validatePropertyPresenceIfNamedChildren(property, children) {
+		if (this[property] === '' && children.some((child) => Boolean(child.name))) {
 			this.addPropertyError(property, 'Value is required if named children exist');
-
 		}
-
 	}
 
-	addPropertyError (property, errorText) {
-
-		this.errors[property]
-			? this.errors[property].push(errorText)
-			: this.errors[property] = [errorText];
-
+	addPropertyError(property, errorText) {
+		this.errors[property] ? this.errors[property].push(errorText) : (this.errors[property] = [errorText]);
 	}
-
 }

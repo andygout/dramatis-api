@@ -11,13 +11,7 @@ import router from './router.js';
 
 const app = express();
 
-app.use(
-	express.json(),
-	logger('dev'),
-	accessControlSetter,
-	router,
-	errorHandler
-);
+app.use(express.json(), logger('dev'), accessControlSetter, router, errorHandler);
 
 const neo4jDriver = getNeo4jDriver();
 

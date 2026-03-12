@@ -22,9 +22,7 @@ import {
 import { MODELS } from '../utils/constants.js';
 
 export default class Production extends Entity {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const {
@@ -61,39 +59,29 @@ export default class Production extends Entity {
 		this.festival = new FestivalBase(festival);
 
 		this.subProductions = subProductions
-			? subProductions.map(subProduction => new SubProductionIdentifier(subProduction))
+			? subProductions.map((subProduction) => new SubProductionIdentifier(subProduction))
 			: [];
 
 		this.producerCredits = producerCredits
-			? producerCredits.map(producerCredit => new ProducerCredit(producerCredit))
+			? producerCredits.map((producerCredit) => new ProducerCredit(producerCredit))
 			: [];
 
-		this.cast = cast
-			? cast.map(castMember => new CastMember(castMember))
-			: [];
+		this.cast = cast ? cast.map((castMember) => new CastMember(castMember)) : [];
 
 		this.creativeCredits = creativeCredits
-			? creativeCredits.map(creativeCredit => new CreativeCredit(creativeCredit))
+			? creativeCredits.map((creativeCredit) => new CreativeCredit(creativeCredit))
 			: [];
 
-		this.crewCredits = crewCredits
-			? crewCredits.map(crewCredit => new CrewCredit(crewCredit))
-			: [];
+		this.crewCredits = crewCredits ? crewCredits.map((crewCredit) => new CrewCredit(crewCredit)) : [];
 
-		this.reviews = reviews
-			? reviews.map(review => new Review(review))
-			: [];
-
+		this.reviews = reviews ? reviews.map((review) => new Review(review)) : [];
 	}
 
-	get model () {
-
+	get model() {
 		return MODELS.PRODUCTION;
-
 	}
 
-	runInputValidations () {
-
+	runInputValidations() {
 		this.validateName({ isRequired: true });
 
 		this.validateSubtitle();
@@ -119,15 +107,14 @@ export default class Production extends Entity {
 		const duplicateSubProductionIdentifierIndices = getDuplicateUuidIndices(this.subProductions);
 
 		this.subProductions.forEach((subProductionIdentifier, index) => {
-
 			subProductionIdentifier.validateUuid();
 
 			subProductionIdentifier.validateNoAssociationWithSelf({ uuid: this.uuid });
 
-			subProductionIdentifier.validateUniquenessInGroup(
-				{ isDuplicate: duplicateSubProductionIdentifierIndices.includes(index), properties: new Set(['uuid']) }
-			);
-
+			subProductionIdentifier.validateUniquenessInGroup({
+				isDuplicate: duplicateSubProductionIdentifierIndices.includes(index),
+				properties: new Set(['uuid'])
+			});
 		});
 
 		const duplicateProducerCreditIndices = getDuplicateNameIndices(this.producerCredits);
@@ -156,12 +143,12 @@ export default class Production extends Entity {
 
 		const duplicateReviewUrlIndices = getDuplicateUrlIndices(this.reviews);
 
-		this.reviews.forEach((review, index) => review.runInputValidations({ isDuplicate: duplicateReviewUrlIndices.includes(index) }));
-
+		this.reviews.forEach((review, index) =>
+			review.runInputValidations({ isDuplicate: duplicateReviewUrlIndices.includes(index) })
+		);
 	}
 
-	validateDates () {
-
+	validateDates() {
 		const formatErrorText = 'Value must be in date format';
 
 		const isValidStartDate = isValidDate(this.startDate);
@@ -181,34 +168,24 @@ export default class Production extends Entity {
 		}
 
 		if (isValidStartDate && isValidEndDate && this.startDate > this.endDate) {
-
 			this.addPropertyError('startDate', 'Start date must not be after end date');
 			this.addPropertyError('endDate', 'End date must not be before start date');
-
 		}
 
 		if (isValidStartDate && isValidPressDate && this.startDate > this.pressDate) {
-
 			this.addPropertyError('startDate', 'Start date must not be after press date');
 			this.addPropertyError('pressDate', 'Press date must not be before start date');
-
 		}
 
 		if (isValidPressDate && isValidEndDate && this.pressDate > this.endDate) {
-
 			this.addPropertyError('pressDate', 'Press date must not be after end date');
 			this.addPropertyError('endDate', 'End date must not be before press date');
-
 		}
-
 	}
 
-	async runDatabaseValidations () {
-
+	async runDatabaseValidations() {
 		for (const subProductionIdentifier of this.subProductions) {
 			await subProductionIdentifier.runDatabaseValidations({ subjectProductionUuid: this.uuid });
 		}
-
 	}
-
 }

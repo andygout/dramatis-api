@@ -6,17 +6,12 @@ const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 describe('Input validation failures: Festival instance', () => {
-
 	let stubs;
 	let Festival;
 
-	const methods = [
-		'create',
-		'update'
-	];
+	const methods = ['create', 'update'];
 
 	beforeEach(async () => {
-
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
@@ -30,23 +25,17 @@ describe('Input validation failures: Festival instance', () => {
 				'../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
-	const createInstance = props => new Festival(props);
+	const createInstance = (props) => new Festival(props);
 
 	context('name value is empty string', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: ''
 				});
@@ -59,9 +48,7 @@ describe('Input validation failures: Festival instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					festivalSeries: {
 						uuid: undefined,
@@ -72,19 +59,13 @@ describe('Input validation failures: Festival instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
@@ -97,9 +78,7 @@ describe('Input validation failures: Festival instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too long'
-						]
+						name: ['Value is too long']
 					},
 					festivalSeries: {
 						uuid: undefined,
@@ -110,19 +89,13 @@ describe('Input validation failures: Festival instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Complete Works',
 					differentiator: ABOVE_MAX_LENGTH_STRING
@@ -136,9 +109,7 @@ describe('Input validation failures: Festival instance', () => {
 					differentiator: ABOVE_MAX_LENGTH_STRING,
 					hasErrors: true,
 					errors: {
-						differentiator: [
-							'Value is too long'
-						]
+						differentiator: ['Value is too long']
 					},
 					festivalSeries: {
 						uuid: undefined,
@@ -149,19 +120,13 @@ describe('Input validation failures: Festival instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('festival series name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2008',
 					festivalSeries: {
@@ -182,27 +147,19 @@ describe('Input validation failures: Festival instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					}
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('festival series differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: '2008',
 					festivalSeries: {
@@ -224,19 +181,13 @@ describe('Input validation failures: Festival instance', () => {
 						name: 'Edinburgh International Festival',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					}
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
-
 });

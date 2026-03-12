@@ -6,17 +6,12 @@ const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 describe('Input validation failures: Person instance', () => {
-
 	let stubs;
 	let Person;
 
-	const methods = [
-		'create',
-		'update'
-	];
+	const methods = ['create', 'update'];
 
 	beforeEach(async () => {
-
 		stubs = {
 			neo4jQueryModule: {
 				neo4jQuery: stub().resolves({ isExistent: true, isDuplicateRecord: false })
@@ -30,23 +25,17 @@ describe('Input validation failures: Person instance', () => {
 				'../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
-	const createInstance = props => new Person(props);
+	const createInstance = (props) => new Person(props);
 
 	context('name value is empty string', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: ''
 				});
@@ -59,26 +48,18 @@ describe('Input validation failures: Person instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					}
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
@@ -91,26 +72,18 @@ describe('Input validation failures: Person instance', () => {
 					differentiator: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too long'
-						]
+						name: ['Value is too long']
 					}
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Helen Mirren',
 					differentiator: ABOVE_MAX_LENGTH_STRING
@@ -124,18 +97,12 @@ describe('Input validation failures: Person instance', () => {
 					differentiator: ABOVE_MAX_LENGTH_STRING,
 					hasErrors: true,
 					errors: {
-						differentiator: [
-							'Value is too long'
-						]
+						differentiator: ['Value is too long']
 					}
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
-
 });

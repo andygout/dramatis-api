@@ -2,14 +2,12 @@ import esmock from 'esmock';
 import { assert, restore, spy, stub } from 'sinon';
 
 describe('SubMaterial model', () => {
-
 	let stubs;
 	let SubMaterial;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(async () => {
-
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
 			cypherQueriesModule: {
@@ -33,21 +31,15 @@ describe('SubMaterial model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
 		context('valid data', () => {
-
 			it('will not call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
@@ -70,27 +62,20 @@ describe('SubMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
 		context('invalid data (instance is already assigned to another sur-material)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: true,
 					isSurSurMaterial: false,
@@ -114,35 +99,30 @@ describe('SubMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Material with these attributes is already assigned to another sur-material'
+					'name',
+					'Material with these attributes is already assigned to another sur-material'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Material with these attributes is already assigned to another sur-material'
+					'differentiator',
+					'Material with these attributes is already assigned to another sur-material'
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance is the sur-most material of a three-tiered material collection)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: true,
@@ -166,35 +146,30 @@ describe('SubMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Material with these attributes is the sur-most material of a three-tiered material collection'
+					'name',
+					'Material with these attributes is the sur-most material of a three-tiered material collection'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Material with these attributes is the sur-most material of a three-tiered material collection'
+					'differentiator',
+					'Material with these attributes is the sur-most material of a three-tiered material collection'
 				);
-
 			});
-
 		});
 
-		context('invalid data (instance is the subject material\'s sur-material)', () => {
-
+		context("invalid data (instance is the subject material's sur-material)", () => {
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
@@ -218,35 +193,30 @@ describe('SubMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Material with these attributes is this material\'s sur-material'
+					'name',
+					"Material with these attributes is this material's sur-material"
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Material with these attributes is this material\'s sur-material'
+					'differentiator',
+					"Material with these attributes is this material's sur-material"
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance cannot be assigned to a three-tiered material collection)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
@@ -270,31 +240,26 @@ describe('SubMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Sub-material cannot be assigned to a three-tiered material collection'
+					'name',
+					'Sub-material cannot be assigned to a three-tiered material collection'
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Sub-material cannot be assigned to a three-tiered material collection'
+					'differentiator',
+					'Sub-material cannot be assigned to a three-tiered material collection'
 				);
-
 			});
-
 		});
-
 	});
-
 });

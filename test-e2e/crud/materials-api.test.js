@@ -10,13 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
-
 	describe('GET new endpoint', () => {
-
 		it('responds with data required to prepare new material', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials/new');
+			const response = await request.execute(app).get('/materials/new');
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -77,32 +73,24 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('CRUD with minimum range of attributes assigned values', () => {
-
 		const MATERIAL_UUID = 'UNCLE_VANYA_MATERIAL_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates material', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(0);
 
-			const response = await request.execute(app)
-				.post('/materials')
-				.send({
-					name: 'Uncle Vanya'
-				});
+			const response = await request.execute(app).post('/materials').send({
+				name: 'Uncle Vanya'
+			});
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -165,13 +153,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(1);
-
 		});
 
 		it('gets data required to edit specific material', async () => {
-
-			const response = await request.execute(app)
-				.get(`/materials/${MATERIAL_UUID}/edit`);
+			const response = await request.execute(app).get(`/materials/${MATERIAL_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -233,18 +218,14 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates material', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/materials/${MATERIAL_UUID}`)
-				.send({
-					name: 'The Cherry Orchard'
-				});
+			const response = await request.execute(app).put(`/materials/${MATERIAL_UUID}`).send({
+				name: 'The Cherry Orchard'
+			});
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -307,13 +288,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(1);
-
 		});
 
 		it('shows material', async () => {
-
-			const response = await request.execute(app)
-				.get(`/materials/${MATERIAL_UUID}`);
+			const response = await request.execute(app).get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -340,15 +318,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('deletes material', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/materials/${MATERIAL_UUID}`);
+			const response = await request.execute(app).delete(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -372,22 +347,22 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(0);
-
 		});
-
 	});
 
 	describe('CRUD with full range of attributes assigned values', () => {
-
 		const MATERIAL_UUID = 'JOHN_GABRIEL_BORKMAN_MATERIAL_2_UUID';
 		const JOHN_GABRIEL_BORKMAN_ORIGINAL_VERSION_MATERIAL_UUID = 'JOHN_GABRIEL_BORKMAN_MATERIAL_1_UUID';
 		const HENRIK_IBSEN_PERSON_UUID = 'HENRIK_IBSEN_PERSON_1_UUID';
 		const IBSEN_THEATRE_COMPANY_UUID = 'IBSEN_THEATRE_COMPANY_COMPANY_1_UUID';
 		const DAVID_ELDRIDGE_PERSON_UUID = 'DAVID_ELDRIDGE_PERSON_1_UUID';
 		const JOHN_GABRIEL_BORKMAN_SOURCE_MATERIAL_MATERIAL_UUID = 'JOHN_GABRIEL_BORKMAN_MATERIAL_3_UUID';
-		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_1_MATERIAL_UUID = 'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#1_MATERIAL_1_UUID';
-		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_2_MATERIAL_UUID = 'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#2_MATERIAL_1_UUID';
-		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_3_MATERIAL_UUID = 'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#3_MATERIAL_1_UUID';
+		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_1_MATERIAL_UUID =
+			'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#1_MATERIAL_1_UUID';
+		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_2_MATERIAL_UUID =
+			'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#2_MATERIAL_1_UUID';
+		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_3_MATERIAL_UUID =
+			'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#3_MATERIAL_1_UUID';
 		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = 'JOHN_GABRIEL_BORKMAN_CHARACTER_1_UUID';
 		const GUNHILD_BORKMAN_CHARACTER_UUID = 'GUNHILD_BORKMAN_CHARACTER_1_UUID';
 		const ERHART_BORKMAN_CHARACTER_UUID = 'ERHART_BORKMAN_CHARACTER_1_UUID';
@@ -404,18 +379,16 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = 'IRINA_CHARACTER_1_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates material', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(0);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.post('/materials')
 				.send({
 					name: 'John Gabriel Borkman',
@@ -687,13 +660,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(6);
-
 		});
 
 		it('shows material (post-creation)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/materials/${MATERIAL_UUID}`);
+			const response = await request.execute(app).get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -834,13 +804,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('gets data required to edit specific material', async () => {
-
-			const response = await request.execute(app)
-				.get(`/materials/${MATERIAL_UUID}/edit`);
+			const response = await request.execute(app).get(`/materials/${MATERIAL_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -1025,14 +992,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates material (with existing data)', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(6);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/materials/${MATERIAL_UUID}`)
 				.send({
 					name: 'John Gabriel Borkman',
@@ -1304,14 +1270,13 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(6);
-
 		});
 
 		it('updates material (with new data)', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(6);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/materials/${MATERIAL_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1585,13 +1550,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(11);
-
 		});
 
 		it('shows material (post-update)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/materials/${MATERIAL_UUID}`);
+			const response = await request.execute(app).get(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -1732,19 +1694,15 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates material to remove all associations prior to deletion', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(11);
 
-			const response = await request.execute(app)
-				.put(`/materials/${MATERIAL_UUID}`)
-				.send({
-					name: 'Three Sisters',
-					differentiator: '2'
-				});
+			const response = await request.execute(app).put(`/materials/${MATERIAL_UUID}`).send({
+				name: 'Three Sisters',
+				differentiator: '2'
+			});
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -1807,15 +1765,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(11);
-
 		});
 
 		it('deletes material', async () => {
-
 			expect(await countNodesWithLabel('Material')).to.equal(11);
 
-			const response = await request.execute(app)
-				.delete(`/materials/${MATERIAL_UUID}`);
+			const response = await request.execute(app).delete(`/materials/${MATERIAL_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'MATERIAL',
@@ -1839,13 +1794,10 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Material')).to.equal(10);
-
 		});
-
 	});
 
 	describe('GET list endpoint', () => {
-
 		const HAUNTING_JULIA_MATERIAL_UUID = 'HAUNTING_JULIA_MATERIAL_UUID';
 		const A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID = 'A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID';
 		const THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID = 'THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID';
@@ -1853,57 +1805,43 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 		const COMMUNICATING_DOORS_MATERIAL_UUID = 'COMMUNICATING_DOORS_MATERIAL_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
-				.post('/materials')
-				.send({
-					name: 'Haunting Julia',
-					format: 'play',
-					year: 1994
-				});
+			await request.execute(app).post('/materials').send({
+				name: 'Haunting Julia',
+				format: 'play',
+				year: 1994
+			});
 
-			await request.execute(app)
-				.post('/materials')
-				.send({
-					name: 'A Word from Our Sponsor',
-					format: 'play',
-					year: 1995
-				});
+			await request.execute(app).post('/materials').send({
+				name: 'A Word from Our Sponsor',
+				format: 'play',
+				year: 1995
+			});
 
-			await request.execute(app)
-				.post('/materials')
-				.send({
-					name: 'The Musical Jigsaw Play',
-					format: 'play',
-					year: 1994
-				});
+			await request.execute(app).post('/materials').send({
+				name: 'The Musical Jigsaw Play',
+				format: 'play',
+				year: 1994
+			});
 
-			await request.execute(app)
-				.post('/materials')
-				.send({
-					name: 'Dreams from a Summer House',
-					format: 'play',
-					year: 1992
-				});
+			await request.execute(app).post('/materials').send({
+				name: 'Dreams from a Summer House',
+				format: 'play',
+				year: 1992
+			});
 
-			await request.execute(app)
-				.post('/materials')
-				.send({
-					name: 'Communicating Doors',
-					format: 'play',
-					year: 1994
-				});
-
+			await request.execute(app).post('/materials').send({
+				name: 'Communicating Doors',
+				format: 'play',
+				year: 1994
+			});
 		});
 
 		it('lists all materials ordered by year then name', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials');
+			const response = await request.execute(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -1955,9 +1893,6 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

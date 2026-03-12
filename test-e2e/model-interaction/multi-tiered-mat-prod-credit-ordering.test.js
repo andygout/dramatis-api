@@ -13,11 +13,13 @@ const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_J
 const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
 const DURANDS_LINE_MATERIAL_UUID = 'DURANDS_LINE_MATERIAL_UUID';
 const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
-const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
+const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID =
+	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
 const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
 const BLOOD_AND_GIFTS_MATERIAL_UUID = 'BLOOD_AND_GIFTS_MATERIAL_UUID';
 const MINISKIRTS_OF_KABUL_MATERIAL_UUID = 'MINISKIRTS_OF_KABUL_MATERIAL_UUID';
-const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
+const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID =
+	'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID';
 const HONEY_MATERIAL_UUID = 'HONEY_MATERIAL_UUID';
 const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID';
 const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID';
@@ -37,15 +39,19 @@ const STAGE_MANAGEMENT_LTD_COMPANY_UUID = 'STAGE_MANAGEMENT_LTD_COMPANY_UUID';
 const CHARLOTTE_PADGHAM_PERSON_UUID = 'CHARLOTTE_PADGHAM_PERSON_UUID';
 const DURANDS_LINE_TRICYCLE_PRODUCTION_UUID = 'DURANDS_LINE_PRODUCTION_UUID';
 const CAMPAIGN_TRICYCLE_PRODUCTION_UUID = 'CAMPAIGN_PRODUCTION_UUID';
-const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID = 'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
+const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID =
+	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_PRODUCTION_UUID';
 const BLACK_TULIPS_TRICYCLE_PRODUCTION_UUID = 'BLACK_TULIPS_PRODUCTION_UUID';
 const BLOOD_AND_GIFTS_TRICYCLE_PRODUCTION_UUID = 'BLOOD_AND_GIFTS_PRODUCTION_UUID';
 const MINISKIRTS_OF_KABUL_TRICYCLE_PRODUCTION_UUID = 'MINISKIRTS_OF_KABUL_PRODUCTION_UUID';
-const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID = 'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
+const PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_TRICYCLE_PRODUCTION_UUID =
+	'PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_PRODUCTION_UUID';
 const HONEY_TRICYCLE_PRODUCTION_UUID = 'HONEY_PRODUCTION_UUID';
-const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID = 'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
+const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_TRICYCLE_PRODUCTION_UUID =
+	'THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_PRODUCTION_UUID';
 const ON_THE_SIDE_OF_THE_ANGELS_TRICYCLE_PRODUCTION_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_PRODUCTION_UUID';
-const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
+const PART_THREE_ENDURING_FREEDOM_1996_2009_TRICYCLE_PRODUCTION_UUID =
+	'PART_THREE_ENDURING_FREEDOM_1996_2009_PRODUCTION_UUID';
 const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGHANISTAN_PRODUCTION_UUID';
 
 let nicolasKentPerson;
@@ -61,14 +67,13 @@ let charlottePadghamPerson;
 let barCharacter;
 
 describe('Ordering of multi-tiered materials/productions credits', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -85,10 +90,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
-				name: 'Durand\'s Line',
+				name: "Durand's Line",
 				format: 'play',
 				year: '2009',
 				characterGroups: [
@@ -102,7 +108,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -119,7 +126,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -130,7 +138,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 						name: 'Bugles at the Gates of Jalalabad'
 					},
 					{
-						name: 'Durand\'s Line'
+						name: "Durand's Line"
 					},
 					{
 						name: 'Campaign'
@@ -147,7 +155,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -164,7 +173,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -181,7 +191,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -198,7 +209,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -226,7 +238,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -243,7 +256,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -260,7 +274,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -277,7 +292,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -305,7 +321,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -333,7 +350,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -414,15 +432,16 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
-				name: 'Durand\'s Line',
+				name: "Durand's Line",
 				startDate: '2009-04-17',
 				pressDate: '2009-04-24',
 				endDate: '2009-06-14',
 				material: {
-					name: 'Durand\'s Line'
+					name: "Durand's Line"
 				},
 				venue: {
 					name: 'Tricycle Theatre'
@@ -495,7 +514,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -576,7 +596,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -668,7 +689,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -749,7 +771,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -830,7 +853,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -911,7 +935,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -1003,7 +1028,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -1084,7 +1110,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -1165,7 +1192,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -1246,7 +1274,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -1338,7 +1367,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -1430,45 +1460,31 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		nicolasKentPerson = await request.execute(app)
-			.get(`/people/${NICOLAS_KENT_PERSON_UUID}`);
+		nicolasKentPerson = await request.execute(app).get(`/people/${NICOLAS_KENT_PERSON_UUID}`);
 
-		tricycleTheatreCompany = await request.execute(app)
-			.get(`/companies/${TRICYCLE_THEATRE_COMPANY_UUID}`);
+		tricycleTheatreCompany = await request.execute(app).get(`/companies/${TRICYCLE_THEATRE_COMPANY_UUID}`);
 
-		zoëIngenhaagPerson = await request.execute(app)
-			.get(`/people/${ZOË_INGENHAAG_PERSON_UUID}`);
+		zoëIngenhaagPerson = await request.execute(app).get(`/people/${ZOË_INGENHAAG_PERSON_UUID}`);
 
-		rickWardenPerson = await request.execute(app)
-			.get(`/people/${RICK_WARDEN_PERSON_UUID}`);
+		rickWardenPerson = await request.execute(app).get(`/people/${RICK_WARDEN_PERSON_UUID}`);
 
-		howardHarrisonPerson = await request.execute(app)
-			.get(`/people/${HOWARD_HARRISON_PERSON_UUID}`);
+		howardHarrisonPerson = await request.execute(app).get(`/people/${HOWARD_HARRISON_PERSON_UUID}`);
 
-		lightingDesignLtdCompany = await request.execute(app)
-			.get(`/companies/${LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
+		lightingDesignLtdCompany = await request.execute(app).get(`/companies/${LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
 
-		jackKnowlesPerson = await request.execute(app)
-			.get(`/people/${JACK_KNOWLES_PERSON_UUID}`);
+		jackKnowlesPerson = await request.execute(app).get(`/people/${JACK_KNOWLES_PERSON_UUID}`);
 
-		lizzieChapmanPerson = await request.execute(app)
-			.get(`/people/${LIZZIE_CHAPMAN_PERSON_UUID}`);
+		lizzieChapmanPerson = await request.execute(app).get(`/people/${LIZZIE_CHAPMAN_PERSON_UUID}`);
 
-		stageManagementLtdCompany = await request.execute(app)
-			.get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
+		stageManagementLtdCompany = await request.execute(app).get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		charlottePadghamPerson = await request.execute(app)
-			.get(`/people/${CHARLOTTE_PADGHAM_PERSON_UUID}`);
+		charlottePadghamPerson = await request.execute(app).get(`/people/${CHARLOTTE_PADGHAM_PERSON_UUID}`);
 
-		barCharacter = await request.execute(app)
-			.get(`/characters/${BAR_CHARACTER_UUID}`);
-
+		barCharacter = await request.execute(app).get(`/characters/${BAR_CHARACTER_UUID}`);
 	});
 
 	describe('Nicolas Kent (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct producer credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1897,7 +1913,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -2078,15 +2094,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { producerProductions } = nicolasKentPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Tricycle Theatre Company (company)', () => {
-
 		it('includes all tiers of productions for which they have a direct producer credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -2515,7 +2527,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -2696,15 +2708,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { producerProductions } = tricycleTheatreCompany.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Zoë Ingenhaag (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct producer credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedProducerProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3133,7 +3141,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3314,15 +3322,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { producerProductions } = zoëIngenhaagPerson.body;
 
 			expect(producerProductions).to.deep.equal(expectedProducerProductions);
-
 		});
-
 	});
 
 	describe('Rick Warden (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct cast credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -3607,7 +3611,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -3724,15 +3728,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { castMemberProductions } = rickWardenPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Howard Harrison (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct creative team credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -4125,7 +4125,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4290,15 +4290,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { creativeProductions } = howardHarrisonPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Lighting Design Ltd (company)', () => {
-
 		it('includes all tiers of productions for which they have a direct creative team credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -4682,7 +4678,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -4843,15 +4839,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { creativeProductions } = lightingDesignLtdCompany.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Jack Knowles (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct creative team credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCreativeProductions = [
 				{
 					model: 'PRODUCTION',
@@ -5226,7 +5218,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5383,15 +5375,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { creativeProductions } = jackKnowlesPerson.body;
 
 			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
-
 		});
-
 	});
 
 	describe('Lizzie Chapman (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct crew credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -5784,7 +5772,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -5949,15 +5937,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { crewProductions } = lizzieChapmanPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Stage Management Ltd (company)', () => {
-
 		it('includes all tiers of productions for which they have a direct crew credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -6341,7 +6325,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -6502,15 +6486,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { crewProductions } = stageManagementLtdCompany.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Charlotte Padgham (person)', () => {
-
 		it('includes all tiers of productions for which they have a direct crew credit, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedCrewProductions = [
 				{
 					model: 'PRODUCTION',
@@ -6885,7 +6865,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7042,15 +7022,11 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { crewProductions } = charlottePadghamPerson.body;
 
 			expect(crewProductions).to.deep.equal(expectedCrewProductions);
-
 		});
-
 	});
 
 	describe('Bar (character)', () => {
-
 		it('includes all tiers of materials in which character was depicted, including the sur-material and sur-sur-material as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -7218,7 +7194,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'MATERIAL',
 					uuid: DURANDS_LINE_MATERIAL_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					format: 'play',
 					year: 2009,
 					writingCredits: [],
@@ -7283,11 +7259,9 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { materials } = barCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
 
 		it('includes all tiers of productions in which character was portrayed, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -7590,7 +7564,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				{
 					model: 'PRODUCTION',
 					uuid: DURANDS_LINE_TRICYCLE_PRODUCTION_UUID,
-					name: 'Durand\'s Line',
+					name: "Durand's Line",
 					startDate: '2009-04-17',
 					endDate: '2009-06-14',
 					venue: {
@@ -7715,9 +7689,6 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { productions } = barCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
-
 });

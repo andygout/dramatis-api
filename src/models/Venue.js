@@ -3,21 +3,15 @@ import VenueBase from './VenueBase.js';
 import { SubVenue } from './index.js';
 
 export default class Venue extends VenueBase {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { subVenues } = props;
 
-		this.subVenues = subVenues
-			? subVenues.map(subVenue => new SubVenue(subVenue))
-			: [];
-
+		this.subVenues = subVenues ? subVenues.map((subVenue) => new SubVenue(subVenue)) : [];
 	}
 
-	runInputValidations () {
-
+	runInputValidations() {
 		this.validateName({ isRequired: true });
 
 		this.validateDifferentiator();
@@ -25,7 +19,6 @@ export default class Venue extends VenueBase {
 		const duplicateSubVenueIndices = getDuplicateBaseInstanceIndices(this.subVenues);
 
 		this.subVenues.forEach((subVenue, index) => {
-
 			subVenue.validateName({ isRequired: false });
 
 			subVenue.validateDifferentiator();
@@ -33,19 +26,14 @@ export default class Venue extends VenueBase {
 			subVenue.validateNoAssociationWithSelf({ name: this.name, differentiator: this.differentiator });
 
 			subVenue.validateUniquenessInGroup({ isDuplicate: duplicateSubVenueIndices.includes(index) });
-
 		});
-
 	}
 
-	async runDatabaseValidations () {
-
+	async runDatabaseValidations() {
 		await this.validateUniquenessInDatabase();
 
 		for (const subVenue of this.subVenues) {
 			await subVenue.runDatabaseValidations({ subjectVenueUuid: this.uuid });
 		}
-
 	}
-
 }

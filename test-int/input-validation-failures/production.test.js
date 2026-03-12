@@ -6,17 +6,12 @@ const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 describe('Input validation failures: Production instance', () => {
-
 	let stubs;
 	let Production;
 
-	const methods = [
-		'create',
-		'update'
-	];
+	const methods = ['create', 'update'];
 
 	beforeEach(async () => {
-
 		stubs = {
 			neo4jQueryModule: {
 				// Stub with a contrived resolution that ensures various
@@ -39,23 +34,17 @@ describe('Input validation failures: Production instance', () => {
 				'../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
-	const createInstance = props => new Production(props);
+	const createInstance = (props) => new Production(props);
 
 	context('name value is empty string', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: ''
 				});
@@ -71,9 +60,7 @@ describe('Input validation failures: Production instance', () => {
 					endDate: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too short'
-						]
+						name: ['Value is too short']
 					},
 					material: {
 						uuid: undefined,
@@ -108,19 +95,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: ABOVE_MAX_LENGTH_STRING
 				});
@@ -136,9 +117,7 @@ describe('Input validation failures: Production instance', () => {
 					endDate: '',
 					hasErrors: true,
 					errors: {
-						name: [
-							'Value is too long'
-						]
+						name: ['Value is too long']
 					},
 					material: {
 						uuid: undefined,
@@ -173,19 +152,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('subtitle value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					subtitle: ABOVE_MAX_LENGTH_STRING
@@ -202,9 +175,7 @@ describe('Input validation failures: Production instance', () => {
 					endDate: '',
 					hasErrors: true,
 					errors: {
-						subtitle: [
-							'Value is too long'
-						]
+						subtitle: ['Value is too long']
 					},
 					material: {
 						uuid: undefined,
@@ -239,19 +210,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('start date, press date, and end date values with invalid date format', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					startDate: 'foobar',
@@ -270,15 +235,9 @@ describe('Input validation failures: Production instance', () => {
 					endDate: 'foobar',
 					hasErrors: true,
 					errors: {
-						startDate: [
-							'Value must be in date format'
-						],
-						pressDate: [
-							'Value must be in date format'
-						],
-						endDate: [
-							'Value must be in date format'
-						]
+						startDate: ['Value must be in date format'],
+						pressDate: ['Value must be in date format'],
+						endDate: ['Value must be in date format']
 					},
 					material: {
 						uuid: undefined,
@@ -313,96 +272,87 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
-	context('start date, press date, and end date with valid date format with start date after press date and press date after end date', () => {
+	context(
+		'start date, press date, and end date with valid date format with start date after press date and press date after end date',
+		() => {
+			for (const method of methods) {
+				it(`assigns appropriate error (${method} method)`, async () => {
+					const instance = createInstance({
+						name: 'Hamlet',
+						startDate: '2011-01-26',
+						pressDate: '2010-10-07',
+						endDate: '2010-09-30'
+					});
 
-		for (const method of methods) {
+					const result = await instance[method]();
 
-			it(`assigns appropriate error (${method} method)`, async () => {
+					const expectedResponseBody = {
+						uuid: undefined,
+						name: 'Hamlet',
+						subtitle: '',
+						startDate: '2011-01-26',
+						pressDate: '2010-10-07',
+						endDate: '2010-09-30',
+						hasErrors: true,
+						errors: {
+							startDate: [
+								'Start date must not be after end date',
+								'Start date must not be after press date'
+							],
+							pressDate: [
+								'Press date must not be before start date',
+								'Press date must not be after end date'
+							],
+							endDate: [
+								'End date must not be before start date',
+								'End date must not be before press date'
+							]
+						},
+						material: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						venue: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						season: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						festival: {
+							uuid: undefined,
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						subProductions: [],
+						producerCredits: [],
+						cast: [],
+						creativeCredits: [],
+						crewCredits: [],
+						reviews: []
+					};
 
-				const instance = createInstance({
-					name: 'Hamlet',
-					startDate: '2011-01-26',
-					pressDate: '2010-10-07',
-					endDate: '2010-09-30'
+					expect(result).to.deep.equal(expectedResponseBody);
 				});
-
-				const result = await instance[method]();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'Hamlet',
-					subtitle: '',
-					startDate: '2011-01-26',
-					pressDate: '2010-10-07',
-					endDate: '2010-09-30',
-					hasErrors: true,
-					errors: {
-						startDate: [
-							'Start date must not be after end date',
-							'Start date must not be after press date'
-						],
-						pressDate: [
-							'Press date must not be before start date',
-							'Press date must not be after end date'
-						],
-						endDate: [
-							'End date must not be before start date',
-							'End date must not be before press date'
-						]
-					},
-					material: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					venue: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					season: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					festival: {
-						uuid: undefined,
-						name: '',
-						differentiator: '',
-						errors: {}
-					},
-					subProductions: [],
-					producerCredits: [],
-					cast: [],
-					creativeCredits: [],
-					crewCredits: [],
-					reviews: []
-				};
-
-				expect(result).to.deep.equal(expectedResponseBody);
-
-			});
-
+			}
 		}
-
-	});
+	);
 
 	context('material name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					material: {
@@ -426,9 +376,7 @@ describe('Input validation failures: Production instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					venue: {
@@ -458,19 +406,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('material differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					material: {
@@ -495,9 +437,7 @@ describe('Input validation failures: Production instance', () => {
 						name: 'Hamlet',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					},
 					venue: {
@@ -527,19 +467,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('venue name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					venue: {
@@ -569,9 +503,7 @@ describe('Input validation failures: Production instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					season: {
@@ -595,19 +527,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('venue differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					venue: {
@@ -638,9 +564,7 @@ describe('Input validation failures: Production instance', () => {
 						name: 'National Theatre',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					},
 					season: {
@@ -664,19 +588,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('season name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					season: {
@@ -712,9 +630,7 @@ describe('Input validation failures: Production instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					festival: {
@@ -732,19 +648,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('season differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					season: {
@@ -781,9 +691,7 @@ describe('Input validation failures: Production instance', () => {
 						name: 'Shakespearean Tragedy Season',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					},
 					festival: {
@@ -801,19 +709,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('festival name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					festival: {
@@ -855,9 +757,7 @@ describe('Input validation failures: Production instance', () => {
 						name: ABOVE_MAX_LENGTH_STRING,
 						differentiator: '',
 						errors: {
-							name: [
-								'Value is too long'
-							]
+							name: ['Value is too long']
 						}
 					},
 					subProductions: [],
@@ -869,19 +769,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('festival differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					festival: {
@@ -924,9 +818,7 @@ describe('Input validation failures: Production instance', () => {
 						name: 'The Complete Works',
 						differentiator: ABOVE_MAX_LENGTH_STRING,
 						errors: {
-							differentiator: [
-								'Value is too long'
-							]
+							differentiator: ['Value is too long']
 						}
 					},
 					subProductions: [],
@@ -938,19 +830,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('sub-production uuid value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subProductions: [
@@ -999,9 +885,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							uuid: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								uuid: [
-									'Value is too long'
-								]
+								uuid: ['Value is too long']
 							}
 						}
 					],
@@ -1013,18 +897,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('production instance assigns itself as a sub-production', () => {
-
 		// N.B. Only tested for update method; for create method the production instance will not yet have a uuid value.
 		it('assigns appropriate error (update method)', async () => {
-
 			const PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 
 			const instance = createInstance({
@@ -1076,9 +955,7 @@ describe('Input validation failures: Production instance', () => {
 					{
 						uuid: PRODUCTION_UUID,
 						errors: {
-							uuid: [
-								'Instance cannot form association with itself'
-							]
+							uuid: ['Instance cannot form association with itself']
 						}
 					}
 				],
@@ -1090,17 +967,12 @@ describe('Input validation failures: Production instance', () => {
 			};
 
 			expect(result).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	context('duplicate sub-productions', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'The Coast of Utopia',
 					subProductions: [
@@ -1155,9 +1027,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 							errors: {
-								uuid: [
-									'This item has been duplicated within the group'
-								]
+								uuid: ['This item has been duplicated within the group']
 							}
 						},
 						{
@@ -1167,9 +1037,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 							errors: {
-								uuid: [
-									'This item has been duplicated within the group'
-								]
+								uuid: ['This item has been duplicated within the group']
 							}
 						}
 					],
@@ -1181,19 +1049,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1243,9 +1105,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							entities: []
 						}
@@ -1257,19 +1117,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate producer credit name values', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1322,18 +1176,14 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: 'produced by',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						},
 						{
 							name: 'produced by',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						}
@@ -1345,19 +1195,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (person) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1418,9 +1262,7 @@ describe('Input validation failures: Production instance', () => {
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -1433,19 +1275,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (person) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1507,9 +1343,7 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Paul Elliott',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -1522,19 +1356,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (company) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1597,9 +1425,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: '',
 									members: [],
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -1612,19 +1438,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (company) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1688,9 +1508,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									members: [],
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -1703,19 +1521,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate producer credit entities, including producer credit entity (company) credited members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1796,12 +1608,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Duncan C Weldon Productions',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									},
 									members: [
 										{
@@ -1809,12 +1617,8 @@ describe('Input validation failures: Production instance', () => {
 											name: 'Duncan C Weldon',
 											differentiator: '',
 											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
+												name: ['This item has been duplicated within the group'],
+												differentiator: ['This item has been duplicated within the group']
 											}
 										},
 										{
@@ -1830,12 +1634,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Duncan C Weldon',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -1843,12 +1643,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Duncan C Weldon Productions',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									},
 									members: []
 								},
@@ -1871,19 +1667,13 @@ describe('Input validation failures: Production instance', () => {
 				expect(result).to.deep.equal(expectedResponseBody);
 				expect(result.producerCredits[0].entities[0].members[1].model).to.equal('PERSON');
 				expect(result.producerCredits[0].entities[3].model).to.equal('COMPANY');
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (company) without name has named credited members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -1950,9 +1740,7 @@ describe('Input validation failures: Production instance', () => {
 									name: '',
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is required if named children exist'
-										]
+										name: ['Value is required if named children exist']
 									},
 									members: [
 										{
@@ -1973,19 +1761,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (company) credited member name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -2058,9 +1840,7 @@ describe('Input validation failures: Production instance', () => {
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
 											errors: {
-												name: [
-													'Value is too long'
-												]
+												name: ['Value is too long']
 											}
 										}
 									]
@@ -2075,19 +1855,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('producer credit entity (company) credited member differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Waiting for Godot',
 					producerCredits: [
@@ -2161,9 +1935,7 @@ describe('Input validation failures: Production instance', () => {
 											name: 'Duncan C Weldon',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											errors: {
-												differentiator: [
-													'Value is too long'
-												]
+												differentiator: ['Value is too long']
 											}
 										}
 									]
@@ -2178,19 +1950,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2244,9 +2010,7 @@ describe('Input validation failures: Production instance', () => {
 							name: ABOVE_MAX_LENGTH_STRING,
 							differentiator: '',
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							roles: []
 						}
@@ -2257,19 +2021,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2324,9 +2082,7 @@ describe('Input validation failures: Production instance', () => {
 							name: 'Rory Kinnear',
 							differentiator: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								differentiator: [
-									'Value is too long'
-								]
+								differentiator: ['Value is too long']
 							},
 							roles: []
 						}
@@ -2337,19 +2093,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate cast members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2413,12 +2163,8 @@ describe('Input validation failures: Production instance', () => {
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group'],
+								differentiator: ['This item has been duplicated within the group']
 							},
 							roles: []
 						},
@@ -2434,12 +2180,8 @@ describe('Input validation failures: Production instance', () => {
 							name: 'Rory Kinnear',
 							differentiator: '',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								],
-								differentiator: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group'],
+								differentiator: ['This item has been duplicated within the group']
 							},
 							roles: []
 						},
@@ -2457,19 +2199,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member without name has named roles', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2527,9 +2263,7 @@ describe('Input validation failures: Production instance', () => {
 							name: '',
 							differentiator: '',
 							errors: {
-								name: [
-									'Value is required if named children exist'
-								]
+								name: ['Value is required if named children exist']
 							},
 							roles: [
 								{
@@ -2549,19 +2283,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member role name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2628,9 +2356,7 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: '',
 									isAlternate: false,
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -2642,19 +2368,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member role characterName value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2721,9 +2441,7 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: '',
 									isAlternate: false,
 									errors: {
-										characterName: [
-											'Value is too long'
-										]
+										characterName: ['Value is too long']
 									}
 								}
 							]
@@ -2735,19 +2453,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member role characterDifferentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2815,9 +2527,7 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: '',
 									isAlternate: false,
 									errors: {
-										characterDifferentiator: [
-											'Value is too long'
-										]
+										characterDifferentiator: ['Value is too long']
 									}
 								}
 							]
@@ -2829,19 +2539,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member role qualifier value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -2908,9 +2612,7 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: ABOVE_MAX_LENGTH_STRING,
 									isAlternate: false,
 									errors: {
-										qualifier: [
-											'Value is too long'
-										]
+										qualifier: ['Value is too long']
 									}
 								}
 							]
@@ -2922,19 +2624,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('cast member role name and characterName values are the same', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -3001,9 +2697,7 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: '',
 									isAlternate: false,
 									errors: {
-										characterName: [
-											'Character name is only required if different from role name'
-										]
+										characterName: ['Character name is only required if different from role name']
 									}
 								}
 							]
@@ -3015,19 +2709,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate cast member roles', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					cast: [
@@ -3104,18 +2792,10 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: '',
 									isAlternate: false,
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										characterName: [
-											'This item has been duplicated within the group'
-										],
-										characterDifferentiator: [
-											'This item has been duplicated within the group'
-										],
-										qualifier: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										characterName: ['This item has been duplicated within the group'],
+										characterDifferentiator: ['This item has been duplicated within the group'],
+										qualifier: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -3133,18 +2813,10 @@ describe('Input validation failures: Production instance', () => {
 									qualifier: '',
 									isAlternate: false,
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										characterName: [
-											'This item has been duplicated within the group'
-										],
-										characterDifferentiator: [
-											'This item has been duplicated within the group'
-										],
-										qualifier: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										characterName: ['This item has been duplicated within the group'],
+										characterDifferentiator: ['This item has been duplicated within the group'],
+										qualifier: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -3164,19 +2836,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3228,9 +2894,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							entities: []
 						}
@@ -3240,19 +2904,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate creative credit name values', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3307,18 +2965,14 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: 'Sound Design',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						},
 						{
 							name: 'Sound Design',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						}
@@ -3328,19 +2982,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit without name has named creative entities', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3397,9 +3045,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: '',
 							errors: {
-								name: [
-									'Value is required if named children exist'
-								]
+								name: ['Value is required if named children exist']
 							},
 							entities: [
 								{
@@ -3416,19 +3062,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (person) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3491,9 +3131,7 @@ describe('Input validation failures: Production instance', () => {
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -3504,19 +3142,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (person) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3580,9 +3212,7 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Paul Groothuis',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -3593,19 +3223,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (company) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3670,9 +3294,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: '',
 									members: [],
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -3683,19 +3305,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (company) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3761,9 +3377,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									members: [],
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -3774,19 +3388,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate creative credit entities, including creative credit entity (company) credited members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -3869,12 +3477,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Autograph',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									},
 									members: [
 										{
@@ -3882,12 +3486,8 @@ describe('Input validation failures: Production instance', () => {
 											name: 'Andrew Bruce',
 											differentiator: '',
 											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
+												name: ['This item has been duplicated within the group'],
+												differentiator: ['This item has been duplicated within the group']
 											}
 										},
 										{
@@ -3903,12 +3503,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Andrew Bruce',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -3916,12 +3512,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Autograph',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									},
 									members: []
 								},
@@ -3942,19 +3534,13 @@ describe('Input validation failures: Production instance', () => {
 				expect(result).to.deep.equal(expectedResponseBody);
 				expect(result.creativeCredits[0].entities[0].members[1].model).to.equal('PERSON');
 				expect(result.creativeCredits[0].entities[3].model).to.equal('COMPANY');
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (company) without name has named credited members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -4023,9 +3609,7 @@ describe('Input validation failures: Production instance', () => {
 									name: '',
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is required if named children exist'
-										]
+										name: ['Value is required if named children exist']
 									},
 									members: [
 										{
@@ -4044,19 +3628,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (company) credited member name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -4131,9 +3709,7 @@ describe('Input validation failures: Production instance', () => {
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
 											errors: {
-												name: [
-													'Value is too long'
-												]
+												name: ['Value is too long']
 											}
 										}
 									]
@@ -4146,19 +3722,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('creative credit entity (company) credited member differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					creativeCredits: [
@@ -4234,9 +3804,7 @@ describe('Input validation failures: Production instance', () => {
 											name: 'Andrew Bruce',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											errors: {
-												differentiator: [
-													'Value is too long'
-												]
+												differentiator: ['Value is too long']
 											}
 										}
 									]
@@ -4249,19 +3817,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4314,9 +3876,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
 							errors: {
-								name: [
-									'Value is too long'
-								]
+								name: ['Value is too long']
 							},
 							entities: []
 						}
@@ -4325,19 +3885,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate crew credit name values', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4393,18 +3947,14 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: 'Stage Manager',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						},
 						{
 							name: 'Stage Manager',
 							errors: {
-								name: [
-									'This item has been duplicated within the group'
-								]
+								name: ['This item has been duplicated within the group']
 							},
 							entities: []
 						}
@@ -4413,19 +3963,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit without name has named crew entities', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4483,9 +4027,7 @@ describe('Input validation failures: Production instance', () => {
 						{
 							name: '',
 							errors: {
-								name: [
-									'Value is required if named children exist'
-								]
+								name: ['Value is required if named children exist']
 							},
 							entities: [
 								{
@@ -4501,19 +4043,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (person) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4577,9 +4113,7 @@ describe('Input validation failures: Production instance', () => {
 									name: ABOVE_MAX_LENGTH_STRING,
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -4589,19 +4123,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (person) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4666,9 +4194,7 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Andrew Speed',
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -4678,19 +4204,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (company) name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4756,9 +4276,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: '',
 									members: [],
 									errors: {
-										name: [
-											'Value is too long'
-										]
+										name: ['Value is too long']
 									}
 								}
 							]
@@ -4768,19 +4286,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (company) differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4847,9 +4359,7 @@ describe('Input validation failures: Production instance', () => {
 									differentiator: ABOVE_MAX_LENGTH_STRING,
 									members: [],
 									errors: {
-										differentiator: [
-											'Value is too long'
-										]
+										differentiator: ['Value is too long']
 									}
 								}
 							]
@@ -4859,19 +4369,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate crew credit entities, including crew credit entity (company) credited members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -4955,12 +4459,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Assistant Stage Managers Ltd',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									},
 									members: [
 										{
@@ -4968,12 +4468,8 @@ describe('Input validation failures: Production instance', () => {
 											name: 'Sara Gunter',
 											differentiator: '',
 											errors: {
-												name: [
-													'This item has been duplicated within the group'
-												],
-												differentiator: [
-													'This item has been duplicated within the group'
-												]
+												name: ['This item has been duplicated within the group'],
+												differentiator: ['This item has been duplicated within the group']
 											}
 										},
 										{
@@ -4989,12 +4485,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Sara Gunter',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									}
 								},
 								{
@@ -5002,12 +4494,8 @@ describe('Input validation failures: Production instance', () => {
 									name: 'Assistant Stage Managers Ltd',
 									differentiator: '',
 									errors: {
-										name: [
-											'This item has been duplicated within the group'
-										],
-										differentiator: [
-											'This item has been duplicated within the group'
-										]
+										name: ['This item has been duplicated within the group'],
+										differentiator: ['This item has been duplicated within the group']
 									},
 									members: []
 								},
@@ -5027,19 +4515,13 @@ describe('Input validation failures: Production instance', () => {
 				expect(result).to.deep.equal(expectedResponseBody);
 				expect(result.crewCredits[0].entities[0].members[1].model).to.equal('PERSON');
 				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (company) without name has named credited members', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -5109,9 +4591,7 @@ describe('Input validation failures: Production instance', () => {
 									name: '',
 									differentiator: '',
 									errors: {
-										name: [
-											'Value is required if named children exist'
-										]
+										name: ['Value is required if named children exist']
 									},
 									members: [
 										{
@@ -5129,19 +4609,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (company) credited member name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -5217,9 +4691,7 @@ describe('Input validation failures: Production instance', () => {
 											name: ABOVE_MAX_LENGTH_STRING,
 											differentiator: '',
 											errors: {
-												name: [
-													'Value is too long'
-												]
+												name: ['Value is too long']
 											}
 										}
 									]
@@ -5231,19 +4703,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('crew credit entity (company) credited member differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					crewCredits: [
@@ -5320,9 +4786,7 @@ describe('Input validation failures: Production instance', () => {
 											name: 'Sara Gunter',
 											differentiator: ABOVE_MAX_LENGTH_STRING,
 											errors: {
-												differentiator: [
-													'Value is too long'
-												]
+												differentiator: ['Value is too long']
 											}
 										}
 									]
@@ -5334,22 +4798,16 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review url value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const urlProtocolAndSubdomain = 'https://www.';
 
-				const urlDomainName = 'a'.repeat((STRING_MAX_LENGTH - urlProtocolAndSubdomain.length) + 1);
+				const urlDomainName = 'a'.repeat(STRING_MAX_LENGTH - urlProtocolAndSubdomain.length + 1);
 
 				const ABOVE_MAX_LENGTH_URL = urlProtocolAndSubdomain + urlDomainName;
 
@@ -5413,9 +4871,7 @@ describe('Input validation failures: Production instance', () => {
 							url: ABOVE_MAX_LENGTH_URL,
 							date: '',
 							errors: {
-								url: [
-									'Value is too long'
-								]
+								url: ['Value is too long']
 							},
 							publication: {
 								uuid: undefined,
@@ -5434,19 +4890,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review url value is not a valid URL', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const INVALID_URL = 'foobar';
 
 				const instance = createInstance({
@@ -5509,9 +4959,7 @@ describe('Input validation failures: Production instance', () => {
 							url: INVALID_URL,
 							date: '',
 							errors: {
-								url: [
-									'URL must be a valid URL'
-								]
+								url: ['URL must be a valid URL']
 							},
 							publication: {
 								uuid: undefined,
@@ -5530,19 +4978,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('duplicate review url values', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -5621,9 +5063,7 @@ describe('Input validation failures: Production instance', () => {
 							url: 'https://www.foo.com',
 							date: '',
 							errors: {
-								url: [
-									'This item has been duplicated within the group'
-								]
+								url: ['This item has been duplicated within the group']
 							},
 							publication: {
 								uuid: undefined,
@@ -5659,9 +5099,7 @@ describe('Input validation failures: Production instance', () => {
 							url: 'https://www.foo.com',
 							date: '',
 							errors: {
-								url: [
-									'This item has been duplicated within the group'
-								]
+								url: ['This item has been duplicated within the group']
 							},
 							publication: {
 								uuid: undefined,
@@ -5680,19 +5118,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review without url value has named publication', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -5750,9 +5182,7 @@ describe('Input validation failures: Production instance', () => {
 							url: '',
 							date: '',
 							errors: {
-								url: [
-									'Value is required if named children exist'
-								]
+								url: ['Value is required if named children exist']
 							},
 							publication: {
 								uuid: undefined,
@@ -5771,19 +5201,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review without url value has named critic', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -5841,9 +5265,7 @@ describe('Input validation failures: Production instance', () => {
 							url: '',
 							date: '',
 							errors: {
-								url: [
-									'Value is required if named children exist'
-								]
+								url: ['Value is required if named children exist']
 							},
 							publication: {
 								uuid: undefined,
@@ -5862,19 +5284,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review date value with invalid date format', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -5936,9 +5352,7 @@ describe('Input validation failures: Production instance', () => {
 							url: 'https://www.foo.com',
 							date: 'foobar',
 							errors: {
-								date: [
-									'Value must be in date format'
-								]
+								date: ['Value must be in date format']
 							},
 							publication: {
 								uuid: undefined,
@@ -5957,19 +5371,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review with url value has publication without name', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6035,9 +5443,7 @@ describe('Input validation failures: Production instance', () => {
 								name: '',
 								differentiator: '',
 								errors: {
-									name: [
-										'Value is too short'
-									]
+									name: ['Value is too short']
 								}
 							},
 							critic: {
@@ -6051,19 +5457,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review with url value has critic without name', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6135,9 +5535,7 @@ describe('Input validation failures: Production instance', () => {
 								name: '',
 								differentiator: '',
 								errors: {
-									name: [
-										'Value is too short'
-									]
+									name: ['Value is too short']
 								}
 							}
 						}
@@ -6145,19 +5543,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review date is in an invalid date format', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6219,9 +5611,7 @@ describe('Input validation failures: Production instance', () => {
 							url: 'https://www.foo.com',
 							date: 'foobar',
 							errors: {
-								date: [
-									'Value must be in date format'
-								]
+								date: ['Value must be in date format']
 							},
 							publication: {
 								uuid: undefined,
@@ -6240,19 +5630,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review publication name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6318,9 +5702,7 @@ describe('Input validation failures: Production instance', () => {
 								name: ABOVE_MAX_LENGTH_STRING,
 								differentiator: '',
 								errors: {
-									name: [
-										'Value is too long'
-									]
+									name: ['Value is too long']
 								}
 							},
 							critic: {
@@ -6334,19 +5716,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review publication differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6413,9 +5789,7 @@ describe('Input validation failures: Production instance', () => {
 								name: 'Financial Times',
 								differentiator: ABOVE_MAX_LENGTH_STRING,
 								errors: {
-									differentiator: [
-										'Value is too long'
-									]
+									differentiator: ['Value is too long']
 								}
 							},
 							critic: {
@@ -6429,19 +5803,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review critic name value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6513,9 +5881,7 @@ describe('Input validation failures: Production instance', () => {
 								name: ABOVE_MAX_LENGTH_STRING,
 								differentiator: '',
 								errors: {
-									name: [
-										'Value is too long'
-									]
+									name: ['Value is too long']
 								}
 							}
 						}
@@ -6523,19 +5889,13 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
 
 	context('review critic differentiator value exceeds maximum limit', () => {
-
 		for (const method of methods) {
-
 			it(`assigns appropriate error (${method} method)`, async () => {
-
 				const instance = createInstance({
 					name: 'Hamlet',
 					reviews: [
@@ -6608,9 +5968,7 @@ describe('Input validation failures: Production instance', () => {
 								name: 'Sarah Hemming',
 								differentiator: ABOVE_MAX_LENGTH_STRING,
 								errors: {
-									differentiator: [
-										'Value is too long'
-									]
+									differentiator: ['Value is too long']
 								}
 							}
 						}
@@ -6618,11 +5976,7 @@ describe('Input validation failures: Production instance', () => {
 				};
 
 				expect(result).to.deep.equal(expectedResponseBody);
-
 			});
-
 		}
-
 	});
-
 });

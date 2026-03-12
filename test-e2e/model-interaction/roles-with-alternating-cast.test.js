@@ -30,14 +30,13 @@ let kitHaringtonPerson;
 let johnnyFlynnPerson;
 
 describe('Roles with alternating cast', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'True West',
@@ -55,7 +54,8 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'True West',
@@ -98,7 +98,8 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'True West',
@@ -141,36 +142,29 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		austinCharacter = await request.execute(app)
-			.get(`/characters/${AUSTIN_CHARACTER_UUID}`);
+		austinCharacter = await request.execute(app).get(`/characters/${AUSTIN_CHARACTER_UUID}`);
 
-		leeCharacter = await request.execute(app)
-			.get(`/characters/${LEE_CHARACTER_UUID}`);
+		leeCharacter = await request.execute(app).get(`/characters/${LEE_CHARACTER_UUID}`);
 
-		trueWestCrucibleProduction = await request.execute(app)
+		trueWestCrucibleProduction = await request
+			.execute(app)
 			.get(`/productions/${TRUE_WEST_CRUCIBLE_PRODUCTION_UUID}`);
 
-		trueWestVaudevilleProduction = await request.execute(app)
+		trueWestVaudevilleProduction = await request
+			.execute(app)
 			.get(`/productions/${TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID}`);
 
-		nigelHarmanPerson = await request.execute(app)
-			.get(`/people/${NIGEL_HARMAN_PERSON_UUID}`);
+		nigelHarmanPerson = await request.execute(app).get(`/people/${NIGEL_HARMAN_PERSON_UUID}`);
 
-		johnLightPerson = await request.execute(app)
-			.get(`/people/${JOHN_LIGHT_PERSON_UUID}`);
+		johnLightPerson = await request.execute(app).get(`/people/${JOHN_LIGHT_PERSON_UUID}`);
 
-		kitHaringtonPerson = await request.execute(app)
-			.get(`/people/${KIT_HARINGTON_PERSON_UUID}`);
+		kitHaringtonPerson = await request.execute(app).get(`/people/${KIT_HARINGTON_PERSON_UUID}`);
 
-		johnnyFlynnPerson = await request.execute(app)
-			.get(`/people/${JOHNNY_FLYNN_PERSON_UUID}`);
-
+		johnnyFlynnPerson = await request.execute(app).get(`/people/${JOHNNY_FLYNN_PERSON_UUID}`);
 	});
 
 	describe('Austin (character)', () => {
-
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -277,15 +271,11 @@ describe('Roles with alternating cast', () => {
 			const { productions } = austinCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Lee (character)', () => {
-
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -392,15 +382,11 @@ describe('Roles with alternating cast', () => {
 			const { productions } = leeCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('True West at Crucible Theatre (production)', () => {
-
 		it('includes cast with Nigel Harman as Austin and Lee, and John Light as Lee and Austin', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -449,15 +435,11 @@ describe('Roles with alternating cast', () => {
 			const { cast } = trueWestCrucibleProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('True West at Vaudeville Theatre (production)', () => {
-
 		it('includes cast with Kit Harington as Austin and Lee, and Johnny Flynn as Lee and Austin', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -506,15 +488,11 @@ describe('Roles with alternating cast', () => {
 			const { cast } = trueWestVaudevilleProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Nigel Harman (person)', () => {
-
 		it('includes production with his portrayals of Austin and Lee', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -551,15 +529,11 @@ describe('Roles with alternating cast', () => {
 			const { castMemberProductions } = nigelHarmanPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('John Light (person)', () => {
-
 		it('includes production with his portrayals of Lee and Austin', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -596,15 +570,11 @@ describe('Roles with alternating cast', () => {
 			const { castMemberProductions } = johnLightPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Kit Harington (person)', () => {
-
 		it('includes production with his portrayals of Austin and Lee', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -641,15 +611,11 @@ describe('Roles with alternating cast', () => {
 			const { castMemberProductions } = kitHaringtonPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Johnny Flynn (person)', () => {
-
 		it('includes production with his portrayals of Lee and Austin', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -686,9 +652,6 @@ describe('Roles with alternating cast', () => {
 			const { castMemberProductions } = johnnyFlynnPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

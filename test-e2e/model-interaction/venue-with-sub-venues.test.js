@@ -32,14 +32,13 @@ let richardIINationalProduction;
 let fionaShawPerson;
 
 describe('Venue with sub-venues', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -56,7 +55,8 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -71,7 +71,8 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -86,7 +87,8 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -111,7 +113,8 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -136,39 +139,33 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		nationalTheatreVenue = await request.execute(app)
-			.get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
+		nationalTheatreVenue = await request.execute(app).get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
 
-		olivierTheatreVenue = await request.execute(app)
-			.get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
+		olivierTheatreVenue = await request.execute(app).get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
-		motherCourageCharacter = await request.execute(app)
-			.get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
+		motherCourageCharacter = await request.execute(app).get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
 
-		kingRichardIICharacter = await request.execute(app)
-			.get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
+		kingRichardIICharacter = await request.execute(app).get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
 
-		motherCourageAndHerChildrenMaterial = await request.execute(app)
+		motherCourageAndHerChildrenMaterial = await request
+			.execute(app)
 			.get(`/materials/${MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID}`);
 
-		richardIIMaterial = await request.execute(app)
-			.get(`/materials/${RICHARD_II_MATERIAL_UUID}`);
+		richardIIMaterial = await request.execute(app).get(`/materials/${RICHARD_II_MATERIAL_UUID}`);
 
-		motherCourageAndHerChildrenOlivierProduction = await request.execute(app)
+		motherCourageAndHerChildrenOlivierProduction = await request
+			.execute(app)
 			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
 
-		richardIINationalProduction = await request.execute(app)
+		richardIINationalProduction = await request
+			.execute(app)
 			.get(`/productions/${RICHARD_II_NATIONAL_PRODUCTION_UUID}`);
 
-		fionaShawPerson = await request.execute(app)
-			.get(`/people/${FIONA_SHAW_PERSON_UUID}`);
-
+		fionaShawPerson = await request.execute(app).get(`/people/${FIONA_SHAW_PERSON_UUID}`);
 	});
 
 	describe('National Theatre (venue)', () => {
-
 		it('includes its sub-venues', () => {
-
 			const expectedSubVenues = [
 				{
 					model: 'VENUE',
@@ -190,11 +187,9 @@ describe('Venue with sub-venues', () => {
 			const { subVenues } = nationalTheatreVenue.body;
 
 			expect(subVenues).to.deep.equal(expectedSubVenues);
-
 		});
 
 		it('includes productions at this venue and, where applicable, the specific sub-venue', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -223,15 +218,11 @@ describe('Venue with sub-venues', () => {
 			const { productions } = nationalTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Olivier Theatre (venue)', () => {
-
 		it('includes National Theatre as its sur-venue', () => {
-
 			const expectedSurVenue = {
 				model: 'VENUE',
 				uuid: NATIONAL_THEATRE_VENUE_UUID,
@@ -241,11 +232,9 @@ describe('Venue with sub-venues', () => {
 			const { surVenue } = olivierTheatreVenue.body;
 
 			expect(surVenue).to.deep.equal(expectedSurVenue);
-
 		});
 
 		it('includes productions at this venue', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -261,15 +250,11 @@ describe('Venue with sub-venues', () => {
 			const { productions } = olivierTheatreVenue.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Mother Courage (character)', () => {
-
 		it('includes productions in which character was portrayed, including the venue and its sur-venue', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -305,15 +290,11 @@ describe('Venue with sub-venues', () => {
 			const { productions } = motherCourageCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('King Richard II (character)', () => {
-
 		it('includes productions in which character was portrayed, including the venue (but with no sur-venue as does not apply)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -345,15 +326,11 @@ describe('Venue with sub-venues', () => {
 			const { productions } = kingRichardIICharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Mother Courage and Her Children (material)', () => {
-
 		it('includes productions of material, including the venue and its sur-venue', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -378,15 +355,11 @@ describe('Venue with sub-venues', () => {
 			const { productions } = motherCourageAndHerChildrenMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Richard II (material)', () => {
-
 		it('includes productions of material, including the venue (but with no sur-venue as does not apply)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -407,15 +380,11 @@ describe('Venue with sub-venues', () => {
 			const { productions } = richardIIMaterial.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Mother Courage and Her Children at Olivier Theatre (production)', () => {
-
 		it('includes the venue and its sur-venue', () => {
-
 			const expectedVenue = {
 				model: 'VENUE',
 				uuid: OLIVIER_THEATRE_VENUE_UUID,
@@ -430,15 +399,11 @@ describe('Venue with sub-venues', () => {
 			const { venue } = motherCourageAndHerChildrenOlivierProduction.body;
 
 			expect(venue).to.deep.equal(expectedVenue);
-
 		});
-
 	});
 
 	describe('Richard II at National Theatre (production)', () => {
-
 		it('includes the venue (but with no sur-venue as does not apply)', () => {
-
 			const expectedVenue = {
 				model: 'VENUE',
 				uuid: NATIONAL_THEATRE_VENUE_UUID,
@@ -449,15 +414,11 @@ describe('Venue with sub-venues', () => {
 			const { venue } = richardIINationalProduction.body;
 
 			expect(venue).to.deep.equal(expectedVenue);
-
 		});
-
 	});
 
 	describe('Fiona Shaw (person)', () => {
-
 		it('includes in their production credits the venue and, where applicable, its sur-venue', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -514,17 +475,12 @@ describe('Venue with sub-venues', () => {
 			const { castMemberProductions } = fionaShawPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('venues list', () => {
-
 		it('includes venue and corresponding sub-venues', async () => {
-
-			const response = await request.execute(app)
-				.get('/venues');
+			const response = await request.execute(app).get('/venues');
 
 			const expectedResponseBody = [
 				{
@@ -553,17 +509,12 @@ describe('Venue with sub-venues', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('productions list', () => {
-
 		it('includes venue and (if applicable) corresponding sur-venue', async () => {
-
-			const response = await request.execute(app)
-				.get('/productions');
+			const response = await request.execute(app).get('/productions');
 
 			const expectedResponseBody = [
 				{
@@ -602,9 +553,6 @@ describe('Venue with sub-venues', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

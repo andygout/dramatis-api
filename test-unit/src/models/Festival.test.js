@@ -5,18 +5,14 @@ import { assert, createStubInstance, restore, spy } from 'sinon';
 import { FestivalSeries } from '../../../src/models/index.js';
 
 describe('Festival model', () => {
-
 	let stubs;
 	let Festival;
 
 	const FestivalSeriesStub = function () {
-
 		return createStubInstance(FestivalSeries);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			models: {
 				FestivalSeries: FestivalSeriesStub
@@ -32,29 +28,21 @@ describe('Festival model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		describe('festivalSeries property', () => {
-
 			it('assigns instance if absent from props', async () => {
-
 				const instance = new Festival({ name: '2008' });
 
 				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
-
 			});
 
 			it('assigns instance if included in props', async () => {
-
 				const instance = new Festival({
 					name: '2008',
 					festivalSeries: {
@@ -63,17 +51,12 @@ describe('Festival model', () => {
 				});
 
 				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new Festival({
 				name: '2008',
 				differentiator: '',
@@ -98,9 +81,6 @@ describe('Festival model', () => {
 			assert.calledOnceWithExactly(instance.validateDifferentiator);
 			assert.calledOnceWithExactly(instance.festivalSeries.validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.festivalSeries.validateDifferentiator);
-
 		});
-
 	});
-
 });

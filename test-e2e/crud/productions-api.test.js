@@ -10,13 +10,9 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
-
 	describe('GET new endpoint', () => {
-
 		it('responds with data required to prepare new production', async () => {
-
-			const response = await request.execute(app)
-				.get('/productions/new');
+			const response = await request.execute(app).get('/productions/new');
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -145,32 +141,24 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
 
 	describe('CRUD with minimum range of attributes assigned values', () => {
-
 		const PRODUCTION_UUID = 'AS_YOU_LIKE_IT_PRODUCTION_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
-
 		});
 
 		it('creates production', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(0);
 
-			const response = await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'As You Like It'
-				});
+			const response = await request.execute(app).post('/productions').send({
+				name: 'As You Like It'
+			});
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -301,13 +289,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(1);
-
 		});
 
 		it('gets data required to edit specific production', async () => {
-
-			const response = await request.execute(app)
-				.get(`/productions/${PRODUCTION_UUID}/edit`);
+			const response = await request.execute(app).get(`/productions/${PRODUCTION_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -437,18 +422,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates production', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(1);
 
-			const response = await request.execute(app)
-				.put(`/productions/${PRODUCTION_UUID}`)
-				.send({
-					name: 'The Tempest'
-				});
+			const response = await request.execute(app).put(`/productions/${PRODUCTION_UUID}`).send({
+				name: 'The Tempest'
+			});
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -579,13 +560,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(1);
-
 		});
 
 		it('shows production', async () => {
-
-			const response = await request.execute(app)
-				.get(`/productions/${PRODUCTION_UUID}`);
+			const response = await request.execute(app).get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -611,15 +589,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('deletes production', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(1);
 
-			const response = await request.execute(app)
-				.delete(`/productions/${PRODUCTION_UUID}`);
+			const response = await request.execute(app).delete(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -664,13 +639,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(0);
-
 		});
-
 	});
 
 	describe('CRUD with full range of attributes assigned values', () => {
-
 		const HAMLET_SUB_PRODUCTION_1_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#1_PRODUCTION_UUID';
 		const HAMLET_SUB_PRODUCTION_2_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#2_PRODUCTION_UUID';
 		const HAMLET_SUB_PRODUCTION_3_PRODUCTION_UUID = 'HAMLET_SUB_PRODUCTION_#3_PRODUCTION_UUID';
@@ -746,54 +718,40 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const DOMINIC_CAVENDISH_PERSON_UUID = 'DOMINIC_CAVENDISH_PERSON_1_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'Hamlet sub-production #1'
-				});
+			await request.execute(app).post('/productions').send({
+				name: 'Hamlet sub-production #1'
+			});
 
-			await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'Hamlet sub-production #2'
-				});
+			await request.execute(app).post('/productions').send({
+				name: 'Hamlet sub-production #2'
+			});
 
-			await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'Hamlet sub-production #3'
-				});
+			await request.execute(app).post('/productions').send({
+				name: 'Hamlet sub-production #3'
+			});
 
-			await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'Richard III sub-production #1'
-				});
+			await request.execute(app).post('/productions').send({
+				name: 'Richard III sub-production #1'
+			});
 
-			await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'Richard III sub-production #2'
-				});
+			await request.execute(app).post('/productions').send({
+				name: 'Richard III sub-production #2'
+			});
 
-			await request.execute(app)
-				.post('/productions')
-				.send({
-					name: 'Richard III sub-production #3'
-				});
-
+			await request.execute(app).post('/productions').send({
+				name: 'Richard III sub-production #3'
+			});
 		});
 
 		it('creates production', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(6);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -1874,13 +1832,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(7);
-
 		});
 
 		it('shows production (post-creation)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/productions/${PRODUCTION_UUID}`);
+			const response = await request.execute(app).get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -2342,13 +2297,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('gets data required to edit specific production', async () => {
-
-			const response = await request.execute(app)
-				.get(`/productions/${PRODUCTION_UUID}/edit`);
+			const response = await request.execute(app).get(`/productions/${PRODUCTION_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -3089,14 +3041,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates production (with existing data)', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -4177,14 +4128,13 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(7);
-
 		});
 
 		it('updates production (with new data)', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await request.execute(app)
+			const response = await request
+				.execute(app)
 				.put(`/productions/${PRODUCTION_UUID}`)
 				.send({
 					name: 'Richard III',
@@ -5264,13 +5214,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(7);
-
 		});
 
 		it('shows production (post-update)', async () => {
-
-			const response = await request.execute(app)
-				.get(`/productions/${PRODUCTION_UUID}`);
+			const response = await request.execute(app).get(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -5732,18 +5679,14 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
 
 		it('updates production to remove all associations prior to deletion', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await request.execute(app)
-				.put(`/productions/${PRODUCTION_UUID}`)
-				.send({
-					name: 'Richard III'
-				});
+			const response = await request.execute(app).put(`/productions/${PRODUCTION_UUID}`).send({
+				name: 'Richard III'
+			});
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -5874,15 +5817,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(7);
-
 		});
 
 		it('deletes production', async () => {
-
 			expect(await countNodesWithLabel('Production')).to.equal(7);
 
-			const response = await request.execute(app)
-				.delete(`/productions/${PRODUCTION_UUID}`);
+			const response = await request.execute(app).delete(`/productions/${PRODUCTION_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PRODUCTION',
@@ -5927,13 +5867,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
 			expect(await countNodesWithLabel('Production')).to.equal(6);
-
 		});
-
 	});
 
 	describe('GET list endpoint', () => {
-
 		const MACBETH_GIELGUD_PRODUCTION_UUID = 'MACBETH_PRODUCTION_UUID';
 		const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
 		const HAMLET_NATIONAL_PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
@@ -5945,12 +5882,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 		const HAMLET_ALMEIDA_PRODUCTION_UUID = 'HAMLET_PRODUCTION_3_UUID';
 
 		before(async () => {
-
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Macbeth',
@@ -5962,7 +5899,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -5974,7 +5912,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Macbeth',
@@ -5986,7 +5925,8 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -5994,11 +5934,12 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					pressDate: '2009-06-03',
 					endDate: '2009-08-22',
 					venue: {
-						name: 'Wyndham\'s Theatre'
+						name: "Wyndham's Theatre"
 					}
 				});
 
-			await request.execute(app)
+			await request
+				.execute(app)
 				.post('/productions')
 				.send({
 					name: 'Hamlet',
@@ -6009,13 +5950,10 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						name: 'Almeida Theatre'
 					}
 				});
-
 		});
 
 		it('lists all productions ordered by start date then name then venue name', async () => {
-
-			const response = await request.execute(app)
-				.get('/productions');
+			const response = await request.execute(app).get('/productions');
 
 			const expectedResponseBody = [
 				{
@@ -6083,7 +6021,7 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null
@@ -6092,9 +6030,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

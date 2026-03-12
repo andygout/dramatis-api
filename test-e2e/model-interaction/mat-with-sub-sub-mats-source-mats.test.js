@@ -26,7 +26,8 @@ const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OL
 const SIXTY_SIX_BOOKS_BUSH_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_PRODUCTION_UUID';
 const GODBLOG_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'GODBLOG_PRODUCTION_2_UUID';
 const WESTMINSTER_ABBEY_VENUE_UUID = 'WESTMINSTER_ABBEY_VENUE_UUID';
-const THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_2_UUID';
+const THE_BOOKS_OF_THE_OLD_TESTAMENT_WESTMINSTER_ABBEY_PRODUCTION_UUID =
+	'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_2_UUID';
 const SIXTY_SIX_BOOKS_WESTMINSTER_ABBEY_PRODUCTION_UUID = 'SIXTY_SIX_BOOKS_PRODUCTION_2_UUID';
 
 let genesisReligiousTextMaterial;
@@ -40,14 +41,13 @@ let godblogBushTheatreProduction;
 let godCharacter;
 
 describe('Material with sub-sub-materials and source materials thereof', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Genesis',
@@ -68,7 +68,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Old Testament',
@@ -94,7 +95,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Bible: King James Version',
@@ -120,7 +122,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Godblog',
@@ -159,7 +162,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'The Books of the Old Testament',
@@ -183,7 +187,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Sixty-Six Books',
@@ -207,7 +212,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Godblog',
@@ -222,7 +228,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Books of the Old Testament',
@@ -242,7 +249,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sixty-Six Books',
@@ -262,7 +270,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Godblog',
@@ -277,7 +286,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'The Books of the Old Testament',
@@ -297,7 +307,8 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Sixty-Six Books',
@@ -317,39 +328,33 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				]
 			});
 
-		genesisReligiousTextMaterial = await request.execute(app)
+		genesisReligiousTextMaterial = await request
+			.execute(app)
 			.get(`/materials/${GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID}`);
 
-		godblogPlayMaterial = await request.execute(app)
-			.get(`/materials/${GODBLOG_PLAY_MATERIAL_UUID}`);
+		godblogPlayMaterial = await request.execute(app).get(`/materials/${GODBLOG_PLAY_MATERIAL_UUID}`);
 
-		theBooksOfTheOldTestamentPlaysMaterial = await request.execute(app)
+		theBooksOfTheOldTestamentPlaysMaterial = await request
+			.execute(app)
 			.get(`/materials/${THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID}`);
 
-		richardBancroftPerson = await request.execute(app)
-			.get(`/people/${RICHARD_BANCROFT_PERSON_UUID}`);
+		richardBancroftPerson = await request.execute(app).get(`/people/${RICHARD_BANCROFT_PERSON_UUID}`);
 
-		jeanetteWintersonPerson = await request.execute(app)
-			.get(`/people/${JEANETTE_WINTERSON_PERSON_UUID}`);
+		jeanetteWintersonPerson = await request.execute(app).get(`/people/${JEANETTE_WINTERSON_PERSON_UUID}`);
 
-		theCanterburyEditorsCompany = await request.execute(app)
+		theCanterburyEditorsCompany = await request
+			.execute(app)
 			.get(`/companies/${THE_CANTERBURY_EDITORS_COMPANY_UUID}`);
 
-		onlyFruitsCompany = await request.execute(app)
-			.get(`/companies/${ONLY_FRUITS_COMPANY_UUID}`);
+		onlyFruitsCompany = await request.execute(app).get(`/companies/${ONLY_FRUITS_COMPANY_UUID}`);
 
-		godblogBushTheatreProduction = await request.execute(app)
-			.get(`/productions/${GODBLOG_BUSH_PRODUCTION_UUID}`);
+		godblogBushTheatreProduction = await request.execute(app).get(`/productions/${GODBLOG_BUSH_PRODUCTION_UUID}`);
 
-		godCharacter = await request.execute(app)
-			.get(`/characters/${GOD_CHARACTER_UUID}`);
-
+		godCharacter = await request.execute(app).get(`/characters/${GOD_CHARACTER_UUID}`);
 	});
 
 	describe('Genesis (religious text) (material)', () => {
-
 		it('includes materials that used it as source material, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -432,11 +437,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = genesisReligiousTextMaterial.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of material that used it as source material, including the sur-production and sur-sur-production', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -489,15 +492,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = genesisReligiousTextMaterial.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Godblog (play) (material)', () => {
-
 		it('includes writers of this material and its source material (with corresponding sur-material and sur-sur-material) grouped by their respective credits', () => {
-
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -561,11 +560,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { writingCredits } = godblogPlayMaterial.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
 
-		it('includes writers and source material (with corresponding sur-material) of this material\'s sur-material', () => {
-
+		it("includes writers and source material (with corresponding sur-material) of this material's sur-material", () => {
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
@@ -663,15 +660,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { surMaterial } = godblogPlayMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
-
 	});
 
 	describe('The Books of the Old Testament (sub-collection of plays) (material)', () => {
-
-		it('includes writers and source material of this material\'s sur-material', () => {
-
+		it("includes writers and source material of this material's sur-material", () => {
 			const expectedSurMaterial = {
 				model: 'MATERIAL',
 				uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
@@ -721,15 +714,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { surMaterial } = theBooksOfTheOldTestamentPlaysMaterial.body;
 
 			expect(surMaterial).to.deep.equal(expectedSurMaterial);
-
 		});
-
 	});
 
 	describe('Richard Bancroft (person)', () => {
-
 		it('includes materials that used their work as source material, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -812,11 +801,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = richardBancroftPerson.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -869,15 +856,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = richardBancroftPerson.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('The Canterbury Editors (company)', () => {
-
 		it('includes materials that used their work as source material, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedSourcingMaterials = [
 				{
 					model: 'MATERIAL',
@@ -960,11 +943,9 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterials } = theCanterburyEditorsCompany.body;
 
 			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
-
 		});
 
 		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
-
 			const expectedSourcingMaterialProductions = [
 				{
 					model: 'PRODUCTION',
@@ -1017,15 +998,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { sourcingMaterialProductions } = richardBancroftPerson.body;
 
 			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
-
 		});
-
 	});
 
 	describe('Jeanette Winterson (person)', () => {
-
 		it('includes materials they have written, with corresponding sur-material and sur-sur-materials', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1108,15 +1085,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { materials } = jeanetteWintersonPerson.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Only Fruits (company)', () => {
-
 		it('includes materials it has written, with corresponding sur-material and sur-sur-material', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1199,15 +1172,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { materials } = onlyFruitsCompany.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('Godblog at Bush Theatre (production)', () => {
-
 		it('includes in its material data the writers of the material and its source material (with corresponding sur-material and sur-sur-material)', () => {
-
 			const expectedMaterial = {
 				model: 'MATERIAL',
 				uuid: GODBLOG_PLAY_MATERIAL_UUID,
@@ -1288,15 +1257,11 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { material } = godblogBushTheatreProduction.body;
 
 			expect(material).to.deep.equal(expectedMaterial);
-
 		});
-
 	});
 
 	describe('God (character)', () => {
-
 		it('includes in its material data the writers of the material and its source material (with corresponding sur-material and sur-sur-materials)', () => {
-
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1380,17 +1345,12 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { materials } = godCharacter.body;
 
 			expect(materials).to.deep.equal(expectedMaterials);
-
 		});
-
 	});
 
 	describe('materials list', () => {
-
 		it('includes writers of the materials and their corresponding source material (with corresponding sur-material)', async () => {
-
-			const response = await request.execute(app)
-				.get('/materials');
+			const response = await request.execute(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -1508,9 +1468,6 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 
 			expect(response).to.have.status(200);
 			expect(response.body).to.deep.equal(expectedResponseBody);
-
 		});
-
 	});
-
 });

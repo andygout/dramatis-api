@@ -35,14 +35,13 @@ let patrickStewartPerson;
 let peterEyrePerson;
 
 describe('Character with variant names from productions of the same material', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hamlet',
@@ -66,7 +65,8 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -105,7 +105,8 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -143,7 +144,8 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -154,7 +156,7 @@ describe('Character with variant names from productions of the same material', (
 					name: 'Hamlet'
 				},
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				},
 				cast: [
 					{
@@ -181,46 +183,31 @@ describe('Character with variant names from productions of the same material', (
 				]
 			});
 
-		ghostCharacter = await request.execute(app)
-			.get(`/characters/${GHOST_CHARACTER_UUID}`);
+		ghostCharacter = await request.execute(app).get(`/characters/${GHOST_CHARACTER_UUID}`);
 
-		hamletAlmeidaProduction = await request.execute(app)
-			.get(`/productions/${HAMLET_ALMEIDA_PRODUCTION_UUID}`);
+		hamletAlmeidaProduction = await request.execute(app).get(`/productions/${HAMLET_ALMEIDA_PRODUCTION_UUID}`);
 
-		hamletNovelloProduction = await request.execute(app)
-			.get(`/productions/${HAMLET_NOVELLO_PRODUCTION_UUID}`);
+		hamletNovelloProduction = await request.execute(app).get(`/productions/${HAMLET_NOVELLO_PRODUCTION_UUID}`);
 
-		hamletWyndhamsProduction = await request.execute(app)
-			.get(`/productions/${HAMLET_WYNDHAMS_PRODUCTION_UUID}`);
+		hamletWyndhamsProduction = await request.execute(app).get(`/productions/${HAMLET_WYNDHAMS_PRODUCTION_UUID}`);
 
-		davidRintoulPerson = await request.execute(app)
-			.get(`/people/${DAVID_RINTOUL_PERSON_UUID}`);
+		davidRintoulPerson = await request.execute(app).get(`/people/${DAVID_RINTOUL_PERSON_UUID}`);
 
-		patrickStewartPerson = await request.execute(app)
-			.get(`/people/${PATRICK_STEWART_PERSON_UUID}`);
+		patrickStewartPerson = await request.execute(app).get(`/people/${PATRICK_STEWART_PERSON_UUID}`);
 
-		peterEyrePerson = await request.execute(app)
-			.get(`/people/${PETER_EYRE_PERSON_UUID}`);
-
+		peterEyrePerson = await request.execute(app).get(`/people/${PETER_EYRE_PERSON_UUID}`);
 	});
 
 	describe('Ghost (character)', () => {
-
 		it('includes variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
-
-			const expectedVariantNamedPortrayals = [
-				'Ghost of King Hamlet',
-				'King Hamlet'
-			];
+			const expectedVariantNamedPortrayals = ['Ghost of King Hamlet', 'King Hamlet'];
 
 			const { variantNamedPortrayals } = ghostCharacter.body;
 
 			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
-
 		});
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -264,7 +251,7 @@ describe('Character with variant names from productions of the same material', (
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -326,15 +313,11 @@ describe('Character with variant names from productions of the same material', (
 			const { productions } = ghostCharacter.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Hamlet at Almeida Theatre (production)', () => {
-
 		it('includes cast with David Rintoul as Ghost of King Hamlet under a variant name (Ghost)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -376,15 +359,11 @@ describe('Character with variant names from productions of the same material', (
 			const { cast } = hamletAlmeidaProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('Hamlet at Novello Theatre (production)', () => {
-
 		it('includes cast with Patrick Stewart as Ghost of King Hamlet under same name as in material (Ghost of King Hamlet)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -426,15 +405,11 @@ describe('Character with variant names from productions of the same material', (
 			const { cast } = hamletNovelloProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
-	describe('Hamlet at Wyndham\'s Theatre (production)', () => {
-
+	describe("Hamlet at Wyndham's Theatre (production)", () => {
 		it('includes cast with Peter Eyre as Ghost of King Hamlet under a variant name (King Hamlet)', () => {
-
 			const expectedCast = [
 				{
 					model: 'PERSON',
@@ -476,15 +451,11 @@ describe('Character with variant names from productions of the same material', (
 			const { cast } = hamletWyndhamsProduction.body;
 
 			expect(cast).to.deep.equal(expectedCast);
-
 		});
-
 	});
 
 	describe('David Rintoul (person)', () => {
-
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (Ghost)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -521,15 +492,11 @@ describe('Character with variant names from productions of the same material', (
 			const { castMemberProductions } = davidRintoulPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Patrick Stewart (person)', () => {
-
 		it('includes production with his portrayal of Ghost of King Hamlet under same name as in material (Ghost of King Hamlet)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -566,15 +533,11 @@ describe('Character with variant names from productions of the same material', (
 			const { castMemberProductions } = patrickStewartPerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
 
 	describe('Peter Eyre (person)', () => {
-
 		it('includes production with his portrayal of Ghost of King Hamlet under a variant name (King Hamlet)', () => {
-
 			const expectedCastMemberProductions = [
 				{
 					model: 'PRODUCTION',
@@ -585,7 +548,7 @@ describe('Character with variant names from productions of the same material', (
 					venue: {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-						name: 'Wyndham\'s Theatre',
+						name: "Wyndham's Theatre",
 						surVenue: null
 					},
 					surProduction: null,
@@ -611,9 +574,6 @@ describe('Character with variant names from productions of the same material', (
 			const { castMemberProductions } = peterEyrePerson.body;
 
 			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
-
 		});
-
 	});
-
 });

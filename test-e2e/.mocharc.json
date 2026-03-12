@@ -1,10 +1,6 @@
 {
   "reporter-option": "maxDiffSize=8192",
-  "require": [
-    "test-e2e/mocha.env.js",
-    "test-e2e/setup.js",
-    "test-e2e/teardown.js"
-  ],
+  "require": ["test-e2e/mocha.env.js", "test-e2e/setup.js", "test-e2e/teardown.js"],
   "spec": "test-e2e/**/*.test.js",
   "timeout": "60000"
 }

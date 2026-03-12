@@ -4,14 +4,12 @@ import * as cypherQueriesValidation from '../../../../src/neo4j/cypher-queries/v
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Validation module', () => {
-
 	describe('getDuplicateRecordCheckQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesValidation.getDuplicateRecordCheckQuery('VENUE', undefined);
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (n:Venue { name: $name })
 					WHERE
 						(
@@ -24,35 +22,31 @@ describe('Cypher Queries Validation module', () => {
 						)
 
 				RETURN TOBOOLEAN(COUNT(n)) AS isDuplicateRecord
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getExistenceCheckQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesValidation.getExistenceCheckQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
 				RETURN TOBOOLEAN(COUNT(n)) AS isExistent
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getSubMaterialChecksQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesValidation.getSubMaterialChecksQuery();
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (m:Material { name: $name })
 					WHERE
 						(
@@ -82,19 +76,17 @@ describe('Cypher Queries Validation module', () => {
 					TOBOOLEAN(COUNT(subSubMaterialRel)) AS isSurSurMaterial,
 					TOBOOLEAN(COUNT(subMaterialRelWithSubjectMaterial)) AS isSurMaterialOfSubjectMaterial,
 					TOBOOLEAN(COUNT(subjectMaterialSurSurMaterialRel)) AS isSubjectMaterialASubSubMaterial
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getSubProductionChecksQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesValidation.getSubProductionChecksQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (p:Production { uuid: $uuid })
 
 				OPTIONAL MATCH (subjectProduction:Production { uuid: $subjectProductionUuid })
@@ -120,19 +112,17 @@ describe('Cypher Queries Validation module', () => {
 					TOBOOLEAN(COUNT(subSubProductionRel)) AS isSurSurProduction,
 					TOBOOLEAN(COUNT(subProductionRelWithSubjectProduction)) AS isSurProductionOfSubjectProduction,
 					TOBOOLEAN(COUNT(subjectProductionSurSurProductionRel)) AS isSubjectProductionASubSubProduction
-			`));
-
+			`)
+			);
 		});
-
 	});
 
 	describe('getSubVenueChecksQuery function', () => {
-
 		it('returns requisite query', () => {
-
 			const result = cypherQueriesValidation.getSubVenueChecksQuery();
 
-			expect(removeExcessWhitespace(result)).to.equal(removeExcessWhitespace(`
+			expect(removeExcessWhitespace(result)).to.equal(
+				removeExcessWhitespace(`
 				MATCH (v:Venue { name: $name })
 					WHERE
 						(
@@ -155,10 +145,8 @@ describe('Cypher Queries Validation module', () => {
 					TOBOOLEAN(COUNT(surVenueRel)) AS isAssignedToSurVenue,
 					TOBOOLEAN(COUNT(subVenueRel)) AS isSurVenue,
 					TOBOOLEAN(COUNT(subjectVenueSurVenueRel)) AS isSubjectVenueASubVenue
-			`));
-
+			`)
+			);
 		});
-
 	});
-
 });

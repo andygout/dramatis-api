@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import mochaPlugin from 'eslint-plugin-mocha';
 import globals from 'globals';
 
@@ -39,11 +40,7 @@ export default [
 		}
 	},
 	{
-		files: [
-			'test-e2e/**/*.test.js',
-			'test-int/**/*.test.js',
-			'test-unit/**/*.test.js'
-		],
+		files: ['test-e2e/**/*.test.js', 'test-int/**/*.test.js', 'test-unit/**/*.test.js'],
 		languageOptions: {
 			globals: {
 				...globals.mocha
@@ -56,5 +53,6 @@ export default [
 			'mocha/no-exclusive-tests': 'error',
 			'mocha/no-mocha-arrows': 'off'
 		}
-	}
+	},
+	eslintConfigPrettier
 ];

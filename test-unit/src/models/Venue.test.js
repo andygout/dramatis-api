@@ -5,18 +5,14 @@ import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 import { SubVenue } from '../../../src/models/index.js';
 
 describe('Venue model', () => {
-
 	let stubs;
 	let Venue;
 
 	const SubVenueStub = function () {
-
 		return createStubInstance(SubVenue);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([])
@@ -36,29 +32,21 @@ describe('Venue model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		describe('subVenues property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new Venue({ name: 'National Theatre' });
 
 				expect(instance.subVenues).to.deep.equal([]);
-
 			});
 
 			it('assigns array of subVenues if included in props, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new Venue({
 					name: 'National Theatre',
 					subVenues: [
@@ -78,17 +66,12 @@ describe('Venue model', () => {
 				expect(instance.subVenues[0] instanceof SubVenue).to.be.true;
 				expect(instance.subVenues[1] instanceof SubVenue).to.be.true;
 				expect(instance.subVenues[2] instanceof SubVenue).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new Venue({
 				name: 'National Theatre',
 				differentiator: '',
@@ -122,23 +105,16 @@ describe('Venue model', () => {
 			);
 			assert.calledOnceWithExactly(instance.subVenues[0].validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.subVenues[0].validateDifferentiator);
-			assert.calledOnceWithExactly(
-				instance.subVenues[0].validateNoAssociationWithSelf,
-				{ name: 'National Theatre', differentiator: '' }
-			);
-			assert.calledOnceWithExactly(
-				instance.subVenues[0].validateUniquenessInGroup,
-				{ isDuplicate: false }
-			);
-
+			assert.calledOnceWithExactly(instance.subVenues[0].validateNoAssociationWithSelf, {
+				name: 'National Theatre',
+				differentiator: ''
+			});
+			assert.calledOnceWithExactly(instance.subVenues[0].validateUniquenessInGroup, { isDuplicate: false });
 		});
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
-		it('calls associated subVenues\' runDatabaseValidations method', async () => {
-
+		it("calls associated subVenues' runDatabaseValidations method", async () => {
 			const instance = new Venue({
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 				name: 'National Theatre',
@@ -154,13 +130,9 @@ describe('Venue model', () => {
 			await instance.runDatabaseValidations();
 
 			assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
-			assert.calledOnceWithExactly(
-				instance.subVenues[0].runDatabaseValidations,
-				{ subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
-			);
-
+			assert.calledOnceWithExactly(instance.subVenues[0].runDatabaseValidations, {
+				subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+			});
 		});
-
 	});
-
 });

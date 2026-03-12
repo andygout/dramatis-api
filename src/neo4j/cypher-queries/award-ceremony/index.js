@@ -3,10 +3,4 @@ import getEditQuery from './edit.js';
 import getListQuery from './list.js';
 import getShowQueries from './show.js';
 
-export {
-	getCreateQuery,
-	getEditQuery,
-	getUpdateQuery,
-	getShowQueries,
-	getListQuery
-};
+export { getCreateQuery, getEditQuery, getUpdateQuery, getShowQueries, getListQuery };

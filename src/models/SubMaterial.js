@@ -4,17 +4,12 @@ import { validationQueries } from '../neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../neo4j/query.js';
 
 export default class SubMaterial extends MaterialBase {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
-
 	}
 
-	async runDatabaseValidations ({ subjectMaterialUuid = null }) {
-
+	async runDatabaseValidations({ subjectMaterialUuid = null }) {
 		if (this.name) {
-
 			const { getSubMaterialChecksQuery } = validationQueries;
 
 			const preparedParams = prepareAsParams(this);
@@ -56,31 +51,22 @@ export default class SubMaterial extends MaterialBase {
 			}
 
 			if (isSurMaterialOfSubjectMaterial) {
-				this.addPropertyError(
-					'name',
-					'Material with these attributes is this material\'s sur-material'
-				);
+				this.addPropertyError('name', "Material with these attributes is this material's sur-material");
 				this.addPropertyError(
 					'differentiator',
-					'Material with these attributes is this material\'s sur-material'
+					"Material with these attributes is this material's sur-material"
 				);
 			}
 
 			if (isSubjectMaterialASubSubMaterial) {
-				this.addPropertyError(
-					'name',
-					'Sub-material cannot be assigned to a three-tiered material collection'
-				);
+				this.addPropertyError('name', 'Sub-material cannot be assigned to a three-tiered material collection');
 				this.addPropertyError(
 					'differentiator',
 					'Sub-material cannot be assigned to a three-tiered material collection'
 				);
 			}
-
 		}
 
 		return;
-
 	}
-
 }

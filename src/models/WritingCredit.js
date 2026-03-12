@@ -4,9 +4,7 @@ import { Company, Person, SourceMaterial } from './index.js';
 import { CREDIT_TYPES, MODELS } from '../utils/constants.js';
 
 export default class WritingCredit extends Base {
-
-	constructor (props = {}) {
-
+	constructor(props = {}) {
 		super(props);
 
 		const { creditType, entities } = props;
@@ -14,28 +12,24 @@ export default class WritingCredit extends Base {
 		this.creditType = CREDIT_TYPES[creditType] || null;
 
 		this.entities = entities
-			? entities.map(entity => {
-				switch (entity.model) {
-					case MODELS.COMPANY:
-						return new Company(entity);
-					case MODELS.MATERIAL:
-						return new SourceMaterial(entity);
-					default:
-						return new Person(entity);
-				}
-			})
+			? entities.map((entity) => {
+					switch (entity.model) {
+						case MODELS.COMPANY:
+							return new Company(entity);
+						case MODELS.MATERIAL:
+							return new SourceMaterial(entity);
+						default:
+							return new Person(entity);
+					}
+				})
 			: [];
-
 	}
 
-	get model () {
-
+	get model() {
 		return MODELS.WRITING_CREDIT;
-
 	}
 
-	runInputValidations (opts) {
-
+	runInputValidations(opts) {
 		this.validateName({ isRequired: false });
 
 		this.validateUniquenessInGroup({ isDuplicate: opts.isDuplicate });
@@ -43,7 +37,6 @@ export default class WritingCredit extends Base {
 		const duplicateWritingEntityIndices = getDuplicateEntityIndices(this.entities);
 
 		this.entities.forEach((entity, index) => {
-
 			entity.validateName({ isRequired: false });
 
 			entity.validateDifferentiator();
@@ -51,29 +44,19 @@ export default class WritingCredit extends Base {
 			entity.validateUniquenessInGroup({ isDuplicate: duplicateWritingEntityIndices.includes(index) });
 
 			if (entity.model === MODELS.MATERIAL) {
-
-				entity.validateNoAssociationWithSelf(
-					{ name: opts.subject.name, differentiator: opts.subject.differentiator }
-				);
-
+				entity.validateNoAssociationWithSelf({
+					name: opts.subject.name,
+					differentiator: opts.subject.differentiator
+				});
 			}
-
 		});
-
 	}
 
-	async runDatabaseValidations ({ subjectMaterialUuid = null }) {
-
+	async runDatabaseValidations({ subjectMaterialUuid = null }) {
 		for (const entity of this.entities) {
-
 			if (entity.model === MODELS.MATERIAL) {
-
 				await entity.runDatabaseValidations({ subjectMaterialUuid });
-
 			}
-
 		}
-
 	}
-
 }

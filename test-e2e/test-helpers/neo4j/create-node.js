@@ -1,7 +1,6 @@
 import { neo4jQuery } from '../../../src/neo4j/query.js';
 
-export default async opts => {
-
+export default async (opts) => {
 	const { label, uuid, name } = opts;
 
 	const params = { uuid, name };
@@ -15,5 +14,4 @@ export default async opts => {
 	await neo4jQuery({ query, params });
 
 	return;
-
 };

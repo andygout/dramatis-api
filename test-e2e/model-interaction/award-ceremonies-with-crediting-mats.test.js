@@ -99,14 +99,13 @@ let talyseTataPerson;
 let cinerightsLtdCompany;
 
 describe('Award ceremonies with crediting materials', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Piyo',
@@ -151,7 +150,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -172,7 +172,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -202,7 +203,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -236,7 +238,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fred',
@@ -257,7 +260,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -274,7 +278,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -296,7 +301,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -334,7 +340,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -368,7 +375,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Thud',
@@ -385,7 +393,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Tutu',
@@ -402,7 +411,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Toto',
@@ -435,7 +445,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Fuga',
@@ -452,7 +463,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Grault',
@@ -469,7 +481,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -486,7 +499,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -500,7 +514,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -511,18 +526,20 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
 				startDate: '2008-10-01',
 				endDate: '2008-10-31',
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -533,18 +550,20 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
 				startDate: '2009-06-01',
 				endDate: '2009-06-30',
 				venue: {
-					name: 'Duke of York\'s Theatre'
+					name: "Duke of York's Theatre"
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -555,18 +574,20 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
 				startDate: '2008-12-01',
 				endDate: '2008-12-31',
 				venue: {
-					name: 'Duke of York\'s Theatre'
+					name: "Duke of York's Theatre"
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -577,7 +598,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -588,7 +610,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -599,7 +622,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -610,18 +634,20 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
 				startDate: '2009-08-01',
 				endDate: '2009-08-31',
 				venue: {
-					name: 'Wyndham\'s Theatre'
+					name: "Wyndham's Theatre"
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -632,7 +658,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -643,7 +670,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Thud',
@@ -654,7 +682,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Tutu',
@@ -665,7 +694,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -676,7 +706,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -687,7 +718,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Fuga',
@@ -698,7 +730,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Grault',
@@ -709,7 +742,8 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -774,7 +808,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -837,7 +872,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -893,7 +929,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -949,7 +986,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -1009,7 +1047,8 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2007',
@@ -1062,66 +1101,51 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		wordsmithAward2009AwardCeremony = await request.execute(app)
+		wordsmithAward2009AwardCeremony = await request
+			.execute(app)
 			.get(`/award-ceremonies/${WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID}`);
 
-		playwritingPrize2009AwardCeremony = await request.execute(app)
+		playwritingPrize2009AwardCeremony = await request
+			.execute(app)
 			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID}`);
 
-		johnDoePerson = await request.execute(app)
-			.get(`/people/${JOHN_DOE_PERSON_UUID}`);
+		johnDoePerson = await request.execute(app).get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		playwrightsLtdCompany = await request.execute(app)
-			.get(`/companies/${PLAYWRIGHTS_LTD_COMPANY_UUID}`);
+		playwrightsLtdCompany = await request.execute(app).get(`/companies/${PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
-		claraQuuxPerson = await request.execute(app)
-			.get(`/people/${CLARA_QUUX_PERSON_UUID}`);
+		claraQuuxPerson = await request.execute(app).get(`/people/${CLARA_QUUX_PERSON_UUID}`);
 
-		songbirdsLtdCompany = await request.execute(app)
-			.get(`/companies/${SONGBIRDS_LTD_COMPANY_UUID}`);
+		songbirdsLtdCompany = await request.execute(app).get(`/companies/${SONGBIRDS_LTD_COMPANY_UUID}`);
 
-		beatriceBarPerson = await request.execute(app)
-			.get(`/people/${BEATRICE_BAR_PERSON_UUID}`);
+		beatriceBarPerson = await request.execute(app).get(`/people/${BEATRICE_BAR_PERSON_UUID}`);
 
-		theatricalsLtdCompany = await request.execute(app)
-			.get(`/companies/${THEATRICALS_LTD_COMPANY_UUID}`);
+		theatricalsLtdCompany = await request.execute(app).get(`/companies/${THEATRICALS_LTD_COMPANY_UUID}`);
 
-		waldoMaterial = await request.execute(app)
-			.get(`/materials/${WALDO_MATERIAL_UUID}`);
+		waldoMaterial = await request.execute(app).get(`/materials/${WALDO_MATERIAL_UUID}`);
 
-		janeRoePerson = await request.execute(app)
-			.get(`/people/${JANE_ROE_PERSON_UUID}`);
+		janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await request.execute(app)
-			.get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
+		fictioneersLtdCompany = await request.execute(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
-		brandonBazPerson = await request.execute(app)
-			.get(`/people/${BRANDON_BAZ_PERSON_UUID}`);
+		brandonBazPerson = await request.execute(app).get(`/people/${BRANDON_BAZ_PERSON_UUID}`);
 
-		creatorsLtdCompany = await request.execute(app)
-			.get(`/companies/${CREATORS_LTD_COMPANY_UUID}`);
+		creatorsLtdCompany = await request.execute(app).get(`/companies/${CREATORS_LTD_COMPANY_UUID}`);
 
-		plughOriginalVersionMaterial = await request.execute(app)
+		plughOriginalVersionMaterial = await request
+			.execute(app)
 			.get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		francisFlobPerson = await request.execute(app)
-			.get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+		francisFlobPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await request.execute(app)
-			.get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
+		curtainUpLtdCompany = await request.execute(app).get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await request.execute(app)
-			.get(`/people/${TALYSE_TATA_PERSON_UUID}`);
+		talyseTataPerson = await request.execute(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await request.execute(app)
-			.get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
-
+		cinerightsLtdCompany = await request.execute(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Wordsmith Award 2009 (award ceremony)', () => {
-
 		it('includes its categories', () => {
-
 			const expectedCategories = [
 				{
 					model: 'AWARD_CEREMONY_CATEGORY',
@@ -1160,7 +1184,7 @@ describe('Award ceremonies with crediting materials', () => {
 									venue: {
 										model: 'VENUE',
 										uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-										name: 'Wyndham\'s Theatre',
+										name: "Wyndham's Theatre",
 										surVenue: null
 									},
 									surProduction: null
@@ -1260,7 +1284,7 @@ describe('Award ceremonies with crediting materials', () => {
 									venue: {
 										model: 'VENUE',
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-										name: 'Duke of York\'s Theatre',
+										name: "Duke of York's Theatre",
 										surVenue: null
 									},
 									surProduction: null
@@ -1360,7 +1384,7 @@ describe('Award ceremonies with crediting materials', () => {
 									venue: {
 										model: 'VENUE',
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-										name: 'Duke of York\'s Theatre',
+										name: "Duke of York's Theatre",
 										surVenue: null
 									},
 									surProduction: null
@@ -1418,15 +1442,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { categories } = wordsmithAward2009AwardCeremony.body;
 
 			expect(categories).to.deep.equal(expectedCategories);
-
 		});
-
 	});
 
 	describe('Playwriting Prize 2009 (award ceremony)', () => {
-
 		it('includes its categories', () => {
-
 			const expectedCategories = [
 				{
 					model: 'AWARD_CEREMONY_CATEGORY',
@@ -1619,7 +1639,7 @@ describe('Award ceremonies with crediting materials', () => {
 									venue: {
 										model: 'VENUE',
 										uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-										name: 'Duke of York\'s Theatre',
+										name: "Duke of York's Theatre",
 										surVenue: null
 									},
 									surProduction: null
@@ -1693,15 +1713,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { categories } = playwritingPrize2009AwardCeremony.body;
 
 			expect(categories).to.deep.equal(expectedCategories);
-
 		});
-
 	});
 
 	describe('John Doe (person): single credit per nomination; single nomination per category', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -1850,15 +1866,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { awards } = johnDoePerson.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Playwrights Ltd (company): single credit per nomination; single nomination per category', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -2007,15 +2019,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { awards } = playwrightsLtdCompany.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Clara Quux (person): multiple credits in same nomination', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -2168,7 +2176,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
+														name: "Wyndham's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -2242,15 +2250,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { awards } = claraQuuxPerson.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Songbirds Ltd (company): multiple credits in same nomination', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -2357,7 +2361,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
+														name: "Wyndham's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -2385,15 +2389,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { awards } = songbirdsLtdCompany.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Beatrice Bar (person): multiple nominations in same category', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -2597,7 +2597,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
+														name: "Wyndham's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -2675,15 +2675,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { awards } = beatriceBarPerson.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Theatricals Ltd (company): multiple nominations in same category', () => {
-
 		it('includes their award nominations', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -2784,7 +2780,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -2855,7 +2851,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -2933,15 +2929,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { awards } = theatricalsLtdCompany.body;
 
 			expect(awards).to.deep.equal(expectedAwards);
-
 		});
-
 	});
 
 	describe('Plugh (play, 1899) (material): subsequent versions have nominations', () => {
-
 		it('includes awards of its subsequent versions', () => {
-
 			const expectedSubsequentVersionMaterialAwards = [
 				{
 					model: 'AWARD',
@@ -3047,7 +3039,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
+														name: "Wyndham's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3076,15 +3068,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { subsequentVersionMaterialAwards } = plughOriginalVersionMaterial.body;
 
 			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
-
 		});
-
 	});
 
 	describe('Francis Flob (person): subsequent versions of their work have nominations', () => {
-
 		it('includes awards of subsequent versions of their work', () => {
-
 			const expectedAwards = [];
 
 			const expectedSubsequentVersionMaterialAwards = [
@@ -3192,7 +3180,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
+														name: "Wyndham's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3222,15 +3210,11 @@ describe('Award ceremonies with crediting materials', () => {
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
-
 		});
-
 	});
 
 	describe('Curtain Up Ltd (company): subsequent versions of their work have nominations', () => {
-
 		it('includes awards of subsequent versions of their work', () => {
-
 			const expectedAwards = [];
 
 			const expectedSubsequentVersionMaterialAwards = [
@@ -3338,7 +3322,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: WYNDHAMS_THEATRE_VENUE_UUID,
-														name: 'Wyndham\'s Theatre',
+														name: "Wyndham's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3368,15 +3352,11 @@ describe('Award ceremonies with crediting materials', () => {
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
-
 		});
-
 	});
 
 	describe('Waldo (novel, 1974) (material): materials that used it as source material have nominations', () => {
-
 		it('includes awards of materials that used it as source material', () => {
-
 			const expectedSourcingMaterialAwards = [
 				{
 					model: 'AWARD',
@@ -3425,7 +3405,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3496,7 +3476,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3525,15 +3505,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { sourcingMaterialAwards } = waldoMaterial.body;
 
 			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
-
 		});
-
 	});
 
 	describe('Jane Roe (person): materials that used their (specific) work as source material have nominations', () => {
-
 		it('includes awards of materials that used their (specific) work as source material', () => {
-
 			const expectedSourcingMaterialAwards = [
 				{
 					model: 'AWARD',
@@ -3582,7 +3558,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3653,7 +3629,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3682,15 +3658,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { sourcingMaterialAwards } = janeRoePerson.body;
 
 			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
-
 		});
-
 	});
 
 	describe('Fictioneers Ltd (company): materials that used their (specific) work as source material have nominations', () => {
-
 		it('includes awards of materials that used their (specific) work as source material', () => {
-
 			const expectedSourcingMaterialAwards = [
 				{
 					model: 'AWARD',
@@ -3739,7 +3711,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3810,7 +3782,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -3839,15 +3811,11 @@ describe('Award ceremonies with crediting materials', () => {
 			const { sourcingMaterialAwards } = fictioneersLtdCompany.body;
 
 			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
-
 		});
-
 	});
 
 	describe('Brandon Baz (person): materials that used their (non-specific) work as source material have nominations', () => {
-
 		it('includes awards of materials that used their (non-specific) work as source material', () => {
-
 			const expectedAwards = [
 				{
 					model: 'AWARD',
@@ -4027,7 +3995,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -4057,15 +4025,11 @@ describe('Award ceremonies with crediting materials', () => {
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
-
 		});
-
 	});
 
 	describe('Creators Ltd (company): materials that used their (non-specific) work as source material have nominations', () => {
-
 		it('includes awards of materials that used their (non-specific) work as source material', () => {
-
 			const expectedAwards = [];
 
 			const expectedSourcingMaterialAwards = [
@@ -4173,7 +4137,7 @@ describe('Award ceremonies with crediting materials', () => {
 													venue: {
 														model: 'VENUE',
 														uuid: DUKE_OF_YORKS_THEATRE_VENUE_UUID,
-														name: 'Duke of York\'s Theatre',
+														name: "Duke of York's Theatre",
 														surVenue: null
 													},
 													surProduction: null
@@ -4203,15 +4167,11 @@ describe('Award ceremonies with crediting materials', () => {
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
-
 		});
-
 	});
 
 	describe('Talyse Tata (person): materials to which they have granted rights have nominations', () => {
-
 		it('includes awards of materials to which they have granted rights', () => {
-
 			const expectedAwards = [];
 
 			const expectedRightsGrantorMaterialAwards = [
@@ -4349,15 +4309,11 @@ describe('Award ceremonies with crediting materials', () => {
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
-
 		});
-
 	});
 
 	describe('Cinerights Ltd (company): materials to which they granted rights have nominations', () => {
-
 		it('includes awards of materials to which they granted rights', () => {
-
 			const expectedAwards = [];
 
 			const expectedRightsGrantorMaterialAwards = [
@@ -4495,9 +4451,6 @@ describe('Award ceremonies with crediting materials', () => {
 
 			expect(awards).to.deep.equal(expectedAwards);
 			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
-
 		});
-
 	});
-
 });

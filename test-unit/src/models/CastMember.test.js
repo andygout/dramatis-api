@@ -5,18 +5,14 @@ import { assert, createStubInstance, restore, spy, stub } from 'sinon';
 import { Role } from '../../../src/models/index.js';
 
 describe('CastMember model', () => {
-
 	let stubs;
 	let CastMember;
 
 	const RoleStub = function () {
-
 		return createStubInstance(Role);
-
 	};
 
 	beforeEach(async () => {
-
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateRoleIndices: stub().returns([])
@@ -36,29 +32,21 @@ describe('CastMember model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('constructor method', () => {
-
 		describe('roles property', () => {
-
 			it('assigns empty array if absent from props', async () => {
-
 				const instance = new CastMember({ name: 'Ian McKellen' });
 
 				expect(instance.roles).to.deep.equal([]);
-
 			});
 
 			it('assigns array of role instances, retaining those with empty or whitespace-only string names', async () => {
-
 				const instance = new CastMember({
 					name: 'Ian McKellen',
 					roles: [
@@ -78,17 +66,12 @@ describe('CastMember model', () => {
 				expect(instance.roles[0] instanceof Role).to.be.true;
 				expect(instance.roles[1] instanceof Role).to.be.true;
 				expect(instance.roles[2] instanceof Role).to.be.true;
-
 			});
-
 		});
-
 	});
 
 	describe('runInputValidations method', () => {
-
-		it('calls instance\'s validate methods and associated models\' validate methods', async () => {
-
+		it("calls instance's validate methods and associated models' validate methods", async () => {
 			const instance = new CastMember({
 				name: 'Ian McKellen',
 				roles: [
@@ -121,18 +104,12 @@ describe('CastMember model', () => {
 			assert.calledOnceWithExactly(instance.validateDifferentiator);
 			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
 			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.roles);
-			assert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateRoleIndices,
-				instance.roles
-			);
+			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices, instance.roles);
 			assert.calledOnceWithExactly(instance.roles[0].validateName, { isRequired: false });
 			assert.calledOnceWithExactly(instance.roles[0].validateCharacterName);
 			assert.calledOnceWithExactly(instance.roles[0].validateQualifier);
 			assert.calledOnceWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
 			assert.calledOnceWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
-
 		});
-
 	});
-
 });

@@ -2,14 +2,12 @@ import esmock from 'esmock';
 import { assert, restore, spy, stub } from 'sinon';
 
 describe('SourceMaterial model', () => {
-
 	let stubs;
 	let SourceMaterial;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(async () => {
-
 		stubs = {
 			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
 			cypherQueriesModule: {
@@ -33,21 +31,15 @@ describe('SourceMaterial model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
 		context('valid data', () => {
-
 			it('will not call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: false
 				});
@@ -67,27 +59,20 @@ describe('SourceMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSourceMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSourceMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
-		context('invalid data (instance is the subject material\'s sourcing material)', () => {
-
+		context("invalid data (instance is the subject material's sourcing material)", () => {
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: true
 				});
@@ -106,31 +91,26 @@ describe('SourceMaterial model', () => {
 				);
 				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSourceMaterialChecksQuery response',
-						params: {
-							name: 'NAME_VALUE',
-							differentiator: 'DIFFERENTIATOR_VALUE',
-							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSourceMaterialChecksQuery response',
+					params: {
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE',
+						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				);
+				});
 				assert.calledTwice(instance.addPropertyError);
 				assert.calledWithExactly(
 					instance.addPropertyError.firstCall,
-					'name', 'Material with these attributes is this material\'s sourcing material'
+					'name',
+					"Material with these attributes is this material's sourcing material"
 				);
 				assert.calledWithExactly(
 					instance.addPropertyError.secondCall,
-					'differentiator', 'Material with these attributes is this material\'s sourcing material'
+					'differentiator',
+					"Material with these attributes is this material's sourcing material"
 				);
-
 			});
-
 		});
-
 	});
-
 });

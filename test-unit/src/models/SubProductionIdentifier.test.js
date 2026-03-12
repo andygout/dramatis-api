@@ -2,14 +2,12 @@ import esmock from 'esmock';
 import { assert, restore, spy, stub } from 'sinon';
 
 describe('SubProductionIdentifier model', () => {
-
 	let stubs;
 	let SubProductionIdentifier;
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
 	beforeEach(async () => {
-
 		stubs = {
 			cypherQueriesModule: {
 				validationQueries: {
@@ -32,21 +30,15 @@ describe('SubProductionIdentifier model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-
 	});
 
 	afterEach(() => {
-
 		restore();
-
 	});
 
 	describe('runDatabaseValidations method', () => {
-
 		context('valid data', () => {
-
 			it('will not call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
@@ -68,26 +60,19 @@ describe('SubProductionIdentifier model', () => {
 					stubs.neo4jQueryModule.neo4jQuery
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubProductionChecksQuery response',
-						params: {
-							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubProductionChecksQuery response',
+					params: {
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
-				);
+				});
 				assert.notCalled(instance.addPropertyError);
-
 			});
-
 		});
 
 		context('invalid data (instance does not exist)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: false,
 					isAssignedToSurProduction: false,
@@ -110,29 +95,23 @@ describe('SubProductionIdentifier model', () => {
 					instance.addPropertyError
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubProductionChecksQuery response',
-						params: {
-							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubProductionChecksQuery response',
+					params: {
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
-				);
+				});
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
-					'uuid', 'Production with this UUID does not exist'
+					'uuid',
+					'Production with this UUID does not exist'
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance is already assigned to another sur-production)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: true,
@@ -155,29 +134,23 @@ describe('SubProductionIdentifier model', () => {
 					instance.addPropertyError
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubProductionChecksQuery response',
-						params: {
-							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubProductionChecksQuery response',
+					params: {
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
-				);
+				});
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
-					'uuid', 'Production with this UUID is already assigned to another sur-production'
+					'uuid',
+					'Production with this UUID is already assigned to another sur-production'
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance is the sur-most production of a three-tiered production collection)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
@@ -200,29 +173,23 @@ describe('SubProductionIdentifier model', () => {
 					instance.addPropertyError
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubProductionChecksQuery response',
-						params: {
-							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubProductionChecksQuery response',
+					params: {
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
-				);
+				});
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
-					'uuid', 'Production with this UUID is the sur-most production of a three-tiered production collection'
+					'uuid',
+					'Production with this UUID is the sur-most production of a three-tiered production collection'
 				);
-
 			});
-
 		});
 
-		context('invalid data (instance is the subject production\'s sur-production)', () => {
-
+		context("invalid data (instance is the subject production's sur-production)", () => {
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
@@ -245,29 +212,23 @@ describe('SubProductionIdentifier model', () => {
 					instance.addPropertyError
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubProductionChecksQuery response',
-						params: {
-							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubProductionChecksQuery response',
+					params: {
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
-				);
+				});
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
-					'uuid', 'Production with this UUID is this production\'s sur-production'
+					'uuid',
+					"Production with this UUID is this production's sur-production"
 				);
-
 			});
-
 		});
 
 		context('invalid data (instance cannot be assigned to a three-tiered production collection)', () => {
-
 			it('will call addPropertyError method', async () => {
-
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
@@ -290,25 +251,19 @@ describe('SubProductionIdentifier model', () => {
 					instance.addPropertyError
 				);
 				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(
-					stubs.neo4jQueryModule.neo4jQuery,
-					{
-						query: 'getSubProductionChecksQuery response',
-						params: {
-							uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-							subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
-						}
+				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					query: 'getSubProductionChecksQuery response',
+					params: {
+						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
-				);
+				});
 				assert.calledOnceWithExactly(
 					instance.addPropertyError,
-					'uuid', 'Sub-production cannot be assigned to a three-tiered production collection'
+					'uuid',
+					'Sub-production cannot be assigned to a three-tiered production collection'
 				);
-
 			});
-
 		});
-
 	});
-
 });

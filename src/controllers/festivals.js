@@ -5,8 +5,7 @@ import sendJsonResponse from '../lib/send-json-response.js';
 import { Festival } from '../models/index.js';
 import { ACTIONS, MODELS } from '../utils/constants.js';
 
-const newRoute = (request, response, next) =>
-	sendJsonResponse(response, new Festival());
+const newRoute = (request, response, next) => sendJsonResponse(response, new Festival());
 
 const createRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Festival(request.body), ACTIONS.CREATE);
@@ -23,15 +22,6 @@ const deleteRoute = (request, response, next) =>
 const showRoute = (request, response, next) =>
 	callInstanceMethod(response, next, new Festival(request.params), ACTIONS.SHOW);
 
-const listRoute = (request, response, next) =>
-	callStaticListMethod(response, next, Festival, MODELS.FESTIVAL);
+const listRoute = (request, response, next) => callStaticListMethod(response, next, Festival, MODELS.FESTIVAL);
 
-export {
-	newRoute,
-	createRoute,
-	editRoute,
-	updateRoute,
-	deleteRoute,
-	showRoute,
-	listRoute
-};
+export { newRoute, createRoute, editRoute, updateRoute, deleteRoute, showRoute, listRoute };

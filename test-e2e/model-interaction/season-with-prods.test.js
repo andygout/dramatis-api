@@ -21,14 +21,13 @@ let seizeTheDayTricycleProduction;
 let detainingJusticeTricycleProduction;
 
 describe('Season with multiple productions', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Seize the Day',
@@ -43,7 +42,8 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Detaining Justice',
@@ -58,7 +58,8 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/productions')
 			.send({
 				name: 'Category B',
@@ -73,24 +74,23 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		notBlackAndWhiteSeason = await request.execute(app)
-			.get(`/seasons/${NOT_BLACK_AND_WHITE_SEASON_UUID}`);
+		notBlackAndWhiteSeason = await request.execute(app).get(`/seasons/${NOT_BLACK_AND_WHITE_SEASON_UUID}`);
 
-		categoryBTricycleProduction = await request.execute(app)
+		categoryBTricycleProduction = await request
+			.execute(app)
 			.get(`/productions/${CATEGORY_B_TRICYCLE_PRODUCTION_UUID}`);
 
-		seizeTheDayTricycleProduction = await request.execute(app)
+		seizeTheDayTricycleProduction = await request
+			.execute(app)
 			.get(`/productions/${SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID}`);
 
-		detainingJusticeTricycleProduction = await request.execute(app)
+		detainingJusticeTricycleProduction = await request
+			.execute(app)
 			.get(`/productions/${DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID}`);
-
 	});
 
 	describe('Not Black and White (season)', () => {
-
 		it('includes productions in this season', () => {
-
 			const expectedProductions = [
 				{
 					model: 'PRODUCTION',
@@ -139,15 +139,11 @@ describe('Season with multiple productions', () => {
 			const { productions } = notBlackAndWhiteSeason.body;
 
 			expect(productions).to.deep.equal(expectedProductions);
-
 		});
-
 	});
 
 	describe('Category B at Tricycle Theatre (production)', () => {
-
 		it('attributes season as Not Black and White', () => {
-
 			const expectedSeason = {
 				model: 'SEASON',
 				uuid: NOT_BLACK_AND_WHITE_SEASON_UUID,
@@ -157,15 +153,11 @@ describe('Season with multiple productions', () => {
 			const { season } = categoryBTricycleProduction.body;
 
 			expect(season).to.deep.equal(expectedSeason);
-
 		});
-
 	});
 
 	describe('Seize the Day at Tricycle Theatre (production)', () => {
-
 		it('attributes season as Not Black and White', () => {
-
 			const expectedSeason = {
 				model: 'SEASON',
 				uuid: NOT_BLACK_AND_WHITE_SEASON_UUID,
@@ -175,15 +167,11 @@ describe('Season with multiple productions', () => {
 			const { season } = seizeTheDayTricycleProduction.body;
 
 			expect(season).to.deep.equal(expectedSeason);
-
 		});
-
 	});
 
 	describe('Detaining Justice at Tricycle Theatre (production)', () => {
-
 		it('attributes season as Not Black and White', () => {
-
 			const expectedSeason = {
 				model: 'SEASON',
 				uuid: NOT_BLACK_AND_WHITE_SEASON_UUID,
@@ -193,9 +181,6 @@ describe('Season with multiple productions', () => {
 			const { season } = detainingJusticeTricycleProduction.body;
 
 			expect(season).to.deep.equal(expectedSeason);
-
 		});
-
 	});
-
 });

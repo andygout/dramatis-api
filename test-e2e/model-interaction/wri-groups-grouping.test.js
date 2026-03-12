@@ -17,14 +17,13 @@ const BRANDON_BAZ_PERSON_UUID = 'BRANDON_BAZ_PERSON_UUID';
 let material;
 
 describe('Nameless writer groups grouping', () => {
-
 	before(async () => {
-
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
 
-		await request.execute(app)
+		await request
+			.execute(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -55,15 +54,11 @@ describe('Nameless writer groups grouping', () => {
 				]
 			});
 
-		material = await request.execute(app)
-			.get(`/materials/${XYZZY_MATERIAL_UUID}`);
-
+		material = await request.execute(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
 	});
 
 	describe('Material', () => {
-
-		it('combines nameless writer groups into a single combined group (with a name of \'by\')', () => {
-
+		it("combines nameless writer groups into a single combined group (with a name of 'by')", () => {
 			const expectedWritingCredits = [
 				{
 					model: 'WRITING_CREDIT',
@@ -97,9 +92,6 @@ describe('Nameless writer groups grouping', () => {
 			const { writingCredits } = material.body;
 
 			expect(writingCredits).to.deep.equal(expectedWritingCredits);
-
 		});
-
 	});
-
 });
