@@ -1,33 +1,34 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import isObjectWithKeys from '../../../src/lib/is-object-with-keys.js';
 
 describe('Is Object With Keys module', () => {
 	it('considers object with keys as valid object', () => {
-		expect(isObjectWithKeys({ key: 'value' })).to.be.true;
+		assert.equal(isObjectWithKeys({ key: 'value' }), true);
 	});
 
 	it('will not consider null (which is type of object) as valid object', () => {
-		expect(isObjectWithKeys(null)).to.be.false;
+		assert.equal(isObjectWithKeys(null), false);
 	});
 
 	it('will not consider empty array (which is type of object) as valid object', () => {
-		expect(isObjectWithKeys([])).to.be.false;
+		assert.equal(isObjectWithKeys([]), false);
 	});
 
 	it('will not consider populated array (which is type of object) as valid object', () => {
-		expect(isObjectWithKeys([1, 2, 3])).to.be.false;
+		assert.equal(isObjectWithKeys([1, 2, 3]), false);
 	});
 
 	it('will not consider string type as valid object', () => {
-		expect(isObjectWithKeys('string')).to.be.false;
+		assert.equal(isObjectWithKeys('string'), false);
 	});
 
 	it('will not consider number type as valid object', () => {
-		expect(isObjectWithKeys(123)).to.be.false;
+		assert.equal(isObjectWithKeys(123), false);
 	});
 
 	it('will not consider empty object (i.e. no keys) as valid object', () => {
-		expect(isObjectWithKeys({})).to.be.false;
+		assert.equal(isObjectWithKeys({}), false);
 	});
 });

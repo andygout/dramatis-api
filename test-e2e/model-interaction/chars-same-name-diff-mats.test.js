@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID';
 const LYSANDER_CHARACTER_UUID = 'LYSANDER_CHARACTER_UUID';
@@ -39,8 +37,7 @@ describe('Different characters with the same name from different materials', () 
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -59,8 +56,7 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Titus Andronicus',
@@ -79,8 +75,7 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -113,8 +108,7 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Titus Andronicus',
@@ -147,27 +141,25 @@ describe('Different characters with the same name from different materials', () 
 				]
 			});
 
-		demetriusCharacter1 = await request.execute(app).get(`/characters/${DEMETRIUS_CHARACTER_1_UUID}`);
+		demetriusCharacter1 = await request(app).get(`/characters/${DEMETRIUS_CHARACTER_1_UUID}`);
 
-		demetriusCharacter2 = await request.execute(app).get(`/characters/${DEMETRIUS_CHARACTER_2_UUID}`);
+		demetriusCharacter2 = await request(app).get(`/characters/${DEMETRIUS_CHARACTER_2_UUID}`);
 
-		aMidsummerNightsDreamMaterial = await request
-			.execute(app)
-			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
+		aMidsummerNightsDreamMaterial = await request(app).get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
-		titusAndronicusMaterial = await request.execute(app).get(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`);
+		titusAndronicusMaterial = await request(app).get(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`);
 
-		aMidsummerNightsDreamNovelloProduction = await request
-			.execute(app)
-			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID}`);
+		aMidsummerNightsDreamNovelloProduction = await request(app).get(
+			`/productions/${A_MIDSUMMER_NIGHTS_DREAM_NOVELLO_PRODUCTION_UUID}`
+		);
 
-		titusAndronicusGlobeProduction = await request
-			.execute(app)
-			.get(`/productions/${TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID}`);
+		titusAndronicusGlobeProduction = await request(app).get(
+			`/productions/${TITUS_ANDRONICUS_GLOBE_PRODUCTION_UUID}`
+		);
 
-		oscarPearcePerson = await request.execute(app).get(`/people/${OSCAR_PEARCE_PERSON_UUID}`);
+		oscarPearcePerson = await request(app).get(`/people/${OSCAR_PEARCE_PERSON_UUID}`);
 
-		samAlexanderPerson = await request.execute(app).get(`/people/${SAM_ALEXANDER_PERSON_UUID}`);
+		samAlexanderPerson = await request(app).get(`/people/${SAM_ALEXANDER_PERSON_UUID}`);
 	});
 
 	describe('Demetrius (character) (#1)', () => {
@@ -202,7 +194,7 @@ describe('Different characters with the same name from different materials', () 
 
 			const { productions } = demetriusCharacter1.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -238,7 +230,7 @@ describe('Different characters with the same name from different materials', () 
 
 			const { productions } = demetriusCharacter2.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -263,7 +255,7 @@ describe('Different characters with the same name from different materials', () 
 				characterGroups: [{ characters }]
 			} = aMidsummerNightsDreamMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -288,7 +280,7 @@ describe('Different characters with the same name from different materials', () 
 				characterGroups: [{ characters }]
 			} = titusAndronicusMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -327,7 +319,7 @@ describe('Different characters with the same name from different materials', () 
 
 			const { cast } = aMidsummerNightsDreamNovelloProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -366,7 +358,7 @@ describe('Different characters with the same name from different materials', () 
 
 			const { cast } = titusAndronicusGlobeProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -400,7 +392,7 @@ describe('Different characters with the same name from different materials', () 
 
 			const { castMemberProductions } = oscarPearcePerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -434,7 +426,7 @@ describe('Different characters with the same name from different materials', () 
 
 			const { castMemberProductions } = samAlexanderPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

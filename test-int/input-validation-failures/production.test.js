@@ -1,6 +1,10 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
 import { restore, stub } from 'sinon';
+
+import { toPlainObject } from '../../test-helpers/index.js';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -42,7 +46,7 @@ describe('Input validation failures: Production instance', () => {
 
 	const createInstance = (props) => new Production(props);
 
-	context('name value is empty string', () => {
+	describe('name value is empty string', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -94,12 +98,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('name value exceeds maximum limit', () => {
+	describe('name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -151,12 +155,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('subtitle value exceeds maximum limit', () => {
+	describe('subtitle value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -209,12 +213,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('start date, press date, and end date values with invalid date format', () => {
+	describe('start date, press date, and end date values with invalid date format', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -271,86 +275,77 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context(
-		'start date, press date, and end date with valid date format with start date after press date and press date after end date',
-		() => {
-			for (const method of methods) {
-				it(`assigns appropriate error (${method} method)`, async () => {
-					const instance = createInstance({
-						name: 'Hamlet',
-						startDate: '2011-01-26',
-						pressDate: '2010-10-07',
-						endDate: '2010-09-30'
-					});
-
-					const result = await instance[method]();
-
-					const expectedResponseBody = {
-						uuid: undefined,
-						name: 'Hamlet',
-						subtitle: '',
-						startDate: '2011-01-26',
-						pressDate: '2010-10-07',
-						endDate: '2010-09-30',
-						hasErrors: true,
-						errors: {
-							startDate: [
-								'Start date must not be after end date',
-								'Start date must not be after press date'
-							],
-							pressDate: [
-								'Press date must not be before start date',
-								'Press date must not be after end date'
-							],
-							endDate: [
-								'End date must not be before start date',
-								'End date must not be before press date'
-							]
-						},
-						material: {
-							uuid: undefined,
-							name: '',
-							differentiator: '',
-							errors: {}
-						},
-						venue: {
-							uuid: undefined,
-							name: '',
-							differentiator: '',
-							errors: {}
-						},
-						season: {
-							uuid: undefined,
-							name: '',
-							differentiator: '',
-							errors: {}
-						},
-						festival: {
-							uuid: undefined,
-							name: '',
-							differentiator: '',
-							errors: {}
-						},
-						subProductions: [],
-						producerCredits: [],
-						cast: [],
-						creativeCredits: [],
-						crewCredits: [],
-						reviews: []
-					};
-
-					expect(result).to.deep.equal(expectedResponseBody);
+	describe('start date, press date, and end date with valid date format with start date after press date and press date after end date', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Hamlet',
+					startDate: '2011-01-26',
+					pressDate: '2010-10-07',
+					endDate: '2010-09-30'
 				});
-			}
-		}
-	);
 
-	context('material name value exceeds maximum limit', () => {
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Hamlet',
+					subtitle: '',
+					startDate: '2011-01-26',
+					pressDate: '2010-10-07',
+					endDate: '2010-09-30',
+					hasErrors: true,
+					errors: {
+						startDate: ['Start date must not be after end date', 'Start date must not be after press date'],
+						pressDate: [
+							'Press date must not be before start date',
+							'Press date must not be after end date'
+						],
+						endDate: ['End date must not be before start date', 'End date must not be before press date']
+					},
+					material: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					venue: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					season: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					festival: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					subProductions: [],
+					producerCredits: [],
+					cast: [],
+					creativeCredits: [],
+					crewCredits: [],
+					reviews: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('material name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -405,12 +400,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('material differentiator value exceeds maximum limit', () => {
+	describe('material differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -466,12 +461,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('venue name value exceeds maximum limit', () => {
+	describe('venue name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -526,12 +521,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('venue differentiator value exceeds maximum limit', () => {
+	describe('venue differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -587,12 +582,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('season name value exceeds maximum limit', () => {
+	describe('season name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -647,12 +642,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('season differentiator value exceeds maximum limit', () => {
+	describe('season differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -708,12 +703,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('festival name value exceeds maximum limit', () => {
+	describe('festival name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -768,12 +763,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('festival differentiator value exceeds maximum limit', () => {
+	describe('festival differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -829,12 +824,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('sub-production uuid value exceeds maximum limit', () => {
+	describe('sub-production uuid value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -896,12 +891,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('production instance assigns itself as a sub-production', () => {
+	describe('production instance assigns itself as a sub-production', () => {
 		// N.B. Only tested for update method; for create method the production instance will not yet have a uuid value.
 		it('assigns appropriate error (update method)', async () => {
 			const PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
@@ -966,11 +961,11 @@ describe('Input validation failures: Production instance', () => {
 				reviews: []
 			};
 
-			expect(result).to.deep.equal(expectedResponseBody);
+			assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 		});
 	});
 
-	context('duplicate sub-productions', () => {
+	describe('duplicate sub-productions', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1048,12 +1043,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit name value exceeds maximum limit', () => {
+	describe('producer credit name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1116,12 +1111,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate producer credit name values', () => {
+	describe('duplicate producer credit name values', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1194,12 +1189,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit entity (person) name value exceeds maximum limit', () => {
+	describe('producer credit entity (person) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1274,12 +1269,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit entity (person) differentiator value exceeds maximum limit', () => {
+	describe('producer credit entity (person) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1355,12 +1350,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit entity (company) name value exceeds maximum limit', () => {
+	describe('producer credit entity (company) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1437,12 +1432,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit entity (company) differentiator value exceeds maximum limit', () => {
+	describe('producer credit entity (company) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1520,12 +1515,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate producer credit entities, including producer credit entity (company) credited members', () => {
+	describe('duplicate producer credit entities, including producer credit entity (company) credited members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1664,14 +1659,14 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.producerCredits[0].entities[0].members[1].model).to.equal('PERSON');
-				expect(result.producerCredits[0].entities[3].model).to.equal('COMPANY');
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+				assert.strictEqual(result.producerCredits[0].entities[0].members[1].model, 'PERSON');
+				assert.strictEqual(result.producerCredits[0].entities[3].model, 'COMPANY');
 			});
 		}
 	});
 
-	context('producer credit entity (company) without name has named credited members', () => {
+	describe('producer credit entity (company) without name has named credited members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1760,12 +1755,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit entity (company) credited member name value exceeds maximum limit', () => {
+	describe('producer credit entity (company) credited member name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1854,12 +1849,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('producer credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+	describe('producer credit entity (company) credited member differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1949,12 +1944,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member name value exceeds maximum limit', () => {
+	describe('cast member name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2020,12 +2015,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member differentiator value exceeds maximum limit', () => {
+	describe('cast member differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2092,12 +2087,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate cast members', () => {
+	describe('duplicate cast members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2198,12 +2193,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member without name has named roles', () => {
+	describe('cast member without name has named roles', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2282,12 +2277,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member role name value exceeds maximum limit', () => {
+	describe('cast member role name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2367,12 +2362,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member role characterName value exceeds maximum limit', () => {
+	describe('cast member role characterName value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2452,12 +2447,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member role characterDifferentiator value exceeds maximum limit', () => {
+	describe('cast member role characterDifferentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2538,12 +2533,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member role qualifier value exceeds maximum limit', () => {
+	describe('cast member role qualifier value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2623,12 +2618,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('cast member role name and characterName values are the same', () => {
+	describe('cast member role name and characterName values are the same', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2708,12 +2703,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate cast member roles', () => {
+	describe('duplicate cast member roles', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2835,12 +2830,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit name value exceeds maximum limit', () => {
+	describe('creative credit name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2903,12 +2898,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate creative credit name values', () => {
+	describe('duplicate creative credit name values', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -2981,12 +2976,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit without name has named creative entities', () => {
+	describe('creative credit without name has named creative entities', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3061,12 +3056,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit entity (person) name value exceeds maximum limit', () => {
+	describe('creative credit entity (person) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3141,12 +3136,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit entity (person) differentiator value exceeds maximum limit', () => {
+	describe('creative credit entity (person) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3222,12 +3217,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit entity (company) name value exceeds maximum limit', () => {
+	describe('creative credit entity (company) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3304,12 +3299,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit entity (company) differentiator value exceeds maximum limit', () => {
+	describe('creative credit entity (company) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3387,12 +3382,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate creative credit entities, including creative credit entity (company) credited members', () => {
+	describe('duplicate creative credit entities, including creative credit entity (company) credited members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3531,14 +3526,14 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.creativeCredits[0].entities[0].members[1].model).to.equal('PERSON');
-				expect(result.creativeCredits[0].entities[3].model).to.equal('COMPANY');
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+				assert.strictEqual(result.creativeCredits[0].entities[0].members[1].model, 'PERSON');
+				assert.strictEqual(result.creativeCredits[0].entities[3].model, 'COMPANY');
 			});
 		}
 	});
 
-	context('creative credit entity (company) without name has named credited members', () => {
+	describe('creative credit entity (company) without name has named credited members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3627,12 +3622,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit entity (company) credited member name value exceeds maximum limit', () => {
+	describe('creative credit entity (company) credited member name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3721,12 +3716,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('creative credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+	describe('creative credit entity (company) credited member differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3816,12 +3811,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit name value exceeds maximum limit', () => {
+	describe('crew credit name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3884,12 +3879,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate crew credit name values', () => {
+	describe('duplicate crew credit name values', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -3962,12 +3957,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit without name has named crew entities', () => {
+	describe('crew credit without name has named crew entities', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4042,12 +4037,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit entity (person) name value exceeds maximum limit', () => {
+	describe('crew credit entity (person) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4122,12 +4117,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit entity (person) differentiator value exceeds maximum limit', () => {
+	describe('crew credit entity (person) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4203,12 +4198,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit entity (company) name value exceeds maximum limit', () => {
+	describe('crew credit entity (company) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4285,12 +4280,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit entity (company) differentiator value exceeds maximum limit', () => {
+	describe('crew credit entity (company) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4368,12 +4363,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate crew credit entities, including crew credit entity (company) credited members', () => {
+	describe('duplicate crew credit entities, including crew credit entity (company) credited members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4512,14 +4507,14 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.crewCredits[0].entities[0].members[1].model).to.equal('PERSON');
-				expect(result.crewCredits[0].entities[3].model).to.equal('COMPANY');
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+				assert.strictEqual(result.crewCredits[0].entities[0].members[1].model, 'PERSON');
+				assert.strictEqual(result.crewCredits[0].entities[3].model, 'COMPANY');
 			});
 		}
 	});
 
-	context('crew credit entity (company) without name has named credited members', () => {
+	describe('crew credit entity (company) without name has named credited members', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4608,12 +4603,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit entity (company) credited member name value exceeds maximum limit', () => {
+	describe('crew credit entity (company) credited member name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4702,12 +4697,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('crew credit entity (company) credited member differentiator value exceeds maximum limit', () => {
+	describe('crew credit entity (company) credited member differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -4797,12 +4792,12 @@ describe('Input validation failures: Production instance', () => {
 					reviews: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review url value exceeds maximum limit', () => {
+	describe('review url value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const urlProtocolAndSubdomain = 'https://www.';
@@ -4889,12 +4884,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review url value is not a valid URL', () => {
+	describe('review url value is not a valid URL', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const INVALID_URL = 'foobar';
@@ -4977,12 +4972,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate review url values', () => {
+	describe('duplicate review url values', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5117,12 +5112,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review without url value has named publication', () => {
+	describe('review without url value has named publication', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5200,12 +5195,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review without url value has named critic', () => {
+	describe('review without url value has named critic', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5283,12 +5278,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review date value with invalid date format', () => {
+	describe('review date value with invalid date format', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5370,12 +5365,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review with url value has publication without name', () => {
+	describe('review with url value has publication without name', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5456,12 +5451,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review with url value has critic without name', () => {
+	describe('review with url value has critic without name', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5542,12 +5537,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review date is in an invalid date format', () => {
+	describe('review date is in an invalid date format', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5629,12 +5624,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review publication name value exceeds maximum limit', () => {
+	describe('review publication name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5715,12 +5710,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review publication differentiator value exceeds maximum limit', () => {
+	describe('review publication differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5802,12 +5797,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review critic name value exceeds maximum limit', () => {
+	describe('review critic name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5888,12 +5883,12 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('review critic differentiator value exceeds maximum limit', () => {
+	describe('review critic differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -5975,7 +5970,7 @@ describe('Input validation failures: Production instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});

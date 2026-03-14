@@ -1,18 +1,16 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
-
 describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 	describe('GET new endpoint', () => {
 		it('responds with data required to prepare new company', async () => {
-			const response = await request.execute(app).get('/companies/new');
+			const response = await request(app).get('/companies/new');
 
 			const expectedResponseBody = {
 				model: 'COMPANY',
@@ -21,8 +19,8 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
@@ -36,9 +34,9 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 		});
 
 		it('creates company', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request.execute(app).post('/companies').send({
+			const response = await request(app).post('/companies').send({
 				name: 'National Theatre Company'
 			});
 
@@ -50,13 +48,13 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('gets data required to edit specific company', async () => {
-			const response = await request.execute(app).get(`/companies/${COMPANY_UUID}/edit`);
+			const response = await request(app).get(`/companies/${COMPANY_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'COMPANY',
@@ -66,14 +64,14 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates company', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request.execute(app).put(`/companies/${COMPANY_UUID}`).send({
+			const response = await request(app).put(`/companies/${COMPANY_UUID}`).send({
 				name: 'Royal Shakespeare Company'
 			});
 
@@ -85,13 +83,13 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('shows company', async () => {
-			const response = await request.execute(app).get(`/companies/${COMPANY_UUID}`);
+			const response = await request(app).get(`/companies/${COMPANY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'COMPANY',
@@ -116,14 +114,14 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				rightsGrantorMaterialAwards: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('deletes company', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request.execute(app).delete(`/companies/${COMPANY_UUID}`);
+			const response = await request(app).delete(`/companies/${COMPANY_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'COMPANY',
@@ -132,9 +130,9 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 		});
 	});
 
@@ -148,21 +146,21 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 
 			await purgeDatabase();
 
-			await request.execute(app).post('/companies').send({
+			await request(app).post('/companies').send({
 				name: 'National Theatre Company'
 			});
 
-			await request.execute(app).post('/companies').send({
+			await request(app).post('/companies').send({
 				name: 'Royal Shakespeare Company'
 			});
 
-			await request.execute(app).post('/companies').send({
+			await request(app).post('/companies').send({
 				name: 'Almeida Theatre Company'
 			});
 		});
 
 		it('lists all companies ordered by name', async () => {
-			const response = await request.execute(app).get('/companies');
+			const response = await request(app).get('/companies');
 
 			const expectedResponseBody = [
 				{
@@ -182,8 +180,8 @@ describe('CRUD (Create, Read, Update, Delete): Companies API', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

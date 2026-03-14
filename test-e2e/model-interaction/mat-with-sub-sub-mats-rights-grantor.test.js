@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID = 'THE_FELLOWSHIP_OF_THE_RING_MATERIAL_1_UUID';
 const J_R_R_TOLKIEN_PERSON_UUID = 'J_R_R_TOLKIEN_PERSON_UUID';
@@ -38,8 +36,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -57,8 +54,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Lord of the Rings',
@@ -82,8 +78,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Tolkien's Legendarium",
@@ -107,8 +102,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -149,8 +143,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Lord of the Rings',
@@ -184,8 +177,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Tolkien's Legendarium",
@@ -219,8 +211,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -236,8 +227,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Lord of the Rings',
@@ -258,8 +248,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Tolkien's Legendarium",
@@ -280,8 +269,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Fellowship of the Ring',
@@ -297,8 +285,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Lord of the Rings',
@@ -319,8 +306,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Tolkien's Legendarium",
@@ -341,9 +327,9 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 				]
 			});
 
-		theTolkienEstateCompany = await request.execute(app).get(`/companies/${THE_TOLKIEN_ESTATE_COMPANY_UUID}`);
+		theTolkienEstateCompany = await request(app).get(`/companies/${THE_TOLKIEN_ESTATE_COMPANY_UUID}`);
 
-		baillieTolkienPerson = await request.execute(app).get(`/people/${BAILLIE_TOLKIEN_PERSON_UUID}`);
+		baillieTolkienPerson = await request(app).get(`/people/${BAILLIE_TOLKIEN_PERSON_UUID}`);
 	});
 
 	describe('The Tolkien Estate (company)', () => {
@@ -435,7 +421,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 			const { rightsGrantorMaterials } = theTolkienEstateCompany.body;
 
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+			assert.deepEqual(rightsGrantorMaterials, expectedRightsGrantorMaterials);
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -490,7 +476,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 			const { rightsGrantorMaterialProductions } = theTolkienEstateCompany.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 
@@ -583,7 +569,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 			const { rightsGrantorMaterials } = baillieTolkienPerson.body;
 
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+			assert.deepEqual(rightsGrantorMaterials, expectedRightsGrantorMaterials);
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -638,7 +624,7 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 			const { rightsGrantorMaterialProductions } = baillieTolkienPerson.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 });

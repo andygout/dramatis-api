@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
@@ -22,8 +20,7 @@ describe('Nameless writer groups grouping', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -54,7 +51,7 @@ describe('Nameless writer groups grouping', () => {
 				]
 			});
 
-		material = await request.execute(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
+		material = await request(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
 	});
 
 	describe('Material', () => {
@@ -91,7 +88,7 @@ describe('Nameless writer groups grouping', () => {
 
 			const { writingCredits } = material.body;
 
-			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+			assert.deepEqual(writingCredits, expectedWritingCredits);
 		});
 	});
 });

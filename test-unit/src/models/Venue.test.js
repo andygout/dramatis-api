@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { SubVenue } from '../../../src/models/index.js';
 
@@ -43,7 +45,7 @@ describe('Venue model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Venue({ name: 'National Theatre' });
 
-				expect(instance.subVenues).to.deep.equal([]);
+				assert.deepEqual(instance.subVenues, []);
 			});
 
 			it('assigns array of subVenues if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -62,10 +64,10 @@ describe('Venue model', () => {
 					]
 				});
 
-				expect(instance.subVenues.length).to.equal(3);
-				expect(instance.subVenues[0] instanceof SubVenue).to.be.true;
-				expect(instance.subVenues[1] instanceof SubVenue).to.be.true;
-				expect(instance.subVenues[2] instanceof SubVenue).to.be.true;
+				assert.equal(instance.subVenues.length, 3);
+				assert.ok(instance.subVenues[0] instanceof SubVenue);
+				assert.ok(instance.subVenues[1] instanceof SubVenue);
+				assert.ok(instance.subVenues[2] instanceof SubVenue);
 			});
 		});
 	});
@@ -88,7 +90,7 @@ describe('Venue model', () => {
 
 			instance.runInputValidations();
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
@@ -97,19 +99,19 @@ describe('Venue model', () => {
 				instance.subVenues[0].validateNoAssociationWithSelf,
 				instance.subVenues[0].validateUniquenessInGroup
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnceWithExactly(instance.validateDifferentiator);
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.subVenues
 			);
-			assert.calledOnceWithExactly(instance.subVenues[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.subVenues[0].validateDifferentiator);
-			assert.calledOnceWithExactly(instance.subVenues[0].validateNoAssociationWithSelf, {
+			sinonAssert.calledOnceWithExactly(instance.subVenues[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.subVenues[0].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.subVenues[0].validateNoAssociationWithSelf, {
 				name: 'National Theatre',
 				differentiator: ''
 			});
-			assert.calledOnceWithExactly(instance.subVenues[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.subVenues[0].validateUniquenessInGroup, { isDuplicate: false });
 		});
 	});
 
@@ -129,8 +131,8 @@ describe('Venue model', () => {
 
 			await instance.runDatabaseValidations();
 
-			assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
-			assert.calledOnceWithExactly(instance.subVenues[0].runDatabaseValidations, {
+			sinonAssert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
+			sinonAssert.calledOnceWithExactly(instance.subVenues[0].runDatabaseValidations, {
 				subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 			});
 		});

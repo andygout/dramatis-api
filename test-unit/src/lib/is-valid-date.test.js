@@ -1,35 +1,36 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import isValidDate from '../../../src/lib/is-valid-date.js';
 
 describe('Is Valid Date module', () => {
-	context('string is empty', () => {
+	describe('string is empty', () => {
 		it('returns false', () => {
-			expect(isValidDate('')).to.be.false;
+			assert.equal(isValidDate(''), false);
 		});
 	});
 
-	context('string is not a date', () => {
+	describe('string is not a date', () => {
 		it('returns false', () => {
-			expect(isValidDate('foobar')).to.be.false;
+			assert.equal(isValidDate('foobar'), false);
 		});
 	});
 
-	context('string is a date in DD-MM-YYYY format', () => {
+	describe('string is a date in DD-MM-YYYY format', () => {
 		it('returns false', () => {
-			expect(isValidDate('16-04-2020')).to.be.false;
+			assert.equal(isValidDate('16-04-2020'), false);
 		});
 	});
 
-	context('string is a date in YYYY-MM-DD format', () => {
+	describe('string is a date in YYYY-MM-DD format', () => {
 		it('returns true', () => {
-			expect(isValidDate('2020-04-16')).to.be.true;
+			assert.equal(isValidDate('2020-04-16'), true);
 		});
 	});
 
-	context('string is a date in MM-DD-YYYY format', () => {
+	describe('string is a date in MM-DD-YYYY format', () => {
 		it('returns true', () => {
-			expect(isValidDate('04-16-2020')).to.be.true;
+			assert.equal(isValidDate('04-16-2020'), true);
 		});
 	});
 });

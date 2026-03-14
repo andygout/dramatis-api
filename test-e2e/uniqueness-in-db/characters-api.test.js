@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { after, before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const CHARACTER_1_UUID = '2';
 const CHARACTER_2_UUID = '5';
@@ -24,9 +22,9 @@ describe('Uniqueness in database: Characters API', () => {
 	});
 
 	it('creates character without differentiator', async () => {
-		expect(await countNodesWithLabel('Character')).to.equal(0);
+		assert.equal(await countNodesWithLabel('Character'), 0);
 
-		const response = await request.execute(app).post('/characters').send({
+		const response = await request(app).post('/characters').send({
 			name: 'Demetrius'
 		});
 
@@ -38,15 +36,15 @@ describe('Uniqueness in database: Characters API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Character'), 1);
 	});
 
 	it('responds with errors if trying to create existing character that does also not have differentiator', async () => {
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+		assert.equal(await countNodesWithLabel('Character'), 1);
 
-		const response = await request.execute(app).post('/characters').send({
+		const response = await request(app).post('/characters').send({
 			name: 'Demetrius'
 		});
 
@@ -61,15 +59,15 @@ describe('Uniqueness in database: Characters API', () => {
 			}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Character'), 1);
 	});
 
 	it('creates character with same name as existing character but uses a differentiator', async () => {
-		expect(await countNodesWithLabel('Character')).to.equal(1);
+		assert.equal(await countNodesWithLabel('Character'), 1);
 
-		const response = await request.execute(app).post('/characters').send({
+		const response = await request(app).post('/characters').send({
 			name: 'Demetrius',
 			differentiator: '1'
 		});
@@ -82,15 +80,15 @@ describe('Uniqueness in database: Characters API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 	});
 
 	it('responds with errors if trying to update character to one with same name and differentiator combination', async () => {
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 
-		const response = await request.execute(app).put(`/characters/${CHARACTER_1_UUID}`).send({
+		const response = await request(app).put(`/characters/${CHARACTER_1_UUID}`).send({
 			name: 'Demetrius',
 			differentiator: '1'
 		});
@@ -107,15 +105,15 @@ describe('Uniqueness in database: Characters API', () => {
 			}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 	});
 
 	it('updates character with same name as existing character but uses a different differentiator', async () => {
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 
-		const response = await request.execute(app).put(`/characters/${CHARACTER_1_UUID}`).send({
+		const response = await request(app).put(`/characters/${CHARACTER_1_UUID}`).send({
 			name: 'Demetrius',
 			differentiator: '2'
 		});
@@ -128,15 +126,15 @@ describe('Uniqueness in database: Characters API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 	});
 
 	it('updates character with same name as existing character but without a differentiator', async () => {
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 
-		const response = await request.execute(app).put(`/characters/${CHARACTER_2_UUID}`).send({
+		const response = await request(app).put(`/characters/${CHARACTER_2_UUID}`).send({
 			name: 'Demetrius'
 		});
 
@@ -148,8 +146,8 @@ describe('Uniqueness in database: Characters API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Character')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Character'), 2);
 	});
 });

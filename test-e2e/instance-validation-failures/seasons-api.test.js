@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Instance validation failures: Seasons API', () => {
 	describe('attempt to create instance', () => {
@@ -30,9 +30,9 @@ describe('Instance validation failures: Seasons API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Season')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Season'), 1);
 
-				const response = await request.execute(app).post('/seasons').send({
+				const response = await request(app).post('/seasons').send({
 					name: ''
 				});
 
@@ -46,17 +46,17 @@ describe('Instance validation failures: Seasons API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Season')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Season'), 1);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Season')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Season'), 1);
 
-				const response = await request.execute(app).post('/seasons').send({
+				const response = await request(app).post('/seasons').send({
 					name: 'Not Black and White'
 				});
 
@@ -71,9 +71,9 @@ describe('Instance validation failures: Seasons API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Season')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Season'), 1);
 			});
 		});
 	});
@@ -100,9 +100,9 @@ describe('Instance validation failures: Seasons API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Season')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Season'), 2);
 
-				const response = await request.execute(app).put(`/seasons/${THE_DAVID_HARE_SEASON_UUID}`).send({
+				const response = await request(app).put(`/seasons/${THE_DAVID_HARE_SEASON_UUID}`).send({
 					name: ''
 				});
 
@@ -117,24 +117,25 @@ describe('Instance validation failures: Seasons API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Season')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Season'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Season',
 						name: 'The David Hare Season',
 						uuid: THE_DAVID_HARE_SEASON_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Season')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Season'), 2);
 
-				const response = await request.execute(app).put(`/seasons/${THE_DAVID_HARE_SEASON_UUID}`).send({
+				const response = await request(app).put(`/seasons/${THE_DAVID_HARE_SEASON_UUID}`).send({
 					name: 'Not Black and White'
 				});
 
@@ -150,16 +151,17 @@ describe('Instance validation failures: Seasons API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Season')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Season'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Season',
 						name: 'The David Hare Season',
 						uuid: THE_DAVID_HARE_SEASON_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 	});
@@ -194,9 +196,9 @@ describe('Instance validation failures: Seasons API', () => {
 
 		context('instance has associations', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Season')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Season'), 1);
 
-				const response = await request.execute(app).delete(`/seasons/${THE_DAVID_HARE_SEASON_UUID}`);
+				const response = await request(app).delete(`/seasons/${THE_DAVID_HARE_SEASON_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'SEASON',
@@ -209,9 +211,9 @@ describe('Instance validation failures: Seasons API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Season')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Season'), 1);
 			});
 		});
 	});

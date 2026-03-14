@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { after, before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Uniqueness in database: Materials API', () => {
 	describe('Material uniqueness in database', () => {
@@ -25,9 +23,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('creates material without differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Material'), 0);
 
-			const response = await request.execute(app).post('/materials').send({
+			const response = await request(app).post('/materials').send({
 				name: 'Home'
 			});
 
@@ -89,15 +87,15 @@ describe('Uniqueness in database: Materials API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 		});
 
 		it('responds with errors if trying to create existing material that does also not have differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 
-			const response = await request.execute(app).post('/materials').send({
+			const response = await request(app).post('/materials').send({
 				name: 'Home'
 			});
 
@@ -124,15 +122,15 @@ describe('Uniqueness in database: Materials API', () => {
 				characterGroups: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 		});
 
 		it('creates material with same name as existing material but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 
-			const response = await request.execute(app).post('/materials').send({
+			const response = await request(app).post('/materials').send({
 				name: 'Home',
 				differentiator: '1'
 			});
@@ -195,15 +193,15 @@ describe('Uniqueness in database: Materials API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('responds with errors if trying to update material to one with same name and differentiator combination', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request.execute(app).put(`/materials/${MATERIAL_1_UUID}`).send({
+			const response = await request(app).put(`/materials/${MATERIAL_1_UUID}`).send({
 				name: 'Home',
 				differentiator: '1'
 			});
@@ -232,15 +230,15 @@ describe('Uniqueness in database: Materials API', () => {
 				characterGroups: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates material with same name as existing material but uses a different differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request.execute(app).put(`/materials/${MATERIAL_1_UUID}`).send({
+			const response = await request(app).put(`/materials/${MATERIAL_1_UUID}`).send({
 				name: 'Home',
 				differentiator: '2'
 			});
@@ -303,15 +301,15 @@ describe('Uniqueness in database: Materials API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates material with same name as existing material but without a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request.execute(app).put(`/materials/${MATERIAL_2_UUID}`).send({
+			const response = await request(app).put(`/materials/${MATERIAL_2_UUID}`).send({
 				name: 'Home'
 			});
 
@@ -373,9 +371,9 @@ describe('Uniqueness in database: Materials API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 	});
 
@@ -407,10 +405,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('updates material and creates original version material that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -420,16 +417,15 @@ describe('Uniqueness in database: Materials API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterialTheSeagull1);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.originalVersionMaterial, expectedOriginalVersionMaterialTheSeagull1);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates material and creates original version material that has same name as existing original version material but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -440,16 +436,15 @@ describe('Uniqueness in database: Materials API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterialTheSeagull2);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.originalVersionMaterial, expectedOriginalVersionMaterialTheSeagull2);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 
 		it('updates material and uses existing original version material that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -459,16 +454,15 @@ describe('Uniqueness in database: Materials API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterialTheSeagull1);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.originalVersionMaterial, expectedOriginalVersionMaterialTheSeagull1);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 
 		it('updates material and uses existing original version material that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_SEAGULL_SUBSEQUENT_VERSION_MATERIAL_UUID}`)
 				.send({
 					name: 'The Seagull',
@@ -479,9 +473,9 @@ describe('Uniqueness in database: Materials API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.originalVersionMaterial).to.deep.equal(expectedOriginalVersionMaterialTheSeagull2);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.originalVersionMaterial, expectedOriginalVersionMaterialTheSeagull2);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 	});
 
@@ -513,10 +507,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('updates material and creates writing entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -531,16 +524,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedPersonKateRyan1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates material and creates writing entity (person) that has same name as existing writing entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -556,16 +548,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedPersonKateRyan2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates material and uses existing writing entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -580,16 +571,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedPersonKateRyan1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates material and uses existing writing entity (person) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${DOT_MATERIAL_UUID}`)
 				.send({
 					name: 'Dot',
@@ -605,9 +595,9 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedPersonKateRyan2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedPersonKateRyan2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -639,10 +629,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('updates material and creates writing entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -658,16 +647,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedCompanyGateTheatreCompany1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('updates material and creates writing entity (company) that has same name as existing writing entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -684,16 +672,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedCompanyGateTheatreCompany2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates material and uses existing writing entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -709,16 +696,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany1);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedCompanyGateTheatreCompany1);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates material and uses existing writing entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${UNTITLED_MATERIAL_UUID}`)
 				.send({
 					name: 'Untitled',
@@ -735,9 +721,9 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedCompanyGateTheatreCompany2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedCompanyGateTheatreCompany2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 	});
 
@@ -769,10 +755,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('updates material and creates writing entity (source material) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -789,16 +774,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedMaterialAMidsummerNightsDream1);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates material and creates writing entity (source material) that has same name as existing writing entity (source material) but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -816,16 +800,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedMaterialAMidsummerNightsDream2);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 
 		it('updates material and uses existing writing entity (source material) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -842,16 +825,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream1);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedMaterialAMidsummerNightsDream1);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 
 		it('updates material and uses existing writing entity (source material) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`)
 				.send({
 					name: 'The Indian Boy',
@@ -869,9 +851,9 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.writingCredits[0].entities[0]).to.deep.equal(expectedMaterialAMidsummerNightsDream2);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.writingCredits[0].entities[0], expectedMaterialAMidsummerNightsDream2);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 	});
 
@@ -903,10 +885,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('updates material and creates sub-material that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -917,16 +898,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage1);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.subMaterials[0], expectedMaterialVoyage1);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates material and creates sub-material that has same name as existing sub-material but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -938,16 +918,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage2);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.subMaterials[0], expectedMaterialVoyage2);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 
 		it('updates material and uses existing sub-material that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -958,16 +937,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage1);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.subMaterials[0], expectedMaterialVoyage1);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 
 		it('updates material and uses existing sub-material that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`)
 				.send({
 					name: 'The Coast of Utopia',
@@ -979,9 +957,9 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.subMaterials[0]).to.deep.equal(expectedMaterialVoyage2);
-			expect(await countNodesWithLabel('Material')).to.equal(3);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.subMaterials[0], expectedMaterialVoyage2);
+			assert.equal(await countNodesWithLabel('Material'), 3);
 		});
 	});
 
@@ -1017,10 +995,9 @@ describe('Uniqueness in database: Materials API', () => {
 		});
 
 		it('updates material and creates character that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Character')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Character'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1035,16 +1012,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius1);
-			expect(await countNodesWithLabel('Character')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.characterGroups[0].characters[0], expectedCharacterDemetrius1);
+			assert.equal(await countNodesWithLabel('Character'), 1);
 		});
 
 		it('updates material and creates character that has same name as existing character but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Character')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Character'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1060,16 +1036,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius2);
-			expect(await countNodesWithLabel('Character')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.characterGroups[0].characters[0], expectedCharacterDemetrius2);
+			assert.equal(await countNodesWithLabel('Character'), 2);
 		});
 
 		it('updates material and uses existing character that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Character')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Character'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1084,16 +1059,15 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius1);
-			expect(await countNodesWithLabel('Character')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.characterGroups[0].characters[0], expectedCharacterDemetrius1);
+			assert.equal(await countNodesWithLabel('Character'), 2);
 		});
 
 		it('updates material and uses existing character that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Character')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Character'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/materials/${TITUS_ANDRONICUS_MATERIAL_UUID}`)
 				.send({
 					name: 'Titus Andronicus',
@@ -1109,9 +1083,9 @@ describe('Uniqueness in database: Materials API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.characterGroups[0].characters[0]).to.deep.equal(expectedCharacterDemetrius2);
-			expect(await countNodesWithLabel('Character')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.characterGroups[0].characters[0], expectedCharacterDemetrius2);
+			assert.equal(await countNodesWithLabel('Character'), 2);
 		});
 	});
 });

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
@@ -61,8 +59,7 @@ describe('Material with sub-sub-materials', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -93,8 +90,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Durand's Line",
@@ -112,8 +108,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -131,8 +126,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -152,8 +146,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -171,8 +164,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -190,8 +182,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -222,8 +213,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -243,8 +233,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -262,8 +251,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -294,8 +282,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -313,8 +300,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -334,8 +320,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -355,8 +340,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -371,8 +355,7 @@ describe('Material with sub-sub-materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -392,8 +375,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -408,8 +390,7 @@ describe('Material with sub-sub-materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -429,8 +410,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -445,8 +425,7 @@ describe('Material with sub-sub-materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -466,8 +445,7 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -493,35 +471,35 @@ describe('Material with sub-sub-materials', () => {
 				]
 			});
 
-		theGreatGameAfghanistanMaterial = await request
-			.execute(app)
-			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
+		theGreatGameAfghanistanMaterial = await request(app).get(
+			`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`
+		);
 
-		partOneInvasionsAndIndependenceMaterial = await request
-			.execute(app)
-			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
+		partOneInvasionsAndIndependenceMaterial = await request(app).get(
+			`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`
+		);
 
-		buglesAtTheGatesOfJalalabadMaterial = await request
-			.execute(app)
-			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
+		buglesAtTheGatesOfJalalabadMaterial = await request(app).get(
+			`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`
+		);
 
-		barCharacter = await request.execute(app).get(`/characters/${BAR_CHARACTER_UUID}`);
+		barCharacter = await request(app).get(`/characters/${BAR_CHARACTER_UUID}`);
 
-		theGreatGameAfghanistanTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
+		theGreatGameAfghanistanTricycleProduction = await request(app).get(
+			`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		partOneInvasionsAndIndependenceTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
+		partOneInvasionsAndIndependenceTricycleProduction = await request(app).get(
+			`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		buglesAtTheGateOfJalalabadTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
+		buglesAtTheGateOfJalalabadTricycleProduction = await request(app).get(
+			`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		ferdinandFooPerson = await request.execute(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
+		ferdinandFooPerson = await request(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await request.execute(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
+		fictioneersLtdCompany = await request(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('The Great Game: Afghanistan (material with sub-sub-materials)', () => {
@@ -834,7 +812,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { subMaterials } = theGreatGameAfghanistanMaterial.body;
 
-			expect(subMaterials).to.deep.equal(expectedSubMaterials);
+			assert.deepEqual(subMaterials, expectedSubMaterials);
 		});
 	});
 
@@ -855,7 +833,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { surMaterial } = partOneInvasionsAndIndependenceMaterial.body;
 
-			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+			assert.deepEqual(surMaterial, expectedSurMaterial);
 		});
 
 		it('includes its sub-materials', () => {
@@ -955,7 +933,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { subMaterials } = partOneInvasionsAndIndependenceMaterial.body;
 
-			expect(subMaterials).to.deep.equal(expectedSubMaterials);
+			assert.deepEqual(subMaterials, expectedSubMaterials);
 		});
 	});
 
@@ -986,7 +964,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { surMaterial } = buglesAtTheGatesOfJalalabadMaterial.body;
 
-			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+			assert.deepEqual(surMaterial, expectedSurMaterial);
 		});
 	});
 
@@ -1105,7 +1083,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { materials } = barCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1123,7 +1101,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { material } = theGreatGameAfghanistanTricycleProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1146,7 +1124,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { material } = partOneInvasionsAndIndependenceTricycleProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1190,7 +1168,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { material } = buglesAtTheGateOfJalalabadTricycleProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1306,7 +1284,7 @@ describe('Material with sub-sub-materials', () => {
 
 			const { materials } = ferdinandFooPerson.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1422,13 +1400,13 @@ describe('Material with sub-sub-materials', () => {
 
 			const { materials } = fictioneersLtdCompany.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
 	describe('materials list', () => {
 		it('includes materials with corresponding sur-material and sur-sur-materials; will exclude sur-materials and sur-sur-materials as these will be included via sub-material and sub-sub-material associations', async () => {
-			const response = await request.execute(app).get('/materials');
+			const response = await request(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -1718,8 +1696,8 @@ describe('Material with sub-sub-materials', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

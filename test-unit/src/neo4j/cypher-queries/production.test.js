@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import * as cypherQueriesProduction from '../../../../src/neo4j/cypher-queries/production/index.js';
+
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Production module', () => {
@@ -55,9 +57,9 @@ describe('Cypher Queries Production module', () => {
 					) + [{}] AS reviews
 			`);
 
-			expect(compactedResult.startsWith(startSegment)).to.be.true;
-			expect(compactedResult.includes(middleSegment)).to.be.true;
-			expect(compactedResult.endsWith(endSegment)).to.be.true;
+			assert.equal(compactedResult.startsWith(startSegment), true);
+			assert.equal(compactedResult.includes(middleSegment), true);
+			assert.equal(compactedResult.endsWith(endSegment), true);
 		});
 	});
 
@@ -119,9 +121,9 @@ describe('Cypher Queries Production module', () => {
 					) + [{}] AS reviews
 			`);
 
-			expect(compactedResult.startsWith(startSegment)).to.be.true;
-			expect(compactedResult.includes(middleSegment)).to.be.true;
-			expect(compactedResult.endsWith(endSegment)).to.be.true;
+			assert.equal(compactedResult.startsWith(startSegment), true);
+			assert.equal(compactedResult.includes(middleSegment), true);
+			assert.equal(compactedResult.endsWith(endSegment), true);
 		});
 	});
 });

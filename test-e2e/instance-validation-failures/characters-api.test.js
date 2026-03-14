@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Instance validation failures: Characters API', () => {
 	describe('attempt to create instance', () => {
@@ -30,9 +30,9 @@ describe('Instance validation failures: Characters API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Character')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Character'), 1);
 
-				const response = await request.execute(app).post('/characters').send({
+				const response = await request(app).post('/characters').send({
 					name: ''
 				});
 
@@ -46,17 +46,17 @@ describe('Instance validation failures: Characters API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Character')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Character'), 1);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Character')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Character'), 1);
 
-				const response = await request.execute(app).post('/characters').send({
+				const response = await request(app).post('/characters').send({
 					name: 'Orsino'
 				});
 
@@ -71,9 +71,9 @@ describe('Instance validation failures: Characters API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Character')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Character'), 1);
 			});
 		});
 	});
@@ -100,9 +100,9 @@ describe('Instance validation failures: Characters API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Character')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Character'), 2);
 
-				const response = await request.execute(app).put(`/characters/${VIOLA_CHARACTER_UUID}`).send({
+				const response = await request(app).put(`/characters/${VIOLA_CHARACTER_UUID}`).send({
 					name: ''
 				});
 
@@ -117,24 +117,25 @@ describe('Instance validation failures: Characters API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Character')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Character'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Character',
 						name: 'Viola',
 						uuid: VIOLA_CHARACTER_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Character')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Character'), 2);
 
-				const response = await request.execute(app).put(`/characters/${VIOLA_CHARACTER_UUID}`).send({
+				const response = await request(app).put(`/characters/${VIOLA_CHARACTER_UUID}`).send({
 					name: 'Orsino'
 				});
 
@@ -150,16 +151,17 @@ describe('Instance validation failures: Characters API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Character')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Character'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Character',
 						name: 'Viola',
 						uuid: VIOLA_CHARACTER_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 	});
@@ -194,9 +196,9 @@ describe('Instance validation failures: Characters API', () => {
 
 		context('instance has associations', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Character')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Character'), 1);
 
-				const response = await request.execute(app).delete(`/characters/${VIOLA_CHARACTER_UUID}`);
+				const response = await request(app).delete(`/characters/${VIOLA_CHARACTER_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'CHARACTER',
@@ -209,9 +211,9 @@ describe('Instance validation failures: Characters API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Character')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Character'), 1);
 			});
 		});
 	});

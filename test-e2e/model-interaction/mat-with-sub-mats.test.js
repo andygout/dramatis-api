@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const VOYAGE_MATERIAL_UUID = 'VOYAGE_MATERIAL_UUID';
 const TOM_STOPPARD_PERSON_UUID = 'TOM_STOPPARD_PERSON_UUID';
@@ -44,8 +42,7 @@ describe('Material with sub-materials', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Voyage',
@@ -76,8 +73,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Shipwreck',
@@ -108,8 +104,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Salvage',
@@ -140,8 +135,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Coast of Utopia',
@@ -183,8 +177,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Voyage',
@@ -199,8 +192,7 @@ describe('Material with sub-materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Coast of Utopia',
@@ -220,8 +212,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -242,8 +233,7 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Garply',
@@ -257,8 +247,7 @@ describe('Material with sub-materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Garply',
@@ -277,29 +266,29 @@ describe('Material with sub-materials', () => {
 				]
 			});
 
-		theCoastOfUtopiaMaterial = await request.execute(app).get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
+		theCoastOfUtopiaMaterial = await request(app).get(`/materials/${THE_COAST_OF_UTOPIA_MATERIAL_UUID}`);
 
-		voyageMaterial = await request.execute(app).get(`/materials/${VOYAGE_MATERIAL_UUID}`);
+		voyageMaterial = await request(app).get(`/materials/${VOYAGE_MATERIAL_UUID}`);
 
-		alexanderHerzenCharacter = await request.execute(app).get(`/characters/${ALEXANDER_HERZEN_CHARACTER_UUID}`);
+		alexanderHerzenCharacter = await request(app).get(`/characters/${ALEXANDER_HERZEN_CHARACTER_UUID}`);
 
-		ivanTurgunevCharacter = await request.execute(app).get(`/characters/${IVAN_TURGENEV_CHARACTER_UUID}`);
+		ivanTurgunevCharacter = await request(app).get(`/characters/${IVAN_TURGENEV_CHARACTER_UUID}`);
 
-		theCoastOfUtopiaOlivierProduction = await request
-			.execute(app)
-			.get(`/productions/${THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID}`);
+		theCoastOfUtopiaOlivierProduction = await request(app).get(
+			`/productions/${THE_COAST_OF_UTOPIA_OLIVIER_PRODUCTION_UUID}`
+		);
 
-		voyageOlivierProduction = await request.execute(app).get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
+		voyageOlivierProduction = await request(app).get(`/productions/${VOYAGE_OLIVIER_PRODUCTION_UUID}`);
 
-		tomStoppardPerson = await request.execute(app).get(`/people/${TOM_STOPPARD_PERSON_UUID}`);
+		tomStoppardPerson = await request(app).get(`/people/${TOM_STOPPARD_PERSON_UUID}`);
 
-		theSträusslerGroupCompany = await request.execute(app).get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
+		theSträusslerGroupCompany = await request(app).get(`/companies/${THE_STRÄUSSLER_GROUP_COMPANY_UUID}`);
 
-		garplyMaterial = await request.execute(app).get(`/materials/${GARPLY_MATERIAL_UUID}`);
+		garplyMaterial = await request(app).get(`/materials/${GARPLY_MATERIAL_UUID}`);
 
-		conorCorgePerson = await request.execute(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
+		conorCorgePerson = await request(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		scribesLtdCompany = await request.execute(app).get(`/companies/${SCRIBES_LTD_COMPANY_UUID}`);
+		scribesLtdCompany = await request(app).get(`/companies/${SCRIBES_LTD_COMPANY_UUID}`);
 	});
 
 	describe('The Coast of Utopia (material with sub-materials)', () => {
@@ -438,7 +427,7 @@ describe('Material with sub-materials', () => {
 
 			const { subMaterials } = theCoastOfUtopiaMaterial.body;
 
-			expect(subMaterials).to.deep.equal(expectedSubMaterials);
+			assert.deepEqual(subMaterials, expectedSubMaterials);
 		});
 	});
 
@@ -490,7 +479,7 @@ describe('Material with sub-materials', () => {
 
 			const { surMaterial } = voyageMaterial.body;
 
-			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+			assert.deepEqual(surMaterial, expectedSurMaterial);
 		});
 	});
 
@@ -597,7 +586,7 @@ describe('Material with sub-materials', () => {
 
 			const { materials } = alexanderHerzenCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -635,7 +624,7 @@ describe('Material with sub-materials', () => {
 
 			const { materials } = ivanTurgunevCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -670,7 +659,7 @@ describe('Material with sub-materials', () => {
 
 			const { material } = theCoastOfUtopiaOlivierProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -710,7 +699,7 @@ describe('Material with sub-materials', () => {
 
 			const { material } = voyageOlivierProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -814,7 +803,7 @@ describe('Material with sub-materials', () => {
 
 			const { materials } = tomStoppardPerson.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -918,7 +907,7 @@ describe('Material with sub-materials', () => {
 
 			const { materials } = theSträusslerGroupCompany.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -948,7 +937,7 @@ describe('Material with sub-materials', () => {
 
 			const { productions } = garplyMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -978,7 +967,7 @@ describe('Material with sub-materials', () => {
 
 			const { materialProductions } = conorCorgePerson.body;
 
-			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+			assert.deepEqual(materialProductions, expectedMaterialProductions);
 		});
 	});
 
@@ -1008,13 +997,13 @@ describe('Material with sub-materials', () => {
 
 			const { materialProductions } = scribesLtdCompany.body;
 
-			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+			assert.deepEqual(materialProductions, expectedMaterialProductions);
 		});
 	});
 
 	describe('materials list', () => {
 		it('includes materials and, where applicable, corresponding sur-material; will exclude sur-materials as these will be included via sub-material association', async () => {
-			const response = await request.execute(app).get('/materials');
+			const response = await request(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -1138,8 +1127,8 @@ describe('Material with sub-materials', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

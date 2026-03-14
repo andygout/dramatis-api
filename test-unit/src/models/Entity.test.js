@@ -1,6 +1,12 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
+
+import { toPlainObject } from '../../../test-helpers/index.js';
+
+const context = describe;
 
 describe('Entity model', () => {
 	let stubs;
@@ -72,7 +78,7 @@ describe('Entity model', () => {
 
 				const instance = new Entity({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+				assert.equal(instance.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 		});
 
@@ -81,7 +87,7 @@ describe('Entity model', () => {
 
 			new Entity({ differentiator: '1' });
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 2);
 		});
 
 		describe('differentiator property', () => {
@@ -91,8 +97,8 @@ describe('Entity model', () => {
 
 					const instance = new Entity({ differentiator: '1' });
 
-					assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
-					expect(instance.differentiator).to.equal('1');
+					sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
+					assert.equal(instance.differentiator, '1');
 				});
 			});
 
@@ -103,7 +109,7 @@ describe('Entity model', () => {
 
 						const instance = new AwardCeremony({ differentiator: '1' });
 
-						expect(instance).to.not.have.property('differentiator');
+						assert.equal(Object.prototype.hasOwnProperty.call(instance, 'differentiator'), false);
 					});
 				});
 
@@ -113,7 +119,7 @@ describe('Entity model', () => {
 
 						const instance = new Production({ differentiator: '1' });
 
-						expect(instance).to.not.have.property('differentiator');
+						assert.equal(Object.prototype.hasOwnProperty.call(instance, 'differentiator'), false);
 					});
 				});
 
@@ -126,7 +132,7 @@ describe('Entity model', () => {
 							differentiator: '1'
 						});
 
-						expect(instance).to.not.have.property('differentiator');
+						assert.equal(Object.prototype.hasOwnProperty.call(instance, 'differentiator'), false);
 					});
 				});
 			});
@@ -144,7 +150,7 @@ describe('Entity model', () => {
 
 				const result = instance.hasDifferentiatorProperty();
 
-				expect(result).to.be.true;
+				assert.equal(result, true);
 			});
 		});
 
@@ -156,7 +162,7 @@ describe('Entity model', () => {
 
 				const result = instance.hasDifferentiatorProperty();
 
-				expect(result).to.be.false;
+				assert.equal(result, false);
 			});
 		});
 	});
@@ -172,8 +178,8 @@ describe('Entity model', () => {
 
 			instance.runInputValidations();
 
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnceWithExactly(instance.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
 		});
 	});
 
@@ -187,7 +193,9 @@ describe('Entity model', () => {
 
 			instance.validateDifferentiator();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'differentiator', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'differentiator', {
+				isRequired: false
+			});
 		});
 	});
 
@@ -201,7 +209,7 @@ describe('Entity model', () => {
 
 			instance.validateSubtitle();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'subtitle', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'subtitle', { isRequired: false });
 		});
 	});
 
@@ -220,7 +228,7 @@ describe('Entity model', () => {
 
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
 
-						assert.notCalled(instance.addPropertyError);
+						sinonAssert.notCalled(instance.addPropertyError);
 					});
 				});
 
@@ -238,7 +246,7 @@ describe('Entity model', () => {
 
 							instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
 
-							assert.notCalled(instance.addPropertyError);
+							sinonAssert.notCalled(instance.addPropertyError);
 						});
 					}
 				);
@@ -255,7 +263,7 @@ describe('Entity model', () => {
 
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
 
-						assert.notCalled(instance.addPropertyError);
+						sinonAssert.notCalled(instance.addPropertyError);
 					});
 				});
 
@@ -273,7 +281,7 @@ describe('Entity model', () => {
 
 							instance.validateNoAssociationWithSelf({ name: '', differentiator: '1' });
 
-							assert.notCalled(instance.addPropertyError);
+							sinonAssert.notCalled(instance.addPropertyError);
 						});
 					}
 				);
@@ -290,7 +298,7 @@ describe('Entity model', () => {
 
 						instance.validateNoAssociationWithSelf({ uuid: undefined });
 
-						assert.notCalled(instance.addPropertyError);
+						sinonAssert.notCalled(instance.addPropertyError);
 					});
 				});
 
@@ -304,7 +312,7 @@ describe('Entity model', () => {
 
 						instance.validateNoAssociationWithSelf({ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' });
 
-						assert.notCalled(instance.addPropertyError);
+						sinonAssert.notCalled(instance.addPropertyError);
 					});
 				});
 			});
@@ -323,13 +331,13 @@ describe('Entity model', () => {
 
 					instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
 
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'Instance cannot form association with itself'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'differentiator',
 						'Instance cannot form association with itself'
@@ -347,7 +355,7 @@ describe('Entity model', () => {
 
 					instance.validateNoAssociationWithSelf({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'uuid',
 						'Instance cannot form association with itself'
@@ -368,7 +376,7 @@ describe('Entity model', () => {
 
 				await instance.runDatabaseValidations();
 
-				assert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
+				sinonAssert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
 			});
 		});
 
@@ -382,7 +390,7 @@ describe('Entity model', () => {
 
 				await instance.runDatabaseValidations();
 
-				assert.notCalled(instance.validateUniquenessInDatabase);
+				sinonAssert.notCalled(instance.validateUniquenessInDatabase);
 			});
 		});
 	});
@@ -405,17 +413,17 @@ describe('Entity model', () => {
 
 				await instance.validateUniquenessInDatabase();
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					instance.model
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -423,7 +431,7 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
 				});
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
@@ -444,18 +452,18 @@ describe('Entity model', () => {
 
 				await instance.validateUniquenessInDatabase();
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
 					instance.model
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -463,13 +471,13 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
 				});
-				assert.calledTwice(instance.addPropertyError);
-				assert.calledWithExactly(
+				sinonAssert.calledTwice(instance.addPropertyError);
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
 					'Name and differentiator combination already exists'
 				);
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
 					'Name and differentiator combination already exists'
@@ -486,9 +494,9 @@ describe('Entity model', () => {
 
 			instance.setErrorStatus();
 
-			assert.calledOnceWithExactly(stubs.hasErrors, instance);
+			sinonAssert.calledOnceWithExactly(stubs.hasErrors, instance);
 
-			expect(instance.hasErrors).to.be.false;
+			assert.equal(instance.hasErrors, false);
 		});
 	});
 
@@ -503,15 +511,15 @@ describe('Entity model', () => {
 
 				await instance.confirmExistenceInDatabase();
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
 					instance.model
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getExistenceCheckQuery response',
 					params: { uuid: instance.uuid }
 				});
@@ -530,12 +538,15 @@ describe('Entity model', () => {
 
 				await instance.confirmExistenceInDatabase({ model });
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery, model);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
+					model
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getExistenceCheckQuery response',
 					params: { uuid: instance.uuid }
 				});
@@ -554,7 +565,7 @@ describe('Entity model', () => {
 
 				const result = await instance.confirmExistenceInDatabase({ model });
 
-				expect(result).to.equal(true);
+				assert.equal(result, true);
 			});
 		});
 
@@ -570,7 +581,7 @@ describe('Entity model', () => {
 
 				const result = await instance.confirmExistenceInDatabase({ model });
 
-				expect(result).to.equal(false);
+				assert.equal(result, false);
 			});
 		});
 	});
@@ -599,7 +610,7 @@ describe('Entity model', () => {
 
 				const result = await instance.createUpdate(stubs.cypherQueriesModule.sharedQueries.getCreateQuery);
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,
 					instance.setErrorStatus,
@@ -607,15 +618,18 @@ describe('Entity model', () => {
 					stubs.prepareAsParams,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(instance.runInputValidations);
-				assert.calledOnceWithExactly(instance.runDatabaseValidations);
-				assert.calledOnceWithExactly(instance.setErrorStatus);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getCreateQuery, instance.model);
-				assert.calledTwice(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
-				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
-				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+				sinonAssert.calledOnceWithExactly(instance.runInputValidations);
+				sinonAssert.calledOnceWithExactly(instance.runDatabaseValidations);
+				sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.sharedQueries.getCreateQuery,
+					instance.model
+				);
+				sinonAssert.calledTwice(stubs.prepareAsParams);
+				sinonAssert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
+				sinonAssert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
+				sinonAssert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
+				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -623,12 +637,12 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
 				});
-				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
 					query: 'getCreateQuery response',
 					params: 'prepareAsParams response'
 				});
-				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
-				expect(result instanceof Entity).to.be.true;
+				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.equal(result instanceof Entity, true);
 			});
 
 			it('updates', async () => {
@@ -652,7 +666,7 @@ describe('Entity model', () => {
 				spy(instance, 'constructor');
 				const result = await instance.createUpdate(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery);
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,
 					instance.setErrorStatus,
@@ -660,15 +674,18 @@ describe('Entity model', () => {
 					stubs.prepareAsParams,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(instance.runInputValidations);
-				assert.calledOnceWithExactly(instance.runDatabaseValidations);
-				assert.calledOnceWithExactly(instance.setErrorStatus);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery, instance.model);
-				assert.calledTwice(stubs.prepareAsParams);
-				assert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
-				assert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
-				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+				sinonAssert.calledOnceWithExactly(instance.runInputValidations);
+				sinonAssert.calledOnceWithExactly(instance.runDatabaseValidations);
+				sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.sharedQueries.getUpdateQuery,
+					instance.model
+				);
+				sinonAssert.calledTwice(stubs.prepareAsParams);
+				sinonAssert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
+				sinonAssert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
+				sinonAssert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
+				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -676,12 +693,12 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
 				});
-				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
 					query: 'getUpdateQuery response',
 					params: 'prepareAsParams response'
 				});
-				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
-				expect(result instanceof Entity).to.be.true;
+				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.equal(result instanceof Entity, true);
 			});
 		});
 
@@ -709,17 +726,17 @@ describe('Entity model', () => {
 
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					instance.runInputValidations,
 					instance.runDatabaseValidations,
 					instance.setErrorStatus
 				);
-				assert.calledOnceWithExactly(instance.runInputValidations);
-				assert.calledOnceWithExactly(instance.runDatabaseValidations);
-				assert.calledOnceWithExactly(instance.setErrorStatus);
-				assert.notCalled(getCreateUpdateQueryStub);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(instance.runInputValidations);
+				sinonAssert.calledOnceWithExactly(instance.runDatabaseValidations);
+				sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+				sinonAssert.notCalled(getCreateUpdateQueryStub);
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -727,9 +744,9 @@ describe('Entity model', () => {
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
 				});
-				assert.notCalled(instance.constructor);
-				expect(result).to.deep.equal(instance);
-				expect(result).to.deep.equal({
+				sinonAssert.notCalled(instance.constructor);
+				assert.deepEqual(result, instance);
+				assert.deepEqual(toPlainObject(result), {
 					model: 'VENUE',
 					uuid: undefined,
 					name: 'Foobar',
@@ -754,7 +771,7 @@ describe('Entity model', () => {
 
 				await instance.create();
 
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.createUpdate,
 					stubs.cypherQueriesModule.getCreateQueries[instance.model]
 				);
@@ -771,7 +788,7 @@ describe('Entity model', () => {
 
 				await instance.create();
 
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.createUpdate,
 					stubs.cypherQueriesModule.sharedQueries.getCreateQuery
 				);
@@ -792,14 +809,14 @@ describe('Entity model', () => {
 
 				const result = await instance.edit();
 
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getEditQueries[instance.model]);
-				assert.notCalled(stubs.cypherQueriesModule.sharedQueries.getEditQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.getEditQueries[instance.model]);
+				sinonAssert.notCalled(stubs.cypherQueriesModule.sharedQueries.getEditQuery);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getEditProductionQuery response',
 					params: { uuid: instance.uuid }
 				});
-				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
-				expect(result instanceof Entity).to.be.true;
+				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.equal(result instanceof Entity, true);
 			});
 		});
 
@@ -813,14 +830,14 @@ describe('Entity model', () => {
 
 				const result = await instance.edit();
 
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getEditQuery, instance.model);
-				assert.notCalled(stubs.cypherQueriesModule.getEditQueries.PRODUCTION);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getEditQuery, instance.model);
+				sinonAssert.notCalled(stubs.cypherQueriesModule.getEditQueries.PRODUCTION);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getEditQuery response',
 					params: { uuid: instance.uuid }
 				});
-				assert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
-				expect(result instanceof Entity).to.be.true;
+				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				assert.equal(result instanceof Entity, true);
 			});
 		});
 	});
@@ -841,9 +858,9 @@ describe('Entity model', () => {
 				try {
 					await instance.update();
 				} catch (error) {
-					expect(error.message).to.equal('Not Found');
-					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
-					assert.notCalled(instance.createUpdate);
+					assert.equal(error.message, 'Not Found');
+					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
+					sinonAssert.notCalled(instance.createUpdate);
 				}
 			});
 		});
@@ -863,8 +880,8 @@ describe('Entity model', () => {
 
 					await instance.update();
 
-					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
+					sinonAssert.calledOnceWithExactly(
 						instance.createUpdate,
 						stubs.cypherQueriesModule.getUpdateQueries[instance.model]
 					);
@@ -883,8 +900,8 @@ describe('Entity model', () => {
 
 					await instance.update();
 
-					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
+					sinonAssert.calledOnceWithExactly(
 						instance.createUpdate,
 						stubs.cypherQueriesModule.sharedQueries.getUpdateQuery
 					);
@@ -917,26 +934,26 @@ describe('Entity model', () => {
 
 					const result = await instance.delete();
 
-					assert.callOrder(
+					sinonAssert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
 					);
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
 					});
-					assert.calledOnceWithExactly(instance.constructor, {
+					sinonAssert.calledOnceWithExactly(instance.constructor, {
 						name: 'Almeida Theatre',
 						differentiator: null
 					});
-					assert.notCalled(instance.addPropertyError);
-					assert.notCalled(instance.setErrorStatus);
-					expect(result instanceof Entity).to.be.true;
-					expect(result).to.deep.equal({
+					sinonAssert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.setErrorStatus);
+					assert.equal(result instanceof Entity, true);
+					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
 						name: 'Almeida Theatre',
 						differentiator: '',
@@ -965,23 +982,23 @@ describe('Entity model', () => {
 
 					const result = await instance.delete();
 
-					assert.callOrder(
+					sinonAssert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
 					);
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
 					});
-					assert.calledOnceWithExactly(instance.constructor, { name: 'Hamlet' });
-					assert.notCalled(instance.addPropertyError);
-					assert.notCalled(instance.setErrorStatus);
-					expect(result instanceof Production).to.be.true;
-					expect(result).to.deep.equal({
+					sinonAssert.calledOnceWithExactly(instance.constructor, { name: 'Hamlet' });
+					sinonAssert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.setErrorStatus);
+					assert.equal(result instanceof Production, true);
+					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
 						name: 'Hamlet',
 						subtitle: '',
@@ -1048,23 +1065,23 @@ describe('Entity model', () => {
 
 					const result = await instance.delete();
 
-					assert.callOrder(
+					sinonAssert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
 					);
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
 					});
-					assert.notCalled(instance.constructor);
-					assert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Production');
-					assert.calledOnceWithExactly(instance.setErrorStatus);
-					expect(result).to.deep.equal(instance);
-					expect(result).to.deep.equal({
+					sinonAssert.notCalled(instance.constructor);
+					sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Production');
+					sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+					assert.deepEqual(result, instance);
+					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
 						name: 'Almeida Theatre',
 						differentiator: null,
@@ -1097,23 +1114,23 @@ describe('Entity model', () => {
 
 					const result = await instance.delete();
 
-					assert.callOrder(
+					sinonAssert.callOrder(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						stubs.neo4jQueryModule.neo4jQuery
 					);
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(
 						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
 						instance.model
 					);
-					assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
 					});
-					assert.notCalled(instance.constructor);
-					assert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Venue');
-					assert.calledOnceWithExactly(instance.setErrorStatus);
-					expect(result).to.deep.equal(instance);
-					expect(result).to.deep.equal({
+					sinonAssert.notCalled(instance.constructor);
+					sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Venue');
+					sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+					assert.deepEqual(result, instance);
+					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
 						name: 'Hamlet',
 						subtitle: '',
@@ -1171,12 +1188,12 @@ describe('Entity model', () => {
 
 				const result = await instance.show();
 
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.VENUE);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.VENUE);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'showVenueQuery',
 					params: { uuid: instance.uuid }
 				});
-				expect(result).to.deep.equal(neo4jQueryMockResponse);
+				assert.deepEqual(result, neo4jQueryMockResponse);
 			});
 		});
 
@@ -1190,17 +1207,17 @@ describe('Entity model', () => {
 
 				const result = await instance.show();
 
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.PRODUCTION);
-				assert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.PRODUCTION);
+				sinonAssert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
+				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
 					query: 'showProductionQuery',
 					params: { uuid: instance.uuid }
 				});
-				assert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
 					query: 'showProductionAwardsQuery',
 					params: { uuid: instance.uuid }
 				});
-				expect(result).to.deep.equal(neo4jQueryMockResponse);
+				assert.deepEqual(result, neo4jQueryMockResponse);
 			});
 		});
 	});
@@ -1211,13 +1228,13 @@ describe('Entity model', () => {
 
 			const result = await Entity.list('model');
 
-			assert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getListQuery, 'model');
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getListQuery, 'model');
+			sinonAssert.calledOnceWithExactly(
 				stubs.neo4jQueryModule.neo4jQuery,
 				{ query: 'getListQuery response' },
 				{ isOptionalResult: true, isArrayResult: true }
 			);
-			expect(result).to.deep.equal(neo4jQueryMockResponse);
+			assert.deepEqual(result, neo4jQueryMockResponse);
 		});
 	});
 });

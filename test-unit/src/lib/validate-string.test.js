@@ -1,4 +1,5 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import validateString from '../../../src/lib/validate-string.js';
 
@@ -7,58 +8,58 @@ const MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH);
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 
 describe('Validate String module', () => {
-	context('string is empty', () => {
-		context('string is required', () => {
+	describe('string is empty', () => {
+		describe('string is required', () => {
 			it('returns error text explaining that value is too short', () => {
-				expect(validateString('', { isRequired: true })).to.equal('Value is too short');
+				assert.equal(validateString('', { isRequired: true }), 'Value is too short');
 			});
 		});
 
-		context('string is not required', () => {
+		describe('string is not required', () => {
 			it('returns undefined', () => {
-				expect(validateString('', { isRequired: false })).to.equal(undefined);
+				assert.equal(validateString('', { isRequired: false }), undefined);
 			});
 		});
 	});
 
-	context('string is not empty and does not exceed maximum length', () => {
-		context('string is required', () => {
+	describe('string is not empty and does not exceed maximum length', () => {
+		describe('string is required', () => {
 			it('returns undefined', () => {
-				expect(validateString(MAX_LENGTH_STRING, { isRequired: true })).to.equal(undefined);
+				assert.equal(validateString(MAX_LENGTH_STRING, { isRequired: true }), undefined);
 			});
 		});
 
-		context('string is not required', () => {
+		describe('string is not required', () => {
 			it('returns undefined', () => {
-				expect(validateString(MAX_LENGTH_STRING, { isRequired: false })).to.equal(undefined);
+				assert.equal(validateString(MAX_LENGTH_STRING, { isRequired: false }), undefined);
 			});
 		});
 	});
 
-	context('string exceeds maximum length', () => {
-		context('string is required', () => {
+	describe('string exceeds maximum length', () => {
+		describe('string is required', () => {
 			it('returns error text explaining that value is too long', () => {
-				expect(validateString(ABOVE_MAX_LENGTH_STRING, { isRequired: true })).to.equal('Value is too long');
+				assert.equal(validateString(ABOVE_MAX_LENGTH_STRING, { isRequired: true }), 'Value is too long');
 			});
 		});
 
-		context('string is not required', () => {
+		describe('string is not required', () => {
 			it('returns error text explaining that value is too long', () => {
-				expect(validateString(ABOVE_MAX_LENGTH_STRING, { isRequired: false })).to.equal('Value is too long');
+				assert.equal(validateString(ABOVE_MAX_LENGTH_STRING, { isRequired: false }), 'Value is too long');
 			});
 		});
 	});
 
-	context('given value is null', () => {
-		context('string is required', () => {
+	describe('given value is null', () => {
+		describe('string is required', () => {
 			it('returns error text explaining that value is too short', () => {
-				expect(validateString(null, { isRequired: true })).to.equal('Value is too short');
+				assert.equal(validateString(null, { isRequired: true }), 'Value is too short');
 			});
 		});
 
-		context('string is not required', () => {
+		describe('string is not required', () => {
 			it('returns undefined', () => {
-				expect(validateString(null, { isRequired: false })).to.equal(undefined);
+				assert.equal(validateString(null, { isRequired: false }), undefined);
 			});
 		});
 	});

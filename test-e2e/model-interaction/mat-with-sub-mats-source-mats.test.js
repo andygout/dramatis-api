@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID = 'BRING_UP_THE_BODIES_MATERIAL_1_UUID';
 const HILARY_MANTEL_PERSON_UUID = 'HILARY_MANTEL_PERSON_UUID';
@@ -72,8 +70,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -95,8 +92,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -124,8 +120,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -166,8 +161,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -205,8 +199,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -222,8 +215,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -244,8 +236,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Bring Up the Bodies',
@@ -261,8 +252,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Wolf Hall Trilogy',
@@ -283,8 +273,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -306,8 +295,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
@@ -339,8 +327,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -378,8 +365,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby: Part I',
@@ -394,8 +380,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Life and Adventures of Nicholas Nickleby',
@@ -416,8 +401,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -438,8 +422,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble',
@@ -469,8 +452,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -505,8 +487,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -536,8 +517,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble',
@@ -552,8 +532,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -573,37 +552,33 @@ describe('Material with sub-materials and source materials thereof', () => {
 				]
 			});
 
-		bringUpTheBodiesNovelMaterial = await request
-			.execute(app)
-			.get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
+		bringUpTheBodiesNovelMaterial = await request(app).get(`/materials/${BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID}`);
 
-		bringUpTheBodiesPlayMaterial = await request
-			.execute(app)
-			.get(`/materials/${BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID}`);
+		bringUpTheBodiesPlayMaterial = await request(app).get(`/materials/${BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID}`);
 
-		hilaryMantelPerson = await request.execute(app).get(`/people/${HILARY_MANTEL_PERSON_UUID}`);
+		hilaryMantelPerson = await request(app).get(`/people/${HILARY_MANTEL_PERSON_UUID}`);
 
-		mikePoultonPerson = await request.execute(app).get(`/people/${MIKE_POULTON_PERSON_UUID}`);
+		mikePoultonPerson = await request(app).get(`/people/${MIKE_POULTON_PERSON_UUID}`);
 
-		theMantelGroupCompany = await request.execute(app).get(`/companies/${THE_MANTEL_GROUP_COMPANY_UUID}`);
+		theMantelGroupCompany = await request(app).get(`/companies/${THE_MANTEL_GROUP_COMPANY_UUID}`);
 
-		royalShakespeareCompany = await request.execute(app).get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
+		royalShakespeareCompany = await request(app).get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
-		bringUpTheBodiesSwanTheatreProduction = await request
-			.execute(app)
-			.get(`/productions/${BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID}`);
+		bringUpTheBodiesSwanTheatreProduction = await request(app).get(
+			`/productions/${BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID}`
+		);
 
-		thomasCromwellCharacter = await request.execute(app).get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
+		thomasCromwellCharacter = await request(app).get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
 
-		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await request
-			.execute(app)
-			.get(`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`);
+		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await request(app).get(
+			`/materials/${THE_LIFE_AND_ADVENTURES_OF_NICHOLAS_NICKLEBY_NOVEL_MATERIAL_UUID}`
+		);
 
-		waldoMaterial = await request.execute(app).get(`/materials/${WALDO_MATERIAL_UUID}`);
+		waldoMaterial = await request(app).get(`/materials/${WALDO_MATERIAL_UUID}`);
 
-		janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
+		janeRoePerson = await request(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await request.execute(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
+		fictioneersLtdCompany = await request(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Bring Up the Bodies (novel) (material)', () => {
@@ -681,7 +656,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterials } = bringUpTheBodiesNovelMaterial.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of material that used it as source material, including the sur-production', () => {
@@ -728,7 +703,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = bringUpTheBodiesNovelMaterial.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -792,7 +767,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { writingCredits } = bringUpTheBodiesPlayMaterial.body;
 
-			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+			assert.deepEqual(writingCredits, expectedWritingCredits);
 		});
 
 		it("includes writers and source material of this material's sur-material", () => {
@@ -860,7 +835,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { surMaterial } = bringUpTheBodiesPlayMaterial.body;
 
-			expect(surMaterial).to.deep.equal(expectedSurMaterial);
+			assert.deepEqual(surMaterial, expectedSurMaterial);
 		});
 	});
 
@@ -939,7 +914,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterials } = hilaryMantelPerson.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -986,7 +961,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = hilaryMantelPerson.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1065,7 +1040,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterials } = theMantelGroupCompany.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of materials that used their work as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -1112,7 +1087,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = theMantelGroupCompany.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1191,7 +1166,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { materials } = mikePoultonPerson.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1270,7 +1245,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { materials } = royalShakespeareCompany.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1347,7 +1322,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { material } = bringUpTheBodiesSwanTheatreProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1427,7 +1402,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { materials } = thomasCromwellCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1501,7 +1476,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterials } = theLifeAndAdventuresOfNicholasNicklebyNovelMaterial.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of material that used it as source material, including the sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -1529,7 +1504,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = theLifeAndAdventuresOfNicholasNicklebyNovelMaterial.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1661,7 +1636,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterials } = waldoMaterial.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of materials that used it as source material, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -1689,7 +1664,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = waldoMaterial.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1719,7 +1694,7 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = janeRoePerson.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1749,13 +1724,13 @@ describe('Material with sub-materials and source materials thereof', () => {
 
 			const { sourcingMaterialProductions } = fictioneersLtdCompany.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
 	describe('materials list', () => {
 		it('includes writers of the materials and their corresponding source material (with corresponding sur-material)', async () => {
-			const response = await request.execute(app).get('/materials');
+			const response = await request(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -2095,8 +2070,8 @@ describe('Material with sub-materials and source materials thereof', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

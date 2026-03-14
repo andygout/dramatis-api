@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
@@ -23,8 +21,7 @@ describe('Material with entities credited multiple times', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -57,11 +54,11 @@ describe('Material with entities credited multiple times', () => {
 				]
 			});
 
-		material = await request.execute(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
+		material = await request(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
 
-		person = await request.execute(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
+		person = await request(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
-		company = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
+		company = await request(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Material', () => {
@@ -103,7 +100,7 @@ describe('Material with entities credited multiple times', () => {
 
 			const { writingCredits } = material.body;
 
-			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+			assert.deepEqual(writingCredits, expectedWritingCredits);
 		});
 	});
 
@@ -156,7 +153,7 @@ describe('Material with entities credited multiple times', () => {
 
 			const { materials } = person.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -209,7 +206,7 @@ describe('Material with entities credited multiple times', () => {
 
 			const { materials } = company.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 });

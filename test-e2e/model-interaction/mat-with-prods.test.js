@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const TWELFTH_NIGHT_MATERIAL_UUID = 'TWELFTH_NIGHT_MATERIAL_UUID';
 const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
@@ -32,8 +30,7 @@ describe('Material with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Twelfth Night',
@@ -54,8 +51,7 @@ describe('Material with multiple productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
@@ -69,8 +65,7 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night, or What You Will',
@@ -85,8 +80,7 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Twelfth Night',
@@ -101,23 +95,21 @@ describe('Material with multiple productions', () => {
 				}
 			});
 
-		twelfthNightMaterial = await request.execute(app).get(`/materials/${TWELFTH_NIGHT_MATERIAL_UUID}`);
+		twelfthNightMaterial = await request(app).get(`/materials/${TWELFTH_NIGHT_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await request.execute(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
+		williamShakespearePerson = await request(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		theKingsMenCompany = await request.execute(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
+		theKingsMenCompany = await request(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
-		twelfthNightGlobeProduction = await request
-			.execute(app)
-			.get(`/productions/${TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID}`);
+		twelfthNightGlobeProduction = await request(app).get(`/productions/${TWELFTH_NIGHT_GLOBE_PRODUCTION_UUID}`);
 
-		twelfthNightDonmarProduction = await request
-			.execute(app)
-			.get(`/productions/${TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID}`);
+		twelfthNightDonmarProduction = await request(app).get(
+			`/productions/${TWELFTH_NIGHT_OR_WHAT_YOU_WILL_DONMAR_PRODUCTION_UUID}`
+		);
 
-		twelfthNightNationalProduction = await request
-			.execute(app)
-			.get(`/productions/${TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID}`);
+		twelfthNightNationalProduction = await request(app).get(
+			`/productions/${TWELFTH_NIGHT_NATIONAL_PRODUCTION_UUID}`
+		);
 	});
 
 	describe('Twelfth Night (material)', () => {
@@ -169,7 +161,7 @@ describe('Material with multiple productions', () => {
 
 			const { productions } = twelfthNightMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -222,7 +214,7 @@ describe('Material with multiple productions', () => {
 
 			const { materialProductions } = williamShakespearePerson.body;
 
-			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+			assert.deepEqual(materialProductions, expectedMaterialProductions);
 		});
 	});
 
@@ -275,7 +267,7 @@ describe('Material with multiple productions', () => {
 
 			const { materialProductions } = theKingsMenCompany.body;
 
-			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+			assert.deepEqual(materialProductions, expectedMaterialProductions);
 		});
 	});
 
@@ -310,7 +302,7 @@ describe('Material with multiple productions', () => {
 
 			const { material } = twelfthNightGlobeProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -345,7 +337,7 @@ describe('Material with multiple productions', () => {
 
 			const { material } = twelfthNightDonmarProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -380,7 +372,7 @@ describe('Material with multiple productions', () => {
 
 			const { material } = twelfthNightNationalProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 });

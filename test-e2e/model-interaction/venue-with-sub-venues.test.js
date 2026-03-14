@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
@@ -37,8 +35,7 @@ describe('Venue with sub-venues', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -55,8 +52,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -71,8 +67,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Richard II',
@@ -87,8 +82,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Mother Courage and Her Children',
@@ -113,8 +107,7 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Richard II',
@@ -139,29 +132,27 @@ describe('Venue with sub-venues', () => {
 				]
 			});
 
-		nationalTheatreVenue = await request.execute(app).get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
+		nationalTheatreVenue = await request(app).get(`/venues/${NATIONAL_THEATRE_VENUE_UUID}`);
 
-		olivierTheatreVenue = await request.execute(app).get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
+		olivierTheatreVenue = await request(app).get(`/venues/${OLIVIER_THEATRE_VENUE_UUID}`);
 
-		motherCourageCharacter = await request.execute(app).get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
+		motherCourageCharacter = await request(app).get(`/characters/${MOTHER_COURAGE_CHARACTER_UUID}`);
 
-		kingRichardIICharacter = await request.execute(app).get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
+		kingRichardIICharacter = await request(app).get(`/characters/${KING_RICHARD_II_CHARACTER_UUID}`);
 
-		motherCourageAndHerChildrenMaterial = await request
-			.execute(app)
-			.get(`/materials/${MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID}`);
+		motherCourageAndHerChildrenMaterial = await request(app).get(
+			`/materials/${MOTHER_COURAGE_AND_HER_CHILDREN_MATERIAL_UUID}`
+		);
 
-		richardIIMaterial = await request.execute(app).get(`/materials/${RICHARD_II_MATERIAL_UUID}`);
+		richardIIMaterial = await request(app).get(`/materials/${RICHARD_II_MATERIAL_UUID}`);
 
-		motherCourageAndHerChildrenOlivierProduction = await request
-			.execute(app)
-			.get(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`);
+		motherCourageAndHerChildrenOlivierProduction = await request(app).get(
+			`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_OLIVIER_PRODUCTION_UUID}`
+		);
 
-		richardIINationalProduction = await request
-			.execute(app)
-			.get(`/productions/${RICHARD_II_NATIONAL_PRODUCTION_UUID}`);
+		richardIINationalProduction = await request(app).get(`/productions/${RICHARD_II_NATIONAL_PRODUCTION_UUID}`);
 
-		fionaShawPerson = await request.execute(app).get(`/people/${FIONA_SHAW_PERSON_UUID}`);
+		fionaShawPerson = await request(app).get(`/people/${FIONA_SHAW_PERSON_UUID}`);
 	});
 
 	describe('National Theatre (venue)', () => {
@@ -186,7 +177,7 @@ describe('Venue with sub-venues', () => {
 
 			const { subVenues } = nationalTheatreVenue.body;
 
-			expect(subVenues).to.deep.equal(expectedSubVenues);
+			assert.deepEqual(subVenues, expectedSubVenues);
 		});
 
 		it('includes productions at this venue and, where applicable, the specific sub-venue', () => {
@@ -217,7 +208,7 @@ describe('Venue with sub-venues', () => {
 
 			const { productions } = nationalTheatreVenue.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -231,7 +222,7 @@ describe('Venue with sub-venues', () => {
 
 			const { surVenue } = olivierTheatreVenue.body;
 
-			expect(surVenue).to.deep.equal(expectedSurVenue);
+			assert.deepEqual(surVenue, expectedSurVenue);
 		});
 
 		it('includes productions at this venue', () => {
@@ -249,7 +240,7 @@ describe('Venue with sub-venues', () => {
 
 			const { productions } = olivierTheatreVenue.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -289,7 +280,7 @@ describe('Venue with sub-venues', () => {
 
 			const { productions } = motherCourageCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -325,7 +316,7 @@ describe('Venue with sub-venues', () => {
 
 			const { productions } = kingRichardIICharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -354,7 +345,7 @@ describe('Venue with sub-venues', () => {
 
 			const { productions } = motherCourageAndHerChildrenMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -379,7 +370,7 @@ describe('Venue with sub-venues', () => {
 
 			const { productions } = richardIIMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -398,7 +389,7 @@ describe('Venue with sub-venues', () => {
 
 			const { venue } = motherCourageAndHerChildrenOlivierProduction.body;
 
-			expect(venue).to.deep.equal(expectedVenue);
+			assert.deepEqual(venue, expectedVenue);
 		});
 	});
 
@@ -413,7 +404,7 @@ describe('Venue with sub-venues', () => {
 
 			const { venue } = richardIINationalProduction.body;
 
-			expect(venue).to.deep.equal(expectedVenue);
+			assert.deepEqual(venue, expectedVenue);
 		});
 	});
 
@@ -474,13 +465,13 @@ describe('Venue with sub-venues', () => {
 
 			const { castMemberProductions } = fionaShawPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
 	describe('venues list', () => {
 		it('includes venue and corresponding sub-venues', async () => {
-			const response = await request.execute(app).get('/venues');
+			const response = await request(app).get('/venues');
 
 			const expectedResponseBody = [
 				{
@@ -507,14 +498,14 @@ describe('Venue with sub-venues', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
 	describe('productions list', () => {
 		it('includes venue and (if applicable) corresponding sur-venue', async () => {
-			const response = await request.execute(app).get('/productions');
+			const response = await request(app).get('/productions');
 
 			const expectedResponseBody = [
 				{
@@ -551,8 +542,8 @@ describe('Venue with sub-venues', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

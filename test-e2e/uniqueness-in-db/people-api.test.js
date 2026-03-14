@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { after, before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const PERSON_1_UUID = '2';
 const PERSON_2_UUID = '5';
@@ -24,9 +22,9 @@ describe('Uniqueness in database: People API', () => {
 	});
 
 	it('creates person without differentiator', async () => {
-		expect(await countNodesWithLabel('Person')).to.equal(0);
+		assert.equal(await countNodesWithLabel('Person'), 0);
 
-		const response = await request.execute(app).post('/people').send({
+		const response = await request(app).post('/people').send({
 			name: 'Paul Higgins'
 		});
 
@@ -38,15 +36,15 @@ describe('Uniqueness in database: People API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Person'), 1);
 	});
 
 	it('responds with errors if trying to create existing person that does also not have differentiator', async () => {
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+		assert.equal(await countNodesWithLabel('Person'), 1);
 
-		const response = await request.execute(app).post('/people').send({
+		const response = await request(app).post('/people').send({
 			name: 'Paul Higgins'
 		});
 
@@ -61,15 +59,15 @@ describe('Uniqueness in database: People API', () => {
 			}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Person'), 1);
 	});
 
 	it('creates person with same name as existing person but uses a differentiator', async () => {
-		expect(await countNodesWithLabel('Person')).to.equal(1);
+		assert.equal(await countNodesWithLabel('Person'), 1);
 
-		const response = await request.execute(app).post('/people').send({
+		const response = await request(app).post('/people').send({
 			name: 'Paul Higgins',
 			differentiator: '1'
 		});
@@ -82,15 +80,15 @@ describe('Uniqueness in database: People API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 	});
 
 	it('responds with errors if trying to update person to one with same name and differentiator combination', async () => {
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 
-		const response = await request.execute(app).put(`/people/${PERSON_1_UUID}`).send({
+		const response = await request(app).put(`/people/${PERSON_1_UUID}`).send({
 			name: 'Paul Higgins',
 			differentiator: '1'
 		});
@@ -107,15 +105,15 @@ describe('Uniqueness in database: People API', () => {
 			}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 	});
 
 	it('updates person with same name as existing person but uses a different differentiator', async () => {
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 
-		const response = await request.execute(app).put(`/people/${PERSON_1_UUID}`).send({
+		const response = await request(app).put(`/people/${PERSON_1_UUID}`).send({
 			name: 'Paul Higgins',
 			differentiator: '2'
 		});
@@ -128,15 +126,15 @@ describe('Uniqueness in database: People API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 	});
 
 	it('updates person with same name as existing person but without a differentiator', async () => {
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 
-		const response = await request.execute(app).put(`/people/${PERSON_2_UUID}`).send({
+		const response = await request(app).put(`/people/${PERSON_2_UUID}`).send({
 			name: 'Paul Higgins'
 		});
 
@@ -148,8 +146,8 @@ describe('Uniqueness in database: People API', () => {
 			errors: {}
 		};
 
-		expect(response).to.have.status(200);
-		expect(response.body).to.deep.equal(expectedResponseBody);
-		expect(await countNodesWithLabel('Person')).to.equal(2);
+		assert.equal(response.status, 200);
+		assert.deepEqual(response.body, expectedResponseBody);
+		assert.equal(await countNodesWithLabel('Person'), 2);
 	});
 });

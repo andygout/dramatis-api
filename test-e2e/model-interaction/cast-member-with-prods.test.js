@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const THE_GREEKS_ALDWYCH_PRODUCTION_UUID = 'THE_GREEKS_PRODUCTION_UUID';
 const ALDWYCH_THEATRE_VENUE_UUID = 'ALDWYCH_THEATRE_VENUE_UUID';
@@ -28,8 +26,7 @@ describe('Cast member with multiple production credits', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Greeks',
@@ -54,8 +51,7 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'City of Angels',
@@ -80,8 +76,7 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Enron',
@@ -109,19 +104,17 @@ describe('Cast member with multiple production credits', () => {
 				]
 			});
 
-		susannahFellowsPerson = await request.execute(app).get(`/people/${SUSANNAH_FELLOWS_PERSON_UUID}`);
+		susannahFellowsPerson = await request(app).get(`/people/${SUSANNAH_FELLOWS_PERSON_UUID}`);
 
-		theGreeksAldwychProduction = await request
-			.execute(app)
-			.get(`/productions/${THE_GREEKS_ALDWYCH_PRODUCTION_UUID}`);
+		theGreeksAldwychProduction = await request(app).get(`/productions/${THE_GREEKS_ALDWYCH_PRODUCTION_UUID}`);
 
-		cityOfAngelsPrinceOfWalesProduction = await request
-			.execute(app)
-			.get(`/productions/${CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID}`);
+		cityOfAngelsPrinceOfWalesProduction = await request(app).get(
+			`/productions/${CITY_OF_ANGELS_PRINCE_OF_WALES_PRODUCTION_UUID}`
+		);
 
-		enronChichesterFestivalProduction = await request
-			.execute(app)
-			.get(`/productions/${ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID}`);
+		enronChichesterFestivalProduction = await request(app).get(
+			`/productions/${ENRON_CHICHESTER_FESTIVAL_PRODUCTION_UUID}`
+		);
 	});
 
 	describe('Susannah Fellows (person)', () => {
@@ -228,7 +221,7 @@ describe('Cast member with multiple production credits', () => {
 
 			const { castMemberProductions } = susannahFellowsPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -260,7 +253,7 @@ describe('Cast member with multiple production credits', () => {
 
 			const { cast } = theGreeksAldwychProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -292,7 +285,7 @@ describe('Cast member with multiple production credits', () => {
 
 			const { cast } = cityOfAngelsPrinceOfWalesProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -331,7 +324,7 @@ describe('Cast member with multiple production credits', () => {
 
 			const { cast } = enronChichesterFestivalProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 });

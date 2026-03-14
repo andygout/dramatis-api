@@ -1,4 +1,0 @@
-{
-  "require": "test-unit/mocha.env.js",
-  "spec": "test-unit/**/*.test.js"
-}

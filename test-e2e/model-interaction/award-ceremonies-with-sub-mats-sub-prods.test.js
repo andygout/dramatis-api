@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const ROYAL_COURT_THEATRE_VENUE_UUID = 'ROYAL_COURT_THEATRE_VENUE_UUID';
 const JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID = 'JERWOOD_THEATRE_UPSTAIRS_VENUE_UUID';
@@ -50,8 +48,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -62,14 +59,13 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Hoge',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Hoge',
@@ -82,20 +78,19 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Wibble: Part I',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Wibble: Part II',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -111,8 +106,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -123,8 +117,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -140,8 +133,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -152,8 +144,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble: Part II',
@@ -164,8 +155,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -184,8 +174,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2020',
@@ -233,8 +222,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -283,8 +271,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -313,39 +300,35 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 				]
 			});
 
-		laurenceOlivierAwards2020AwardCeremony = await request
-			.execute(app)
-			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`);
+		laurenceOlivierAwards2020AwardCeremony = await request(app).get(
+			`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`
+		);
 
-		eveningStandardTheatreAwards2019AwardCeremony = await request
-			.execute(app)
-			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID}`);
+		eveningStandardTheatreAwards2019AwardCeremony = await request(app).get(
+			`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS_2019_AWARD_CEREMONY_UUID}`
+		);
 
-		conorCorgePerson = await request.execute(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
+		conorCorgePerson = await request(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
+		stagecraftLtdCompany = await request(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		ferdinandFooPerson = await request.execute(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
+		ferdinandFooPerson = await request(app).get(`/people/${FERDINAND_FOO_PERSON_UUID}`);
 
-		subHogeNoëlCowardProduction = await request
-			.execute(app)
-			.get(`/productions/${SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
+		subHogeNoëlCowardProduction = await request(app).get(`/productions/${SUB_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
 
-		surHogeNoëlCowardProduction = await request
-			.execute(app)
-			.get(`/productions/${SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
+		surHogeNoëlCowardProduction = await request(app).get(`/productions/${SUR_HOGE_NOËL_COWARD_PRODUCTION_UUID}`);
 
-		subWibblePartIJerwoodTheatreUpstairsProduction = await request
-			.execute(app)
-			.get(`/productions/${SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
+		subWibblePartIJerwoodTheatreUpstairsProduction = await request(app).get(
+			`/productions/${SUB_WIBBLE_PART_I_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`
+		);
 
-		surWibbleJerwoodTheatreUpstairsProduction = await request
-			.execute(app)
-			.get(`/productions/${SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
+		surWibbleJerwoodTheatreUpstairsProduction = await request(app).get(
+			`/productions/${SUR_WIBBLE_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`
+		);
 
-		subWibblePartIMaterial = await request.execute(app).get(`/materials/${SUB_WIBBLE_PART_I_MATERIAL_UUID}`);
+		subWibblePartIMaterial = await request(app).get(`/materials/${SUB_WIBBLE_PART_I_MATERIAL_UUID}`);
 
-		surWibbleMaterial = await request.execute(app).get(`/materials/${SUR_WIBBLE_MATERIAL_UUID}`);
+		surWibbleMaterial = await request(app).get(`/materials/${SUR_WIBBLE_MATERIAL_UUID}`);
 	});
 
 	describe('Laurence Olivier Awards 2020 (award ceremony)', () => {
@@ -459,7 +442,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { categories } = laurenceOlivierAwards2020AwardCeremony.body;
 
-			expect(categories).to.deep.equal(expectedCategories);
+			assert.deepEqual(categories, expectedCategories);
 		});
 	});
 
@@ -554,7 +537,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { categories } = eveningStandardTheatreAwards2019AwardCeremony.body;
 
-			expect(categories).to.deep.equal(expectedCategories);
+			assert.deepEqual(categories, expectedCategories);
 		});
 	});
 
@@ -769,7 +752,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = conorCorgePerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -982,7 +965,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = stagecraftLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1193,7 +1176,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = ferdinandFooPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1399,7 +1382,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = subHogeNoëlCowardProduction.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1605,7 +1588,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = surHogeNoëlCowardProduction.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1807,7 +1790,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = subWibblePartIJerwoodTheatreUpstairsProduction.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2070,7 +2053,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = surWibbleJerwoodTheatreUpstairsProduction.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2282,7 +2265,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = subWibblePartIMaterial.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2555,7 +2538,7 @@ describe('Award ceremonies with sub-materials and sub-productions', () => {
 
 			const { awards } = surWibbleMaterial.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 });

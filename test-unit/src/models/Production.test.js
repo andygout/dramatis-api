@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import {
 	CastMember,
@@ -14,6 +16,8 @@ import {
 	SubProductionIdentifier,
 	VenueBase
 } from '../../../src/models/index.js';
+
+const context = describe;
 
 describe('Production model', () => {
 	let stubs;
@@ -107,15 +111,18 @@ describe('Production model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new Production();
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(5);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 5);
 		});
 
 		describe('subtitle property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Production({ subtitle: 'Prince of Denmark' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Prince of Denmark');
-				expect(instance.subtitle).to.equal('Prince of Denmark');
+				sinonAssert.calledWithExactly(
+					stubs.stringsModule.getTrimmedOrEmptyString.secondCall,
+					'Prince of Denmark'
+				);
+				assert.equal(instance.subtitle, 'Prince of Denmark');
 			});
 		});
 
@@ -123,8 +130,8 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Production({ startDate: '2010-09-30' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-09-30');
-				expect(instance.startDate).to.equal('2010-09-30');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '2010-09-30');
+				assert.equal(instance.startDate, '2010-09-30');
 			});
 		});
 
@@ -132,8 +139,8 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Production({ pressDate: '2010-10-07' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2010-10-07');
-				expect(instance.pressDate).to.equal('2010-10-07');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), '2010-10-07');
+				assert.equal(instance.pressDate, '2010-10-07');
 			});
 		});
 
@@ -141,8 +148,8 @@ describe('Production model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Production({ endDate: '2011-01-26' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), '2011-01-26');
-				expect(instance.endDate).to.equal('2011-01-26');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(4), '2011-01-26');
+				assert.equal(instance.endDate, '2011-01-26');
 			});
 		});
 
@@ -150,7 +157,7 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.material instanceof MaterialBase).to.be.true;
+				assert.ok(instance.material instanceof MaterialBase);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -161,7 +168,7 @@ describe('Production model', () => {
 					}
 				});
 
-				expect(instance.material instanceof MaterialBase).to.be.true;
+				assert.ok(instance.material instanceof MaterialBase);
 			});
 		});
 
@@ -169,7 +176,7 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.venue instanceof VenueBase).to.be.true;
+				assert.ok(instance.venue instanceof VenueBase);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -180,7 +187,7 @@ describe('Production model', () => {
 					}
 				});
 
-				expect(instance.venue instanceof VenueBase).to.be.true;
+				assert.ok(instance.venue instanceof VenueBase);
 			});
 		});
 
@@ -188,7 +195,7 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.season instanceof Season).to.be.true;
+				assert.ok(instance.season instanceof Season);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -199,7 +206,7 @@ describe('Production model', () => {
 					}
 				});
 
-				expect(instance.season instanceof Season).to.be.true;
+				assert.ok(instance.season instanceof Season);
 			});
 		});
 
@@ -207,7 +214,7 @@ describe('Production model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.festival instanceof FestivalBase).to.be.true;
+				assert.ok(instance.festival instanceof FestivalBase);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -218,7 +225,7 @@ describe('Production model', () => {
 					}
 				});
 
-				expect(instance.festival instanceof FestivalBase).to.be.true;
+				assert.ok(instance.festival instanceof FestivalBase);
 			});
 		});
 
@@ -226,7 +233,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Production({});
 
-				expect(instance.subProductions).to.deep.equal([]);
+				assert.deepEqual(instance.subProductions, []);
 			});
 
 			it('assigns array of subProductions if included in props, retaining those with empty or whitespace-only string uuids', async () => {
@@ -244,10 +251,10 @@ describe('Production model', () => {
 					]
 				});
 
-				expect(instance.subProductions.length).to.equal(3);
-				expect(instance.subProductions[0] instanceof SubProductionIdentifier).to.be.true;
-				expect(instance.subProductions[1] instanceof SubProductionIdentifier).to.be.true;
-				expect(instance.subProductions[2] instanceof SubProductionIdentifier).to.be.true;
+				assert.equal(instance.subProductions.length, 3);
+				assert.ok(instance.subProductions[0] instanceof SubProductionIdentifier);
+				assert.ok(instance.subProductions[1] instanceof SubProductionIdentifier);
+				assert.ok(instance.subProductions[2] instanceof SubProductionIdentifier);
 			});
 		});
 
@@ -255,7 +262,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.producerCredits).to.deep.equal([]);
+				assert.deepEqual(instance.producerCredits, []);
 			});
 
 			it('assigns array of produucerCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -274,10 +281,10 @@ describe('Production model', () => {
 					]
 				});
 
-				expect(instance.producerCredits.length).to.equal(3);
-				expect(instance.producerCredits[0] instanceof ProducerCredit).to.be.true;
-				expect(instance.producerCredits[1] instanceof ProducerCredit).to.be.true;
-				expect(instance.producerCredits[2] instanceof ProducerCredit).to.be.true;
+				assert.equal(instance.producerCredits.length, 3);
+				assert.ok(instance.producerCredits[0] instanceof ProducerCredit);
+				assert.ok(instance.producerCredits[1] instanceof ProducerCredit);
+				assert.ok(instance.producerCredits[2] instanceof ProducerCredit);
 			});
 		});
 
@@ -285,7 +292,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.cast).to.deep.equal([]);
+				assert.deepEqual(instance.cast, []);
 			});
 
 			it('assigns array of cast if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -304,10 +311,10 @@ describe('Production model', () => {
 					]
 				});
 
-				expect(instance.cast.length).to.equal(3);
-				expect(instance.cast[0] instanceof CastMember).to.be.true;
-				expect(instance.cast[1] instanceof CastMember).to.be.true;
-				expect(instance.cast[2] instanceof CastMember).to.be.true;
+				assert.equal(instance.cast.length, 3);
+				assert.ok(instance.cast[0] instanceof CastMember);
+				assert.ok(instance.cast[1] instanceof CastMember);
+				assert.ok(instance.cast[2] instanceof CastMember);
 			});
 		});
 
@@ -315,7 +322,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.creativeCredits).to.deep.equal([]);
+				assert.deepEqual(instance.creativeCredits, []);
 			});
 
 			it('assigns array of creativeCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -334,10 +341,10 @@ describe('Production model', () => {
 					]
 				});
 
-				expect(instance.creativeCredits.length).to.equal(3);
-				expect(instance.creativeCredits[0] instanceof CreativeCredit).to.be.true;
-				expect(instance.creativeCredits[1] instanceof CreativeCredit).to.be.true;
-				expect(instance.creativeCredits[2] instanceof CreativeCredit).to.be.true;
+				assert.equal(instance.creativeCredits.length, 3);
+				assert.ok(instance.creativeCredits[0] instanceof CreativeCredit);
+				assert.ok(instance.creativeCredits[1] instanceof CreativeCredit);
+				assert.ok(instance.creativeCredits[2] instanceof CreativeCredit);
 			});
 		});
 
@@ -345,7 +352,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.crewCredits).to.deep.equal([]);
+				assert.deepEqual(instance.crewCredits, []);
 			});
 
 			it('assigns array of crewCredits if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -364,10 +371,10 @@ describe('Production model', () => {
 					]
 				});
 
-				expect(instance.crewCredits.length).to.equal(3);
-				expect(instance.crewCredits[0] instanceof CrewCredit).to.be.true;
-				expect(instance.crewCredits[1] instanceof CrewCredit).to.be.true;
-				expect(instance.crewCredits[2] instanceof CrewCredit).to.be.true;
+				assert.equal(instance.crewCredits.length, 3);
+				assert.ok(instance.crewCredits[0] instanceof CrewCredit);
+				assert.ok(instance.crewCredits[1] instanceof CrewCredit);
+				assert.ok(instance.crewCredits[2] instanceof CrewCredit);
 			});
 		});
 
@@ -375,7 +382,7 @@ describe('Production model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Production({ name: 'Hamlet' });
 
-				expect(instance.reviews).to.deep.equal([]);
+				assert.deepEqual(instance.reviews, []);
 			});
 
 			it('assigns array of reviews if included in props, retaining those with empty or whitespace-only string urls', async () => {
@@ -394,10 +401,10 @@ describe('Production model', () => {
 					]
 				});
 
-				expect(instance.reviews.length).to.equal(3);
-				expect(instance.reviews[0] instanceof Review).to.be.true;
-				expect(instance.reviews[1] instanceof Review).to.be.true;
-				expect(instance.reviews[2] instanceof Review).to.be.true;
+				assert.equal(instance.reviews.length, 3);
+				assert.ok(instance.reviews[0] instanceof Review);
+				assert.ok(instance.reviews[1] instanceof Review);
+				assert.ok(instance.reviews[2] instanceof Review);
 			});
 		});
 	});
@@ -452,7 +459,7 @@ describe('Production model', () => {
 
 			instance.runInputValidations();
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.validateSubtitle,
 				instance.validateDates,
@@ -479,52 +486,52 @@ describe('Production model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateUrlIndices,
 				instance.reviews[0].runInputValidations
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnceWithExactly(instance.validateSubtitle);
-			assert.calledOnceWithExactly(instance.validateDates);
-			assert.calledOnceWithExactly(instance.material.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.material.validateDifferentiator);
-			assert.calledOnceWithExactly(instance.venue.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.venue.validateDifferentiator);
-			assert.calledOnceWithExactly(instance.season.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.season.validateDifferentiator);
-			assert.calledOnceWithExactly(instance.festival.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.festival.validateDifferentiator);
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			sinonAssert.calledOnceWithExactly(instance.validateSubtitle);
+			sinonAssert.calledOnceWithExactly(instance.validateDates);
+			sinonAssert.calledOnceWithExactly(instance.material.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.material.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.venue.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.venue.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.season.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.season.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.festival.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.festival.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices,
 				instance.subProductions
 			);
-			assert.calledOnceWithExactly(instance.subProductions[0].validateUuid);
-			assert.calledOnceWithExactly(instance.subProductions[0].validateNoAssociationWithSelf, {
+			sinonAssert.calledOnceWithExactly(instance.subProductions[0].validateUuid);
+			sinonAssert.calledOnceWithExactly(instance.subProductions[0].validateNoAssociationWithSelf, {
 				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 			});
-			assert.calledOnceWithExactly(instance.subProductions[0].validateUniquenessInGroup, {
+			sinonAssert.calledOnceWithExactly(instance.subProductions[0].validateUniquenessInGroup, {
 				isDuplicate: false,
 				properties: new Set(['uuid'])
 			});
-			assert.calledThrice(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
-			assert.calledWithExactly(
+			sinonAssert.calledThrice(stubs.getDuplicateIndicesModule.getDuplicateNameIndices);
+			sinonAssert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.firstCall,
 				instance.producerCredits
 			);
-			assert.calledOnceWithExactly(instance.producerCredits[0].runInputValidations, { isDuplicate: false });
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.producerCredits[0].runInputValidations, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.cast
 			);
-			assert.calledOnceWithExactly(instance.cast[0].runInputValidations, { isDuplicate: false });
-			assert.calledWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.cast[0].runInputValidations, { isDuplicate: false });
+			sinonAssert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.secondCall,
 				instance.creativeCredits
 			);
-			assert.calledOnceWithExactly(instance.creativeCredits[0].runInputValidations, { isDuplicate: false });
-			assert.calledWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.creativeCredits[0].runInputValidations, { isDuplicate: false });
+			sinonAssert.calledWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateNameIndices.thirdCall,
 				instance.crewCredits
 			);
-			assert.calledOnceWithExactly(instance.crewCredits[0].runInputValidations, { isDuplicate: false });
-			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUrlIndices, instance.reviews);
-			assert.calledOnceWithExactly(instance.reviews[0].runInputValidations, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.crewCredits[0].runInputValidations, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUrlIndices, instance.reviews);
+			sinonAssert.calledOnceWithExactly(instance.reviews[0].runInputValidations, { isDuplicate: false });
 		});
 	});
 
@@ -538,11 +545,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -556,11 +563,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -572,11 +579,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -590,11 +597,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -606,11 +613,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -624,11 +631,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -646,11 +653,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -668,11 +675,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -690,11 +697,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -712,11 +719,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -734,11 +741,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -756,11 +763,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -777,11 +784,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -808,11 +815,11 @@ describe('Production model', () => {
 
 						instance.validateDates();
 
-						expect(stubs.isValidDate.callCount).to.equal(3);
-						assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-						assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-						assert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
-						assert.notCalled(instance.addPropertyError);
+						assert.equal(stubs.isValidDate.callCount, 3);
+						sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+						sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+						sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2011-01-26');
+						sinonAssert.notCalled(instance.addPropertyError);
 					});
 				}
 			);
@@ -838,11 +845,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
-					assert.notCalled(instance.addPropertyError);
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 		});
@@ -856,11 +863,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, 'foobar');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.calledOnceWithExactly(
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, 'foobar');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'startDate',
 						'Value must be in date format'
@@ -876,11 +883,11 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, 'foobar');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.calledOnceWithExactly(
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, 'foobar');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'pressDate',
 						'Value must be in date format'
@@ -896,11 +903,15 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, 'foobar');
-					assert.calledOnceWithExactly(instance.addPropertyError, 'endDate', 'Value must be in date format');
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, 'foobar');
+					sinonAssert.calledOnceWithExactly(
+						instance.addPropertyError,
+						'endDate',
+						'Value must be in date format'
+					);
 				});
 			});
 
@@ -918,17 +929,17 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'startDate',
 						'Start date must not be after end date'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'endDate',
 						'End date must not be before start date'
@@ -950,17 +961,17 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '2010-10-07');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '');
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2010-10-07');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-09-30');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '');
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'startDate',
 						'Start date must not be after press date'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'pressDate',
 						'Press date must not be before start date'
@@ -982,17 +993,17 @@ describe('Production model', () => {
 
 					instance.validateDates();
 
-					expect(stubs.isValidDate.callCount).to.equal(3);
-					assert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					assert.calledWithExactly(stubs.isValidDate.secondCall, '2011-01-26');
-					assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-10-07');
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					assert.equal(stubs.isValidDate.callCount, 3);
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2011-01-26');
+					sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-10-07');
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'pressDate',
 						'Press date must not be after end date'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'endDate',
 						'End date must not be before press date'
@@ -1023,37 +1034,37 @@ describe('Production model', () => {
 
 						instance.validateDates();
 
-						expect(stubs.isValidDate.callCount).to.equal(3);
-						assert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
-						assert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
-						assert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
-						expect(instance.addPropertyError.callCount).to.equal(6);
-						assert.calledWithExactly(
+						assert.equal(stubs.isValidDate.callCount, 3);
+						sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '2011-01-26');
+						sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '2010-10-07');
+						sinonAssert.calledWithExactly(stubs.isValidDate.thirdCall, '2010-09-30');
+						assert.equal(instance.addPropertyError.callCount, 6);
+						sinonAssert.calledWithExactly(
 							instance.addPropertyError.firstCall,
 							'startDate',
 							'Start date must not be after end date'
 						);
-						assert.calledWithExactly(
+						sinonAssert.calledWithExactly(
 							instance.addPropertyError.secondCall,
 							'endDate',
 							'End date must not be before start date'
 						);
-						assert.calledWithExactly(
+						sinonAssert.calledWithExactly(
 							instance.addPropertyError.thirdCall,
 							'startDate',
 							'Start date must not be after press date'
 						);
-						assert.calledWithExactly(
+						sinonAssert.calledWithExactly(
 							instance.addPropertyError.getCall(3),
 							'pressDate',
 							'Press date must not be before start date'
 						);
-						assert.calledWithExactly(
+						sinonAssert.calledWithExactly(
 							instance.addPropertyError.getCall(4),
 							'pressDate',
 							'Press date must not be after end date'
 						);
-						assert.calledWithExactly(
+						sinonAssert.calledWithExactly(
 							instance.addPropertyError.getCall(5),
 							'endDate',
 							'End date must not be before press date'
@@ -1077,7 +1088,7 @@ describe('Production model', () => {
 
 			await instance.runDatabaseValidations();
 
-			assert.calledOnceWithExactly(instance.subProductions[0].runDatabaseValidations, {
+			sinonAssert.calledOnceWithExactly(instance.subProductions[0].runDatabaseValidations, {
 				subjectProductionUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 			});
 		});

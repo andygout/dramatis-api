@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const JULIUS_CAESAR_MATERIAL_UUID = 'JULIUS_CAESAR_MATERIAL_UUID';
 const JULIUS_CAESAR_CHARACTER_UUID = 'JULIUS_CAESAR_CHARACTER_UUID';
@@ -22,8 +20,7 @@ describe('Nameless character groups grouping', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Julius Caesar',
@@ -53,7 +50,7 @@ describe('Nameless character groups grouping', () => {
 				]
 			});
 
-		juliusCaesarMaterial = await request.execute(app).get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
+		juliusCaesarMaterial = await request(app).get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
 	});
 
 	describe('Julius Caesar (material)', () => {
@@ -102,7 +99,7 @@ describe('Nameless character groups grouping', () => {
 
 			const { characterGroups } = juliusCaesarMaterial.body;
 
-			expect(characterGroups).to.deep.equal(expectedCharacterGroups);
+			assert.deepEqual(characterGroups, expectedCharacterGroups);
 		});
 	});
 });

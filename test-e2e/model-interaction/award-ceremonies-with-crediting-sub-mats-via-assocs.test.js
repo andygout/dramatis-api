@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const SUB_FRED_PART_I_MATERIAL_UUID = 'SUB_FRED_PART_I_MATERIAL_UUID';
 const JOHN_DOE_JR_PERSON_UUID = 'JOHN_DOE_JR_PERSON_UUID';
@@ -100,8 +98,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Fred: Part I',
@@ -122,14 +119,13 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Fred: Part II',
 			format: 'play',
 			year: '2010'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Fred',
@@ -158,8 +154,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -181,15 +176,14 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Plugh: Part II',
 			differentiator: '1',
 			format: 'play',
 			year: '1899'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -221,8 +215,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -260,8 +253,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part II',
@@ -274,8 +266,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -323,8 +314,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Waldo: Part I',
@@ -345,14 +335,13 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Waldo: Part II',
 			format: 'novel',
 			year: '1974'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Waldo',
@@ -381,8 +370,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -412,14 +400,13 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Wibble: Part II',
 			format: 'play',
 			year: '2009'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -457,8 +444,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Hoge: Part I',
@@ -492,14 +478,13 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Hoge: Part II',
 			format: 'play',
 			year: '2008'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Hoge',
@@ -541,8 +526,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -556,8 +540,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -571,8 +554,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Fred: Part I',
@@ -583,8 +565,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Fred',
@@ -600,8 +581,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Fred: Part I',
@@ -612,8 +592,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Fred',
@@ -629,8 +608,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -641,8 +619,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Plugh',
@@ -658,8 +635,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -670,8 +646,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Plugh',
@@ -687,8 +662,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -699,8 +673,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -716,8 +689,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -728,8 +700,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Wibble',
@@ -745,8 +716,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge: Part I',
@@ -757,8 +727,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -774,8 +743,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge: Part I',
@@ -786,8 +754,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -803,8 +770,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -882,8 +848,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -961,8 +926,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -1008,49 +972,49 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 				]
 			});
 
-		johnDoeJrPerson = await request.execute(app).get(`/people/${JOHN_DOE_JR_PERSON_UUID}`);
+		johnDoeJrPerson = await request(app).get(`/people/${JOHN_DOE_JR_PERSON_UUID}`);
 
-		johnDoeSrPerson = await request.execute(app).get(`/people/${JOHN_DOE_SR_PERSON_UUID}`);
+		johnDoeSrPerson = await request(app).get(`/people/${JOHN_DOE_SR_PERSON_UUID}`);
 
-		subPlaywrightsLtdCompany = await request.execute(app).get(`/companies/${SUB_PLAYWRIGHTS_LTD_COMPANY_UUID}`);
+		subPlaywrightsLtdCompany = await request(app).get(`/companies/${SUB_PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
-		surPlaywrightsLtdCompany = await request.execute(app).get(`/companies/${SUR_PLAYWRIGHTS_LTD_COMPANY_UUID}`);
+		surPlaywrightsLtdCompany = await request(app).get(`/companies/${SUR_PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
-		subPlughPartIOriginalVersionMaterial = await request
-			.execute(app)
-			.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+		subPlughPartIOriginalVersionMaterial = await request(app).get(
+			`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+		);
 
-		surPlughOriginalVersionMaterial = await request
-			.execute(app)
-			.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+		surPlughOriginalVersionMaterial = await request(app).get(
+			`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`
+		);
 
-		francisFlobJrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
+		francisFlobJrPerson = await request(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
-		francisFlobSrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
+		francisFlobSrPerson = await request(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
-		subCurtainUpLtdCompany = await request.execute(app).get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
+		subCurtainUpLtdCompany = await request(app).get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		surCurtainUpLtdCompany = await request.execute(app).get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
+		surCurtainUpLtdCompany = await request(app).get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		subWaldoPartIMaterial = await request.execute(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
+		subWaldoPartIMaterial = await request(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
-		surWaldoMaterial = await request.execute(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
+		surWaldoMaterial = await request(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
-		janeRoeJrPerson = await request.execute(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
+		janeRoeJrPerson = await request(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
-		janeRoeSrPerson = await request.execute(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
+		janeRoeSrPerson = await request(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
-		subFictioneersLtdCompany = await request.execute(app).get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
+		subFictioneersLtdCompany = await request(app).get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
-		surFictioneersLtdCompany = await request.execute(app).get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
+		surFictioneersLtdCompany = await request(app).get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
-		talyseTataJrPerson = await request.execute(app).get(`/people/${TALYSE_TATA_JR_PERSON_UUID}`);
+		talyseTataJrPerson = await request(app).get(`/people/${TALYSE_TATA_JR_PERSON_UUID}`);
 
-		talyseTataSrPerson = await request.execute(app).get(`/people/${TALYSE_TATA_SR_PERSON_UUID}`);
+		talyseTataSrPerson = await request(app).get(`/people/${TALYSE_TATA_SR_PERSON_UUID}`);
 
-		subCinerightsLtdCompany = await request.execute(app).get(`/companies/${SUB_CINERIGHTS_LTD_COMPANY_UUID}`);
+		subCinerightsLtdCompany = await request(app).get(`/companies/${SUB_CINERIGHTS_LTD_COMPANY_UUID}`);
 
-		surCinerightsLtdCompany = await request.execute(app).get(`/companies/${SUR_CINERIGHTS_LTD_COMPANY_UUID}`);
+		surCinerightsLtdCompany = await request(app).get(`/companies/${SUR_CINERIGHTS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('John Doe Jr (person): credit for directly nominated material and their associated sur-material', () => {
@@ -1217,7 +1181,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards } = johnDoeJrPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1428,7 +1392,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards } = johnDoeSrPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1596,7 +1560,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards } = subPlaywrightsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1807,7 +1771,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards } = surPlaywrightsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -1975,7 +1939,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { subsequentVersionMaterialAwards } = subPlughPartIOriginalVersionMaterial.body;
 
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -2186,7 +2150,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { subsequentVersionMaterialAwards } = surPlughOriginalVersionMaterial.body;
 
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -2356,8 +2320,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, subsequentVersionMaterialAwards } = francisFlobJrPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -2570,8 +2534,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, subsequentVersionMaterialAwards } = francisFlobSrPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -2741,8 +2705,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, subsequentVersionMaterialAwards } = subCurtainUpLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -2955,8 +2919,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, subsequentVersionMaterialAwards } = surCurtainUpLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -3124,7 +3088,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { sourcingMaterialAwards } = subWaldoPartIMaterial.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -3335,7 +3299,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { sourcingMaterialAwards } = surWaldoMaterial.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -3503,7 +3467,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { sourcingMaterialAwards } = janeRoeJrPerson.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -3714,7 +3678,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { sourcingMaterialAwards } = janeRoeSrPerson.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -3882,7 +3846,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { sourcingMaterialAwards } = subFictioneersLtdCompany.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -4093,7 +4057,7 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { sourcingMaterialAwards } = surFictioneersLtdCompany.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -4263,8 +4227,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, rightsGrantorMaterialAwards } = talyseTataJrPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(rightsGrantorMaterialAwards, expectedRightsGrantorMaterialAwards);
 		});
 	});
 
@@ -4477,8 +4441,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, rightsGrantorMaterialAwards } = talyseTataSrPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(rightsGrantorMaterialAwards, expectedRightsGrantorMaterialAwards);
 		});
 	});
 
@@ -4648,8 +4612,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, rightsGrantorMaterialAwards } = subCinerightsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(rightsGrantorMaterialAwards, expectedRightsGrantorMaterialAwards);
 		});
 	});
 
@@ -4862,8 +4826,8 @@ describe('Award ceremonies with crediting sub-materials (with person/company/mat
 
 			const { awards, rightsGrantorMaterialAwards } = surCinerightsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(rightsGrantorMaterialAwards, expectedRightsGrantorMaterialAwards);
 		});
 	});
 });

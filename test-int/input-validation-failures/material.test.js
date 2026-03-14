@@ -1,6 +1,10 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
 import { restore, stub } from 'sinon';
+
+import { toPlainObject } from '../../test-helpers/index.js';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -45,7 +49,7 @@ describe('Input validation failures: Material instance', () => {
 
 	const createInstance = (props) => new Material(props);
 
-	context('name value is empty string', () => {
+	describe('name value is empty string', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({ name: '' });
@@ -74,12 +78,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('name value exceeds maximum limit', () => {
+	describe('name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({ name: ABOVE_MAX_LENGTH_STRING });
@@ -108,12 +112,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('differentiator value exceeds maximum limit', () => {
+	describe('differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({ name: 'Rosmersholm', differentiator: ABOVE_MAX_LENGTH_STRING });
@@ -142,12 +146,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('subtitle value exceeds maximum limit', () => {
+	describe('subtitle value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({ name: 'Rosmersholm', subtitle: ABOVE_MAX_LENGTH_STRING });
@@ -176,12 +180,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('format value exceeds maximum limit', () => {
+	describe('format value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({ name: 'Rosmersholm', format: ABOVE_MAX_LENGTH_STRING });
@@ -210,12 +214,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('year value exceeds maximum limit', () => {
+	describe('year value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({ name: 'Rosmersholm', year: INVALID_YEAR_STRING });
@@ -244,12 +248,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('original version material name value exceeds maximum limit', () => {
+	describe('original version material name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -283,12 +287,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('original version material differentiator value exceeds maximum limit', () => {
+	describe('original version material differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -323,12 +327,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('material instance assigns itself as the original version material', () => {
+	describe('material instance assigns itself as the original version material', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -363,12 +367,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writingCredit name value exceeds maximum limit', () => {
+	describe('writingCredit name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -411,12 +415,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate writingCredits', () => {
+	describe('duplicate writingCredits', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -470,12 +474,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writing entity (person) name value exceeds maximum limit', () => {
+	describe('writing entity (person) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -529,12 +533,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writing entity (person) differentiator value exceeds maximum limit', () => {
+	describe('writing entity (person) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -589,12 +593,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writing entity (company) name value exceeds maximum limit', () => {
+	describe('writing entity (company) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -649,12 +653,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writing entity (company) differentiator value exceeds maximum limit', () => {
+	describe('writing entity (company) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -710,12 +714,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writing entity (source material) name value exceeds maximum limit', () => {
+	describe('writing entity (source material) name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -770,12 +774,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('writing entity (source material) differentiator value exceeds maximum limit', () => {
+	describe('writing entity (source material) differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -831,12 +835,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate entities', () => {
+	describe('duplicate entities', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -922,14 +926,14 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
-				expect(result.writingCredits[0].entities[1].model).to.equal('PERSON');
-				expect(result.writingCredits[0].entities[3].model).to.equal('COMPANY');
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+				assert.strictEqual(result.writingCredits[0].entities[1].model, 'PERSON');
+				assert.strictEqual(result.writingCredits[0].entities[3].model, 'COMPANY');
 			});
 		}
 	});
 
-	context('material instance assigns itself as source material', () => {
+	describe('material instance assigns itself as source material', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -985,12 +989,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('sub-material name value exceeds maximum limit', () => {
+	describe('sub-material name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1033,12 +1037,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('sub-material differentiator value exceeds maximum limit', () => {
+	describe('sub-material differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1082,12 +1086,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('material instance assigns itself as a sub-material', () => {
+	describe('material instance assigns itself as a sub-material', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1131,12 +1135,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate sub-materials', () => {
+	describe('duplicate sub-materials', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1212,12 +1216,12 @@ describe('Input validation failures: Material instance', () => {
 					characterGroups: []
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('characterGroup name value exceeds maximum limit', () => {
+	describe('characterGroup name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1259,12 +1263,12 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('character name value exceeds maximum limit', () => {
+	describe('character name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1319,12 +1323,12 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('character underlyingName value exceeds maximum limit', () => {
+	describe('character underlyingName value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1380,12 +1384,12 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('character differentiator value exceeds maximum limit', () => {
+	describe('character differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1441,12 +1445,12 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('character qualifier value exceeds maximum limit', () => {
+	describe('character qualifier value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1502,12 +1506,12 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('character name and underlyingName values are the same', () => {
+	describe('character name and underlyingName values are the same', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1565,12 +1569,12 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('duplicate characters', () => {
+	describe('duplicate characters', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -1668,7 +1672,7 @@ describe('Input validation failures: Material instance', () => {
 					]
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});

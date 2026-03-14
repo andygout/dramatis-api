@@ -1,6 +1,10 @@
-import { assert, restore, spy, stub } from 'sinon';
+import { afterEach, describe, it } from 'node:test';
+
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 import { NominatedProductionIdentifier } from '../../../src/models/index.js';
+
+const context = describe;
 
 describe('NominatedProductionIdentifier model', () => {
 	afterEach(() => {
@@ -22,8 +26,8 @@ describe('NominatedProductionIdentifier model', () => {
 
 					await instance.runDatabaseValidations();
 
-					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			}
 		);
@@ -42,8 +46,8 @@ describe('NominatedProductionIdentifier model', () => {
 
 					await instance.runDatabaseValidations();
 
-					assert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase, { model: 'PRODUCTION' });
+					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'uuid',
 						'Production with this UUID does not exist'

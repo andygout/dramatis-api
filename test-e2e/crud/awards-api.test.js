@@ -1,18 +1,16 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
-
 describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 	describe('GET new endpoint', () => {
 		it('responds with data required to prepare new award', async () => {
-			const response = await request.execute(app).get('/awards/new');
+			const response = await request(app).get('/awards/new');
 
 			const expectedResponseBody = {
 				model: 'AWARD',
@@ -21,8 +19,8 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
@@ -36,9 +34,9 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 		});
 
 		it('creates award', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Award'), 0);
 
-			const response = await request.execute(app).post('/awards').send({
+			const response = await request(app).post('/awards').send({
 				name: 'Laurence Olivier Awards'
 			});
 
@@ -50,13 +48,13 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Award')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Award'), 1);
 		});
 
 		it('gets data required to edit specific award', async () => {
-			const response = await request.execute(app).get(`/awards/${AWARD_UUID}/edit`);
+			const response = await request(app).get(`/awards/${AWARD_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'AWARD',
@@ -66,14 +64,14 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates award', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Award'), 1);
 
-			const response = await request.execute(app).put(`/awards/${AWARD_UUID}`).send({
+			const response = await request(app).put(`/awards/${AWARD_UUID}`).send({
 				name: 'Evening Standard Theatre Awards'
 			});
 
@@ -85,13 +83,13 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Award')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Award'), 1);
 		});
 
 		it('shows award', async () => {
-			const response = await request.execute(app).get(`/awards/${AWARD_UUID}`);
+			const response = await request(app).get(`/awards/${AWARD_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD',
@@ -101,14 +99,14 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				ceremonies: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('deletes award', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Award'), 1);
 
-			const response = await request.execute(app).delete(`/awards/${AWARD_UUID}`);
+			const response = await request(app).delete(`/awards/${AWARD_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'AWARD',
@@ -117,9 +115,9 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Award')).to.equal(0);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Award'), 0);
 		});
 	});
 
@@ -133,21 +131,21 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 
 			await purgeDatabase();
 
-			await request.execute(app).post('/awards').send({
+			await request(app).post('/awards').send({
 				name: 'Evening Standard Theatre Awards'
 			});
 
-			await request.execute(app).post('/awards').send({
+			await request(app).post('/awards').send({
 				name: 'Laurence Olivier Awards'
 			});
 
-			await request.execute(app).post('/awards').send({
+			await request(app).post('/awards').send({
 				name: "Critics' Circle Theatre Awards"
 			});
 		});
 
 		it('lists all awards ordered by name', async () => {
-			const response = await request.execute(app).get('/awards');
+			const response = await request(app).get('/awards');
 
 			const expectedResponseBody = [
 				{
@@ -167,8 +165,8 @@ describe('CRUD (Create, Read, Update, Delete): Awards API', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

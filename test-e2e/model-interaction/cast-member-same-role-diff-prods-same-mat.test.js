@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const TITANIA_CHARACTER_UUID = 'TITANIA_QUEEN_OF_THE_FAIRIES_CHARACTER_UUID';
 const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_PRODUCTION_UUID';
@@ -27,8 +25,7 @@ describe('Cast member performing same role in different productions of same mate
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -43,8 +40,7 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -70,8 +66,7 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -97,17 +92,17 @@ describe('Cast member performing same role in different productions of same mate
 				]
 			});
 
-		titaniaCharacter = await request.execute(app).get(`/characters/${TITANIA_CHARACTER_UUID}`);
+		titaniaCharacter = await request(app).get(`/characters/${TITANIA_CHARACTER_UUID}`);
 
-		aMidsummerNightsDreamRoyalShakespeareProduction = await request
-			.execute(app)
-			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		aMidsummerNightsDreamRoyalShakespeareProduction = await request(app).get(
+			`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`
+		);
 
-		aMidsummerNightsDreamRoseProduction = await request
-			.execute(app)
-			.get(`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID}`);
+		aMidsummerNightsDreamRoseProduction = await request(app).get(
+			`/productions/${A_MIDSUMMER_NIGHTS_DREAM_ROSE_PRODUCTION_UUID}`
+		);
 
-		judiDenchPerson = await request.execute(app).get(`/people/${JUDI_DENCH_PERSON_UUID}`);
+		judiDenchPerson = await request(app).get(`/people/${JUDI_DENCH_PERSON_UUID}`);
 	});
 
 	describe('Titania (character)', () => {
@@ -167,7 +162,7 @@ describe('Cast member performing same role in different productions of same mate
 
 			const { productions } = titaniaCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -192,7 +187,7 @@ describe('Cast member performing same role in different productions of same mate
 
 			const { cast } = aMidsummerNightsDreamRoyalShakespeareProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -217,7 +212,7 @@ describe('Cast member performing same role in different productions of same mate
 
 			const { cast } = aMidsummerNightsDreamRoseProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -274,7 +269,7 @@ describe('Cast member performing same role in different productions of same mate
 
 			const { castMemberProductions } = judiDenchPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

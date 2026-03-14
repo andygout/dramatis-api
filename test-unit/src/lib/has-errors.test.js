@@ -1,15 +1,16 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import hasErrors from '../../../src/lib/has-errors.js';
 
 describe('Has Errors module', () => {
-	context('no valid error values present', () => {
+	describe('no valid error values present', () => {
 		it('returns false if no error values present', () => {
 			const instance = { errors: {}, venue: { errors: {} } };
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.false;
+			assert.equal(result, false);
 		});
 
 		it('returns false if no error properties present', () => {
@@ -17,7 +18,7 @@ describe('Has Errors module', () => {
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.false;
+			assert.equal(result, false);
 		});
 
 		it('returns false if errors present in form of null value', () => {
@@ -25,7 +26,7 @@ describe('Has Errors module', () => {
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.false;
+			assert.equal(result, false);
 		});
 
 		it('returns false if errors present in form of array', () => {
@@ -33,37 +34,37 @@ describe('Has Errors module', () => {
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.false;
+			assert.equal(result, false);
 		});
 	});
 
-	context('top level errors present', () => {
+	describe('top level errors present', () => {
 		it('returns true', () => {
 			const instance = { errors: { name: ['Value is too short'] } };
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.true;
+			assert.equal(result, true);
 		});
 	});
 
-	context('nested errors present', () => {
+	describe('nested errors present', () => {
 		it('returns true', () => {
 			const instance = { venue: { errors: { name: ['Value is too short'] } } };
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.true;
+			assert.equal(result, true);
 		});
 	});
 
-	context('errors present in objects in arrays at top level', () => {
+	describe('errors present in objects in arrays at top level', () => {
 		it('returns true', () => {
 			const instance = { cast: [{ errors: { name: ['Value is too short'] } }] };
 
 			const result = hasErrors(instance);
 
-			expect(result).to.be.true;
+			assert.equal(result, true);
 		});
 	});
 });

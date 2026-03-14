@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, stub } from 'sinon';
+import { assert as sinonAssert, restore, stub } from 'sinon';
 
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
@@ -58,32 +60,32 @@ describe('Prepare As Params module', () => {
 
 		const result = prepareAsParams(instance);
 
-		expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
-		expect(result.items[0].position).to.equal(0);
-		expect(result.items[0].nestedItems[0].position).to.equal(0);
-		expect(result.items[0].nestedItems[1].position).to.equal(1);
-		expect(result.items[1].position).to.equal(1);
-		expect(result.items[1].nestedItems[0].position).to.equal(0);
-		expect(result.items[1].nestedItems[1].position).to.equal(1);
-		expect(instance.uuid).to.equal('');
-		expect(instance.items[0]).not.to.have.property('position');
-		expect(instance.items[0].nestedItems[0]).not.to.have.property('position');
-		expect(instance.items[0].nestedItems[1]).not.to.have.property('position');
-		expect(instance.items[1]).not.to.have.property('position');
-		expect(instance.items[1].nestedItems[0]).not.to.have.property('position');
-		expect(instance.items[1].nestedItems[0]).not.to.have.property('position');
+		assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+		assert.equal(result.items[0].position, 0);
+		assert.equal(result.items[0].nestedItems[0].position, 0);
+		assert.equal(result.items[0].nestedItems[1].position, 1);
+		assert.equal(result.items[1].position, 1);
+		assert.equal(result.items[1].nestedItems[0].position, 0);
+		assert.equal(result.items[1].nestedItems[1].position, 1);
+		assert.equal(instance.uuid, '');
+		assert.equal(Object.hasOwn(instance.items[0], 'position'), false);
+		assert.equal(Object.hasOwn(instance.items[0].nestedItems[0], 'position'), false);
+		assert.equal(Object.hasOwn(instance.items[0].nestedItems[1], 'position'), false);
+		assert.equal(Object.hasOwn(instance.items[1], 'position'), false);
+		assert.equal(Object.hasOwn(instance.items[1].nestedItems[0], 'position'), false);
+		assert.equal(Object.hasOwn(instance.items[1].nestedItems[0], 'position'), false);
 	});
 
-	context('top level properties', () => {
-		context('name property and value is present', () => {
+	describe('top level properties', () => {
+		describe('name property and value is present', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { uuid: '', name: 'Foo' };
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
 			it('assigns value to uuid property if undefined', async () => {
@@ -91,9 +93,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
 			it('will not assign value to uuid property if one already exists', async () => {
@@ -101,21 +103,21 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
 
-		context('name property is present; its value is an empty string', () => {
+		describe('name property is present; its value is an empty string', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { uuid: '', name: '' };
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, null);
 			});
 
 			it('assigns value to uuid property if undefined', async () => {
@@ -123,9 +125,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, null);
 			});
 
 			it('will not assign value to uuid property if one already exists', async () => {
@@ -133,21 +135,21 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
 
-		context('name property is absent', () => {
+		describe('name property is absent', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { uuid: '' };
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, null);
 			});
 
 			it('assigns value to uuid property if undefined', async () => {
@@ -155,9 +157,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, null);
 			});
 
 			it('will not assign value to uuid property if one already exists', async () => {
@@ -165,9 +167,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
 
@@ -176,9 +178,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.foo).to.equal('bar');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.foo, 'bar');
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
@@ -186,9 +188,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.foo, null);
 		});
 
 		it('will assign null value to non-uuid properties with false values', async () => {
@@ -196,9 +198,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.foo, null);
 		});
 
 		it('will not add position property', async () => {
@@ -206,9 +208,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result).not.to.have.property('position');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(Object.hasOwn(result, 'position'), false);
 		});
 
 		it('will add model property with value from model getter method', async () => {
@@ -216,20 +218,20 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			expect(result.model).to.equal('BASE');
+			assert.equal(result.model, 'BASE');
 		});
 	});
 
-	context('nested level properties', () => {
-		context('name property and value is present', () => {
+	describe('nested level properties', () => {
+		describe('name property and value is present', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { venue: { uuid: '', name: 'Foo' } };
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
 			it('assigns value to uuid property if undefined', async () => {
@@ -237,9 +239,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
 			it('will not assign value to uuid property if one already exists', async () => {
@@ -247,21 +249,21 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
 
-		context('name property is present; its value is an empty string', () => {
+		describe('name property is present; its value is an empty string', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { venue: { uuid: '', name: '' } };
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, null);
 			});
 
 			it('assigns value to uuid property if undefined', async () => {
@@ -269,9 +271,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, null);
 			});
 
 			it('will not assign value to uuid property if one already exists', async () => {
@@ -279,21 +281,21 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
 
-		context('name property is absent', () => {
+		describe('name property is absent', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { venue: { uuid: '' } };
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, null);
 			});
 
 			it('assigns value to uuid property if undefined', async () => {
@@ -301,9 +303,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal(null);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, null);
 			});
 
 			it('will not assign value to uuid property if one already exists', async () => {
@@ -311,9 +313,9 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.venue.uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
 
@@ -322,9 +324,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.venue.foo).to.equal('bar');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.venue.foo, 'bar');
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
@@ -332,9 +334,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.venue.foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.venue.foo, null);
 		});
 
 		it('will assign null value to non-uuid properties with false values', async () => {
@@ -342,9 +344,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.venue.foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.venue.foo, null);
 		});
 
 		it('will not add position property', async () => {
@@ -352,9 +354,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.venue).not.to.have.property('position');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(Object.hasOwn(result.venue, 'position'), false);
 		});
 
 		it('will add model property with value from model getter method', async () => {
@@ -362,19 +364,19 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			expect(result.venue.model).to.equal('BASE');
+			assert.equal(result.venue.model, 'BASE');
 		});
 	});
 
-	context('properties in arrays at top level', () => {
+	describe('properties in arrays at top level', () => {
 		it('assigns value to uuid property if empty string', async () => {
 			const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 
 			const result = prepareAsParams(instance);
 
-			assert.calledOnce(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			sinonAssert.calledOnce(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
 		it('assigns value to uuid property if undefined', async () => {
@@ -382,9 +384,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.calledOnce(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			sinonAssert.calledOnce(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
 		it('will not assign value to uuid property if one already exists', async () => {
@@ -392,9 +394,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
@@ -402,9 +404,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].foo).to.equal('bar');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].foo, 'bar');
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
@@ -412,9 +414,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].foo, null);
 		});
 
 		it('will assign null value to non-uuid properties with false values', async () => {
@@ -422,20 +424,20 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].foo, null);
 		});
 
-		context('array contains a single item', () => {
+		describe('array contains a single item', () => {
 			it('will not add position property', async () => {
 				const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.cast[0]).to.not.have.property('position');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 			});
 
 			it('will add model property with value from model getter method', async () => {
@@ -443,11 +445,11 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				expect(result.cast[0].model).to.equal('BASE');
+				assert.equal(result.cast[0].model, 'BASE');
 			});
 		});
 
-		context('array contains more than a single item', () => {
+		describe('array contains more than a single item', () => {
 			it('adds position property with value of array index', async () => {
 				const instance = {
 					cast: [
@@ -458,14 +460,14 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledTwice(stubs.getRandomUuid);
-				assert.calledTwice(stubs.neo4j.int);
-				assert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				assert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
-				expect(result.cast[0]).to.have.property('position');
-				expect(result.cast[0].position).to.equal(0);
-				expect(result.cast[1]).to.have.property('position');
-				expect(result.cast[1].position).to.equal(1);
+				sinonAssert.calledTwice(stubs.getRandomUuid);
+				sinonAssert.calledTwice(stubs.neo4j.int);
+				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
+				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				assert.equal(Object.hasOwn(result.cast[0], 'position'), true);
+				assert.equal(result.cast[0].position, 0);
+				assert.equal(Object.hasOwn(result.cast[1], 'position'), true);
+				assert.equal(result.cast[1].position, 1);
 			});
 
 			it('will add model property with value from model getter method', async () => {
@@ -478,11 +480,11 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				expect(result.cast[0].model).to.equal('BASE');
+				assert.equal(result.cast[0].model, 'BASE');
 			});
 		});
 
-		context('object is in array whose items are not permitted an empty string name value', () => {
+		describe('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
 					cast: [
@@ -493,69 +495,63 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.cast.length).to.equal(1);
-				expect(result.cast[0].name).to.equal('David Calder');
-				expect(result.cast[0]).to.not.have.property('position');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.cast.length, 1);
+				assert.equal(result.cast[0].name, 'David Calder');
+				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 			});
 		});
 
-		context(
-			'object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children',
-			() => {
-				it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
-					const instance = {
-						productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
-					};
+		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+				const instance = {
+					productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
+					subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+				};
 
-					const result = prepareAsParams(instance);
+				const result = prepareAsParams(instance);
 
-					assert.notCalled(stubs.getRandomUuid);
-					assert.notCalled(stubs.neo4j.int);
-					expect(result.productions.length).to.equal(1);
-					expect(result.productions[0]).to.not.have.property('name');
-					expect(result.productions[0]).to.not.have.property('position');
-					expect(result.subProductions.length).to.equal(1);
-					expect(result.subProductions[0]).to.not.have.property('name');
-					expect(result.subProductions[0]).to.not.have.property('position');
-				});
-			}
-		);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.productions.length, 1);
+				assert.equal(Object.hasOwn(result.productions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.productions[0], 'position'), false);
+				assert.equal(result.subProductions.length, 1);
+				assert.equal(Object.hasOwn(result.subProductions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.subProductions[0], 'position'), false);
+			});
+		});
 
-		context(
-			'object is in array where items are permitted an absent name property or empty string name value providing they have named children',
-			() => {
-				it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
-					const instance = {
-						characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
-						nominations: [{ entities: [{ name: 'Simon Baker' }] }],
-						producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
-						writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
-					};
+		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+				const instance = {
+					characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
+					nominations: [{ entities: [{ name: 'Simon Baker' }] }],
+					producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
+					writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
+				};
 
-					const result = prepareAsParams(instance);
+				const result = prepareAsParams(instance);
 
-					assert.notCalled(stubs.getRandomUuid);
-					assert.notCalled(stubs.neo4j.int);
-					expect(result.characterGroups.length).to.equal(1);
-					expect(result.characterGroups[0].name).to.be.null;
-					expect(result.characterGroups[0]).to.not.have.property('position');
-					expect(result.nominations.length).to.equal(1);
-					expect(result.nominations[0]).to.not.have.property('name');
-					expect(result.nominations[0]).to.not.have.property('position');
-					expect(result.producerCredits.length).to.equal(1);
-					expect(result.producerCredits[0].name).to.be.null;
-					expect(result.producerCredits[0]).to.not.have.property('position');
-					expect(result.writingCredits.length).to.equal(1);
-					expect(result.writingCredits[0].name).to.be.null;
-					expect(result.writingCredits[0]).to.not.have.property('position');
-				});
-			}
-		);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.characterGroups.length, 1);
+				assert.equal(result.characterGroups[0].name, null);
+				assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
+				assert.equal(result.nominations.length, 1);
+				assert.equal(Object.hasOwn(result.nominations[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.nominations[0], 'position'), false);
+				assert.equal(result.producerCredits.length, 1);
+				assert.equal(result.producerCredits[0].name, null);
+				assert.equal(Object.hasOwn(result.producerCredits[0], 'position'), false);
+				assert.equal(result.writingCredits.length, 1);
+				assert.equal(result.writingCredits[0].name, null);
+				assert.equal(Object.hasOwn(result.writingCredits[0], 'position'), false);
+			});
+		});
 
-		context('object is in array where items must have at least one named child', () => {
+		describe('object is in array where items must have at least one named child', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 				const instance = {
 					characterGroups: [
@@ -606,30 +602,30 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				expect(stubs.neo4j.int.callCount).to.equal(4);
-				expect(result.characterGroups.length).to.equal(1);
-				expect(result.characterGroups[0]).to.not.have.property('position');
-				expect(result.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.creativeCredits.length).to.equal(1);
-				expect(result.creativeCredits[0]).to.not.have.property('position');
-				expect(result.creativeCredits[0].name).to.equal('Designer');
-				expect(result.crewCredits.length).to.equal(1);
-				expect(result.crewCredits[0]).to.not.have.property('position');
-				expect(result.crewCredits[0].name).to.equal('Stage Manager');
-				expect(result.nominations.length).to.equal(4);
-				expect(result.nominations[0]).to.not.have.property('name');
-				expect(result.nominations[0].position).to.equal(0);
-				expect(result.producerCredits.length).to.equal(1);
-				expect(result.producerCredits[0]).to.not.have.property('position');
-				expect(result.producerCredits[0].name).to.equal('in association with');
-				expect(result.writingCredits.length).to.equal(1);
-				expect(result.writingCredits[0].name).to.equal('version by');
-				expect(result.writingCredits[0]).to.not.have.property('position');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(result.characterGroups.length, 1);
+				assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
+				assert.equal(result.characterGroups[0].name, 'The Borkmans');
+				assert.equal(result.creativeCredits.length, 1);
+				assert.equal(Object.hasOwn(result.creativeCredits[0], 'position'), false);
+				assert.equal(result.creativeCredits[0].name, 'Designer');
+				assert.equal(result.crewCredits.length, 1);
+				assert.equal(Object.hasOwn(result.crewCredits[0], 'position'), false);
+				assert.equal(result.crewCredits[0].name, 'Stage Manager');
+				assert.equal(result.nominations.length, 4);
+				assert.equal(Object.hasOwn(result.nominations[0], 'name'), false);
+				assert.equal(result.nominations[0].position, 0);
+				assert.equal(result.producerCredits.length, 1);
+				assert.equal(Object.hasOwn(result.producerCredits[0], 'position'), false);
+				assert.equal(result.producerCredits[0].name, 'in association with');
+				assert.equal(result.writingCredits.length, 1);
+				assert.equal(result.writingCredits[0].name, 'version by');
+				assert.equal(Object.hasOwn(result.writingCredits[0], 'position'), false);
 			});
 		});
 
-		context('object is in array where items do not require any named children', () => {
+		describe('object is in array where items do not require any named children', () => {
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 				const instance = {
 					cast: [
@@ -641,13 +637,13 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.calledThrice(stubs.neo4j.int);
-				expect(result.cast.length).to.equal(3);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.calledThrice(stubs.neo4j.int);
+				assert.equal(result.cast.length, 3);
 			});
 		});
 
-		context('object is in array where items require a url', () => {
+		describe('object is in array where items require a url', () => {
 			it('retains objects only if they have a non-empty url value', async () => {
 				const instance = {
 					reviews: [{ url: '' }, { url: 'https://www.foo.com' }, { url: '' }]
@@ -655,13 +651,13 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.reviews.length).to.equal(1);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.reviews.length, 1);
 			});
 		});
 
-		context('object is in array where items require a uuid', () => {
+		describe('object is in array where items require a uuid', () => {
 			it('retains objects only if they have a non-empty uuid value', async () => {
 				const instance = {
 					productions: [{ uuid: '' }, { uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }, { uuid: '' }],
@@ -670,10 +666,10 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.productions.length).to.equal(1);
-				expect(result.subProductions.length).to.equal(1);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.productions.length, 1);
+				assert.equal(result.subProductions.length, 1);
 			});
 		});
 
@@ -768,25 +764,25 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			expect(stubs.getRandomUuid.callCount).to.equal(6);
-			expect(stubs.neo4j.int.callCount).to.equal(10);
-			expect(result.characters[0].uuid).to.equal(result.characters[5].uuid);
-			expect(result.characters[1].uuid).to.equal(result.characters[6].uuid);
-			expect(result.characters[2].uuid).to.equal(result.characters[7].uuid);
-			expect(result.characters[3].uuid).to.equal(result.characters[8].uuid);
-			expect(result.characters[4].uuid).to.not.equal(result.characters[9].uuid);
+			assert.equal(stubs.getRandomUuid.callCount, 6);
+			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(result.characters[0].uuid, result.characters[5].uuid);
+			assert.equal(result.characters[1].uuid, result.characters[6].uuid);
+			assert.equal(result.characters[2].uuid, result.characters[7].uuid);
+			assert.equal(result.characters[3].uuid, result.characters[8].uuid);
+			assert.notEqual(result.characters[4].uuid, result.characters[9].uuid);
 		});
 	});
 
-	context('properties in arrays at nested level (nested in object)', () => {
+	describe('properties in arrays at nested level (nested in object)', () => {
 		it('assigns value to uuid property if empty string', async () => {
 			const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 
 			const result = prepareAsParams(instance);
 
-			assert.calledOnce(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			sinonAssert.calledOnce(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.production.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
 		it('assigns value to uuid property if undefined', async () => {
@@ -794,9 +790,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.calledOnce(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.production.cast[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			sinonAssert.calledOnce(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.production.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
 		it('will not assign value to uuid property if one already exists', async () => {
@@ -813,9 +809,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.production.cast[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.production.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
@@ -823,9 +819,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.production.cast[0].foo).to.equal('bar');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.production.cast[0].foo, 'bar');
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
@@ -833,9 +829,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.production.cast[0].foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.production.cast[0].foo, null);
 		});
 
 		it('will assign null value to non-uuid properties with false values', async () => {
@@ -843,20 +839,20 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.production.cast[0].foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.production.cast[0].foo, null);
 		});
 
-		context('array contains a single item', () => {
+		describe('array contains a single item', () => {
 			it('will not add position property', async () => {
 				const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.production.cast[0]).to.not.have.property('position');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
 			});
 
 			it('will add model property with value from model getter method', async () => {
@@ -864,11 +860,11 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				expect(result.production.cast[0].model).to.equal('BASE');
+				assert.equal(result.production.cast[0].model, 'BASE');
 			});
 		});
 
-		context('array contains more than a single item', () => {
+		describe('array contains more than a single item', () => {
 			it('adds position property with value of array index', async () => {
 				const instance = {
 					production: {
@@ -881,14 +877,14 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledTwice(stubs.getRandomUuid);
-				assert.calledTwice(stubs.neo4j.int);
-				assert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				assert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
-				expect(result.production.cast[0]).to.have.property('position');
-				expect(result.production.cast[0].position).to.equal(0);
-				expect(result.production.cast[1]).to.have.property('position');
-				expect(result.production.cast[1].position).to.equal(1);
+				sinonAssert.calledTwice(stubs.getRandomUuid);
+				sinonAssert.calledTwice(stubs.neo4j.int);
+				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
+				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), true);
+				assert.equal(result.production.cast[0].position, 0);
+				assert.equal(Object.hasOwn(result.production.cast[1], 'position'), true);
+				assert.equal(result.production.cast[1].position, 1);
 			});
 
 			it('will add model property with value from model getter method', async () => {
@@ -903,11 +899,11 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				expect(result.production.cast[0].model).to.equal('BASE');
+				assert.equal(result.production.cast[0].model, 'BASE');
 			});
 		});
 
-		context('object is in array whose items are not permitted an empty string name value', () => {
+		describe('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
 					production: {
@@ -920,73 +916,67 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.production.cast.length).to.equal(1);
-				expect(result.production.cast[0].name).to.equal('David Calder');
-				expect(result.production.cast[0]).to.not.have.property('position');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.production.cast.length, 1);
+				assert.equal(result.production.cast[0].name, 'David Calder');
+				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
 			});
 		});
 
-		context(
-			'object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children',
-			() => {
-				it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
-					const instance = {
-						foo: {
-							productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
-						}
-					};
+		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+				const instance = {
+					foo: {
+						productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
+						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+					}
+				};
 
-					const result = prepareAsParams(instance);
+				const result = prepareAsParams(instance);
 
-					assert.notCalled(stubs.getRandomUuid);
-					assert.notCalled(stubs.neo4j.int);
-					expect(result.foo.productions.length).to.equal(1);
-					expect(result.foo.productions[0]).to.not.have.property('name');
-					expect(result.foo.productions[0]).to.not.have.property('position');
-					expect(result.foo.subProductions.length).to.equal(1);
-					expect(result.foo.subProductions[0]).to.not.have.property('name');
-					expect(result.foo.subProductions[0]).to.not.have.property('position');
-				});
-			}
-		);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.foo.productions.length, 1);
+				assert.equal(Object.hasOwn(result.foo.productions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foo.productions[0], 'position'), false);
+				assert.equal(result.foo.subProductions.length, 1);
+				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'position'), false);
+			});
+		});
 
-		context(
-			'object is in array where items are permitted an absent name property or empty string name value providing they have named children',
-			() => {
-				it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
-					const instance = {
-						foo: {
-							characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
-							nominations: [{ entities: [{ name: 'Simon Baker' }] }],
-							producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
-							writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
-						}
-					};
+		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+				const instance = {
+					foo: {
+						characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
+						nominations: [{ entities: [{ name: 'Simon Baker' }] }],
+						producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
+						writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
+					}
+				};
 
-					const result = prepareAsParams(instance);
+				const result = prepareAsParams(instance);
 
-					assert.notCalled(stubs.getRandomUuid);
-					assert.notCalled(stubs.neo4j.int);
-					expect(result.foo.characterGroups.length).to.equal(1);
-					expect(result.foo.characterGroups[0].name).to.be.null;
-					expect(result.foo.characterGroups[0]).to.not.have.property('position');
-					expect(result.foo.nominations.length).to.equal(1);
-					expect(result.foo.nominations[0]).to.not.have.property('name');
-					expect(result.foo.nominations[0]).to.not.have.property('position');
-					expect(result.foo.producerCredits.length).to.equal(1);
-					expect(result.foo.producerCredits[0].name).to.be.null;
-					expect(result.foo.producerCredits[0]).to.not.have.property('position');
-					expect(result.foo.writingCredits.length).to.equal(1);
-					expect(result.foo.writingCredits[0].name).to.be.null;
-					expect(result.foo.writingCredits[0]).to.not.have.property('position');
-				});
-			}
-		);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.foo.characterGroups.length, 1);
+				assert.equal(result.foo.characterGroups[0].name, null);
+				assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
+				assert.equal(result.foo.nominations.length, 1);
+				assert.equal(Object.hasOwn(result.foo.nominations[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foo.nominations[0], 'position'), false);
+				assert.equal(result.foo.producerCredits.length, 1);
+				assert.equal(result.foo.producerCredits[0].name, null);
+				assert.equal(Object.hasOwn(result.foo.producerCredits[0], 'position'), false);
+				assert.equal(result.foo.writingCredits.length, 1);
+				assert.equal(result.foo.writingCredits[0].name, null);
+				assert.equal(Object.hasOwn(result.foo.writingCredits[0], 'position'), false);
+			});
+		});
 
-		context('object is in array where items must have at least one named child', () => {
+		describe('object is in array where items must have at least one named child', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 				const instance = {
 					foo: {
@@ -1039,30 +1029,30 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				expect(stubs.neo4j.int.callCount).to.equal(4);
-				expect(result.foo.characterGroups.length).to.equal(1);
-				expect(result.foo.characterGroups[0]).to.not.have.property('position');
-				expect(result.foo.characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.foo.creativeCredits.length).to.equal(1);
-				expect(result.foo.creativeCredits[0]).to.not.have.property('position');
-				expect(result.foo.creativeCredits[0].name).to.equal('Designer');
-				expect(result.foo.crewCredits.length).to.equal(1);
-				expect(result.foo.crewCredits[0]).to.not.have.property('position');
-				expect(result.foo.crewCredits[0].name).to.equal('Stage Manager');
-				expect(result.foo.nominations.length).to.equal(4);
-				expect(result.foo.nominations[0]).to.not.have.property('name');
-				expect(result.foo.nominations[0].position).to.equal(0);
-				expect(result.foo.producerCredits.length).to.equal(1);
-				expect(result.foo.producerCredits[0]).to.not.have.property('position');
-				expect(result.foo.producerCredits[0].name).to.equal('in association with');
-				expect(result.foo.writingCredits.length).to.equal(1);
-				expect(result.foo.writingCredits[0]).to.not.have.property('position');
-				expect(result.foo.writingCredits[0].name).to.equal('version by');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(result.foo.characterGroups.length, 1);
+				assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
+				assert.equal(result.foo.characterGroups[0].name, 'The Borkmans');
+				assert.equal(result.foo.creativeCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foo.creativeCredits[0], 'position'), false);
+				assert.equal(result.foo.creativeCredits[0].name, 'Designer');
+				assert.equal(result.foo.crewCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foo.crewCredits[0], 'position'), false);
+				assert.equal(result.foo.crewCredits[0].name, 'Stage Manager');
+				assert.equal(result.foo.nominations.length, 4);
+				assert.equal(Object.hasOwn(result.foo.nominations[0], 'name'), false);
+				assert.equal(result.foo.nominations[0].position, 0);
+				assert.equal(result.foo.producerCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foo.producerCredits[0], 'position'), false);
+				assert.equal(result.foo.producerCredits[0].name, 'in association with');
+				assert.equal(result.foo.writingCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foo.writingCredits[0], 'position'), false);
+				assert.equal(result.foo.writingCredits[0].name, 'version by');
 			});
 		});
 
-		context('object is in array where items do not require any named children', () => {
+		describe('object is in array where items do not require any named children', () => {
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 				const instance = {
 					production: {
@@ -1076,13 +1066,13 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.calledThrice(stubs.neo4j.int);
-				expect(result.production.cast.length).to.equal(3);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.calledThrice(stubs.neo4j.int);
+				assert.equal(result.production.cast.length, 3);
 			});
 		});
 
-		context('object is in array where items require a url', () => {
+		describe('object is in array where items require a url', () => {
 			it('retains objects only if they have a non-empty url value', async () => {
 				const instance = {
 					foo: {
@@ -1092,13 +1082,13 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.foo.reviews.length).to.equal(1);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.foo.reviews.length, 1);
 			});
 		});
 
-		context('object is in array where items require a uuid', () => {
+		describe('object is in array where items require a uuid', () => {
 			it('retains objects only if they have a non-empty uuid value', async () => {
 				const instance = {
 					foo: {
@@ -1109,10 +1099,10 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.foo.productions.length).to.equal(1);
-				expect(result.foo.subProductions.length).to.equal(1);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.foo.productions.length, 1);
+				assert.equal(result.foo.subProductions.length, 1);
 			});
 		});
 
@@ -1209,25 +1199,25 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			expect(stubs.getRandomUuid.callCount).to.equal(6);
-			expect(stubs.neo4j.int.callCount).to.equal(10);
-			expect(result.production.cast[0].uuid).to.equal(result.production.cast[5].uuid);
-			expect(result.production.cast[1].uuid).to.equal(result.production.cast[6].uuid);
-			expect(result.production.cast[2].uuid).to.equal(result.production.cast[7].uuid);
-			expect(result.production.cast[3].uuid).to.equal(result.production.cast[8].uuid);
-			expect(result.production.cast[4].uuid).to.not.equal(result.production.cast[9].uuid);
+			assert.equal(stubs.getRandomUuid.callCount, 6);
+			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(result.production.cast[0].uuid, result.production.cast[5].uuid);
+			assert.equal(result.production.cast[1].uuid, result.production.cast[6].uuid);
+			assert.equal(result.production.cast[2].uuid, result.production.cast[7].uuid);
+			assert.equal(result.production.cast[3].uuid, result.production.cast[8].uuid);
+			assert.notEqual(result.production.cast[4].uuid, result.production.cast[9].uuid);
 		});
 	});
 
-	context('properties in arrays at nested level (nested in array)', () => {
+	describe('properties in arrays at nested level (nested in array)', () => {
 		it('assigns value to uuid property if empty string', async () => {
 			const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 
 			const result = prepareAsParams(instance);
 
-			assert.calledOnce(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			sinonAssert.calledOnce(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].roles[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
 		it('assigns value to uuid property if undefined', async () => {
@@ -1235,9 +1225,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.calledOnce(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].roles[0].uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+			sinonAssert.calledOnce(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].roles[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
 		it('will not assign value to uuid property if one already exists', async () => {
@@ -1257,9 +1247,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].roles[0].uuid).to.equal('yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].roles[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
 		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
@@ -1267,9 +1257,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].roles[0].foo).to.equal('bar');
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].roles[0].foo, 'bar');
 		});
 
 		it('will assign null value to non-uuid properties with empty string values', async () => {
@@ -1277,9 +1267,9 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].roles[0].foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
 		it('will assign null value to non-uuid properties with false values', async () => {
@@ -1287,21 +1277,21 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.notCalled(stubs.getRandomUuid);
-			assert.notCalled(stubs.neo4j.int);
-			expect(result.cast[0].roles[0].foo).to.equal(null);
+			sinonAssert.notCalled(stubs.getRandomUuid);
+			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
-		context('array contains a single item', () => {
+		describe('array contains a single item', () => {
 			it('will not add position property', async () => {
 				const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.cast[0]).to.not.have.property('position');
-				expect(result.cast[0].roles[0]).to.not.have.property('position');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
+				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
 			});
 
 			it('will add model property with value from model getter method', async () => {
@@ -1316,11 +1306,11 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				expect(result.cast[0].roles[0].model).to.equal('BASE');
+				assert.equal(result.cast[0].roles[0].model, 'BASE');
 			});
 		});
 
-		context('array contains more than a single item', () => {
+		describe('array contains more than a single item', () => {
 			it('adds position property with value of array index', async () => {
 				const instance = {
 					cast: [
@@ -1336,15 +1326,15 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledTwice(stubs.getRandomUuid);
-				assert.calledTwice(stubs.neo4j.int);
-				assert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				assert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
-				expect(result.cast[0]).to.not.have.property('position');
-				expect(result.cast[0].roles[0]).to.have.property('position');
-				expect(result.cast[0].roles[0].position).to.equal(0);
-				expect(result.cast[0].roles[1]).to.have.property('position');
-				expect(result.cast[0].roles[1].position).to.equal(1);
+				sinonAssert.calledTwice(stubs.getRandomUuid);
+				sinonAssert.calledTwice(stubs.neo4j.int);
+				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
+				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
+				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), true);
+				assert.equal(result.cast[0].roles[0].position, 0);
+				assert.equal(Object.hasOwn(result.cast[0].roles[1], 'position'), true);
+				assert.equal(result.cast[0].roles[1].position, 1);
 			});
 
 			it('will add model property with value from model getter method', async () => {
@@ -1362,11 +1352,11 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				expect(result.cast[0].roles[0].model).to.equal('BASE');
+				assert.equal(result.cast[0].roles[0].model, 'BASE');
 			});
 		});
 
-		context('object is in array whose items are not permitted an empty string name value', () => {
+		describe('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
 					cast: [
@@ -1382,79 +1372,73 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.calledOnce(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.cast[0].roles.length).to.equal(1);
-				expect(result.cast[0].roles[0].name).to.equal('Polonius');
-				expect(result.cast[0].roles[0]).to.not.have.property('position');
+				sinonAssert.calledOnce(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.cast[0].roles.length, 1);
+				assert.equal(result.cast[0].roles[0].name, 'Polonius');
+				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
 			});
 		});
 
-		context(
-			'object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children',
-			() => {
-				it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
-					const instance = {
-						foos: [
-							{
-								name: 'Foobar',
-								productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-								subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
-							}
-						]
-					};
+		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+				const instance = {
+					foos: [
+						{
+							name: 'Foobar',
+							productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
+							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+						}
+					]
+				};
 
-					const result = prepareAsParams(instance);
+				const result = prepareAsParams(instance);
 
-					assert.notCalled(stubs.getRandomUuid);
-					assert.notCalled(stubs.neo4j.int);
-					expect(result.foos[0].productions.length).to.equal(1);
-					expect(result.foos[0].productions[0]).to.not.have.property('name');
-					expect(result.foos[0].productions[0]).to.not.have.property('position');
-					expect(result.foos[0].subProductions.length).to.equal(1);
-					expect(result.foos[0].subProductions[0]).to.not.have.property('name');
-					expect(result.foos[0].subProductions[0]).to.not.have.property('position');
-				});
-			}
-		);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.foos[0].productions.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'position'), false);
+				assert.equal(result.foos[0].subProductions.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'position'), false);
+			});
+		});
 
-		context(
-			'object is in array where items are permitted an absent name property empty string name value providing they have named children',
-			() => {
-				it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
-					const instance = {
-						foos: [
-							{
-								name: 'Foobar',
-								characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
-								nominations: [{ entities: [{ name: 'Simon Baker' }] }],
-								producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
-								writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
-							}
-						]
-					};
+		describe('object is in array where items are permitted an absent name property empty string name value providing they have named children', () => {
+			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+				const instance = {
+					foos: [
+						{
+							name: 'Foobar',
+							characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
+							nominations: [{ entities: [{ name: 'Simon Baker' }] }],
+							producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
+							writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
+						}
+					]
+				};
 
-					const result = prepareAsParams(instance);
+				const result = prepareAsParams(instance);
 
-					assert.notCalled(stubs.getRandomUuid);
-					assert.notCalled(stubs.neo4j.int);
-					expect(result.foos[0].characterGroups.length).to.equal(1);
-					expect(result.foos[0].characterGroups[0].name).to.be.null;
-					expect(result.foos[0].characterGroups[0]).to.not.have.property('position');
-					expect(result.foos[0].nominations.length).to.equal(1);
-					expect(result.foos[0].nominations[0]).to.not.have.property('name');
-					expect(result.foos[0].nominations[0]).to.not.have.property('position');
-					expect(result.foos[0].producerCredits.length).to.equal(1);
-					expect(result.foos[0].producerCredits[0].name).to.be.null;
-					expect(result.foos[0].producerCredits[0]).to.not.have.property('position');
-					expect(result.foos[0].writingCredits.length).to.equal(1);
-					expect(result.foos[0].writingCredits[0].name).to.be.null;
-					expect(result.foos[0].writingCredits[0]).to.not.have.property('position');
-				});
-			}
-		);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.foos[0].characterGroups.length, 1);
+				assert.equal(result.foos[0].characterGroups[0].name, null);
+				assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
+				assert.equal(result.foos[0].nominations.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'position'), false);
+				assert.equal(result.foos[0].producerCredits.length, 1);
+				assert.equal(result.foos[0].producerCredits[0].name, null);
+				assert.equal(Object.hasOwn(result.foos[0].producerCredits[0], 'position'), false);
+				assert.equal(result.foos[0].writingCredits.length, 1);
+				assert.equal(result.foos[0].writingCredits[0].name, null);
+				assert.equal(Object.hasOwn(result.foos[0].writingCredits[0], 'position'), false);
+			});
+		});
 
-		context('object is in array where items must have at least one named child', () => {
+		describe('object is in array where items must have at least one named child', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 				const instance = {
 					foos: [
@@ -1510,30 +1494,30 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				expect(stubs.neo4j.int.callCount).to.equal(4);
-				expect(result.foos[0].characterGroups.length).to.equal(1);
-				expect(result.foos[0].characterGroups[0]).to.not.have.property('position');
-				expect(result.foos[0].characterGroups[0].name).to.equal('The Borkmans');
-				expect(result.foos[0].creativeCredits.length).to.equal(1);
-				expect(result.foos[0].creativeCredits[0]).to.not.have.property('position');
-				expect(result.foos[0].creativeCredits[0].name).to.equal('Designer');
-				expect(result.foos[0].crewCredits.length).to.equal(1);
-				expect(result.foos[0].crewCredits[0]).to.not.have.property('position');
-				expect(result.foos[0].crewCredits[0].name).to.equal('Stage Manager');
-				expect(result.foos[0].nominations.length).to.equal(4);
-				expect(result.foos[0].nominations[0]).to.not.have.property('name');
-				expect(result.foos[0].nominations[0].position).to.equal(0);
-				expect(result.foos[0].producerCredits.length).to.equal(1);
-				expect(result.foos[0].producerCredits[0]).to.not.have.property('position');
-				expect(result.foos[0].producerCredits[0].name).to.equal('in association with');
-				expect(result.foos[0].writingCredits.length).to.equal(1);
-				expect(result.foos[0].writingCredits[0]).to.not.have.property('position');
-				expect(result.foos[0].writingCredits[0].name).to.equal('version by');
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(result.foos[0].characterGroups.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
+				assert.equal(result.foos[0].characterGroups[0].name, 'The Borkmans');
+				assert.equal(result.foos[0].creativeCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].creativeCredits[0], 'position'), false);
+				assert.equal(result.foos[0].creativeCredits[0].name, 'Designer');
+				assert.equal(result.foos[0].crewCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].crewCredits[0], 'position'), false);
+				assert.equal(result.foos[0].crewCredits[0].name, 'Stage Manager');
+				assert.equal(result.foos[0].nominations.length, 4);
+				assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'name'), false);
+				assert.equal(result.foos[0].nominations[0].position, 0);
+				assert.equal(result.foos[0].producerCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].producerCredits[0], 'position'), false);
+				assert.equal(result.foos[0].producerCredits[0].name, 'in association with');
+				assert.equal(result.foos[0].writingCredits.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].writingCredits[0], 'position'), false);
+				assert.equal(result.foos[0].writingCredits[0].name, 'version by');
 			});
 		});
 
-		context('object is in array where items do not require any named children', () => {
+		describe('object is in array where items do not require any named children', () => {
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 				const instance = {
 					productions: [
@@ -1550,13 +1534,13 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.calledThrice(stubs.neo4j.int);
-				expect(result.productions[0].cast.length).to.equal(3);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.calledThrice(stubs.neo4j.int);
+				assert.equal(result.productions[0].cast.length, 3);
 			});
 		});
 
-		context('object is in array where items require a url', () => {
+		describe('object is in array where items require a url', () => {
 			it('retains objects only if they have a non-empty url value', async () => {
 				const instance = {
 					subProductions: [
@@ -1568,13 +1552,13 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.subProductions[0].reviews.length).to.equal(1);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.subProductions[0].reviews.length, 1);
 			});
 		});
 
-		context('object is in array where items require a uuid', () => {
+		describe('object is in array where items require a uuid', () => {
 			it('retains objects only if they have a non-empty uuid value', async () => {
 				const instance = {
 					nominations: [
@@ -1595,10 +1579,10 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				assert.notCalled(stubs.getRandomUuid);
-				assert.notCalled(stubs.neo4j.int);
-				expect(result.nominations[0].productions.length).to.equal(1);
-				expect(result.productions[0].subProductions.length).to.equal(1);
+				sinonAssert.notCalled(stubs.getRandomUuid);
+				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(result.nominations[0].productions.length, 1);
+				assert.equal(result.productions[0].subProductions.length, 1);
 			});
 		});
 
@@ -1697,15 +1681,13 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			expect(stubs.getRandomUuid.callCount).to.equal(6);
-			expect(stubs.neo4j.int.callCount).to.equal(10);
-			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[0].characters[5].uuid);
-			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[0].characters[6].uuid);
-			expect(result.characterGroups[0].characters[2].uuid).to.equal(result.characterGroups[0].characters[7].uuid);
-			expect(result.characterGroups[0].characters[3].uuid).to.equal(result.characterGroups[0].characters[8].uuid);
-			expect(result.characterGroups[0].characters[4].uuid).not.to.equal(
-				result.characterGroups[0].characters[9].uuid
-			);
+			assert.equal(stubs.getRandomUuid.callCount, 6);
+			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(result.characterGroups[0].characters[0].uuid, result.characterGroups[0].characters[5].uuid);
+			assert.equal(result.characterGroups[0].characters[1].uuid, result.characterGroups[0].characters[6].uuid);
+			assert.equal(result.characterGroups[0].characters[2].uuid, result.characterGroups[0].characters[7].uuid);
+			assert.equal(result.characterGroups[0].characters[3].uuid, result.characterGroups[0].characters[8].uuid);
+			assert.notEqual(result.characterGroups[0].characters[4].uuid, result.characterGroups[0].characters[9].uuid);
 		});
 
 		it('applies the same uuid value to items in different arrays that will need to share the same database entry', async () => {
@@ -1809,15 +1791,13 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			expect(stubs.getRandomUuid.callCount).to.equal(6);
-			expect(stubs.neo4j.int.callCount).to.equal(12);
-			expect(result.characterGroups[0].characters[0].uuid).to.equal(result.characterGroups[1].characters[0].uuid);
-			expect(result.characterGroups[0].characters[1].uuid).to.equal(result.characterGroups[1].characters[1].uuid);
-			expect(result.characterGroups[0].characters[2].uuid).to.equal(result.characterGroups[1].characters[2].uuid);
-			expect(result.characterGroups[0].characters[3].uuid).to.equal(result.characterGroups[1].characters[3].uuid);
-			expect(result.characterGroups[0].characters[4].uuid).not.to.equal(
-				result.characterGroups[1].characters[4].uuid
-			);
+			assert.equal(stubs.getRandomUuid.callCount, 6);
+			assert.equal(stubs.neo4j.int.callCount, 12);
+			assert.equal(result.characterGroups[0].characters[0].uuid, result.characterGroups[1].characters[0].uuid);
+			assert.equal(result.characterGroups[0].characters[1].uuid, result.characterGroups[1].characters[1].uuid);
+			assert.equal(result.characterGroups[0].characters[2].uuid, result.characterGroups[1].characters[2].uuid);
+			assert.equal(result.characterGroups[0].characters[3].uuid, result.characterGroups[1].characters[3].uuid);
+			assert.notEqual(result.characterGroups[0].characters[4].uuid, result.characterGroups[1].characters[4].uuid);
 		});
 	});
 });

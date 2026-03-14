@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { CharacterDepiction } from '../../../src/models/index.js';
 
@@ -43,7 +45,7 @@ describe('CharacterGroup model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new CharacterGroup({ name: 'Montagues' });
 
-				expect(instance.characters).to.deep.equal([]);
+				assert.deepEqual(instance.characters, []);
 			});
 
 			it('assigns array of characters if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -62,10 +64,10 @@ describe('CharacterGroup model', () => {
 					]
 				});
 
-				expect(instance.characters.length).to.equal(3);
-				expect(instance.characters[0] instanceof CharacterDepiction).to.be.true;
-				expect(instance.characters[1] instanceof CharacterDepiction).to.be.true;
-				expect(instance.characters[2] instanceof CharacterDepiction).to.be.true;
+				assert.equal(instance.characters.length, 3);
+				assert.equal(instance.characters[0] instanceof CharacterDepiction, true);
+				assert.equal(instance.characters[1] instanceof CharacterDepiction, true);
+				assert.equal(instance.characters[2] instanceof CharacterDepiction, true);
 			});
 		});
 	});
@@ -85,7 +87,7 @@ describe('CharacterGroup model', () => {
 
 			instance.runInputValidations({ isDuplicate: false });
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
 				instance.characters[0].validateName,
@@ -95,17 +97,19 @@ describe('CharacterGroup model', () => {
 				instance.characters[0].validateCharacterNameUnderlyingNameDisparity,
 				instance.characters[0].validateUniquenessInGroup
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
 				instance.characters
 			);
-			assert.calledOnceWithExactly(instance.characters[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.characters[0].validateUnderlyingName);
-			assert.calledOnceWithExactly(instance.characters[0].validateDifferentiator);
-			assert.calledOnceWithExactly(instance.characters[0].validateQualifier);
-			assert.calledOnceWithExactly(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
-			assert.calledOnceWithExactly(instance.characters[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.characters[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.characters[0].validateUnderlyingName);
+			sinonAssert.calledOnceWithExactly(instance.characters[0].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.characters[0].validateQualifier);
+			sinonAssert.calledOnceWithExactly(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
+			sinonAssert.calledOnceWithExactly(instance.characters[0].validateUniquenessInGroup, {
+				isDuplicate: false
+			});
 		});
 	});
 });

@@ -1,5 +1,7 @@
-import { expect } from 'chai';
-import { assert, restore, spy } from 'sinon';
+import assert from 'node:assert/strict';
+import { afterEach, describe, it } from 'node:test';
+
+import { assert as sinonAssert, restore, spy } from 'sinon';
 
 import { AwardCeremonyCategory, Nomination } from '../../../src/models/index.js';
 
@@ -13,7 +15,7 @@ describe('AwardCeremonyCategory model', () => {
 			it('assigns empty array if absent from props', () => {
 				const instance = new AwardCeremonyCategory({});
 
-				expect(instance.nominations).to.deep.equal([]);
+				assert.deepEqual(instance.nominations, []);
 			});
 
 			it('assigns array of nominations if included in props', () => {
@@ -23,10 +25,10 @@ describe('AwardCeremonyCategory model', () => {
 
 				const instance = new AwardCeremonyCategory(props);
 
-				expect(instance.nominations.length).to.equal(3);
-				expect(instance.nominations[0] instanceof Nomination).to.be.true;
-				expect(instance.nominations[1] instanceof Nomination).to.be.true;
-				expect(instance.nominations[2] instanceof Nomination).to.be.true;
+				assert.equal(instance.nominations.length, 3);
+				assert.equal(instance.nominations[0] instanceof Nomination, true);
+				assert.equal(instance.nominations[1] instanceof Nomination, true);
+				assert.equal(instance.nominations[2] instanceof Nomination, true);
 			});
 		});
 	});
@@ -43,16 +45,16 @@ describe('AwardCeremonyCategory model', () => {
 			spy(instance, 'validateNamePresenceIfNamedChildren');
 			spy(instance.nominations[0], 'runInputValidations');
 			instance.runInputValidations({ isDuplicate: false });
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
 				instance.validateNamePresenceIfNamedChildren,
 				instance.nominations[0].runInputValidations
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, []);
-			assert.calledOnceWithExactly(instance.nominations[0].runInputValidations);
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, []);
+			sinonAssert.calledOnceWithExactly(instance.nominations[0].runInputValidations);
 		});
 	});
 
@@ -64,7 +66,7 @@ describe('AwardCeremonyCategory model', () => {
 			const instance = new AwardCeremonyCategory(props);
 			spy(instance.nominations[0], 'runDatabaseValidations');
 			await instance.runDatabaseValidations();
-			assert.calledOnceWithExactly(instance.nominations[0].runDatabaseValidations);
+			sinonAssert.calledOnceWithExactly(instance.nominations[0].runDatabaseValidations);
 		});
 	});
 });

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
@@ -54,8 +52,7 @@ describe('Productions with crew', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -72,8 +69,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Waste',
@@ -158,8 +154,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Much Ado About Nothing',
@@ -249,8 +244,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Phèdre',
@@ -334,8 +328,7 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Pains of Youth',
@@ -394,31 +387,31 @@ describe('Productions with crew', () => {
 				]
 			});
 
-		wasteAlmeidaProduction = await request.execute(app).get(`/productions/${WASTE_ALMEIDA_PRODUCTION_UUID}`);
+		wasteAlmeidaProduction = await request(app).get(`/productions/${WASTE_ALMEIDA_PRODUCTION_UUID}`);
 
-		muchAdoAboutNothingOlivierProduction = await request
-			.execute(app)
-			.get(`/productions/${MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID}`);
+		muchAdoAboutNothingOlivierProduction = await request(app).get(
+			`/productions/${MUCH_ADO_ABOUT_NOTHING_OLIVIER_PRODUCTION_UUID}`
+		);
 
-		phèdreLytteltonProduction = await request.execute(app).get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
+		phèdreLytteltonProduction = await request(app).get(`/productions/${PHÈDRE_LYTTELTON_PRODUCTION_UUID}`);
 
-		painsOfYouthCottesloeProduction = await request
-			.execute(app)
-			.get(`/productions/${PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID}`);
+		painsOfYouthCottesloeProduction = await request(app).get(
+			`/productions/${PAINS_OF_YOUTH_COTTESLOE_PRODUCTION_UUID}`
+		);
 
-		tariqHussainPerson = await request.execute(app).get(`/people/${TARIQ_HUSSAIN_PERSON_UUID}`);
+		tariqHussainPerson = await request(app).get(`/people/${TARIQ_HUSSAIN_PERSON_UUID}`);
 
-		cassKirchnerPerson = await request.execute(app).get(`/people/${CASS_KIRCHNER_PERSON_UUID}`);
+		cassKirchnerPerson = await request(app).get(`/people/${CASS_KIRCHNER_PERSON_UUID}`);
 
-		saraGunterPerson = await request.execute(app).get(`/people/${SARA_GUNTER_PERSON_UUID}`);
+		saraGunterPerson = await request(app).get(`/people/${SARA_GUNTER_PERSON_UUID}`);
 
-		peterGregoryPerson = await request.execute(app).get(`/people/${PETER_GREGORY_PERSON_UUID}`);
+		peterGregoryPerson = await request(app).get(`/people/${PETER_GREGORY_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
+		stagecraftLtdCompany = await request(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		crewDeputiesLtdCompany = await request.execute(app).get(`/companies/${CREW_DEPUTIES_LTD_COMPANY_UUID}`);
+		crewDeputiesLtdCompany = await request(app).get(`/companies/${CREW_DEPUTIES_LTD_COMPANY_UUID}`);
 
-		crewAssistantsLtdCompany = await request.execute(app).get(`/companies/${CREW_ASSISTANTS_LTD_COMPANY_UUID}`);
+		crewAssistantsLtdCompany = await request(app).get(`/companies/${CREW_ASSISTANTS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Waste at Almeida Theatre (production)', () => {
@@ -529,7 +522,7 @@ describe('Productions with crew', () => {
 
 			const { crewCredits } = wasteAlmeidaProduction.body;
 
-			expect(crewCredits).to.deep.equal(expectedCrewCredits);
+			assert.deepEqual(crewCredits, expectedCrewCredits);
 		});
 	});
 
@@ -640,7 +633,7 @@ describe('Productions with crew', () => {
 
 			const { crewCredits } = phèdreLytteltonProduction.body;
 
-			expect(crewCredits).to.deep.equal(expectedCrewCredits);
+			assert.deepEqual(crewCredits, expectedCrewCredits);
 		});
 	});
 
@@ -758,7 +751,7 @@ describe('Productions with crew', () => {
 
 			const { crewCredits } = muchAdoAboutNothingOlivierProduction.body;
 
-			expect(crewCredits).to.deep.equal(expectedCrewCredits);
+			assert.deepEqual(crewCredits, expectedCrewCredits);
 		});
 	});
 
@@ -835,7 +828,7 @@ describe('Productions with crew', () => {
 
 			const { crewCredits } = painsOfYouthCottesloeProduction.body;
 
-			expect(crewCredits).to.deep.equal(expectedCrewCredits);
+			assert.deepEqual(crewCredits, expectedCrewCredits);
 		});
 	});
 
@@ -920,7 +913,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = tariqHussainPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -1261,7 +1254,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = cassKirchnerPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -1603,7 +1596,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = saraGunterPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -1695,7 +1688,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = peterGregoryPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -1786,7 +1779,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = stagecraftLtdCompany.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -2117,7 +2110,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = crewDeputiesLtdCompany.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -2460,7 +2453,7 @@ describe('Productions with crew', () => {
 
 			const { crewProductions } = crewAssistantsLtdCompany.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 });

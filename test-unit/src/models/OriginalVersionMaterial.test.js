@@ -1,5 +1,9 @@
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
+
+const context = describe;
 
 describe('OriginalVersionMaterial model', () => {
 	let stubs;
@@ -54,16 +58,16 @@ describe('OriginalVersionMaterial model', () => {
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getOriginalVersionMaterialChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
@@ -71,7 +75,7 @@ describe('OriginalVersionMaterial model', () => {
 						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				});
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
@@ -87,17 +91,17 @@ describe('OriginalVersionMaterial model', () => {
 
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getOriginalVersionMaterialChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
@@ -105,13 +109,13 @@ describe('OriginalVersionMaterial model', () => {
 						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				});
-				assert.calledTwice(instance.addPropertyError);
-				assert.calledWithExactly(
+				sinonAssert.calledTwice(instance.addPropertyError);
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
 					"Material with these attributes is this material's subsequent version material"
 				);
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
 					"Material with these attributes is this material's subsequent version material"

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID = 'A_STREETCAR_NAMED_DESIRE_PRODUCTION_UUID';
 const DONMAR_WAREHOUSE_VENUE_UUID = 'DONMAR_WAREHOUSE_VENUE_UUID';
@@ -25,8 +23,7 @@ describe('Venue with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'A Streetcar Named Desire',
@@ -38,8 +35,7 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Life is a Dream',
@@ -51,8 +47,7 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Red',
@@ -64,17 +59,15 @@ describe('Venue with multiple productions', () => {
 				}
 			});
 
-		donmarWarehouseVenue = await request.execute(app).get(`/venues/${DONMAR_WAREHOUSE_VENUE_UUID}`);
+		donmarWarehouseVenue = await request(app).get(`/venues/${DONMAR_WAREHOUSE_VENUE_UUID}`);
 
-		streetcarNamedDesireDonmarProduction = await request
-			.execute(app)
-			.get(`/productions/${A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`);
+		streetcarNamedDesireDonmarProduction = await request(app).get(
+			`/productions/${A_STREETCAR_NAMED_DESIRE_DONMAR_PRODUCTION_UUID}`
+		);
 
-		lifeIsADreamDonmarProduction = await request
-			.execute(app)
-			.get(`/productions/${LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID}`);
+		lifeIsADreamDonmarProduction = await request(app).get(`/productions/${LIFE_IS_A_DREAM_DONMAR_PRODUCTION_UUID}`);
 
-		redDonmarProduction = await request.execute(app).get(`/productions/${RED_DONMAR_PRODUCTION_UUID}`);
+		redDonmarProduction = await request(app).get(`/productions/${RED_DONMAR_PRODUCTION_UUID}`);
 	});
 
 	describe('Donmar Warehouse (venue)', () => {
@@ -111,7 +104,7 @@ describe('Venue with multiple productions', () => {
 
 			const { productions } = donmarWarehouseVenue.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -126,7 +119,7 @@ describe('Venue with multiple productions', () => {
 
 			const { venue } = streetcarNamedDesireDonmarProduction.body;
 
-			expect(venue).to.deep.equal(expectedVenue);
+			assert.deepEqual(venue, expectedVenue);
 		});
 	});
 
@@ -141,7 +134,7 @@ describe('Venue with multiple productions', () => {
 
 			const { venue } = lifeIsADreamDonmarProduction.body;
 
-			expect(venue).to.deep.equal(expectedVenue);
+			assert.deepEqual(venue, expectedVenue);
 		});
 	});
 
@@ -156,7 +149,7 @@ describe('Venue with multiple productions', () => {
 
 			const { venue } = redDonmarProduction.body;
 
-			expect(venue).to.deep.equal(expectedVenue);
+			assert.deepEqual(venue, expectedVenue);
 		});
 	});
 });

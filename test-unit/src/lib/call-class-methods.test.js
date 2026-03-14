@@ -1,7 +1,9 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
 import httpMocks from 'node-mocks-http';
-import { assert, restore, stub } from 'sinon';
+import { assert as sinonAssert, restore, stub } from 'sinon';
 
 import { Character } from '../../../src/models/index.js';
 
@@ -36,7 +38,7 @@ describe('Call Class Methods module', () => {
 			character = new Character();
 		});
 
-		context('resolves with data', () => {
+		describe('resolves with data', () => {
 			it('calls renderPage module', async () => {
 				const instanceMethodResponse = { property: 'value' };
 				stub(character, method).callsFake(() => {
@@ -45,13 +47,13 @@ describe('Call Class Methods module', () => {
 
 				const result = await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 
-				assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, instanceMethodResponse);
-				assert.notCalled(stubs.next);
-				expect(result).to.equal('sendJsonResponse response');
+				sinonAssert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, instanceMethodResponse);
+				sinonAssert.notCalled(stubs.next);
+				assert.equal(result, 'sendJsonResponse response');
 			});
 		});
 
-		context('resolves with error', () => {
+		describe('resolves with error', () => {
 			it('calls next() with error', async () => {
 				stub(character, method).callsFake(() => {
 					return Promise.reject(error);
@@ -59,12 +61,12 @@ describe('Call Class Methods module', () => {
 
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 
-				assert.calledOnceWithExactly(stubs.next, error);
-				assert.notCalled(stubs.sendJsonResponse);
+				sinonAssert.calledOnceWithExactly(stubs.next, error);
+				sinonAssert.notCalled(stubs.sendJsonResponse);
 			});
 		});
 
-		context("resolves with 'Not Found' error", () => {
+		describe("resolves with 'Not Found' error", () => {
 			it('responds with 404 status and sends error message', async () => {
 				stub(character, method).callsFake(() => {
 					return Promise.reject(notFoundError);
@@ -72,10 +74,10 @@ describe('Call Class Methods module', () => {
 
 				await callClassMethods.callInstanceMethod(stubs.response, stubs.next, character, method);
 
-				expect(stubs.response.statusCode).to.equal(404);
-				expect(stubs.response._getData()).to.equal('Not Found'); // eslint-disable-line no-underscore-dangle
-				assert.notCalled(stubs.sendJsonResponse);
-				assert.notCalled(stubs.next);
+				assert.equal(stubs.response.statusCode, 404);
+				assert.equal(stubs.response._getData(), 'Not Found'); // eslint-disable-line no-underscore-dangle
+				sinonAssert.notCalled(stubs.sendJsonResponse);
+				sinonAssert.notCalled(stubs.next);
 			});
 		});
 	});
@@ -87,7 +89,7 @@ describe('Call Class Methods module', () => {
 			Character[method].restore();
 		});
 
-		context('resolves with data', () => {
+		describe('resolves with data', () => {
 			it('calls renderPage module', async () => {
 				const staticListMethodResponse = [{ property: 'value' }];
 				stub(Character, method).callsFake(() => {
@@ -101,13 +103,13 @@ describe('Call Class Methods module', () => {
 					'character'
 				);
 
-				assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, staticListMethodResponse);
-				assert.notCalled(stubs.next);
-				expect(result).to.equal('sendJsonResponse response');
+				sinonAssert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, staticListMethodResponse);
+				sinonAssert.notCalled(stubs.next);
+				assert.equal(result, 'sendJsonResponse response');
 			});
 		});
 
-		context('resolves with error', () => {
+		describe('resolves with error', () => {
 			it('calls next() with error', async () => {
 				stub(Character, method).callsFake(() => {
 					return Promise.reject(error);
@@ -115,8 +117,8 @@ describe('Call Class Methods module', () => {
 
 				await callClassMethods.callStaticListMethod(stubs.response, stubs.next, Character, 'character');
 
-				assert.calledOnceWithExactly(stubs.next, error);
-				assert.notCalled(stubs.sendJsonResponse);
+				sinonAssert.calledOnceWithExactly(stubs.next, error);
+				sinonAssert.notCalled(stubs.sendJsonResponse);
 			});
 		});
 	});

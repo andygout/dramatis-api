@@ -1,6 +1,10 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
 import { restore, stub } from 'sinon';
+
+import { toPlainObject } from '../../test-helpers/index.js';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -33,7 +37,7 @@ describe('Input validation failures: Company instance', () => {
 
 	const createInstance = (props) => new Company(props);
 
-	context('name value is empty string', () => {
+	describe('name value is empty string', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -52,12 +56,12 @@ describe('Input validation failures: Company instance', () => {
 					}
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('name value exceeds maximum limit', () => {
+	describe('name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -76,12 +80,12 @@ describe('Input validation failures: Company instance', () => {
 					}
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});
 
-	context('differentiator value exceeds maximum limit', () => {
+	describe('differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -101,7 +105,7 @@ describe('Input validation failures: Company instance', () => {
 					}
 				};
 
-				expect(result).to.deep.equal(expectedResponseBody);
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
 			});
 		}
 	});

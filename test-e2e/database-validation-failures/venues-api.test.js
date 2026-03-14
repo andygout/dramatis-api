@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Database validation failures: Venues API', () => {
 	describe('attempt to create instance', () => {
@@ -45,10 +45,9 @@ describe('Database validation failures: Venues API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Venue')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Venue'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/venues')
 					.send({
 						name: 'Sur-Bar Theatre',
@@ -78,15 +77,16 @@ describe('Database validation failures: Venues API', () => {
 					]
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Venue')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Venue'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Venue',
 						name: 'Sur-Bar Theatre'
-					})
-				).to.be.false;
+					}),
+					false
+				);
 			});
 		});
 
@@ -119,10 +119,9 @@ describe('Database validation failures: Venues API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Venue')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Venue'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/venues')
 					.send({
 						name: 'Sur-Sur-Foo Theatre',
@@ -156,15 +155,16 @@ describe('Database validation failures: Venues API', () => {
 					]
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Venue')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Venue'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Venue',
 						name: 'Sur-Sur-Foo Theatre'
-					})
-				).to.be.false;
+					}),
+					false
+				);
 			});
 		});
 	});
@@ -206,10 +206,9 @@ describe('Database validation failures: Venues API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Venue')).to.equal(3);
+				assert.equal(await countNodesWithLabel('Venue'), 3);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/venues/${SUR_BAR_VENUE_UUID}`)
 					.send({
 						name: 'Sur-Bar Theatre',
@@ -240,16 +239,17 @@ describe('Database validation failures: Venues API', () => {
 					]
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Venue')).to.equal(3);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Venue'), 3);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Venue',
 						name: 'Sur-Bar Theatre',
 						uuid: SUR_BAR_VENUE_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -289,10 +289,9 @@ describe('Database validation failures: Venues API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Venue')).to.equal(3);
+				assert.equal(await countNodesWithLabel('Venue'), 3);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/venues/${SUR_SUR_FOO_THEATRE_VENUE_UUID}`)
 					.send({
 						name: 'Sur-Sur-Foo Theatre',
@@ -327,16 +326,17 @@ describe('Database validation failures: Venues API', () => {
 					]
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Venue')).to.equal(3);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Venue'), 3);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Venue',
 						name: 'Sur-Sur-Foo Theatre',
 						uuid: SUR_SUR_FOO_THEATRE_VENUE_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -378,10 +378,9 @@ describe('Database validation failures: Venues API', () => {
 				});
 
 				it('returns instance with appropriate errors attached', async () => {
-					expect(await countNodesWithLabel('Venue')).to.equal(3);
+					assert.equal(await countNodesWithLabel('Venue'), 3);
 
-					const response = await request
-						.execute(app)
+					const response = await request(app)
 						.put(`/venues/${SUB_FOO_THEATRE_VENUE_UUID}`)
 						.send({
 							name: 'Sub-Foo Theatre',
@@ -412,16 +411,17 @@ describe('Database validation failures: Venues API', () => {
 						]
 					};
 
-					expect(response).to.have.status(200);
-					expect(response.body).to.deep.equal(expectedResponseBody);
-					expect(await countNodesWithLabel('Venue')).to.equal(3);
-					expect(
+					assert.equal(response.status, 200);
+					assert.deepEqual(response.body, expectedResponseBody);
+					assert.equal(await countNodesWithLabel('Venue'), 3);
+					assert.equal(
 						await isNodeExistent({
 							label: 'Venue',
 							name: 'Sub-Foo Theatre',
 							uuid: SUB_FOO_THEATRE_VENUE_UUID
-						})
-					).to.be.true;
+						}),
+						true
+					);
 				});
 			}
 		);

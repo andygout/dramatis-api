@@ -1,12 +1,10 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Non-existent instances: Companies API', () => {
 	before(async () => {
@@ -18,40 +16,39 @@ describe('Non-existent instances: Companies API', () => {
 
 		describe('GET edit endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).get(`/companies/${NON_EXISTENT_COMPANY_UUID}/edit`);
+				const response = await request(app).get(`/companies/${NON_EXISTENT_COMPANY_UUID}/edit`);
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 
 		describe('PUT update endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/companies/${NON_EXISTENT_COMPANY_UUID}`)
 					.send({ name: 'Royal Shakespeare Company' });
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 
 		describe('GET show endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).get(`/companies/${NON_EXISTENT_COMPANY_UUID}`);
+				const response = await request(app).get(`/companies/${NON_EXISTENT_COMPANY_UUID}`);
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 
 		describe('DELETE delete endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).delete(`/companies/${NON_EXISTENT_COMPANY_UUID}`);
+				const response = await request(app).delete(`/companies/${NON_EXISTENT_COMPANY_UUID}`);
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 	});

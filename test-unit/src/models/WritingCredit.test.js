@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Company, Person, SourceMaterial } from '../../../src/models/index.js';
 
@@ -53,13 +55,13 @@ describe('WritingCredit model', () => {
 			it('assigns null if absent from props', async () => {
 				const instance = new WritingCredit({ name: '' });
 
-				expect(instance.creditType).to.equal(null);
+				assert.equal(instance.creditType, null);
 			});
 
 			it('assigns null if included in props but value is not an accepted credit type', async () => {
 				const instance = new WritingCredit({ name: '', creditType: 'foobar' });
 
-				expect(instance.creditType).to.equal(null);
+				assert.equal(instance.creditType, null);
 			});
 
 			it('assigns value if included in props and is an accepted credit type', async () => {
@@ -68,7 +70,7 @@ describe('WritingCredit model', () => {
 				for (const creditType of creditTypes) {
 					const instance = new WritingCredit({ name: '', creditType });
 
-					expect(instance.creditType).to.equal(creditType);
+					assert.equal(instance.creditType, creditType);
 				}
 			});
 		});
@@ -77,7 +79,7 @@ describe('WritingCredit model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new WritingCredit({ name: 'version by' });
 
-				expect(instance.entities).to.deep.equal([]);
+				assert.deepEqual(instance.entities, []);
 			});
 
 			it('assigns array of writers and materials if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
@@ -120,16 +122,16 @@ describe('WritingCredit model', () => {
 					]
 				});
 
-				expect(instance.entities.length).to.equal(9);
-				expect(instance.entities[0] instanceof Person).to.be.true;
-				expect(instance.entities[1] instanceof Company).to.be.true;
-				expect(instance.entities[2] instanceof SourceMaterial).to.be.true;
-				expect(instance.entities[3] instanceof Person).to.be.true;
-				expect(instance.entities[4] instanceof Company).to.be.true;
-				expect(instance.entities[5] instanceof SourceMaterial).to.be.true;
-				expect(instance.entities[6] instanceof Person).to.be.true;
-				expect(instance.entities[7] instanceof Company).to.be.true;
-				expect(instance.entities[8] instanceof SourceMaterial).to.be.true;
+				assert.equal(instance.entities.length, 9);
+				assert.ok(instance.entities[0] instanceof Person);
+				assert.ok(instance.entities[1] instanceof Company);
+				assert.ok(instance.entities[2] instanceof SourceMaterial);
+				assert.ok(instance.entities[3] instanceof Person);
+				assert.ok(instance.entities[4] instanceof Company);
+				assert.ok(instance.entities[5] instanceof SourceMaterial);
+				assert.ok(instance.entities[6] instanceof Person);
+				assert.ok(instance.entities[7] instanceof Company);
+				assert.ok(instance.entities[8] instanceof SourceMaterial);
 			});
 		});
 	});
@@ -161,7 +163,7 @@ describe('WritingCredit model', () => {
 				subject: { name: 'The Indian Boy', differentiator: '1' }
 			});
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.validateUniquenessInGroup,
 				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
@@ -176,20 +178,23 @@ describe('WritingCredit model', () => {
 				instance.entities[2].validateUniquenessInGroup,
 				instance.entities[2].validateNoAssociationWithSelf
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices, instance.entities);
-			assert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
-			assert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
-			assert.notCalled(instance.entities[0].validateNoAssociationWithSelf);
-			assert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
-			assert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
-			assert.notCalled(instance.entities[1].validateNoAssociationWithSelf);
-			assert.calledOnceWithExactly(instance.entities[2].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.entities[2].validateDifferentiator);
-			assert.calledOnceWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnceWithExactly(instance.entities[2].validateNoAssociationWithSelf, {
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
+				instance.entities
+			);
+			sinonAssert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.notCalled(instance.entities[0].validateNoAssociationWithSelf);
+			sinonAssert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.notCalled(instance.entities[1].validateNoAssociationWithSelf);
+			sinonAssert.calledOnceWithExactly(instance.entities[2].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[2].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[2].validateNoAssociationWithSelf, {
 				name: 'The Indian Boy',
 				differentiator: '1'
 			});
@@ -217,9 +222,9 @@ describe('WritingCredit model', () => {
 
 			await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-			assert.notCalled(instance.entities[0].runDatabaseValidations);
-			assert.notCalled(instance.entities[1].runDatabaseValidations);
-			assert.calledOnceWithExactly(instance.entities[2].runDatabaseValidations, {
+			sinonAssert.notCalled(instance.entities[0].runDatabaseValidations);
+			sinonAssert.notCalled(instance.entities[1].runDatabaseValidations);
+			sinonAssert.calledOnceWithExactly(instance.entities[2].runDatabaseValidations, {
 				subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 			});
 		});
