@@ -1,4 +1,6 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
 import { restore, stub } from 'sinon';
 
@@ -72,6 +74,6 @@ describe('Convert Neo4j Records To Objects module', () => {
 
 		const result = convertNeo4jRecordsToObjects(neo4Response);
 
-		expect(result).to.deep.equal(expectedResult);
+		assert.deepEqual(result, expectedResult);
 	});
 });

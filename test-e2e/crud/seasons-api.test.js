@@ -1,18 +1,16 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
-
 describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 	describe('GET new endpoint', () => {
 		it('responds with data required to prepare new season', async () => {
-			const response = await request.execute(app).get('/seasons/new');
+			const response = await request(app).get('/seasons/new');
 
 			const expectedResponseBody = {
 				model: 'SEASON',
@@ -21,8 +19,8 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
@@ -36,9 +34,9 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 		});
 
 		it('creates season', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Season'), 0);
 
-			const response = await request.execute(app).post('/seasons').send({
+			const response = await request(app).post('/seasons').send({
 				name: 'Not Black and White'
 			});
 
@@ -50,13 +48,13 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Season')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Season'), 1);
 		});
 
 		it('gets data required to edit specific season', async () => {
-			const response = await request.execute(app).get(`/seasons/${SEASON_UUID}/edit`);
+			const response = await request(app).get(`/seasons/${SEASON_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'SEASON',
@@ -66,14 +64,14 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates season', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Season'), 1);
 
-			const response = await request.execute(app).put(`/seasons/${SEASON_UUID}`).send({
+			const response = await request(app).put(`/seasons/${SEASON_UUID}`).send({
 				name: 'The David Hare Season'
 			});
 
@@ -85,13 +83,13 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Season')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Season'), 1);
 		});
 
 		it('shows season', async () => {
-			const response = await request.execute(app).get(`/seasons/${SEASON_UUID}`);
+			const response = await request(app).get(`/seasons/${SEASON_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'SEASON',
@@ -101,14 +99,14 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				productions: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('deletes season', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Season'), 1);
 
-			const response = await request.execute(app).delete(`/seasons/${SEASON_UUID}`);
+			const response = await request(app).delete(`/seasons/${SEASON_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'SEASON',
@@ -117,9 +115,9 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Season')).to.equal(0);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Season'), 0);
 		});
 	});
 
@@ -133,21 +131,21 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 
 			await purgeDatabase();
 
-			await request.execute(app).post('/seasons').send({
+			await request(app).post('/seasons').send({
 				name: 'The David Hare Season'
 			});
 
-			await request.execute(app).post('/seasons').send({
+			await request(app).post('/seasons').send({
 				name: 'Not Black and White'
 			});
 
-			await request.execute(app).post('/seasons').send({
+			await request(app).post('/seasons').send({
 				name: 'Donmar in the West End'
 			});
 		});
 
 		it('lists all seasons ordered by name', async () => {
-			const response = await request.execute(app).get('/seasons');
+			const response = await request(app).get('/seasons');
 
 			const expectedResponseBody = [
 				{
@@ -167,8 +165,8 @@ describe('CRUD (Create, Read, Update, Delete): Seasons API', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

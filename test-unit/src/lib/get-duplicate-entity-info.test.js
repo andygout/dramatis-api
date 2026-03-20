@@ -1,11 +1,13 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import { getDuplicateEntities, isEntityInArray } from '../../../src/lib/get-duplicate-entity-info.js';
+
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
 describe('Get Duplicate Entity Info module', () => {
 	describe('getDuplicateEntities function', () => {
-		context('duplicates exist at the top level', () => {
+		describe('duplicates exist at the top level', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'PERSON'),
@@ -24,12 +26,12 @@ describe('Get Duplicate Entity Info module', () => {
 					}
 				];
 
-				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('PERSON');
+				assert.deepEqual(result, expectedResult);
+				assert.equal(result[0].model, 'PERSON');
 			});
 		});
 
-		context('duplicates exist at the nested level', () => {
+		describe('duplicates exist at the nested level', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -80,12 +82,12 @@ describe('Get Duplicate Entity Info module', () => {
 					}
 				];
 
-				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('PERSON');
+				assert.deepEqual(result, expectedResult);
+				assert.equal(result[0].model, 'PERSON');
 			});
 		});
 
-		context('duplicates exist at the top level and nested level', () => {
+		describe('duplicates exist at the top level and nested level', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -136,12 +138,12 @@ describe('Get Duplicate Entity Info module', () => {
 					}
 				];
 
-				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('PERSON');
+				assert.deepEqual(result, expectedResult);
+				assert.equal(result[0].model, 'PERSON');
 			});
 		});
 
-		context('duplicates exist at the nested level in separate arrays', () => {
+		describe('duplicates exist at the nested level in separate arrays', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -215,12 +217,12 @@ describe('Get Duplicate Entity Info module', () => {
 					}
 				];
 
-				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('PERSON');
+				assert.deepEqual(result, expectedResult);
+				assert.equal(result[0].model, 'PERSON');
 			});
 		});
 
-		context('multiple duplicates exist in various formations', () => {
+		describe('multiple duplicates exist in various formations', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -319,13 +321,13 @@ describe('Get Duplicate Entity Info module', () => {
 					}
 				];
 
-				expect(result).to.deep.equal(expectedResult);
-				expect(result[0].model).to.equal('PERSON');
-				expect(result[1].model).to.equal('PERSON');
+				assert.deepEqual(result, expectedResult);
+				assert.equal(result[0].model, 'PERSON');
+				assert.equal(result[1].model, 'PERSON');
 			});
 		});
 
-		context('duplicates exist of entities with empty string name values', () => {
+		describe('duplicates exist of entities with empty string name values', () => {
 			it('ignores entities with empty string name values', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -408,13 +410,13 @@ describe('Get Duplicate Entity Info module', () => {
 
 				const expectedResult = [];
 
-				expect(result).to.deep.equal(expectedResult);
+				assert.deepEqual(result, expectedResult);
 			});
 		});
 	});
 
 	describe('isEntityInArray function', () => {
-		context('entity is in array', () => {
+		describe('entity is in array', () => {
 			it('returns true', () => {
 				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON');
 
@@ -426,11 +428,11 @@ describe('Get Duplicate Entity Info module', () => {
 
 				const result = isEntityInArray(entity, array);
 
-				expect(result).to.be.true;
+				assert.equal(result, true);
 			});
 		});
 
-		context('entity is not in array', () => {
+		describe('entity is not in array', () => {
 			it('returns false', () => {
 				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON');
 
@@ -443,7 +445,7 @@ describe('Get Duplicate Entity Info module', () => {
 
 				const result = isEntityInArray(entity, array);
 
-				expect(result).to.be.false;
+				assert.equal(result, false);
 			});
 		});
 	});

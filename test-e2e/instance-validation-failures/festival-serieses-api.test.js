@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Instance validation failures: Festival Serieses API', () => {
 	describe('attempt to create instance', () => {
@@ -30,9 +30,9 @@ describe('Instance validation failures: Festival Serieses API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 
-				const response = await request.execute(app).post('/festival-serieses').send({
+				const response = await request(app).post('/festival-serieses').send({
 					name: ''
 				});
 
@@ -46,17 +46,17 @@ describe('Instance validation failures: Festival Serieses API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 
-				const response = await request.execute(app).post('/festival-serieses').send({
+				const response = await request(app).post('/festival-serieses').send({
 					name: 'Edinburgh International Festival'
 				});
 
@@ -71,9 +71,9 @@ describe('Instance validation failures: Festival Serieses API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 			});
 		});
 	});
@@ -100,14 +100,11 @@ describe('Instance validation failures: Festival Serieses API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 
-				const response = await request
-					.execute(app)
-					.put(`/festival-serieses/${CONNECTIONS_FESTIVAL_SERIES_UUID}`)
-					.send({
-						name: ''
-					});
+				const response = await request(app).put(`/festival-serieses/${CONNECTIONS_FESTIVAL_SERIES_UUID}`).send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'FESTIVAL_SERIES',
@@ -120,29 +117,27 @@ describe('Instance validation failures: Festival Serieses API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'FestivalSeries',
 						name: 'Connections',
 						uuid: CONNECTIONS_FESTIVAL_SERIES_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 
-				const response = await request
-					.execute(app)
-					.put(`/festival-serieses/${CONNECTIONS_FESTIVAL_SERIES_UUID}`)
-					.send({
-						name: 'Edinburgh International Festival'
-					});
+				const response = await request(app).put(`/festival-serieses/${CONNECTIONS_FESTIVAL_SERIES_UUID}`).send({
+					name: 'Edinburgh International Festival'
+				});
 
 				const expectedResponseBody = {
 					model: 'FESTIVAL_SERIES',
@@ -156,16 +151,16 @@ describe('Instance validation failures: Festival Serieses API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
-				expect(
-					await isNodeExistent({
-						label: 'FestivalSeries',
-						name: 'Connections',
-						uuid: CONNECTIONS_FESTIVAL_SERIES_UUID
-					})
-				).to.be.true;
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
+				assert.equa;
+				(await isNodeExistent({
+					label: 'FestivalSeries',
+					name: 'Connections',
+					uuid: CONNECTIONS_FESTIVAL_SERIES_UUID
+				}),
+					true);
 			});
 		});
 	});
@@ -200,11 +195,11 @@ describe('Instance validation failures: Festival Serieses API', () => {
 
 		context('instance has associations', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 
-				const response = await request
-					.execute(app)
-					.delete(`/festival-serieses/${EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID}`);
+				const response = await request(app).delete(
+					`/festival-serieses/${EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID}`
+				);
 
 				const expectedResponseBody = {
 					model: 'FESTIVAL_SERIES',
@@ -217,9 +212,9 @@ describe('Instance validation failures: Festival Serieses API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 			});
 		});
 	});

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const HAMLET_MATERIAL_UUID = 'HAMLET_MATERIAL_UUID';
 const HAMLET_CHARACTER_UUID = 'HAMLET_CHARACTER_UUID';
@@ -49,8 +47,7 @@ describe('Character with variant names from productions of different materials',
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Hamlet',
@@ -70,8 +67,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
@@ -91,8 +87,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Fortinbras',
@@ -112,8 +107,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Hamletmachine',
@@ -133,8 +127,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Hamlet',
@@ -169,8 +162,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Rosencrantz and Guildenstern Are Dead',
@@ -205,8 +197,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Fortinbras',
@@ -241,8 +232,7 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Hamletmachine',
@@ -276,29 +266,27 @@ describe('Character with variant names from productions of different materials',
 				]
 			});
 
-		hamletCharacter = await request.execute(app).get(`/characters/${HAMLET_CHARACTER_UUID}`);
+		hamletCharacter = await request(app).get(`/characters/${HAMLET_CHARACTER_UUID}`);
 
-		hamletNationalProduction = await request.execute(app).get(`/productions/${HAMLET_NATIONAL_PRODUCTION_UUID}`);
+		hamletNationalProduction = await request(app).get(`/productions/${HAMLET_NATIONAL_PRODUCTION_UUID}`);
 
-		rosencrantzAndGuildensternAreDeadHaymarketProduction = await request
-			.execute(app)
-			.get(`/productions/${ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID}`);
+		rosencrantzAndGuildensternAreDeadHaymarketProduction = await request(app).get(
+			`/productions/${ROSENCRANTZ_AND_GUILDENSTERN_ARE_DEAD_HAYMARKET_PRODUCTION_UUID}`
+		);
 
-		fortinbrasLaJollaProduction = await request
-			.execute(app)
-			.get(`/productions/${FORTINBRAS_LA_JOLLA_PRODUCTION_UUID}`);
+		fortinbrasLaJollaProduction = await request(app).get(`/productions/${FORTINBRAS_LA_JOLLA_PRODUCTION_UUID}`);
 
-		hamletmachineTetroSanNicolòProduction = await request
-			.execute(app)
-			.get(`/productions/${HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID}`);
+		hamletmachineTetroSanNicolòProduction = await request(app).get(
+			`/productions/${HAMLETMACHINE_TEATRO_SAN_NICOLÒ_PRODUCTION_UUID}`
+		);
 
-		roryKinnearPerson = await request.execute(app).get(`/people/${RORY_KINNEAR_PERSON_UUID}`);
+		roryKinnearPerson = await request(app).get(`/people/${RORY_KINNEAR_PERSON_UUID}`);
 
-		jackHawkinsPerson = await request.execute(app).get(`/people/${JACK_HAWKINS_PERSON_UUID}`);
+		jackHawkinsPerson = await request(app).get(`/people/${JACK_HAWKINS_PERSON_UUID}`);
 
-		donReillyPerson = await request.execute(app).get(`/people/${DON_REILLY_PERSON_UUID}`);
+		donReillyPerson = await request(app).get(`/people/${DON_REILLY_PERSON_UUID}`);
 
-		gabrieleCicirelloPerson = await request.execute(app).get(`/people/${GABRIELE_CICIRELLO_PERSON_UUID}`);
+		gabrieleCicirelloPerson = await request(app).get(`/people/${GABRIELE_CICIRELLO_PERSON_UUID}`);
 	});
 
 	describe('Hamlet (character)', () => {
@@ -348,7 +336,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { materials } = hamletCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
@@ -356,7 +344,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { variantNamedPortrayals } = hamletCharacter.body;
 
-			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
+			assert.deepEqual(variantNamedPortrayals, expectedVariantNamedPortrayals);
 		});
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
@@ -465,7 +453,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { productions } = hamletCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -504,7 +492,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { cast } = hamletNationalProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -543,7 +531,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { cast } = rosencrantzAndGuildensternAreDeadHaymarketProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -582,7 +570,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { cast } = fortinbrasLaJollaProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -621,7 +609,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { cast } = hamletmachineTetroSanNicolòProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -655,7 +643,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { castMemberProductions } = roryKinnearPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -689,7 +677,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { castMemberProductions } = jackHawkinsPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -723,7 +711,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { castMemberProductions } = donReillyPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -757,7 +745,7 @@ describe('Character with variant names from productions of different materials',
 
 			const { castMemberProductions } = gabrieleCicirelloPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

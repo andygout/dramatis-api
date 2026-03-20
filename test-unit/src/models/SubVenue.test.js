@@ -1,5 +1,9 @@
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
+
+const context = describe;
 
 describe('SubVenue model', () => {
 	let stubs;
@@ -54,14 +58,14 @@ describe('SubVenue model', () => {
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
@@ -69,7 +73,7 @@ describe('SubVenue model', () => {
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				});
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
@@ -89,15 +93,15 @@ describe('SubVenue model', () => {
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
@@ -105,13 +109,13 @@ describe('SubVenue model', () => {
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				});
-				assert.calledTwice(instance.addPropertyError);
-				assert.calledWithExactly(
+				sinonAssert.calledTwice(instance.addPropertyError);
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
 					'Venue with these attributes is already assigned to another sur-venue'
 				);
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
 					'Venue with these attributes is already assigned to another sur-venue'
@@ -135,15 +139,15 @@ describe('SubVenue model', () => {
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
@@ -151,13 +155,13 @@ describe('SubVenue model', () => {
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				});
-				assert.calledTwice(instance.addPropertyError);
-				assert.calledWithExactly(
+				sinonAssert.calledTwice(instance.addPropertyError);
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
 					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
 				);
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
 					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
@@ -181,15 +185,15 @@ describe('SubVenue model', () => {
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
@@ -197,13 +201,13 @@ describe('SubVenue model', () => {
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
 				});
-				assert.calledTwice(instance.addPropertyError);
-				assert.calledWithExactly(
+				sinonAssert.calledTwice(instance.addPropertyError);
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
 					'Sub-venue cannot be assigned to a two-tiered venue collection'
 				);
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
 					'Sub-venue cannot be assigned to a two-tiered venue collection'

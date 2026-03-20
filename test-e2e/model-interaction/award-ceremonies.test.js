@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
@@ -93,8 +91,7 @@ describe('Award ceremonies', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -111,8 +108,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -123,8 +119,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -135,8 +130,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -147,8 +141,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -159,8 +152,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Waldo',
@@ -171,8 +163,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Waldo',
@@ -183,8 +174,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -195,8 +185,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -207,8 +196,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -219,8 +207,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -231,8 +218,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -243,8 +229,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -255,8 +240,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Thud',
@@ -267,8 +251,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -279,8 +262,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Fuga',
@@ -291,8 +273,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Tutu',
@@ -303,8 +284,7 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Grault',
@@ -315,86 +295,85 @@ describe('Award ceremonies', () => {
 				}
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Garply',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Plugh',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Fred',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Waldo',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Piyo',
 			format: 'play',
 			year: '2017'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Xyzzy',
 			format: 'play',
 			year: '2017'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Wibble',
 			format: 'play',
 			year: '2017'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Hoge',
 			format: 'play',
 			year: '2017'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Thud',
 			format: 'play',
 			year: '2017'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Toto',
 			format: 'play',
 			year: '2018'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Fuga',
 			format: 'play',
 			year: '2018'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Tutu',
 			format: 'play',
 			year: '2018'
 		});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Grault',
 			format: 'play',
 			year: '2019'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2020',
@@ -664,8 +643,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
@@ -858,8 +836,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2018',
@@ -953,8 +930,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -1085,8 +1061,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2017',
@@ -1362,8 +1337,7 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2019',
@@ -1559,37 +1533,37 @@ describe('Award ceremonies', () => {
 				]
 			});
 
-		laurenceOlivierAwards2020AwardCeremony = await request
-			.execute(app)
-			.get(`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`);
+		laurenceOlivierAwards2020AwardCeremony = await request(app).get(
+			`/award-ceremonies/${LAURENCE_OLIVIER_AWARDS_2020_AWARD_CEREMONY_UUID}`
+		);
 
-		eveningStandardTheatreAwards2017AwardCeremony = await request
-			.execute(app)
-			.get(`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS2017AWARD_CEREMONY_UUID}`);
+		eveningStandardTheatreAwards2017AwardCeremony = await request(app).get(
+			`/award-ceremonies/${EVENING_STANDARD_THEATRE_AWARDS2017AWARD_CEREMONY_UUID}`
+		);
 
-		laurenceOlivierAwardsAward = await request.execute(app).get(`/awards/${LAURENCE_OLIVIER_AWARDS_AWARD_UUID}`);
+		laurenceOlivierAwardsAward = await request(app).get(`/awards/${LAURENCE_OLIVIER_AWARDS_AWARD_UUID}`);
 
-		eveningStandardTheatreAwardsAward = await request
-			.execute(app)
-			.get(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
+		eveningStandardTheatreAwardsAward = await request(app).get(
+			`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`
+		);
 
-		johnDoePerson = await request.execute(app).get(`/people/${JOHN_DOE_PERSON_UUID}`);
+		johnDoePerson = await request(app).get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await request.execute(app).get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
+		curtainUpLtdCompany = await request(app).get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		conorCorgePerson = await request.execute(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
+		conorCorgePerson = await request(app).get(`/people/${CONOR_CORGE_PERSON_UUID}`);
 
-		stagecraftLtdCompany = await request.execute(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
+		stagecraftLtdCompany = await request(app).get(`/companies/${STAGECRAFT_LTD_COMPANY_UUID}`);
 
-		quincyQuxPerson = await request.execute(app).get(`/people/${QUINCY_QUX_PERSON_UUID}`);
+		quincyQuxPerson = await request(app).get(`/people/${QUINCY_QUX_PERSON_UUID}`);
 
-		garplyLytteltonProduction = await request.execute(app).get(`/productions/${GARPLY_LYTTELTON_PRODUCTION_UUID}`);
+		garplyLytteltonProduction = await request(app).get(`/productions/${GARPLY_LYTTELTON_PRODUCTION_UUID}`);
 
-		xyzzyPlayhouseProduction = await request.execute(app).get(`/productions/${XYZZY_PLAYHOUSE_PRODUCTION_UUID}`);
+		xyzzyPlayhouseProduction = await request(app).get(`/productions/${XYZZY_PLAYHOUSE_PRODUCTION_UUID}`);
 
-		garplyMaterial = await request.execute(app).get(`/materials/${GARPLY_MATERIAL_UUID}`);
+		garplyMaterial = await request(app).get(`/materials/${GARPLY_MATERIAL_UUID}`);
 
-		xyzzyMaterial = await request.execute(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
+		xyzzyMaterial = await request(app).get(`/materials/${XYZZY_MATERIAL_UUID}`);
 	});
 
 	describe('Laurence Olivier Awards 2020 (award ceremony)', () => {
@@ -2174,7 +2148,7 @@ describe('Award ceremonies', () => {
 
 			const { categories } = laurenceOlivierAwards2020AwardCeremony.body;
 
-			expect(categories).to.deep.equal(expectedCategories);
+			assert.deepEqual(categories, expectedCategories);
 		});
 	});
 
@@ -2716,7 +2690,7 @@ describe('Award ceremonies', () => {
 
 			const { categories } = eveningStandardTheatreAwards2017AwardCeremony.body;
 
-			expect(categories).to.deep.equal(expectedCategories);
+			assert.deepEqual(categories, expectedCategories);
 		});
 	});
 
@@ -2737,7 +2711,7 @@ describe('Award ceremonies', () => {
 
 			const { ceremonies } = laurenceOlivierAwardsAward.body;
 
-			expect(ceremonies).to.deep.equal(expectedCeremonies);
+			assert.deepEqual(ceremonies, expectedCeremonies);
 		});
 	});
 
@@ -2763,7 +2737,7 @@ describe('Award ceremonies', () => {
 
 			const { ceremonies } = eveningStandardTheatreAwardsAward.body;
 
-			expect(ceremonies).to.deep.equal(expectedCeremonies);
+			assert.deepEqual(ceremonies, expectedCeremonies);
 		});
 	});
 
@@ -3349,7 +3323,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = johnDoePerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -3762,7 +3736,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = curtainUpLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -4456,7 +4430,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = conorCorgePerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -5070,7 +5044,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = stagecraftLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -5688,7 +5662,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = quincyQuxPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -6055,7 +6029,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = garplyLytteltonProduction.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -6304,7 +6278,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = xyzzyPlayhouseProduction.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -6712,7 +6686,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = garplyMaterial.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -6943,7 +6917,7 @@ describe('Award ceremonies', () => {
 
 			const { awards } = xyzzyMaterial.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 });

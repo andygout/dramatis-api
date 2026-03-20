@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const BERKELEY_REPERTORY_THEATRE_VENUE_UUID = 'BERKELEY_REPERTORY_THEATRE_VENUE_UUID';
 const RODA_THEATRE_VENUE_UUID = 'RODA_THEATRE_VENUE_UUID';
@@ -146,8 +144,7 @@ describe('Production with sub-sub-productions', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Berkeley Repertory Theatre',
@@ -158,8 +155,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -168,8 +164,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -199,8 +194,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Durand's Line",
@@ -230,8 +224,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -261,8 +254,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -303,8 +295,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -334,8 +325,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -365,8 +355,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -396,8 +385,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -438,8 +426,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -469,8 +456,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -500,8 +486,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -531,8 +516,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -573,8 +557,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -615,8 +598,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -716,8 +698,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Durand's Line",
@@ -817,8 +798,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -918,8 +898,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -1030,8 +1009,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -1131,8 +1109,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -1232,8 +1209,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -1333,8 +1309,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -1445,8 +1420,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -1546,8 +1520,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -1647,8 +1620,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -1748,8 +1720,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -1860,8 +1831,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -1972,8 +1942,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -1992,8 +1961,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Durand's Line",
@@ -2012,8 +1980,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -2032,8 +1999,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -2063,8 +2029,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -2083,8 +2048,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -2103,8 +2067,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -2123,8 +2086,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -2154,8 +2116,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -2174,8 +2135,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -2194,8 +2154,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -2214,8 +2173,7 @@ describe('Production with sub-sub-productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -2245,8 +2203,7 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -2276,87 +2233,79 @@ describe('Production with sub-sub-productions', () => {
 				]
 			});
 
-		theGreatGameAfghanistanRodaProduction = await request
-			.execute(app)
-			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID}`);
+		theGreatGameAfghanistanRodaProduction = await request(app).get(
+			`/productions/${THE_GREAT_GAME_AFGHANISTAN_RODA_PRODUCTION_UUID}`
+		);
 
-		partOneInvasionsAndIndependenceRodaProduction = await request
-			.execute(app)
-			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID}`);
+		partOneInvasionsAndIndependenceRodaProduction = await request(app).get(
+			`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_RODA_PRODUCTION_UUID}`
+		);
 
-		buglesAtTheGatesOfJalalabadRodaProduction = await request
-			.execute(app)
-			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID}`);
+		buglesAtTheGatesOfJalalabadRodaProduction = await request(app).get(
+			`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_RODA_PRODUCTION_UUID}`
+		);
 
-		theGreatGameAfghanistanTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`);
+		theGreatGameAfghanistanTricycleProduction = await request(app).get(
+			`/productions/${THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		partOneInvasionsAndIndependenceTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`);
+		partOneInvasionsAndIndependenceTricycleProduction = await request(app).get(
+			`/productions/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		buglesAtTheGatesOfJalalabadTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`);
+		buglesAtTheGatesOfJalalabadTricycleProduction = await request(app).get(
+			`/productions/${BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		theGreatGameAfghanistanMaterial = await request
-			.execute(app)
-			.get(`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`);
+		theGreatGameAfghanistanMaterial = await request(app).get(
+			`/materials/${THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID}`
+		);
 
-		partOneInvasionsAndIndependenceMaterial = await request
-			.execute(app)
-			.get(`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`);
+		partOneInvasionsAndIndependenceMaterial = await request(app).get(
+			`/materials/${PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID}`
+		);
 
-		buglesAtTheGatesOfJalalabadMaterial = await request
-			.execute(app)
-			.get(`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`);
+		buglesAtTheGatesOfJalalabadMaterial = await request(app).get(
+			`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`
+		);
 
-		ferdinandFooJrPerson = await request.execute(app).get(`/people/${FERDINAND_FOO_JR_PERSON_UUID}`);
+		ferdinandFooJrPerson = await request(app).get(`/people/${FERDINAND_FOO_JR_PERSON_UUID}`);
 
-		subInkistsLtdCompany = await request.execute(app).get(`/companies/${SUB_INKISTS_LTD_COMPANY_UUID}`);
+		subInkistsLtdCompany = await request(app).get(`/companies/${SUB_INKISTS_LTD_COMPANY_UUID}`);
 
-		berkeleyRepertoryTheatreVenue = await request
-			.execute(app)
-			.get(`/venues/${BERKELEY_REPERTORY_THEATRE_VENUE_UUID}`);
+		berkeleyRepertoryTheatreVenue = await request(app).get(`/venues/${BERKELEY_REPERTORY_THEATRE_VENUE_UUID}`);
 
-		rodaTheatreVenue = await request.execute(app).get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
+		rodaTheatreVenue = await request(app).get(`/venues/${RODA_THEATRE_VENUE_UUID}`);
 
-		afghanHistorySeason = await request.execute(app).get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
+		afghanHistorySeason = await request(app).get(`/seasons/${AFGHAN_HISTORY_SEASON_UUID}`);
 
-		afghanHistoryFestival2009 = await request
-			.execute(app)
-			.get(`/festivals/${AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID}`);
+		afghanHistoryFestival2009 = await request(app).get(`/festivals/${AFGHAN_HISTORY_FESTIVAL_2009_FESTIVAL_UUID}`);
 
-		nicolasKentJrPerson = await request.execute(app).get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
+		nicolasKentJrPerson = await request(app).get(`/people/${NICOLAS_KENT_JR_PERSON_UUID}`);
 
-		subTricycleTheatreCompany = await request.execute(app).get(`/companies/${SUB_TRICYCLE_THEATRE_COMPANY_UUID}`);
+		subTricycleTheatreCompany = await request(app).get(`/companies/${SUB_TRICYCLE_THEATRE_COMPANY_UUID}`);
 
-		zoëIngenhaagJrPerson = await request.execute(app).get(`/people/${ZOË_INGENHAAG_JR_PERSON_UUID}`);
+		zoëIngenhaagJrPerson = await request(app).get(`/people/${ZOË_INGENHAAG_JR_PERSON_UUID}`);
 
-		rickWardenJrPerson = await request.execute(app).get(`/people/${RICK_WARDEN_JR_PERSON_UUID}`);
+		rickWardenJrPerson = await request(app).get(`/people/${RICK_WARDEN_JR_PERSON_UUID}`);
 
-		howardHarrisonJrPerson = await request.execute(app).get(`/people/${HOWARD_HARRISON_JR_PERSON_UUID}`);
+		howardHarrisonJrPerson = await request(app).get(`/people/${HOWARD_HARRISON_JR_PERSON_UUID}`);
 
-		subLightingDesignLtdCompany = await request
-			.execute(app)
-			.get(`/companies/${SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
+		subLightingDesignLtdCompany = await request(app).get(`/companies/${SUB_LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
 
-		jackKnowlesJrPerson = await request.execute(app).get(`/people/${JACK_KNOWLES_JR_PERSON_UUID}`);
+		jackKnowlesJrPerson = await request(app).get(`/people/${JACK_KNOWLES_JR_PERSON_UUID}`);
 
-		lizzieChapmanJrPerson = await request.execute(app).get(`/people/${LIZZIE_CHAPMAN_JR_PERSON_UUID}`);
+		lizzieChapmanJrPerson = await request(app).get(`/people/${LIZZIE_CHAPMAN_JR_PERSON_UUID}`);
 
-		subStageManagementLtdCompany = await request
-			.execute(app)
-			.get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
+		subStageManagementLtdCompany = await request(app).get(`/companies/${SUB_STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		charlottePadghamJrPerson = await request.execute(app).get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
+		charlottePadghamJrPerson = await request(app).get(`/people/${CHARLOTTE_PADGHAM_JR_PERSON_UUID}`);
 
-		theSubGuardianCompany = await request.execute(app).get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
+		theSubGuardianCompany = await request(app).get(`/companies/${THE_SUB_GUARDIAN_COMPANY_UUID}`);
 
-		michaelBillingtonJrPerson = await request.execute(app).get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
+		michaelBillingtonJrPerson = await request(app).get(`/people/${MICHAEL_BILLINGTON_JR_PERSON_UUID}`);
 
-		barJrCharacter = await request.execute(app).get(`/characters/${BAR_JR_CHARACTER_UUID}`);
+		barJrCharacter = await request(app).get(`/characters/${BAR_JR_CHARACTER_UUID}`);
 	});
 
 	describe('The Great Game: Afghanistan at Roda Theatre (production with sub-sub-productions that have a sur-venue)', () => {
@@ -4484,7 +4433,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { subProductions } = theGreatGameAfghanistanRodaProduction.body;
 
-			expect(subProductions).to.deep.equal(expectedSubProductions);
+			assert.deepEqual(subProductions, expectedSubProductions);
 		});
 	});
 
@@ -4662,7 +4611,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { surProduction } = partOneInvasionsAndIndependenceRodaProduction.body;
 
-			expect(surProduction).to.deep.equal(expectedSurProduction);
+			assert.deepEqual(surProduction, expectedSurProduction);
 		});
 
 		it('includes its sub-productions', () => {
@@ -5205,7 +5154,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { subProductions } = partOneInvasionsAndIndependenceRodaProduction.body;
 
-			expect(subProductions).to.deep.equal(expectedSubProductions);
+			assert.deepEqual(subProductions, expectedSubProductions);
 		});
 	});
 
@@ -5555,7 +5504,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { surProduction } = buglesAtTheGatesOfJalalabadRodaProduction.body;
 
-			expect(surProduction).to.deep.equal(expectedSurProduction);
+			assert.deepEqual(surProduction, expectedSurProduction);
 		});
 	});
 
@@ -6304,7 +6253,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { subProductions } = theGreatGameAfghanistanTricycleProduction.body;
 
-			expect(subProductions).to.deep.equal(expectedSubProductions);
+			assert.deepEqual(subProductions, expectedSubProductions);
 		});
 	});
 
@@ -6367,7 +6316,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { surProduction } = partOneInvasionsAndIndependenceTricycleProduction.body;
 
-			expect(surProduction).to.deep.equal(expectedSurProduction);
+			assert.deepEqual(surProduction, expectedSurProduction);
 		});
 
 		it('includes its sub-productions', () => {
@@ -6565,7 +6514,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { subProductions } = partOneInvasionsAndIndependenceTricycleProduction.body;
 
-			expect(subProductions).to.deep.equal(expectedSubProductions);
+			assert.deepEqual(subProductions, expectedSubProductions);
 		});
 	});
 
@@ -6685,7 +6634,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { surProduction } = buglesAtTheGatesOfJalalabadTricycleProduction.body;
 
-			expect(surProduction).to.deep.equal(expectedSurProduction);
+			assert.deepEqual(surProduction, expectedSurProduction);
 		});
 	});
 
@@ -6728,7 +6677,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = theGreatGameAfghanistanMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -6781,7 +6730,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = partOneInvasionsAndIndependenceMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -6842,7 +6791,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = buglesAtTheGatesOfJalalabadMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -7303,7 +7252,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { materialProductions } = ferdinandFooJrPerson.body;
 
-			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+			assert.deepEqual(materialProductions, expectedMaterialProductions);
 		});
 	});
 
@@ -7764,7 +7713,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { materialProductions } = subInkistsLtdCompany.body;
 
-			expect(materialProductions).to.deep.equal(expectedMaterialProductions);
+			assert.deepEqual(materialProductions, expectedMaterialProductions);
 		});
 	});
 
@@ -7973,7 +7922,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = berkeleyRepertoryTheatreVenue.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -8146,7 +8095,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = rodaTheatreVenue.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -8400,7 +8349,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = afghanHistorySeason.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -8654,7 +8603,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = afghanHistoryFestival2009.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -9133,7 +9082,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { producerProductions } = nicolasKentJrPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -9612,7 +9561,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { producerProductions } = subTricycleTheatreCompany.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -10091,7 +10040,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { producerProductions } = zoëIngenhaagJrPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -10426,7 +10375,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { castMemberProductions } = rickWardenJrPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -10869,7 +10818,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { creativeProductions } = howardHarrisonJrPerson.body;
 
-			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+			assert.deepEqual(creativeProductions, expectedCreativeProductions);
 		});
 	});
 
@@ -11303,7 +11252,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { creativeProductions } = subLightingDesignLtdCompany.body;
 
-			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+			assert.deepEqual(creativeProductions, expectedCreativeProductions);
 		});
 	});
 
@@ -11728,7 +11677,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { creativeProductions } = jackKnowlesJrPerson.body;
 
-			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+			assert.deepEqual(creativeProductions, expectedCreativeProductions);
 		});
 	});
 
@@ -12171,7 +12120,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { crewProductions } = lizzieChapmanJrPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -12605,7 +12554,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { crewProductions } = subStageManagementLtdCompany.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -13030,7 +12979,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { crewProductions } = charlottePadghamJrPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -13374,7 +13323,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { reviewPublicationProductions } = theSubGuardianCompany.body;
 
-			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
+			assert.deepEqual(reviewPublicationProductions, expectedReviewPublicationProductions);
 		});
 	});
 
@@ -13718,7 +13667,7 @@ describe('Production with sub-sub-productions', () => {
 
 			const { reviewCriticProductions } = michaelBillingtonJrPerson.body;
 
-			expect(reviewCriticProductions).to.deep.equal(expectedReviewCriticProductions);
+			assert.deepEqual(reviewCriticProductions, expectedReviewCriticProductions);
 		});
 	});
 
@@ -14071,13 +14020,13 @@ describe('Production with sub-sub-productions', () => {
 
 			const { productions } = barJrCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
 	describe('productions list', () => {
 		it('includes productions and corresponding sur-productions and sur-sur-productions; will exclude sur-productions as these will be included via their sub-productions', async () => {
-			const response = await request.execute(app).get('/productions');
+			const response = await request(app).get('/productions');
 
 			const expectedResponseBody = [
 				{
@@ -14532,8 +14481,8 @@ describe('Production with sub-sub-productions', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

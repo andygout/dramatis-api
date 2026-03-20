@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 describe('CharacterDepiction model', () => {
 	let stubs;
@@ -32,15 +34,15 @@ describe('CharacterDepiction model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new CharacterDepiction();
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 4);
 		});
 
 		describe('underlyingName property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new CharacterDepiction({ underlyingName: 'King Henry V' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'King Henry V');
-				expect(instance.underlyingName).to.equal('King Henry V');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, 'King Henry V');
+				assert.equal(instance.underlyingName, 'King Henry V');
 			});
 		});
 
@@ -48,8 +50,8 @@ describe('CharacterDepiction model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new CharacterDepiction({ qualifier: 'older' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'older');
-				expect(instance.qualifier).to.equal('older');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'older');
+				assert.equal(instance.qualifier, 'older');
 			});
 		});
 	});
@@ -62,13 +64,15 @@ describe('CharacterDepiction model', () => {
 
 			instance.validateUnderlyingName();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'underlyingName', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'underlyingName', {
+				isRequired: false
+			});
 		});
 	});
 
 	describe('validateCharacterNameUnderlyingNameDisparity method', () => {
-		context('valid data', () => {
-			context('role name without a character name', () => {
+		describe('valid data', () => {
+			describe('role name without a character name', () => {
 				it('will not add properties to errors property', async () => {
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: '' });
 
@@ -76,11 +80,11 @@ describe('CharacterDepiction model', () => {
 
 					instance.validateCharacterNameUnderlyingNameDisparity();
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
-			context('role name and different character name', () => {
+			describe('role name and different character name', () => {
 				it('will not add properties to errors property', async () => {
 					const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 
@@ -88,11 +92,11 @@ describe('CharacterDepiction model', () => {
 
 					instance.validateCharacterNameUnderlyingNameDisparity();
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
-			context('no role name and no character name', () => {
+			describe('no role name and no character name', () => {
 				it('will not add properties to errors property', async () => {
 					const instance = new CharacterDepiction({ name: '', underlyingName: '' });
 
@@ -100,12 +104,12 @@ describe('CharacterDepiction model', () => {
 
 					instance.validateCharacterNameUnderlyingNameDisparity();
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 		});
 
-		context('invalid data', () => {
+		describe('invalid data', () => {
 			it('adds properties whose values are arrays to errors property', async () => {
 				const instance = new CharacterDepiction({ name: 'King Henry V', underlyingName: 'King Henry V' });
 
@@ -113,7 +117,7 @@ describe('CharacterDepiction model', () => {
 
 				instance.validateCharacterNameUnderlyingNameDisparity();
 
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'underlyingName',
 					'Underlying name is only required if different from character name'

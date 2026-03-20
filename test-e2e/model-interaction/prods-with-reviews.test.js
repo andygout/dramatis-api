@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
 const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
@@ -33,8 +31,7 @@ describe('Productions with reviews', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -45,8 +42,7 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Long Day's Journey Into Night",
@@ -90,8 +86,7 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Nye',
@@ -135,8 +130,7 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Harry Clarke',
@@ -180,13 +174,13 @@ describe('Productions with reviews', () => {
 				]
 			});
 
-		aLongDaysJourneyIntoNightWyndhamsProduction = await request
-			.execute(app)
-			.get(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_WYNDHAMS_PRODUCTION_UUID}`);
+		aLongDaysJourneyIntoNightWyndhamsProduction = await request(app).get(
+			`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_WYNDHAMS_PRODUCTION_UUID}`
+		);
 
-		financialTimesCompany = await request.execute(app).get(`/companies/${FINANCIAL_TIMES_COMPANY_UUID}`);
+		financialTimesCompany = await request(app).get(`/companies/${FINANCIAL_TIMES_COMPANY_UUID}`);
 
-		sarahHemmingPerson = await request.execute(app).get(`/people/${SARAH_HEMMING_PERSON_UUID}`);
+		sarahHemmingPerson = await request(app).get(`/people/${SARAH_HEMMING_PERSON_UUID}`);
 	});
 
 	describe("Long Day's Journey Into Night at Wyndham's Theatre (production)", () => {
@@ -241,7 +235,7 @@ describe('Productions with reviews', () => {
 
 			const { reviews } = aLongDaysJourneyIntoNightWyndhamsProduction.body;
 
-			expect(reviews).to.deep.equal(expectedReviews);
+			assert.deepEqual(reviews, expectedReviews);
 		});
 	});
 
@@ -328,7 +322,7 @@ describe('Productions with reviews', () => {
 
 			const { reviewPublicationProductions } = financialTimesCompany.body;
 
-			expect(reviewPublicationProductions).to.deep.equal(expectedReviewPublicationProductions);
+			assert.deepEqual(reviewPublicationProductions, expectedReviewPublicationProductions);
 		});
 	});
 
@@ -415,7 +409,7 @@ describe('Productions with reviews', () => {
 
 			const { reviewCriticProductions } = sarahHemmingPerson.body;
 
-			expect(reviewCriticProductions).to.deep.equal(expectedReviewPublicationProductions);
+			assert.deepEqual(reviewCriticProductions, expectedReviewPublicationProductions);
 		});
 	});
 });

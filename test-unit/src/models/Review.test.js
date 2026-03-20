@@ -1,8 +1,12 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Company, Person } from '../../../src/models/index.js';
+
+const context = describe;
 
 describe('Review model', () => {
 	let stubs;
@@ -49,15 +53,18 @@ describe('Review model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new Review();
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(2);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 2);
 		});
 
 		describe('url property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Review({ url: 'https://www.foo.com' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'https://www.foo.com');
-				expect(instance.url).to.equal('https://www.foo.com');
+				sinonAssert.calledWithExactly(
+					stubs.stringsModule.getTrimmedOrEmptyString.firstCall,
+					'https://www.foo.com'
+				);
+				assert.equal(instance.url, 'https://www.foo.com');
 			});
 		});
 
@@ -65,8 +72,8 @@ describe('Review model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Review({ date: '2024-04-03' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2024-04-03');
-				expect(instance.date).to.equal('2024-04-03');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2024-04-03');
+				assert.equal(instance.date, '2024-04-03');
 			});
 		});
 
@@ -74,7 +81,7 @@ describe('Review model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Review({ url: 'https://www.foo.com' });
 
-				expect(instance.publication instanceof Company).to.be.true;
+				assert.ok(instance.publication instanceof Company);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -85,7 +92,7 @@ describe('Review model', () => {
 					}
 				});
 
-				expect(instance.publication instanceof Company).to.be.true;
+				assert.ok(instance.publication instanceof Company);
 			});
 		});
 
@@ -93,7 +100,7 @@ describe('Review model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Review({ url: 'https://www.foo.com' });
 
-				expect(instance.critic instanceof Person).to.be.true;
+				assert.ok(instance.critic instanceof Person);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -104,7 +111,7 @@ describe('Review model', () => {
 					}
 				});
 
-				expect(instance.critic instanceof Person).to.be.true;
+				assert.ok(instance.critic instanceof Person);
 			});
 		});
 	});
@@ -129,7 +136,7 @@ describe('Review model', () => {
 
 				instance.runInputValidations({ isDuplicate: false, duplicatePublicationAndCriticEntities: [] });
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					instance.validateUrl,
 					instance.validateUniquenessInGroup,
 					instance.validateUrlPresenceIfNamedChildren,
@@ -139,20 +146,20 @@ describe('Review model', () => {
 					instance.critic.validateName,
 					instance.critic.validateDifferentiator
 				);
-				assert.calledOnceWithExactly(instance.validateUrl, { isRequired: false });
-				assert.calledOnceWithExactly(instance.validateUniquenessInGroup, {
+				sinonAssert.calledOnceWithExactly(instance.validateUrl, { isRequired: false });
+				sinonAssert.calledOnceWithExactly(instance.validateUniquenessInGroup, {
 					isDuplicate: false,
 					properties: new Set(['url'])
 				});
-				assert.calledOnceWithExactly(instance.validateUrlPresenceIfNamedChildren, [
+				sinonAssert.calledOnceWithExactly(instance.validateUrlPresenceIfNamedChildren, [
 					instance.publication,
 					instance.critic
 				]);
-				assert.calledOnceWithExactly(instance.validateDate);
-				assert.calledOnceWithExactly(instance.publication.validateName, { isRequired: true });
-				assert.calledOnceWithExactly(instance.publication.validateDifferentiator);
-				assert.calledOnceWithExactly(instance.critic.validateName, { isRequired: true });
-				assert.calledOnceWithExactly(instance.critic.validateDifferentiator);
+				sinonAssert.calledOnceWithExactly(instance.validateDate);
+				sinonAssert.calledOnceWithExactly(instance.publication.validateName, { isRequired: true });
+				sinonAssert.calledOnceWithExactly(instance.publication.validateDifferentiator);
+				sinonAssert.calledOnceWithExactly(instance.critic.validateName, { isRequired: true });
+				sinonAssert.calledOnceWithExactly(instance.critic.validateDifferentiator);
 			});
 		});
 
@@ -170,8 +177,8 @@ describe('Review model', () => {
 
 				instance.runInputValidations({ isDuplicate: false });
 
-				assert.calledOnceWithExactly(instance.publication.validateName, { isRequired: false });
-				assert.calledOnceWithExactly(instance.critic.validateName, { isRequired: false });
+				sinonAssert.calledOnceWithExactly(instance.publication.validateName, { isRequired: false });
+				sinonAssert.calledOnceWithExactly(instance.critic.validateName, { isRequired: false });
 			});
 		});
 	});
@@ -184,7 +191,7 @@ describe('Review model', () => {
 
 			instance.validateUrl({ isRequired: false });
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'url', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'url', { isRequired: false });
 		});
 
 		context('url property is a valid URL', () => {
@@ -195,7 +202,7 @@ describe('Review model', () => {
 
 				instance.validateUrl({ isRequired: false });
 
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
@@ -207,7 +214,7 @@ describe('Review model', () => {
 
 				instance.validateUrl({ isRequired: false });
 
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
@@ -219,7 +226,7 @@ describe('Review model', () => {
 
 				instance.validateUrl({ isRequired: false });
 
-				assert.calledOnceWithExactly(instance.addPropertyError, 'url', 'URL must be a valid URL');
+				sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'url', 'URL must be a valid URL');
 			});
 		});
 	});
@@ -232,7 +239,7 @@ describe('Review model', () => {
 
 			instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]);
 
-			assert.calledOnceWithExactly(instance.validatePropertyPresenceIfNamedChildren, 'url', [
+			sinonAssert.calledOnceWithExactly(instance.validatePropertyPresenceIfNamedChildren, 'url', [
 				{ name: 'Financial Times' },
 				{ name: 'Sarah Hemming' }
 			]);
@@ -249,8 +256,8 @@ describe('Review model', () => {
 
 					instance.validateDate();
 
-					assert.notCalled(stubs.isValidDate);
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(stubs.isValidDate);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -262,8 +269,8 @@ describe('Review model', () => {
 
 					instance.validateDate();
 
-					assert.calledOnceWithExactly(stubs.isValidDate, instance.date);
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.calledOnceWithExactly(stubs.isValidDate, instance.date);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 		});
@@ -279,8 +286,12 @@ describe('Review model', () => {
 
 					instance.validateDate();
 
-					assert.calledOnceWithExactly(stubs.isValidDate, instance.date);
-					assert.calledOnceWithExactly(instance.addPropertyError, 'date', 'Value must be in date format');
+					sinonAssert.calledOnceWithExactly(stubs.isValidDate, instance.date);
+					sinonAssert.calledOnceWithExactly(
+						instance.addPropertyError,
+						'date',
+						'Value must be in date format'
+					);
 				});
 			});
 		});

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const THREE_WINTERS_MATERIAL_UUID = '3_WINTERS_MATERIAL_UUID';
 const ALISA_KOS_CHARACTER_UUID = 'ALISA_KOS_CHARACTER_UUID';
@@ -42,8 +40,7 @@ describe('Character with multiple appearances in different character groups of t
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: '3 Winters',
@@ -89,8 +86,7 @@ describe('Character with multiple appearances in different character groups of t
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: '3 Winters',
@@ -159,31 +155,31 @@ describe('Character with multiple appearances in different character groups of t
 				]
 			});
 
-		alisaKosCharacter = await request.execute(app).get(`/characters/${ALISA_KOS_CHARACTER_UUID}`);
+		alisaKosCharacter = await request(app).get(`/characters/${ALISA_KOS_CHARACTER_UUID}`);
 
-		mašaKosCharacter = await request.execute(app).get(`/characters/${MAŠA_KOS_CHARACTER_UUID}`);
+		mašaKosCharacter = await request(app).get(`/characters/${MAŠA_KOS_CHARACTER_UUID}`);
 
-		aleksanderKingCharacter = await request.execute(app).get(`/characters/${ALEKSANDER_KING_CHARACTER_UUID}`);
+		aleksanderKingCharacter = await request(app).get(`/characters/${ALEKSANDER_KING_CHARACTER_UUID}`);
 
-		roseKingCharacter = await request.execute(app).get(`/characters/${ROSE_KING_CHARACTER_UUID}`);
+		roseKingCharacter = await request(app).get(`/characters/${ROSE_KING_CHARACTER_UUID}`);
 
-		threeWintersMaterial = await request.execute(app).get(`/materials/${THREE_WINTERS_MATERIAL_UUID}`);
+		threeWintersMaterial = await request(app).get(`/materials/${THREE_WINTERS_MATERIAL_UUID}`);
 
-		threeWintersNationalProduction = await request
-			.execute(app)
-			.get(`/productions/${THREE_WINTERS_NATIONAL_PRODUCTION_UUID}`);
+		threeWintersNationalProduction = await request(app).get(
+			`/productions/${THREE_WINTERS_NATIONAL_PRODUCTION_UUID}`
+		);
 
-		siobhanFinneranPerson = await request.execute(app).get(`/people/${SIOBHAN_FINNERAN_PERSON_UUID}`);
+		siobhanFinneranPerson = await request(app).get(`/people/${SIOBHAN_FINNERAN_PERSON_UUID}`);
 
-		joHerbertPerson = await request.execute(app).get(`/people/${JO_HERBERT_PERSON_UUID}`);
+		joHerbertPerson = await request(app).get(`/people/${JO_HERBERT_PERSON_UUID}`);
 
-		jamesLaurensonPerson = await request.execute(app).get(`/people/${JAMES_LAURENSON_PERSON_UUID}`);
+		jamesLaurensonPerson = await request(app).get(`/people/${JAMES_LAURENSON_PERSON_UUID}`);
 
-		jodieMcNeePerson = await request.execute(app).get(`/people/${JODIE_MCNEE_PERSON_UUID}`);
+		jodieMcNeePerson = await request(app).get(`/people/${JODIE_MCNEE_PERSON_UUID}`);
 
-		alexPricePerson = await request.execute(app).get(`/people/${ALEX_PRICE_PERSON_UUID}`);
+		alexPricePerson = await request(app).get(`/people/${ALEX_PRICE_PERSON_UUID}`);
 
-		bebeSandersPerson = await request.execute(app).get(`/people/${BEBE_SANDERS_PERSON_UUID}`);
+		bebeSandersPerson = await request(app).get(`/people/${BEBE_SANDERS_PERSON_UUID}`);
 	});
 
 	describe('Alisa Kos (character)', () => {
@@ -214,7 +210,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { materials } = alisaKosCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and in which group', () => {
@@ -257,7 +253,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { productions } = alisaKosCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -289,7 +285,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { materials } = mašaKosCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and excluding group as not applied', () => {
@@ -323,7 +319,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { productions } = mašaKosCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -355,7 +351,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { materials } = aleksanderKingCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and in which group', () => {
@@ -398,7 +394,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { productions } = aleksanderKingCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -425,7 +421,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { materials } = roseKingCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and excluding group as not applied', () => {
@@ -459,7 +455,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { productions } = roseKingCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -533,7 +529,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { characterGroups } = threeWintersMaterial.body;
 
-			expect(characterGroups).to.deep.equal(expectedCharacterGroups);
+			assert.deepEqual(characterGroups, expectedCharacterGroups);
 		});
 	});
 
@@ -628,7 +624,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { cast } = threeWintersNationalProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -662,7 +658,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { castMemberProductions } = siobhanFinneranPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -696,7 +692,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { castMemberProductions } = joHerbertPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -730,7 +726,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { castMemberProductions } = jamesLaurensonPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -764,7 +760,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { castMemberProductions } = jodieMcNeePerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -798,7 +794,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { castMemberProductions } = alexPricePerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -832,7 +828,7 @@ describe('Character with multiple appearances in different character groups of t
 
 			const { castMemberProductions } = bebeSandersPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

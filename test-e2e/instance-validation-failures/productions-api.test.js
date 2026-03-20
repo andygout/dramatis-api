@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,12 +12,10 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
+const context = describe;
+
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Instance validation failures: Productions API', () => {
 	describe('attempt to create instance', () => {
@@ -25,9 +25,9 @@ describe('Instance validation failures: Productions API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 
-				const response = await request.execute(app).post('/productions').send({
+				const response = await request(app).post('/productions').send({
 					name: ''
 				});
 
@@ -74,18 +74,17 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/productions')
 					.send({
 						name: 'Macbeth',
@@ -145,18 +144,17 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 			});
 		});
 
 		context('instance has both input and database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/productions')
 					.send({
 						name: 'Macbeth',
@@ -221,9 +219,9 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 			});
 		});
 	});
@@ -243,9 +241,9 @@ describe('Instance validation failures: Productions API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 
-				const response = await request.execute(app).put(`/productions/${MACBETH_PRODUCTION_UUID}`).send({
+				const response = await request(app).put(`/productions/${MACBETH_PRODUCTION_UUID}`).send({
 					name: ''
 				});
 
@@ -293,25 +291,25 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(1);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 1);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Macbeth',
 						uuid: MACBETH_PRODUCTION_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: 'Macbeth',
@@ -372,18 +370,17 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 			});
 		});
 
 		context('instance has both input and database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/productions/${MACBETH_PRODUCTION_UUID}`)
 					.send({
 						name: 'Macbeth',
@@ -449,9 +446,9 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 			});
 		});
 	});
@@ -501,9 +498,9 @@ describe('Instance validation failures: Productions API', () => {
 
 		context('instance has associations', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 
-				const response = await request.execute(app).delete(`/productions/${OTHELLO_DONMAR_PRODUCTION_UUID}`);
+				const response = await request(app).delete(`/productions/${OTHELLO_DONMAR_PRODUCTION_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'PRODUCTION',
@@ -549,9 +546,9 @@ describe('Instance validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 			});
 		});
 	});

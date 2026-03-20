@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const JULIUS_CAESAR_MATERIAL_UUID = 'JULIUS_CAESAR_MATERIAL_UUID';
 const CINNA_CHARACTER_1_UUID = 'CINNA_CHARACTER_1_UUID';
@@ -51,8 +49,7 @@ describe('Different characters with the same name from the same material', () =>
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Julius Caesar',
@@ -75,8 +72,7 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Shakespeare's Romans",
@@ -98,8 +94,7 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -137,8 +132,7 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Julius Caesar',
@@ -175,8 +169,7 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Henry VI, Part 2',
@@ -199,8 +192,7 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry VI, Part 2',
@@ -238,41 +230,39 @@ describe('Different characters with the same name from the same material', () =>
 				]
 			});
 
-		cinnaCharacter1 = await request.execute(app).get(`/characters/${CINNA_CHARACTER_1_UUID}`);
+		cinnaCharacter1 = await request(app).get(`/characters/${CINNA_CHARACTER_1_UUID}`);
 
-		cinnaCharacter2 = await request.execute(app).get(`/characters/${CINNA_CHARACTER_2_UUID}`);
+		cinnaCharacter2 = await request(app).get(`/characters/${CINNA_CHARACTER_2_UUID}`);
 
-		volumniusCharacter = await request.execute(app).get(`/characters/${VOLUMNIUS_CHARACTER_UUID}`);
+		volumniusCharacter = await request(app).get(`/characters/${VOLUMNIUS_CHARACTER_UUID}`);
 
-		juliusCaesarMaterial = await request.execute(app).get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
+		juliusCaesarMaterial = await request(app).get(`/materials/${JULIUS_CAESAR_MATERIAL_UUID}`);
 
-		juliusCaesarBarbicanProduction = await request
-			.execute(app)
-			.get(`/productions/${JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID}`);
+		juliusCaesarBarbicanProduction = await request(app).get(
+			`/productions/${JULIUS_CAESAR_BARBICAN_PRODUCTION_UUID}`
+		);
 
-		paulShearerPerson = await request.execute(app).get(`/people/${PAUL_SHEARER_PERSON_UUID}`);
+		paulShearerPerson = await request(app).get(`/people/${PAUL_SHEARER_PERSON_UUID}`);
 
-		leoWringerPerson = await request.execute(app).get(`/people/${LEO_WRINGER_PERSON_UUID}`);
+		leoWringerPerson = await request(app).get(`/people/${LEO_WRINGER_PERSON_UUID}`);
 
-		richardPlantagenetDukeOfYorkCharacter = await request
-			.execute(app)
-			.get(`/characters/${RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID}`);
+		richardPlantagenetDukeOfYorkCharacter = await request(app).get(
+			`/characters/${RICHARD_PLANTAGENET_DUKE_OF_YORK_CHARACTER_UUID}`
+		);
 
-		richardPlantagenetCharacter = await request
-			.execute(app)
-			.get(`/characters/${RICHARD_PLANTAGENET_CHARACTER_UUID}`);
+		richardPlantagenetCharacter = await request(app).get(`/characters/${RICHARD_PLANTAGENET_CHARACTER_UUID}`);
 
-		jackCadeCharacter = await request.execute(app).get(`/characters/${JACK_CADE_CHARACTER_UUID}`);
+		jackCadeCharacter = await request(app).get(`/characters/${JACK_CADE_CHARACTER_UUID}`);
 
-		henryVIPart2Material = await request.execute(app).get(`/materials/${HENRY_VI_PART_2_MATERIAL_UUID}`);
+		henryVIPart2Material = await request(app).get(`/materials/${HENRY_VI_PART_2_MATERIAL_UUID}`);
 
-		henryVIPart2CourtyardProduction = await request
-			.execute(app)
-			.get(`/productions/${HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID}`);
+		henryVIPart2CourtyardProduction = await request(app).get(
+			`/productions/${HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID}`
+		);
 
-		cliveWoodPerson = await request.execute(app).get(`/people/${CLIVE_WOOD_PERSON_UUID}`);
+		cliveWoodPerson = await request(app).get(`/people/${CLIVE_WOOD_PERSON_UUID}`);
 
-		jonathanSlingerPerson = await request.execute(app).get(`/people/${JONATHAN_SLINGER_PERSON_UUID}`);
+		jonathanSlingerPerson = await request(app).get(`/people/${JONATHAN_SLINGER_PERSON_UUID}`);
 	});
 
 	describe('Cinna (character) (#1)', () => {
@@ -340,7 +330,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { productions } = cinnaCharacter1.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 
 		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
@@ -348,7 +338,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { variantNamedDepictions } = cinnaCharacter1.body;
 
-			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
+			assert.deepEqual(variantNamedDepictions, expectedVariantNamedDepictions);
 		});
 
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
@@ -356,7 +346,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { variantNamedPortrayals } = cinnaCharacter1.body;
 
-			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
+			assert.deepEqual(variantNamedPortrayals, expectedVariantNamedPortrayals);
 		});
 	});
 
@@ -417,7 +407,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { productions } = cinnaCharacter2.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 
 		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
@@ -425,7 +415,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { variantNamedDepictions } = cinnaCharacter2.body;
 
-			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
+			assert.deepEqual(variantNamedDepictions, expectedVariantNamedDepictions);
 		});
 
 		it('includes distinct variant-named portrayals (i.e. portrayals in productions with names different to that in material)', () => {
@@ -433,7 +423,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { variantNamedPortrayals } = cinnaCharacter2.body;
 
-			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
+			assert.deepEqual(variantNamedPortrayals, expectedVariantNamedPortrayals);
 		});
 	});
 
@@ -477,7 +467,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { productions } = volumniusCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -508,7 +498,7 @@ describe('Different characters with the same name from the same material', () =>
 				characterGroups: [{ characters }]
 			} = juliusCaesarMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -554,7 +544,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { cast } = juliusCaesarBarbicanProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -595,7 +585,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { castMemberProductions } = paulShearerPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -629,7 +619,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { castMemberProductions } = leoWringerPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -673,7 +663,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { productions } = richardPlantagenetDukeOfYorkCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -709,7 +699,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { productions } = richardPlantagenetCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -753,7 +743,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { productions } = jackCadeCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -784,7 +774,7 @@ describe('Different characters with the same name from the same material', () =>
 				characterGroups: [{ characters }]
 			} = henryVIPart2Material.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -830,7 +820,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { cast } = henryVIPart2CourtyardProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -871,7 +861,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { castMemberProductions } = cliveWoodPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -905,7 +895,7 @@ describe('Different characters with the same name from the same material', () =>
 
 			const { castMemberProductions } = jonathanSlingerPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

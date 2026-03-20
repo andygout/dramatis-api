@@ -1,12 +1,10 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Uniqueness in database: Award ceremonies API', () => {
 	describe('Award ceremony award uniqueness in database', () => {
@@ -37,10 +35,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		});
 
 		it('updates award ceremony and creates award that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Award'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -49,16 +46,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.award).to.deep.equal(expectedAwardCriticsCircleTheatreAwards1);
-			expect(await countNodesWithLabel('Award')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.award, expectedAwardCriticsCircleTheatreAwards1);
+			assert.equal(await countNodesWithLabel('Award'), 1);
 		});
 
 		it('updates award ceremony and creates award that has same name as existing award but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Award'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -68,16 +64,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.award).to.deep.equal(expectedAwardCriticsCircleTheatreAwards2);
-			expect(await countNodesWithLabel('Award')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.award, expectedAwardCriticsCircleTheatreAwards2);
+			assert.equal(await countNodesWithLabel('Award'), 2);
 		});
 
 		it('updates award ceremony and uses existing award that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Award'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -86,16 +81,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.award).to.deep.equal(expectedAwardCriticsCircleTheatreAwards1);
-			expect(await countNodesWithLabel('Award')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.award, expectedAwardCriticsCircleTheatreAwards1);
+			assert.equal(await countNodesWithLabel('Award'), 2);
 		});
 
 		it('updates award ceremony and uses existing award that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Award')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Award'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2020',
@@ -105,9 +99,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.award).to.deep.equal(expectedAwardCriticsCircleTheatreAwards2);
-			expect(await countNodesWithLabel('Award')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.award, expectedAwardCriticsCircleTheatreAwards2);
+			assert.equal(await countNodesWithLabel('Award'), 2);
 		});
 	});
 
@@ -139,10 +133,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		});
 
 		it('updates award ceremony and creates nominee entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -162,18 +155,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(
-				expectedPersonChristopherShutt1
-			);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedPersonChristopherShutt1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates award ceremony and creates nominee entity (person) that has same name as existing nominee entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -194,18 +184,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(
-				expectedPersonChristopherShutt2
-			);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedPersonChristopherShutt2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates award ceremony and uses existing nominee entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -225,18 +212,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(
-				expectedPersonChristopherShutt1
-			);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedPersonChristopherShutt1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates award ceremony and uses existing nominee entity (person) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -257,11 +241,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(
-				expectedPersonChristopherShutt2
-			);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedPersonChristopherShutt2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -309,10 +291,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		});
 
 		it('updates award ceremony and creates nominee entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -333,16 +314,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(expectedCompanyAutograph1);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedCompanyAutograph1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('updates award ceremony and creates nominee entity (company) that has same name as existing nominee entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -364,16 +344,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(expectedCompanyAutograph2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedCompanyAutograph2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates award ceremony and uses existing nominee entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -394,16 +373,15 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(expectedCompanyAutograph1);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedCompanyAutograph1);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates award ceremony and uses existing nominee entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -425,9 +403,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0]).to.deep.equal(expectedCompanyAutograph2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.categories[0].nominations[0].entities[0], expectedCompanyAutograph2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 	});
 
@@ -459,10 +437,9 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 		});
 
 		it('updates award ceremony and creates nominee entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -488,18 +465,18 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(
+			assert.equal(response.status, 200);
+			assert.deepEqual(
+				response.body.categories[0].nominations[0].entities[0].members[0],
 				expectedPersonIanDickinson1
 			);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates award ceremony and creates nominee entity (company) that has same name as existing nominee entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -526,18 +503,18 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(
+			assert.equal(response.status, 200);
+			assert.deepEqual(
+				response.body.categories[0].nominations[0].entities[0].members[0],
 				expectedPersonIanDickinson2
 			);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates award ceremony and uses existing nominee entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -563,18 +540,18 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(
+			assert.equal(response.status, 200);
+			assert.deepEqual(
+				response.body.categories[0].nominations[0].entities[0].members[0],
 				expectedPersonIanDickinson1
 			);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates award ceremony and uses existing nominee entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/award-ceremonies/${TWO_THOUSAND_AND_TEN_AWARD_CEREMONY_UUID}`)
 				.send({
 					name: '2010',
@@ -601,11 +578,12 @@ describe('Uniqueness in database: Award ceremonies API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.categories[0].nominations[0].entities[0].members[0]).to.deep.equal(
+			assert.equal(response.status, 200);
+			assert.deepEqual(
+				response.body.categories[0].nominations[0].entities[0].members[0],
 				expectedPersonIanDickinson2
 			);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 });

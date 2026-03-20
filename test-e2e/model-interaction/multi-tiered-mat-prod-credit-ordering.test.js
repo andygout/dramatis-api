@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
 const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
@@ -72,8 +70,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -90,8 +87,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Durand's Line",
@@ -108,8 +104,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Campaign',
@@ -126,8 +121,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -155,8 +149,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Black Tulips',
@@ -173,8 +166,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Blood and Gifts',
@@ -191,8 +183,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -209,8 +200,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -238,8 +228,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Honey',
@@ -256,8 +245,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -274,8 +262,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'On the Side of the Angels',
@@ -292,8 +279,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -321,8 +307,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -350,8 +335,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
@@ -432,8 +416,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Durand's Line",
@@ -514,8 +497,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Campaign',
@@ -596,8 +578,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part One — Invasions and Independence (1842-1930)',
@@ -689,8 +670,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Black Tulips',
@@ -771,8 +751,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Blood and Gifts',
@@ -853,8 +832,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Miniskirts of Kabul',
@@ -935,8 +913,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
@@ -1028,8 +1005,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Honey',
@@ -1110,8 +1086,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Night Is Darkest Before the Dawn',
@@ -1192,8 +1167,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'On the Side of the Angels',
@@ -1274,8 +1248,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Part Three — Enduring Freedom (1996-2009)',
@@ -1367,8 +1340,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Great Game: Afghanistan',
@@ -1460,27 +1432,27 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				]
 			});
 
-		nicolasKentPerson = await request.execute(app).get(`/people/${NICOLAS_KENT_PERSON_UUID}`);
+		nicolasKentPerson = await request(app).get(`/people/${NICOLAS_KENT_PERSON_UUID}`);
 
-		tricycleTheatreCompany = await request.execute(app).get(`/companies/${TRICYCLE_THEATRE_COMPANY_UUID}`);
+		tricycleTheatreCompany = await request(app).get(`/companies/${TRICYCLE_THEATRE_COMPANY_UUID}`);
 
-		zoëIngenhaagPerson = await request.execute(app).get(`/people/${ZOË_INGENHAAG_PERSON_UUID}`);
+		zoëIngenhaagPerson = await request(app).get(`/people/${ZOË_INGENHAAG_PERSON_UUID}`);
 
-		rickWardenPerson = await request.execute(app).get(`/people/${RICK_WARDEN_PERSON_UUID}`);
+		rickWardenPerson = await request(app).get(`/people/${RICK_WARDEN_PERSON_UUID}`);
 
-		howardHarrisonPerson = await request.execute(app).get(`/people/${HOWARD_HARRISON_PERSON_UUID}`);
+		howardHarrisonPerson = await request(app).get(`/people/${HOWARD_HARRISON_PERSON_UUID}`);
 
-		lightingDesignLtdCompany = await request.execute(app).get(`/companies/${LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
+		lightingDesignLtdCompany = await request(app).get(`/companies/${LIGHTING_DESIGN_LTD_COMPANY_UUID}`);
 
-		jackKnowlesPerson = await request.execute(app).get(`/people/${JACK_KNOWLES_PERSON_UUID}`);
+		jackKnowlesPerson = await request(app).get(`/people/${JACK_KNOWLES_PERSON_UUID}`);
 
-		lizzieChapmanPerson = await request.execute(app).get(`/people/${LIZZIE_CHAPMAN_PERSON_UUID}`);
+		lizzieChapmanPerson = await request(app).get(`/people/${LIZZIE_CHAPMAN_PERSON_UUID}`);
 
-		stageManagementLtdCompany = await request.execute(app).get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
+		stageManagementLtdCompany = await request(app).get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
-		charlottePadghamPerson = await request.execute(app).get(`/people/${CHARLOTTE_PADGHAM_PERSON_UUID}`);
+		charlottePadghamPerson = await request(app).get(`/people/${CHARLOTTE_PADGHAM_PERSON_UUID}`);
 
-		barCharacter = await request.execute(app).get(`/characters/${BAR_CHARACTER_UUID}`);
+		barCharacter = await request(app).get(`/characters/${BAR_CHARACTER_UUID}`);
 	});
 
 	describe('Nicolas Kent (person)', () => {
@@ -2093,7 +2065,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { producerProductions } = nicolasKentPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -2707,7 +2679,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { producerProductions } = tricycleTheatreCompany.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -3321,7 +3293,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { producerProductions } = zoëIngenhaagPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -3727,7 +3699,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { castMemberProductions } = rickWardenPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -4289,7 +4261,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { creativeProductions } = howardHarrisonPerson.body;
 
-			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+			assert.deepEqual(creativeProductions, expectedCreativeProductions);
 		});
 	});
 
@@ -4838,7 +4810,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { creativeProductions } = lightingDesignLtdCompany.body;
 
-			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+			assert.deepEqual(creativeProductions, expectedCreativeProductions);
 		});
 	});
 
@@ -5374,7 +5346,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { creativeProductions } = jackKnowlesPerson.body;
 
-			expect(creativeProductions).to.deep.equal(expectedCreativeProductions);
+			assert.deepEqual(creativeProductions, expectedCreativeProductions);
 		});
 	});
 
@@ -5936,7 +5908,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { crewProductions } = lizzieChapmanPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -6485,7 +6457,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { crewProductions } = stageManagementLtdCompany.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -7021,7 +6993,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { crewProductions } = charlottePadghamPerson.body;
 
-			expect(crewProductions).to.deep.equal(expectedCrewProductions);
+			assert.deepEqual(crewProductions, expectedCrewProductions);
 		});
 	});
 
@@ -7258,7 +7230,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { materials } = barCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes all tiers of productions in which character was portrayed, including the sur-production and sur-sur-production as separate credits (ordered sub to sur ascending)', () => {
@@ -7688,7 +7660,7 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 			const { productions } = barCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 });

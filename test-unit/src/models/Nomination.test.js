@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { CompanyWithMembers, MaterialBase, NominatedProductionIdentifier, Person } from '../../../src/models/index.js';
 
@@ -68,46 +70,46 @@ describe('Nomination model', () => {
 			it('assigns false if absent from props', async () => {
 				const instance = new Nomination({});
 
-				expect(instance.isWinner).to.equal(false);
+				assert.equal(instance.isWinner, false);
 			});
 
 			it('assigns false if included in props but value evaluates to false', async () => {
 				const instance = new Nomination({ isWinner: null });
 
-				expect(instance.isWinner).to.equal(false);
+				assert.equal(instance.isWinner, false);
 			});
 
 			it('assigns false if included in props but value is false', async () => {
 				const instance = new Nomination({ isWinner: false });
 
-				expect(instance.isWinner).to.equal(false);
+				assert.equal(instance.isWinner, false);
 			});
 
 			it('assigns true if included in props and value evaluates to true', async () => {
 				const instance = new Nomination({ isWinner: 'foobar' });
 
-				expect(instance.isWinner).to.equal(true);
+				assert.equal(instance.isWinner, true);
 			});
 
 			it('assigns true if included in props and is true', async () => {
 				const instance = new Nomination({ isWinner: true });
 
-				expect(instance.isWinner).to.equal(true);
+				assert.equal(instance.isWinner, true);
 			});
 		});
 
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new Nomination();
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(1);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 1);
 		});
 
 		describe('customType property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Nomination({ customType: 'Shortlisted' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Shortlisted');
-				expect(instance.customType).to.equal('Shortlisted');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.firstCall, 'Shortlisted');
+				assert.equal(instance.customType, 'Shortlisted');
 			});
 		});
 
@@ -115,7 +117,7 @@ describe('Nomination model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Nomination({});
 
-				expect(instance.entities).to.deep.equal([]);
+				assert.deepEqual(instance.entities, []);
 			});
 
 			it('assigns array of entities if included in props (defaulting to person if model is unspecified), retaining those with empty or whitespace-only string names', async () => {
@@ -145,13 +147,13 @@ describe('Nomination model', () => {
 					]
 				});
 
-				expect(instance.entities.length).to.equal(6);
-				expect(instance.entities[0] instanceof Person).to.be.true;
-				expect(instance.entities[1] instanceof CompanyWithMembers).to.be.true;
-				expect(instance.entities[2] instanceof Person).to.be.true;
-				expect(instance.entities[3] instanceof CompanyWithMembers).to.be.true;
-				expect(instance.entities[4] instanceof Person).to.be.true;
-				expect(instance.entities[5] instanceof CompanyWithMembers).to.be.true;
+				assert.equal(instance.entities.length, 6);
+				assert.ok(instance.entities[0] instanceof Person);
+				assert.ok(instance.entities[1] instanceof CompanyWithMembers);
+				assert.ok(instance.entities[2] instanceof Person);
+				assert.ok(instance.entities[3] instanceof CompanyWithMembers);
+				assert.ok(instance.entities[4] instanceof Person);
+				assert.ok(instance.entities[5] instanceof CompanyWithMembers);
 			});
 		});
 
@@ -159,7 +161,7 @@ describe('Nomination model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Nomination({});
 
-				expect(instance.productions).to.deep.equal([]);
+				assert.deepEqual(instance.productions, []);
 			});
 
 			it('assigns array of productions if included in props, retaining those with empty or whitespace-only string uuids', async () => {
@@ -177,10 +179,10 @@ describe('Nomination model', () => {
 					]
 				});
 
-				expect(instance.productions.length).to.equal(3);
-				expect(instance.productions[0] instanceof NominatedProductionIdentifier).to.be.true;
-				expect(instance.productions[1] instanceof NominatedProductionIdentifier).to.be.true;
-				expect(instance.productions[2] instanceof NominatedProductionIdentifier).to.be.true;
+				assert.equal(instance.productions.length, 3);
+				assert.ok(instance.productions[0] instanceof NominatedProductionIdentifier);
+				assert.ok(instance.productions[1] instanceof NominatedProductionIdentifier);
+				assert.ok(instance.productions[2] instanceof NominatedProductionIdentifier);
 			});
 		});
 
@@ -188,7 +190,7 @@ describe('Nomination model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Nomination({});
 
-				expect(instance.materials).to.deep.equal([]);
+				assert.deepEqual(instance.materials, []);
 			});
 
 			it('assigns array of materials if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -206,10 +208,10 @@ describe('Nomination model', () => {
 					]
 				});
 
-				expect(instance.materials.length).to.equal(3);
-				expect(instance.materials[0] instanceof MaterialBase).to.be.true;
-				expect(instance.materials[1] instanceof MaterialBase).to.be.true;
-				expect(instance.materials[2] instanceof MaterialBase).to.be.true;
+				assert.equal(instance.materials.length, 3);
+				assert.ok(instance.materials[0] instanceof MaterialBase);
+				assert.ok(instance.materials[1] instanceof MaterialBase);
+				assert.ok(instance.materials[2] instanceof MaterialBase);
 			});
 		});
 	});
@@ -243,7 +245,7 @@ describe('Nomination model', () => {
 
 			instance.runInputValidations();
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateCustomType,
 				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
 				instance.entities[0].validateName,
@@ -263,41 +265,47 @@ describe('Nomination model', () => {
 				instance.materials[0].validateDifferentiator,
 				instance.materials[0].validateUniquenessInGroup
 			);
-			assert.calledOnceWithExactly(instance.validateCustomType, { isRequired: false });
-			assert.calledOnceWithExactly(stubs.getDuplicateEntityInfoModule.getDuplicateEntities, instance.entities);
-			assert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
-			assert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
-			assert.calledWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.validateCustomType, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(
+				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
+				instance.entities
+			);
+			sinonAssert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
+			sinonAssert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
+			sinonAssert.calledWithExactly(
 				stubs.getDuplicateEntityInfoModule.isEntityInArray.firstCall,
 				instance.entities[0],
 				'getDuplicateEntities response'
 			);
-			assert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
-			assert.calledWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
+			sinonAssert.calledWithExactly(
 				stubs.getDuplicateEntityInfoModule.isEntityInArray.secondCall,
 				instance.entities[1],
 				'getDuplicateEntities response'
 			);
-			assert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnceWithExactly(instance.entities[1].runInputValidations, {
+			sinonAssert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.entities[1].runInputValidations, {
 				duplicateEntities: 'getDuplicateEntities response'
 			});
-			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateUuidIndices, instance.productions);
-			assert.calledOnceWithExactly(instance.productions[0].validateUuid);
-			assert.calledOnceWithExactly(instance.productions[0].validateUniquenessInGroup, {
+			sinonAssert.calledOnceWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateUuidIndices,
+				instance.productions
+			);
+			sinonAssert.calledOnceWithExactly(instance.productions[0].validateUuid);
+			sinonAssert.calledOnceWithExactly(instance.productions[0].validateUniquenessInGroup, {
 				isDuplicate: false,
 				properties: new Set(['uuid'])
 			});
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.materials
 			);
-			assert.calledOnceWithExactly(instance.materials[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.materials[0].validateDifferentiator);
-			assert.calledOnceWithExactly(instance.materials[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.materials[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.materials[0].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.materials[0].validateUniquenessInGroup, { isDuplicate: false });
 		});
 	});
 
@@ -309,7 +317,7 @@ describe('Nomination model', () => {
 
 			instance.validateCustomType({ isRequired: false });
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'customType', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'customType', { isRequired: false });
 		});
 	});
 
@@ -325,7 +333,7 @@ describe('Nomination model', () => {
 
 			await instance.runDatabaseValidations();
 
-			assert.calledOnceWithExactly(instance.productions[0].runDatabaseValidations);
+			sinonAssert.calledOnceWithExactly(instance.productions[0].runDatabaseValidations);
 		});
 	});
 });

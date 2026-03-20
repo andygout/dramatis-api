@@ -1,18 +1,16 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
-
 describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 	describe('GET new endpoint', () => {
 		it('responds with data required to prepare new venue', async () => {
-			const response = await request.execute(app).get('/venues/new');
+			const response = await request(app).get('/venues/new');
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -29,8 +27,8 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
@@ -44,9 +42,9 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 		});
 
 		it('creates venue', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Venue'), 0);
 
-			const response = await request.execute(app).post('/venues').send({
+			const response = await request(app).post('/venues').send({
 				name: 'National Theatre'
 			});
 
@@ -66,13 +64,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 1);
 		});
 
 		it('gets data required to edit specific venue', async () => {
-			const response = await request.execute(app).get(`/venues/${VENUE_UUID}/edit`);
+			const response = await request(app).get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -90,14 +88,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates venue', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Venue'), 1);
 
-			const response = await request.execute(app).put(`/venues/${VENUE_UUID}`).send({
+			const response = await request(app).put(`/venues/${VENUE_UUID}`).send({
 				name: 'Almeida Theatre'
 			});
 
@@ -117,13 +115,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 1);
 		});
 
 		it('shows venue', async () => {
-			const response = await request.execute(app).get(`/venues/${VENUE_UUID}`);
+			const response = await request(app).get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -135,14 +133,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				productions: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('deletes venue', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Venue'), 1);
 
-			const response = await request.execute(app).delete(`/venues/${VENUE_UUID}`);
+			const response = await request(app).delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -152,9 +150,9 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				subVenues: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(0);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 0);
 		});
 	});
 
@@ -173,10 +171,9 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 		});
 
 		it('creates venue', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Venue'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.post('/venues')
 				.send({
 					name: 'National Theatre',
@@ -231,13 +228,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(4);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 4);
 		});
 
 		it('shows venue (post-creation)', async () => {
-			const response = await request.execute(app).get(`/venues/${VENUE_UUID}`);
+			const response = await request(app).get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -265,12 +262,12 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				productions: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('gets data required to edit specific venue', async () => {
-			const response = await request.execute(app).get(`/venues/${VENUE_UUID}/edit`);
+			const response = await request(app).get(`/venues/${VENUE_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -306,15 +303,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates venue (with existing data)', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(4);
+			assert.equal(await countNodesWithLabel('Venue'), 4);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'National Theatre',
@@ -369,16 +365,15 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(4);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 4);
 		});
 
 		it('updates venue (with new data)', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(4);
+			assert.equal(await countNodesWithLabel('Venue'), 4);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/venues/${VENUE_UUID}`)
 				.send({
 					name: 'Royal Court Theatre',
@@ -423,13 +418,13 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(6);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 6);
 		});
 
 		it('shows venue (post-update)', async () => {
-			const response = await request.execute(app).get(`/venues/${VENUE_UUID}`);
+			const response = await request(app).get(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -452,14 +447,14 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				productions: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates venue to remove all associations prior to deletion', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(6);
+			assert.equal(await countNodesWithLabel('Venue'), 6);
 
-			const response = await request.execute(app).put(`/venues/${VENUE_UUID}`).send({
+			const response = await request(app).put(`/venues/${VENUE_UUID}`).send({
 				name: 'Royal Court Theatre',
 				differentiator: '1'
 			});
@@ -480,15 +475,15 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				]
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(6);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 6);
 		});
 
 		it('deletes venue', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(6);
+			assert.equal(await countNodesWithLabel('Venue'), 6);
 
-			const response = await request.execute(app).delete(`/venues/${VENUE_UUID}`);
+			const response = await request(app).delete(`/venues/${VENUE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'VENUE',
@@ -498,9 +493,9 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				subVenues: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Venue')).to.equal(5);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Venue'), 5);
 		});
 	});
 
@@ -514,21 +509,21 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 
 			await purgeDatabase();
 
-			await request.execute(app).post('/venues').send({
+			await request(app).post('/venues').send({
 				name: 'Donmar Warehouse'
 			});
 
-			await request.execute(app).post('/venues').send({
+			await request(app).post('/venues').send({
 				name: 'National Theatre'
 			});
 
-			await request.execute(app).post('/venues').send({
+			await request(app).post('/venues').send({
 				name: 'Almeida Theatre'
 			});
 		});
 
 		it('lists all venues ordered by name', async () => {
-			const response = await request.execute(app).get('/venues');
+			const response = await request(app).get('/venues');
 
 			const expectedResponseBody = [
 				{
@@ -551,8 +546,8 @@ describe('CRUD (Create, Read, Update, Delete): Venues API', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

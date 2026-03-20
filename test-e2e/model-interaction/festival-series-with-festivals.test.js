@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const EDINBURGH_INTERNATIONAL_FESTIVAL_2008_FESTIVAL_UUID = '2008_FESTIVAL_EDINBURGH_INTERNATIONAL_FESTIVAL_UUID';
 const EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID = 'EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID';
@@ -32,8 +30,7 @@ describe('Festival series with festivals', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -43,8 +40,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -54,8 +50,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -65,8 +60,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -76,8 +70,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -87,8 +80,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -98,8 +90,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2008',
@@ -109,8 +100,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2009',
@@ -120,8 +110,7 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/festivals')
 			.send({
 				name: '2010',
@@ -131,17 +120,17 @@ describe('Festival series with festivals', () => {
 				}
 			});
 
-		await request.execute(app).post('/festivals').send({
+		await request(app).post('/festivals').send({
 			name: 'The Complete Works'
 		});
 
-		await request.execute(app).post('/festivals').send({
+		await request(app).post('/festivals').send({
 			name: 'Globe to Globe'
 		});
 
-		edinburghInternationalFestivalFestivalSeries = await request
-			.execute(app)
-			.get(`/festival-serieses/${EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID}`);
+		edinburghInternationalFestivalFestivalSeries = await request(app).get(
+			`/festival-serieses/${EDINBURGH_INTERNATIONAL_FESTIVAL_FESTIVAL_SERIES_UUID}`
+		);
 	});
 
 	describe('Edinburgh International Festival (festival series)', () => {
@@ -166,13 +155,13 @@ describe('Festival series with festivals', () => {
 
 			const { festivals } = edinburghInternationalFestivalFestivalSeries.body;
 
-			expect(festivals).to.deep.equal(expectedFestivals);
+			assert.deepEqual(festivals, expectedFestivals);
 		});
 	});
 
 	describe('festival serieses list', () => {
 		it('includes festival series', async () => {
-			const response = await request.execute(app).get('/festival-serieses');
+			const response = await request(app).get('/festival-serieses');
 
 			const expectedResponseBody = [
 				{
@@ -192,14 +181,14 @@ describe('Festival series with festivals', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
 	describe('festivals list', () => {
 		it('includes festivals and (if applicable) corresponding festival series', async () => {
-			const response = await request.execute(app).get('/festivals');
+			const response = await request(app).get('/festivals');
 
 			const expectedResponseBody = [
 				{
@@ -306,8 +295,8 @@ describe('Festival series with festivals', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

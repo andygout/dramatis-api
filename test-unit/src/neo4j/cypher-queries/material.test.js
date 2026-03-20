@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import * as cypherQueriesMaterial from '../../../../src/neo4j/cypher-queries/material/index.js';
+
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Material module', () => {
@@ -47,9 +49,9 @@ describe('Cypher Queries Material module', () => {
 					) + [{ characters: [{}] }] AS characterGroups
 			`);
 
-			expect(compactedResult.startsWith(startSegment)).to.be.true;
-			expect(compactedResult.includes(middleSegment)).to.be.true;
-			expect(compactedResult.endsWith(endSegment)).to.be.true;
+			assert.equal(compactedResult.startsWith(startSegment), true);
+			assert.equal(compactedResult.includes(middleSegment), true);
+			assert.equal(compactedResult.endsWith(endSegment), true);
 		});
 	});
 
@@ -126,9 +128,9 @@ describe('Cypher Queries Material module', () => {
 					) + [{ characters: [{}] }] AS characterGroups
 			`);
 
-			expect(compactedResult.startsWith(startSegment)).to.be.true;
-			expect(compactedResult.includes(middleSegment)).to.be.true;
-			expect(compactedResult.endsWith(endSegment)).to.be.true;
+			assert.equal(compactedResult.startsWith(startSegment), true);
+			assert.equal(compactedResult.includes(middleSegment), true);
+			assert.equal(compactedResult.endsWith(endSegment), true);
 		});
 	});
 });

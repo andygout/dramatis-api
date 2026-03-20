@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const PIYO_MATERIAL_UUID = 'PIYO_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
@@ -104,8 +102,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Piyo',
@@ -150,8 +147,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Waldo',
@@ -172,8 +168,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Wibble',
@@ -203,8 +198,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Xyzzy',
@@ -238,8 +232,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Fred',
@@ -260,8 +253,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Garply',
@@ -278,8 +270,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -301,8 +292,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Plugh',
@@ -340,8 +330,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -375,8 +364,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Thud',
@@ -393,8 +381,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Tutu',
@@ -411,8 +398,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Toto',
@@ -445,8 +431,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Fuga',
@@ -463,8 +448,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Grault',
@@ -481,8 +465,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'National Theatre',
@@ -499,8 +482,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -514,8 +496,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -526,8 +507,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Piyo',
@@ -538,8 +518,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -550,8 +529,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Wibble',
@@ -562,8 +540,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -574,8 +551,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Xyzzy',
@@ -586,8 +562,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -598,8 +573,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Fred',
@@ -610,8 +584,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Garply',
@@ -622,8 +595,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -634,8 +606,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Plugh',
@@ -646,8 +617,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -658,8 +628,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Hoge',
@@ -670,8 +639,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Thud',
@@ -682,8 +650,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Tutu',
@@ -694,8 +661,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -706,8 +672,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Toto',
@@ -718,8 +683,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Fuga',
@@ -730,8 +694,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Grault',
@@ -742,8 +705,7 @@ describe('Award ceremonies with crediting materials', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -808,8 +770,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -872,8 +833,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -929,8 +889,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -986,8 +945,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -1047,8 +1005,7 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2007',
@@ -1101,47 +1058,45 @@ describe('Award ceremonies with crediting materials', () => {
 				]
 			});
 
-		wordsmithAward2009AwardCeremony = await request
-			.execute(app)
-			.get(`/award-ceremonies/${WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID}`);
+		wordsmithAward2009AwardCeremony = await request(app).get(
+			`/award-ceremonies/${WORDSMITH_AWARD_2009_AWARD_CEREMONY_UUID}`
+		);
 
-		playwritingPrize2009AwardCeremony = await request
-			.execute(app)
-			.get(`/award-ceremonies/${PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID}`);
+		playwritingPrize2009AwardCeremony = await request(app).get(
+			`/award-ceremonies/${PLAYWRITING_PRIZE_2009_AWARD_CEREMONY_UUID}`
+		);
 
-		johnDoePerson = await request.execute(app).get(`/people/${JOHN_DOE_PERSON_UUID}`);
+		johnDoePerson = await request(app).get(`/people/${JOHN_DOE_PERSON_UUID}`);
 
-		playwrightsLtdCompany = await request.execute(app).get(`/companies/${PLAYWRIGHTS_LTD_COMPANY_UUID}`);
+		playwrightsLtdCompany = await request(app).get(`/companies/${PLAYWRIGHTS_LTD_COMPANY_UUID}`);
 
-		claraQuuxPerson = await request.execute(app).get(`/people/${CLARA_QUUX_PERSON_UUID}`);
+		claraQuuxPerson = await request(app).get(`/people/${CLARA_QUUX_PERSON_UUID}`);
 
-		songbirdsLtdCompany = await request.execute(app).get(`/companies/${SONGBIRDS_LTD_COMPANY_UUID}`);
+		songbirdsLtdCompany = await request(app).get(`/companies/${SONGBIRDS_LTD_COMPANY_UUID}`);
 
-		beatriceBarPerson = await request.execute(app).get(`/people/${BEATRICE_BAR_PERSON_UUID}`);
+		beatriceBarPerson = await request(app).get(`/people/${BEATRICE_BAR_PERSON_UUID}`);
 
-		theatricalsLtdCompany = await request.execute(app).get(`/companies/${THEATRICALS_LTD_COMPANY_UUID}`);
+		theatricalsLtdCompany = await request(app).get(`/companies/${THEATRICALS_LTD_COMPANY_UUID}`);
 
-		waldoMaterial = await request.execute(app).get(`/materials/${WALDO_MATERIAL_UUID}`);
+		waldoMaterial = await request(app).get(`/materials/${WALDO_MATERIAL_UUID}`);
 
-		janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
+		janeRoePerson = await request(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
-		fictioneersLtdCompany = await request.execute(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
+		fictioneersLtdCompany = await request(app).get(`/companies/${FICTIONEERS_LTD_COMPANY_UUID}`);
 
-		brandonBazPerson = await request.execute(app).get(`/people/${BRANDON_BAZ_PERSON_UUID}`);
+		brandonBazPerson = await request(app).get(`/people/${BRANDON_BAZ_PERSON_UUID}`);
 
-		creatorsLtdCompany = await request.execute(app).get(`/companies/${CREATORS_LTD_COMPANY_UUID}`);
+		creatorsLtdCompany = await request(app).get(`/companies/${CREATORS_LTD_COMPANY_UUID}`);
 
-		plughOriginalVersionMaterial = await request
-			.execute(app)
-			.get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+		plughOriginalVersionMaterial = await request(app).get(`/materials/${PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
 
-		francisFlobPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+		francisFlobPerson = await request(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
-		curtainUpLtdCompany = await request.execute(app).get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
+		curtainUpLtdCompany = await request(app).get(`/companies/${CURTAIN_UP_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await request.execute(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
+		talyseTataPerson = await request(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await request.execute(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
+		cinerightsLtdCompany = await request(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 	});
 
 	describe('Wordsmith Award 2009 (award ceremony)', () => {
@@ -1441,7 +1396,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { categories } = wordsmithAward2009AwardCeremony.body;
 
-			expect(categories).to.deep.equal(expectedCategories);
+			assert.deepEqual(categories, expectedCategories);
 		});
 	});
 
@@ -1712,7 +1667,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { categories } = playwritingPrize2009AwardCeremony.body;
 
-			expect(categories).to.deep.equal(expectedCategories);
+			assert.deepEqual(categories, expectedCategories);
 		});
 	});
 
@@ -1865,7 +1820,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards } = johnDoePerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2018,7 +1973,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards } = playwrightsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2249,7 +2204,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards } = claraQuuxPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2388,7 +2343,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards } = songbirdsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2674,7 +2629,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards } = beatriceBarPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -2928,7 +2883,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards } = theatricalsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
+			assert.deepEqual(awards, expectedAwards);
 		});
 	});
 
@@ -3067,7 +3022,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { subsequentVersionMaterialAwards } = plughOriginalVersionMaterial.body;
 
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -3208,8 +3163,8 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards, subsequentVersionMaterialAwards } = francisFlobPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -3350,8 +3305,8 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards, subsequentVersionMaterialAwards } = curtainUpLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 		});
 	});
 
@@ -3504,7 +3459,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { sourcingMaterialAwards } = waldoMaterial.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -3657,7 +3612,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { sourcingMaterialAwards } = janeRoePerson.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -3810,7 +3765,7 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { sourcingMaterialAwards } = fictioneersLtdCompany.body;
 
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -4023,8 +3978,8 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards, sourcingMaterialAwards } = brandonBazPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -4165,8 +4120,8 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards, sourcingMaterialAwards } = creatorsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 		});
 	});
 
@@ -4307,8 +4262,8 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards, rightsGrantorMaterialAwards } = talyseTataPerson.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(rightsGrantorMaterialAwards, expectedRightsGrantorMaterialAwards);
 		});
 	});
 
@@ -4449,8 +4404,8 @@ describe('Award ceremonies with crediting materials', () => {
 
 			const { awards, rightsGrantorMaterialAwards } = cinerightsLtdCompany.body;
 
-			expect(awards).to.deep.equal(expectedAwards);
-			expect(rightsGrantorMaterialAwards).to.deep.equal(expectedRightsGrantorMaterialAwards);
+			assert.deepEqual(awards, expectedAwards);
+			assert.deepEqual(rightsGrantorMaterialAwards, expectedRightsGrantorMaterialAwards);
 		});
 	});
 });

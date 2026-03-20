@@ -1,12 +1,10 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Uniqueness in database: Productions API', () => {
 	describe('Production material uniqueness in database', () => {
@@ -37,10 +35,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates material that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Material'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
@@ -49,16 +46,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.material).to.deep.equal(expectedMaterialHome1);
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.material, expectedMaterialHome1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 		});
 
 		it('updates production and creates material that has same name as existing material but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Material'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
@@ -68,16 +64,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.material).to.deep.equal(expectedMaterialHome2);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.material, expectedMaterialHome2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates production and uses existing material that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
@@ -86,16 +81,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.material).to.deep.equal(expectedMaterialHome1);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.material, expectedMaterialHome1);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 
 		it('updates production and uses existing material that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HOME_PRODUCTION_UUID}`)
 				.send({
 					name: 'Home',
@@ -105,9 +99,9 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.material).to.deep.equal(expectedMaterialHome2);
-			expect(await countNodesWithLabel('Material')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.material, expectedMaterialHome2);
+			assert.equal(await countNodesWithLabel('Material'), 2);
 		});
 	});
 
@@ -139,10 +133,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates venue that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Venue'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
@@ -151,16 +144,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre1);
-			expect(await countNodesWithLabel('Venue')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.venue, expectedVenueNewTheatre1);
+			assert.equal(await countNodesWithLabel('Venue'), 1);
 		});
 
 		it('updates production and creates venue that has same name as existing venue but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Venue'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
@@ -170,16 +162,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre2);
-			expect(await countNodesWithLabel('Venue')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.venue, expectedVenueNewTheatre2);
+			assert.equal(await countNodesWithLabel('Venue'), 2);
 		});
 
 		it('updates production and uses existing venue that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Venue'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
@@ -188,16 +179,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre1);
-			expect(await countNodesWithLabel('Venue')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.venue, expectedVenueNewTheatre1);
+			assert.equal(await countNodesWithLabel('Venue'), 2);
 		});
 
 		it('updates production and uses existing venue that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Venue')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Venue'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DIAL_M_FOR_MURDER_PRODUCTION_UUID}`)
 				.send({
 					name: 'Dial M for Murder',
@@ -207,9 +197,9 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.venue).to.deep.equal(expectedVenueNewTheatre2);
-			expect(await countNodesWithLabel('Venue')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.venue, expectedVenueNewTheatre2);
+			assert.equal(await countNodesWithLabel('Venue'), 2);
 		});
 	});
 
@@ -241,10 +231,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates season that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Season'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Detaining Justice',
@@ -253,16 +242,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite1);
-			expect(await countNodesWithLabel('Season')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.season, expectedSeasonNotBlackAndWhite1);
+			assert.equal(await countNodesWithLabel('Season'), 1);
 		});
 
 		it('updates production and creates season that has same name as existing season but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Season'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Detaining Justice',
@@ -272,16 +260,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite2);
-			expect(await countNodesWithLabel('Season')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.season, expectedSeasonNotBlackAndWhite2);
+			assert.equal(await countNodesWithLabel('Season'), 2);
 		});
 
 		it('updates production and uses existing season that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Season'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Detaining Justice',
@@ -290,16 +277,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite1);
-			expect(await countNodesWithLabel('Season')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.season, expectedSeasonNotBlackAndWhite1);
+			assert.equal(await countNodesWithLabel('Season'), 2);
 		});
 
 		it('updates production and uses existing season that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Season')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Season'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${DETAINING_JUSTICE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Detaining Justice',
@@ -309,9 +295,9 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.season).to.deep.equal(expectedSeasonNotBlackAndWhite2);
-			expect(await countNodesWithLabel('Season')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.season, expectedSeasonNotBlackAndWhite2);
+			assert.equal(await countNodesWithLabel('Season'), 2);
 		});
 	});
 
@@ -343,10 +329,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates festival that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Festival'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Measure for Measure',
@@ -355,16 +340,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe1);
-			expect(await countNodesWithLabel('Festival')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festival, expectedFestivalGlobeToGlobe1);
+			assert.equal(await countNodesWithLabel('Festival'), 1);
 		});
 
 		it('updates production and creates festival that has same name as existing festival but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Festival'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Measure for Measure',
@@ -374,16 +358,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe2);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festival, expectedFestivalGlobeToGlobe2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 
 		it('updates production and uses existing festival that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Measure for Measure',
@@ -392,16 +375,15 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe1);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festival, expectedFestivalGlobeToGlobe1);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 
 		it('updates production and uses existing festival that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MEASURE_FOR_MEASURE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Measure for Measure',
@@ -411,9 +393,9 @@ describe('Uniqueness in database: Productions API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festival).to.deep.equal(expectedFestivalGlobeToGlobe2);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festival, expectedFestivalGlobeToGlobe2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 	});
 
@@ -445,10 +427,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates producer entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -464,16 +445,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedPersonPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates producer entity (person) that has same name as existing producer entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -490,16 +470,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedPersonPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing producer entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -515,16 +494,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedPersonPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing producer entity (person) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -541,9 +519,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedPersonPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -591,10 +569,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates producer entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -611,16 +588,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedCompanyTheatreRoyalProductions1);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedCompanyTheatreRoyalProductions1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('updates production and creates producer entity (company) that has same name as existing producer entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -638,16 +614,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedCompanyTheatreRoyalProductions2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedCompanyTheatreRoyalProductions2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing producer entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -664,16 +639,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedCompanyTheatreRoyalProductions1);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedCompanyTheatreRoyalProductions1);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing producer entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -691,9 +665,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0]).to.deep.equal(expectedCompanyTheatreRoyalProductions2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0], expectedCompanyTheatreRoyalProductions2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 	});
 
@@ -725,10 +699,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates producer entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -750,16 +723,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0].members[0], expectedPersonPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates producer entity (company) that has same name as existing producer entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -782,16 +754,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0].members[0], expectedPersonPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing producer entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -813,16 +784,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0].members[0], expectedPersonPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing producer entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -845,9 +815,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.producerCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.producerCredits[0].entities[0].members[0], expectedPersonPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -901,10 +871,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates cast member that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${ARISTOCRATS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Aristocrats',
@@ -915,16 +884,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.cast[0], expectedCastMemberPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates cast member that has same name as existing cast member but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${ARISTOCRATS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Aristocrats',
@@ -936,16 +904,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.cast[0], expectedCastMemberPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing cast member that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${ARISTOCRATS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Aristocrats',
@@ -956,16 +923,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.cast[0], expectedCastMemberPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing cast member that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${ARISTOCRATS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Aristocrats',
@@ -977,9 +943,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.cast[0]).to.deep.equal(expectedCastMemberPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.cast[0], expectedCastMemberPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -1011,10 +977,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates creative entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -1030,16 +995,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedPersonPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates creative entity (person) that has same name as existing creative entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -1056,16 +1020,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedPersonPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing creative entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -1081,16 +1044,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedPersonPaulHiggins1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing creative entity (person) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${GIRL_NO_7_PRODUCTION_UUID}`)
 				.send({
 					name: 'Girl No 7',
@@ -1107,9 +1069,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedPersonPaulHiggins2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedPersonPaulHiggins2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -1157,10 +1119,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates creative entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1177,16 +1138,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph1);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedCompanyAutograph1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('updates production and creates creative entity (company) that has same name as existing creative entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1204,16 +1164,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedCompanyAutograph2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing creative entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1230,16 +1189,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph1);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedCompanyAutograph1);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing creative entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1257,9 +1215,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0]).to.deep.equal(expectedCompanyAutograph2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0], expectedCompanyAutograph2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 	});
 
@@ -1291,10 +1249,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates creative entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1316,16 +1273,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0].members[0], expectedPersonAndrewBruce1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates creative entity (company) that has same name as existing creative entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1348,16 +1304,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0].members[0], expectedPersonAndrewBruce2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing creative entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1379,16 +1334,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0].members[0], expectedPersonAndrewBruce1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing creative entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MOTHER_COURAGE_AND_HER_CHILDREN_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mother Courage and Her Children',
@@ -1411,9 +1365,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.creativeCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonAndrewBruce2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.creativeCredits[0].entities[0].members[0], expectedPersonAndrewBruce2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -1445,10 +1399,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates crew entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mrs Affleck',
@@ -1464,16 +1417,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedPersonTariqHussain1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates crew entity (person) that has same name as existing crew entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mrs Affleck',
@@ -1490,16 +1442,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedPersonTariqHussain2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing crew entity (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mrs Affleck',
@@ -1515,16 +1466,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedPersonTariqHussain1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing crew entity (person) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${MRS_AFFLECK_PRODUCTION_UUID}`)
 				.send({
 					name: 'Mrs Affleck',
@@ -1541,9 +1491,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedPersonTariqHussain2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedPersonTariqHussain2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -1591,10 +1541,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates crew entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1611,16 +1560,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedCompanyCrewDeputiesLtd1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('updates production and creates crew entity (company) that has same name as existing crew entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1638,16 +1586,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedCompanyCrewDeputiesLtd2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing crew entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1664,16 +1611,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd1);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedCompanyCrewDeputiesLtd1);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing crew entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${THREE_SISTERS_PRODUCTION_UUID}`)
 				.send({
 					name: 'Three Sisters',
@@ -1691,9 +1637,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0]).to.deep.equal(expectedCompanyCrewDeputiesLtd2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0], expectedCompanyCrewDeputiesLtd2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 	});
 
@@ -1725,10 +1671,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates crew entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -1750,16 +1695,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0].members[0], expectedPersonMollyEinchcomb1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates crew entity (company) that has same name as existing crew entity but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -1782,16 +1726,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0].members[0], expectedPersonMollyEinchcomb2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing crew entity (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -1813,16 +1756,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0].members[0], expectedPersonMollyEinchcomb1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing crew entity (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${HAMLET_PRODUCTION_UUID}`)
 				.send({
 					name: 'Hamlet',
@@ -1845,9 +1787,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.crewCredits[0].entities[0].members[0]).to.deep.equal(expectedPersonMollyEinchcomb2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.crewCredits[0].entities[0].members[0], expectedPersonMollyEinchcomb2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 
@@ -1879,10 +1821,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates review publication (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Company'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
 				.send({
 					name: "Long Day's Journey Into Night",
@@ -1899,16 +1840,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes1);
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].publication, expectedCompanyFinancialTimes1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 		});
 
 		it('updates production and creates review publication (company) that has same name as existing review publication but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Company'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
 				.send({
 					name: "Long Day's Journey Into Night",
@@ -1926,16 +1866,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].publication, expectedCompanyFinancialTimes2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing review publication (company) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
 				.send({
 					name: "Long Day's Journey Into Night",
@@ -1952,16 +1891,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes1);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].publication, expectedCompanyFinancialTimes1);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 
 		it('updates production and uses existing review publication (company) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${LONG_DAYS_JOURNEY_INTO_NIGHT_PRODUCTION_UUID}`)
 				.send({
 					name: "Long Day's Journey Into Night",
@@ -1979,9 +1917,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].publication).to.deep.equal(expectedCompanyFinancialTimes2);
-			expect(await countNodesWithLabel('Company')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].publication, expectedCompanyFinancialTimes2);
+			assert.equal(await countNodesWithLabel('Company'), 2);
 		});
 	});
 
@@ -2013,10 +1951,9 @@ describe('Uniqueness in database: Productions API', () => {
 		});
 
 		it('updates production and creates review critic (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${NYE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Nye',
@@ -2033,16 +1970,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar1);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].critic, expectedPersonArifaAkbar1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('updates production and creates review critic (person) that has same name as existing review critic but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${NYE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Nye',
@@ -2060,16 +1996,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].critic, expectedPersonArifaAkbar2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing review critic (person) that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${NYE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Nye',
@@ -2086,16 +2021,15 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar1);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].critic, expectedPersonArifaAkbar1);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 
 		it('updates production and uses existing review critic (person) that has a differentiator', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/productions/${NYE_PRODUCTION_UUID}`)
 				.send({
 					name: 'Nye',
@@ -2113,9 +2047,9 @@ describe('Uniqueness in database: Productions API', () => {
 					]
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.reviews[0].critic).to.deep.equal(expectedPersonArifaAkbar2);
-			expect(await countNodesWithLabel('Person')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.reviews[0].critic, expectedPersonArifaAkbar2);
+			assert.equal(await countNodesWithLabel('Person'), 2);
 		});
 	});
 });

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { after, before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Uniqueness in database: Festivals API', () => {
 	describe('Festival uniqueness in database', () => {
@@ -25,9 +23,9 @@ describe('Uniqueness in database: Festivals API', () => {
 		});
 
 		it('creates festival without differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Festival'), 0);
 
-			const response = await request.execute(app).post('/festivals').send({
+			const response = await request(app).post('/festivals').send({
 				name: 'Globe to Globe'
 			});
 
@@ -45,15 +43,15 @@ describe('Uniqueness in database: Festivals API', () => {
 				}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Festival')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Festival'), 1);
 		});
 
 		it('responds with errors if trying to create existing festival that does also not have differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Festival'), 1);
 
-			const response = await request.execute(app).post('/festivals').send({
+			const response = await request(app).post('/festivals').send({
 				name: 'Globe to Globe'
 			});
 
@@ -74,15 +72,15 @@ describe('Uniqueness in database: Festivals API', () => {
 				}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Festival')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Festival'), 1);
 		});
 
 		it('creates festival with same name as existing festival but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Festival'), 1);
 
-			const response = await request.execute(app).post('/festivals').send({
+			const response = await request(app).post('/festivals').send({
 				name: 'Globe to Globe',
 				differentiator: '1'
 			});
@@ -101,15 +99,15 @@ describe('Uniqueness in database: Festivals API', () => {
 				}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 
 		it('responds with errors if trying to update festival to one with same name and differentiator combination', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 
-			const response = await request.execute(app).put(`/festivals/${FESTIVAL_1_UUID}`).send({
+			const response = await request(app).put(`/festivals/${FESTIVAL_1_UUID}`).send({
 				name: 'Globe to Globe',
 				differentiator: '1'
 			});
@@ -132,15 +130,15 @@ describe('Uniqueness in database: Festivals API', () => {
 				}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 
 		it('updates festival with same name as existing festival but uses a different differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 
-			const response = await request.execute(app).put(`/festivals/${FESTIVAL_1_UUID}`).send({
+			const response = await request(app).put(`/festivals/${FESTIVAL_1_UUID}`).send({
 				name: 'Globe to Globe',
 				differentiator: '2'
 			});
@@ -159,15 +157,15 @@ describe('Uniqueness in database: Festivals API', () => {
 				}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 
 		it('updates festival with same name as existing festival but without a differentiator', async () => {
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 
-			const response = await request.execute(app).put(`/festivals/${FESTIVAL_2_UUID}`).send({
+			const response = await request(app).put(`/festivals/${FESTIVAL_2_UUID}`).send({
 				name: 'Globe to Globe'
 			});
 
@@ -185,9 +183,9 @@ describe('Uniqueness in database: Festivals API', () => {
 				}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Festival')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Festival'), 2);
 		});
 	});
 
@@ -219,10 +217,9 @@ describe('Uniqueness in database: Festivals API', () => {
 		});
 
 		it('updates festival and creates festival series that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(0);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 0);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -231,16 +228,15 @@ describe('Uniqueness in database: Festivals API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festivalSeries).to.deep.equal(expectedFestivalSeriesPerthArtsFestival1);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festivalSeries, expectedFestivalSeriesPerthArtsFestival1);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 		});
 
 		it('updates festival and creates festival series that has same name as existing festival series but uses a differentiator', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -250,16 +246,15 @@ describe('Uniqueness in database: Festivals API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festivalSeries).to.deep.equal(expectedFestivalSeriesPerthArtsFestival2);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festivalSeries, expectedFestivalSeriesPerthArtsFestival2);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 		});
 
 		it('updates festival and uses existing festival series that does not have a differentiator', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -268,16 +263,15 @@ describe('Uniqueness in database: Festivals API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festivalSeries).to.deep.equal(expectedFestivalSeriesPerthArtsFestival1);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festivalSeries, expectedFestivalSeriesPerthArtsFestival1);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 		});
 
 		it('updates festival and uses existing festival series that has a differentiator', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 
-			const response = await request
-				.execute(app)
+			const response = await request(app)
 				.put(`/festivals/${TWO_THOUSAND_AND_EIGHT_FESTIVAL_UUID}`)
 				.send({
 					name: '2008',
@@ -287,9 +281,9 @@ describe('Uniqueness in database: Festivals API', () => {
 					}
 				});
 
-			expect(response).to.have.status(200);
-			expect(response.body.festivalSeries).to.deep.equal(expectedFestivalSeriesPerthArtsFestival2);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(2);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.festivalSeries, expectedFestivalSeriesPerthArtsFestival2);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 2);
 		});
 	});
 });

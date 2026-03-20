@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Instance validation failures: Awards API', () => {
 	describe('attempt to create instance', () => {
@@ -30,9 +30,9 @@ describe('Instance validation failures: Awards API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Award')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Award'), 1);
 
-				const response = await request.execute(app).post('/awards').send({
+				const response = await request(app).post('/awards').send({
 					name: ''
 				});
 
@@ -46,17 +46,17 @@ describe('Instance validation failures: Awards API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Award')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Award'), 1);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Award')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Award'), 1);
 
-				const response = await request.execute(app).post('/awards').send({
+				const response = await request(app).post('/awards').send({
 					name: 'Laurence Olivier Awards'
 				});
 
@@ -71,9 +71,9 @@ describe('Instance validation failures: Awards API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Award')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Award'), 1);
 			});
 		});
 	});
@@ -100,14 +100,11 @@ describe('Instance validation failures: Awards API', () => {
 
 		context('instance has input validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Award')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Award'), 2);
 
-				const response = await request
-					.execute(app)
-					.put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`)
-					.send({
-						name: ''
-					});
+				const response = await request(app).put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`).send({
+					name: ''
+				});
 
 				const expectedResponseBody = {
 					model: 'AWARD',
@@ -120,29 +117,27 @@ describe('Instance validation failures: Awards API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Award')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Award'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Award',
 						name: 'Evening Standard Theatre Awards',
 						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
 		context('instance has database validation failures', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Award')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Award'), 2);
 
-				const response = await request
-					.execute(app)
-					.put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`)
-					.send({
-						name: 'Laurence Olivier Awards'
-					});
+				const response = await request(app).put(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`).send({
+					name: 'Laurence Olivier Awards'
+				});
 
 				const expectedResponseBody = {
 					model: 'AWARD',
@@ -156,16 +151,17 @@ describe('Instance validation failures: Awards API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Award')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Award'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Award',
 						name: 'Evening Standard Theatre Awards',
 						uuid: EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 	});
@@ -200,11 +196,9 @@ describe('Instance validation failures: Awards API', () => {
 
 		context('instance has associations', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Award')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Award'), 1);
 
-				const response = await request
-					.execute(app)
-					.delete(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
+				const response = await request(app).delete(`/awards/${EVENING_STANDARD_THEATRE_AWARDS_AWARD_UUID}`);
 
 				const expectedResponseBody = {
 					model: 'AWARD',
@@ -217,9 +211,9 @@ describe('Instance validation failures: Awards API', () => {
 					}
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Award')).to.equal(1);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Award'), 1);
 			});
 		});
 	});

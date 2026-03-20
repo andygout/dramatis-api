@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Role } from '../../../src/models/index.js';
 
@@ -43,7 +45,7 @@ describe('CastMember model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new CastMember({ name: 'Ian McKellen' });
 
-				expect(instance.roles).to.deep.equal([]);
+				assert.deepEqual(instance.roles, []);
 			});
 
 			it('assigns array of role instances, retaining those with empty or whitespace-only string names', async () => {
@@ -62,10 +64,10 @@ describe('CastMember model', () => {
 					]
 				});
 
-				expect(instance.roles.length).to.equal(3);
-				expect(instance.roles[0] instanceof Role).to.be.true;
-				expect(instance.roles[1] instanceof Role).to.be.true;
-				expect(instance.roles[2] instanceof Role).to.be.true;
+				assert.equal(instance.roles.length, 3);
+				assert.equal(instance.roles[0] instanceof Role, true);
+				assert.equal(instance.roles[1] instanceof Role, true);
+				assert.equal(instance.roles[2] instanceof Role, true);
 			});
 		});
 	});
@@ -88,7 +90,7 @@ describe('CastMember model', () => {
 
 			instance.runInputValidations({ isDuplicate: false });
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
 				instance.validateUniquenessInGroup,
@@ -100,16 +102,16 @@ describe('CastMember model', () => {
 				instance.roles[0].validateRoleNameCharacterNameDisparity,
 				instance.roles[0].validateUniquenessInGroup
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.validateDifferentiator);
-			assert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
-			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.roles);
-			assert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices, instance.roles);
-			assert.calledOnceWithExactly(instance.roles[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.roles[0].validateCharacterName);
-			assert.calledOnceWithExactly(instance.roles[0].validateQualifier);
-			assert.calledOnceWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
-			assert.calledOnceWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.roles);
+			sinonAssert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices, instance.roles);
+			sinonAssert.calledOnceWithExactly(instance.roles[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.roles[0].validateCharacterName);
+			sinonAssert.calledOnceWithExactly(instance.roles[0].validateQualifier);
+			sinonAssert.calledOnceWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
+			sinonAssert.calledOnceWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
 		});
 	});
 });

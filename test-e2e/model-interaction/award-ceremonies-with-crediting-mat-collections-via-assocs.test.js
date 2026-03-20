@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { after, before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID = 'SUB_PLUGH_PART_I_MATERIAL_1_UUID';
 const FRANCIS_FLOB_JR_PERSON_UUID = 'FRANCIS_FLOB_JR_PERSON_UUID';
@@ -73,8 +71,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -96,15 +93,14 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Plugh: Part II',
 			differentiator: '1',
 			format: 'play',
 			year: '1899'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh: Section I',
@@ -136,15 +132,14 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Mid-Plugh: Section II',
 			differentiator: '1',
 			format: 'sub-collection of plays',
 			year: '1899'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -176,8 +171,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Plugh: Part I',
@@ -211,15 +205,14 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Plugh: Part II',
 			differentiator: '2',
 			format: 'play',
 			year: '2009'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Plugh: Section I',
@@ -263,15 +256,14 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Mid-Plugh: Section II',
 			differentiator: '2',
 			format: 'sub-collection of plays',
 			year: '2009'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Plugh',
@@ -315,8 +307,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Waldo: Part I',
@@ -337,14 +328,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Waldo: Part II',
 			format: 'novel',
 			year: '1974'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Waldo: Section I',
@@ -373,14 +363,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Mid-Waldo: Section II',
 			format: 'sub-collection of novels',
 			year: '1974'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Waldo',
@@ -409,8 +398,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sub-Wibble: Part I',
@@ -431,14 +419,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Sub-Wibble: Part II',
 			format: 'play',
 			year: '2009'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Mid-Wibble: Section I',
@@ -467,14 +454,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request.execute(app).post('/materials').send({
+		await request(app).post('/materials').send({
 			name: 'Mid-Wibble: Section II',
 			format: 'sub-collection of plays',
 			year: '2009'
 		});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Sur-Wibble',
@@ -503,8 +489,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2010',
@@ -536,8 +521,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -569,8 +553,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2008',
@@ -602,8 +585,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -635,8 +617,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/award-ceremonies')
 			.send({
 				name: '2009',
@@ -692,9 +673,9 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		describe('Sub-Plugh: Part I (play, 1899) (material): its subsequent versions have nominations', () => {
 			it('includes awards of its subsequent versions (and their sur-material and sur-sur-material)', async () => {
-				subPlughPartIOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				subPlughPartIOriginalVersionMaterial = await request(app).get(
+					`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -829,15 +810,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = subPlughPartIOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Mid-Plugh: Section I (sub-collection of plays, 1899) (material): its sub-material's subsequent versions have nominations", () => {
 			it("includes awards of its sub-material's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				midPlughSectionIOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				midPlughSectionIOriginalVersionMaterial = await request(app).get(
+					`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -972,15 +953,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = midPlughSectionIOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sur-Plugh (collection of plays, 1899) (material): its sub-sub-material's subsequent versions have nominations", () => {
 			it("includes awards of its sub-sub-material's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				surPlughOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				surPlughOriginalVersionMaterial = await request(app).get(
+					`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1115,13 +1096,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = surPlughOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob Jr (person): their work's subsequent versions have nominations", () => {
 			it("includes awards of their work's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				francisFlobJrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
+				francisFlobJrPerson = await request(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1256,13 +1237,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobJrPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob (person): their work's sub-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sub-material's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				francisFlobPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+				francisFlobPerson = await request(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1397,13 +1378,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob Sr (person): their work's sub-sub-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sub-sub-material's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				francisFlobSrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
+				francisFlobSrPerson = await request(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1538,15 +1519,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobSrPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sub-Curtain Up Ltd (company): their work's subsequent versions have nominations", () => {
 			it("includes awards of their work's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				subCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				subCurtainUpLtdCompany = await request(app).get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1681,15 +1660,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = subCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Mid-Curtain Up Ltd (company): their work's sub-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sub-material's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				midCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				midCurtainUpLtdCompany = await request(app).get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1824,15 +1801,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = midCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sur-Curtain Up Ltd (company): their work's sub-sub-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sub-sub-material's subsequent versions (and their sur-material and sur-sur-material)", async () => {
-				surCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				surCurtainUpLtdCompany = await request(app).get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -1967,7 +1942,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = surCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 	});
@@ -1995,9 +1970,9 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		describe("Sub-Plugh: Part I (play, 1899) (material): its sur-material's subsequent versions have nominations", () => {
 			it("includes awards of its sur-material's subsequent versions (and their sur-material, but not their sub-materials)", async () => {
-				subPlughPartIOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				subPlughPartIOriginalVersionMaterial = await request(app).get(
+					`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -2085,15 +2060,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = subPlughPartIOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe('Mid-Plugh: Section I (sub-collection of plays, 1899) (material): its subsequent versions have nominations', () => {
 			it('includes awards of its subsequent versions (and their sur-material and sub-materials)', async () => {
-				midPlughSectionIOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				midPlughSectionIOriginalVersionMaterial = await request(app).get(
+					`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -2275,15 +2250,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = midPlughSectionIOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sur-Plugh (collection of plays, 1899) (material): its sub-material's subsequent versions have nominations", () => {
 			it("includes awards of its sub-material's subsequent versions (and their sur-material and sub-materials)", async () => {
-				surPlughOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				surPlughOriginalVersionMaterial = await request(app).get(
+					`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -2465,13 +2440,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = surPlughOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob Jr (person): their work's sur-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sur-material's subsequent versions (and their sur-material, but not their sub-materials)", async () => {
-				francisFlobJrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
+				francisFlobJrPerson = await request(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -2559,13 +2534,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobJrPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob (person): their work's subsequent versions have nominations", () => {
 			it("includes awards of their work's subsequent versions (and their sur-material and sub-materials)", async () => {
-				francisFlobPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+				francisFlobPerson = await request(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -2747,13 +2722,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob Sr (person): their work's sub-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sub-material's subsequent versions (and their sur-material and sub-materials)", async () => {
-				francisFlobSrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
+				francisFlobSrPerson = await request(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -2935,15 +2910,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobSrPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sub-Curtain Up Ltd (company): their work's sur-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sur-material's subsequent versions (and their sur-material, but not their sub-materials)", async () => {
-				subCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				subCurtainUpLtdCompany = await request(app).get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3031,15 +3004,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = subCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Mid-Curtain Up Ltd (company): their work's subsequent versions have nominations", () => {
 			it("includes awards of their work's subsequent versions (and their sur-material and sub-materials)", async () => {
-				midCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				midCurtainUpLtdCompany = await request(app).get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3221,15 +3192,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = midCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sur-Curtain Up Ltd (company): their work's sub-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sub-material's subsequent versions (and their sur-material and sub-materials)", async () => {
-				surCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				surCurtainUpLtdCompany = await request(app).get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3411,7 +3380,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = surCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 	});
@@ -3439,9 +3408,9 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		describe("Sub-Plugh: Part I (play, 1899) (material): its sur-sur-material's subsequent versions have nominations", () => {
 			it("includes awards of its sur-sur-material's subsequent versions (but not their sub-materials and sub-sub-materials)", async () => {
-				subPlughPartIOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				subPlughPartIOriginalVersionMaterial = await request(app).get(
+					`/materials/${SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3486,15 +3455,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = subPlughPartIOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Mid-Plugh: Section I (sub-collection of plays, 1899) (material): its sur-material's subsequent versions have nominations", () => {
 			it("includes awards of its sur-material's subsequent versions (but not their sub-materials and sub-sub-materials)", async () => {
-				midPlughSectionIOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				midPlughSectionIOriginalVersionMaterial = await request(app).get(
+					`/materials/${MID_PLUGH_SECTION_I_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3539,15 +3508,15 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = midPlughSectionIOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe('Sur-Plugh (collection of plays, 1899) (material): subsequent versions have nominations', () => {
 			it('includes awards of its subsequent versions (and their sub-materials and sub-sub-materials)', async () => {
-				surPlughOriginalVersionMaterial = await request
-					.execute(app)
-					.get(`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`);
+				surPlughOriginalVersionMaterial = await request(app).get(
+					`/materials/${SUR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`
+				);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3772,13 +3741,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = surPlughOriginalVersionMaterial.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob Jr (person): their work's sur-sur-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sur-sur-material's subsequent versions (but not their sub-materials and sub-sub-materials)", async () => {
-				francisFlobJrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
+				francisFlobJrPerson = await request(app).get(`/people/${FRANCIS_FLOB_JR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3823,13 +3792,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobJrPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob (person): their work's sur-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sur-material's subsequent versions (but not their sub-materials and sub-sub-materials)", async () => {
-				francisFlobPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
+				francisFlobPerson = await request(app).get(`/people/${FRANCIS_FLOB_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -3874,13 +3843,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Francis Flob Sr (person): their work's subsequent versions have nominations", () => {
 			it("includes awards of their work's subsequent versions (and their sub-materials and sub-sub-materials)", async () => {
-				francisFlobSrPerson = await request.execute(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
+				francisFlobSrPerson = await request(app).get(`/people/${FRANCIS_FLOB_SR_PERSON_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -4105,15 +4074,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = francisFlobSrPerson.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sub-Curtain Up Ltd (company): their work's sur-sur-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sur-sur-material's subsequent versions (but not their sub-materials and sub-sub-materials)", async () => {
-				subCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				subCurtainUpLtdCompany = await request(app).get(`/companies/${SUB_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -4158,15 +4125,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = subCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Mid-Curtain Up Ltd (company): their work's sur-material's subsequent versions have nominations", () => {
 			it("includes awards of their work's sur-material's subsequent versions (but not their sub-materials and sub-sub-materials)", async () => {
-				midCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				midCurtainUpLtdCompany = await request(app).get(`/companies/${MID_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -4211,15 +4176,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = midCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 
 		describe("Sur-Curtain Up Ltd (company): their work's subsequent versions have nominations", () => {
 			it("includes awards of their work's subsequent versions (and their sub-materials and sub-sub-materials)", async () => {
-				surCurtainUpLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
+				surCurtainUpLtdCompany = await request(app).get(`/companies/${SUR_CURTAIN_UP_LTD_COMPANY_UUID}`);
 
 				const expectedSubsequentVersionMaterialAwards = [
 					{
@@ -4444,7 +4407,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { subsequentVersionMaterialAwards } = surCurtainUpLtdCompany.body;
 
-				expect(subsequentVersionMaterialAwards).to.deep.equal(expectedSubsequentVersionMaterialAwards);
+				assert.deepEqual(subsequentVersionMaterialAwards, expectedSubsequentVersionMaterialAwards);
 			});
 		});
 	});
@@ -4472,7 +4435,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		describe('Sub-Waldo: Part I (novel, 1974) (material): its sourcing materials have nominations', () => {
 			it('includes awards of its sourcing materials (and their sur-material and sur-sur-material)', async () => {
-				subWaldoPartIMaterial = await request.execute(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
+				subWaldoPartIMaterial = await request(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -4607,15 +4570,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = subWaldoPartIMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Mid-Waldo: Section I (sub-collection of plays, 1899) (material): its sub-material's sourcing materials have nominations", () => {
 			it("includes awards of its sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				midWaldoSectionIMaterial = await request
-					.execute(app)
-					.get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
+				midWaldoSectionIMaterial = await request(app).get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -4750,13 +4711,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = midWaldoSectionIMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sur-Waldo (collection of plays, 1899) (material): its sub-sub-material's sourcing materials have nominations", () => {
 			it("includes awards of its sub-sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				surWaldoMaterial = await request.execute(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
+				surWaldoMaterial = await request(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -4891,13 +4852,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = surWaldoMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe Jr (person): their work's sourcing materials have nominations", () => {
 			it("includes awards of their work's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				janeRoeJrPerson = await request.execute(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
+				janeRoeJrPerson = await request(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5032,13 +4993,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoeJrPerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe (person): their work's sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
+				janeRoePerson = await request(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5173,13 +5134,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoePerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe Sr (person): their work's sub-sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				janeRoeSrPerson = await request.execute(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
+				janeRoeSrPerson = await request(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5314,15 +5275,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoeSrPerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sub-Fictioneers Ltd (company): their work's sourcing materials have nominations", () => {
 			it("includes awards of their work's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				subFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
+				subFictioneersLtdCompany = await request(app).get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5457,15 +5416,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = subFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Mid-Fictioneers Ltd (company): their work's sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				midFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
+				midFictioneersLtdCompany = await request(app).get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5600,15 +5557,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = midFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sur-Fictioneers Ltd (company): their work's sub-sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				surFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
+				surFictioneersLtdCompany = await request(app).get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5743,7 +5698,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = surFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 	});
@@ -5771,7 +5726,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		describe("Sub-Waldo: Part I (play, 1899) (material): its sur-material's sourcing materials have nominations", () => {
 			it("includes awards of its sur-material's sourcing materials (and their sur-material, but not their sub-materials)", async () => {
-				subWaldoPartIMaterial = await request.execute(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
+				subWaldoPartIMaterial = await request(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -5859,15 +5814,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = subWaldoPartIMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe('Mid-Waldo: Section I (sub-collection of plays, 1899) (material): its sourcing materials have nominations', () => {
 			it('includes awards of its sourcing materials (and their sur-material and sub-materials)', async () => {
-				midWaldoSectionIMaterial = await request
-					.execute(app)
-					.get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
+				midWaldoSectionIMaterial = await request(app).get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6049,13 +6002,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = midWaldoSectionIMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sur-Waldo (collection of plays, 1899) (material): its sub-material's sourcing materials have nominations", () => {
 			it("includes awards of its sub-material's sourcing materials (and their sur-material and sub-materials)", async () => {
-				surWaldoMaterial = await request.execute(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
+				surWaldoMaterial = await request(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6237,13 +6190,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = surWaldoMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe Jr (person): their work's sur-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sur-material's sourcing materials (and their sur-material, but not their sub-materials)", async () => {
-				janeRoeJrPerson = await request.execute(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
+				janeRoeJrPerson = await request(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6331,13 +6284,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoeJrPerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe (person): their work's sourcing materials have nominations", () => {
 			it("includes awards of their work's sourcing materials (and their sur-material and sub-materials)", async () => {
-				janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
+				janeRoePerson = await request(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6519,13 +6472,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoePerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe Sr (person): their work's sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-material's sourcing materials (and their sur-material and sub-materials)", async () => {
-				janeRoeSrPerson = await request.execute(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
+				janeRoeSrPerson = await request(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6707,15 +6660,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoeSrPerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sub-Fictioneers Ltd (company): their work's sur-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sur-material's sourcing materials (and their sur-material, but not their sub-materials)", async () => {
-				subFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
+				subFictioneersLtdCompany = await request(app).get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6803,15 +6754,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = subFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Mid-Fictioneers Ltd (company): their work's sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-material's sourcing materials (and their sur-material and sur-sur-material)", async () => {
-				midFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
+				midFictioneersLtdCompany = await request(app).get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -6993,15 +6942,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = midFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sur-Fictioneers Ltd (company): their work's sub-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sub-material's sourcing materials (and their sur-material and sub-materials)", async () => {
-				surFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
+				surFictioneersLtdCompany = await request(app).get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7183,7 +7130,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = surFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 	});
@@ -7211,7 +7158,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 		describe("Sub-Waldo: Part I (play, 1899) (material): its sur-sur-material's sourcing materials have nominations", () => {
 			it("includes awards of its sur-sur-material's sourcing materials (but not their sub-materials and sub-sub-materials)", async () => {
-				subWaldoPartIMaterial = await request.execute(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
+				subWaldoPartIMaterial = await request(app).get(`/materials/${SUB_WALDO_PART_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7256,15 +7203,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = subWaldoPartIMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Mid-Waldo: Section I (sub-collection of plays, 1899) (material): its sur-material's sourcing materials have nominations", () => {
 			it("includes awards of its sur-material's sourcing materials (but not their sub-materials and sub-sub-materials)", async () => {
-				midWaldoSectionIMaterial = await request
-					.execute(app)
-					.get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
+				midWaldoSectionIMaterial = await request(app).get(`/materials/${MID_WALDO_SECTION_I_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7309,13 +7254,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = midWaldoSectionIMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe('Sur-Waldo (collection of plays, 1899) (material): sourcing materials have nominations', () => {
 			it('includes awards of its sourcing materials (and their sub-materials and sub-sub-materials)', async () => {
-				surWaldoMaterial = await request.execute(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
+				surWaldoMaterial = await request(app).get(`/materials/${SUR_WALDO_MATERIAL_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7540,13 +7485,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = surWaldoMaterial.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe Jr (person): their work's sur-sur-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sur-sur-material's sourcing materials (but not their sub-materials and sub-sub-materials)", async () => {
-				janeRoeJrPerson = await request.execute(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
+				janeRoeJrPerson = await request(app).get(`/people/${JANE_ROE_JR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7591,13 +7536,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoeJrPerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe (person): their work's sur-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sur-material's sourcing materials (but not their sub-materials and sub-sub-materials)", async () => {
-				janeRoePerson = await request.execute(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
+				janeRoePerson = await request(app).get(`/people/${JANE_ROE_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7642,13 +7587,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoePerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Jane Roe Sr (person): their work's sourcing materials have nominations", () => {
 			it("includes awards of their work's sourcing materials (and their sub-materials and sub-sub-materials)", async () => {
-				janeRoeSrPerson = await request.execute(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
+				janeRoeSrPerson = await request(app).get(`/people/${JANE_ROE_SR_PERSON_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7873,15 +7818,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = janeRoeSrPerson.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sub-Fictioneers Ltd (company): their work's sur-sur-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sur-sur-material's sourcing materials (but not their sub-materials and sub-sub-materials)", async () => {
-				subFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
+				subFictioneersLtdCompany = await request(app).get(`/companies/${SUB_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7926,15 +7869,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = subFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Mid-Fictioneers Ltd (company): their work's sur-material's sourcing materials have nominations", () => {
 			it("includes awards of their work's sur-material's sourcing materials (but not their sub-materials and sub-sub-materials)", async () => {
-				midFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
+				midFictioneersLtdCompany = await request(app).get(`/companies/${MID_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -7979,15 +7920,13 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = midFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 
 		describe("Sur-Fictioneers Ltd (company): their work's sourcing materials have nominations", () => {
 			it("includes awards of their work's sourcing materials (and their sub-materials and sub-sub-materials)", async () => {
-				surFictioneersLtdCompany = await request
-					.execute(app)
-					.get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
+				surFictioneersLtdCompany = await request(app).get(`/companies/${SUR_FICTIONEERS_LTD_COMPANY_UUID}`);
 
 				const expectedSourcingMaterialAwards = [
 					{
@@ -8212,7 +8151,7 @@ describe('Award ceremonies with crediting material collections loosely connected
 
 				const { sourcingMaterialAwards } = surFictioneersLtdCompany.body;
 
-				expect(sourcingMaterialAwards).to.deep.equal(expectedSourcingMaterialAwards);
+				assert.deepEqual(sourcingMaterialAwards, expectedSourcingMaterialAwards);
 			});
 		});
 	});

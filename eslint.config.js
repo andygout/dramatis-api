@@ -1,11 +1,9 @@
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import mochaPlugin from 'eslint-plugin-mocha';
 import globals from 'globals';
 
 export default [
 	js.configs.recommended,
-	mochaPlugin.configs.recommended,
 	{
 		languageOptions: {
 			globals: {
@@ -37,21 +35,6 @@ export default [
 			'spaced-comment': 'error',
 			strict: ['error', 'global'],
 			'wrap-iife': 'error'
-		}
-	},
-	{
-		files: ['test-e2e/**/*.test.js', 'test-int/**/*.test.js', 'test-unit/**/*.test.js'],
-		languageOptions: {
-			globals: {
-				...globals.mocha
-			}
-		},
-		plugins: {
-			mocha: mochaPlugin
-		},
-		rules: {
-			'mocha/no-exclusive-tests': 'error',
-			'mocha/no-mocha-arrows': 'off'
 		}
 	},
 	eslintConfigPrettier

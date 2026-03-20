@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const ROYAL_COURT_THEATRE_VENUE_UUID = 'ROYAL_COURT_THEATRE_VENUE_UUID';
 const JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID = 'JERWOOD_THEATRE_DOWNSTAIRS_VENUE_UUID';
@@ -54,8 +52,7 @@ describe('Productions with producers', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Court Theatre',
@@ -72,8 +69,7 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Hangmen',
@@ -157,8 +153,7 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'White Pearl',
@@ -242,8 +237,7 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Pah-La',
@@ -333,8 +327,7 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Lights Out',
@@ -392,35 +385,33 @@ describe('Productions with producers', () => {
 				]
 			});
 
-		hangmenWyndhamsProduction = await request.execute(app).get(`/productions/${HANGMEN_WYNDHAMS_PRODUCTION_UUID}`);
+		hangmenWyndhamsProduction = await request(app).get(`/productions/${HANGMEN_WYNDHAMS_PRODUCTION_UUID}`);
 
-		whitePearlJerwoodTheatreDownstairsProduction = await request
-			.execute(app)
-			.get(`/productions/${WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID}`);
+		whitePearlJerwoodTheatreDownstairsProduction = await request(app).get(
+			`/productions/${WHITE_PEARL_JERWOOD_THEATRE_DOWNSTAIRS_PRODUCTION_UUID}`
+		);
 
-		pahLaJerwoodTheatreUpstairsProduction = await request
-			.execute(app)
-			.get(`/productions/${PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`);
+		pahLaJerwoodTheatreUpstairsProduction = await request(app).get(
+			`/productions/${PAH_LA_JERWOOD_THEATRE_UPSTAIRS_PRODUCTION_UUID}`
+		);
 
-		lightsOutTheSiteProduction = await request
-			.execute(app)
-			.get(`/productions/${LIGHTS_OUT_THE_SITE_PRODUCTION_UUID}`);
+		lightsOutTheSiteProduction = await request(app).get(`/productions/${LIGHTS_OUT_THE_SITE_PRODUCTION_UUID}`);
 
-		robertFoxPerson = await request.execute(app).get(`/people/${ROBERT_FOX_PERSON_UUID}`);
+		robertFoxPerson = await request(app).get(`/people/${ROBERT_FOX_PERSON_UUID}`);
 
-		ericAbrahamPerson = await request.execute(app).get(`/people/${ERIC_ABRAHAM_PERSON_UUID}`);
+		ericAbrahamPerson = await request(app).get(`/people/${ERIC_ABRAHAM_PERSON_UUID}`);
 
-		matthewByamShawPerson = await request.execute(app).get(`/people/${MATTHEW_BYAM_SHAW_PERSON_UUID}`);
+		matthewByamShawPerson = await request(app).get(`/people/${MATTHEW_BYAM_SHAW_PERSON_UUID}`);
 
-		rogerChapmanPerson = await request.execute(app).get(`/people/${ROGER_CHAPMAN_PERSON_UUID}`);
+		rogerChapmanPerson = await request(app).get(`/people/${ROGER_CHAPMAN_PERSON_UUID}`);
 
-		soniaFriedmanProductionsCompany = await request
-			.execute(app)
-			.get(`/companies/${SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID}`);
+		soniaFriedmanProductionsCompany = await request(app).get(
+			`/companies/${SONIA_FRIEDMAN_PRODUCTIONS_COMPANY_UUID}`
+		);
 
-		royalCourtTheatreCompany = await request.execute(app).get(`/companies/${ROYAL_COURT_THEATRE_COMPANY_UUID}`);
+		royalCourtTheatreCompany = await request(app).get(`/companies/${ROYAL_COURT_THEATRE_COMPANY_UUID}`);
 
-		playfulProductionsCompany = await request.execute(app).get(`/companies/${PLAYFUL_PRODUCTIONS_COMPANY_UUID}`);
+		playfulProductionsCompany = await request(app).get(`/companies/${PLAYFUL_PRODUCTIONS_COMPANY_UUID}`);
 	});
 
 	describe("Hangmen at Wyndham's Theatre (production)", () => {
@@ -531,7 +522,7 @@ describe('Productions with producers', () => {
 
 			const { producerCredits } = hangmenWyndhamsProduction.body;
 
-			expect(producerCredits).to.deep.equal(expectedProducerCredits);
+			assert.deepEqual(producerCredits, expectedProducerCredits);
 		});
 	});
 
@@ -642,7 +633,7 @@ describe('Productions with producers', () => {
 
 			const { producerCredits } = whitePearlJerwoodTheatreDownstairsProduction.body;
 
-			expect(producerCredits).to.deep.equal(expectedProducerCredits);
+			assert.deepEqual(producerCredits, expectedProducerCredits);
 		});
 	});
 
@@ -760,7 +751,7 @@ describe('Productions with producers', () => {
 
 			const { producerCredits } = pahLaJerwoodTheatreUpstairsProduction.body;
 
-			expect(producerCredits).to.deep.equal(expectedProducerCredits);
+			assert.deepEqual(producerCredits, expectedProducerCredits);
 		});
 	});
 
@@ -837,7 +828,7 @@ describe('Productions with producers', () => {
 
 			const { producerCredits } = lightsOutTheSiteProduction.body;
 
-			expect(producerCredits).to.deep.equal(expectedProducerCredits);
+			assert.deepEqual(producerCredits, expectedProducerCredits);
 		});
 	});
 
@@ -1212,7 +1203,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = robertFoxPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -1673,7 +1664,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = ericAbrahamPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -2134,7 +2125,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = matthewByamShawPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -2272,7 +2263,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = rogerChapmanPerson.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -2647,7 +2638,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = soniaFriedmanProductionsCompany.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -3108,7 +3099,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = royalCourtTheatreCompany.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 
@@ -3569,7 +3560,7 @@ describe('Productions with producers', () => {
 
 			const { producerProductions } = playfulProductionsCompany.body;
 
-			expect(producerProductions).to.deep.equal(expectedProducerProductions);
+			assert.deepEqual(producerProductions, expectedProducerProductions);
 		});
 	});
 });

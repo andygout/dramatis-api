@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID = 'ROYAL_SHAKESPEARE_THEATRE_VENUE_UUID';
 const THE_CUBE_VENUE_UUID = 'THE_CUBE_VENUE_UUID';
@@ -60,8 +58,7 @@ describe('Materials with source material', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Royal Shakespeare Theatre',
@@ -72,8 +69,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -94,8 +90,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Donkey Show',
@@ -125,8 +120,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Indian Boy',
@@ -165,8 +159,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Shakespeare's Villains",
@@ -209,8 +202,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'A Moorish Captain',
@@ -232,8 +224,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Othello',
@@ -273,8 +264,7 @@ describe('Materials with source material', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "A Midsummer Night's Dream",
@@ -289,8 +279,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Donkey Show',
@@ -305,8 +294,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Indian Boy',
@@ -321,8 +309,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Shakespeare's Villains",
@@ -337,8 +324,7 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Othello',
@@ -353,47 +339,43 @@ describe('Materials with source material', () => {
 				}
 			});
 
-		aMidsummerNightsDreamMaterial = await request
-			.execute(app)
-			.get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
+		aMidsummerNightsDreamMaterial = await request(app).get(`/materials/${A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID}`);
 
-		theIndianBoyMaterial = await request.execute(app).get(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`);
+		theIndianBoyMaterial = await request(app).get(`/materials/${THE_INDIAN_BOY_MATERIAL_UUID}`);
 
-		shakespearesVillainsMaterial = await request
-			.execute(app)
-			.get(`/materials/${SHAKESPEARES_VILLAINS_MATERIAL_UUID}`);
+		shakespearesVillainsMaterial = await request(app).get(`/materials/${SHAKESPEARES_VILLAINS_MATERIAL_UUID}`);
 
-		aMoorishCaptainMaterial = await request.execute(app).get(`/materials/${A_MOORISH_CAPTAIN_MATERIAL_UUID}`);
+		aMoorishCaptainMaterial = await request(app).get(`/materials/${A_MOORISH_CAPTAIN_MATERIAL_UUID}`);
 
-		othelloMaterial = await request.execute(app).get(`/materials/${OTHELLO_MATERIAL_UUID}`);
+		othelloMaterial = await request(app).get(`/materials/${OTHELLO_MATERIAL_UUID}`);
 
-		williamShakespearePerson = await request.execute(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
+		williamShakespearePerson = await request(app).get(`/people/${WILLIAM_SHAKESPEARE_PERSON_UUID}`);
 
-		ronaMunroPerson = await request.execute(app).get(`/people/${RONA_MUNRO_PERSON_UUID}`);
+		ronaMunroPerson = await request(app).get(`/people/${RONA_MUNRO_PERSON_UUID}`);
 
-		stevenBerkoffPerson = await request.execute(app).get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
+		stevenBerkoffPerson = await request(app).get(`/people/${STEVEN_BERKOFF_PERSON_UUID}`);
 
-		theKingsMenCompany = await request.execute(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
+		theKingsMenCompany = await request(app).get(`/companies/${THE_KINGS_MEN_COMPANY_UUID}`);
 
-		royalShakespeareCompany = await request.execute(app).get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
+		royalShakespeareCompany = await request(app).get(`/companies/${ROYAL_SHAKESPEARE_COMPANY_UUID}`);
 
-		eastProductionsCompany = await request.execute(app).get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
+		eastProductionsCompany = await request(app).get(`/companies/${EAST_PRODUCTIONS_COMPANY_UUID}`);
 
-		theIndianBoyRoyalShakespeareTheatreProduction = await request
-			.execute(app)
-			.get(`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		theIndianBoyRoyalShakespeareTheatreProduction = await request(app).get(
+			`/productions/${THE_INDIAN_BOY_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`
+		);
 
-		shakespearesVillainsTheatreRoyalHaymarketProduction = await request
-			.execute(app)
-			.get(`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`);
+		shakespearesVillainsTheatreRoyalHaymarketProduction = await request(app).get(
+			`/productions/${SHAKESPEARES_VILLAINS_THEATRE_ROYAL_HAYMARKET_PRODUCTION_UUID}`
+		);
 
-		othelloDonmarWarehouseProduction = await request
-			.execute(app)
-			.get(`/productions/${OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID}`);
+		othelloDonmarWarehouseProduction = await request(app).get(
+			`/productions/${OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID}`
+		);
 
-		theIndianBoyCharacter = await request.execute(app).get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
+		theIndianBoyCharacter = await request(app).get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
 
-		iagoCharacter = await request.execute(app).get(`/characters/${IAGO_CHARACTER_UUID}`);
+		iagoCharacter = await request(app).get(`/characters/${IAGO_CHARACTER_UUID}`);
 	});
 
 	describe("A Midsummer Night's Dream (material)", () => {
@@ -519,7 +501,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterials } = aMidsummerNightsDreamMaterial.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of material', () => {
@@ -542,7 +524,7 @@ describe('Materials with source material', () => {
 
 			const { productions } = aMidsummerNightsDreamMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 
 		it('includes productions of materials that used it as source material', () => {
@@ -583,7 +565,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterialProductions } = aMidsummerNightsDreamMaterial.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -642,7 +624,7 @@ describe('Materials with source material', () => {
 
 			const { writingCredits } = theIndianBoyMaterial.body;
 
-			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+			assert.deepEqual(writingCredits, expectedWritingCredits);
 		});
 	});
 
@@ -685,7 +667,7 @@ describe('Materials with source material', () => {
 
 			const { writingCredits } = shakespearesVillainsMaterial.body;
 
-			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+			assert.deepEqual(writingCredits, expectedWritingCredits);
 		});
 	});
 
@@ -754,7 +736,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterials } = aMoorishCaptainMaterial.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 	});
 
@@ -813,7 +795,7 @@ describe('Materials with source material', () => {
 
 			const { writingCredits } = othelloMaterial.body;
 
-			expect(writingCredits).to.deep.equal(expectedWritingCredits);
+			assert.deepEqual(writingCredits, expectedWritingCredits);
 		});
 
 		it('includes productions of material', () => {
@@ -836,7 +818,7 @@ describe('Materials with source material', () => {
 
 			const { productions } = othelloMaterial.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -1063,7 +1045,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterials } = williamShakespearePerson.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of materials that used their work as source material (both specific and non-specific)', () => {
@@ -1132,7 +1114,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterialProductions } = williamShakespearePerson.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1359,7 +1341,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterials } = theKingsMenCompany.body;
 
-			expect(sourcingMaterials).to.deep.equal(expectedSourcingMaterials);
+			assert.deepEqual(sourcingMaterials, expectedSourcingMaterials);
 		});
 
 		it('includes productions of materials that used their work as source material (both specific and non-specific)', () => {
@@ -1428,7 +1410,7 @@ describe('Materials with source material', () => {
 
 			const { sourcingMaterialProductions } = theKingsMenCompany.body;
 
-			expect(sourcingMaterialProductions).to.deep.equal(expectedSourcingMaterialProductions);
+			assert.deepEqual(sourcingMaterialProductions, expectedSourcingMaterialProductions);
 		});
 	});
 
@@ -1497,7 +1479,7 @@ describe('Materials with source material', () => {
 
 			const { materials } = ronaMunroPerson.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1566,7 +1548,7 @@ describe('Materials with source material', () => {
 
 			const { materials } = royalShakespeareCompany.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1619,7 +1601,7 @@ describe('Materials with source material', () => {
 
 			const { materials } = stevenBerkoffPerson.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1672,7 +1654,7 @@ describe('Materials with source material', () => {
 
 			const { materials } = eastProductionsCompany.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -1739,7 +1721,7 @@ describe('Materials with source material', () => {
 
 			const { material } = theIndianBoyRoyalShakespeareTheatreProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1790,7 +1772,7 @@ describe('Materials with source material', () => {
 
 			const { material } = shakespearesVillainsTheatreRoyalHaymarketProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1857,7 +1839,7 @@ describe('Materials with source material', () => {
 
 			const { material } = othelloDonmarWarehouseProduction.body;
 
-			expect(material).to.deep.equal(expectedMaterial);
+			assert.deepEqual(material, expectedMaterial);
 		});
 	});
 
@@ -1927,7 +1909,7 @@ describe('Materials with source material', () => {
 
 			const { materials } = theIndianBoyCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
@@ -2040,13 +2022,13 @@ describe('Materials with source material', () => {
 
 			const { materials } = iagoCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
 	describe('materials list', () => {
 		it('includes writers of the materials and their corresponding source material', async () => {
-			const response = await request.execute(app).get('/materials');
+			const response = await request(app).get('/materials');
 
 			const expectedResponseBody = [
 				{
@@ -2319,8 +2301,8 @@ describe('Materials with source material', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

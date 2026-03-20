@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const AUSTIN_CHARACTER_UUID = 'AUSTIN_CHARACTER_UUID';
 const LEE_CHARACTER_UUID = 'LEE_CHARACTER_UUID';
@@ -35,8 +33,7 @@ describe('Roles with alternating cast', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'True West',
@@ -54,8 +51,7 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'True West',
@@ -98,8 +94,7 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'True West',
@@ -142,25 +137,21 @@ describe('Roles with alternating cast', () => {
 				]
 			});
 
-		austinCharacter = await request.execute(app).get(`/characters/${AUSTIN_CHARACTER_UUID}`);
+		austinCharacter = await request(app).get(`/characters/${AUSTIN_CHARACTER_UUID}`);
 
-		leeCharacter = await request.execute(app).get(`/characters/${LEE_CHARACTER_UUID}`);
+		leeCharacter = await request(app).get(`/characters/${LEE_CHARACTER_UUID}`);
 
-		trueWestCrucibleProduction = await request
-			.execute(app)
-			.get(`/productions/${TRUE_WEST_CRUCIBLE_PRODUCTION_UUID}`);
+		trueWestCrucibleProduction = await request(app).get(`/productions/${TRUE_WEST_CRUCIBLE_PRODUCTION_UUID}`);
 
-		trueWestVaudevilleProduction = await request
-			.execute(app)
-			.get(`/productions/${TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID}`);
+		trueWestVaudevilleProduction = await request(app).get(`/productions/${TRUE_WEST_VAUDEVILLE_PRODUCTION_UUID}`);
 
-		nigelHarmanPerson = await request.execute(app).get(`/people/${NIGEL_HARMAN_PERSON_UUID}`);
+		nigelHarmanPerson = await request(app).get(`/people/${NIGEL_HARMAN_PERSON_UUID}`);
 
-		johnLightPerson = await request.execute(app).get(`/people/${JOHN_LIGHT_PERSON_UUID}`);
+		johnLightPerson = await request(app).get(`/people/${JOHN_LIGHT_PERSON_UUID}`);
 
-		kitHaringtonPerson = await request.execute(app).get(`/people/${KIT_HARINGTON_PERSON_UUID}`);
+		kitHaringtonPerson = await request(app).get(`/people/${KIT_HARINGTON_PERSON_UUID}`);
 
-		johnnyFlynnPerson = await request.execute(app).get(`/people/${JOHNNY_FLYNN_PERSON_UUID}`);
+		johnnyFlynnPerson = await request(app).get(`/people/${JOHNNY_FLYNN_PERSON_UUID}`);
 	});
 
 	describe('Austin (character)', () => {
@@ -270,7 +261,7 @@ describe('Roles with alternating cast', () => {
 
 			const { productions } = austinCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -381,7 +372,7 @@ describe('Roles with alternating cast', () => {
 
 			const { productions } = leeCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -434,7 +425,7 @@ describe('Roles with alternating cast', () => {
 
 			const { cast } = trueWestCrucibleProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -487,7 +478,7 @@ describe('Roles with alternating cast', () => {
 
 			const { cast } = trueWestVaudevilleProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -528,7 +519,7 @@ describe('Roles with alternating cast', () => {
 
 			const { castMemberProductions } = nigelHarmanPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -569,7 +560,7 @@ describe('Roles with alternating cast', () => {
 
 			const { castMemberProductions } = johnLightPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -610,7 +601,7 @@ describe('Roles with alternating cast', () => {
 
 			const { castMemberProductions } = kitHaringtonPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -651,7 +642,7 @@ describe('Roles with alternating cast', () => {
 
 			const { castMemberProductions } = johnnyFlynnPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

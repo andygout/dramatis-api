@@ -1,18 +1,16 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
-
 describe('CRUD (Create, Read, Update, Delete): People API', () => {
 	describe('GET new endpoint', () => {
 		it('responds with data required to prepare new person', async () => {
-			const response = await request.execute(app).get('/people/new');
+			const response = await request(app).get('/people/new');
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -21,8 +19,8 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
@@ -36,9 +34,9 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 		});
 
 		it('creates person', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 
-			const response = await request.execute(app).post('/people').send({
+			const response = await request(app).post('/people').send({
 				name: 'Ian McKellen'
 			});
 
@@ -50,13 +48,13 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('gets data required to edit specific person', async () => {
-			const response = await request.execute(app).get(`/people/${PERSON_UUID}/edit`);
+			const response = await request(app).get(`/people/${PERSON_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -66,14 +64,14 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates person', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request.execute(app).put(`/people/${PERSON_UUID}`).send({
+			const response = await request(app).put(`/people/${PERSON_UUID}`).send({
 				name: 'Patrick Stewart'
 			});
 
@@ -85,13 +83,13 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 		});
 
 		it('shows person', async () => {
-			const response = await request.execute(app).get(`/people/${PERSON_UUID}`);
+			const response = await request(app).get(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -117,14 +115,14 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				rightsGrantorMaterialAwards: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('deletes person', async () => {
-			expect(await countNodesWithLabel('Person')).to.equal(1);
+			assert.equal(await countNodesWithLabel('Person'), 1);
 
-			const response = await request.execute(app).delete(`/people/${PERSON_UUID}`);
+			const response = await request(app).delete(`/people/${PERSON_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PERSON',
@@ -133,9 +131,9 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('Person')).to.equal(0);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Person'), 0);
 		});
 	});
 
@@ -149,21 +147,21 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 
 			await purgeDatabase();
 
-			await request.execute(app).post('/people').send({
+			await request(app).post('/people').send({
 				name: 'Ian McKellen'
 			});
 
-			await request.execute(app).post('/people').send({
+			await request(app).post('/people').send({
 				name: 'Patrick Stewart'
 			});
 
-			await request.execute(app).post('/people').send({
+			await request(app).post('/people').send({
 				name: 'Matthew Kelly'
 			});
 		});
 
 		it('lists all people ordered by name', async () => {
-			const response = await request.execute(app).get('/people');
+			const response = await request(app).get('/people');
 
 			const expectedResponseBody = [
 				{
@@ -183,8 +181,8 @@ describe('CRUD (Create, Read, Update, Delete): People API', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const ROCK_N_ROLL_MATERIAL_UUID = 'ROCK_N_ROLL_MATERIAL_UUID';
 const ESME_CHARACTER_UUID = 'ESME_CHARACTER_UUID';
@@ -50,8 +48,7 @@ describe('Character with multiple appearances in the same material under differe
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: "Rock 'n' Roll",
@@ -85,8 +82,7 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: "Rock 'n' Roll",
@@ -138,8 +134,7 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Handbagged',
@@ -177,8 +172,7 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Handbagged',
@@ -235,33 +229,31 @@ describe('Character with multiple appearances in the same material under differe
 				]
 			});
 
-		esmeCharacter = await request.execute(app).get(`/characters/${ESME_CHARACTER_UUID}`);
+		esmeCharacter = await request(app).get(`/characters/${ESME_CHARACTER_UUID}`);
 
-		aliceCharacter = await request.execute(app).get(`/characters/${ALICE_CHARACTER_UUID}`);
+		aliceCharacter = await request(app).get(`/characters/${ALICE_CHARACTER_UUID}`);
 
-		eleanorCharacter = await request.execute(app).get(`/characters/${ELEANOR_CHARACTER_UUID}`);
+		eleanorCharacter = await request(app).get(`/characters/${ELEANOR_CHARACTER_UUID}`);
 
-		rockNRollMaterial = await request.execute(app).get(`/materials/${ROCK_N_ROLL_MATERIAL_UUID}`);
+		rockNRollMaterial = await request(app).get(`/materials/${ROCK_N_ROLL_MATERIAL_UUID}`);
 
-		rockNRollRoyalCourtProduction = await request
-			.execute(app)
-			.get(`/productions/${ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID}`);
+		rockNRollRoyalCourtProduction = await request(app).get(
+			`/productions/${ROCK_N_ROLL_ROYAL_COURT_PRODUCTION_UUID}`
+		);
 
-		aliceEvePerson = await request.execute(app).get(`/people/${ALICE_EVE_PERSON_UUID}`);
+		aliceEvePerson = await request(app).get(`/people/${ALICE_EVE_PERSON_UUID}`);
 
-		sineadCusackPerson = await request.execute(app).get(`/people/${SINEAD_CUSACK_PERSON_UUID}`);
+		sineadCusackPerson = await request(app).get(`/people/${SINEAD_CUSACK_PERSON_UUID}`);
 
-		queenElizabethIICharacter = await request.execute(app).get(`/characters/${QUEEN_ELIZABETH_II_CHARACTER_UUID}`);
+		queenElizabethIICharacter = await request(app).get(`/characters/${QUEEN_ELIZABETH_II_CHARACTER_UUID}`);
 
-		handbaggedMaterial = await request.execute(app).get(`/materials/${HANDBAGGED_MATERIAL_UUID}`);
+		handbaggedMaterial = await request(app).get(`/materials/${HANDBAGGED_MATERIAL_UUID}`);
 
-		handbaggedTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${HANDBAGGED_TRICYCLE_PRODUCTION_UUID}`);
+		handbaggedTricycleProduction = await request(app).get(`/productions/${HANDBAGGED_TRICYCLE_PRODUCTION_UUID}`);
 
-		kikaMarkhamPerson = await request.execute(app).get(`/people/${KIKA_MARKHAM_PERSON_UUID}`);
+		kikaMarkhamPerson = await request(app).get(`/people/${KIKA_MARKHAM_PERSON_UUID}`);
 
-		claireCoxPerson = await request.execute(app).get(`/people/${CLAIRE_COX_PERSON_UUID}`);
+		claireCoxPerson = await request(app).get(`/people/${CLAIRE_COX_PERSON_UUID}`);
 	});
 
 	describe('Esme (character)', () => {
@@ -292,7 +284,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { materials } = esmeCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions in which character was portrayed, including by which performer and under which qualifier', () => {
@@ -351,7 +343,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { productions } = esmeCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -395,7 +387,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { productions } = aliceCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -439,7 +431,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { productions } = eleanorCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -482,7 +474,7 @@ describe('Character with multiple appearances in the same material under differe
 				characterGroups: [{ characters }]
 			} = rockNRollMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -549,7 +541,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { cast } = rockNRollRoyalCourtProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -590,7 +582,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { castMemberProductions } = aliceEvePerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -631,7 +623,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { castMemberProductions } = sineadCusackPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -663,7 +655,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { materials } = queenElizabethIICharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions in which character was portrayed, including by which performer', () => {
@@ -706,7 +698,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { productions } = queenElizabethIICharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -749,7 +741,7 @@ describe('Character with multiple appearances in the same material under differe
 				characterGroups: [{ characters }]
 			} = handbaggedMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -830,7 +822,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { cast } = handbaggedTricycleProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -864,7 +856,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { castMemberProductions } = kikaMarkhamPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -898,7 +890,7 @@ describe('Character with multiple appearances in the same material under differe
 
 			const { castMemberProductions } = claireCoxPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

@@ -1,18 +1,16 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
-
 describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 	describe('GET new endpoint', () => {
 		it('responds with data required to prepare new festival series', async () => {
-			const response = await request.execute(app).get('/festival-serieses/new');
+			const response = await request(app).get('/festival-serieses/new');
 
 			const expectedResponseBody = {
 				model: 'FESTIVAL_SERIES',
@@ -21,8 +19,8 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 
@@ -36,9 +34,9 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 		});
 
 		it('creates festival series', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(0);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 0);
 
-			const response = await request.execute(app).post('/festival-serieses').send({
+			const response = await request(app).post('/festival-serieses').send({
 				name: 'Edinburgh International Festival'
 			});
 
@@ -50,13 +48,13 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 		});
 
 		it('gets data required to edit specific festival series', async () => {
-			const response = await request.execute(app).get(`/festival-serieses/${FESTIVAL_SERIES_UUID}/edit`);
+			const response = await request(app).get(`/festival-serieses/${FESTIVAL_SERIES_UUID}/edit`);
 
 			const expectedResponseBody = {
 				model: 'FESTIVAL_SERIES',
@@ -66,14 +64,14 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('updates festival series', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 
-			const response = await request.execute(app).put(`/festival-serieses/${FESTIVAL_SERIES_UUID}`).send({
+			const response = await request(app).put(`/festival-serieses/${FESTIVAL_SERIES_UUID}`).send({
 				name: 'Connections'
 			});
 
@@ -85,13 +83,13 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 		});
 
 		it('shows festival series', async () => {
-			const response = await request.execute(app).get(`/festival-serieses/${FESTIVAL_SERIES_UUID}`);
+			const response = await request(app).get(`/festival-serieses/${FESTIVAL_SERIES_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'FESTIVAL_SERIES',
@@ -101,14 +99,14 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				festivals: []
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
 		it('deletes festival series', async () => {
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(1);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 1);
 
-			const response = await request.execute(app).delete(`/festival-serieses/${FESTIVAL_SERIES_UUID}`);
+			const response = await request(app).delete(`/festival-serieses/${FESTIVAL_SERIES_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'FESTIVAL_SERIES',
@@ -117,9 +115,9 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				errors: {}
 			};
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
-			expect(await countNodesWithLabel('FestivalSeries')).to.equal(0);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('FestivalSeries'), 0);
 		});
 	});
 
@@ -134,21 +132,21 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 
 			await purgeDatabase();
 
-			await request.execute(app).post('/festival-serieses').send({
+			await request(app).post('/festival-serieses').send({
 				name: 'Edinburgh International Festival'
 			});
 
-			await request.execute(app).post('/festival-serieses').send({
+			await request(app).post('/festival-serieses').send({
 				name: 'HighTide Festival'
 			});
 
-			await request.execute(app).post('/festival-serieses').send({
+			await request(app).post('/festival-serieses').send({
 				name: 'Connections'
 			});
 		});
 
 		it('lists all festival serieses ordered by name', async () => {
-			const response = await request.execute(app).get('/festival-serieses');
+			const response = await request(app).get('/festival-serieses');
 
 			const expectedResponseBody = [
 				{
@@ -168,8 +166,8 @@ describe('CRUD (Create, Read, Update, Delete): Festival Serieses API', () => {
 				}
 			];
 
-			expect(response).to.have.status(200);
-			expect(response.body).to.deep.equal(expectedResponseBody);
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
 		});
 	});
 });

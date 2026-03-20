@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import * as cypherQueriesShared from '../../../../src/neo4j/cypher-queries/shared/index.js';
+
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Shared module', () => {
@@ -8,7 +10,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesShared.getCreateQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				CREATE (n:Venue { uuid: $uuid, name: $name, differentiator: $differentiator })
 
@@ -29,7 +32,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesShared.getEditQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
@@ -46,7 +50,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesShared.getUpdateQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 					SET
@@ -70,7 +75,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesShared.getDeleteQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (:Venue { uuid: $uuid })
 
@@ -122,7 +128,8 @@ describe('Cypher Queries Shared module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesShared.getListQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (n:Venue)
 

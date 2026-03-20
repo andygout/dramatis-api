@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Database validation failures: Materials API', () => {
 	describe('attempt to create instance', () => {
@@ -45,10 +45,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Material'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/materials')
 					.send({
 						name: 'Sur-Garply',
@@ -91,15 +90,16 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Sur-Garply'
-					})
-				).to.be.false;
+					}),
+					false
+				);
 			});
 		});
 
@@ -147,10 +147,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(3);
+				assert.equal(await countNodesWithLabel('Material'), 3);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/materials')
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -195,15 +194,16 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(3);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 3);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Sur-Sur-Grault'
-					})
-				).to.be.false;
+					}),
+					false
+				);
 			});
 		});
 	});
@@ -238,10 +238,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Material'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/materials/${SUB_GRAULT_MATERIAL_UUID}`)
 					.send({
 						name: 'Sub-Grault',
@@ -283,16 +282,17 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Sub-Grault',
 						uuid: SUB_GRAULT_MATERIAL_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -332,10 +332,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(3);
+				assert.equal(await countNodesWithLabel('Material'), 3);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/materials/${SUR_GARPLY_MATERIAL_UUID}`)
 					.send({
 						name: 'Sur-Garply',
@@ -379,16 +378,17 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(3);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 3);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Sur-Garply',
 						uuid: SUR_GARPLY_MATERIAL_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -443,10 +443,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(4);
+				assert.equal(await countNodesWithLabel('Material'), 4);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/materials/${SUR_SUR_GRAULT_MATERIAL_UUID}`)
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -492,16 +491,17 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(4);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 4);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Sur-Sur-Grault',
 						uuid: SUR_SUR_GRAULT_MATERIAL_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -558,10 +558,9 @@ describe('Database validation failures: Materials API', () => {
 				});
 
 				it('returns instance with appropriate errors attached', async () => {
-					expect(await countNodesWithLabel('Material')).to.equal(4);
+					assert.equal(await countNodesWithLabel('Material'), 4);
 
-					const response = await request
-						.execute(app)
+					const response = await request(app)
 						.put(`/materials/${SUB_GRAULT_MATERIAL_UUID}`)
 						.send({
 							name: 'Sub-Grault',
@@ -605,16 +604,17 @@ describe('Database validation failures: Materials API', () => {
 						characterGroups: []
 					};
 
-					expect(response).to.have.status(200);
-					expect(response.body).to.deep.equal(expectedResponseBody);
-					expect(await countNodesWithLabel('Material')).to.equal(4);
-					expect(
+					assert.equal(response.status, 200);
+					assert.deepEqual(response.body, expectedResponseBody);
+					assert.equal(await countNodesWithLabel('Material'), 4);
+					assert.equal(
 						await isNodeExistent({
 							label: 'Material',
 							name: 'Sub-Grault',
 							uuid: SUB_GRAULT_MATERIAL_UUID
-						})
-					).to.be.true;
+						}),
+						true
+					);
 				});
 			}
 		);
@@ -648,10 +648,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Material'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`)
 					.send({
 						name: 'Ur-Plugh',
@@ -686,16 +685,17 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Ur-Plugh',
 						uuid: UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -728,10 +728,9 @@ describe('Database validation failures: Materials API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Material')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Material'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/materials/${WALDO_MATERIAL_UUID}`)
 					.send({
 						name: 'Waldo',
@@ -788,16 +787,17 @@ describe('Database validation failures: Materials API', () => {
 					characterGroups: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Material')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Material'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Material',
 						name: 'Waldo',
 						uuid: WALDO_MATERIAL_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 	});

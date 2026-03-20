@@ -1,5 +1,9 @@
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
+
+const context = describe;
 
 describe('SubProductionIdentifier model', () => {
 	let stubs;
@@ -55,19 +59,21 @@ describe('SubProductionIdentifier model', () => {
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubProductionChecksQuery response',
 					params: {
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				});
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
@@ -89,20 +95,22 @@ describe('SubProductionIdentifier model', () => {
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubProductionChecksQuery response',
 					params: {
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				});
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
 					'Production with this UUID does not exist'
@@ -128,20 +136,22 @@ describe('SubProductionIdentifier model', () => {
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubProductionChecksQuery response',
 					params: {
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				});
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
 					'Production with this UUID is already assigned to another sur-production'
@@ -167,20 +177,22 @@ describe('SubProductionIdentifier model', () => {
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubProductionChecksQuery response',
 					params: {
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				});
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
 					'Production with this UUID is the sur-most production of a three-tiered production collection'
@@ -206,20 +218,22 @@ describe('SubProductionIdentifier model', () => {
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubProductionChecksQuery response',
 					params: {
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				});
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
 					"Production with this UUID is this production's sur-production"
@@ -245,20 +259,22 @@ describe('SubProductionIdentifier model', () => {
 					subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 				});
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(
+					stubs.cypherQueriesModule.validationQueries.getSubProductionChecksQuery
+				);
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getSubProductionChecksQuery response',
 					params: {
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
 						subjectProductionUuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy'
 					}
 				});
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
 					'Sub-production cannot be assigned to a three-tiered production collection'

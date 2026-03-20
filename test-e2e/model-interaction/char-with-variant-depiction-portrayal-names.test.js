@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const HENRY_IV_PART_1_MATERIAL_UUID = 'HENRY_IV_PART_1_MATERIAL_UUID';
 const KING_HENRY_V_CHARACTER_UUID = 'HENRY_PRINCE_OF_WALES_CHARACTER_UUID';
@@ -59,8 +57,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -84,8 +81,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -109,8 +105,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Henry V',
@@ -133,8 +128,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -152,8 +146,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -189,8 +182,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -227,8 +219,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry V',
@@ -265,8 +256,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -303,8 +293,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -341,8 +330,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry V',
@@ -379,49 +367,49 @@ describe('Character with variant depiction and portrayal names', () => {
 				]
 			});
 
-		kingHenryVCharacter = await request.execute(app).get(`/characters/${KING_HENRY_V_CHARACTER_UUID}`);
+		kingHenryVCharacter = await request(app).get(`/characters/${KING_HENRY_V_CHARACTER_UUID}`);
 
-		sirJohnFalstaffCharacter = await request.execute(app).get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
+		sirJohnFalstaffCharacter = await request(app).get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
-		messengerCharacter = await request.execute(app).get(`/characters/${MESSENGER_CHARACTER_UUID}`);
+		messengerCharacter = await request(app).get(`/characters/${MESSENGER_CHARACTER_UUID}`);
 
-		attendantCharacter = await request.execute(app).get(`/characters/${ATTENDANT_CHARACTER_UUID}`);
+		attendantCharacter = await request(app).get(`/characters/${ATTENDANT_CHARACTER_UUID}`);
 
-		soldierCharacter = await request.execute(app).get(`/characters/${SOLDIER_CHARACTER_UUID}`);
+		soldierCharacter = await request(app).get(`/characters/${SOLDIER_CHARACTER_UUID}`);
 
-		henryIVPart1Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
+		henryIVPart1Material = await request(app).get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
+		henryIVPart2Material = await request(app).get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		henryVMaterial = await request.execute(app).get(`/materials/${HENRY_V_MATERIAL_UUID}`);
+		henryVMaterial = await request(app).get(`/materials/${HENRY_V_MATERIAL_UUID}`);
 
-		henryIVPart1RoyalShakespeareProduction = await request
-			.execute(app)
-			.get(`/productions/${HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		henryIVPart1RoyalShakespeareProduction = await request(app).get(
+			`/productions/${HENRY_IV_PART_1_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`
+		);
 
-		henryIVPart2RoyalShakespeareProduction = await request
-			.execute(app)
-			.get(`/productions/${HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		henryIVPart2RoyalShakespeareProduction = await request(app).get(
+			`/productions/${HENRY_IV_PART_2_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`
+		);
 
-		henryVRoyalShakespeareProduction = await request
-			.execute(app)
-			.get(`/productions/${HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		henryVRoyalShakespeareProduction = await request(app).get(
+			`/productions/${HENRY_V_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`
+		);
 
-		henryIVPart1NationalProduction = await request
-			.execute(app)
-			.get(`/productions/${HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID}`);
+		henryIVPart1NationalProduction = await request(app).get(
+			`/productions/${HENRY_IV_PART_1_NATIONAL_PRODUCTION_UUID}`
+		);
 
-		henryIVPart2NationalProduction = await request
-			.execute(app)
-			.get(`/productions/${HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID}`);
+		henryIVPart2NationalProduction = await request(app).get(
+			`/productions/${HENRY_IV_PART_2_NATIONAL_PRODUCTION_UUID}`
+		);
 
-		henryVNationalProduction = await request.execute(app).get(`/productions/${HENRY_V_NATIONAL_PRODUCTION_UUID}`);
+		henryVNationalProduction = await request(app).get(`/productions/${HENRY_V_NATIONAL_PRODUCTION_UUID}`);
 
-		alexHassellPerson = await request.execute(app).get(`/people/${ALEX_HASSELL_PERSON_UUID}`);
+		alexHassellPerson = await request(app).get(`/people/${ALEX_HASSELL_PERSON_UUID}`);
 
-		matthewMacfadyenPerson = await request.execute(app).get(`/people/${MATTHEW_MACFADYEN_PERSON_UUID}`);
+		matthewMacfadyenPerson = await request(app).get(`/people/${MATTHEW_MACFADYEN_PERSON_UUID}`);
 
-		adrianLesterPerson = await request.execute(app).get(`/people/${ADRIAN_LESTER_PERSON_UUID}`);
+		adrianLesterPerson = await request(app).get(`/people/${ADRIAN_LESTER_PERSON_UUID}`);
 	});
 
 	describe('King Henry V (character)', () => {
@@ -489,7 +477,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { materials } = kingHenryVCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes distinct variant-named depictions (i.e. depictions in materials with names different to the underlying character name)', () => {
@@ -497,7 +485,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { variantNamedDepictions } = kingHenryVCharacter.body;
 
-			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
+			assert.deepEqual(variantNamedDepictions, expectedVariantNamedDepictions);
 		});
 
 		// Even though 'Prince Hal' already appears in the variant depiction names (i.e. variant names from materials),
@@ -511,7 +499,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { variantNamedPortrayals } = kingHenryVCharacter.body;
 
-			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
+			assert.deepEqual(variantNamedPortrayals, expectedVariantNamedPortrayals);
 		});
 
 		it('includes productions in which character was portrayed (including performers who portrayed them)', () => {
@@ -718,7 +706,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { productions } = kingHenryVCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -728,7 +716,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { variantNamedDepictions } = sirJohnFalstaffCharacter.body;
 
-			expect(variantNamedDepictions).to.deep.equal(expectedVariantNamedDepictions);
+			assert.deepEqual(variantNamedDepictions, expectedVariantNamedDepictions);
 		});
 
 		it('includes no variant-named portrayals where none exist', () => {
@@ -736,7 +724,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { variantNamedPortrayals } = sirJohnFalstaffCharacter.body;
 
-			expect(variantNamedPortrayals).to.deep.equal(expectedVariantNamedPortrayals);
+			assert.deepEqual(variantNamedPortrayals, expectedVariantNamedPortrayals);
 		});
 	});
 
@@ -813,7 +801,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { productions } = messengerCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -890,7 +878,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { productions } = attendantCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -967,7 +955,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { productions } = soldierCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -998,7 +986,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				characterGroups: [{ characters }]
 			} = henryIVPart1Material.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -1029,7 +1017,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				characterGroups: [{ characters }]
 			} = henryIVPart2Material.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -1060,7 +1048,7 @@ describe('Character with variant depiction and portrayal names', () => {
 				characterGroups: [{ characters }]
 			} = henryVMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -1106,7 +1094,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { cast } = henryIVPart1RoyalShakespeareProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -1152,7 +1140,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { cast } = henryIVPart2RoyalShakespeareProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -1198,7 +1186,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { cast } = henryVRoyalShakespeareProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -1244,7 +1232,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { cast } = henryIVPart1NationalProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -1290,7 +1278,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { cast } = henryIVPart2NationalProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -1336,7 +1324,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { cast } = henryVNationalProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -1437,7 +1425,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { castMemberProductions } = alexHassellPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -1508,7 +1496,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { castMemberProductions } = matthewMacfadyenPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -1549,7 +1537,7 @@ describe('Character with variant depiction and portrayal names', () => {
 
 			const { castMemberProductions } = adrianLesterPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

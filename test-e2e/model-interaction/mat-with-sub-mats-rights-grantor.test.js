@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const BIRMINGHAM_REPERTORY_THEATRE_VENUE_UUID = 'BIRMINGHAM_REPERTORY_THEATRE_VENUE_UUID';
 const THE_HOUSE_VENUE_UUID = 'THE_HOUSE_VENUE_UUID';
@@ -43,8 +41,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Birmingham Repertory Theatre',
@@ -55,8 +52,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -74,8 +70,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -99,8 +94,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -141,8 +135,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -176,8 +169,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -193,8 +185,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -215,8 +206,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Lion, the Witch and the Wardrobe',
@@ -232,8 +222,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Chronicles of Narnia',
@@ -254,8 +243,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Hoge',
@@ -289,8 +277,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sub-Hoge',
@@ -304,8 +291,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Sur-Hoge',
@@ -324,13 +310,13 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 				]
 			});
 
-		cSLewisSocietyCompany = await request.execute(app).get(`/companies/${C_S_LEWIS_SOCIETY_COMPANY_UUID}`);
+		cSLewisSocietyCompany = await request(app).get(`/companies/${C_S_LEWIS_SOCIETY_COMPANY_UUID}`);
 
-		sarahSeldenPerson = await request.execute(app).get(`/people/${SARAH_SELDEN_PERSON_UUID}`);
+		sarahSeldenPerson = await request(app).get(`/people/${SARAH_SELDEN_PERSON_UUID}`);
 
-		cinerightsLtdCompany = await request.execute(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
+		cinerightsLtdCompany = await request(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 
-		talyseTataPerson = await request.execute(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
+		talyseTataPerson = await request(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
 	});
 
 	describe('C S Lewis Society (company)', () => {
@@ -414,7 +400,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 			const { rightsGrantorMaterials } = cSLewisSocietyCompany.body;
 
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+			assert.deepEqual(rightsGrantorMaterials, expectedRightsGrantorMaterials);
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -465,7 +451,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 			const { rightsGrantorMaterialProductions } = cSLewisSocietyCompany.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 
@@ -550,7 +536,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 			const { rightsGrantorMaterials } = sarahSeldenPerson.body;
 
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+			assert.deepEqual(rightsGrantorMaterials, expectedRightsGrantorMaterials);
 		});
 
 		it('includes productions of materials for which they have granted rights, with corresponding sur-production; will exclude sur-productions when included via sub-production association', () => {
@@ -601,7 +587,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 			const { rightsGrantorMaterialProductions } = sarahSeldenPerson.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 
@@ -631,7 +617,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 			const { rightsGrantorMaterialProductions } = cinerightsLtdCompany.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 
@@ -661,7 +647,7 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 
 			const { rightsGrantorMaterialProductions } = talyseTataPerson.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 });

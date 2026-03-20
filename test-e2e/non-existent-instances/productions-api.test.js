@@ -1,12 +1,10 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 describe('Non-existent instances: Productions API', () => {
 	before(async () => {
@@ -18,39 +16,39 @@ describe('Non-existent instances: Productions API', () => {
 
 		describe('GET edit endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).get(`/productions/${NON_EXISTENT_PRODUCTION_UUID}/edit`);
+				const response = await request(app).get(`/productions/${NON_EXISTENT_PRODUCTION_UUID}/edit`);
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 
 		describe('PUT update endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).put(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`).send({
+				const response = await request(app).put(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`).send({
 					name: 'The Tempest'
 				});
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 
 		describe('GET show endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).get(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`);
+				const response = await request(app).get(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`);
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 
 		describe('DELETE delete endpoint', () => {
 			it('responds with 404 Not Found error', async () => {
-				const response = await request.execute(app).delete(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`);
+				const response = await request(app).delete(`/productions/${NON_EXISTENT_PRODUCTION_UUID}`);
 
-				expect(response).to.have.status(404);
-				expect(response.text).to.equal('Not Found');
+				assert.equal(response.status, 404);
+				assert.equal(response.text, 'Not Found');
 			});
 		});
 	});

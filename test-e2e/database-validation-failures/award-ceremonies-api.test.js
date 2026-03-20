@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Database validation failures: Award ceremonies API', () => {
 	describe('attempt to create instance', () => {
@@ -22,10 +22,9 @@ describe('Database validation failures: Award ceremonies API', () => {
 
 		context('nominated production uuid does not exist in database', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
+				assert.equal(await countNodesWithLabel('AwardCeremony'), 0);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/award-ceremonies')
 					.send({
 						name: '2020',
@@ -87,9 +86,9 @@ describe('Database validation failures: Award ceremonies API', () => {
 					]
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('AwardCeremony')).to.equal(0);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('AwardCeremony'), 0);
 			});
 		});
 	});
@@ -124,10 +123,9 @@ describe('Database validation failures: Award ceremonies API', () => {
 
 		context('nominated production uuid does not exist in database', () => {
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
+				assert.equal(await countNodesWithLabel('AwardCeremony'), 1);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/award-ceremonies/${TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID}`)
 					.send({
 						name: '2020',
@@ -190,16 +188,17 @@ describe('Database validation failures: Award ceremonies API', () => {
 					]
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('AwardCeremony')).to.equal(1);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('AwardCeremony'), 1);
+				assert.equal(
 					await isNodeExistent({
 						label: 'AwardCeremony',
 						name: '2020',
 						uuid: TWO_THOUSAND_AND_TWENTY_AWARD_CEREMONY_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 	});

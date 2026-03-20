@@ -1,7 +1,11 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
 import httpMocks from 'node-mocks-http';
-import { assert, restore, stub } from 'sinon';
+import { assert as sinonAssert, restore, stub } from 'sinon';
+
+const context = describe;
 
 describe('Search controller', () => {
 	let stubs;
@@ -39,11 +43,11 @@ describe('Search controller', () => {
 			const request = httpMocks.createRequest();
 			const result = await searchController(request, stubs.response, stubs.next);
 
-			assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, []);
-			expect(result).to.equal('sendJsonResponse response');
-			assert.notCalled(stubs.neo4jQueryModule.neo4jQuery);
-			assert.notCalled(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
-			assert.notCalled(stubs.next);
+			sinonAssert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, []);
+			assert.strictEqual(result, 'sendJsonResponse response');
+			sinonAssert.notCalled(stubs.neo4jQueryModule.neo4jQuery);
+			sinonAssert.notCalled(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
+			sinonAssert.notCalled(stubs.next);
 		});
 	});
 
@@ -52,11 +56,11 @@ describe('Search controller', () => {
 			const request = httpMocks.createRequest({ query: { searchTerm: '' } });
 			const result = await searchController(request, stubs.response, stubs.next);
 
-			assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, []);
-			expect(result).to.equal('sendJsonResponse response');
-			assert.notCalled(stubs.neo4jQueryModule.neo4jQuery);
-			assert.notCalled(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
-			assert.notCalled(stubs.next);
+			sinonAssert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, []);
+			assert.strictEqual(result, 'sendJsonResponse response');
+			sinonAssert.notCalled(stubs.neo4jQueryModule.neo4jQuery);
+			sinonAssert.notCalled(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
+			sinonAssert.notCalled(stubs.next);
 		});
 	});
 
@@ -65,8 +69,8 @@ describe('Search controller', () => {
 			it('calls getSearchQuery, neo4jQuery, then sendJsonResponse with the response object and the neo4jQuery response', async () => {
 				const result = await searchController(stubs.request, stubs.response, stubs.next);
 
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
+				sinonAssert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSearchQuery response',
@@ -79,9 +83,9 @@ describe('Search controller', () => {
 						isArrayResult: true
 					}
 				);
-				assert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, ['foo bar']);
-				expect(result).to.equal('sendJsonResponse response');
-				assert.notCalled(stubs.next);
+				sinonAssert.calledOnceWithExactly(stubs.sendJsonResponse, stubs.response, ['foo bar']);
+				assert.strictEqual(result, 'sendJsonResponse response');
+				sinonAssert.notCalled(stubs.next);
 			});
 		});
 
@@ -92,8 +96,8 @@ describe('Search controller', () => {
 
 				await searchController(stubs.request, stubs.response, stubs.next);
 
-				assert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.searchQueries.getSearchQuery);
+				sinonAssert.calledOnceWithExactly(
 					stubs.neo4jQueryModule.neo4jQuery,
 					{
 						query: 'getSearchQuery response',
@@ -106,8 +110,8 @@ describe('Search controller', () => {
 						isArrayResult: true
 					}
 				);
-				assert.notCalled(stubs.sendJsonResponse);
-				assert.calledOnceWithExactly(stubs.next, neo4jQueryError);
+				sinonAssert.notCalled(stubs.sendJsonResponse);
+				sinonAssert.calledOnceWithExactly(stubs.next, neo4jQueryError);
 			});
 		});
 	});

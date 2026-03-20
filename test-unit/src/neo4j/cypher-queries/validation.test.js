@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
 
 import * as cypherQueriesValidation from '../../../../src/neo4j/cypher-queries/validation/index.js';
+
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Validation module', () => {
@@ -8,7 +10,8 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesValidation.getDuplicateRecordCheckQuery('VENUE', undefined);
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (n:Venue { name: $name })
 					WHERE
@@ -31,7 +34,8 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesValidation.getExistenceCheckQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (n:Venue { uuid: $uuid })
 
@@ -45,7 +49,8 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesValidation.getSubMaterialChecksQuery();
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (m:Material { name: $name })
 					WHERE
@@ -85,7 +90,8 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesValidation.getSubProductionChecksQuery('VENUE');
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (p:Production { uuid: $uuid })
 
@@ -121,7 +127,8 @@ describe('Cypher Queries Validation module', () => {
 		it('returns requisite query', () => {
 			const result = cypherQueriesValidation.getSubVenueChecksQuery();
 
-			expect(removeExcessWhitespace(result)).to.equal(
+			assert.equal(
+				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
 				MATCH (v:Venue { name: $name })
 					WHERE

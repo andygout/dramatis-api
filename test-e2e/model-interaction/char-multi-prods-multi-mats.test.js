@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const HENRY_IV_PART_1_MATERIAL_UUID = 'HENRY_IV_PART_1_MATERIAL_UUID';
 const SIR_JOHN_FALSTAFF_CHARACTER_UUID = 'SIR_JOHN_FALSTAFF_CHARACTER_UUID';
@@ -40,8 +38,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -58,8 +55,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -76,8 +72,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -94,8 +89,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -120,8 +114,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -146,8 +139,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -172,8 +164,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -198,8 +189,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -224,8 +214,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -250,8 +239,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 1',
@@ -276,8 +264,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Henry IV, Part 2',
@@ -302,8 +289,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Merry Wives of Windsor',
@@ -328,15 +314,13 @@ describe('Character in multiple productions of multiple materials', () => {
 				]
 			});
 
-		sirJohnFalstaffCharacter = await request.execute(app).get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
+		sirJohnFalstaffCharacter = await request(app).get(`/characters/${SIR_JOHN_FALSTAFF_CHARACTER_UUID}`);
 
-		henryIVPart1Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
+		henryIVPart1Material = await request(app).get(`/materials/${HENRY_IV_PART_1_MATERIAL_UUID}`);
 
-		henryIVPart2Material = await request.execute(app).get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
+		henryIVPart2Material = await request(app).get(`/materials/${HENRY_IV_PART_2_MATERIAL_UUID}`);
 
-		merryWivesOfWindsorMaterial = await request
-			.execute(app)
-			.get(`/materials/${THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID}`);
+		merryWivesOfWindsorMaterial = await request(app).get(`/materials/${THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID}`);
 	});
 
 	describe('Sir John Falstaff (character)', () => {
@@ -376,7 +360,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const { materials } = sirJohnFalstaffCharacter.body;
 
-			expect(materials).to.deep.equal(expectedMaterials);
+			assert.deepEqual(materials, expectedMaterials);
 		});
 
 		it('includes productions of materials in which character is portrayed (including cast member who portrayed them)', () => {
@@ -610,7 +594,7 @@ describe('Character in multiple productions of multiple materials', () => {
 
 			const { productions } = sirJohnFalstaffCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -629,7 +613,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				characterGroups: [{ characters }]
 			} = henryIVPart1Material.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -648,7 +632,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				characterGroups: [{ characters }]
 			} = henryIVPart2Material.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 
@@ -667,7 +651,7 @@ describe('Character in multiple productions of multiple materials', () => {
 				characterGroups: [{ characters }]
 			} = merryWivesOfWindsorMaterial.body;
 
-			expect(characters).to.deep.equal(expectedCharacters);
+			assert.deepEqual(characters, expectedCharacters);
 		});
 	});
 });

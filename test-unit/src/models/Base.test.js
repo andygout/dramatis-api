@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -38,29 +40,29 @@ describe('Base model', () => {
 
 	describe('constructor method', () => {
 		describe('name property', () => {
-			context('model is not exempt', () => {
+			describe('model is not exempt', () => {
 				it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
-					assert.calledOnceWithExactly(stubs.stringsModule.getTrimmedOrEmptyString, 'Foobar');
-					expect(instance.name).to.equal('Foobar');
+					sinonAssert.calledOnceWithExactly(stubs.stringsModule.getTrimmedOrEmptyString, 'Foobar');
+					assert.equal(instance.name, 'Foobar');
 				});
 			});
 
-			context('model is exempt', () => {
-				context('model is Nomination', () => {
+			describe('model is exempt', () => {
+				describe('model is Nomination', () => {
 					it('does not assign name property', async () => {
 						const Nomination = await createSubject('Nomination');
 
 						const instance = new Nomination({ name: '1' });
 
-						expect(instance).to.not.have.property('name');
+						assert.equal(Object.hasOwn(instance, 'name'), false);
 					});
 				});
 
-				context('model is ProductionIdentifier', () => {
+				describe('model is ProductionIdentifier', () => {
 					it('does not assign name property', async () => {
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
@@ -69,11 +71,11 @@ describe('Base model', () => {
 							name: '1'
 						});
 
-						expect(instance).to.not.have.property('name');
+						assert.equal(Object.hasOwn(instance, 'name'), false);
 					});
 				});
 
-				context('model is Review', () => {
+				describe('model is Review', () => {
 					it('does not assign name property', async () => {
 						const Review = await createSubject('Review');
 
@@ -82,7 +84,7 @@ describe('Base model', () => {
 							name: 'foo'
 						});
 
-						expect(instance).to.not.have.property('name');
+						assert.equal(Object.hasOwn(instance, 'name'), false);
 					});
 				});
 			});
@@ -99,7 +101,7 @@ describe('Base model', () => {
 
 			instance.validateName({ isRequired: false });
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'name', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'name', { isRequired: false });
 		});
 	});
 
@@ -113,12 +115,12 @@ describe('Base model', () => {
 
 			instance.validateQualifier();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'qualifier', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'qualifier', { isRequired: false });
 		});
 	});
 
 	describe('validateStringForProperty method', () => {
-		context('valid data', () => {
+		describe('valid data', () => {
 			it('will not call addPropertyError method', async () => {
 				const Base = await createSubject();
 
@@ -128,12 +130,12 @@ describe('Base model', () => {
 
 				instance.validateStringForProperty('name', { isRequired: false });
 
-				assert.calledOnceWithExactly(stubs.validateString, instance.name, { isRequired: false });
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.calledOnceWithExactly(stubs.validateString, instance.name, { isRequired: false });
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
-		context('invalid data', () => {
+		describe('invalid data', () => {
 			it('will call addPropertyError method', async () => {
 				const Base = await createSubject();
 
@@ -143,15 +145,15 @@ describe('Base model', () => {
 
 				instance.validateStringForProperty('name', { isRequired: true });
 
-				assert.callOrder(stubs.validateString, instance.addPropertyError);
-				assert.calledOnceWithExactly(stubs.validateString, instance.name, { isRequired: true });
-				assert.calledOnceWithExactly(instance.addPropertyError, 'name', 'Value is too short');
+				sinonAssert.callOrder(stubs.validateString, instance.addPropertyError);
+				sinonAssert.calledOnceWithExactly(stubs.validateString, instance.name, { isRequired: true });
+				sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'name', 'Value is too short');
 			});
 		});
 	});
 
 	describe('validateUniquenessInGroup method', () => {
-		context('valid data', () => {
+		describe('valid data', () => {
 			it('will not call addPropertyError method', async () => {
 				const Base = await createSubject();
 
@@ -163,12 +165,12 @@ describe('Base model', () => {
 
 				instance.validateUniquenessInGroup(opts);
 
-				assert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
 			});
 		});
 
-		context('invalid data', () => {
-			context('instance does not have differentiator, characterDifferentiator, or qualifier property', () => {
+		describe('invalid data', () => {
+			describe('instance does not have differentiator, characterDifferentiator, or qualifier property', () => {
 				it('will call addPropertyError method with group context error text for name property only', async () => {
 					const Base = await createSubject();
 
@@ -180,7 +182,7 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.calledOnceWithExactly(
+					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'name',
 						'This item has been duplicated within the group'
@@ -188,7 +190,7 @@ describe('Base model', () => {
 				});
 			});
 
-			context('instance has underlyingName property', () => {
+			describe('instance has underlyingName property', () => {
 				it('will call addPropertyError method with group context error text for name and underlyingName properties', async () => {
 					const Base = await createSubject();
 
@@ -202,13 +204,13 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'underlyingName',
 						'This item has been duplicated within the group'
@@ -216,7 +218,7 @@ describe('Base model', () => {
 				});
 			});
 
-			context('instance has characterName property', () => {
+			describe('instance has characterName property', () => {
 				it('will call addPropertyError method with group context error text for name and characterName properties', async () => {
 					const Base = await createSubject();
 
@@ -230,13 +232,13 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'characterName',
 						'This item has been duplicated within the group'
@@ -244,7 +246,7 @@ describe('Base model', () => {
 				});
 			});
 
-			context('instance has differentiator property', () => {
+			describe('instance has differentiator property', () => {
 				it('will call addPropertyError method with group context error text for name and differentiator properties', async () => {
 					const Base = await createSubject();
 
@@ -258,13 +260,13 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'differentiator',
 						'This item has been duplicated within the group'
@@ -272,7 +274,7 @@ describe('Base model', () => {
 				});
 			});
 
-			context('instance has characterDifferentiator property', () => {
+			describe('instance has characterDifferentiator property', () => {
 				it('will call addPropertyError method with group context error text for name and differentiator properties', async () => {
 					const Base = await createSubject();
 
@@ -286,13 +288,13 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'characterDifferentiator',
 						'This item has been duplicated within the group'
@@ -300,7 +302,7 @@ describe('Base model', () => {
 				});
 			});
 
-			context('instance has qualifier property', () => {
+			describe('instance has qualifier property', () => {
 				it('will call addPropertyError method with group context error text for name and qualifier properties', async () => {
 					const Base = await createSubject();
 
@@ -314,13 +316,13 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.calledTwice(instance.addPropertyError);
-					assert.calledWithExactly(
+					sinonAssert.calledTwice(instance.addPropertyError);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'qualifier',
 						'This item has been duplicated within the group'
@@ -328,7 +330,7 @@ describe('Base model', () => {
 				});
 			});
 
-			context('instance has differentiator, characterDifferentiator, and qualifier property', () => {
+			describe('instance has differentiator, characterDifferentiator, and qualifier property', () => {
 				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', async () => {
 					const Base = await createSubject();
 
@@ -344,23 +346,23 @@ describe('Base model', () => {
 
 					instance.validateUniquenessInGroup(opts);
 
-					expect(instance.addPropertyError.callCount).to.equal(4);
-					assert.calledWithExactly(
+					assert.equal(instance.addPropertyError.callCount, 4);
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'name',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.secondCall,
 						'differentiator',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.thirdCall,
 						'characterDifferentiator',
 						'This item has been duplicated within the group'
 					);
-					assert.calledWithExactly(
+					sinonAssert.calledWithExactly(
 						instance.addPropertyError.getCall(3),
 						'qualifier',
 						'This item has been duplicated within the group'
@@ -368,30 +370,27 @@ describe('Base model', () => {
 				});
 			});
 
-			context(
-				'instance has uuid property which is specified via opts argument as requiring an error assigned to it',
-				() => {
-					it('will call addPropertyError method with group context error text for uuid property only (i.e. not name property)', async () => {
-						const Base = await createSubject();
+			describe('instance has uuid property which is specified via opts argument as requiring an error assigned to it', () => {
+				it('will call addPropertyError method with group context error text for uuid property only (i.e. not name property)', async () => {
+					const Base = await createSubject();
 
-						const instance = new Base({ name: 'Foobar' });
+					const instance = new Base({ name: 'Foobar' });
 
-						instance.uuid = '';
+					instance.uuid = '';
 
-						spy(instance, 'addPropertyError');
+					spy(instance, 'addPropertyError');
 
-						const opts = { isDuplicate: true, properties: new Set(['uuid']) };
+					const opts = { isDuplicate: true, properties: new Set(['uuid']) };
 
-						instance.validateUniquenessInGroup(opts);
+					instance.validateUniquenessInGroup(opts);
 
-						assert.calledOnceWithExactly(
-							instance.addPropertyError,
-							'uuid',
-							'This item has been duplicated within the group'
-						);
-					});
-				}
-			);
+					sinonAssert.calledOnceWithExactly(
+						instance.addPropertyError,
+						'uuid',
+						'This item has been duplicated within the group'
+					);
+				});
+			});
 		});
 	});
 
@@ -405,7 +404,7 @@ describe('Base model', () => {
 
 			instance.validateNamePresenceIfNamedChildren([{ name: 'Foo' }, { name: 'Bar' }]);
 
-			assert.calledOnceWithExactly(instance.validatePropertyPresenceIfNamedChildren, 'name', [
+			sinonAssert.calledOnceWithExactly(instance.validatePropertyPresenceIfNamedChildren, 'name', [
 				{ name: 'Foo' },
 				{ name: 'Bar' }
 			]);
@@ -413,8 +412,8 @@ describe('Base model', () => {
 	});
 
 	describe('validatePropertyPresenceIfNamedChildren method', () => {
-		context('valid data', () => {
-			context('instance does not have name nor any children with names', () => {
+		describe('valid data', () => {
+			describe('instance does not have name nor any children with names', () => {
 				it('will not add properties to errors property', async () => {
 					const Base = await createSubject();
 
@@ -426,11 +425,11 @@ describe('Base model', () => {
 
 					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: '' }]);
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
-			context('instance has a name and no children with names', () => {
+			describe('instance has a name and no children with names', () => {
 				it('will not add properties to errors property', async () => {
 					const Base = await createSubject();
 
@@ -440,11 +439,11 @@ describe('Base model', () => {
 
 					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: '' }]);
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
-			context('instance has a name and children with names', () => {
+			describe('instance has a name and children with names', () => {
 				it('will not add properties to errors property', async () => {
 					const Base = await createSubject();
 
@@ -454,12 +453,12 @@ describe('Base model', () => {
 
 					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 		});
 
-		context('invalid data', () => {
+		describe('invalid data', () => {
 			it('adds properties to errors property', async () => {
 				const Base = await createSubject();
 
@@ -471,7 +470,7 @@ describe('Base model', () => {
 
 				instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
 
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'name',
 					'Value is required if named children exist'
@@ -481,7 +480,7 @@ describe('Base model', () => {
 	});
 
 	describe('addPropertyError method', () => {
-		context('property exists on errors object', () => {
+		describe('property exists on errors object', () => {
 			it('merges error into existing array', async () => {
 				const Base = await createSubject();
 
@@ -491,14 +490,11 @@ describe('Base model', () => {
 
 				instance.addPropertyError('name', 'Name has been duplicated in this group');
 
-				expect(instance.errors)
-					.to.have.property('name')
-					.that.is.an('array')
-					.that.deep.equal(['Value is too long', 'Name has been duplicated in this group']);
+				assert.deepEqual(instance.errors.name, ['Value is too long', 'Name has been duplicated in this group']);
 			});
 		});
 
-		context('property does not exist on errors object', () => {
+		describe('property does not exist on errors object', () => {
 			it('adds new property to errors object and assigns a value of an array containing error text', async () => {
 				const Base = await createSubject();
 
@@ -508,14 +504,8 @@ describe('Base model', () => {
 
 				instance.addPropertyError('characterName', 'Value is too long');
 
-				expect(instance.errors)
-					.to.have.property('name')
-					.that.is.an('array')
-					.that.deep.equal(['Name has been duplicated in this group']);
-				expect(instance.errors)
-					.to.have.property('characterName')
-					.that.is.an('array')
-					.that.deep.equal(['Value is too long']);
+				assert.deepEqual(instance.errors.name, ['Name has been duplicated in this group']);
+				assert.deepEqual(instance.errors.characterName, ['Value is too long']);
 			});
 		});
 	});

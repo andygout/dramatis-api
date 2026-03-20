@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 describe('ProductionIdentifier model', () => {
 	let stubs;
@@ -32,19 +34,19 @@ describe('ProductionIdentifier model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new ProductionIdentifier();
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(1);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 1);
 		});
 
 		describe('uuid property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					stubs.stringsModule.getTrimmedOrEmptyString,
 					'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				);
 
-				expect(instance.uuid).to.equal('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+				assert.equal(instance.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 		});
 	});
@@ -57,7 +59,7 @@ describe('ProductionIdentifier model', () => {
 
 			instance.validateUuid();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
 		});
 	});
 });

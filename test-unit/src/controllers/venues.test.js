@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, stub } from 'sinon';
 
 import { Venue } from '../../../src/models/index.js';
 
@@ -46,12 +48,12 @@ describe('Venues controller', () => {
 		it('calls sendJsonResponse module', async () => {
 			const result = await callFunction('newRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.sendJsonResponse,
 				stubs.response,
 				stubs.models.Venue() // eslint-disable-line new-cap
 			);
-			expect(result).to.equal('sendJsonResponse response');
+			assert.strictEqual(result, 'sendJsonResponse response');
 		});
 	});
 
@@ -59,14 +61,14 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('createRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response,
 				stubs.next,
 				stubs.models.Venue(), // eslint-disable-line new-cap
 				'CREATE'
 			);
-			expect(result).to.equal('callInstanceMethod response');
+			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
 
@@ -74,14 +76,14 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('editRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response,
 				stubs.next,
 				stubs.models.Venue(), // eslint-disable-line new-cap
 				'EDIT'
 			);
-			expect(result).to.equal('callInstanceMethod response');
+			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
 
@@ -89,14 +91,14 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('updateRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response,
 				stubs.next,
 				stubs.models.Venue(), // eslint-disable-line new-cap
 				'UPDATE'
 			);
-			expect(result).to.equal('callInstanceMethod response');
+			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
 
@@ -104,14 +106,14 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('deleteRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response,
 				stubs.next,
 				stubs.models.Venue(), // eslint-disable-line new-cap
 				'DELETE'
 			);
-			expect(result).to.equal('callInstanceMethod response');
+			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
 
@@ -119,14 +121,14 @@ describe('Venues controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('showRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callInstanceMethod,
 				stubs.response,
 				stubs.next,
 				stubs.models.Venue(), // eslint-disable-line new-cap
 				'SHOW'
 			);
-			expect(result).to.equal('callInstanceMethod response');
+			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
 
@@ -134,14 +136,14 @@ describe('Venues controller', () => {
 		it('calls callStaticListMethod module', async () => {
 			const result = await callFunction('listRoute');
 
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(
 				stubs.callClassMethodsModule.callStaticListMethod,
 				stubs.response,
 				stubs.next,
 				stubs.models.Venue,
 				'VENUE'
 			);
-			expect(result).to.equal('callStaticListMethod response');
+			assert.strictEqual(result, 'callStaticListMethod response');
 		});
 	});
 });

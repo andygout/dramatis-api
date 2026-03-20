@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID = 'SEIZE_THE_DAY_PRODUCTION_UUID';
 const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
@@ -26,8 +24,7 @@ describe('Season with multiple productions', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Seize the Day',
@@ -42,8 +39,7 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Detaining Justice',
@@ -58,8 +54,7 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'Category B',
@@ -74,19 +69,17 @@ describe('Season with multiple productions', () => {
 				}
 			});
 
-		notBlackAndWhiteSeason = await request.execute(app).get(`/seasons/${NOT_BLACK_AND_WHITE_SEASON_UUID}`);
+		notBlackAndWhiteSeason = await request(app).get(`/seasons/${NOT_BLACK_AND_WHITE_SEASON_UUID}`);
 
-		categoryBTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${CATEGORY_B_TRICYCLE_PRODUCTION_UUID}`);
+		categoryBTricycleProduction = await request(app).get(`/productions/${CATEGORY_B_TRICYCLE_PRODUCTION_UUID}`);
 
-		seizeTheDayTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID}`);
+		seizeTheDayTricycleProduction = await request(app).get(
+			`/productions/${SEIZE_THE_DAY_TRICYCLE_PRODUCTION_UUID}`
+		);
 
-		detainingJusticeTricycleProduction = await request
-			.execute(app)
-			.get(`/productions/${DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID}`);
+		detainingJusticeTricycleProduction = await request(app).get(
+			`/productions/${DETAINING_JUSTICE_TRICYCLE_PRODUCTION_UUID}`
+		);
 	});
 
 	describe('Not Black and White (season)', () => {
@@ -138,7 +131,7 @@ describe('Season with multiple productions', () => {
 
 			const { productions } = notBlackAndWhiteSeason.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -152,7 +145,7 @@ describe('Season with multiple productions', () => {
 
 			const { season } = categoryBTricycleProduction.body;
 
-			expect(season).to.deep.equal(expectedSeason);
+			assert.deepEqual(season, expectedSeason);
 		});
 	});
 
@@ -166,7 +159,7 @@ describe('Season with multiple productions', () => {
 
 			const { season } = seizeTheDayTricycleProduction.body;
 
-			expect(season).to.deep.equal(expectedSeason);
+			assert.deepEqual(season, expectedSeason);
 		});
 	});
 
@@ -180,7 +173,7 @@ describe('Season with multiple productions', () => {
 
 			const { season } = detainingJusticeTricycleProduction.body;
 
-			expect(season).to.deep.equal(expectedSeason);
+			assert.deepEqual(season, expectedSeason);
 		});
 	});
 });

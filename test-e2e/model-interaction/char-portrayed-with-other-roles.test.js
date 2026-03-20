@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const JOEYS_MOTHER_CHARACTER_UUID = 'JOEYS_MOTHER_CHARACTER_UUID';
 const DR_SCHWEYK_CHARACTER_UUID = 'DR_SCHWEYK_CHARACTER_UUID';
@@ -28,8 +26,7 @@ describe('Character portrayed with other roles', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'War Horse',
@@ -56,8 +53,7 @@ describe('Character portrayed with other roles', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'War Horse',
@@ -99,13 +95,13 @@ describe('Character portrayed with other roles', () => {
 				]
 			});
 
-		joeysMotherCharacter = await request.execute(app).get(`/characters/${JOEYS_MOTHER_CHARACTER_UUID}`);
+		joeysMotherCharacter = await request(app).get(`/characters/${JOEYS_MOTHER_CHARACTER_UUID}`);
 
-		drSchweykCharacter = await request.execute(app).get(`/characters/${DR_SCHWEYK_CHARACTER_UUID}`);
+		drSchweykCharacter = await request(app).get(`/characters/${DR_SCHWEYK_CHARACTER_UUID}`);
 
-		cocoCharacter = await request.execute(app).get(`/characters/${COCO_CHARACTER_UUID}`);
+		cocoCharacter = await request(app).get(`/characters/${COCO_CHARACTER_UUID}`);
 
-		geordieCharacter = await request.execute(app).get(`/characters/${GEORDIE_CHARACTER_UUID}`);
+		geordieCharacter = await request(app).get(`/characters/${GEORDIE_CHARACTER_UUID}`);
 	});
 
 	describe("Joey's mother (character)", () => {
@@ -162,7 +158,7 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = joeysMotherCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -220,7 +216,7 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = drSchweykCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -278,7 +274,7 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = cocoCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -336,7 +332,7 @@ describe('Character portrayed with other roles', () => {
 
 			const { productions } = geordieCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 });

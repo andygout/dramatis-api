@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const LIVERPOOL_EVERYMAN_PLAYHOUSE_VENUE_UUID = 'LIVERPOOL_EVERYMAN_PLAYHOUSE_VENUE_UUID';
 const PLAYHOUSE_THEATRE_VENUE_UUID = 'PLAYHOUSE_THEATRE_VENUE_UUID';
@@ -30,8 +28,7 @@ describe('Material with rights grantor credits', () => {
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/venues')
 			.send({
 				name: 'Liverpool Everyman & Playhouse',
@@ -42,8 +39,7 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Ladykillers',
@@ -61,8 +57,7 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Ladykillers',
@@ -103,8 +98,7 @@ describe('Material with rights grantor credits', () => {
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Ladykillers',
@@ -119,8 +113,7 @@ describe('Material with rights grantor credits', () => {
 				}
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'The Ladykillers',
@@ -136,9 +129,9 @@ describe('Material with rights grantor credits', () => {
 				}
 			});
 
-		studioCanalCompany = await request.execute(app).get(`/companies/${STUDIOCANAL_COMPANY_UUID}`);
+		studioCanalCompany = await request(app).get(`/companies/${STUDIOCANAL_COMPANY_UUID}`);
 
-		alisonMeesePerson = await request.execute(app).get(`/people/${ALISON_MEESE_PERSON_UUID}`);
+		alisonMeesePerson = await request(app).get(`/people/${ALISON_MEESE_PERSON_UUID}`);
 	});
 
 	describe('StudioCanal (company)', () => {
@@ -212,7 +205,7 @@ describe('Material with rights grantor credits', () => {
 
 			const { rightsGrantorMaterials } = studioCanalCompany.body;
 
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+			assert.deepEqual(rightsGrantorMaterials, expectedRightsGrantorMaterials);
 		});
 
 		it('includes productions of materials for which they have granted rights', () => {
@@ -253,7 +246,7 @@ describe('Material with rights grantor credits', () => {
 
 			const { rightsGrantorMaterialProductions } = studioCanalCompany.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 
@@ -328,7 +321,7 @@ describe('Material with rights grantor credits', () => {
 
 			const { rightsGrantorMaterials } = alisonMeesePerson.body;
 
-			expect(rightsGrantorMaterials).to.deep.equal(expectedRightsGrantorMaterials);
+			assert.deepEqual(rightsGrantorMaterials, expectedRightsGrantorMaterials);
 		});
 
 		it('includes productions of materials for which they have granted rights', () => {
@@ -369,7 +362,7 @@ describe('Material with rights grantor credits', () => {
 
 			const { rightsGrantorMaterialProductions } = alisonMeesePerson.body;
 
-			expect(rightsGrantorMaterialProductions).to.deep.equal(expectedRightsGrantorMaterialProductions);
+			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
 		});
 	});
 });

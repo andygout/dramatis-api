@@ -1,6 +1,10 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, restore, spy, stub } from 'sinon';
+
+const context = describe;
 
 describe('Role model', () => {
 	let stubs;
@@ -32,15 +36,15 @@ describe('Role model', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new Role();
 
-			expect(stubs.stringsModule.getTrimmedOrEmptyString.callCount).to.equal(4);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 4);
 		});
 
 		describe('characterName property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Role({ characterName: 'Hamlet' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Hamlet');
-				expect(instance.characterName).to.equal('Hamlet');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Hamlet');
+				assert.equal(instance.characterName, 'Hamlet');
 			});
 		});
 
@@ -48,8 +52,8 @@ describe('Role model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Role({ characterDifferentiator: '1' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '1');
-				expect(instance.characterDifferentiator).to.equal('1');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '1');
+				assert.equal(instance.characterDifferentiator, '1');
 			});
 		});
 
@@ -57,8 +61,8 @@ describe('Role model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Role({ qualifier: 'younger' });
 
-				assert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'younger');
-				expect(instance.qualifier).to.equal('younger');
+				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'younger');
+				assert.equal(instance.qualifier, 'younger');
 			});
 		});
 
@@ -66,31 +70,31 @@ describe('Role model', () => {
 			it('assigns false if absent from props', async () => {
 				const instance = new Role({ name: 'Young Lucius' });
 
-				expect(instance.isAlternate).to.equal(false);
+				assert.equal(instance.isAlternate, false);
 			});
 
 			it('assigns false if included in props but value evaluates to false', async () => {
 				const instance = new Role({ name: 'Young Lucius', isAlternate: null });
 
-				expect(instance.isAlternate).to.equal(false);
+				assert.equal(instance.isAlternate, false);
 			});
 
 			it('assigns false if included in props but value is false', async () => {
 				const instance = new Role({ name: 'Young Lucius', isAlternate: false });
 
-				expect(instance.isAlternate).to.equal(false);
+				assert.equal(instance.isAlternate, false);
 			});
 
 			it('assigns true if included in props and value evaluates to true', async () => {
 				const instance = new Role({ name: 'Young Lucius', isAlternate: 'foobar' });
 
-				expect(instance.isAlternate).to.equal(true);
+				assert.equal(instance.isAlternate, true);
 			});
 
 			it('assigns true if included in props and value is true', async () => {
 				const instance = new Role({ name: 'Young Lucius', isAlternate: true });
 
-				expect(instance.isAlternate).to.equal(true);
+				assert.equal(instance.isAlternate, true);
 			});
 		});
 	});
@@ -103,7 +107,9 @@ describe('Role model', () => {
 
 			instance.validateCharacterName();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'characterName', { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'characterName', {
+				isRequired: false
+			});
 		});
 	});
 
@@ -115,7 +121,7 @@ describe('Role model', () => {
 
 			instance.validateCharacterDifferentiator();
 
-			assert.calledOnceWithExactly(instance.validateStringForProperty, 'characterDifferentiator', {
+			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'characterDifferentiator', {
 				isRequired: false
 			});
 		});
@@ -131,7 +137,7 @@ describe('Role model', () => {
 
 					instance.validateRoleNameCharacterNameDisparity();
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -143,7 +149,7 @@ describe('Role model', () => {
 
 					instance.validateRoleNameCharacterNameDisparity();
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
@@ -155,7 +161,7 @@ describe('Role model', () => {
 
 					instance.validateRoleNameCharacterNameDisparity();
 
-					assert.notCalled(instance.addPropertyError);
+					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 		});
@@ -168,7 +174,7 @@ describe('Role model', () => {
 
 				instance.validateRoleNameCharacterNameDisparity();
 
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'characterName',
 					'Character name is only required if different from role name'

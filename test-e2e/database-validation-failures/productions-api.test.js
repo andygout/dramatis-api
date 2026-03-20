@@ -1,5 +1,7 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import {
@@ -10,9 +12,7 @@ import {
 	purgeDatabase
 } from '../test-helpers/neo4j/index.js';
 
-const { expect } = chai;
-
-chai.use(chaiHttp);
+const context = describe;
 
 describe('Database validation failures: Productions API', () => {
 	describe('attempt to create instance', () => {
@@ -22,10 +22,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/productions')
 					.send({
 						name: 'Sur-Grault',
@@ -85,9 +84,9 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(0);
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 0);
 			});
 		});
 
@@ -120,10 +119,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Production'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/productions')
 					.send({
 						name: 'Sur-Garply',
@@ -183,15 +181,16 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Sur-Garply'
-					})
-				).to.be.false;
+					}),
+					false
+				);
 			});
 		});
 
@@ -239,10 +238,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(3);
+				assert.equal(await countNodesWithLabel('Production'), 3);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.post('/productions')
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -304,15 +302,16 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(3);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 3);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Sur-Sur-Grault'
-					})
-				).to.be.false;
+					}),
+					false
+				);
 			});
 		});
 	});
@@ -332,10 +331,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(1);
+				assert.equal(await countNodesWithLabel('Production'), 1);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/productions/${SUR_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sur-Grault',
@@ -396,16 +394,17 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(1);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 1);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Sur-Grault',
 						uuid: SUR_GRAULT_PRODUCTION_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -438,10 +437,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(2);
+				assert.equal(await countNodesWithLabel('Production'), 2);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/productions/${SUB_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sub-Grault',
@@ -502,16 +500,17 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(2);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 2);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Sub-Grault',
 						uuid: SUB_GRAULT_PRODUCTION_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -551,10 +550,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(3);
+				assert.equal(await countNodesWithLabel('Production'), 3);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/productions/${SUR_GARPLY_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sur-Garply',
@@ -615,16 +613,17 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(3);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 3);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Sur-Garply',
 						uuid: SUR_GARPLY_PRODUCTION_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -679,10 +678,9 @@ describe('Database validation failures: Productions API', () => {
 			});
 
 			it('returns instance with appropriate errors attached', async () => {
-				expect(await countNodesWithLabel('Production')).to.equal(4);
+				assert.equal(await countNodesWithLabel('Production'), 4);
 
-				const response = await request
-					.execute(app)
+				const response = await request(app)
 					.put(`/productions/${SUR_SUR_GRAULT_PRODUCTION_UUID}`)
 					.send({
 						name: 'Sur-Sur-Grault',
@@ -745,16 +743,17 @@ describe('Database validation failures: Productions API', () => {
 					reviews: []
 				};
 
-				expect(response).to.have.status(200);
-				expect(response.body).to.deep.equal(expectedResponseBody);
-				expect(await countNodesWithLabel('Production')).to.equal(4);
-				expect(
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Production'), 4);
+				assert.equal(
 					await isNodeExistent({
 						label: 'Production',
 						name: 'Sur-Sur-Grault',
 						uuid: SUR_SUR_GRAULT_PRODUCTION_UUID
-					})
-				).to.be.true;
+					}),
+					true
+				);
 			});
 		});
 
@@ -811,10 +810,9 @@ describe('Database validation failures: Productions API', () => {
 				});
 
 				it('returns instance with appropriate errors attached', async () => {
-					expect(await countNodesWithLabel('Production')).to.equal(4);
+					assert.equal(await countNodesWithLabel('Production'), 4);
 
-					const response = await request
-						.execute(app)
+					const response = await request(app)
 						.put(`/productions/${SUB_GRAULT_PRODUCTION_UUID}`)
 						.send({
 							name: 'Sub-Grault',
@@ -875,16 +873,17 @@ describe('Database validation failures: Productions API', () => {
 						reviews: []
 					};
 
-					expect(response).to.have.status(200);
-					expect(response.body).to.deep.equal(expectedResponseBody);
-					expect(await countNodesWithLabel('Production')).to.equal(4);
-					expect(
+					assert.equal(response.status, 200);
+					assert.deepEqual(response.body, expectedResponseBody);
+					assert.equal(await countNodesWithLabel('Production'), 4);
+					assert.equal(
 						await isNodeExistent({
 							label: 'Production',
 							name: 'Sub-Grault',
 							uuid: SUB_GRAULT_PRODUCTION_UUID
-						})
-					).to.be.true;
+						}),
+						true
+					);
 				});
 			}
 		);

@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Person } from '../../../src/models/index.js';
 
@@ -43,7 +45,7 @@ describe('CompanyWithMembers model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new CompanyWithMembers({ name: 'Autograph' });
 
-				expect(instance.members).to.deep.equal([]);
+				assert.deepEqual(instance.members, []);
 			});
 
 			it('assigns array of members if included in props, retaining those with empty or whitespace-only string names', async () => {
@@ -62,10 +64,10 @@ describe('CompanyWithMembers model', () => {
 					]
 				});
 
-				expect(instance.members.length).to.equal(3);
-				expect(instance.members[0] instanceof Person).to.be.true;
-				expect(instance.members[1] instanceof Person).to.be.true;
-				expect(instance.members[2] instanceof Person).to.be.true;
+				assert.equal(instance.members.length, 3);
+				assert.equal(instance.members[0] instanceof Person, true);
+				assert.equal(instance.members[1] instanceof Person, true);
+				assert.equal(instance.members[2] instanceof Person, true);
 			});
 		});
 	});
@@ -85,18 +87,22 @@ describe('CompanyWithMembers model', () => {
 
 			instance.runInputValidations({ duplicateEntities: [] });
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateNamePresenceIfNamedChildren,
 				instance.members[0].validateName,
 				instance.members[0].validateDifferentiator,
 				stubs.getDuplicateEntityInfoModule.isEntityInArray,
 				instance.members[0].validateUniquenessInGroup
 			);
-			assert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.members);
-			assert.calledOnceWithExactly(instance.members[0].validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.members[0].validateDifferentiator);
-			assert.calledOnceWithExactly(stubs.getDuplicateEntityInfoModule.isEntityInArray, instance.members[0], []);
-			assert.calledOnceWithExactly(instance.members[0].validateUniquenessInGroup, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.members);
+			sinonAssert.calledOnceWithExactly(instance.members[0].validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.members[0].validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(
+				stubs.getDuplicateEntityInfoModule.isEntityInArray,
+				instance.members[0],
+				[]
+			);
+			sinonAssert.calledOnceWithExactly(instance.members[0].validateUniquenessInGroup, { isDuplicate: false });
 		});
 	});
 });

@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy, stub } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Award, AwardCeremonyCategory } from '../../../src/models/index.js';
 
@@ -69,7 +71,7 @@ describe('AwardCeremony model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new AwardCeremony({ name: '2020' });
 
-				expect(instance.award instanceof Award).to.be.true;
+				assert.equal(instance.award instanceof Award, true);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -80,7 +82,7 @@ describe('AwardCeremony model', () => {
 					}
 				});
 
-				expect(instance.award instanceof Award).to.be.true;
+				assert.equal(instance.award instanceof Award, true);
 			});
 		});
 
@@ -88,7 +90,7 @@ describe('AwardCeremony model', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new AwardCeremony({ name: '2020' });
 
-				expect(instance.categories).to.deep.equal([]);
+				assert.deepEqual(instance.categories, []);
 			});
 
 			it('assigns array of category instances, retaining those with empty or whitespace-only string names', async () => {
@@ -107,10 +109,10 @@ describe('AwardCeremony model', () => {
 					]
 				});
 
-				expect(instance.categories.length).to.equal(3);
-				expect(instance.categories[0] instanceof AwardCeremonyCategory).to.be.true;
-				expect(instance.categories[1] instanceof AwardCeremonyCategory).to.be.true;
-				expect(instance.categories[2] instanceof AwardCeremonyCategory).to.be.true;
+				assert.equal(instance.categories.length, 3);
+				assert.equal(instance.categories[0] instanceof AwardCeremonyCategory, true);
+				assert.equal(instance.categories[1] instanceof AwardCeremonyCategory, true);
+				assert.equal(instance.categories[2] instanceof AwardCeremonyCategory, true);
 			});
 		});
 	});
@@ -130,21 +132,21 @@ describe('AwardCeremony model', () => {
 
 			instance.runInputValidations();
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.award.validateName,
 				instance.award.validateDifferentiator,
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.categories[0].runInputValidations
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnceWithExactly(instance.award.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.award.validateDifferentiator);
-			assert.calledOnceWithExactly(
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			sinonAssert.calledOnceWithExactly(instance.award.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.award.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(
 				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
 				instance.categories
 			);
-			assert.calledOnceWithExactly(instance.categories[0].runInputValidations, { isDuplicate: false });
+			sinonAssert.calledOnceWithExactly(instance.categories[0].runInputValidations, { isDuplicate: false });
 		});
 	});
 
@@ -163,13 +165,13 @@ describe('AwardCeremony model', () => {
 
 			await instance.runDatabaseValidations();
 
-			assert.calledOnceWithExactly(instance.validateAwardContextualUniquenessInDatabase);
-			assert.calledOnceWithExactly(instance.categories[0].runDatabaseValidations);
+			sinonAssert.calledOnceWithExactly(instance.validateAwardContextualUniquenessInDatabase);
+			sinonAssert.calledOnceWithExactly(instance.categories[0].runDatabaseValidations);
 		});
 	});
 
 	describe('validateAwardContextualUniquenessInDatabase method', () => {
-		context('valid data (results returned that indicate name does not already exist for given award)', () => {
+		describe('valid data (results returned that indicate name does not already exist for given award)', () => {
 			it('will not call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
 
@@ -179,16 +181,16 @@ describe('AwardCeremony model', () => {
 
 				await instance.validateAwardContextualUniquenessInDatabase();
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getAwardContextualDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -199,12 +201,12 @@ describe('AwardCeremony model', () => {
 						}
 					}
 				});
-				assert.notCalled(instance.addPropertyError);
-				assert.notCalled(instance.award.addPropertyError);
+				sinonAssert.notCalled(instance.addPropertyError);
+				sinonAssert.notCalled(instance.award.addPropertyError);
 			});
 		});
 
-		context('invalid data (results returned that indicate name already exists  for given award)', () => {
+		describe('invalid data (results returned that indicate name already exists  for given award)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
 
@@ -214,17 +216,17 @@ describe('AwardCeremony model', () => {
 
 				await instance.validateAwardContextualUniquenessInDatabase();
 
-				assert.callOrder(
+				sinonAssert.callOrder(
 					stubs.prepareAsParams,
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
 					stubs.neo4jQueryModule.neo4jQuery,
 					instance.addPropertyError
 				);
-				assert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
+				sinonAssert.calledOnceWithExactly(
 					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
 				);
-				assert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
 					query: 'getAwardContextualDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
@@ -235,18 +237,18 @@ describe('AwardCeremony model', () => {
 						}
 					}
 				});
-				assert.calledOnceWithExactly(
+				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'name',
 					'Award ceremony already exists for given award'
 				);
-				assert.calledTwice(instance.award.addPropertyError);
-				assert.calledWithExactly(
+				sinonAssert.calledTwice(instance.award.addPropertyError);
+				sinonAssert.calledWithExactly(
 					instance.award.addPropertyError.firstCall,
 					'name',
 					'Award ceremony already exists for given award'
 				);
-				assert.calledWithExactly(
+				sinonAssert.calledWithExactly(
 					instance.award.addPropertyError.secondCall,
 					'differentiator',
 					'Award ceremony already exists for given award'

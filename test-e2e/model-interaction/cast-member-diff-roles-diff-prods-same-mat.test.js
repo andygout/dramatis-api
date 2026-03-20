@@ -1,13 +1,11 @@
-import * as chai from 'chai';
-import { default as chaiHttp, request } from 'chai-http';
+import assert from 'node:assert/strict';
+import { before, describe, it } from 'node:test';
+
+import request from 'supertest';
 
 import app from '../../src/app.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
-
-const { expect } = chai;
-
-chai.use(chaiHttp);
 
 const KING_LEAR_CHARACTER_UUID = 'KING_LEAR_CHARACTER_UUID';
 const FOOL_CHARACTER_UUID = 'FOOL_CHARACTER_UUID';
@@ -33,8 +31,7 @@ describe('Cast member performing different roles in different productions of sam
 
 		await purgeDatabase();
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/materials')
 			.send({
 				name: 'The Tragedy of King Lear',
@@ -52,8 +49,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'King Lear',
@@ -86,8 +82,7 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		await request
-			.execute(app)
+		await request(app)
 			.post('/productions')
 			.send({
 				name: 'King Lear',
@@ -120,23 +115,21 @@ describe('Cast member performing different roles in different productions of sam
 				]
 			});
 
-		kingLearCharacter = await request.execute(app).get(`/characters/${KING_LEAR_CHARACTER_UUID}`);
+		kingLearCharacter = await request(app).get(`/characters/${KING_LEAR_CHARACTER_UUID}`);
 
-		foolCharacter = await request.execute(app).get(`/characters/${FOOL_CHARACTER_UUID}`);
+		foolCharacter = await request(app).get(`/characters/${FOOL_CHARACTER_UUID}`);
 
-		kingLearRoyalShakespeareProduction = await request
-			.execute(app)
-			.get(`/productions/${KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`);
+		kingLearRoyalShakespeareProduction = await request(app).get(
+			`/productions/${KING_LEAR_ROYAL_SHAKESPEARE_PRODUCTION_UUID}`
+		);
 
-		kingLearBarbicanProduction = await request
-			.execute(app)
-			.get(`/productions/${KING_LEAR_BARBICAN_PRODUCTION_UUID}`);
+		kingLearBarbicanProduction = await request(app).get(`/productions/${KING_LEAR_BARBICAN_PRODUCTION_UUID}`);
 
-		michaelGambonPerson = await request.execute(app).get(`/people/${MICHAEL_GAMBON_PERSON_UUID}`);
+		michaelGambonPerson = await request(app).get(`/people/${MICHAEL_GAMBON_PERSON_UUID}`);
 
-		antonySherPerson = await request.execute(app).get(`/people/${ANTONY_SHER_PERSON_UUID}`);
+		antonySherPerson = await request(app).get(`/people/${ANTONY_SHER_PERSON_UUID}`);
 
-		grahamTurnerPerson = await request.execute(app).get(`/people/${GRAHAM_TURNER_PERSON_UUID}`);
+		grahamTurnerPerson = await request(app).get(`/people/${GRAHAM_TURNER_PERSON_UUID}`);
 	});
 
 	describe('King Lear (character)', () => {
@@ -196,7 +189,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = kingLearCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -257,7 +250,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { productions } = foolCharacter.body;
 
-			expect(productions).to.deep.equal(expectedProductions);
+			assert.deepEqual(productions, expectedProductions);
 		});
 	});
 
@@ -296,7 +289,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { cast } = kingLearRoyalShakespeareProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -335,7 +328,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { cast } = kingLearBarbicanProduction.body;
 
-			expect(cast).to.deep.equal(expectedCast);
+			assert.deepEqual(cast, expectedCast);
 		});
 	});
 
@@ -369,7 +362,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { castMemberProductions } = michaelGambonPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -426,7 +419,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { castMemberProductions } = antonySherPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 
@@ -460,7 +453,7 @@ describe('Cast member performing different roles in different productions of sam
 
 			const { castMemberProductions } = grahamTurnerPerson.body;
 
-			expect(castMemberProductions).to.deep.equal(expectedCastMemberProductions);
+			assert.deepEqual(castMemberProductions, expectedCastMemberProductions);
 		});
 	});
 });

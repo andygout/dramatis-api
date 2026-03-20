@@ -1,6 +1,8 @@
-import { expect } from 'chai';
+import assert from 'node:assert/strict';
+import { afterEach, beforeEach, describe, it } from 'node:test';
+
 import esmock from 'esmock';
-import { assert, createStubInstance, restore, spy } from 'sinon';
+import { assert as sinonAssert, createStubInstance, restore, spy } from 'sinon';
 
 import { FestivalSeries } from '../../../src/models/index.js';
 
@@ -39,7 +41,7 @@ describe('Festival model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Festival({ name: '2008' });
 
-				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
+				assert.ok(instance.festivalSeries instanceof FestivalSeries);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -50,7 +52,7 @@ describe('Festival model', () => {
 					}
 				});
 
-				expect(instance.festivalSeries instanceof FestivalSeries).to.be.true;
+				assert.ok(instance.festivalSeries instanceof FestivalSeries);
 			});
 		});
 	});
@@ -71,16 +73,16 @@ describe('Festival model', () => {
 
 			instance.runInputValidations();
 
-			assert.callOrder(
+			sinonAssert.callOrder(
 				instance.validateName,
 				instance.validateDifferentiator,
 				instance.festivalSeries.validateName,
 				instance.festivalSeries.validateDifferentiator
 			);
-			assert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			assert.calledOnceWithExactly(instance.validateDifferentiator);
-			assert.calledOnceWithExactly(instance.festivalSeries.validateName, { isRequired: false });
-			assert.calledOnceWithExactly(instance.festivalSeries.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
+			sinonAssert.calledOnceWithExactly(instance.festivalSeries.validateName, { isRequired: false });
+			sinonAssert.calledOnceWithExactly(instance.festivalSeries.validateDifferentiator);
 		});
 	});
 });
