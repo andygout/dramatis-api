@@ -4,8 +4,8 @@ import { before, describe, it } from 'node:test';
 import request from 'supertest';
 
 import app from '../../src/app.js';
-import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const THREE_WINTERS_MATERIAL_UUID = '3_WINTERS_MATERIAL_UUID';
 const ALISA_KOS_CHARACTER_UUID = 'ALISA_KOS_CHARACTER_UUID';

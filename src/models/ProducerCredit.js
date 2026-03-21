@@ -1,6 +1,6 @@
-import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info.js';
 import Base from './Base.js';
 import { CompanyWithMembers, Person } from './index.js';
+import { getDuplicateEntities, isEntityInArray } from '../lib/get-duplicate-entity-info.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class ProducerCredit extends Base {

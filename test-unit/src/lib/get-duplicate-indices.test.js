@@ -10,7 +10,6 @@ import {
 	getDuplicateRoleIndices,
 	getDuplicateUrlIndices
 } from '../../../src/lib/get-duplicate-indices.js';
-
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
 describe('Get Duplicate Indices module', () => {

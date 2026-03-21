@@ -1,5 +1,5 @@
-import { getTrimmedOrEmptyString } from '../lib/strings.js';
 import Character from './Character.js';
+import { getTrimmedOrEmptyString } from '../lib/strings.js';
 
 export default class CharacterDepiction extends Character {
 	constructor(props = {}) {

@@ -4,8 +4,8 @@ import { after, before, describe, it } from 'node:test';
 import request from 'supertest';
 
 import app from '../../src/app.js';
-import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
+import { countNodesWithLabel, createNode, purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 describe('Uniqueness in database: Festivals API', () => {
 	describe('Festival uniqueness in database', () => {

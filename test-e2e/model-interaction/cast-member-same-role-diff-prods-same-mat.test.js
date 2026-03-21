@@ -4,8 +4,8 @@ import { before, describe, it } from 'node:test';
 import request from 'supertest';
 
 import app from '../../src/app.js';
-import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const TITANIA_CHARACTER_UUID = 'TITANIA_QUEEN_OF_THE_FAIRIES_CHARACTER_UUID';
 const A_MIDSUMMER_NIGHTS_DREAM_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'A_MIDSUMMER_NIGHTS_DREAM_PRODUCTION_UUID';

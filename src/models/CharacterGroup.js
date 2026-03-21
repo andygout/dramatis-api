@@ -1,6 +1,6 @@
-import { getDuplicateCharacterIndices } from '../lib/get-duplicate-indices.js';
 import Base from './Base.js';
 import { CharacterDepiction } from './index.js';
+import { getDuplicateCharacterIndices } from '../lib/get-duplicate-indices.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class CharacterGroup extends Base {

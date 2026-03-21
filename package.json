@@ -44,6 +44,7 @@
   "devDependencies": {
     "eslint": "9.36.0",
     "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
     "esmock": "2.7.3",
     "globals": "16.4.0",
     "jsonlint": "1.6.3",
