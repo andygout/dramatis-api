@@ -1,9 +1,9 @@
-import * as awards from './awards.js';
 import * as awardCeremonies from './award-ceremonies.js';
+import * as awards from './awards.js';
 import * as characters from './characters.js';
 import * as companies from './companies.js';
-import * as festivals from './festivals.js';
 import * as festivalSerieses from './festival-serieses.js';
+import * as festivals from './festivals.js';
 import * as materials from './materials.js';
 import * as people from './people.js';
 import * as productions from './productions.js';

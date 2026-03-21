@@ -4,8 +4,8 @@ import { before, describe, it } from 'node:test';
 import request from 'supertest';
 
 import app from '../../src/app.js';
-import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const BERKELEY_REPERTORY_THEATRE_VENUE_UUID = 'BERKELEY_REPERTORY_THEATRE_VENUE_UUID';
 const RODA_THEATRE_VENUE_UUID = 'RODA_THEATRE_VENUE_UUID';

@@ -1,6 +1,6 @@
-import { getDuplicateRoleIndices } from '../lib/get-duplicate-indices.js';
-import Person from './Person.js';
 import { Role } from './index.js';
+import Person from './Person.js';
+import { getDuplicateRoleIndices } from '../lib/get-duplicate-indices.js';
 
 export default class CastMember extends Person {
 	constructor(props = {}) {

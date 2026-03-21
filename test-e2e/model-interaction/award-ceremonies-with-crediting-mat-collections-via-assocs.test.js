@@ -4,8 +4,8 @@ import { after, before, describe, it } from 'node:test';
 import request from 'supertest';
 
 import app from '../../src/app.js';
-import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+import { createRelationship, deleteRelationship, purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const SUB_PLUGH_PART_I_ORIGINAL_VERSION_MATERIAL_UUID = 'SUB_PLUGH_PART_I_MATERIAL_1_UUID';
 const FRANCIS_FLOB_JR_PERSON_UUID = 'FRANCIS_FLOB_JR_PERSON_UUID';

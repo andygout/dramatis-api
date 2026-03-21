@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
 import * as cypherQueriesValidation from '../../../../src/neo4j/cypher-queries/validation/index.js';
-
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Validation module', () => {

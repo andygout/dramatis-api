@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
 import * as cypherQueriesFestival from '../../../../src/neo4j/cypher-queries/festival/index.js';
-
 import removeExcessWhitespace from '../../../test-helpers/remove-excess-whitespace.js';
 
 describe('Cypher Queries Festival module', () => {

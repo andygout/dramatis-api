@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
 import { getDuplicateEntities, isEntityInArray } from '../../../src/lib/get-duplicate-entity-info.js';
-
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
 describe('Get Duplicate Entity Info module', () => {

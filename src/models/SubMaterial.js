@@ -1,5 +1,5 @@
-import prepareAsParams from '../lib/prepare-as-params.js';
 import MaterialBase from './MaterialBase.js';
+import prepareAsParams from '../lib/prepare-as-params.js';
 import { validationQueries } from '../neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../neo4j/query.js';
 

@@ -1,8 +1,8 @@
+import { CharacterGroup, OriginalVersionMaterial, SubMaterial, WritingCredit } from './index.js';
+import MaterialBase from './MaterialBase.js';
 import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices.js';
 import isValidYear from '../lib/is-valid-year.js';
 import { getTrimmedOrEmptyString } from '../lib/strings.js';
-import MaterialBase from './MaterialBase.js';
-import { CharacterGroup, OriginalVersionMaterial, SubMaterial, WritingCredit } from './index.js';
 
 export default class Material extends MaterialBase {
 	constructor(props = {}) {

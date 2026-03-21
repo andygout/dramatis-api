@@ -1,18 +1,32 @@
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 
 export default [
 	js.configs.recommended,
+	importPlugin.flatConfigs.recommended,
 	{
 		languageOptions: {
 			globals: {
 				...globals.node
 			},
-			ecmaVersion: 2020,
+			ecmaVersion: 'latest',
 			sourceType: 'module'
 		},
 		rules: {
+			'import/namespace': ['error', { allowComputed: true }],
+			'import/order': [
+				'error',
+				{
+					groups: ['builtin', 'external', ['parent', 'sibling', 'index']],
+					'newlines-between': 'always',
+					alphabetize: {
+						order: 'asc',
+						caseInsensitive: true
+					}
+				}
+			],
 			'comma-dangle': 'error',
 			eqeqeq: 'error',
 			'guard-for-in': 'error',

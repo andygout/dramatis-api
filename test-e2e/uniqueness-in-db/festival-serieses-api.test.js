@@ -4,8 +4,8 @@ import { after, before, describe, it } from 'node:test';
 import request from 'supertest';
 
 import app from '../../src/app.js';
-import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 import { stubUuidCounterClient } from '../test-helpers/index.js';
+import { countNodesWithLabel, purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const FESTIVAL_SERIES_1_UUID = '2';
 const FESTIVAL_SERIES_2_UUID = '5';
