@@ -34,11 +34,8 @@ export default [
 			'no-caller': 'error',
 			'no-console': 'error',
 			'no-extend-native': 'error',
-			'no-irregular-whitespace': 'error',
 			'no-loop-func': 'error',
-			'no-undef': 'error',
 			'no-underscore-dangle': 'error',
-			'no-unused-vars': 'error',
 			'no-var': 'error',
 			'one-var': ['error', 'never'],
 			strict: ['error', 'global']
