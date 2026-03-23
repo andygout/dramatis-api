@@ -8,6 +8,7 @@
   "main": "src/server.js",
   "scripts": {
     "format": "prettier \"**/*.{js,jsx,json,css,md,yml}\" --write",
+    "format-check": "prettier \"**/*.{js,jsx,json,css,md,yml}\" --check",
     "lint": "eslint",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",

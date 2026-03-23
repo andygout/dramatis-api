@@ -15,6 +15,9 @@ jobs:
           name: Install
           command: npm install
       - run:
+          name: Format checks
+          command: npm run format-check
+      - run:
           name: Lint checks
           command: npm run lint-check
       - run:
