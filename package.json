@@ -10,6 +10,7 @@
     "format": "prettier \"**/*.{js,jsx,json,css,md,yml}\" --write",
     "format-check": "prettier \"**/*.{js,jsx,json,css,md,yml}\" --check",
     "lint": "eslint",
+    "lint-fix": "eslint --fix",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",
     "lint-staged": "lint-staged",
