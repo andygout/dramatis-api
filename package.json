@@ -11,6 +11,7 @@
     "lint": "eslint",
     "lintspaces": "git ls-files | xargs lintspaces -e .editorconfig",
     "lint-check": "npm run lint && npm run lintspaces",
+    "lint-staged": "lint-staged",
     "unit-test": "node --env-file=./test-unit/.env --test test-unit/**/*.test.js",
     "int-test": "node --env-file=./test-int/.env --test test-int/**/*.test.js",
     "e2e-test-resources": "docker compose -f docker/docker-compose.yml up",
@@ -20,9 +21,19 @@
     "setup": "node src/setup.js",
     "start": "npm run setup && node --watch-path=src --watch-preserve-output src/server.js"
   },
+  "lint-staged": {
+    "*.{js,jsx,json,css,md,yml}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint"
+    ],
+    "*": [
+      "lintspaces -e .editorconfig"
+    ]
+  },
   "pre-commit": [
-    "format",
-    "lint-check",
+    "lint-staged",
     "unit-test",
     "int-test"
   ],
@@ -48,6 +59,7 @@
     "esmock": "2.7.3",
     "globals": "16.4.0",
     "jsonlint": "1.6.3",
+    "lint-staged": "16.4.0",
     "lintspaces-cli": "1.0.0",
     "node-mocks-http": "1.17.2",
     "pre-commit": "1.2.2",
