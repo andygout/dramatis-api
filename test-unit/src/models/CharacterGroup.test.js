@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { CharacterDepiction } from '../../../src/models/index.js';
 
@@ -11,13 +10,13 @@ describe('CharacterGroup model', () => {
 	let CharacterGroup;
 
 	const CharacterDepictionStub = function () {
-		return createStubInstance(CharacterDepiction);
+		return new CharacterDepiction();
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateCharacterIndices: stub().returns([])
+				getDuplicateCharacterIndices: test.mock.fn(() => [])
 			},
 			models: {
 				CharacterDepiction: CharacterDepictionStub
@@ -34,10 +33,6 @@ describe('CharacterGroup model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	describe('constructor method', () => {
@@ -73,7 +68,7 @@ describe('CharacterGroup model', () => {
 	});
 
 	describe('runInputValidations method', () => {
-		it("calls instance's validate methods and associated models' validate methods", async () => {
+		it("calls instance's validate methods and associated models' validate methods", async (test) => {
 			const instance = new CharacterGroup({
 				name: 'Montagues',
 				characters: [
@@ -82,34 +77,96 @@ describe('CharacterGroup model', () => {
 					}
 				]
 			});
+			const callOrder = [];
 
-			spy(instance, 'validateName');
+			const originalValidateName = instance.validateName;
+			const originalValidateCharacterName = instance.characters[0].validateName;
+			const originalValidateUnderlyingName = instance.characters[0].validateUnderlyingName;
+			const originalValidateDifferentiator = instance.characters[0].validateDifferentiator;
+			const originalValidateQualifier = instance.characters[0].validateQualifier;
+			const originalValidateCharacterNameUnderlyingNameDisparity =
+				instance.characters[0].validateCharacterNameUnderlyingNameDisparity;
+			const originalValidateUniquenessInGroup = instance.characters[0].validateUniquenessInGroup;
+
+			test.mock.method(instance, 'validateName', function (...args) {
+				callOrder.push('instance.validateName');
+
+				return originalValidateName.apply(this, args);
+			});
+			test.mock.method(stubs.getDuplicateIndicesModule, 'getDuplicateCharacterIndices', function (...args) {
+				callOrder.push('stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices');
+
+				return [];
+			});
+			test.mock.method(instance.characters[0], 'validateName', function (...args) {
+				callOrder.push('instance.characters[0].validateName');
+
+				return originalValidateCharacterName.apply(this, args);
+			});
+			test.mock.method(instance.characters[0], 'validateUnderlyingName', function (...args) {
+				callOrder.push('instance.characters[0].validateUnderlyingName');
+
+				return originalValidateUnderlyingName.apply(this, args);
+			});
+			test.mock.method(instance.characters[0], 'validateDifferentiator', function (...args) {
+				callOrder.push('instance.characters[0].validateDifferentiator');
+
+				return originalValidateDifferentiator.apply(this, args);
+			});
+			test.mock.method(instance.characters[0], 'validateQualifier', function (...args) {
+				callOrder.push('instance.characters[0].validateQualifier');
+
+				return originalValidateQualifier.apply(this, args);
+			});
+			test.mock.method(instance.characters[0], 'validateCharacterNameUnderlyingNameDisparity', function (...args) {
+				callOrder.push('instance.characters[0].validateCharacterNameUnderlyingNameDisparity');
+
+				return originalValidateCharacterNameUnderlyingNameDisparity.apply(this, args);
+			});
+			test.mock.method(instance.characters[0], 'validateUniquenessInGroup', function (...args) {
+				callOrder.push('instance.characters[0].validateUniquenessInGroup');
+
+				return originalValidateUniquenessInGroup.apply(this, args);
+			});
 
 			instance.runInputValidations({ isDuplicate: false });
 
-			sinonAssert.callOrder(
-				instance.validateName,
-				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
-				instance.characters[0].validateName,
-				instance.characters[0].validateUnderlyingName,
-				instance.characters[0].validateDifferentiator,
-				instance.characters[0].validateQualifier,
-				instance.characters[0].validateCharacterNameUnderlyingNameDisparity,
-				instance.characters[0].validateUniquenessInGroup
+			assert.deepStrictEqual(callOrder, [
+				'instance.validateName',
+				'stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices',
+				'instance.characters[0].validateName',
+				'instance.characters[0].validateUnderlyingName',
+				'instance.characters[0].validateDifferentiator',
+				'instance.characters[0].validateQualifier',
+				'instance.characters[0].validateCharacterNameUnderlyingNameDisparity',
+				'instance.characters[0].validateUniquenessInGroup'
+			]);
+			assert.strictEqual(instance.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices.mock.calls.length, 1);
+			assert.deepStrictEqual(
+				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices.mock.calls[0].arguments,
+				[instance.characters]
 			);
-			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateCharacterIndices,
-				instance.characters
+			assert.strictEqual(instance.characters[0].validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.characters[0].validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(instance.characters[0].validateUnderlyingName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.characters[0].validateUnderlyingName.mock.calls[0].arguments, []);
+			assert.strictEqual(instance.characters[0].validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.characters[0].validateDifferentiator.mock.calls[0].arguments, []);
+			assert.strictEqual(instance.characters[0].validateQualifier.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.characters[0].validateQualifier.mock.calls[0].arguments, []);
+			assert.strictEqual(instance.characters[0].validateCharacterNameUnderlyingNameDisparity.mock.calls.length, 1);
+			assert.deepStrictEqual(
+				instance.characters[0].validateCharacterNameUnderlyingNameDisparity.mock.calls[0].arguments,
+				[]
 			);
-			sinonAssert.calledOnceWithExactly(instance.characters[0].validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.characters[0].validateUnderlyingName);
-			sinonAssert.calledOnceWithExactly(instance.characters[0].validateDifferentiator);
-			sinonAssert.calledOnceWithExactly(instance.characters[0].validateQualifier);
-			sinonAssert.calledOnceWithExactly(instance.characters[0].validateCharacterNameUnderlyingNameDisparity);
-			sinonAssert.calledOnceWithExactly(instance.characters[0].validateUniquenessInGroup, {
-				isDuplicate: false
-			});
+			assert.strictEqual(instance.characters[0].validateUniquenessInGroup.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.characters[0].validateUniquenessInGroup.mock.calls[0].arguments, [
+				{
+					isDuplicate: false
+				}
+			]);
 		});
 	});
 });

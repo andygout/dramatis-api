@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { CompanyWithMembers, Person } from '../../../src/models/index.js';
 
@@ -11,18 +10,18 @@ describe('ProductionTeamCredit model', () => {
 	let ProductionTeamCredit;
 
 	const CompanyWithMembersStub = function () {
-		return createStubInstance(CompanyWithMembers);
+		return new CompanyWithMembers();
 	};
 
 	const PersonStub = function () {
-		return createStubInstance(Person);
+		return new Person();
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			getDuplicateEntityInfoModule: {
-				getDuplicateEntities: stub().returns('getDuplicateEntities response'),
-				isEntityInArray: stub().returns(false)
+				getDuplicateEntities: test.mock.fn(() => 'getDuplicateEntities response'),
+				isEntityInArray: test.mock.fn(() => false)
 			},
 			models: {
 				CompanyWithMembers: CompanyWithMembersStub,
@@ -40,10 +39,6 @@ describe('ProductionTeamCredit model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	describe('constructor method', () => {
@@ -94,7 +89,7 @@ describe('ProductionTeamCredit model', () => {
 	});
 
 	describe('runInputValidations method', () => {
-		it("calls instance's validate methods and associated models' validate methods", async () => {
+		it("calls instance's validate methods and associated models' validate methods", async (test) => {
 			const instance = new ProductionTeamCredit({
 				name: 'Assistant Stage Managers',
 				entities: [
@@ -107,55 +102,134 @@ describe('ProductionTeamCredit model', () => {
 					}
 				]
 			});
+			const callOrder = [];
 
-			spy(instance, 'validateName');
-			spy(instance, 'validateUniquenessInGroup');
-			spy(instance, 'validateNamePresenceIfNamedChildren');
+			const originalValidateName = instance.validateName;
+			const originalValidateUniquenessInGroup = instance.validateUniquenessInGroup;
+			const originalValidateNamePresenceIfNamedChildren = instance.validateNamePresenceIfNamedChildren;
+			const originalEntity0ValidateName = instance.entities[0].validateName;
+			const originalEntity0ValidateDifferentiator = instance.entities[0].validateDifferentiator;
+			const originalEntity0ValidateUniquenessInGroup = instance.entities[0].validateUniquenessInGroup;
+			const originalEntity1ValidateName = instance.entities[1].validateName;
+			const originalEntity1ValidateDifferentiator = instance.entities[1].validateDifferentiator;
+			const originalEntity1ValidateUniquenessInGroup = instance.entities[1].validateUniquenessInGroup;
+			const originalEntity1RunInputValidations = instance.entities[1].runInputValidations;
+
+			test.mock.method(instance, 'validateName', function (...args) {
+				callOrder.push('instance.validateName');
+
+				return originalValidateName.apply(this, args);
+			});
+			test.mock.method(instance, 'validateUniquenessInGroup', function (...args) {
+				callOrder.push('instance.validateUniquenessInGroup');
+
+				return originalValidateUniquenessInGroup.apply(this, args);
+			});
+			test.mock.method(instance, 'validateNamePresenceIfNamedChildren', function (...args) {
+				callOrder.push('instance.validateNamePresenceIfNamedChildren');
+
+				return originalValidateNamePresenceIfNamedChildren.apply(this, args);
+			});
+			test.mock.method(stubs.getDuplicateEntityInfoModule, 'getDuplicateEntities', function (...args) {
+				callOrder.push('stubs.getDuplicateEntityInfoModule.getDuplicateEntities');
+
+				return 'getDuplicateEntities response';
+			});
+			test.mock.method(instance.entities[0], 'validateName', function (...args) {
+				callOrder.push('instance.entities[0].validateName');
+
+				return originalEntity0ValidateName.apply(this, args);
+			});
+			test.mock.method(instance.entities[0], 'validateDifferentiator', function (...args) {
+				callOrder.push('instance.entities[0].validateDifferentiator');
+
+				return originalEntity0ValidateDifferentiator.apply(this, args);
+			});
+			test.mock.method(stubs.getDuplicateEntityInfoModule, 'isEntityInArray', function (...args) {
+				callOrder.push('stubs.getDuplicateEntityInfoModule.isEntityInArray');
+
+				return false;
+			});
+			test.mock.method(instance.entities[0], 'validateUniquenessInGroup', function (...args) {
+				callOrder.push('instance.entities[0].validateUniquenessInGroup');
+
+				return originalEntity0ValidateUniquenessInGroup.apply(this, args);
+			});
+			test.mock.method(instance.entities[1], 'validateName', function (...args) {
+				callOrder.push('instance.entities[1].validateName');
+
+				return originalEntity1ValidateName.apply(this, args);
+			});
+			test.mock.method(instance.entities[1], 'validateDifferentiator', function (...args) {
+				callOrder.push('instance.entities[1].validateDifferentiator');
+
+				return originalEntity1ValidateDifferentiator.apply(this, args);
+			});
+			test.mock.method(instance.entities[1], 'validateUniquenessInGroup', function (...args) {
+				callOrder.push('instance.entities[1].validateUniquenessInGroup');
+
+				return originalEntity1ValidateUniquenessInGroup.apply(this, args);
+			});
+			test.mock.method(instance.entities[1], 'runInputValidations', function (...args) {
+				callOrder.push('instance.entities[1].runInputValidations');
+
+				return originalEntity1RunInputValidations.apply(this, args);
+			});
 
 			instance.runInputValidations({ isDuplicate: false });
 
-			sinonAssert.callOrder(
-				instance.validateName,
-				instance.validateUniquenessInGroup,
-				instance.validateNamePresenceIfNamedChildren,
-				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
-				instance.entities[0].validateName,
-				instance.entities[0].validateDifferentiator,
-				stubs.getDuplicateEntityInfoModule.isEntityInArray,
-				instance.entities[0].validateUniquenessInGroup,
-				instance.entities[1].validateName,
-				instance.entities[1].validateDifferentiator,
-				stubs.getDuplicateEntityInfoModule.isEntityInArray,
-				instance.entities[1].validateUniquenessInGroup,
-				instance.entities[1].runInputValidations
-			);
-			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.validateUniquenessInGroup, { isDuplicate: false });
-			sinonAssert.calledOnceWithExactly(instance.validateNamePresenceIfNamedChildren, instance.entities);
-			sinonAssert.calledOnceWithExactly(
-				stubs.getDuplicateEntityInfoModule.getDuplicateEntities,
+			assert.deepStrictEqual(callOrder, [
+				'instance.validateName',
+				'instance.validateUniquenessInGroup',
+				'instance.validateNamePresenceIfNamedChildren',
+				'stubs.getDuplicateEntityInfoModule.getDuplicateEntities',
+				'instance.entities[0].validateName',
+				'instance.entities[0].validateDifferentiator',
+				'stubs.getDuplicateEntityInfoModule.isEntityInArray',
+				'instance.entities[0].validateUniquenessInGroup',
+				'instance.entities[1].validateName',
+				'instance.entities[1].validateDifferentiator',
+				'stubs.getDuplicateEntityInfoModule.isEntityInArray',
+				'instance.entities[1].validateUniquenessInGroup',
+				'instance.entities[1].runInputValidations'
+			]);
+			assert.strictEqual(instance.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(instance.validateUniquenessInGroup.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateUniquenessInGroup.mock.calls[0].arguments, [{ isDuplicate: false }]);
+			assert.strictEqual(instance.validateNamePresenceIfNamedChildren.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateNamePresenceIfNamedChildren.mock.calls[0].arguments, [instance.entities]);
+			assert.strictEqual(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.getDuplicateEntityInfoModule.getDuplicateEntities.mock.calls[0].arguments, [
 				instance.entities
-			);
-			sinonAssert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
-			sinonAssert.calledTwice(stubs.getDuplicateEntityInfoModule.isEntityInArray);
-			sinonAssert.calledWithExactly(
-				stubs.getDuplicateEntityInfoModule.isEntityInArray.firstCall,
+			]);
+			assert.strictEqual(instance.entities[0].validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[0].validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(instance.entities[0].validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[0].validateDifferentiator.mock.calls[0].arguments, []);
+			assert.strictEqual(stubs.getDuplicateEntityInfoModule.isEntityInArray.mock.calls.length, 2);
+			assert.deepStrictEqual(stubs.getDuplicateEntityInfoModule.isEntityInArray.mock.calls[0].arguments, [
 				instance.entities[0],
 				'getDuplicateEntities response'
-			);
-			sinonAssert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
-			sinonAssert.calledWithExactly(
-				stubs.getDuplicateEntityInfoModule.isEntityInArray.secondCall,
+			]);
+			assert.strictEqual(instance.entities[0].validateUniquenessInGroup.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[0].validateUniquenessInGroup.mock.calls[0].arguments, [{ isDuplicate: false }]);
+			assert.strictEqual(instance.entities[1].validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[1].validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(instance.entities[1].validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[1].validateDifferentiator.mock.calls[0].arguments, []);
+			assert.deepStrictEqual(stubs.getDuplicateEntityInfoModule.isEntityInArray.mock.calls[1].arguments, [
 				instance.entities[1],
 				'getDuplicateEntities response'
-			);
-			sinonAssert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[1].runInputValidations, {
-				duplicateEntities: 'getDuplicateEntities response'
-			});
+			]);
+			assert.strictEqual(instance.entities[1].validateUniquenessInGroup.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[1].validateUniquenessInGroup.mock.calls[0].arguments, [{ isDuplicate: false }]);
+			assert.strictEqual(instance.entities[1].runInputValidations.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.entities[1].runInputValidations.mock.calls[0].arguments, [
+				{
+					duplicateEntities: 'getDuplicateEntities response'
+				}
+			]);
 		});
 	});
 });

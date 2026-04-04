@@ -1,7 +1,7 @@
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 const context = describe;
 
@@ -11,16 +11,16 @@ describe('SubVenue model', () => {
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
-			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
+			prepareAsParams: test.mock.fn(() => ({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })),
 			cypherQueriesModule: {
 				validationQueries: {
-					getSubVenueChecksQuery: stub().returns('getSubVenueChecksQuery response')
+					getSubVenueChecksQuery: test.mock.fn(() => 'getSubVenueChecksQuery response')
 				}
 			},
 			neo4jQueryModule: {
-				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+				neo4jQuery: test.mock.fn(async () => neo4jQueryMockResponse)
 			}
 		};
 
@@ -37,180 +37,177 @@ describe('SubVenue model', () => {
 		);
 	});
 
-	afterEach(() => {
-		restore();
-	});
-
 	describe('runDatabaseValidations method', () => {
 		context('valid data', () => {
-			it('will not call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will not call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
-				});
+				}));
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery
-				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.equal(stubs.prepareAsParams.mock.callCount(), 1);
+				assert.deepEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.equal(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.calls[0].arguments, []);
+				assert.equal(stubs.neo4jQueryModule.neo4jQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE',
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				});
-				sinonAssert.notCalled(instance.addPropertyError);
+				}]);
+				assert.equal(instance.addPropertyError.mock.callCount(), 0);
 			});
 		});
 
 		context('invalid data (instance is already assigned to another sur-venue)', () => {
-			it('will call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 					isAssignedToSurVenue: true,
 					isSurVenue: false,
 					isSubjectVenueASubVenue: false
-				});
+				}));
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
-				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.equal(stubs.prepareAsParams.mock.callCount(), 1);
+				assert.deepEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.equal(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.calls[0].arguments, []);
+				assert.equal(stubs.neo4jQueryModule.neo4jQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE',
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				});
-				sinonAssert.calledTwice(instance.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.firstCall,
-					'name',
-					'Venue with these attributes is already assigned to another sur-venue'
+				}]);
+				assert.equal(instance.addPropertyError.mock.callCount(), 2);
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[0].arguments,
+					[
+						'name',
+						'Venue with these attributes is already assigned to another sur-venue'
+					]
 				);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.secondCall,
-					'differentiator',
-					'Venue with these attributes is already assigned to another sur-venue'
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[1].arguments,
+					[
+						'differentiator',
+						'Venue with these attributes is already assigned to another sur-venue'
+					]
 				);
 			});
 		});
 
 		context('invalid data (instance is the sur-most venue of a two-tiered venue collection)', () => {
-			it('will call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 					isAssignedToSurVenue: false,
 					isSurVenue: true,
 					isSubjectVenueASubVenue: false
-				});
+				}));
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
-				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.equal(stubs.prepareAsParams.mock.callCount(), 1);
+				assert.deepEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.equal(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.calls[0].arguments, []);
+				assert.equal(stubs.neo4jQueryModule.neo4jQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE',
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				});
-				sinonAssert.calledTwice(instance.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.firstCall,
-					'name',
-					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+				}]);
+				assert.equal(instance.addPropertyError.mock.callCount(), 2);
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[0].arguments,
+					[
+						'name',
+						'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					]
 				);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.secondCall,
-					'differentiator',
-					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[1].arguments,
+					[
+						'differentiator',
+						'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					]
 				);
 			});
 		});
 
 		context('invalid data (instance cannot be assigned to a two-tiered venue collection)', () => {
-			it('will call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,
 					isSubjectVenueASubVenue: true
-				});
+				}));
 
 				const instance = new SubVenue({ name: 'NAME_VALUE', differentiator: '1' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				await instance.runDatabaseValidations({
 					subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
-				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.equal(stubs.prepareAsParams.mock.callCount(), 1);
+				assert.deepEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.equal(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.cypherQueriesModule.validationQueries.getSubVenueChecksQuery.mock.calls[0].arguments, []);
+				assert.equal(stubs.neo4jQueryModule.neo4jQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getSubVenueChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE',
 						subjectVenueUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				});
-				sinonAssert.calledTwice(instance.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.firstCall,
-					'name',
-					'Sub-venue cannot be assigned to a two-tiered venue collection'
+				}]);
+				assert.equal(instance.addPropertyError.mock.callCount(), 2);
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[0].arguments,
+					[
+						'name',
+						'Sub-venue cannot be assigned to a two-tiered venue collection'
+					]
 				);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.secondCall,
-					'differentiator',
-					'Sub-venue cannot be assigned to a two-tiered venue collection'
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[1].arguments,
+					[
+						'differentiator',
+						'Sub-venue cannot be assigned to a two-tiered venue collection'
+					]
 				);
 			});
 		});

@@ -1,31 +1,29 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, stub } from 'sinon';
 
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
 describe('Prepare As Params module', () => {
 	let stubs;
 	let prepareAsParams;
+	let getRandomUuidValues;
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
+		getRandomUuidValues = ['xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'];
+
 		stubs = {
 			neo4j: {
-				int: stub().returnsArg(0)
+				int: test.mock.fn((value) => value)
 			},
-			getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+			getRandomUuid: test.mock.fn(() => getRandomUuidValues.shift())
 		};
 
 		prepareAsParams = await esmock('../../../src/lib/prepare-as-params.js', {
 			'neo4j-driver': stubs.neo4j,
 			'../../../src/lib/get-random-uuid.js': stubs.getRandomUuid
 		});
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	it('returns new object with modifications but will not mutate input object', async () => {
@@ -83,8 +81,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -93,8 +91,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -103,8 +101,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -115,8 +113,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, null);
 			});
 
@@ -125,8 +123,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, null);
 			});
 
@@ -135,8 +133,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -147,8 +145,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, null);
 			});
 
@@ -157,8 +155,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, null);
 			});
 
@@ -167,8 +165,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -178,8 +176,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.foo, 'bar');
 		});
 
@@ -188,8 +186,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.foo, null);
 		});
 
@@ -198,8 +196,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.foo, null);
 		});
 
@@ -208,8 +206,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(Object.hasOwn(result, 'position'), false);
 		});
 
@@ -229,8 +227,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -239,8 +237,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -249,8 +247,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -261,8 +259,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -271,8 +269,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -281,8 +279,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -293,8 +291,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -303,8 +301,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -313,8 +311,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -324,8 +322,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.venue.foo, 'bar');
 		});
 
@@ -334,8 +332,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.venue.foo, null);
 		});
 
@@ -344,8 +342,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.venue.foo, null);
 		});
 
@@ -354,8 +352,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(Object.hasOwn(result.venue, 'position'), false);
 		});
 
@@ -374,8 +372,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -384,8 +382,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -394,8 +392,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
@@ -404,8 +402,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].foo, 'bar');
 		});
 
@@ -414,8 +412,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].foo, null);
 		});
 
@@ -424,8 +422,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].foo, null);
 		});
 
@@ -435,8 +433,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 			});
 
@@ -460,10 +458,10 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledTwice(stubs.getRandomUuid);
-				sinonAssert.calledTwice(stubs.neo4j.int);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 2);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.neo4j.int.mock.calls[0].arguments, [0]);
+				assert.deepStrictEqual(stubs.neo4j.int.mock.calls[1].arguments, [1]);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), true);
 				assert.equal(result.cast[0].position, 0);
 				assert.equal(Object.hasOwn(result.cast[1], 'position'), true);
@@ -495,8 +493,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.cast.length, 1);
 				assert.equal(result.cast[0].name, 'David Calder');
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
@@ -512,8 +510,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.productions.length, 1);
 				assert.equal(Object.hasOwn(result.productions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.productions[0], 'position'), false);
@@ -534,8 +532,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.characterGroups.length, 1);
 				assert.equal(result.characterGroups[0].name, null);
 				assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
@@ -602,8 +600,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 4);
 				assert.equal(result.characterGroups.length, 1);
 				assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
 				assert.equal(result.characterGroups[0].name, 'The Borkmans');
@@ -637,8 +635,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.calledThrice(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 3);
 				assert.equal(result.cast.length, 3);
 			});
 		});
@@ -651,8 +649,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.reviews.length, 1);
 			});
 		});
@@ -666,27 +664,22 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.productions.length, 1);
 				assert.equal(result.subProductions.length, 1);
 			});
 		});
 
 		it('applies the same uuid value to items that will need to share the same database entry', async () => {
-			stubs.getRandomUuid
-				.onFirstCall()
-				.returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
-				.onSecondCall()
-				.returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
-				.onThirdCall()
-				.returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3)
-				.returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4)
-				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5)
-				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			getRandomUuidValues = [
+				'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+				'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+				'cccccccc-cccc-cccc-cccc-cccccccccccc',
+				'dddddddd-dddd-dddd-dddd-dddddddddddd',
+				'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee',
+				'ffffffff-ffff-ffff-ffff-ffffffffffff'
+			];
 			const instance = {
 				characters: [
 					applyModelGetter({
@@ -764,8 +757,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 6);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 10);
 			assert.equal(result.characters[0].uuid, result.characters[5].uuid);
 			assert.equal(result.characters[1].uuid, result.characters[6].uuid);
 			assert.equal(result.characters[2].uuid, result.characters[7].uuid);
@@ -780,8 +773,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.production.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -790,8 +783,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.production.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -809,8 +802,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.production.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
@@ -819,8 +812,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.production.cast[0].foo, 'bar');
 		});
 
@@ -829,8 +822,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.production.cast[0].foo, null);
 		});
 
@@ -839,8 +832,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.production.cast[0].foo, null);
 		});
 
@@ -850,8 +843,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
 			});
 
@@ -877,10 +870,10 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledTwice(stubs.getRandomUuid);
-				sinonAssert.calledTwice(stubs.neo4j.int);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 2);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.neo4j.int.mock.calls[0].arguments, [0]);
+				assert.deepStrictEqual(stubs.neo4j.int.mock.calls[1].arguments, [1]);
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), true);
 				assert.equal(result.production.cast[0].position, 0);
 				assert.equal(Object.hasOwn(result.production.cast[1], 'position'), true);
@@ -916,8 +909,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.production.cast.length, 1);
 				assert.equal(result.production.cast[0].name, 'David Calder');
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
@@ -935,8 +928,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.foo.productions.length, 1);
 				assert.equal(Object.hasOwn(result.foo.productions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foo.productions[0], 'position'), false);
@@ -959,8 +952,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.foo.characterGroups.length, 1);
 				assert.equal(result.foo.characterGroups[0].name, null);
 				assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
@@ -1029,8 +1022,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 4);
 				assert.equal(result.foo.characterGroups.length, 1);
 				assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
 				assert.equal(result.foo.characterGroups[0].name, 'The Borkmans');
@@ -1066,8 +1059,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.calledThrice(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 3);
 				assert.equal(result.production.cast.length, 3);
 			});
 		});
@@ -1082,8 +1075,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.foo.reviews.length, 1);
 			});
 		});
@@ -1099,27 +1092,22 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.foo.productions.length, 1);
 				assert.equal(result.foo.subProductions.length, 1);
 			});
 		});
 
 		it('applies the same uuid value to items that will need to share the same database entry', async () => {
-			stubs.getRandomUuid
-				.onFirstCall()
-				.returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
-				.onSecondCall()
-				.returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
-				.onThirdCall()
-				.returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3)
-				.returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4)
-				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5)
-				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			getRandomUuidValues = [
+				'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+				'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+				'cccccccc-cccc-cccc-cccc-cccccccccccc',
+				'dddddddd-dddd-dddd-dddd-dddddddddddd',
+				'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee',
+				'ffffffff-ffff-ffff-ffff-ffffffffffff'
+			];
 			const instance = {
 				production: {
 					cast: [
@@ -1199,8 +1187,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 6);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 10);
 			assert.equal(result.production.cast[0].uuid, result.production.cast[5].uuid);
 			assert.equal(result.production.cast[1].uuid, result.production.cast[6].uuid);
 			assert.equal(result.production.cast[2].uuid, result.production.cast[7].uuid);
@@ -1215,8 +1203,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].roles[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -1225,8 +1213,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].roles[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -1247,8 +1235,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].roles[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
@@ -1257,8 +1245,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].roles[0].foo, 'bar');
 		});
 
@@ -1267,8 +1255,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
@@ -1277,8 +1265,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
@@ -1288,8 +1276,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
 			});
@@ -1326,10 +1314,10 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledTwice(stubs.getRandomUuid);
-				sinonAssert.calledTwice(stubs.neo4j.int);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 2);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.neo4j.int.mock.calls[0].arguments, [0]);
+				assert.deepStrictEqual(stubs.neo4j.int.mock.calls[1].arguments, [1]);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), true);
 				assert.equal(result.cast[0].roles[0].position, 0);
@@ -1372,8 +1360,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 1);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.cast[0].roles.length, 1);
 				assert.equal(result.cast[0].roles[0].name, 'Polonius');
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
@@ -1394,8 +1382,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.foos[0].productions.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'position'), false);
@@ -1421,8 +1409,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.foos[0].characterGroups.length, 1);
 				assert.equal(result.foos[0].characterGroups[0].name, null);
 				assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
@@ -1494,8 +1482,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 4);
 				assert.equal(result.foos[0].characterGroups.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
 				assert.equal(result.foos[0].characterGroups[0].name, 'The Borkmans');
@@ -1534,8 +1522,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.calledThrice(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 3);
 				assert.equal(result.productions[0].cast.length, 3);
 			});
 		});
@@ -1552,8 +1540,8 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.subProductions[0].reviews.length, 1);
 			});
 		});
@@ -1579,27 +1567,22 @@ describe('Prepare As Params module', () => {
 
 				const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				assert.equal(stubs.getRandomUuid.mock.calls.length, 0);
+				assert.equal(stubs.neo4j.int.mock.calls.length, 0);
 				assert.equal(result.nominations[0].productions.length, 1);
 				assert.equal(result.productions[0].subProductions.length, 1);
 			});
 		});
 
 		it('applies the same uuid value to items in the same array that will need to share the same database entry', async () => {
-			stubs.getRandomUuid
-				.onFirstCall()
-				.returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
-				.onSecondCall()
-				.returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
-				.onThirdCall()
-				.returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3)
-				.returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4)
-				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5)
-				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			getRandomUuidValues = [
+				'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+				'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+				'cccccccc-cccc-cccc-cccc-cccccccccccc',
+				'dddddddd-dddd-dddd-dddd-dddddddddddd',
+				'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee',
+				'ffffffff-ffff-ffff-ffff-ffffffffffff'
+			];
 			const instance = {
 				characterGroups: [
 					{
@@ -1681,8 +1664,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 6);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 10);
 			assert.equal(result.characterGroups[0].characters[0].uuid, result.characterGroups[0].characters[5].uuid);
 			assert.equal(result.characterGroups[0].characters[1].uuid, result.characterGroups[0].characters[6].uuid);
 			assert.equal(result.characterGroups[0].characters[2].uuid, result.characterGroups[0].characters[7].uuid);
@@ -1691,19 +1674,14 @@ describe('Prepare As Params module', () => {
 		});
 
 		it('applies the same uuid value to items in different arrays that will need to share the same database entry', async () => {
-			stubs.getRandomUuid
-				.onFirstCall()
-				.returns('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa')
-				.onSecondCall()
-				.returns('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb')
-				.onThirdCall()
-				.returns('cccccccc-cccc-cccc-cccc-cccccccccccc')
-				.onCall(3)
-				.returns('dddddddd-dddd-dddd-dddd-dddddddddddd')
-				.onCall(4)
-				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
-				.onCall(5)
-				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+			getRandomUuidValues = [
+				'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+				'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+				'cccccccc-cccc-cccc-cccc-cccccccccccc',
+				'dddddddd-dddd-dddd-dddd-dddddddddddd',
+				'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee',
+				'ffffffff-ffff-ffff-ffff-ffffffffffff'
+			];
 			const instance = {
 				characterGroups: [
 					{
@@ -1791,8 +1769,8 @@ describe('Prepare As Params module', () => {
 
 			const result = prepareAsParams(instance);
 
-			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 12);
+			assert.equal(stubs.getRandomUuid.mock.calls.length, 6);
+			assert.equal(stubs.neo4j.int.mock.calls.length, 12);
 			assert.equal(result.characterGroups[0].characters[0].uuid, result.characterGroups[1].characters[0].uuid);
 			assert.equal(result.characterGroups[0].characters[1].uuid, result.characterGroups[1].characters[1].uuid);
 			assert.equal(result.characterGroups[0].characters[2].uuid, result.characterGroups[1].characters[2].uuid);

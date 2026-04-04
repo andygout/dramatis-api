@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 const context = describe;
 
@@ -10,10 +9,10 @@ describe('Role model', () => {
 	let stubs;
 	let Role;
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
+				getTrimmedOrEmptyString: test.mock.fn((arg) => arg?.trim() || '')
 			}
 		};
 
@@ -28,22 +27,18 @@ describe('Role model', () => {
 		);
 	});
 
-	afterEach(() => {
-		restore();
-	});
-
 	describe('constructor method', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new Role();
 
-			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 4);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.mock.callCount(), 4);
 		});
 
 		describe('characterName property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Role({ characterName: 'Hamlet' });
 
-				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, 'Hamlet');
+				assert.deepEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[1].arguments, ['Hamlet']);
 				assert.equal(instance.characterName, 'Hamlet');
 			});
 		});
@@ -52,7 +47,7 @@ describe('Role model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Role({ characterDifferentiator: '1' });
 
-				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.thirdCall, '1');
+				assert.deepEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[2].arguments, ['1']);
 				assert.equal(instance.characterDifferentiator, '1');
 			});
 		});
@@ -61,7 +56,7 @@ describe('Role model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Role({ qualifier: 'younger' });
 
-				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.getCall(3), 'younger');
+				assert.deepEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[3].arguments, ['younger']);
 				assert.equal(instance.qualifier, 'younger');
 			});
 		});
@@ -100,84 +95,89 @@ describe('Role model', () => {
 	});
 
 	describe('validateCharacterName method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty');
 
 			instance.validateCharacterName();
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'characterName', {
+			assert.equal(instance.validateStringForProperty.mock.callCount(), 1);
+			assert.deepEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['characterName', {
 				isRequired: false
-			});
+			}]);
 		});
 	});
 
 	describe('validateCharacterDifferentiator method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty');
 
 			instance.validateCharacterDifferentiator();
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'characterDifferentiator', {
+			assert.equal(instance.validateStringForProperty.mock.callCount(), 1);
+			assert.deepEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['characterDifferentiator', {
 				isRequired: false
-			});
+			}]);
 		});
 	});
 
 	describe('validateRoleNameCharacterNameDisparity method', () => {
 		context('valid data', () => {
 			context('role name without a character name', () => {
-				it('will not add properties to errors property', async () => {
+				it('will not add properties to errors property', async (test) => {
 					const instance = new Role({ name: 'Hamlet', characterName: '' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError');
 
 					instance.validateRoleNameCharacterNameDisparity();
 
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.equal(instance.addPropertyError.mock.callCount(), 0);
 				});
 			});
 
 			context('role name and different character name', () => {
-				it('will not add properties to errors property', async () => {
+				it('will not add properties to errors property', async (test) => {
 					const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError');
 
 					instance.validateRoleNameCharacterNameDisparity();
 
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.equal(instance.addPropertyError.mock.callCount(), 0);
 				});
 			});
 
 			context('no role name and no character name', () => {
-				it('will not add properties to errors property', async () => {
+				it('will not add properties to errors property', async (test) => {
 					const instance = new Role({ name: '', characterName: '' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError');
 
 					instance.validateRoleNameCharacterNameDisparity();
 
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.equal(instance.addPropertyError.mock.callCount(), 0);
 				});
 			});
 		});
 
 		context('invalid data', () => {
-			it('adds properties whose values are arrays to errors property', async () => {
+			it('adds properties whose values are arrays to errors property', async (test) => {
 				const instance = new Role({ name: 'Hamlet', characterName: 'Hamlet' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				instance.validateRoleNameCharacterNameDisparity();
 
-				sinonAssert.calledOnceWithExactly(
-					instance.addPropertyError,
-					'characterName',
-					'Character name is only required if different from role name'
+				assert.equal(instance.addPropertyError.mock.callCount(), 1);
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[0].arguments,
+					[
+						'characterName',
+						'Character name is only required if different from role name'
+					]
 				);
 			});
 		});

@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 import { toPlainObject } from '../../../test-helpers/index.js';
 
@@ -13,47 +12,43 @@ describe('Entity model', () => {
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(() => {
+	beforeEach((test) => {
 		stubs = {
-			hasErrors: stub().returns(false),
-			prepareAsParams: stub().returns('prepareAsParams response'),
+			hasErrors: test.mock.fn(() => false),
+			prepareAsParams: test.mock.fn(() => 'prepareAsParams response'),
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
+				getTrimmedOrEmptyString: test.mock.fn((arg) => arg?.trim() || '')
 			},
 			cypherQueriesModule: {
 				getCreateQueries: {
-					PRODUCTION: stub()
+					PRODUCTION: test.mock.fn()
 				},
 				getEditQueries: {
-					PRODUCTION: stub().returns('getEditProductionQuery response')
+					PRODUCTION: test.mock.fn(() => 'getEditProductionQuery response')
 				},
 				getUpdateQueries: {
-					PRODUCTION: stub()
+					PRODUCTION: test.mock.fn()
 				},
 				getShowQueries: {
-					PRODUCTION: stub().returns(['showProductionQuery', 'showProductionAwardsQuery']),
-					VENUE: stub().returns(['showVenueQuery'])
+					PRODUCTION: test.mock.fn(() => ['showProductionQuery', 'showProductionAwardsQuery']),
+					VENUE: test.mock.fn(() => ['showVenueQuery'])
 				},
 				sharedQueries: {
-					getCreateQuery: stub().returns('getCreateQuery response'),
-					getEditQuery: stub().returns('getEditQuery response'),
-					getUpdateQuery: stub().returns('getUpdateQuery response'),
-					getDeleteQuery: stub().returns('getDeleteQuery response'),
-					getListQuery: stub().returns('getListQuery response')
+					getCreateQuery: test.mock.fn(() => 'getCreateQuery response'),
+					getEditQuery: test.mock.fn(() => 'getEditQuery response'),
+					getUpdateQuery: test.mock.fn(() => 'getUpdateQuery response'),
+					getDeleteQuery: test.mock.fn(() => 'getDeleteQuery response'),
+					getListQuery: test.mock.fn(() => 'getListQuery response')
 				},
 				validationQueries: {
-					getExistenceCheckQuery: stub().returns('getExistenceCheckQuery response'),
-					getDuplicateRecordCheckQuery: stub().returns('getDuplicateRecordCheckQuery response')
+					getExistenceCheckQuery: test.mock.fn(() => 'getExistenceCheckQuery response'),
+					getDuplicateRecordCheckQuery: test.mock.fn(() => 'getDuplicateRecordCheckQuery response')
 				}
 			},
 			neo4jQueryModule: {
-				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+				neo4jQuery: test.mock.fn(async () => neo4jQueryMockResponse)
 			}
 		};
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	const createSubject = (model = 'Entity') =>
@@ -87,7 +82,7 @@ describe('Entity model', () => {
 
 			new Entity({ differentiator: '1' });
 
-			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 2);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls.length, 2);
 		});
 
 		describe('differentiator property', () => {
@@ -97,7 +92,7 @@ describe('Entity model', () => {
 
 					const instance = new Entity({ differentiator: '1' });
 
-					sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '1');
+					assert.deepStrictEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[1].arguments, ['1']);
 					assert.equal(instance.differentiator, '1');
 				});
 			});
@@ -168,48 +163,59 @@ describe('Entity model', () => {
 	});
 
 	describe('runInputValidations method', () => {
-		it("calls instance's validate methods", async () => {
+		it("calls instance's validate methods", async (test) => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-			spy(instance, 'validateName');
-			spy(instance, 'validateDifferentiator');
+			const originalValidateName = instance.validateName;
+			const originalValidateDifferentiator = instance.validateDifferentiator;
+
+			test.mock.method(instance, 'validateName', function (...args) {
+				return originalValidateName.apply(this, args);
+			});
+			test.mock.method(instance, 'validateDifferentiator', function (...args) {
+				return originalValidateDifferentiator.apply(this, args);
+			});
 
 			instance.runInputValidations();
 
-			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
+			assert.strictEqual(instance.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateName.mock.calls[0].arguments, [{ isRequired: true }]);
+			assert.strictEqual(instance.validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateDifferentiator.mock.calls[0].arguments, []);
 		});
 	});
 
 	describe('validateDifferentiator method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty', () => undefined);
 
 			instance.validateDifferentiator();
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'differentiator', {
+			assert.strictEqual(instance.validateStringForProperty.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['differentiator', {
 				isRequired: false
-			});
+			}]);
 		});
 	});
 
 	describe('validateSubtitle method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty', () => undefined);
 
 			instance.validateSubtitle();
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'subtitle', { isRequired: false });
+			assert.strictEqual(instance.validateStringForProperty.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['subtitle', { isRequired: false }]);
 		});
 	});
 
@@ -217,71 +223,71 @@ describe('Entity model', () => {
 		context('valid data', () => {
 			context('name and differentiator comparison', () => {
 				context('association has name value of empty string', () => {
-					it('will not add properties to errors property', async () => {
+					it('will not add properties to errors property', async (test) => {
 						const Entity = await createSubject();
 
 						const instance = new Entity({ name: 'National Theatre' });
 
 						instance.differentiator = '';
 
-						spy(instance, 'addPropertyError');
+						test.mock.method(instance, 'addPropertyError', () => undefined);
 
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
 
-						sinonAssert.notCalled(instance.addPropertyError);
+						assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 					});
 				});
 
 				context(
 					'association name and differentiator combination different to instance name and differentiator combination',
 					() => {
-						it('will not add properties to errors property', async () => {
+						it('will not add properties to errors property', async (test) => {
 							const Entity = await createSubject();
 
 							const instance = new Entity({ name: 'Olivier Theatre' });
 
 							instance.differentiator = '';
 
-							spy(instance, 'addPropertyError');
+							test.mock.method(instance, 'addPropertyError', () => undefined);
 
 							instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
 
-							sinonAssert.notCalled(instance.addPropertyError);
+							assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 						});
 					}
 				);
 
 				context('instance and association have empty name and differentiator values', () => {
-					it('will not add properties to errors property', async () => {
+					it('will not add properties to errors property', async (test) => {
 						const Entity = await createSubject();
 
 						const instance = new Entity({ name: '', differentiator: '' });
 
 						instance.differentiator = '';
 
-						spy(instance, 'addPropertyError');
+						test.mock.method(instance, 'addPropertyError', () => undefined);
 
 						instance.validateNoAssociationWithSelf({ name: '', differentiator: '' });
 
-						sinonAssert.notCalled(instance.addPropertyError);
+						assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 					});
 				});
 
 				context(
 					'instance and association have matching non-empty differentiator value but empty name value',
 					() => {
-						it('will not add properties to errors property', async () => {
+						it('will not add properties to errors property', async (test) => {
 							const Entity = await createSubject();
 
 							const instance = new Entity({ name: '', differentiator: '1' });
 
 							instance.differentiator = '';
 
-							spy(instance, 'addPropertyError');
+							test.mock.method(instance, 'addPropertyError', () => undefined);
 
 							instance.validateNoAssociationWithSelf({ name: '', differentiator: '1' });
 
-							sinonAssert.notCalled(instance.addPropertyError);
+							assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 						});
 					}
 				);
@@ -289,30 +295,30 @@ describe('Entity model', () => {
 
 			context('uuid comparison', () => {
 				context('association has not yet been assigned uuid value', () => {
-					it('will not add properties to errors property', async () => {
+					it('will not add properties to errors property', async (test) => {
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-						spy(instance, 'addPropertyError');
+						test.mock.method(instance, 'addPropertyError', () => undefined);
 
 						instance.validateNoAssociationWithSelf({ uuid: undefined });
 
-						sinonAssert.notCalled(instance.addPropertyError);
+						assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 					});
 				});
 
 				context('association uuid different to instance uuid', () => {
-					it('will not add properties to errors property', async () => {
+					it('will not add properties to errors property', async (test) => {
 						const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 						const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-						spy(instance, 'addPropertyError');
+						test.mock.method(instance, 'addPropertyError', () => undefined);
 
 						instance.validateNoAssociationWithSelf({ uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy' });
 
-						sinonAssert.notCalled(instance.addPropertyError);
+						assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 					});
 				});
 			});
@@ -320,46 +326,44 @@ describe('Entity model', () => {
 
 		context('invalid data', () => {
 			context('name and differentiator comparison', () => {
-				it('adds properties whose values are arrays to errors property', async () => {
+				it('adds properties whose values are arrays to errors property', async (test) => {
 					const Entity = await createSubject();
 
 					const instance = new Entity({ name: 'National Theatre' });
 
 					instance.differentiator = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validateNoAssociationWithSelf({ name: 'National Theatre', differentiator: '' });
 
-					sinonAssert.calledTwice(instance.addPropertyError);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'Instance cannot form association with itself'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'differentiator',
 						'Instance cannot form association with itself'
-					);
+					]);
 				});
 			});
 
 			context('uuid comparison', () => {
-				it('adds properties whose values are arrays to errors property', async () => {
+				it('adds properties whose values are arrays to errors property', async (test) => {
 					const ProductionIdentifier = await createSubject('ProductionIdentifier');
 
 					const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validateNoAssociationWithSelf({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-					sinonAssert.calledOnceWithExactly(
-						instance.addPropertyError,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'uuid',
 						'Instance cannot form association with itself'
-					);
+					]);
 				});
 			});
 		});
@@ -367,121 +371,181 @@ describe('Entity model', () => {
 
 	describe('runDatabaseValidations method', () => {
 		context('model is not exempt', () => {
-			it('will call validateUniquenessInDatabase method', async () => {
+			it('will call validateUniquenessInDatabase method', async (test) => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				spy(instance, 'validateUniquenessInDatabase');
+				const originalValidateUniquenessInDatabase = instance.validateUniquenessInDatabase;
+				test.mock.method(instance, 'validateUniquenessInDatabase', function (...args) {
+					return originalValidateUniquenessInDatabase.apply(this, args);
+				});
 
 				await instance.runDatabaseValidations();
 
-				sinonAssert.calledOnceWithExactly(instance.validateUniquenessInDatabase);
+				assert.strictEqual(instance.validateUniquenessInDatabase.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.validateUniquenessInDatabase.mock.calls[0].arguments, []);
 			});
 		});
 
 		context('model is exempt', () => {
-			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
+			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async (test) => {
 				const Production = await createSubject('Production');
 
 				const instance = new Production();
 
-				spy(instance, 'validateUniquenessInDatabase');
+				test.mock.method(instance, 'validateUniquenessInDatabase', () => undefined);
 
 				await instance.runDatabaseValidations();
 
-				sinonAssert.notCalled(instance.validateUniquenessInDatabase);
+				assert.strictEqual(instance.validateUniquenessInDatabase.mock.calls.length, 0);
 			});
 		});
 	});
 
 	describe('validateUniquenessInDatabase method', () => {
 		context('valid data (results returned that indicate name does not already exist)', () => {
-			it('will not call addPropertyError method', async () => {
-				stubs.prepareAsParams.returns({
+			it('will not call addPropertyError method', async (test) => {
+				stubs.prepareAsParams = test.mock.fn(() => ({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
-				});
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
+				}));
+				stubs.neo4jQueryModule.neo4jQuery = test.mock.fn(async () => ({ isDuplicateRecord: false }));
 
 				const Entity = await createSubject();
-
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+				const callOrder = [];
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(stubs, 'prepareAsParams', function (...args) {
+					callOrder.push('prepareAsParams');
+
+					return {
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
+					};
+				});
+				test.mock.method(
+					stubs.cypherQueriesModule.validationQueries,
+					'getDuplicateRecordCheckQuery',
+					function (...args) {
+						callOrder.push('getDuplicateRecordCheckQuery');
+
+						return 'getDuplicateRecordCheckQuery response';
+					}
+				);
+				test.mock.method(stubs.neo4jQueryModule, 'neo4jQuery', async function (...args) {
+					callOrder.push('neo4jQuery');
+
+					return { isDuplicateRecord: false };
+				});
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				await instance.validateUniquenessInDatabase();
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
-					stubs.neo4jQueryModule.neo4jQuery
+				assert.deepStrictEqual(callOrder, [
+					'prepareAsParams',
+					'getDuplicateRecordCheckQuery',
+					'neo4jQuery'
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery.mock.calls[0].arguments,
+					[instance.model]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
-					instance.model
-				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				});
-				sinonAssert.notCalled(instance.addPropertyError);
+				}]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		context('invalid data (results returned that indicate name already exists)', () => {
-			it('will call addPropertyError method', async () => {
-				stubs.prepareAsParams.returns({
+			it('will call addPropertyError method', async (test) => {
+				stubs.prepareAsParams = test.mock.fn(() => ({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
-				});
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
+				}));
+				stubs.neo4jQueryModule.neo4jQuery = test.mock.fn(async () => ({ isDuplicateRecord: true }));
 
 				const Entity = await createSubject();
-
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+				const callOrder = [];
+				const originalAddPropertyError = instance.addPropertyError;
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(stubs, 'prepareAsParams', function (...args) {
+					callOrder.push('prepareAsParams');
+
+					return {
+						uuid: 'UUID_VALUE',
+						name: 'NAME_VALUE',
+						differentiator: 'DIFFERENTIATOR_VALUE'
+					};
+				});
+				test.mock.method(
+					stubs.cypherQueriesModule.validationQueries,
+					'getDuplicateRecordCheckQuery',
+					function (...args) {
+						callOrder.push('getDuplicateRecordCheckQuery');
+
+						return 'getDuplicateRecordCheckQuery response';
+					}
+				);
+				test.mock.method(stubs.neo4jQueryModule, 'neo4jQuery', async function (...args) {
+					callOrder.push('neo4jQuery');
+
+					return { isDuplicateRecord: true };
+				});
+				test.mock.method(instance, 'addPropertyError', function (...args) {
+					callOrder.push('addPropertyError');
+
+					return originalAddPropertyError.apply(this, args);
+				});
 
 				await instance.validateUniquenessInDatabase();
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
+				assert.deepStrictEqual(callOrder, [
+					'prepareAsParams',
+					'getDuplicateRecordCheckQuery',
+					'neo4jQuery',
+					'addPropertyError',
+					'addPropertyError'
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery.mock.calls[0].arguments,
+					[instance.model]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getDuplicateRecordCheckQuery,
-					instance.model
-				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				});
-				sinonAssert.calledTwice(instance.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.firstCall,
+				}]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 					'name',
 					'Name and differentiator combination already exists'
-				);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.secondCall,
+				]);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 					'differentiator',
 					'Name and differentiator combination already exists'
-				);
+				]);
 			});
 		});
 	});
@@ -494,7 +558,8 @@ describe('Entity model', () => {
 
 			instance.setErrorStatus();
 
-			sinonAssert.calledOnceWithExactly(stubs.hasErrors, instance);
+			assert.strictEqual(stubs.hasErrors.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.hasErrors.mock.calls[0].arguments, [instance]);
 
 			assert.equal(instance.hasErrors, false);
 		});
@@ -503,7 +568,7 @@ describe('Entity model', () => {
 	describe('confirmExistenceInDatabase method', () => {
 		context('opts argument is not provided', () => {
 			it('confirms existence of instance in database using model value of instance', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({ isExistent: true }));
 
 				const Person = await createSubject('Person');
 
@@ -511,24 +576,22 @@ describe('Entity model', () => {
 
 				await instance.confirmExistenceInDatabase();
 
-				sinonAssert.callOrder(
-					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
-					stubs.neo4jQueryModule.neo4jQuery
+				assert.strictEqual(stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery.mock.calls[0].arguments,
+					[instance.model]
 				);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
-					instance.model
-				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getExistenceCheckQuery response',
 					params: { uuid: instance.uuid }
-				});
+				}]);
 			});
 		});
 
 		context('model value is provided in opts argument', () => {
 			it('confirms existence of instance in database using provided model value', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({ isExistent: true }));
 
 				const Entity = await createSubject();
 
@@ -538,24 +601,22 @@ describe('Entity model', () => {
 
 				await instance.confirmExistenceInDatabase({ model });
 
-				sinonAssert.callOrder(
-					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
-					stubs.neo4jQueryModule.neo4jQuery
+				assert.strictEqual(stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery.mock.calls[0].arguments,
+					[model]
 				);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getExistenceCheckQuery,
-					model
-				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getExistenceCheckQuery response',
 					params: { uuid: instance.uuid }
-				});
+				}]);
 			});
 		});
 
 		context('instance is found in database', () => {
 			it('returns the isExistent value from the database response', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: true });
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({ isExistent: true }));
 
 				const Entity = await createSubject();
 
@@ -571,7 +632,7 @@ describe('Entity model', () => {
 
 		context('instance is not found in database', () => {
 			it('returns the isExistent value from the database response', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isExistent: false });
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({ isExistent: false }));
 
 				const Entity = await createSubject();
 
@@ -588,163 +649,190 @@ describe('Entity model', () => {
 
 	describe('createUpdate method', () => {
 		context('valid data', () => {
-			it('creates', async () => {
-				stubs.prepareAsParams
-					.onFirstCall()
-					.returns({
+			it('creates', async (test) => {
+				const prepareAsParamsResults = [
+					{
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
-					})
-					.onSecondCall()
-					.returns('prepareAsParams response');
+					},
+					'prepareAsParams response'
+				];
+				stubs.prepareAsParams = test.mock.fn(() => prepareAsParamsResults.shift());
 
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+				const originalRunInputValidations = instance.runInputValidations;
+				const originalRunDatabaseValidations = instance.runDatabaseValidations;
+				const originalSetErrorStatus = instance.setErrorStatus;
+				const originalConstructor = instance.constructor;
 
-				spy(instance, 'runInputValidations');
-				spy(instance, 'runDatabaseValidations');
-				spy(instance, 'setErrorStatus');
-				spy(instance, 'constructor');
+				test.mock.method(instance, 'runInputValidations', function (...args) {
+					return originalRunInputValidations.apply(this, args);
+				});
+				test.mock.method(instance, 'runDatabaseValidations', async function (...args) {
+					return originalRunDatabaseValidations.apply(this, args);
+				});
+				test.mock.method(instance, 'setErrorStatus', function (...args) {
+					return originalSetErrorStatus.apply(this, args);
+				});
+				test.mock.method(instance, 'constructor', function (...args) {
+					return originalConstructor.apply(this, args);
+				});
 
 				const result = await instance.createUpdate(stubs.cypherQueriesModule.sharedQueries.getCreateQuery);
 
-				sinonAssert.callOrder(
-					instance.runInputValidations,
-					instance.runDatabaseValidations,
-					instance.setErrorStatus,
-					stubs.cypherQueriesModule.sharedQueries.getCreateQuery,
-					stubs.prepareAsParams,
-					stubs.neo4jQueryModule.neo4jQuery
-				);
-				sinonAssert.calledOnceWithExactly(instance.runInputValidations);
-				sinonAssert.calledOnceWithExactly(instance.runDatabaseValidations);
-				sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.sharedQueries.getCreateQuery,
+				assert.strictEqual(instance.runInputValidations.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.runInputValidations.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.runDatabaseValidations.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.runDatabaseValidations.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.setErrorStatus.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.setErrorStatus.mock.calls[0].arguments, []);
+				assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getCreateQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getCreateQuery.mock.calls[0].arguments, [
 					instance.model
-				);
-				sinonAssert.calledTwice(stubs.prepareAsParams);
-				sinonAssert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
-				sinonAssert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
-				sinonAssert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[1].arguments, [instance]);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				});
-				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+				}]);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[1].arguments, [{
 					query: 'getCreateQuery response',
 					params: 'prepareAsParams response'
-				});
-				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				}]);
+				assert.strictEqual(instance.constructor.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.constructor.mock.calls[0].arguments, [neo4jQueryMockResponse]);
 				assert.equal(result instanceof Entity, true);
 			});
 
-			it('updates', async () => {
-				stubs.prepareAsParams
-					.onFirstCall()
-					.returns({
+			it('updates', async (test) => {
+				const prepareAsParamsResults = [
+					{
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
-					})
-					.onSecondCall()
-					.returns('prepareAsParams response');
+					},
+					'prepareAsParams response'
+				];
+				stubs.prepareAsParams = test.mock.fn(() => prepareAsParamsResults.shift());
 
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
+				const originalRunInputValidations = instance.runInputValidations;
+				const originalRunDatabaseValidations = instance.runDatabaseValidations;
+				const originalSetErrorStatus = instance.setErrorStatus;
+				const originalConstructor = instance.constructor;
 
-				spy(instance, 'runInputValidations');
-				spy(instance, 'runDatabaseValidations');
-				spy(instance, 'setErrorStatus');
-				spy(instance, 'constructor');
+				test.mock.method(instance, 'runInputValidations', function (...args) {
+					return originalRunInputValidations.apply(this, args);
+				});
+				test.mock.method(instance, 'runDatabaseValidations', async function (...args) {
+					return originalRunDatabaseValidations.apply(this, args);
+				});
+				test.mock.method(instance, 'setErrorStatus', function (...args) {
+					return originalSetErrorStatus.apply(this, args);
+				});
+				test.mock.method(instance, 'constructor', function (...args) {
+					return originalConstructor.apply(this, args);
+				});
+
 				const result = await instance.createUpdate(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery);
 
-				sinonAssert.callOrder(
-					instance.runInputValidations,
-					instance.runDatabaseValidations,
-					instance.setErrorStatus,
-					stubs.cypherQueriesModule.sharedQueries.getUpdateQuery,
-					stubs.prepareAsParams,
-					stubs.neo4jQueryModule.neo4jQuery
-				);
-				sinonAssert.calledOnceWithExactly(instance.runInputValidations);
-				sinonAssert.calledOnceWithExactly(instance.runDatabaseValidations);
-				sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.sharedQueries.getUpdateQuery,
+				assert.strictEqual(instance.runInputValidations.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.runInputValidations.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.runDatabaseValidations.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.runDatabaseValidations.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.setErrorStatus.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.setErrorStatus.mock.calls[0].arguments, []);
+				assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getUpdateQuery.mock.calls[0].arguments, [
 					instance.model
-				);
-				sinonAssert.calledTwice(stubs.prepareAsParams);
-				sinonAssert.calledWithExactly(stubs.prepareAsParams.firstCall, instance);
-				sinonAssert.calledWithExactly(stubs.prepareAsParams.secondCall, instance);
-				sinonAssert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[1].arguments, [instance]);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				});
-				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+				}]);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[1].arguments, [{
 					query: 'getUpdateQuery response',
 					params: 'prepareAsParams response'
-				});
-				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				}]);
+				assert.strictEqual(instance.constructor.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.constructor.mock.calls[0].arguments, [neo4jQueryMockResponse]);
 				assert.equal(result instanceof Entity, true);
 			});
 		});
 
 		context('invalid data', () => {
-			it('returns instance without creating/updating', async () => {
-				stubs.prepareAsParams.onFirstCall().returns({
+			it('returns instance without creating/updating', async (test) => {
+				stubs.prepareAsParams = test.mock.fn(() => ({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
 					differentiator: 'DIFFERENTIATOR_VALUE'
-				});
-				stubs.hasErrors.returns(true);
+				}));
+				stubs.hasErrors = test.mock.fn(() => true);
 
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				const getCreateUpdateQueryStub = stub();
+				const getCreateUpdateQueryStub = test.mock.fn();
 
 				instance.model = 'VENUE';
 
-				spy(instance, 'runInputValidations');
-				spy(instance, 'runDatabaseValidations');
-				spy(instance, 'setErrorStatus');
-				spy(instance, 'constructor');
+				const originalRunInputValidations = instance.runInputValidations;
+				const originalRunDatabaseValidations = instance.runDatabaseValidations;
+				const originalSetErrorStatus = instance.setErrorStatus;
+
+				test.mock.method(instance, 'runInputValidations', function (...args) {
+					return originalRunInputValidations.apply(this, args);
+				});
+				test.mock.method(instance, 'runDatabaseValidations', async function (...args) {
+					return originalRunDatabaseValidations.apply(this, args);
+				});
+				test.mock.method(instance, 'setErrorStatus', function (...args) {
+					return originalSetErrorStatus.apply(this, args);
+				});
+				test.mock.method(instance, 'constructor', () => undefined);
 
 				const result = await instance.createUpdate(getCreateUpdateQueryStub);
 
-				sinonAssert.callOrder(
-					instance.runInputValidations,
-					instance.runDatabaseValidations,
-					instance.setErrorStatus
-				);
-				sinonAssert.calledOnceWithExactly(instance.runInputValidations);
-				sinonAssert.calledOnceWithExactly(instance.runDatabaseValidations);
-				sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
-				sinonAssert.notCalled(getCreateUpdateQueryStub);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(instance.runInputValidations.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.runInputValidations.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.runDatabaseValidations.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.runDatabaseValidations.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.setErrorStatus.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.setErrorStatus.mock.calls[0].arguments, []);
+				assert.strictEqual(getCreateUpdateQueryStub.mock.calls.length, 0);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getDuplicateRecordCheckQuery response',
 					params: {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE'
 					}
-				});
-				sinonAssert.notCalled(instance.constructor);
+				}]);
+				assert.strictEqual(instance.constructor.mock.calls.length, 0);
 				assert.deepEqual(result, instance);
 				assert.deepEqual(toPlainObject(result), {
 					model: 'VENUE',
@@ -760,83 +848,95 @@ describe('Entity model', () => {
 
 	describe('create method', () => {
 		context('instance requires a model-specific query', () => {
-			it('calls createUpdate method with function to get model-specific create query as argument', async () => {
+			it('calls createUpdate method with function to get model-specific create query as argument', async (test) => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				instance.model = 'PRODUCTION';
 
-				spy(instance, 'createUpdate');
+				test.mock.method(instance, 'createUpdate', async () => undefined);
 
 				await instance.create();
 
-				sinonAssert.calledOnceWithExactly(
-					instance.createUpdate,
+				assert.strictEqual(instance.createUpdate.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.createUpdate.mock.calls[0].arguments, [
 					stubs.cypherQueriesModule.getCreateQueries[instance.model]
-				);
+				]);
 			});
 		});
 
 		context('instance can use shared query', () => {
-			it('calls createUpdate method with function to get shared create query as argument', async () => {
+			it('calls createUpdate method with function to get shared create query as argument', async (test) => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				spy(instance, 'createUpdate');
+				test.mock.method(instance, 'createUpdate', async () => undefined);
 
 				await instance.create();
 
-				sinonAssert.calledOnceWithExactly(
-					instance.createUpdate,
+				assert.strictEqual(instance.createUpdate.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.createUpdate.mock.calls[0].arguments, [
 					stubs.cypherQueriesModule.sharedQueries.getCreateQuery
-				);
+				]);
 			});
 		});
 	});
 
 	describe('edit method', () => {
 		context('instance requires a model-specific query', () => {
-			it('gets edit data using model-specific query', async () => {
+			it('gets edit data using model-specific query', async (test) => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				instance.model = 'PRODUCTION';
 
-				spy(instance, 'constructor');
+				const originalConstructor = instance.constructor;
+				test.mock.method(instance, 'constructor', function (...args) {
+					return originalConstructor.apply(this, args);
+				});
 
 				const result = await instance.edit();
 
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.getEditQueries[instance.model]);
-				sinonAssert.notCalled(stubs.cypherQueriesModule.sharedQueries.getEditQuery);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.cypherQueriesModule.getEditQueries[instance.model].mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.cypherQueriesModule.getEditQueries[instance.model].mock.calls[0].arguments, []);
+				assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getEditQuery.mock.calls.length, 0);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getEditProductionQuery response',
 					params: { uuid: instance.uuid }
-				});
-				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				}]);
+				assert.strictEqual(instance.constructor.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.constructor.mock.calls[0].arguments, [neo4jQueryMockResponse]);
 				assert.equal(result instanceof Entity, true);
 			});
 		});
 
 		context('instance can use shared query', () => {
-			it('gets edit data using shared query', async () => {
+			it('gets edit data using shared query', async (test) => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-				spy(instance, 'constructor');
+				const originalConstructor = instance.constructor;
+				test.mock.method(instance, 'constructor', function (...args) {
+					return originalConstructor.apply(this, args);
+				});
 
 				const result = await instance.edit();
 
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getEditQuery, instance.model);
-				sinonAssert.notCalled(stubs.cypherQueriesModule.getEditQueries.PRODUCTION);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getEditQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getEditQuery.mock.calls[0].arguments, [instance.model]);
+				assert.strictEqual(stubs.cypherQueriesModule.getEditQueries.PRODUCTION.mock.calls.length, 0);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getEditQuery response',
 					params: { uuid: instance.uuid }
-				});
-				sinonAssert.calledOnceWithExactly(instance.constructor, neo4jQueryMockResponse);
+				}]);
+				assert.strictEqual(instance.constructor.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.constructor.mock.calls[0].arguments, [neo4jQueryMockResponse]);
 				assert.equal(result instanceof Entity, true);
 			});
 		});
@@ -844,67 +944,67 @@ describe('Entity model', () => {
 
 	describe('update method', () => {
 		context('instance does not exist', () => {
-			it('throws a Not Found error and does not call the createUpdate method', async () => {
+			it('throws a Not Found error and does not call the createUpdate method', async (test) => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 				instance.model = 'PRODUCTION';
 
-				stub(instance, 'confirmExistenceInDatabase').returns(false);
-
-				spy(instance, 'createUpdate');
+				test.mock.method(instance, 'confirmExistenceInDatabase', () => false);
+				test.mock.method(instance, 'createUpdate', async () => undefined);
 
 				try {
 					await instance.update();
 				} catch (error) {
 					assert.equal(error.message, 'Not Found');
-					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
-					sinonAssert.notCalled(instance.createUpdate);
+					assert.strictEqual(instance.confirmExistenceInDatabase.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.confirmExistenceInDatabase.mock.calls[0].arguments, []);
+					assert.strictEqual(instance.createUpdate.mock.calls.length, 0);
 				}
 			});
 		});
 
 		context('instance exists', () => {
 			context('instance requires a model-specific query', () => {
-				it('calls createUpdate method with function to get model-specific update query as argument', async () => {
+				it('calls createUpdate method with function to get model-specific update query as argument', async (test) => {
 					const Entity = await createSubject();
 
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
 					instance.model = 'PRODUCTION';
 
-					stub(instance, 'confirmExistenceInDatabase').returns(true);
-
-					spy(instance, 'createUpdate');
+					test.mock.method(instance, 'confirmExistenceInDatabase', () => true);
+					test.mock.method(instance, 'createUpdate', async () => undefined);
 
 					await instance.update();
 
-					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
-					sinonAssert.calledOnceWithExactly(
-						instance.createUpdate,
+					assert.strictEqual(instance.confirmExistenceInDatabase.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.confirmExistenceInDatabase.mock.calls[0].arguments, []);
+					assert.strictEqual(instance.createUpdate.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.createUpdate.mock.calls[0].arguments, [
 						stubs.cypherQueriesModule.getUpdateQueries[instance.model]
-					);
+					]);
 				});
 			});
 
 			context('instance can use shared query', () => {
-				it('calls createUpdate method with function to get shared update query as argument', async () => {
+				it('calls createUpdate method with function to get shared update query as argument', async (test) => {
 					const Entity = await createSubject();
 
 					const instance = new Entity({ name: 'Foobar', differentiator: '1' });
 
-					stub(instance, 'confirmExistenceInDatabase').returns(true);
-
-					spy(instance, 'createUpdate');
+					test.mock.method(instance, 'confirmExistenceInDatabase', () => true);
+					test.mock.method(instance, 'createUpdate', async () => undefined);
 
 					await instance.update();
 
-					sinonAssert.calledOnceWithExactly(instance.confirmExistenceInDatabase);
-					sinonAssert.calledOnceWithExactly(
-						instance.createUpdate,
+					assert.strictEqual(instance.confirmExistenceInDatabase.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.confirmExistenceInDatabase.mock.calls[0].arguments, []);
+					assert.strictEqual(instance.createUpdate.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.createUpdate.mock.calls[0].arguments, [
 						stubs.cypherQueriesModule.sharedQueries.getUpdateQuery
-					);
+					]);
 				});
 			});
 		});
@@ -913,14 +1013,14 @@ describe('Entity model', () => {
 	describe('delete method', () => {
 		context('instance has no associations', () => {
 			context('instance has differentiator property', () => {
-				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async () => {
-					stubs.neo4jQueryModule.neo4jQuery.resolves({
+				it('deletes instance and returns newly instantiated instance with assigned name and differentiator properties', async (test) => {
+					stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 						model: 'VENUE',
 						name: 'Almeida Theatre',
 						differentiator: null,
 						isDeleted: true,
 						associatedModels: []
-					});
+					}));
 
 					const Entity = await createSubject();
 
@@ -928,30 +1028,31 @@ describe('Entity model', () => {
 
 					instance.differentiator = '';
 
-					spy(instance, 'constructor');
-					spy(instance, 'addPropertyError');
-					spy(instance, 'setErrorStatus');
+					const originalConstructor = instance.constructor;
+					test.mock.method(instance, 'constructor', function (...args) {
+						return originalConstructor.apply(this, args);
+					});
+					test.mock.method(instance, 'addPropertyError', () => undefined);
+					test.mock.method(instance, 'setErrorStatus', () => undefined);
 
 					const result = await instance.delete();
 
-					sinonAssert.callOrder(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
-						stubs.neo4jQueryModule.neo4jQuery
-					);
-					sinonAssert.calledOnceWithExactly(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
+					assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls[0].arguments, [
 						instance.model
-					);
-					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					]);
+					assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
-					});
-					sinonAssert.calledOnceWithExactly(instance.constructor, {
+					}]);
+					assert.strictEqual(instance.constructor.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.constructor.mock.calls[0].arguments, [{
 						name: 'Almeida Theatre',
 						differentiator: null
-					});
-					sinonAssert.notCalled(instance.addPropertyError);
-					sinonAssert.notCalled(instance.setErrorStatus);
+					}]);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
+					assert.strictEqual(instance.setErrorStatus.mock.calls.length, 0);
 					assert.equal(result instanceof Entity, true);
 					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
@@ -963,40 +1064,41 @@ describe('Entity model', () => {
 			});
 
 			context('instance does not have differentiator property', () => {
-				it('deletes instance and returns newly instantiated instance with assigned name property', async () => {
-					stubs.neo4jQueryModule.neo4jQuery.resolves({
+				it('deletes instance and returns newly instantiated instance with assigned name property', async (test) => {
+					stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 						model: 'PRODUCTION',
 						name: 'Hamlet',
 						differentiator: null,
 						isDeleted: true,
 						associatedModels: []
-					});
+					}));
 
 					const Production = await createSubject('Production');
 
 					const instance = new Production();
 
-					spy(instance, 'constructor');
-					spy(instance, 'addPropertyError');
-					spy(instance, 'setErrorStatus');
+					const originalConstructor = instance.constructor;
+					test.mock.method(instance, 'constructor', function (...args) {
+						return originalConstructor.apply(this, args);
+					});
+					test.mock.method(instance, 'addPropertyError', () => undefined);
+					test.mock.method(instance, 'setErrorStatus', () => undefined);
 
 					const result = await instance.delete();
 
-					sinonAssert.callOrder(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
-						stubs.neo4jQueryModule.neo4jQuery
-					);
-					sinonAssert.calledOnceWithExactly(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
+					assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls[0].arguments, [
 						instance.model
-					);
-					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					]);
+					assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
-					});
-					sinonAssert.calledOnceWithExactly(instance.constructor, { name: 'Hamlet' });
-					sinonAssert.notCalled(instance.addPropertyError);
-					sinonAssert.notCalled(instance.setErrorStatus);
+					}]);
+					assert.strictEqual(instance.constructor.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.constructor.mock.calls[0].arguments, [{ name: 'Hamlet' }]);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
+					assert.strictEqual(instance.setErrorStatus.mock.calls.length, 0);
 					assert.equal(result instanceof Production, true);
 					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
@@ -1043,15 +1145,15 @@ describe('Entity model', () => {
 
 		context('instance has associations', () => {
 			context('instance has differentiator property', () => {
-				it('returns instance without deleting', async () => {
-					stubs.hasErrors.returns(true);
-					stubs.neo4jQueryModule.neo4jQuery.resolves({
+				it('returns instance without deleting', async (test) => {
+					stubs.hasErrors.mock.mockImplementation(() => true);
+					stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 						model: 'VENUE',
 						name: 'Almeida Theatre',
 						differentiator: null,
 						isDeleted: false,
 						associatedModels: ['Production']
-					});
+					}));
 
 					const Entity = await createSubject();
 
@@ -1059,27 +1161,31 @@ describe('Entity model', () => {
 
 					instance.differentiator = '';
 
-					spy(instance, 'constructor');
-					spy(instance, 'addPropertyError');
-					spy(instance, 'setErrorStatus');
+					test.mock.method(instance, 'constructor', () => undefined);
+					const originalAddPropertyError = instance.addPropertyError;
+					const originalSetErrorStatus = instance.setErrorStatus;
+					test.mock.method(instance, 'addPropertyError', function (...args) {
+						return originalAddPropertyError.apply(this, args);
+					});
+					test.mock.method(instance, 'setErrorStatus', function (...args) {
+						return originalSetErrorStatus.apply(this, args);
+					});
 
 					const result = await instance.delete();
 
-					sinonAssert.callOrder(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
-						stubs.neo4jQueryModule.neo4jQuery
-					);
-					sinonAssert.calledOnceWithExactly(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
+					assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls[0].arguments, [
 						instance.model
-					);
-					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					]);
+					assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
-					});
-					sinonAssert.notCalled(instance.constructor);
-					sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Production');
-					sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+					}]);
+					assert.strictEqual(instance.constructor.mock.calls.length, 0);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, ['associations', 'Production']);
+					assert.strictEqual(instance.setErrorStatus.mock.calls.length, 1);
 					assert.deepEqual(result, instance);
 					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
@@ -1094,41 +1200,45 @@ describe('Entity model', () => {
 			});
 
 			context('instance does not have differentiator property', () => {
-				it('returns instance without deleting', async () => {
-					stubs.hasErrors.returns(true);
-					stubs.neo4jQueryModule.neo4jQuery.resolves({
+				it('returns instance without deleting', async (test) => {
+					stubs.hasErrors.mock.mockImplementation(() => true);
+					stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 						model: 'PRODUCTION',
 						name: 'Hamlet',
 						differentiator: null,
 						isDeleted: false,
 						associatedModels: ['Venue']
-					});
+					}));
 
 					const Production = await createSubject('Production');
 
 					const instance = new Production({ name: 'Foobar' });
 
-					spy(instance, 'constructor');
-					spy(instance, 'addPropertyError');
-					spy(instance, 'setErrorStatus');
+					test.mock.method(instance, 'constructor', () => undefined);
+					const originalAddPropertyError = instance.addPropertyError;
+					const originalSetErrorStatus = instance.setErrorStatus;
+					test.mock.method(instance, 'addPropertyError', function (...args) {
+						return originalAddPropertyError.apply(this, args);
+					});
+					test.mock.method(instance, 'setErrorStatus', function (...args) {
+						return originalSetErrorStatus.apply(this, args);
+					});
 
 					const result = await instance.delete();
 
-					sinonAssert.callOrder(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
-						stubs.neo4jQueryModule.neo4jQuery
-					);
-					sinonAssert.calledOnceWithExactly(
-						stubs.cypherQueriesModule.sharedQueries.getDeleteQuery,
+					assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getDeleteQuery.mock.calls[0].arguments, [
 						instance.model
-					);
-					sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+					]);
+					assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 						query: 'getDeleteQuery response',
 						params: { uuid: instance.uuid }
-					});
-					sinonAssert.notCalled(instance.constructor);
-					sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'associations', 'Venue');
-					sinonAssert.calledOnceWithExactly(instance.setErrorStatus);
+					}]);
+					assert.strictEqual(instance.constructor.mock.calls.length, 0);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, ['associations', 'Venue']);
+					assert.strictEqual(instance.setErrorStatus.mock.calls.length, 1);
 					assert.deepEqual(result, instance);
 					assert.deepEqual(toPlainObject(result), {
 						uuid: undefined,
@@ -1188,11 +1298,13 @@ describe('Entity model', () => {
 
 				const result = await instance.show();
 
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.VENUE);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.strictEqual(stubs.cypherQueriesModule.getShowQueries.VENUE.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.cypherQueriesModule.getShowQueries.VENUE.mock.calls[0].arguments, []);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'showVenueQuery',
 					params: { uuid: instance.uuid }
-				});
+				}]);
 				assert.deepEqual(result, neo4jQueryMockResponse);
 			});
 		});
@@ -1207,16 +1319,17 @@ describe('Entity model', () => {
 
 				const result = await instance.show();
 
-				sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.getShowQueries.PRODUCTION);
-				sinonAssert.calledTwice(stubs.neo4jQueryModule.neo4jQuery);
-				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.firstCall, {
+				assert.strictEqual(stubs.cypherQueriesModule.getShowQueries.PRODUCTION.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.cypherQueriesModule.getShowQueries.PRODUCTION.mock.calls[0].arguments, []);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 2);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'showProductionQuery',
 					params: { uuid: instance.uuid }
-				});
-				sinonAssert.calledWithExactly(stubs.neo4jQueryModule.neo4jQuery.secondCall, {
+				}]);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[1].arguments, [{
 					query: 'showProductionAwardsQuery',
 					params: { uuid: instance.uuid }
-				});
+				}]);
 				assert.deepEqual(result, neo4jQueryMockResponse);
 			});
 		});
@@ -1228,11 +1341,15 @@ describe('Entity model', () => {
 
 			const result = await Entity.list('model');
 
-			sinonAssert.calledOnceWithExactly(stubs.cypherQueriesModule.sharedQueries.getListQuery, 'model');
-			sinonAssert.calledOnceWithExactly(
-				stubs.neo4jQueryModule.neo4jQuery,
-				{ query: 'getListQuery response' },
-				{ isOptionalResult: true, isArrayResult: true }
+			assert.strictEqual(stubs.cypherQueriesModule.sharedQueries.getListQuery.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.cypherQueriesModule.sharedQueries.getListQuery.mock.calls[0].arguments, ['model']);
+			assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+			assert.deepStrictEqual(
+				stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments,
+				[
+					{ query: 'getListQuery response' },
+					{ isOptionalResult: true, isArrayResult: true }
+				]
 			);
 			assert.deepEqual(result, neo4jQueryMockResponse);
 		});

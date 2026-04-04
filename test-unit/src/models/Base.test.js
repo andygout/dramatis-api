@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 const STRING_MAX_LENGTH = 1000;
 const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
@@ -10,20 +9,23 @@ const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
 describe('Base model', () => {
 	let stubs;
 
-	beforeEach(() => {
+	beforeEach((test) => {
 		stubs = {
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
+				getTrimmedOrEmptyString: test.mock.fn((arg) => arg?.trim() || '')
 			},
-			validateString: stub().returns(undefined)
+			validateString: test.mock.fn((value, opts) => {
+				if (value === '' && opts?.isRequired === true) {
+					return 'Value is too short';
+				}
+
+				if (value === ABOVE_MAX_LENGTH_STRING && opts?.isRequired === false) {
+					return 'Value is too long';
+				}
+
+				return undefined;
+			})
 		};
-
-		stubs.validateString.withArgs('', { isRequired: true }).returns('Value is too short');
-		stubs.validateString.withArgs(ABOVE_MAX_LENGTH_STRING, { isRequired: false }).returns('Value is too long');
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	const createSubject = (model = 'Base') =>
@@ -46,7 +48,8 @@ describe('Base model', () => {
 
 					const instance = new Base({ name: 'Foobar' });
 
-					sinonAssert.calledOnceWithExactly(stubs.stringsModule.getTrimmedOrEmptyString, 'Foobar');
+					assert.strictEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[0].arguments, ['Foobar']);
 					assert.equal(instance.name, 'Foobar');
 				});
 			});
@@ -92,246 +95,261 @@ describe('Base model', () => {
 	});
 
 	describe('validateName method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const Base = await createSubject();
 
 			const instance = new Base();
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty', () => undefined);
 
 			instance.validateName({ isRequired: false });
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'name', { isRequired: false });
+			assert.strictEqual(instance.validateStringForProperty.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['name', { isRequired: false }]);
 		});
 	});
 
 	describe('validateQualifier method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const Base = await createSubject();
 
 			const instance = new Base();
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty', () => undefined);
 
 			instance.validateQualifier();
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'qualifier', { isRequired: false });
+			assert.strictEqual(instance.validateStringForProperty.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['qualifier', { isRequired: false }]);
 		});
 	});
 
 	describe('validateStringForProperty method', () => {
 		describe('valid data', () => {
-			it('will not call addPropertyError method', async () => {
+			it('will not call addPropertyError method', async (test) => {
 				const Base = await createSubject();
 
 				const instance = new Base();
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				instance.validateStringForProperty('name', { isRequired: false });
 
-				sinonAssert.calledOnceWithExactly(stubs.validateString, instance.name, { isRequired: false });
-				sinonAssert.notCalled(instance.addPropertyError);
+				assert.strictEqual(stubs.validateString.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.validateString.mock.calls[0].arguments, [instance.name, { isRequired: false }]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		describe('invalid data', () => {
-			it('will call addPropertyError method', async () => {
+			it('will call addPropertyError method', async (test) => {
 				const Base = await createSubject();
+				const callOrder = [];
 
-				const instance = new Base({ name: '' });
+				stubs.validateString = test.mock.fn((value, opts) => {
+					callOrder.push('validateString');
 
-				spy(instance, 'addPropertyError');
+					if (value === '' && opts?.isRequired === true) {
+						return 'Value is too short';
+					}
+
+					if (value === ABOVE_MAX_LENGTH_STRING && opts?.isRequired === false) {
+						return 'Value is too long';
+					}
+
+					return undefined;
+				});
+
+				const BaseWithOrderedValidateString = await createSubject();
+				const instance = new BaseWithOrderedValidateString({ name: '' });
+
+				test.mock.method(instance, 'addPropertyError', (...args) => {
+					callOrder.push('addPropertyError');
+
+					return undefined;
+				});
 
 				instance.validateStringForProperty('name', { isRequired: true });
 
-				sinonAssert.callOrder(stubs.validateString, instance.addPropertyError);
-				sinonAssert.calledOnceWithExactly(stubs.validateString, instance.name, { isRequired: true });
-				sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'name', 'Value is too short');
+				assert.deepStrictEqual(callOrder, ['validateString', 'addPropertyError']);
+				assert.strictEqual(stubs.validateString.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.validateString.mock.calls[0].arguments, [instance.name, { isRequired: true }]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, ['name', 'Value is too short']);
 			});
 		});
 	});
 
 	describe('validateUniquenessInGroup method', () => {
 		describe('valid data', () => {
-			it('will not call addPropertyError method', async () => {
+			it('will not call addPropertyError method', async (test) => {
 				const Base = await createSubject();
 
 				const instance = new Base({ name: 'Foobar' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				const opts = { isDuplicate: false };
 
 				instance.validateUniquenessInGroup(opts);
 
-				sinonAssert.notCalled(instance.addPropertyError);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		describe('invalid data', () => {
 			describe('instance does not have differentiator, characterDifferentiator, or qualifier property', () => {
-				it('will call addPropertyError method with group context error text for name property only', async () => {
+				it('will call addPropertyError method with group context error text for name property only', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledOnceWithExactly(
-						instance.addPropertyError,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has underlyingName property', () => {
-				it('will call addPropertyError method with group context error text for name and underlyingName properties', async () => {
+				it('will call addPropertyError method with group context error text for name and underlyingName properties', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
 					instance.underlyingName = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledTwice(instance.addPropertyError);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'underlyingName',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has characterName property', () => {
-				it('will call addPropertyError method with group context error text for name and characterName properties', async () => {
+				it('will call addPropertyError method with group context error text for name and characterName properties', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
 					instance.characterName = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledTwice(instance.addPropertyError);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'characterName',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has differentiator property', () => {
-				it('will call addPropertyError method with group context error text for name and differentiator properties', async () => {
+				it('will call addPropertyError method with group context error text for name and differentiator properties', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
 					instance.differentiator = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledTwice(instance.addPropertyError);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'differentiator',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has characterDifferentiator property', () => {
-				it('will call addPropertyError method with group context error text for name and differentiator properties', async () => {
+				it('will call addPropertyError method with group context error text for name and differentiator properties', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
 					instance.characterDifferentiator = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledTwice(instance.addPropertyError);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'characterDifferentiator',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has qualifier property', () => {
-				it('will call addPropertyError method with group context error text for name and qualifier properties', async () => {
+				it('will call addPropertyError method with group context error text for name and qualifier properties', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
 					instance.qualifier = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledTwice(instance.addPropertyError);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'qualifier',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has differentiator, characterDifferentiator, and qualifier property', () => {
-				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', async () => {
+				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -340,73 +358,70 @@ describe('Base model', () => {
 					instance.characterDifferentiator = '';
 					instance.qualifier = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true };
 
 					instance.validateUniquenessInGroup(opts);
 
-					assert.equal(instance.addPropertyError.callCount, 4);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.firstCall,
+					assert.equal(instance.addPropertyError.mock.calls.length, 4);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'name',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.secondCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 						'differentiator',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.thirdCall,
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[2].arguments, [
 						'characterDifferentiator',
 						'This item has been duplicated within the group'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.getCall(3),
+					]);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[3].arguments, [
 						'qualifier',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 
 			describe('instance has uuid property which is specified via opts argument as requiring an error assigned to it', () => {
-				it('will call addPropertyError method with group context error text for uuid property only (i.e. not name property)', async () => {
+				it('will call addPropertyError method with group context error text for uuid property only (i.e. not name property)', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
 					instance.uuid = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					const opts = { isDuplicate: true, properties: new Set(['uuid']) };
 
 					instance.validateUniquenessInGroup(opts);
 
-					sinonAssert.calledOnceWithExactly(
-						instance.addPropertyError,
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+					assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 						'uuid',
 						'This item has been duplicated within the group'
-					);
+					]);
 				});
 			});
 		});
 	});
 
 	describe('validateNamePresenceIfNamedChildren method', () => {
-		it('will call validatePropertyPresenceIfNamedChildren', async () => {
+		it('will call validatePropertyPresenceIfNamedChildren', async (test) => {
 			const Base = await createSubject();
 
 			const instance = new Base({ name: 'Foobar' });
 
-			spy(instance, 'validatePropertyPresenceIfNamedChildren');
+			test.mock.method(instance, 'validatePropertyPresenceIfNamedChildren', () => undefined);
 
 			instance.validateNamePresenceIfNamedChildren([{ name: 'Foo' }, { name: 'Bar' }]);
 
-			sinonAssert.calledOnceWithExactly(instance.validatePropertyPresenceIfNamedChildren, 'name', [
-				{ name: 'Foo' },
-				{ name: 'Bar' }
+			assert.strictEqual(instance.validatePropertyPresenceIfNamedChildren.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validatePropertyPresenceIfNamedChildren.mock.calls[0].arguments, [
+				'name',
+				[{ name: 'Foo' }, { name: 'Bar' }]
 			]);
 		});
 	});
@@ -414,67 +429,67 @@ describe('Base model', () => {
 	describe('validatePropertyPresenceIfNamedChildren method', () => {
 		describe('valid data', () => {
 			describe('instance does not have name nor any children with names', () => {
-				it('will not add properties to errors property', async () => {
+				it('will not add properties to errors property', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: '' });
 
 					instance.name = '';
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: '' }]);
 
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 				});
 			});
 
 			describe('instance has a name and no children with names', () => {
-				it('will not add properties to errors property', async () => {
+				it('will not add properties to errors property', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: '' }]);
 
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 				});
 			});
 
 			describe('instance has a name and children with names', () => {
-				it('will not add properties to errors property', async () => {
+				it('will not add properties to errors property', async (test) => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
 
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 				});
 			});
 		});
 
 		describe('invalid data', () => {
-			it('adds properties to errors property', async () => {
+			it('adds properties to errors property', async (test) => {
 				const Base = await createSubject();
 
 				const instance = new Base({ name: '' });
 
 				instance.name = '';
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				instance.validatePropertyPresenceIfNamedChildren('name', [{ name: 'Bar' }]);
 
-				sinonAssert.calledOnceWithExactly(
-					instance.addPropertyError,
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 					'name',
 					'Value is required if named children exist'
-				);
+				]);
 			});
 		});
 	});

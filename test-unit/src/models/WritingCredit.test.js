@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Company, Person, SourceMaterial } from '../../../src/models/index.js';
 
@@ -10,27 +9,51 @@ describe('WritingCredit model', () => {
 	let stubs;
 	let WritingCredit;
 
-	const CompanyStub = function () {
-		return createStubInstance(Company);
+	const CompanyStub = function (props = {}) {
+		const instance = new Company(props);
+
+		instance.validateName = this.mock.fn();
+		instance.validateDifferentiator = this.mock.fn();
+		instance.validateUniquenessInGroup = this.mock.fn();
+		instance.validateNoAssociationWithSelf = this.mock.fn();
+		instance.runDatabaseValidations = this.mock.fn(async () => {});
+
+		return instance;
 	};
 
-	const SourceMaterialStub = function () {
-		return createStubInstance(SourceMaterial);
+	const SourceMaterialStub = function (props = {}) {
+		const instance = new SourceMaterial(props);
+
+		instance.validateName = this.mock.fn();
+		instance.validateDifferentiator = this.mock.fn();
+		instance.validateUniquenessInGroup = this.mock.fn();
+		instance.validateNoAssociationWithSelf = this.mock.fn();
+		instance.runDatabaseValidations = this.mock.fn(async () => {});
+
+		return instance;
 	};
 
-	const PersonStub = function () {
-		return createStubInstance(Person);
+	const PersonStub = function (props = {}) {
+		const instance = new Person(props);
+
+		instance.validateName = this.mock.fn();
+		instance.validateDifferentiator = this.mock.fn();
+		instance.validateUniquenessInGroup = this.mock.fn();
+		instance.validateNoAssociationWithSelf = this.mock.fn();
+		instance.runDatabaseValidations = this.mock.fn(async () => {});
+
+		return instance;
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateEntityIndices: stub().returns([])
+				getDuplicateEntityIndices: test.mock.fn(() => [])
 			},
 			models: {
-				Company: CompanyStub,
-				SourceMaterial: SourceMaterialStub,
-				Person: PersonStub
+				Company: CompanyStub.bind(test),
+				SourceMaterial: SourceMaterialStub.bind(test),
+				Person: PersonStub.bind(test)
 			}
 		};
 
@@ -44,10 +67,6 @@ describe('WritingCredit model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	describe('constructor method', () => {
@@ -137,7 +156,7 @@ describe('WritingCredit model', () => {
 	});
 
 	describe('runInputValidations method', () => {
-		it("calls instance's validate methods and associated models' validate methods", async () => {
+		it("calls instance's validate methods and associated models' validate methods", async (test) => {
 			const instance = new WritingCredit({
 				name: 'version by',
 				entities: [
@@ -155,49 +174,46 @@ describe('WritingCredit model', () => {
 				]
 			});
 
-			spy(instance, 'validateName');
-			spy(instance, 'validateUniquenessInGroup');
+			test.mock.method(instance, 'validateName');
+			test.mock.method(instance, 'validateUniquenessInGroup');
 
 			instance.runInputValidations({
 				isDuplicate: false,
 				subject: { name: 'The Indian Boy', differentiator: '1' }
 			});
 
-			sinonAssert.callOrder(
-				instance.validateName,
-				instance.validateUniquenessInGroup,
-				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
-				instance.entities[0].validateName,
-				instance.entities[0].validateDifferentiator,
-				instance.entities[0].validateUniquenessInGroup,
-				instance.entities[1].validateName,
-				instance.entities[1].validateDifferentiator,
-				instance.entities[1].validateUniquenessInGroup,
-				instance.entities[2].validateName,
-				instance.entities[2].validateDifferentiator,
-				instance.entities[2].validateUniquenessInGroup,
-				instance.entities[2].validateNoAssociationWithSelf
+			assert.equal(instance.validateName.mock.callCount(), 1);
+			assert.deepEqual(instance.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.equal(stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.mock.callCount(), 1);
+			assert.deepEqual(
+				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices.mock.calls[0].arguments,
+				[instance.entities]
 			);
-			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateEntityIndices,
-				instance.entities
-			);
-			sinonAssert.calledOnceWithExactly(instance.entities[0].validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[0].validateDifferentiator);
-			sinonAssert.calledOnceWithExactly(instance.entities[0].validateUniquenessInGroup, { isDuplicate: false });
-			sinonAssert.notCalled(instance.entities[0].validateNoAssociationWithSelf);
-			sinonAssert.calledOnceWithExactly(instance.entities[1].validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[1].validateDifferentiator);
-			sinonAssert.calledOnceWithExactly(instance.entities[1].validateUniquenessInGroup, { isDuplicate: false });
-			sinonAssert.notCalled(instance.entities[1].validateNoAssociationWithSelf);
-			sinonAssert.calledOnceWithExactly(instance.entities[2].validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[2].validateDifferentiator);
-			sinonAssert.calledOnceWithExactly(instance.entities[2].validateUniquenessInGroup, { isDuplicate: false });
-			sinonAssert.calledOnceWithExactly(instance.entities[2].validateNoAssociationWithSelf, {
+			assert.equal(instance.entities[0].validateName.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[0].validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.equal(instance.entities[0].validateDifferentiator.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[0].validateDifferentiator.mock.calls[0].arguments, []);
+			assert.equal(instance.entities[0].validateUniquenessInGroup.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[0].validateUniquenessInGroup.mock.calls[0].arguments, [{ isDuplicate: false }]);
+			assert.equal(instance.entities[0].validateNoAssociationWithSelf.mock.callCount(), 0);
+			assert.equal(instance.entities[1].validateName.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[1].validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.equal(instance.entities[1].validateDifferentiator.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[1].validateDifferentiator.mock.calls[0].arguments, []);
+			assert.equal(instance.entities[1].validateUniquenessInGroup.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[1].validateUniquenessInGroup.mock.calls[0].arguments, [{ isDuplicate: false }]);
+			assert.equal(instance.entities[1].validateNoAssociationWithSelf.mock.callCount(), 0);
+			assert.equal(instance.entities[2].validateName.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[2].validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.equal(instance.entities[2].validateDifferentiator.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[2].validateDifferentiator.mock.calls[0].arguments, []);
+			assert.equal(instance.entities[2].validateUniquenessInGroup.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[2].validateUniquenessInGroup.mock.calls[0].arguments, [{ isDuplicate: false }]);
+			assert.equal(instance.entities[2].validateNoAssociationWithSelf.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[2].validateNoAssociationWithSelf.mock.calls[0].arguments, [{
 				name: 'The Indian Boy',
 				differentiator: '1'
-			});
+			}]);
 		});
 	});
 
@@ -222,11 +238,12 @@ describe('WritingCredit model', () => {
 
 			await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-			sinonAssert.notCalled(instance.entities[0].runDatabaseValidations);
-			sinonAssert.notCalled(instance.entities[1].runDatabaseValidations);
-			sinonAssert.calledOnceWithExactly(instance.entities[2].runDatabaseValidations, {
+			assert.equal(instance.entities[0].runDatabaseValidations.mock.callCount(), 0);
+			assert.equal(instance.entities[1].runDatabaseValidations.mock.callCount(), 0);
+			assert.equal(instance.entities[2].runDatabaseValidations.mock.callCount(), 1);
+			assert.deepEqual(instance.entities[2].runDatabaseValidations.mock.calls[0].arguments, [{
 				subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
-			});
+			}]);
 		});
 	});
 });

@@ -1,7 +1,6 @@
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 const context = describe;
 
@@ -11,16 +10,16 @@ describe('SourceMaterial model', () => {
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
-			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
+			prepareAsParams: test.mock.fn(() => ({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })),
 			cypherQueriesModule: {
 				validationQueries: {
-					getSourceMaterialChecksQuery: stub().returns('getSourceMaterialChecksQuery response')
+					getSourceMaterialChecksQuery: test.mock.fn(() => 'getSourceMaterialChecksQuery response')
 				}
 			},
 			neo4jQueryModule: {
-				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+				neo4jQuery: test.mock.fn(async () => neo4jQueryMockResponse)
 			}
 		};
 
@@ -37,86 +36,126 @@ describe('SourceMaterial model', () => {
 		);
 	});
 
-	afterEach(() => {
-		restore();
-	});
-
 	describe('runDatabaseValidations method', () => {
 		context('valid data', () => {
-			it('will not call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will not call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 					isSourcingMaterialOfSubjectMaterial: false
-				});
+				}));
 
 				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery
+				assert.deepEqual(
+					[
+						stubs.prepareAsParams.mock.calls[0].arguments,
+						stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery.mock.calls[0].arguments,
+						stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments
+					],
+					[
+						[instance],
+						[],
+						[{
+							query: 'getSourceMaterialChecksQuery response',
+							params: {
+								name: 'NAME_VALUE',
+								differentiator: 'DIFFERENTIATOR_VALUE',
+								subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+							}
+						}]
+					]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery
+				assert.equal(stubs.prepareAsParams.mock.callCount(), 1);
+				assert.deepEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.equal(stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery.mock.callCount(), 1);
+				assert.deepEqual(
+					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery.mock.calls[0].arguments,
+					[]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.equal(stubs.neo4jQueryModule.neo4jQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getSourceMaterialChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE',
 						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				});
-				sinonAssert.notCalled(instance.addPropertyError);
+				}]);
+				assert.equal(instance.addPropertyError.mock.callCount(), 0);
 			});
 		});
 
 		context("invalid data (instance is the subject material's sourcing material)", () => {
-			it('will call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery.mock.mockImplementation(async () => ({
 					isSourcingMaterialOfSubjectMaterial: true
-				});
+				}));
 
 				const instance = new SourceMaterial({ name: 'NAME_VALUE', differentiator: '1' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError');
 
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
+				assert.deepEqual(
+					[
+						stubs.prepareAsParams.mock.calls[0].arguments,
+						stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery.mock.calls[0].arguments,
+						stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments,
+						instance.addPropertyError.mock.calls[0].arguments
+					],
+					[
+						[instance],
+						[],
+						[{
+							query: 'getSourceMaterialChecksQuery response',
+							params: {
+								name: 'NAME_VALUE',
+								differentiator: 'DIFFERENTIATOR_VALUE',
+								subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+							}
+						}],
+						[
+							'name',
+							"Material with these attributes is this material's sourcing material"
+						]
+					]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery
+				assert.equal(stubs.prepareAsParams.mock.callCount(), 1);
+				assert.deepEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.equal(stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery.mock.callCount(), 1);
+				assert.deepEqual(
+					stubs.cypherQueriesModule.validationQueries.getSourceMaterialChecksQuery.mock.calls[0].arguments,
+					[]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
+				assert.equal(stubs.neo4jQueryModule.neo4jQuery.mock.callCount(), 1);
+				assert.deepEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [{
 					query: 'getSourceMaterialChecksQuery response',
 					params: {
 						name: 'NAME_VALUE',
 						differentiator: 'DIFFERENTIATOR_VALUE',
 						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					}
-				});
-				sinonAssert.calledTwice(instance.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.firstCall,
-					'name',
-					"Material with these attributes is this material's sourcing material"
+				}]);
+				assert.equal(instance.addPropertyError.mock.callCount(), 2);
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[0].arguments,
+					[
+						'name',
+						"Material with these attributes is this material's sourcing material"
+					]
 				);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.secondCall,
-					'differentiator',
-					"Material with these attributes is this material's sourcing material"
+				assert.deepEqual(
+					instance.addPropertyError.mock.calls[1].arguments,
+					[
+						'differentiator',
+						"Material with these attributes is this material's sourcing material"
+					]
 				);
 			});
 		});

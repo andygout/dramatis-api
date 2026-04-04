@@ -1,17 +1,16 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 describe('ProductionIdentifier model', () => {
 	let stubs;
 	let ProductionIdentifier;
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
+				getTrimmedOrEmptyString: test.mock.fn((arg) => arg?.trim() || '')
 			}
 		};
 
@@ -26,24 +25,20 @@ describe('ProductionIdentifier model', () => {
 		);
 	});
 
-	afterEach(() => {
-		restore();
-	});
-
 	describe('constructor method', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new ProductionIdentifier();
 
-			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 1);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls.length, 1);
 		});
 
 		describe('uuid property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-				sinonAssert.calledWithExactly(
-					stubs.stringsModule.getTrimmedOrEmptyString,
-					'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+				assert.deepStrictEqual(
+					stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[0].arguments,
+					['xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx']
 				);
 
 				assert.equal(instance.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
@@ -52,14 +47,15 @@ describe('ProductionIdentifier model', () => {
 	});
 
 	describe('validateUuid method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty', () => undefined);
 
 			instance.validateUuid();
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'uuid', { isRequired: false });
+			assert.strictEqual(instance.validateStringForProperty.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['uuid', { isRequired: false }]);
 		});
 	});
 });

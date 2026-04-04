@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, spy } from 'sinon';
 
 import { FestivalSeries } from '../../../src/models/index.js';
 
@@ -11,10 +10,10 @@ describe('Festival model', () => {
 	let Festival;
 
 	const FestivalSeriesStub = function () {
-		return createStubInstance(FestivalSeries);
+		return new FestivalSeries();
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			models: {
 				FestivalSeries: FestivalSeriesStub
@@ -30,10 +29,6 @@ describe('Festival model', () => {
 				'../../../src/models/index.js': stubs.models
 			}
 		);
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	describe('constructor method', () => {
@@ -58,7 +53,7 @@ describe('Festival model', () => {
 	});
 
 	describe('runInputValidations method', () => {
-		it("calls instance's validate methods and associated models' validate methods", async () => {
+		it("calls instance's validate methods and associated models' validate methods", async (test) => {
 			const instance = new Festival({
 				name: '2008',
 				differentiator: '',
@@ -67,22 +62,50 @@ describe('Festival model', () => {
 					differentiator: ''
 				}
 			});
+			const callOrder = [];
 
-			spy(instance, 'validateName');
-			spy(instance, 'validateDifferentiator');
+			const originalValidateName = instance.validateName;
+			const originalValidateDifferentiator = instance.validateDifferentiator;
+			const originalFestivalSeriesValidateName = instance.festivalSeries.validateName;
+			const originalFestivalSeriesValidateDifferentiator = instance.festivalSeries.validateDifferentiator;
+
+			test.mock.method(instance, 'validateName', function (...args) {
+				callOrder.push('instance.validateName');
+
+				return originalValidateName.apply(this, args);
+			});
+			test.mock.method(instance, 'validateDifferentiator', function (...args) {
+				callOrder.push('instance.validateDifferentiator');
+
+				return originalValidateDifferentiator.apply(this, args);
+			});
+			test.mock.method(instance.festivalSeries, 'validateName', function (...args) {
+				callOrder.push('instance.festivalSeries.validateName');
+
+				return originalFestivalSeriesValidateName.apply(this, args);
+			});
+			test.mock.method(instance.festivalSeries, 'validateDifferentiator', function (...args) {
+				callOrder.push('instance.festivalSeries.validateDifferentiator');
+
+				return originalFestivalSeriesValidateDifferentiator.apply(this, args);
+			});
 
 			instance.runInputValidations();
 
-			sinonAssert.callOrder(
-				instance.validateName,
-				instance.validateDifferentiator,
-				instance.festivalSeries.validateName,
-				instance.festivalSeries.validateDifferentiator
-			);
-			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
-			sinonAssert.calledOnceWithExactly(instance.festivalSeries.validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.festivalSeries.validateDifferentiator);
+			assert.deepStrictEqual(callOrder, [
+				'instance.validateName',
+				'instance.validateDifferentiator',
+				'instance.festivalSeries.validateName',
+				'instance.festivalSeries.validateDifferentiator'
+			]);
+			assert.strictEqual(instance.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateName.mock.calls[0].arguments, [{ isRequired: true }]);
+			assert.strictEqual(instance.validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateDifferentiator.mock.calls[0].arguments, []);
+			assert.strictEqual(instance.festivalSeries.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.festivalSeries.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(instance.festivalSeries.validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.festivalSeries.validateDifferentiator.mock.calls[0].arguments, []);
 		});
 	});
 });

@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Company, Person } from '../../../src/models/index.js';
 
@@ -13,18 +12,18 @@ describe('Review model', () => {
 	let Review;
 
 	const CompanyStub = function () {
-		return createStubInstance(Company);
+		return new Company();
 	};
 
 	const PersonStub = function () {
-		return createStubInstance(Person);
+		return new Person();
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
-			isValidDate: stub().returns(true),
+			isValidDate: test.mock.fn(() => true),
 			stringsModule: {
-				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
+				getTrimmedOrEmptyString: test.mock.fn((arg) => arg?.trim() || '')
 			},
 			models: {
 				Company: CompanyStub,
@@ -45,24 +44,20 @@ describe('Review model', () => {
 		);
 	});
 
-	afterEach(() => {
-		restore();
-	});
-
 	describe('constructor method', () => {
 		it('calls getTrimmedOrEmptyString to get values to assign to properties', async () => {
 			new Review();
 
-			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.callCount, 2);
+			assert.equal(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls.length, 2);
 		});
 
 		describe('url property', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Review({ url: 'https://www.foo.com' });
 
-				sinonAssert.calledWithExactly(
-					stubs.stringsModule.getTrimmedOrEmptyString.firstCall,
-					'https://www.foo.com'
+				assert.deepStrictEqual(
+					stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[0].arguments,
+					['https://www.foo.com']
 				);
 				assert.equal(instance.url, 'https://www.foo.com');
 			});
@@ -72,7 +67,7 @@ describe('Review model', () => {
 			it('assigns return value from getTrimmedOrEmptyString called with props value', async () => {
 				const instance = new Review({ date: '2024-04-03' });
 
-				sinonAssert.calledWithExactly(stubs.stringsModule.getTrimmedOrEmptyString.secondCall, '2024-04-03');
+				assert.deepStrictEqual(stubs.stringsModule.getTrimmedOrEmptyString.mock.calls[1].arguments, ['2024-04-03']);
 				assert.equal(instance.date, '2024-04-03');
 			});
 		});
@@ -118,7 +113,7 @@ describe('Review model', () => {
 
 	describe('runInputValidations method', () => {
 		context('instance url value is non-empty string', () => {
-			it("calls instance's validate methods and associated models' validate methods", async () => {
+			it("calls instance's validate methods and associated models' validate methods", async (test) => {
 				const instance = new Review({
 					url: 'https://www.foo.com',
 					publication: {
@@ -128,38 +123,93 @@ describe('Review model', () => {
 						name: 'Sarah Hemming'
 					}
 				});
+				const callOrder = [];
 
-				spy(instance, 'validateUrl');
-				spy(instance, 'validateUniquenessInGroup');
-				spy(instance, 'validateUrlPresenceIfNamedChildren');
-				spy(instance, 'validateDate');
+				const originalValidateUrl = instance.validateUrl;
+				const originalValidateUniquenessInGroup = instance.validateUniquenessInGroup;
+				const originalValidateUrlPresenceIfNamedChildren = instance.validateUrlPresenceIfNamedChildren;
+				const originalValidateDate = instance.validateDate;
+				const originalPublicationValidateName = instance.publication.validateName;
+				const originalPublicationValidateDifferentiator = instance.publication.validateDifferentiator;
+				const originalCriticValidateName = instance.critic.validateName;
+				const originalCriticValidateDifferentiator = instance.critic.validateDifferentiator;
+
+				test.mock.method(instance, 'validateUrl', function (...args) {
+					callOrder.push('instance.validateUrl');
+
+					return originalValidateUrl.apply(this, args);
+				});
+				test.mock.method(instance, 'validateUniquenessInGroup', function (...args) {
+					callOrder.push('instance.validateUniquenessInGroup');
+
+					return originalValidateUniquenessInGroup.apply(this, args);
+				});
+				test.mock.method(instance, 'validateUrlPresenceIfNamedChildren', function (...args) {
+					callOrder.push('instance.validateUrlPresenceIfNamedChildren');
+
+					return originalValidateUrlPresenceIfNamedChildren.apply(this, args);
+				});
+				test.mock.method(instance, 'validateDate', function (...args) {
+					callOrder.push('instance.validateDate');
+
+					return originalValidateDate.apply(this, args);
+				});
+				test.mock.method(instance.publication, 'validateName', function (...args) {
+					callOrder.push('instance.publication.validateName');
+
+					return originalPublicationValidateName.apply(this, args);
+				});
+				test.mock.method(instance.publication, 'validateDifferentiator', function (...args) {
+					callOrder.push('instance.publication.validateDifferentiator');
+
+					return originalPublicationValidateDifferentiator.apply(this, args);
+				});
+				test.mock.method(instance.critic, 'validateName', function (...args) {
+					callOrder.push('instance.critic.validateName');
+
+					return originalCriticValidateName.apply(this, args);
+				});
+				test.mock.method(instance.critic, 'validateDifferentiator', function (...args) {
+					callOrder.push('instance.critic.validateDifferentiator');
+
+					return originalCriticValidateDifferentiator.apply(this, args);
+				});
 
 				instance.runInputValidations({ isDuplicate: false, duplicatePublicationAndCriticEntities: [] });
 
-				sinonAssert.callOrder(
-					instance.validateUrl,
-					instance.validateUniquenessInGroup,
-					instance.validateUrlPresenceIfNamedChildren,
-					instance.validateDate,
-					instance.publication.validateName,
-					instance.publication.validateDifferentiator,
-					instance.critic.validateName,
-					instance.critic.validateDifferentiator
-				);
-				sinonAssert.calledOnceWithExactly(instance.validateUrl, { isRequired: false });
-				sinonAssert.calledOnceWithExactly(instance.validateUniquenessInGroup, {
-					isDuplicate: false,
-					properties: new Set(['url'])
-				});
-				sinonAssert.calledOnceWithExactly(instance.validateUrlPresenceIfNamedChildren, [
-					instance.publication,
-					instance.critic
+				assert.deepStrictEqual(callOrder, [
+					'instance.validateUrl',
+					'instance.validateUniquenessInGroup',
+					'instance.validateUrlPresenceIfNamedChildren',
+					'instance.validateDate',
+					'instance.publication.validateName',
+					'instance.publication.validateDifferentiator',
+					'instance.critic.validateName',
+					'instance.critic.validateDifferentiator'
 				]);
-				sinonAssert.calledOnceWithExactly(instance.validateDate);
-				sinonAssert.calledOnceWithExactly(instance.publication.validateName, { isRequired: true });
-				sinonAssert.calledOnceWithExactly(instance.publication.validateDifferentiator);
-				sinonAssert.calledOnceWithExactly(instance.critic.validateName, { isRequired: true });
-				sinonAssert.calledOnceWithExactly(instance.critic.validateDifferentiator);
+				assert.strictEqual(instance.validateUrl.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.validateUrl.mock.calls[0].arguments, [{ isRequired: false }]);
+				assert.strictEqual(instance.validateUniquenessInGroup.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.validateUniquenessInGroup.mock.calls[0].arguments, [
+					{
+						isDuplicate: false,
+						properties: new Set(['url'])
+					}
+				]);
+				assert.strictEqual(instance.validateUrlPresenceIfNamedChildren.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.validateUrlPresenceIfNamedChildren.mock.calls[0].arguments, [
+					[instance.publication, instance.critic]
+				]);
+				assert.strictEqual(instance.validateDate.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.validateDate.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.publication.validateName.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.publication.validateName.mock.calls[0].arguments, [{ isRequired: true }]);
+				assert.strictEqual(instance.publication.validateDifferentiator.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.publication.validateDifferentiator.mock.calls[0].arguments, []);
+				assert.strictEqual(instance.critic.validateName.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.critic.validateName.mock.calls[0].arguments, [{ isRequired: true }]);
+				assert.strictEqual(instance.critic.validateDifferentiator.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.critic.validateDifferentiator.mock.calls[0].arguments, []);
 			});
 		});
 
@@ -177,71 +227,76 @@ describe('Review model', () => {
 
 				instance.runInputValidations({ isDuplicate: false });
 
-				sinonAssert.calledOnceWithExactly(instance.publication.validateName, { isRequired: false });
-				sinonAssert.calledOnceWithExactly(instance.critic.validateName, { isRequired: false });
+				assert.strictEqual(instance.publication.validateName.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.publication.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+				assert.strictEqual(instance.critic.validateName.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.critic.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
 			});
 		});
 	});
 
 	describe('validateUrl method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('will call validateStringForProperty method', async (test) => {
 			const instance = new Review({ url: 'https://www.foo.com' });
 
-			spy(instance, 'validateStringForProperty');
+			test.mock.method(instance, 'validateStringForProperty', () => undefined);
 
 			instance.validateUrl({ isRequired: false });
 
-			sinonAssert.calledOnceWithExactly(instance.validateStringForProperty, 'url', { isRequired: false });
+			assert.strictEqual(instance.validateStringForProperty.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateStringForProperty.mock.calls[0].arguments, ['url', { isRequired: false }]);
 		});
 
 		context('url property is a valid URL', () => {
-			it('will not call addPropertyError method', async () => {
+			it('will not call addPropertyError method', async (test) => {
 				const instance = new Review({ url: 'https://www.foo.com' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				instance.validateUrl({ isRequired: false });
 
-				sinonAssert.notCalled(instance.addPropertyError);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		context('url property is an empty string', () => {
-			it('will not call addPropertyError method', async () => {
+			it('will not call addPropertyError method', async (test) => {
 				const instance = new Review({ url: '' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				instance.validateUrl({ isRequired: false });
 
-				sinonAssert.notCalled(instance.addPropertyError);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		context('url property is a non-empty string that is not a valid URL', () => {
-			it('will call addPropertyError method', async () => {
+			it('will call addPropertyError method', async (test) => {
 				const instance = new Review({ url: 'foobar' });
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				instance.validateUrl({ isRequired: false });
 
-				sinonAssert.calledOnceWithExactly(instance.addPropertyError, 'url', 'URL must be a valid URL');
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, ['url', 'URL must be a valid URL']);
 			});
 		});
 	});
 
 	describe('validateUrlPresenceIfNamedChildren method', () => {
-		it('will call validatePropertyPresenceIfNamedChildren', async () => {
+		it('will call validatePropertyPresenceIfNamedChildren', async (test) => {
 			const instance = new Review();
 
-			spy(instance, 'validatePropertyPresenceIfNamedChildren');
+			test.mock.method(instance, 'validatePropertyPresenceIfNamedChildren', () => undefined);
 
 			instance.validateUrlPresenceIfNamedChildren([{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]);
 
-			sinonAssert.calledOnceWithExactly(instance.validatePropertyPresenceIfNamedChildren, 'url', [
-				{ name: 'Financial Times' },
-				{ name: 'Sarah Hemming' }
+			assert.strictEqual(instance.validatePropertyPresenceIfNamedChildren.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validatePropertyPresenceIfNamedChildren.mock.calls[0].arguments, [
+				'url',
+				[{ name: 'Financial Times' }, { name: 'Sarah Hemming' }]
 			]);
 		});
 	});
@@ -249,48 +304,50 @@ describe('Review model', () => {
 	describe('validateDate method', () => {
 		context('valid data', () => {
 			context('date is an empty string', () => {
-				it('will not call isValidDate or addPropertyError method', async () => {
+				it('will not call isValidDate or addPropertyError method', async (test) => {
 					const instance = new Review({ date: '' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validateDate();
 
-					sinonAssert.notCalled(stubs.isValidDate);
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.strictEqual(stubs.isValidDate.mock.calls.length, 0);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 				});
 			});
 
 			context('date is in a valid date format', () => {
-				it('will call isValidDate; will not call addPropertyError method', async () => {
+				it('will call isValidDate; will not call addPropertyError method', async (test) => {
 					const instance = new Review({ date: '2024-04-03' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validateDate();
 
-					sinonAssert.calledOnceWithExactly(stubs.isValidDate, instance.date);
-					sinonAssert.notCalled(instance.addPropertyError);
+					assert.strictEqual(stubs.isValidDate.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.isValidDate.mock.calls[0].arguments, [instance.date]);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 				});
 			});
 		});
 
 		context('invalid data', () => {
 			context('date is in an invalid date format', () => {
-				it('will call isValidDate and addPropertyError method', async () => {
-					stubs.isValidDate.returns(false);
+				it('will call isValidDate and addPropertyError method', async (test) => {
+					stubs.isValidDate = test.mock.fn(() => false);
 
 					const instance = new Review({ date: 'foobar' });
 
-					spy(instance, 'addPropertyError');
+					test.mock.method(instance, 'addPropertyError', () => undefined);
 
 					instance.validateDate();
 
-					sinonAssert.calledOnceWithExactly(stubs.isValidDate, instance.date);
-					sinonAssert.calledOnceWithExactly(
-						instance.addPropertyError,
-						'date',
-						'Value must be in date format'
+					assert.strictEqual(stubs.isValidDate.mock.calls.length, 1);
+					assert.deepStrictEqual(stubs.isValidDate.mock.calls[0].arguments, [instance.date]);
+					assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+					assert.deepStrictEqual(
+						instance.addPropertyError.mock.calls[0].arguments,
+						['date', 'Value must be in date format']
 					);
 				});
 			});

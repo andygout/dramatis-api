@@ -1,7 +1,7 @@
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, restore, spy, stub } from 'sinon';
 
 const context = describe;
 
@@ -11,18 +11,18 @@ describe('OriginalVersionMaterial model', () => {
 
 	const neo4jQueryMockResponse = { neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' };
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
-			prepareAsParams: stub().returns({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' }),
+			prepareAsParams: test.mock.fn(() => ({ name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' })),
 			cypherQueriesModule: {
 				validationQueries: {
-					getOriginalVersionMaterialChecksQuery: stub().returns(
-						'getOriginalVersionMaterialChecksQuery response'
+					getOriginalVersionMaterialChecksQuery: test.mock.fn(
+						() => 'getOriginalVersionMaterialChecksQuery response'
 					)
 				}
 			},
 			neo4jQueryModule: {
-				neo4jQuery: stub().resolves(neo4jQueryMockResponse)
+				neo4jQuery: test.mock.fn(async () => neo4jQueryMockResponse)
 			}
 		};
 
@@ -39,87 +39,150 @@ describe('OriginalVersionMaterial model', () => {
 		);
 	});
 
-	afterEach(() => {
-		restore();
-	});
-
 	describe('runDatabaseValidations method', () => {
 		context('valid data', () => {
-			it('will not call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will not call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery = test.mock.fn(async () => ({
 					isSubsequentVersionMaterialOfSubjectMaterial: false
-				});
+				}));
 
 				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+				const callOrder = [];
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(stubs, 'prepareAsParams', function (...args) {
+					callOrder.push('stubs.prepareAsParams');
+
+					return { name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' };
+				});
+				test.mock.method(
+					stubs.cypherQueriesModule.validationQueries,
+					'getOriginalVersionMaterialChecksQuery',
+					function (...args) {
+						callOrder.push('stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery');
+
+						return 'getOriginalVersionMaterialChecksQuery response';
+					}
+				);
+				test.mock.method(stubs.neo4jQueryModule, 'neo4jQuery', async function (...args) {
+					callOrder.push('stubs.neo4jQueryModule.neo4jQuery');
+
+					return {
+						isSubsequentVersionMaterialOfSubjectMaterial: false
+					};
+				});
+				test.mock.method(instance, 'addPropertyError', () => undefined);
 
 				await instance.runDatabaseValidations({
 					subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 				});
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery
+				assert.deepStrictEqual(callOrder, [
+					'stubs.prepareAsParams',
+					'stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery',
+					'stubs.neo4jQueryModule.neo4jQuery'
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery.mock.calls.length,
+					1
 				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery.mock.calls[0]
+						.arguments,
+					[]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
-					query: 'getOriginalVersionMaterialChecksQuery response',
-					params: {
-						name: 'NAME_VALUE',
-						differentiator: 'DIFFERENTIATOR_VALUE',
-						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [
+					{
+						query: 'getOriginalVersionMaterialChecksQuery response',
+						params: {
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
+							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						}
 					}
-				});
-				sinonAssert.notCalled(instance.addPropertyError);
+				]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		context("invalid data (instance is the subject material's subsequent version material)", () => {
-			it('will call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({
+			it('will call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery = test.mock.fn(async () => ({
 					isSubsequentVersionMaterialOfSubjectMaterial: true
-				});
+				}));
 
 				const instance = new OriginalVersionMaterial({ name: 'NAME_VALUE', differentiator: '1' });
+				const callOrder = [];
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(stubs, 'prepareAsParams', function (...args) {
+					callOrder.push('stubs.prepareAsParams');
+
+					return { name: 'NAME_VALUE', differentiator: 'DIFFERENTIATOR_VALUE' };
+				});
+				test.mock.method(
+					stubs.cypherQueriesModule.validationQueries,
+					'getOriginalVersionMaterialChecksQuery',
+					function (...args) {
+						callOrder.push('stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery');
+
+						return 'getOriginalVersionMaterialChecksQuery response';
+					}
+				);
+				test.mock.method(stubs.neo4jQueryModule, 'neo4jQuery', async function (...args) {
+					callOrder.push('stubs.neo4jQueryModule.neo4jQuery');
+
+					return {
+						isSubsequentVersionMaterialOfSubjectMaterial: true
+					};
+				});
+				test.mock.method(instance, 'addPropertyError', function (...args) {
+					callOrder.push('instance.addPropertyError');
+
+					return undefined;
+				});
 
 				await instance.runDatabaseValidations({ subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
+				assert.deepStrictEqual(callOrder, [
+					'stubs.prepareAsParams',
+					'stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery',
+					'stubs.neo4jQueryModule.neo4jQuery',
+					'instance.addPropertyError',
+					'instance.addPropertyError'
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery.mock.calls.length,
+					1
 				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getOriginalVersionMaterialChecksQuery.mock.calls[0]
+						.arguments,
+					[]
 				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
-					query: 'getOriginalVersionMaterialChecksQuery response',
-					params: {
-						name: 'NAME_VALUE',
-						differentiator: 'DIFFERENTIATOR_VALUE',
-						subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [
+					{
+						query: 'getOriginalVersionMaterialChecksQuery response',
+						params: {
+							name: 'NAME_VALUE',
+							differentiator: 'DIFFERENTIATOR_VALUE',
+							subjectMaterialUuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+						}
 					}
-				});
-				sinonAssert.calledTwice(instance.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.firstCall,
+				]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 2);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 					'name',
 					"Material with these attributes is this material's subsequent version material"
-				);
-				sinonAssert.calledWithExactly(
-					instance.addPropertyError.secondCall,
+				]);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[1].arguments, [
 					'differentiator',
 					"Material with these attributes is this material's subsequent version material"
-				);
+				]);
 			});
 		});
 	});

@@ -1,8 +1,7 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, spy, stub } from 'sinon';
 
 import { Award, AwardCeremonyCategory } from '../../../src/models/index.js';
 
@@ -11,39 +10,39 @@ describe('AwardCeremony model', () => {
 	let AwardCeremony;
 
 	const AwardStub = function () {
-		return createStubInstance(Award);
+		return new Award();
 	};
 
 	const AwardCeremonyCategoryStub = function () {
-		return createStubInstance(AwardCeremonyCategory);
+		return new AwardCeremonyCategory();
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			getDuplicateIndicesModule: {
-				getDuplicateBaseInstanceIndices: stub().returns([])
+				getDuplicateBaseInstanceIndices: test.mock.fn(() => [])
 			},
-			prepareAsParams: stub().returns({
+			prepareAsParams: test.mock.fn(() => ({
 				uuid: 'UUID_VALUE',
 				name: 'NAME_VALUE',
 				award: {
 					name: 'AWARD_UUID_VALUE',
 					differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
 				}
-			}),
+			})),
 			models: {
 				Award: AwardStub,
 				AwardCeremonyCategory: AwardCeremonyCategoryStub
 			},
 			cypherQueriesModule: {
 				validationQueries: {
-					getAwardContextualDuplicateRecordCheckQuery: stub().returns(
-						'getAwardContextualDuplicateRecordCheckQuery response'
+					getAwardContextualDuplicateRecordCheckQuery: test.mock.fn(
+						() => 'getAwardContextualDuplicateRecordCheckQuery response'
 					)
 				}
 			},
 			neo4jQueryModule: {
-				neo4jQuery: stub().resolves({ neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' })
+				neo4jQuery: test.mock.fn(async () => ({ neo4jQueryMockResponseProperty: 'neo4jQueryMockResponseValue' }))
 			}
 		};
 
@@ -60,10 +59,6 @@ describe('AwardCeremony model', () => {
 				'../../../src/neo4j/query.js': stubs.neo4jQueryModule
 			}
 		);
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	describe('constructor method', () => {
@@ -118,7 +113,7 @@ describe('AwardCeremony model', () => {
 	});
 
 	describe('runInputValidations method', () => {
-		it("calls instance's validate methods and associated models' validate methods", async () => {
+		it("calls instance's validate methods and associated models' validate methods", async (test) => {
 			const instance = new AwardCeremony({
 				name: '2020',
 				categories: [
@@ -128,30 +123,65 @@ describe('AwardCeremony model', () => {
 				]
 			});
 
-			spy(instance, 'validateName');
+			const callOrder = [];
+			const originalValidateName = instance.validateName;
+			const originalAwardValidateName = instance.award.validateName;
+			const originalAwardValidateDifferentiator = instance.award.validateDifferentiator;
+			const originalRunInputValidations = instance.categories[0].runInputValidations;
+
+			test.mock.method(instance, 'validateName', function (...args) {
+				callOrder.push('instance.validateName');
+
+				return originalValidateName.apply(this, args);
+			});
+			test.mock.method(instance.award, 'validateName', function (...args) {
+				callOrder.push('instance.award.validateName');
+
+				return originalAwardValidateName.apply(this, args);
+			});
+			test.mock.method(instance.award, 'validateDifferentiator', function (...args) {
+				callOrder.push('instance.award.validateDifferentiator');
+
+				return originalAwardValidateDifferentiator.apply(this, args);
+			});
+			test.mock.method(stubs.getDuplicateIndicesModule, 'getDuplicateBaseInstanceIndices', function (...args) {
+				callOrder.push('stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices');
+
+				return [];
+			});
+			test.mock.method(instance.categories[0], 'runInputValidations', function (...args) {
+				callOrder.push('instance.categories[0].runInputValidations');
+
+				return originalRunInputValidations.apply(this, args);
+			});
 
 			instance.runInputValidations();
 
-			sinonAssert.callOrder(
-				instance.validateName,
-				instance.award.validateName,
-				instance.award.validateDifferentiator,
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
-				instance.categories[0].runInputValidations
+			assert.deepStrictEqual(callOrder, [
+				'instance.validateName',
+				'instance.award.validateName',
+				'instance.award.validateDifferentiator',
+				'stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices',
+				'instance.categories[0].runInputValidations'
+			]);
+			assert.strictEqual(instance.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateName.mock.calls[0].arguments, [{ isRequired: true }]);
+			assert.strictEqual(instance.award.validateName.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.award.validateName.mock.calls[0].arguments, [{ isRequired: false }]);
+			assert.strictEqual(instance.award.validateDifferentiator.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.award.validateDifferentiator.mock.calls[0].arguments, []);
+			assert.strictEqual(stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.mock.calls.length, 1);
+			assert.deepStrictEqual(
+				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices.mock.calls[0].arguments,
+				[instance.categories]
 			);
-			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
-			sinonAssert.calledOnceWithExactly(instance.award.validateName, { isRequired: false });
-			sinonAssert.calledOnceWithExactly(instance.award.validateDifferentiator);
-			sinonAssert.calledOnceWithExactly(
-				stubs.getDuplicateIndicesModule.getDuplicateBaseInstanceIndices,
-				instance.categories
-			);
-			sinonAssert.calledOnceWithExactly(instance.categories[0].runInputValidations, { isDuplicate: false });
+			assert.strictEqual(instance.categories[0].runInputValidations.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.categories[0].runInputValidations.mock.calls[0].arguments, [{ isDuplicate: false }]);
 		});
 	});
 
 	describe('runDatabaseValidations method', () => {
-		it("calls instance's validateAwardContextualUniquenessInDatabase method and associated categories' runDatabaseValidations method", async () => {
+		it("calls instance's validateAwardContextualUniquenessInDatabase method and associated categories' runDatabaseValidations method", async (test) => {
 			const instance = new AwardCeremony({
 				name: '2020',
 				categories: [
@@ -161,98 +191,194 @@ describe('AwardCeremony model', () => {
 				]
 			});
 
-			spy(instance, 'validateAwardContextualUniquenessInDatabase');
+			const originalValidateAwardContextualUniquenessInDatabase =
+				instance.validateAwardContextualUniquenessInDatabase;
+			const originalRunDatabaseValidations = instance.categories[0].runDatabaseValidations;
+
+			test.mock.method(instance, 'validateAwardContextualUniquenessInDatabase', function (...args) {
+				return originalValidateAwardContextualUniquenessInDatabase.apply(this, args);
+			});
+			test.mock.method(instance.categories[0], 'runDatabaseValidations', function (...args) {
+				return originalRunDatabaseValidations.apply(this, args);
+			});
 
 			await instance.runDatabaseValidations();
 
-			sinonAssert.calledOnceWithExactly(instance.validateAwardContextualUniquenessInDatabase);
-			sinonAssert.calledOnceWithExactly(instance.categories[0].runDatabaseValidations);
+			assert.strictEqual(instance.validateAwardContextualUniquenessInDatabase.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.validateAwardContextualUniquenessInDatabase.mock.calls[0].arguments, []);
+			assert.strictEqual(instance.categories[0].runDatabaseValidations.mock.calls.length, 1);
+			assert.deepStrictEqual(instance.categories[0].runDatabaseValidations.mock.calls[0].arguments, []);
 		});
 	});
 
 	describe('validateAwardContextualUniquenessInDatabase method', () => {
 		describe('valid data (results returned that indicate name does not already exist for given award)', () => {
-			it('will not call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: false });
+			it('will not call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery = test.mock.fn(async () => ({ isDuplicateRecord: false }));
 
 				const instance = new AwardCeremony();
+				const callOrder = [];
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(stubs, 'prepareAsParams', function (...args) {
+					callOrder.push('stubs.prepareAsParams');
 
-				await instance.validateAwardContextualUniquenessInDatabase();
-
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
-					stubs.neo4jQueryModule.neo4jQuery
-				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
-				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
-					query: 'getAwardContextualDuplicateRecordCheckQuery response',
-					params: {
+					return {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						award: {
 							name: 'AWARD_UUID_VALUE',
 							differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
 						}
-					}
+					};
 				});
-				sinonAssert.notCalled(instance.addPropertyError);
-				sinonAssert.notCalled(instance.award.addPropertyError);
+				test.mock.method(
+					stubs.cypherQueriesModule.validationQueries,
+					'getAwardContextualDuplicateRecordCheckQuery',
+					function (...args) {
+						callOrder.push('stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery');
+
+						return 'getAwardContextualDuplicateRecordCheckQuery response';
+					}
+				);
+				test.mock.method(stubs.neo4jQueryModule, 'neo4jQuery', async function (...args) {
+					callOrder.push('stubs.neo4jQueryModule.neo4jQuery');
+
+					return { isDuplicateRecord: false };
+				});
+				test.mock.method(instance, 'addPropertyError', function (...args) {
+					return undefined;
+				});
+				test.mock.method(instance.award, 'addPropertyError', function (...args) {
+					return undefined;
+				});
+
+				await instance.validateAwardContextualUniquenessInDatabase();
+
+				assert.deepStrictEqual(callOrder, [
+					'stubs.prepareAsParams',
+					'stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery',
+					'stubs.neo4jQueryModule.neo4jQuery'
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery.mock.calls.length,
+					1
+				);
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery.mock.calls[0]
+						.arguments,
+					[]
+				);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [
+					{
+						query: 'getAwardContextualDuplicateRecordCheckQuery response',
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							award: {
+								name: 'AWARD_UUID_VALUE',
+								differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
+							}
+						}
+					}
+				]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 0);
+				assert.strictEqual(instance.award.addPropertyError.mock.calls.length, 0);
 			});
 		});
 
 		describe('invalid data (results returned that indicate name already exists  for given award)', () => {
-			it('will call addPropertyError method', async () => {
-				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
+			it('will call addPropertyError method', async (test) => {
+				stubs.neo4jQueryModule.neo4jQuery = test.mock.fn(async () => ({ isDuplicateRecord: true }));
 
 				const instance = new AwardCeremony();
+				const callOrder = [];
 
-				spy(instance, 'addPropertyError');
+				test.mock.method(stubs, 'prepareAsParams', function (...args) {
+					callOrder.push('stubs.prepareAsParams');
 
-				await instance.validateAwardContextualUniquenessInDatabase();
-
-				sinonAssert.callOrder(
-					stubs.prepareAsParams,
-					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery,
-					stubs.neo4jQueryModule.neo4jQuery,
-					instance.addPropertyError
-				);
-				sinonAssert.calledOnceWithExactly(stubs.prepareAsParams, instance);
-				sinonAssert.calledOnceWithExactly(
-					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery
-				);
-				sinonAssert.calledOnceWithExactly(stubs.neo4jQueryModule.neo4jQuery, {
-					query: 'getAwardContextualDuplicateRecordCheckQuery response',
-					params: {
+					return {
 						uuid: 'UUID_VALUE',
 						name: 'NAME_VALUE',
 						award: {
 							name: 'AWARD_UUID_VALUE',
 							differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
 						}
-					}
+					};
 				});
-				sinonAssert.calledOnceWithExactly(
-					instance.addPropertyError,
+				test.mock.method(
+					stubs.cypherQueriesModule.validationQueries,
+					'getAwardContextualDuplicateRecordCheckQuery',
+					function (...args) {
+						callOrder.push('stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery');
+
+						return 'getAwardContextualDuplicateRecordCheckQuery response';
+					}
+				);
+				test.mock.method(stubs.neo4jQueryModule, 'neo4jQuery', async function (...args) {
+					callOrder.push('stubs.neo4jQueryModule.neo4jQuery');
+
+					return { isDuplicateRecord: true };
+				});
+				const originalAddPropertyError = instance.addPropertyError;
+				test.mock.method(instance, 'addPropertyError', function (...args) {
+					callOrder.push('instance.addPropertyError');
+
+					return originalAddPropertyError.apply(this, args);
+				});
+				test.mock.method(instance.award, 'addPropertyError', function (...args) {
+					return undefined;
+				});
+
+				await instance.validateAwardContextualUniquenessInDatabase();
+
+				assert.deepStrictEqual(callOrder, [
+					'stubs.prepareAsParams',
+					'stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery',
+					'stubs.neo4jQueryModule.neo4jQuery',
+					'instance.addPropertyError'
+				]);
+				assert.strictEqual(stubs.prepareAsParams.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.prepareAsParams.mock.calls[0].arguments, [instance]);
+				assert.strictEqual(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery.mock.calls.length,
+					1
+				);
+				assert.deepStrictEqual(
+					stubs.cypherQueriesModule.validationQueries.getAwardContextualDuplicateRecordCheckQuery.mock.calls[0]
+						.arguments,
+					[]
+				);
+				assert.strictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls.length, 1);
+				assert.deepStrictEqual(stubs.neo4jQueryModule.neo4jQuery.mock.calls[0].arguments, [
+					{
+						query: 'getAwardContextualDuplicateRecordCheckQuery response',
+						params: {
+							uuid: 'UUID_VALUE',
+							name: 'NAME_VALUE',
+							award: {
+								name: 'AWARD_UUID_VALUE',
+								differentiator: 'AWARD_DIFFERENTIATOR_VALUE'
+							}
+						}
+					}
+				]);
+				assert.strictEqual(instance.addPropertyError.mock.calls.length, 1);
+				assert.deepStrictEqual(instance.addPropertyError.mock.calls[0].arguments, [
 					'name',
 					'Award ceremony already exists for given award'
-				);
-				sinonAssert.calledTwice(instance.award.addPropertyError);
-				sinonAssert.calledWithExactly(
-					instance.award.addPropertyError.firstCall,
+				]);
+				assert.strictEqual(instance.award.addPropertyError.mock.calls.length, 2);
+				assert.deepStrictEqual(instance.award.addPropertyError.mock.calls[0].arguments, [
 					'name',
 					'Award ceremony already exists for given award'
-				);
-				sinonAssert.calledWithExactly(
-					instance.award.addPropertyError.secondCall,
+				]);
+				assert.deepStrictEqual(instance.award.addPropertyError.mock.calls[1].arguments, [
 					'differentiator',
 					'Award ceremony already exists for given award'
-				);
+				]);
 			});
 		});
 	});

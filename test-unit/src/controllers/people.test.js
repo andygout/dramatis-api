@@ -1,32 +1,29 @@
 import assert from 'node:assert/strict';
-import { afterEach, beforeEach, describe, it } from 'node:test';
+import { beforeEach, describe, it } from 'node:test';
 
 import esmock from 'esmock';
-import { assert as sinonAssert, createStubInstance, restore, stub } from 'sinon';
-
-import { Person } from '../../../src/models/index.js';
 
 describe('People controller', () => {
 	let stubs;
 	let peopleController;
 
 	const PersonStub = function () {
-		return createStubInstance(Person);
+		return {};
 	};
 
-	beforeEach(async () => {
+	beforeEach(async (test) => {
 		stubs = {
 			callClassMethodsModule: {
-				callInstanceMethod: stub().resolves('callInstanceMethod response'),
-				callStaticListMethod: stub().resolves('callStaticListMethod response')
+				callInstanceMethod: test.mock.fn(async () => 'callInstanceMethod response'),
+				callStaticListMethod: test.mock.fn(async () => 'callStaticListMethod response')
 			},
-			sendJsonResponse: stub().returns('sendJsonResponse response'),
+			sendJsonResponse: test.mock.fn(() => 'sendJsonResponse response'),
 			models: {
 				Person: PersonStub
 			},
-			request: stub(),
-			response: stub(),
-			next: stub()
+			request: test.mock.fn(),
+			response: test.mock.fn(),
+			next: test.mock.fn()
 		};
 
 		peopleController = await esmock('../../../src/controllers/people.js', {
@@ -34,10 +31,6 @@ describe('People controller', () => {
 			'../../../src/lib/send-json-response.js': stubs.sendJsonResponse,
 			'../../../src/models/index.js': stubs.models
 		});
-	});
-
-	afterEach(() => {
-		restore();
 	});
 
 	const callFunction = async (functionName) => {
@@ -48,11 +41,11 @@ describe('People controller', () => {
 		it('calls sendJsonResponse module', async () => {
 			const result = await callFunction('newRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.sendJsonResponse,
+			assert.strictEqual(stubs.sendJsonResponse.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.sendJsonResponse.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.models.Person() // eslint-disable-line new-cap
-			);
+			]);
 			assert.strictEqual(result, 'sendJsonResponse response');
 		});
 	});
@@ -61,13 +54,13 @@ describe('People controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('createRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.callClassMethodsModule.callInstanceMethod,
+			assert.strictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.next,
 				stubs.models.Person(), // eslint-disable-line new-cap
 				'CREATE'
-			);
+			]);
 			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
@@ -76,13 +69,13 @@ describe('People controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('editRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.callClassMethodsModule.callInstanceMethod,
+			assert.strictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.next,
 				stubs.models.Person(), // eslint-disable-line new-cap
 				'EDIT'
-			);
+			]);
 			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
@@ -91,13 +84,13 @@ describe('People controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('updateRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.callClassMethodsModule.callInstanceMethod,
+			assert.strictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.next,
 				stubs.models.Person(), // eslint-disable-line new-cap
 				'UPDATE'
-			);
+			]);
 			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
@@ -106,13 +99,13 @@ describe('People controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('deleteRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.callClassMethodsModule.callInstanceMethod,
+			assert.strictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.next,
 				stubs.models.Person(), // eslint-disable-line new-cap
 				'DELETE'
-			);
+			]);
 			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
@@ -121,13 +114,13 @@ describe('People controller', () => {
 		it('calls callInstanceMethod module', async () => {
 			const result = await callFunction('showRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.callClassMethodsModule.callInstanceMethod,
+			assert.strictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.callClassMethodsModule.callInstanceMethod.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.next,
 				stubs.models.Person(), // eslint-disable-line new-cap
 				'SHOW'
-			);
+			]);
 			assert.strictEqual(result, 'callInstanceMethod response');
 		});
 	});
@@ -136,13 +129,13 @@ describe('People controller', () => {
 		it('calls callStaticListMethod module', async () => {
 			const result = await callFunction('listRoute');
 
-			sinonAssert.calledOnceWithExactly(
-				stubs.callClassMethodsModule.callStaticListMethod,
+			assert.strictEqual(stubs.callClassMethodsModule.callStaticListMethod.mock.calls.length, 1);
+			assert.deepStrictEqual(stubs.callClassMethodsModule.callStaticListMethod.mock.calls[0].arguments, [
 				stubs.response,
 				stubs.next,
 				stubs.models.Person,
 				'PERSON'
-			);
+			]);
 			assert.strictEqual(result, 'callStaticListMethod response');
 		});
 	});
