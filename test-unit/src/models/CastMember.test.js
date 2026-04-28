@@ -98,6 +98,7 @@ describe('CastMember model', () => {
 				stubs.getDuplicateIndicesModule.getDuplicateRoleIndices,
 				instance.roles[0].validateName,
 				instance.roles[0].validateCharacterName,
+				instance.roles[0].validateCharacterDifferentiator,
 				instance.roles[0].validateQualifier,
 				instance.roles[0].validateRoleNameCharacterNameDisparity,
 				instance.roles[0].validateUniquenessInGroup
@@ -109,6 +110,7 @@ describe('CastMember model', () => {
 			sinonAssert.calledOnceWithExactly(stubs.getDuplicateIndicesModule.getDuplicateRoleIndices, instance.roles);
 			sinonAssert.calledOnceWithExactly(instance.roles[0].validateName, { isRequired: false });
 			sinonAssert.calledOnceWithExactly(instance.roles[0].validateCharacterName);
+			sinonAssert.calledOnceWithExactly(instance.roles[0].validateCharacterDifferentiator);
 			sinonAssert.calledOnceWithExactly(instance.roles[0].validateQualifier);
 			sinonAssert.calledOnceWithExactly(instance.roles[0].validateRoleNameCharacterNameDisparity);
 			sinonAssert.calledOnceWithExactly(instance.roles[0].validateUniquenessInGroup, { isDuplicate: false });
