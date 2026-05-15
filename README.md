@@ -112,3 +112,53 @@ Using venue model as an example.
 ### GET `/venues`
 
 - **List** venues
+
+## Architecture
+
+```mermaid
+flowchart LR
+  %% Containers and components
+  subgraph CLIENT_SIDE[Client-side]
+    BROWSER(Browser)
+  end
+
+  subgraph SERVER_SIDE[Server-side]
+    DRAMATIS_API(dramatis-api)
+    DRAMATIS_CMS(dramatis-cms)
+    DRAMATIS_SPA(dramatis-spa)
+    DRAMATIS_SSR(dramatis-ssr)
+  end
+
+  NEO4J[(Neo4j database)]
+
+  %% Relationships
+  BROWSER -- CRUD operations --> DRAMATIS_CMS
+
+  BROWSER -- GET data --> DRAMATIS_SPA
+
+  BROWSER -- GET data --> DRAMATIS_SSR
+
+  DRAMATIS_CMS -- CRUD operations --> DRAMATIS_API
+
+  DRAMATIS_SPA -- GET data --> DRAMATIS_API
+
+  DRAMATIS_SSR -- GET data --> DRAMATIS_API
+
+  DRAMATIS_API -- CRUD operations --> NEO4J
+
+  %% Style Definitions
+  classDef browser fill:#c2ad01,stroke:#625800,color:#FFFFFF
+  classDef dramatisApi fill:#006699,stroke:#042c53,color:#FFFFFF
+  classDef dramatisCms fill:#7A1158,stroke:#470330,color:#FFFFFF
+  classDef dramatisSpa fill:#478e84,stroke:#094a40,color:#FFFFFF
+  classDef dramatisSsr fill:#bc6e2a,stroke:#864206,color:#FFFFFF
+  classDef neo4j fill:#63ac44,stroke:#22590a,color:#FFFFFF
+
+  %% Apply Styles
+  class BROWSER browser
+  class DRAMATIS_API dramatisApi
+  class DRAMATIS_CMS dramatisCms
+  class DRAMATIS_SPA dramatisSpa
+  class DRAMATIS_SSR dramatisSsr
+  class NEO4J neo4j
+```
