@@ -1,10 +1,9 @@
 import assert from 'node:assert/strict';
 import { before, describe, it } from 'node:test';
 
-import request from 'supertest';
-
 import app from '../../src/app.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const ROMEO_AND_JULIET_ROYAL_SHAKESPEARE_PRODUCTION_UUID = 'ROMEO_AND_JULIET_PRODUCTION_UUID';

@@ -1,10 +1,9 @@
 import assert from 'node:assert/strict';
 import { before, describe, it } from 'node:test';
 
-import request from 'supertest';
-
 import app from '../../src/app.js';
 import { stubUuidToCountMapClient } from '../test-helpers/index.js';
+import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID = 'THE_FELLOWSHIP_OF_THE_RING_MATERIAL_1_UUID';
