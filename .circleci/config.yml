@@ -1,6 +1,63 @@
 version: 2
 jobs:
-  build:
+  install:
+    docker:
+      - image: cimg/node:26.1.0
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: npm install
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+
+  format:
+    docker:
+      - image: cimg/node:26.1.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Format checks
+          command: npm run format-check
+
+  lint:
+    docker:
+      - image: cimg/node:26.1.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Lint checks
+          command: npm run lint-check
+
+  unit-tests:
+    docker:
+      - image: cimg/node:26.1.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Unit tests
+          command: npm run unit-test
+
+  integration-tests:
+    docker:
+      - image: cimg/node:26.1.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Integration tests
+          command: npm run int-test
+
+  e2e-tests:
     docker:
       - image: cimg/node:26.1.0
       - image: neo4j:5.26.8
@@ -11,21 +68,58 @@ jobs:
           NEO4J_server_memory_pagecache_size: 512M
     steps:
       - checkout
+      - attach_workspace:
+          at: .
       - run:
-          name: Install
-          command: npm install
-      - run:
-          name: Format checks
-          command: npm run format-check
-      - run:
-          name: Lint checks
-          command: npm run lint-check
-      - run:
-          name: Unit tests
-          command: npm run unit-test
-      - run:
-          name: Integration tests
-          command: npm run int-test
+          name: Wait for Neo4j
+          command: |
+            node --env-file=./test-e2e/.env -e "
+              import neo4j from 'neo4j-driver';
+
+              const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+              const driver = neo4j.driver(
+                process.env.DATABASE_URL,
+                neo4j.auth.basic(process.env.DATABASE_USERNAME, process.env.DATABASE_PASSWORD)
+              );
+
+              // CircleCI starts the Neo4j sidecar asynchronously, so retry until
+              // it accepts driver connections before running the e2e tests.
+              for (let attempt = 1; attempt <= 60; attempt += 1) {
+                try {
+                  await driver.verifyConnectivity();
+                  await driver.close();
+                  process.exit(0);
+                } catch (error) {
+                  if (attempt === 60) {
+                    await driver.close();
+                    throw error;
+                  }
+
+                  await sleep(1000);
+                }
+              }
+            "
       - run:
           name: End-to-end tests
           command: npm run e2e-test
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - install
+      - format:
+          requires:
+            - install
+      - lint:
+          requires:
+            - install
+      - unit-tests:
+          requires:
+            - install
+      - integration-tests:
+          requires:
+            - install
+      - e2e-tests:
+          requires:
+            - install
