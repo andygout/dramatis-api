@@ -1,6 +1,9 @@
 import { neo4jQuery } from '../../../src/neo4j/query.js';
+import { flushModelInteractionSeedQueue } from '../model-interaction-seed-queue.js';
 
 export default async (opts) => {
+	await flushModelInteractionSeedQueue();
+
 	const { sourceLabel, sourceUuid, destinationLabel, destinationUuid, relationshipName } = opts;
 
 	const params = { sourceUuid, destinationUuid };
