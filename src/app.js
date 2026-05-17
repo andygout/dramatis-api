@@ -8,6 +8,10 @@ import router from './router.js';
 
 const app = express();
 
-app.use(express.json(), logger('dev'), accessControlSetter, router, errorHandler);
+// Disable logger for end-to-end tests to prevent it
+// from contributing to their duration.
+const requestLogger = process.env.NODE_ENV === 'e2e-test' ? [] : [logger('dev')];
+
+app.use(express.json(), ...requestLogger, accessControlSetter, router, errorHandler);
 
 export default app;
