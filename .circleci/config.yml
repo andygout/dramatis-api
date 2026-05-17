@@ -66,6 +66,7 @@ jobs:
           NEO4J_server_memory_heap_initial__size: 512M
           NEO4J_server_memory_heap_max__size: 512M
           NEO4J_server_memory_pagecache_size: 512M
+    parallelism: 6
     steps:
       - checkout
       - attach_workspace:
@@ -101,7 +102,10 @@ jobs:
             "
       - run:
           name: End-to-end tests
-          command: npm run e2e-test
+          command: |
+            circleci tests glob "test-e2e/**/*.test.js" \
+              | circleci tests split --split-by=name \
+              | xargs -r node --env-file=./test-e2e/.env --import=./test-e2e/per-test-file-teardown.js --test --test-global-setup=test-e2e/global-setup.js --test-timeout=60000 --test-concurrency=1
 
 workflows:
   version: 2
