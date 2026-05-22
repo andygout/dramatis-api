@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install
-          command: npm install
+          command: npm clean-install
       - persist_to_workspace:
           root: .
           paths:
