@@ -1,5 +1,3 @@
-import directly from 'directly';
-
 import { neo4jQuery } from './query.js';
 import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants.js';
 
@@ -50,9 +48,9 @@ const createIndexes = async () => {
 			return;
 		}
 
-		const labelIndexFunctions = labelsToIndex.map((label) => () => createIndex(label));
-
-		await directly(1, labelIndexFunctions);
+		for (const label of labelsToIndex) {
+			await createIndex(label);
+		}
 
 		console.log('Neo4j database: All indexes created'); // eslint-disable-line no-console
 	} catch (error) {

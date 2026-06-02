@@ -1,5 +1,3 @@
-import directly from 'directly';
-
 import { neo4jQuery } from './query.js';
 import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants.js';
 
@@ -105,11 +103,9 @@ const createFullTextIndexes = async () => {
 			return;
 		}
 
-		const fullTextIndexFunctions = fullTextIndexesToCreate.map(
-			(fullTextIndexName) => () => createFullTextIndex(fullTextIndexName)
-		);
-
-		await directly(1, fullTextIndexFunctions);
+		for (const fullTextIndexName of fullTextIndexesToCreate) {
+			await createFullTextIndex(fullTextIndexName);
+		}
 
 		console.log('Neo4j database: All full-text indexes created'); // eslint-disable-line no-console
 	} catch (error) {

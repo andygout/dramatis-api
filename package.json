@@ -48,7 +48,6 @@
     "npm": "11.14.1"
   },
   "dependencies": {
-    "directly": "2.0.6",
     "dotenv": "17.4.2",
     "express": "5.2.1",
     "morgan": "1.10.1",
