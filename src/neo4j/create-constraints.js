@@ -1,5 +1,3 @@
-import directly from 'directly';
-
 import { neo4jQuery } from './query.js';
 import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants.js';
 
@@ -50,9 +48,9 @@ const createConstraints = async () => {
 			return;
 		}
 
-		const labelConstraintFunctions = labelsToConstrain.map((label) => () => createConstraint(label));
-
-		await directly(1, labelConstraintFunctions);
+		for (const label of labelsToConstrain) {
+			await createConstraint(label);
+		}
 
 		console.log('Neo4j database: All constraints created'); // eslint-disable-line no-console
 	} catch (error) {

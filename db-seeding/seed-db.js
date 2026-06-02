@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url); // eslint-disable-line no-underscore-dangle
 const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore-dangle
 
-import directly from 'directly';
 import jsonlint from 'jsonlint';
 
 const BASE_URL = 'http://localhost:3000';
@@ -62,15 +61,13 @@ async function seedInstances(pluralisedModel) {
 		`🟢 Seeding Neo4j database: ${modelEmoji} Commenced sowing ${seedFilenames.length} ${pluralisedModel} seeds`
 	);
 
-	const createInstanceFunctions = seedFilenames.map((filename) => () => {
+	for (const filename of seedFilenames) {
 		const filenamePathSlug = `${directoryName}/${filename}`;
 
-		const modelEmoji = PLURALISED_MODEL_TO_EMOJI_MAP[pluralisedModel];
+		let instance;
 
 		try {
 			const rawData = fs.readFileSync(`${directoryPath}/${filename}`);
-
-			let instance;
 
 			try {
 				// Parse with jsonlint rather than JSON.parse() because
@@ -82,18 +79,16 @@ async function seedInstances(pluralisedModel) {
 				// eslint-disable-next-line no-console
 				console.log(parsingError);
 
-				return Promise.resolve();
+				continue;
 			}
-
-			const url = `${BASE_URL}/${modelUrlRoute}`;
-
-			return performFetch(url, instance, modelEmoji, filenamePathSlug);
 		} catch (error) {
 			throw new Error(`${filenamePathSlug}: ${error.message}`, { cause: error });
 		}
-	});
 
-	await directly(1, createInstanceFunctions);
+		const url = `${BASE_URL}/${modelUrlRoute}`;
+
+		await performFetch(url, instance, modelEmoji, filenamePathSlug);
+	}
 
 	return;
 }
