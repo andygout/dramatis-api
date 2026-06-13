@@ -12,6 +12,7 @@ import {
 	productions as productionsController,
 	search as searchController,
 	seasons as seasonsController,
+	times as timesController,
 	venues as venuesController
 } from './controllers/index.js';
 
@@ -98,6 +99,14 @@ router.put('/seasons/:uuid', seasonsController.updateRoute);
 router.delete('/seasons/:uuid', seasonsController.deleteRoute);
 router.get('/seasons/:uuid', seasonsController.showRoute);
 router.get('/seasons', seasonsController.listRoute);
+
+router.get('/times/new', timesController.newRoute);
+router.post('/times', timesController.createRoute);
+router.get('/times/:uuid/edit', timesController.editRoute);
+router.put('/times/:uuid', timesController.updateRoute);
+router.delete('/times/:uuid', timesController.deleteRoute);
+router.get('/times/:uuid', timesController.showRoute);
+router.get('/times', timesController.listRoute);
 
 router.get('/venues/new', venuesController.newRoute);
 router.post('/venues', venuesController.createRoute);

@@ -9,6 +9,7 @@ import * as people from './people.js';
 import * as productions from './productions.js';
 import search from './search.js';
 import * as seasons from './seasons.js';
+import * as times from './times.js';
 import * as venues from './venues.js';
 
 export {
@@ -23,5 +24,6 @@ export {
 	productions,
 	search,
 	seasons,
+	times,
 	venues
 };

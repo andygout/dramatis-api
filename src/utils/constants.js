@@ -17,6 +17,7 @@ const PRODUCTION_IDENTIFIER = 'PRODUCTION_IDENTIFIER';
 const REVIEW = 'REVIEW';
 const ROLE = 'ROLE';
 const SEASON = 'SEASON';
+const TIME = 'TIME';
 const VENUE = 'VENUE';
 const WRITING_CREDIT = 'WRITING_CREDIT';
 
@@ -53,6 +54,7 @@ const MODELS = {
 	[REVIEW]: REVIEW,
 	[ROLE]: ROLE,
 	[SEASON]: SEASON,
+	[TIME]: TIME,
 	[VENUE]: VENUE,
 	[WRITING_CREDIT]: WRITING_CREDIT
 };
@@ -68,6 +70,7 @@ const MODEL_TO_NODE_LABEL_MAP = {
 	[PERSON]: 'Person',
 	[PRODUCTION]: 'Production',
 	[SEASON]: 'Season',
+	[TIME]: 'Time',
 	[VENUE]: 'Venue'
 };
 
