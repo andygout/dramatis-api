@@ -40,6 +40,7 @@ import {
 	getDeleteQuery as getSharedDeleteQuery,
 	getListQuery as getSharedListQuery
 } from './shared/index.js';
+import { getShowQueries as getTimeShowQueries } from './time/index.js';
 import {
 	getAwardContextualDuplicateRecordCheckQuery,
 	getDuplicateRecordCheckQuery,
@@ -94,6 +95,7 @@ const getShowQueries = {
 	[MODELS.PERSON]: getPersonShowQueries,
 	[MODELS.PRODUCTION]: getProductionShowQueries,
 	[MODELS.SEASON]: getSeasonShowQueries,
+	[MODELS.TIME]: getTimeShowQueries,
 	[MODELS.VENUE]: getVenueShowQueries
 };
 
