@@ -18,6 +18,7 @@ import NominatedProductionIdentifier from './NominatedProductionIdentifier.js';
 import Nomination from './Nomination.js';
 import OriginalVersionMaterial from './OriginalVersionMaterial.js';
 import Person from './Person.js';
+import Place from './Place.js';
 import ProducerCredit from './ProducerCredit.js';
 import Production from './Production.js';
 import ProductionIdentifier from './ProductionIdentifier.js';
@@ -54,6 +55,7 @@ export {
 	Nomination,
 	OriginalVersionMaterial,
 	Person,
+	Place,
 	ProducerCredit,
 	Production,
 	ProductionIdentifier,

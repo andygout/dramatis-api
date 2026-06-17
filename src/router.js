@@ -9,6 +9,7 @@ import {
 	festivalSerieses as festivalsSeriesesController,
 	materials as materialsController,
 	people as peopleController,
+	places as placesController,
 	productions as productionsController,
 	search as searchController,
 	seasons as seasonsController,
@@ -83,6 +84,14 @@ router.put('/people/:uuid', peopleController.updateRoute);
 router.delete('/people/:uuid', peopleController.deleteRoute);
 router.get('/people/:uuid', peopleController.showRoute);
 router.get('/people', peopleController.listRoute);
+
+router.get('/places/new', placesController.newRoute);
+router.post('/places', placesController.createRoute);
+router.get('/places/:uuid/edit', placesController.editRoute);
+router.put('/places/:uuid', placesController.updateRoute);
+router.delete('/places/:uuid', placesController.deleteRoute);
+router.get('/places/:uuid', placesController.showRoute);
+router.get('/places', placesController.listRoute);
 
 router.get('/productions/new', productionsController.newRoute);
 router.post('/productions', productionsController.createRoute);
