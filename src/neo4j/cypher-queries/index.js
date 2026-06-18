@@ -24,6 +24,7 @@ import {
 	getListQuery as getMaterialListQuery
 } from './material/index.js';
 import { getShowQueries as getPersonShowQueries } from './person/index.js';
+import { getShowQueries as getPlaceShowQueries } from './place/index.js';
 import {
 	getCreateQuery as getProductionCreateQuery,
 	getEditQuery as getProductionEditQuery,
@@ -93,6 +94,7 @@ const getShowQueries = {
 	[MODELS.FESTIVAL_SERIES]: getFestivalSeriesShowQueries,
 	[MODELS.MATERIAL]: getMaterialShowQueries,
 	[MODELS.PERSON]: getPersonShowQueries,
+	[MODELS.PLACE]: getPlaceShowQueries,
 	[MODELS.PRODUCTION]: getProductionShowQueries,
 	[MODELS.SEASON]: getSeasonShowQueries,
 	[MODELS.TIME]: getTimeShowQueries,
