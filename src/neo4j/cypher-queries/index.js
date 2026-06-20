@@ -16,6 +16,7 @@ import {
 	getListQuery as getFestivalListQuery
 } from './festival/index.js';
 import { getShowQueries as getFestivalSeriesShowQueries } from './festival-series/index.js';
+import { getShowQueries as getLocaleShowQueries } from './locale/index.js';
 import {
 	getCreateQuery as getMaterialCreateQuery,
 	getEditQuery as getMaterialEditQuery,
@@ -92,6 +93,7 @@ const getShowQueries = {
 	[MODELS.COMPANY]: getCompanyShowQueries,
 	[MODELS.FESTIVAL]: getFestivalShowQueries,
 	[MODELS.FESTIVAL_SERIES]: getFestivalSeriesShowQueries,
+	[MODELS.LOCALE]: getLocaleShowQueries,
 	[MODELS.MATERIAL]: getMaterialShowQueries,
 	[MODELS.PERSON]: getPersonShowQueries,
 	[MODELS.PLACE]: getPlaceShowQueries,

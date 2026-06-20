@@ -12,6 +12,7 @@ import CrewCredit from './CrewCredit.js';
 import Festival from './Festival.js';
 import FestivalBase from './FestivalBase.js';
 import FestivalSeries from './FestivalSeries.js';
+import Locale from './Locale.js';
 import Material from './Material.js';
 import MaterialBase from './MaterialBase.js';
 import NominatedProductionIdentifier from './NominatedProductionIdentifier.js';
@@ -49,6 +50,7 @@ export {
 	Festival,
 	FestivalBase,
 	FestivalSeries,
+	Locale,
 	Material,
 	MaterialBase,
 	NominatedProductionIdentifier,

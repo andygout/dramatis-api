@@ -4,6 +4,7 @@ import * as characters from './characters.js';
 import * as companies from './companies.js';
 import * as festivalSerieses from './festival-serieses.js';
 import * as festivals from './festivals.js';
+import * as locales from './locales.js';
 import * as materials from './materials.js';
 import * as people from './people.js';
 import * as places from './places.js';
@@ -20,6 +21,7 @@ export {
 	companies,
 	festivals,
 	festivalSerieses,
+	locales,
 	materials,
 	people,
 	places,
