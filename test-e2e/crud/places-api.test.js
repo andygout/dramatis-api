@@ -72,13 +72,13 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			assert.equal(await countNodesWithLabel('Place'), 1);
 
 			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
-				name: '1963'
+				name: 'Belgravia'
 			});
 
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
-				name: '1963',
+				name: 'Belgravia',
 				differentiator: '',
 				errors: {}
 			};
@@ -94,7 +94,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
-				name: '1963',
+				name: 'Belgravia',
 				differentiator: null
 			};
 
@@ -109,7 +109,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 
 			const expectedResponseBody = {
 				model: 'PLACE',
-				name: '1963',
+				name: 'Belgravia',
 				differentiator: '',
 				errors: {}
 			};

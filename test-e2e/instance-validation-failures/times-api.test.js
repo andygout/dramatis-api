@@ -182,7 +182,7 @@ describe('Instance validation failures: Times API', () => {
 			await createNode({
 				label: 'Material',
 				uuid: ARCADIA_MATERIAL_UUID,
-				name: '351'
+				name: 'Arcadia'
 			});
 
 			await createRelationship({
