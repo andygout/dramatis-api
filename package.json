@@ -4,7 +4,8 @@
   "type": "module",
   "description": "Graph database-driven API for site of theatrical productions, materials, and associated data.",
   "author": "https://github.com/andygout",
-  "license": "MS-RSL",
+  "license": "SEE LICENSE IN LICENCE",
+  "private": true,
   "main": "src/server.js",
   "scripts": {
     "format": "prettier \"**/*.{js,jsx,json,css,md,yml}\" --write",
