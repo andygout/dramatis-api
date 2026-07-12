@@ -40,6 +40,12 @@ const getCreateUpdateQuery = (action) => {
 
 			WITH DISTINCT material
 
+			OPTIONAL MATCH (material)-[settingRel:HAS_SETTING]->(:Time|Place|Locale)
+
+			DELETE settingRel
+
+			WITH DISTINCT material
+
 			OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 			DELETE characterRel
@@ -193,6 +199,72 @@ const getCreateUpdateQuery = (action) => {
 
 					CREATE (material)-[:HAS_SUB_MATERIAL { position: subMaterialParam.position }]->(subMaterial)
 				)
+
+		WITH DISTINCT material
+
+		UNWIND (CASE $settings WHEN [] THEN [null] ELSE $settings END) AS settingParam
+
+			OPTIONAL MATCH (existingTime:Time { name: settingParam.time.name })
+				WHERE
+					(settingParam.time.differentiator IS NULL AND existingTime.differentiator IS NULL) OR
+					settingParam.time.differentiator = existingTime.differentiator
+
+			OPTIONAL MATCH (existingPlace:Place { name: settingParam.place.name })
+				WHERE
+					(settingParam.place.differentiator IS NULL AND existingPlace.differentiator IS NULL) OR
+					settingParam.place.differentiator = existingPlace.differentiator
+
+			OPTIONAL MATCH (existingLocale:Locale { name: settingParam.locale.name })
+				WHERE
+					(settingParam.locale.differentiator IS NULL AND existingLocale.differentiator IS NULL) OR
+					settingParam.locale.differentiator = existingLocale.differentiator
+
+			FOREACH (item IN CASE WHEN settingParam IS NULL THEN [] ELSE [1] END |
+				FOREACH (item IN CASE WHEN settingParam.time.name IS NULL THEN [] ELSE [1] END |
+					MERGE (timeSetting:Time {
+						uuid: COALESCE(existingTime.uuid, settingParam.time.uuid),
+						name: settingParam.time.name
+					})
+						ON CREATE SET timeSetting.differentiator = settingParam.time.differentiator
+
+					CREATE (material)-
+						[:HAS_SETTING {
+							position: settingParam.position,
+							placeUuid: COALESCE(existingPlace.uuid, settingParam.place.uuid),
+							localeUuid: COALESCE(existingLocale.uuid, settingParam.locale.uuid)
+						}]->(timeSetting)
+				)
+
+				FOREACH (item IN CASE WHEN settingParam.place.name IS NULL THEN [] ELSE [1] END |
+					MERGE (placeSetting:Place {
+						uuid: COALESCE(existingPlace.uuid, settingParam.place.uuid),
+						name: settingParam.place.name
+					})
+						ON CREATE SET placeSetting.differentiator = settingParam.place.differentiator
+
+					CREATE (material)-
+						[:HAS_SETTING {
+							position: settingParam.position,
+							timeUuid: COALESCE(existingTime.uuid, settingParam.time.uuid),
+							localeUuid: COALESCE(existingLocale.uuid, settingParam.locale.uuid)
+						}]->(placeSetting)
+				)
+
+				FOREACH (item IN CASE WHEN settingParam.locale.name IS NULL THEN [] ELSE [1] END |
+					MERGE (localeSetting:Locale {
+						uuid: COALESCE(existingLocale.uuid, settingParam.locale.uuid),
+						name: settingParam.locale.name
+					})
+						ON CREATE SET localeSetting.differentiator = settingParam.locale.differentiator
+
+					CREATE (material)-
+						[:HAS_SETTING {
+							position: settingParam.position,
+							timeUuid: COALESCE(existingTime.uuid, settingParam.time.uuid),
+							placeUuid: COALESCE(existingPlace.uuid, settingParam.place.uuid)
+						}]->(localeSetting)
+				)
+			)
 
 		WITH DISTINCT material
 

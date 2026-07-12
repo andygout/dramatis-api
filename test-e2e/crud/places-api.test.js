@@ -95,7 +95,8 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
 				name: 'Belgravia',
-				differentiator: null
+				differentiator: null,
+				materials: []
 			};
 
 			assert.equal(response.status, 200);

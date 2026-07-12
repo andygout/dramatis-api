@@ -2,7 +2,7 @@ import { getTrimmedOrEmptyString } from '../lib/strings.js';
 import validateString from '../lib/validate-string.js';
 import { MODELS } from '../utils/constants.js';
 
-const NAME_EXEMPT_MODELS = new Set([MODELS.NOMINATION, MODELS.PRODUCTION_IDENTIFIER, MODELS.REVIEW]);
+const NAME_EXEMPT_MODELS = new Set([MODELS.NOMINATION, MODELS.PRODUCTION_IDENTIFIER, MODELS.REVIEW, MODELS.SETTING]);
 
 export default class Base {
 	constructor(props = {}) {

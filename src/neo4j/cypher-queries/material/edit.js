@@ -45,12 +45,64 @@ export default () => `
 			END
 		) + [{}] AS subMaterials
 
+	OPTIONAL MATCH (material)-[settingRel:HAS_SETTING]->(setting:Time|Place|Locale)
+
+	WITH
+		material,
+		originalVersionMaterial,
+		writingCredits,
+		subMaterials,
+		settingRel.position AS settingPosition,
+		COLLECT(setting) AS settings
+		ORDER BY settingPosition
+
+	WITH
+		material,
+		originalVersionMaterial,
+		writingCredits,
+		subMaterials,
+		settingPosition,
+		HEAD([
+			setting IN settings WHERE 'Time' IN LABELS(setting) |
+				setting { .name, .differentiator }
+		]) AS timeSetting,
+		HEAD([
+			setting IN settings WHERE 'Place' IN LABELS(setting) |
+				setting { .name, .differentiator }
+		]) AS placeSetting,
+		HEAD([
+			setting IN settings WHERE 'Locale' IN LABELS(setting) |
+				setting { .name, .differentiator }
+		]) AS localeSetting
+
+	WITH
+		material,
+		originalVersionMaterial,
+		writingCredits,
+		subMaterials,
+		COLLECT(
+			CASE WHEN settingPosition IS NULL AND timeSetting IS NULL AND placeSetting IS NULL AND localeSetting IS NULL
+				THEN null
+				ELSE {
+					time: COALESCE(timeSetting, {}),
+					place: COALESCE(placeSetting, {}),
+					locale: COALESCE(localeSetting, {})
+				}
+			END
+		) + [{}] AS settings
+
 	OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(character:Character)
 
-	WITH material, originalVersionMaterial, writingCredits, subMaterials, characterRel, character
+	WITH material, originalVersionMaterial, writingCredits, subMaterials, settings, characterRel, character
 		ORDER BY characterRel.groupPosition, characterRel.characterPosition
 
-	WITH material, originalVersionMaterial, writingCredits, subMaterials, characterRel.group AS characterGroupName,
+	WITH
+		material,
+		originalVersionMaterial,
+		writingCredits,
+		subMaterials,
+		settings,
+		characterRel.group AS characterGroupName,
 		COLLECT(
 			CASE WHEN character IS NULL
 				THEN null
@@ -77,6 +129,7 @@ export default () => `
 		} AS originalVersionMaterial,
 		writingCredits,
 		subMaterials,
+		settings,
 		COLLECT(
 			CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 				THEN null

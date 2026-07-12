@@ -679,8 +679,10 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						],
 						surMaterial: null
 					},
+					settings: [],
 					characterGroups: []
 				},
+				settings: [],
 				characterGroups: []
 			};
 
@@ -760,6 +762,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 					surMaterial: null
 				},
 				surMaterial: null,
+				settings: [],
 				characterGroups: []
 			};
 
@@ -847,6 +850,7 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						}
 					},
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				}
 			];
@@ -1009,9 +1013,11 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 									}
 								}
 							},
+							settings: [],
 							characterGroups: []
 						}
 					],
+					settings: [],
 					characterGroups: []
 				}
 			];

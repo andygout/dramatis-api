@@ -95,7 +95,8 @@ describe('CRUD (Create, Read, Update, Delete): Locales API', () => {
 				model: 'LOCALE',
 				uuid: LOCALE_UUID,
 				name: 'Mountainside',
-				differentiator: null
+				differentiator: null,
+				materials: []
 			};
 
 			assert.equal(response.status, 200);

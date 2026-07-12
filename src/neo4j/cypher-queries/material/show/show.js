@@ -198,6 +198,53 @@ export default () => `
 				relatedMaterial { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 			]) AS originalVersionMaterial
 
+		OPTIONAL MATCH (collectionMaterial)-[settingRel:HAS_SETTING]->(setting:Time|Place|Locale)
+
+		WITH
+			material,
+			collectionMaterial,
+			writingCredits,
+			originalVersionMaterial,
+			settingRel.position AS settingPosition,
+			COLLECT(setting) AS settings
+			ORDER BY settingPosition
+
+		WITH
+			material,
+			collectionMaterial,
+			writingCredits,
+			originalVersionMaterial,
+			settingPosition,
+			HEAD([
+				setting IN settings WHERE 'Time' IN LABELS(setting) |
+					setting { model: 'TIME', .uuid, .name }
+			]) AS timeSetting,
+			HEAD([
+				setting IN settings WHERE 'Place' IN LABELS(setting) |
+					setting { model: 'PLACE', .uuid, .name }
+			]) AS placeSetting,
+			HEAD([
+				setting IN settings WHERE 'Locale' IN LABELS(setting) |
+					setting { model: 'LOCALE', .uuid, .name }
+			]) AS localeSetting
+
+		WITH
+			material,
+			collectionMaterial,
+			writingCredits,
+			originalVersionMaterial,
+			COLLECT(
+				CASE WHEN settingPosition IS NULL AND timeSetting IS NULL AND placeSetting IS NULL AND localeSetting IS NULL
+					THEN null
+					ELSE {
+						model: 'SETTING',
+						time: timeSetting,
+						place: placeSetting,
+						locale: localeSetting
+					}
+				END
+			) AS settings
+
 		OPTIONAL MATCH (collectionMaterial)-[characterRel:DEPICTS]->(character:Character)
 
 		WITH
@@ -205,6 +252,7 @@ export default () => `
 			collectionMaterial,
 			writingCredits,
 			originalVersionMaterial,
+			settings,
 			characterRel,
 			character
 			ORDER BY characterRel.groupPosition, characterRel.characterPosition
@@ -214,6 +262,7 @@ export default () => `
 			collectionMaterial,
 			writingCredits,
 			originalVersionMaterial,
+			settings,
 			characterRel.group AS characterGroupName,
 			characterRel.groupPosition AS characterGroupPosition,
 			COLLECT(
@@ -233,6 +282,7 @@ export default () => `
 			collectionMaterial,
 			writingCredits,
 			originalVersionMaterial,
+			settings,
 			COLLECT(
 				CASE SIZE(characters) WHEN 0
 					THEN null
@@ -266,6 +316,7 @@ export default () => `
 			subSubMaterialSurMaterial.uuid AS subSubMaterialSurMaterialUuid,
 			writingCredits,
 			originalVersionMaterial,
+			settings,
 			characterGroups
 			ORDER BY subMaterialRel.position, subSubMaterialRel.position
 
@@ -287,6 +338,7 @@ export default () => `
 					subSubMaterialSurMaterialUuid,
 					writingCredits,
 					originalVersionMaterial,
+					settings,
 					characterGroups
 				}
 			) AS collectionMaterials
@@ -297,6 +349,7 @@ export default () => `
 				collectionMaterial {
 					.writingCredits,
 					.originalVersionMaterial,
+					.settings,
 					.characterGroups
 				}
 			]) AS subjectMaterial,
@@ -322,9 +375,11 @@ export default () => `
 								.year,
 								.writingCredits,
 								.originalVersionMaterial,
+								.settings,
 								.characterGroups
 							}
 					]),
+					.settings,
 					.characterGroups
 				}
 			]) AS surMaterial,
@@ -353,9 +408,11 @@ export default () => `
 								.year,
 								.writingCredits,
 								.originalVersionMaterial,
+								.settings,
 								.characterGroups
 							}
 					],
+					.settings,
 					.characterGroups
 				}
 			] AS subMaterials
@@ -372,5 +429,6 @@ export default () => `
 		subjectMaterial.originalVersionMaterial AS originalVersionMaterial,
 		surMaterial,
 		subMaterials,
+		subjectMaterial.settings AS settings,
 		subjectMaterial.characterGroups AS characterGroups
 `;

@@ -95,7 +95,8 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 				model: 'TIME',
 				uuid: TIME_UUID,
 				name: '1963',
-				differentiator: null
+				differentiator: null,
+				materials: []
 			};
 
 			assert.equal(response.status, 200);

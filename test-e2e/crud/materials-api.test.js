@@ -50,6 +50,30 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -129,6 +153,30 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -193,6 +241,30 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
+					}
+				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
 					}
 				],
 				characterGroups: [
@@ -264,6 +336,30 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -306,6 +402,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				sourcingMaterials: [],
 				surMaterial: null,
 				subMaterials: [],
+				settings: [],
 				characterGroups: [],
 				productions: [],
 				sourcingMaterialProductions: [],
@@ -339,6 +436,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				},
 				writingCredits: [],
 				subMaterials: [],
+				settings: [],
 				characterGroups: []
 			};
 
@@ -361,6 +459,18 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#2_MATERIAL_1_UUID';
 		const JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_3_MATERIAL_UUID =
 			'JOHN_GABRIEL_BORKMAN_SUB_MATERIAL_#3_MATERIAL_1_UUID';
+		const EIGHTEEN_NINETY_FOUR_TIME_UUID = '1894_TIME_1_UUID';
+		const LILLEHAMMER_PLACE_UUID = 'LILLEHAMMER_PLACE_1_UUID';
+		const DRAWING_ROOM_LOCALE_UUID = 'DRAWING_ROOM_LOCALE_1_UUID';
+		const EIGHTEEN_NINETY_FIVE_TIME_UUID = '1895_TIME_1_UUID';
+		const HAMAR_PLACE_UUID = 'HAMAR_PLACE_1_UUID';
+		const UPSTAIRS_ROOM_LOCALE_UUID = 'UPSTAIRS_ROOM_LOCALE_1_UUID';
+		const EIGHTEEN_NINETY_SIX_TIME_UUID = '1896_TIME_1_UUID';
+		const DRAMMEN_PLACE_UUID = 'DRAMMEN_PLACE_1_UUID';
+		const HILLSIDE_LOCALE_UUID = 'HILLSIDE_LOCALE_1_UUID';
+		const EIGHTEEN_NINETY_SEVEN_TIME_UUID = '1897_TIME_1_UUID';
+		const TØNSBERG_PLACE_UUID = 'TØNSBERG_PLACE_1_UUID';
+		const RIVERSIDE_LOCALE_UUID = 'RIVERSIDE_LOCALE_1_UUID';
 		const JOHN_GABRIEL_BORKMAN_CHARACTER_UUID = 'JOHN_GABRIEL_BORKMAN_CHARACTER_1_UUID';
 		const GUNHILD_BORKMAN_CHARACTER_UUID = 'GUNHILD_BORKMAN_CHARACTER_1_UUID';
 		const ERHART_BORKMAN_CHARACTER_UUID = 'ERHART_BORKMAN_CHARACTER_1_UUID';
@@ -372,6 +482,18 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 		const THREE_SISTERS_SUB_MATERIAL_1_MATERIAL_UUID = 'THREE_SISTERS_SUB_MATERIAL_#1_MATERIAL_1_UUID';
 		const THREE_SISTERS_SUB_MATERIAL_2_MATERIAL_UUID = 'THREE_SISTERS_SUB_MATERIAL_#2_MATERIAL_1_UUID';
 		const THREE_SISTERS_SUB_MATERIAL_3_MATERIAL_UUID = 'THREE_SISTERS_SUB_MATERIAL_#3_MATERIAL_1_UUID';
+		const NINETEEN_HUNDRED_TIME_UUID = '1900_TIME_1_UUID';
+		const KALUGA_PLACE_UUID = 'KALUGA_PLACE_1_UUID';
+		const DINING_ROOM_LOCALE_UUID = 'DINING_ROOM_LOCALE_1_UUID';
+		const NINETEEN_HUNDRED_AND_ONE_TIME_UUID = '1901_TIME_1_UUID';
+		const TULA_PLACE_UUID = 'TULA_PLACE_1_UUID';
+		const BEDROOM_LOCALE_UUID = 'BEDROOM_LOCALE_1_UUID';
+		const NINETEEN_HUNDRED_AND_TWO_TIME_UUID = '1902_TIME_1_UUID';
+		const ORYOL_PLACE_UUID = 'ORYOL_PLACE_1_UUID';
+		const GARDEN_LOCALE_UUID = 'GARDEN_LOCALE_1_UUID';
+		const NINETEEN_HUNDRED_AND_THREE_TIME_UUID = '1903_TIME_1_UUID';
+		const KURSK_PLACE_UUID = 'KURSK_PLACE_1_UUID';
+		const BARN_LOCALE_UUID = 'BARN_LOCALE_1_UUID';
 		const OLGA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = 'OLGA_CHARACTER_1_UUID';
 		const MARIA_SERGEYEVNA_KULYGINA_CHARACTER_UUID = 'MARIA_CHARACTER_1_UUID';
 		const IRINA_SERGEYEVNA_PROZOROVA_CHARACTER_UUID = 'IRINA_CHARACTER_1_UUID';
@@ -444,6 +566,68 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						{
 							name: 'John Gabriel Borkman sub-material #3',
 							differentiator: '1'
+						}
+					],
+					settings: [
+						{
+							time: {
+								name: '1894',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Lillehammer',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Drawing room',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1895',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Hamar',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Upstairs room',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1896',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Drammen',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Hillside',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1897',
+								differentiator: '1'
+							}
+						},
+						{
+							place: {
+								name: 'Tønsberg',
+								differentiator: '1'
+							}
+						},
+						{
+							locale: {
+								name: 'Riverside',
+								differentiator: '1'
+							}
 						}
 					],
 					characterGroups: [
@@ -596,6 +780,162 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1894',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Lillehammer',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Drawing room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1895',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Hamar',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Upstairs room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1896',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Drammen',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Hillside',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1897',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Tønsberg',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Riverside',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -738,6 +1078,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						writingCredits: [],
 						originalVersionMaterial: null,
 						subMaterials: [],
+						settings: [],
 						characterGroups: []
 					},
 					{
@@ -750,6 +1091,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						writingCredits: [],
 						originalVersionMaterial: null,
 						subMaterials: [],
+						settings: [],
 						characterGroups: []
 					},
 					{
@@ -762,7 +1104,94 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						writingCredits: [],
 						originalVersionMaterial: null,
 						subMaterials: [],
+						settings: [],
 						characterGroups: []
+					}
+				],
+				settings: [
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: EIGHTEEN_NINETY_FOUR_TIME_UUID,
+							name: '1894'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: LILLEHAMMER_PLACE_UUID,
+							name: 'Lillehammer'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: DRAWING_ROOM_LOCALE_UUID,
+							name: 'Drawing room'
+						}
+					},
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+							name: '1895'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: HAMAR_PLACE_UUID,
+							name: 'Hamar'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: UPSTAIRS_ROOM_LOCALE_UUID,
+							name: 'Upstairs room'
+						}
+					},
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+							name: '1896'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: DRAMMEN_PLACE_UUID,
+							name: 'Drammen'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: HILLSIDE_LOCALE_UUID,
+							name: 'Hillside'
+						}
+					},
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: EIGHTEEN_NINETY_SEVEN_TIME_UUID,
+							name: '1897'
+						},
+						place: null,
+						locale: null
+					},
+					{
+						model: 'SETTING',
+						time: null,
+						place: {
+							model: 'PLACE',
+							uuid: TØNSBERG_PLACE_UUID,
+							name: 'Tønsberg'
+						},
+						locale: null
+					},
+					{
+						model: 'SETTING',
+						time: null,
+						place: null,
+						locale: {
+							model: 'LOCALE',
+							uuid: RIVERSIDE_LOCALE_UUID,
+							name: 'Riverside'
+						}
 					}
 				],
 				characterGroups: [
@@ -929,6 +1358,162 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1894',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Lillehammer',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Drawing room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1895',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Hamar',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Upstairs room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1896',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Drammen',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Hillside',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1897',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Tønsberg',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Riverside',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -1053,6 +1638,68 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						{
 							name: 'John Gabriel Borkman sub-material #3',
 							differentiator: '1'
+						}
+					],
+					settings: [
+						{
+							time: {
+								name: '1894',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Lillehammer',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Drawing room',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1895',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Hamar',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Upstairs room',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1896',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Drammen',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Hillside',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1897',
+								differentiator: '1'
+							}
+						},
+						{
+							place: {
+								name: 'Tønsberg',
+								differentiator: '1'
+							}
+						},
+						{
+							locale: {
+								name: 'Riverside',
+								differentiator: '1'
+							}
 						}
 					],
 					characterGroups: [
@@ -1205,6 +1852,162 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1894',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Lillehammer',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Drawing room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1895',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Hamar',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Upstairs room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1896',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Drammen',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Hillside',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1897',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Tønsberg',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Riverside',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -1330,6 +2133,68 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						{
 							name: 'Three Sisters sub-material #3',
 							differentiator: '1'
+						}
+					],
+					settings: [
+						{
+							time: {
+								name: '1900',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Kaluga',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Dining room',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1901',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Tula',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Bedroom',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1902',
+								differentiator: '1'
+							},
+							place: {
+								name: 'Oryol',
+								differentiator: '1'
+							},
+							locale: {
+								name: 'Garden',
+								differentiator: '1'
+							}
+						},
+						{
+							time: {
+								name: '1903',
+								differentiator: '1'
+							}
+						},
+						{
+							place: {
+								name: 'Kursk',
+								differentiator: '1'
+							}
+						},
+						{
+							locale: {
+								name: 'Barn',
+								differentiator: '1'
+							}
 						}
 					],
 					characterGroups: [
@@ -1484,6 +2349,162 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1900',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Kaluga',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Dining room',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1901',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Tula',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Bedroom',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1902',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Oryol',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Garden',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '1903',
+							differentiator: '1',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: 'Kursk',
+							differentiator: '1',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: 'Barn',
+							differentiator: '1',
+							errors: {}
+						}
+					},
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -1626,6 +2647,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						writingCredits: [],
 						originalVersionMaterial: null,
 						subMaterials: [],
+						settings: [],
 						characterGroups: []
 					},
 					{
@@ -1638,6 +2660,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						writingCredits: [],
 						originalVersionMaterial: null,
 						subMaterials: [],
+						settings: [],
 						characterGroups: []
 					},
 					{
@@ -1650,7 +2673,94 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						writingCredits: [],
 						originalVersionMaterial: null,
 						subMaterials: [],
+						settings: [],
 						characterGroups: []
+					}
+				],
+				settings: [
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: NINETEEN_HUNDRED_TIME_UUID,
+							name: '1900'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: KALUGA_PLACE_UUID,
+							name: 'Kaluga'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: DINING_ROOM_LOCALE_UUID,
+							name: 'Dining room'
+						}
+					},
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: NINETEEN_HUNDRED_AND_ONE_TIME_UUID,
+							name: '1901'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: TULA_PLACE_UUID,
+							name: 'Tula'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: BEDROOM_LOCALE_UUID,
+							name: 'Bedroom'
+						}
+					},
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: NINETEEN_HUNDRED_AND_TWO_TIME_UUID,
+							name: '1902'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: ORYOL_PLACE_UUID,
+							name: 'Oryol'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: GARDEN_LOCALE_UUID,
+							name: 'Garden'
+						}
+					},
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: NINETEEN_HUNDRED_AND_THREE_TIME_UUID,
+							name: '1903'
+						},
+						place: null,
+						locale: null
+					},
+					{
+						model: 'SETTING',
+						time: null,
+						place: {
+							model: 'PLACE',
+							uuid: KURSK_PLACE_UUID,
+							name: 'Kursk'
+						},
+						locale: null
+					},
+					{
+						model: 'SETTING',
+						time: null,
+						place: null,
+						locale: {
+							model: 'LOCALE',
+							uuid: BARN_LOCALE_UUID,
+							name: 'Barn'
+						}
 					}
 				],
 				characterGroups: [
@@ -1738,6 +2848,30 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -1783,6 +2917,7 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				},
 				writingCredits: [],
 				subMaterials: [],
+				settings: [],
 				characterGroups: []
 			};
 

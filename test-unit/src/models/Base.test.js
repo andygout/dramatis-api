@@ -87,6 +87,20 @@ describe('Base model', () => {
 						assert.equal(Object.hasOwn(instance, 'name'), false);
 					});
 				});
+
+				describe('model is Setting', () => {
+					it('does not assign name property', async () => {
+						const Setting = await createSubject('Setting');
+
+						const instance = new Setting({
+							time: { name: '1809' },
+							place: { name: 'Derbyshire' },
+							locale: { name: 'Stately home' }
+						});
+
+						assert.equal(Object.hasOwn(instance, 'name'), false);
+					});
+				});
 			});
 		});
 	});
