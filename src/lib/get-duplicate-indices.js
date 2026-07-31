@@ -82,6 +82,29 @@ const getDuplicateRoleIndices = (arrayOfObjects) => {
 	}, []);
 };
 
+const getDuplicateSettingIndices = (arrayOfObjects) => {
+	return arrayOfObjects.reduce((accumulator, object, index) => {
+		const isDuplicate =
+			Boolean(object.time.name) &&
+			Boolean(object.place.name) &&
+			Boolean(object.locale.name) &&
+			arrayOfObjects.find(
+				(comparisonObject, comparisonIndex) =>
+					index !== comparisonIndex &&
+					object.time.name === comparisonObject.time.name &&
+					object.time.differentiator === comparisonObject.time.differentiator &&
+					object.place.name === comparisonObject.place.name &&
+					object.place.differentiator === comparisonObject.place.differentiator &&
+					object.locale.name === comparisonObject.locale.name &&
+					object.locale.differentiator === comparisonObject.locale.differentiator
+			);
+
+		if (isDuplicate) accumulator.push(index);
+
+		return accumulator;
+	}, []);
+};
+
 const getDuplicateUrlIndices = (arrayOfObjects) => {
 	return getDuplicateIndices(arrayOfObjects, ['url']);
 };
@@ -96,6 +119,7 @@ export {
 	getDuplicateEntityIndices,
 	getDuplicateNameIndices,
 	getDuplicateRoleIndices,
+	getDuplicateSettingIndices,
 	getDuplicateUrlIndices,
 	getDuplicateUuidIndices
 };

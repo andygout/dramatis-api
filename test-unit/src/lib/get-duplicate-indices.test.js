@@ -8,6 +8,7 @@ import {
 	getDuplicateNameIndices,
 	getDuplicateUuidIndices,
 	getDuplicateRoleIndices,
+	getDuplicateSettingIndices,
 	getDuplicateUrlIndices
 } from '../../../src/lib/get-duplicate-indices.js';
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
@@ -247,6 +248,101 @@ describe('Get Duplicate Indices module', () => {
 				]);
 
 				assert.deepEqual(result, [0, 1, 3, 4]);
+			});
+		});
+	});
+
+	describe('getDuplicateSettingIndices function', () => {
+		describe('duplicates do not exist', () => {
+			it('returns an empty array', () => {
+				const result = getDuplicateSettingIndices([
+					{
+						time: { name: 'Foo', differentiator: '1' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: 'Baz', differentiator: '1' }
+					},
+					{
+						time: { name: 'Qux', differentiator: '1' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: 'Baz', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '1' },
+						place: { name: 'Quux', differentiator: '1' },
+						locale: { name: 'Baz', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '1' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: 'Corge', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '1' },
+						place: { name: '', differentiator: '' },
+						locale: { name: '', differentiator: '' }
+					},
+					{
+						time: { name: '', differentiator: '' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: '', differentiator: '' }
+					},
+					{
+						time: { name: '', differentiator: '' },
+						place: { name: '', differentiator: '' },
+						locale: { name: 'Baz', differentiator: '1' }
+					}
+				]);
+
+				assert.deepEqual(result, []);
+			});
+		});
+
+		describe('duplicates exist', () => {
+			it('returns an array of indices of duplicate items, ignoring objects where the time, place, and locale all have empty string name values', () => {
+				const result = getDuplicateSettingIndices([
+					{
+						time: { name: 'Foo', differentiator: '' },
+						place: { name: 'Bar', differentiator: '' },
+						locale: { name: 'Baz', differentiator: '' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '1' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: 'Baz', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '2' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: 'Baz', differentiator: '1' }
+					},
+					{
+						time: { name: '', differentiator: '1' },
+						place: { name: '', differentiator: '1' },
+						locale: { name: '', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '1' },
+						place: { name: 'Bar', differentiator: '1' },
+						locale: { name: 'Baz', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '' },
+						place: { name: 'Bar', differentiator: '' },
+						locale: { name: 'Baz', differentiator: '' }
+					},
+					{
+						time: { name: '', differentiator: '1' },
+						place: { name: '', differentiator: '1' },
+						locale: { name: '', differentiator: '1' }
+					},
+					{
+						time: { name: 'Foo', differentiator: '' },
+						place: { name: 'Foo', differentiator: '' },
+						locale: { name: 'Baz', differentiator: '' }
+					}
+				]);
+
+				assert.deepEqual(result, [0, 1, 4, 5]);
 			});
 		});
 	});

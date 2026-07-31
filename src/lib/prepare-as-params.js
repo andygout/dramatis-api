@@ -10,6 +10,7 @@ const NOMINATIONS = 'nominations';
 const PRODUCER_CREDITS = 'producerCredits';
 const PRODUCTIONS = 'productions';
 const REVIEWS = 'reviews';
+const SETTINGS = 'settings';
 const SUB_PRODUCTIONS = 'subProductions';
 const WRITING_CREDITS = 'writingCredits';
 
@@ -19,6 +20,7 @@ const EMPTY_NAME_EXCEPTION_KEYS = new Set([
 	PRODUCER_CREDITS,
 	PRODUCTIONS, // Excepted from having empty name only in the context of being an association of another subject.
 	REVIEWS,
+	SETTINGS,
 	SUB_PRODUCTIONS,
 	WRITING_CREDITS
 ]);

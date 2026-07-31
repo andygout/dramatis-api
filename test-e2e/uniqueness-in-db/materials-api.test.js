@@ -68,6 +68,30 @@ describe('Uniqueness in database: Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -119,6 +143,7 @@ describe('Uniqueness in database: Materials API', () => {
 				},
 				writingCredits: [],
 				subMaterials: [],
+				settings: [],
 				characterGroups: []
 			};
 
@@ -174,6 +199,30 @@ describe('Uniqueness in database: Materials API', () => {
 						errors: {}
 					}
 				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
+					}
+				],
 				characterGroups: [
 					{
 						model: 'CHARACTER_GROUP',
@@ -227,6 +276,7 @@ describe('Uniqueness in database: Materials API', () => {
 				},
 				writingCredits: [],
 				subMaterials: [],
+				settings: [],
 				characterGroups: []
 			};
 
@@ -280,6 +330,30 @@ describe('Uniqueness in database: Materials API', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
+					}
+				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
 					}
 				],
 				characterGroups: [
@@ -350,6 +424,30 @@ describe('Uniqueness in database: Materials API', () => {
 						name: '',
 						differentiator: '',
 						errors: {}
+					}
+				],
+				settings: [
+					{
+						model: 'SETTING',
+						errors: {},
+						time: {
+							model: 'TIME',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						place: {
+							model: 'PLACE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						},
+						locale: {
+							model: 'LOCALE',
+							name: '',
+							differentiator: '',
+							errors: {}
+						}
 					}
 				],
 				characterGroups: [
@@ -960,6 +1058,348 @@ describe('Uniqueness in database: Materials API', () => {
 			assert.equal(response.status, 200);
 			assert.deepEqual(response.body.subMaterials[0], expectedMaterialVoyage2);
 			assert.equal(await countNodesWithLabel('Material'), 3);
+		});
+	});
+
+	describe('Material time setting (time) uniqueness in database', () => {
+		const ARCADIA_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedTimeEighteenZeroNine1 = {
+			model: 'TIME',
+			name: '1809',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedTimeEighteenZeroNine2 = {
+			model: 'TIME',
+			name: '1809',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Material',
+				uuid: ARCADIA_MATERIAL_UUID,
+				name: 'Arcadia'
+			});
+		});
+
+		it('updates material and creates time setting (time) that does not have a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Time'), 0);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							time: {
+								name: '1809'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].time, expectedTimeEighteenZeroNine1);
+			assert.equal(await countNodesWithLabel('Time'), 1);
+		});
+
+		it('updates material and creates time setting (time) that has same name as existing time setting but uses a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Time'), 1);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							time: {
+								name: '1809',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].time, expectedTimeEighteenZeroNine2);
+			assert.equal(await countNodesWithLabel('Time'), 2);
+		});
+
+		it('updates material and uses existing time setting (time) that does not have a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Time'), 2);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							time: {
+								name: '1809'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].time, expectedTimeEighteenZeroNine1);
+			assert.equal(await countNodesWithLabel('Time'), 2);
+		});
+
+		it('updates material and uses existing time setting (time) that has a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Time'), 2);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							time: {
+								name: '1809',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].time, expectedTimeEighteenZeroNine2);
+			assert.equal(await countNodesWithLabel('Time'), 2);
+		});
+	});
+
+	describe('Material place setting (place) uniqueness in database', () => {
+		const ARCADIA_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedPlaceDerbyshire1 = {
+			model: 'PLACE',
+			name: 'Derbyshire',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedPlaceDerbyshire2 = {
+			model: 'PLACE',
+			name: 'Derbyshire',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Material',
+				uuid: ARCADIA_MATERIAL_UUID,
+				name: 'Arcadia'
+			});
+		});
+
+		it('updates material and creates place setting (place) that does not have a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Place'), 0);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							place: {
+								name: 'Derbyshire'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].place, expectedPlaceDerbyshire1);
+			assert.equal(await countNodesWithLabel('Place'), 1);
+		});
+
+		it('updates material and creates place setting (place) that has same name as existing place setting but uses a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Place'), 1);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							place: {
+								name: 'Derbyshire',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].place, expectedPlaceDerbyshire2);
+			assert.equal(await countNodesWithLabel('Place'), 2);
+		});
+
+		it('updates material and uses existing place setting (place) that does not have a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Place'), 2);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							place: {
+								name: 'Derbyshire'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].place, expectedPlaceDerbyshire1);
+			assert.equal(await countNodesWithLabel('Place'), 2);
+		});
+
+		it('updates material and uses existing place setting (place) that has a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Place'), 2);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							place: {
+								name: 'Derbyshire',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].place, expectedPlaceDerbyshire2);
+			assert.equal(await countNodesWithLabel('Place'), 2);
+		});
+	});
+
+	describe('Material locale setting (locale) uniqueness in database', () => {
+		const ARCADIA_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+		const expectedLocaleStatelyHome1 = {
+			model: 'LOCALE',
+			name: 'Stately home',
+			differentiator: '',
+			errors: {}
+		};
+
+		const expectedLocaleStatelyHome2 = {
+			model: 'LOCALE',
+			name: 'Stately home',
+			differentiator: '1',
+			errors: {}
+		};
+
+		before(async () => {
+			await purgeDatabase();
+
+			await createNode({
+				label: 'Material',
+				uuid: ARCADIA_MATERIAL_UUID,
+				name: 'Arcadia'
+			});
+		});
+
+		it('updates material and creates locale setting (locale) that does not have a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Locale'), 0);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							locale: {
+								name: 'Stately home'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].locale, expectedLocaleStatelyHome1);
+			assert.equal(await countNodesWithLabel('Locale'), 1);
+		});
+
+		it('updates material and creates locale setting (locale) that has same name as existing locale setting but uses a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Locale'), 1);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							locale: {
+								name: 'Stately home',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].locale, expectedLocaleStatelyHome2);
+			assert.equal(await countNodesWithLabel('Locale'), 2);
+		});
+
+		it('updates material and uses existing locale setting (locale) that does not have a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Locale'), 2);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							locale: {
+								name: 'Stately home'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].locale, expectedLocaleStatelyHome1);
+			assert.equal(await countNodesWithLabel('Locale'), 2);
+		});
+
+		it('updates material and uses existing locale setting (locale) that has a differentiator', async () => {
+			assert.equal(await countNodesWithLabel('Locale'), 2);
+
+			const response = await request(app)
+				.put(`/materials/${ARCADIA_MATERIAL_UUID}`)
+				.send({
+					name: 'Arcadia',
+					settings: [
+						{
+							locale: {
+								name: 'Stately home',
+								differentiator: '1'
+							}
+						}
+					]
+				});
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body.settings[0].locale, expectedLocaleStatelyHome2);
+			assert.equal(await countNodesWithLabel('Locale'), 2);
 		});
 	});
 

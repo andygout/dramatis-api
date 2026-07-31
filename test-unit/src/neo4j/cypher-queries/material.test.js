@@ -40,6 +40,7 @@ describe('Cypher Queries Material module', () => {
 					} AS originalVersionMaterial,
 					writingCredits,
 					subMaterials,
+					settings,
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null
@@ -87,6 +88,12 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
+				OPTIONAL MATCH (material)-[settingRel:HAS_SETTING]->(:Time|Place|Locale)
+
+				DELETE settingRel
+
+				WITH DISTINCT material
+
 				OPTIONAL MATCH (material)-[characterRel:DEPICTS]->(:Character)
 
 				DELETE characterRel
@@ -119,6 +126,7 @@ describe('Cypher Queries Material module', () => {
 					} AS originalVersionMaterial,
 					writingCredits,
 					subMaterials,
+					settings,
 					COLLECT(
 						CASE WHEN characterGroupName IS NULL AND SIZE(characters) = 1
 							THEN null

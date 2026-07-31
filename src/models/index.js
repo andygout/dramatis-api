@@ -26,6 +26,7 @@ import ProductionIdentifier from './ProductionIdentifier.js';
 import Review from './Review.js';
 import Role from './Role.js';
 import Season from './Season.js';
+import Setting from './Setting.js';
 import SourceMaterial from './SourceMaterial.js';
 import SubMaterial from './SubMaterial.js';
 import SubProductionIdentifier from './SubProductionIdentifier.js';
@@ -64,6 +65,7 @@ export {
 	Review,
 	Role,
 	Season,
+	Setting,
 	SourceMaterial,
 	SubMaterial,
 	SubProductionIdentifier,

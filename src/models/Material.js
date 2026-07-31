@@ -1,6 +1,10 @@
-import { CharacterGroup, OriginalVersionMaterial, SubMaterial, WritingCredit } from './index.js';
+import { CharacterGroup, OriginalVersionMaterial, Setting, SubMaterial, WritingCredit } from './index.js';
 import MaterialBase from './MaterialBase.js';
-import { getDuplicateBaseInstanceIndices, getDuplicateNameIndices } from '../lib/get-duplicate-indices.js';
+import {
+	getDuplicateBaseInstanceIndices,
+	getDuplicateNameIndices,
+	getDuplicateSettingIndices
+} from '../lib/get-duplicate-indices.js';
 import isValidYear from '../lib/is-valid-year.js';
 import { getTrimmedOrEmptyString } from '../lib/strings.js';
 
@@ -8,8 +12,16 @@ export default class Material extends MaterialBase {
 	constructor(props = {}) {
 		super(props);
 
-		const { subtitle, format, year, originalVersionMaterial, writingCredits, subMaterials, characterGroups } =
-			props;
+		const {
+			subtitle,
+			format,
+			year,
+			originalVersionMaterial,
+			writingCredits,
+			subMaterials,
+			settings,
+			characterGroups
+		} = props;
 
 		this.subtitle = getTrimmedOrEmptyString(subtitle);
 
@@ -24,6 +36,8 @@ export default class Material extends MaterialBase {
 			: [];
 
 		this.subMaterials = subMaterials ? subMaterials.map((subMaterial) => new SubMaterial(subMaterial)) : [];
+
+		this.settings = settings ? settings.map((setting) => new Setting(setting)) : [];
 
 		this.characterGroups = characterGroups
 			? characterGroups.map((characterGroup) => new CharacterGroup(characterGroup))
@@ -70,6 +84,12 @@ export default class Material extends MaterialBase {
 
 			subMaterial.validateUniquenessInGroup({ isDuplicate: duplicateSubMaterialIndices.includes(index) });
 		});
+
+		const duplicateSettingIndices = getDuplicateSettingIndices(this.settings);
+
+		this.settings.forEach((setting, index) =>
+			setting.runInputValidations({ isDuplicate: duplicateSettingIndices.includes(index) })
+		);
 
 		this.characterGroups.forEach((characterGroup) => characterGroup.runInputValidations());
 	}

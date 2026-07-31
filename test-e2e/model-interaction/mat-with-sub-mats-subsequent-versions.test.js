@@ -665,6 +665,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					surMaterial: null
 				},
 				surMaterial: null,
+				settings: [],
 				characterGroups: []
 			};
 
@@ -750,6 +751,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						}
 					},
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				}
 			];

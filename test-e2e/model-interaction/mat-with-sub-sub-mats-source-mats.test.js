@@ -633,8 +633,10 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						}
 					],
 					originalVersionMaterial: null,
+					settings: [],
 					characterGroups: []
 				},
+				settings: [],
 				characterGroups: []
 			};
 
@@ -689,6 +691,7 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				],
 				originalVersionMaterial: null,
 				surMaterial: null,
+				settings: [],
 				characterGroups: []
 			};
 

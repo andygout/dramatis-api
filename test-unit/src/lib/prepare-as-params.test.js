@@ -507,7 +507,8 @@ describe('Prepare As Params module', () => {
 			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
 				const instance = {
 					productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-					subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+					subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }],
+					settings: [{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }]
 				};
 
 				const result = prepareAsParams(instance);
@@ -520,6 +521,9 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.subProductions.length, 1);
 				assert.equal(Object.hasOwn(result.subProductions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.subProductions[0], 'position'), false);
+				assert.equal(result.settings.length, 1);
+				assert.equal(Object.hasOwn(result.settings[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.settings[0], 'position'), false);
 			});
 		});
 
@@ -929,7 +933,10 @@ describe('Prepare As Params module', () => {
 				const instance = {
 					foo: {
 						productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }],
+						settings: [
+							{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
+						]
 					}
 				};
 
@@ -943,6 +950,9 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.foo.subProductions.length, 1);
 				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'position'), false);
+				assert.equal(result.foo.settings.length, 1);
+				assert.equal(Object.hasOwn(result.foo.settings[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foo.settings[0], 'position'), false);
 			});
 		});
 
@@ -1387,7 +1397,10 @@ describe('Prepare As Params module', () => {
 						{
 							name: 'Foobar',
 							productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }],
+							settings: [
+								{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
+							]
 						}
 					]
 				};
@@ -1402,6 +1415,9 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.foos[0].subProductions.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'position'), false);
+				assert.equal(result.foos[0].settings.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].settings[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foos[0].settings[0], 'position'), false);
 			});
 		});
 

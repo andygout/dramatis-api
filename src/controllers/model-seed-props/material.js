@@ -5,6 +5,13 @@ export default {
 		}
 	],
 	subMaterials: [{}],
+	settings: [
+		{
+			time: {},
+			place: {},
+			locale: {}
+		}
+	],
 	characterGroups: [
 		{
 			characters: [{}]

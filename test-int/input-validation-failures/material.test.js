@@ -75,6 +75,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -109,6 +110,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -143,6 +145,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -177,6 +180,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -211,6 +215,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -245,6 +250,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -284,6 +290,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -324,6 +331,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -364,6 +372,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -412,6 +421,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -471,6 +481,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -530,6 +541,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -590,6 +602,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -650,6 +663,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -711,6 +725,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -771,6 +786,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -832,6 +848,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -923,6 +940,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -986,6 +1004,7 @@ describe('Input validation failures: Material instance', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -1034,6 +1053,7 @@ describe('Input validation failures: Material instance', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -1083,6 +1103,7 @@ describe('Input validation failures: Material instance', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -1132,6 +1153,7 @@ describe('Input validation failures: Material instance', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -1213,6 +1235,645 @@ describe('Input validation failures: Material instance', () => {
 							errors: {}
 						}
 					],
+					settings: [],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('setting time name value exceeds maximum limit', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							time: {
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: ABOVE_MAX_LENGTH_STRING,
+								differentiator: '',
+								errors: {
+									name: ['Value is too long']
+								}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('setting time differentiator value exceeds maximum limit', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							time: {
+								differentiator: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: ABOVE_MAX_LENGTH_STRING,
+								errors: {
+									differentiator: ['Value is too long']
+								}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('setting place name value exceeds maximum limit', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							place: {
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: ABOVE_MAX_LENGTH_STRING,
+								differentiator: '',
+								errors: {
+									name: ['Value is too long']
+								}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('setting place differentiator value exceeds maximum limit', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							place: {
+								differentiator: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: ABOVE_MAX_LENGTH_STRING,
+								errors: {
+									differentiator: ['Value is too long']
+								}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('setting locale name value exceeds maximum limit', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							locale: {
+								name: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: ABOVE_MAX_LENGTH_STRING,
+								differentiator: '',
+								errors: {
+									name: ['Value is too long']
+								}
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('setting locale differentiator value exceeds maximum limit', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							locale: {
+								differentiator: ABOVE_MAX_LENGTH_STRING
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: ABOVE_MAX_LENGTH_STRING,
+								errors: {
+									differentiator: ['Value is too long']
+								}
+							}
+						}
+					],
+					characterGroups: []
+				};
+
+				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
+			});
+		}
+	});
+
+	describe('duplicate settings', () => {
+		for (const method of methods) {
+			it(`assigns appropriate error (${method} method)`, async () => {
+				const instance = createInstance({
+					name: 'Rosmersholm',
+					settings: [
+						{
+							time: {
+								name: '1885',
+								differentiator: ''
+							},
+							place: {
+								name: 'Rosmersholm',
+								differentiator: ''
+							},
+							locale: {
+								name: 'Country manor',
+								differentiator: ''
+							}
+						},
+						{
+							time: {
+								name: '1886',
+								differentiator: ''
+							},
+							place: {
+								name: 'Fredrikstad',
+								differentiator: ''
+							},
+							locale: {
+								name: 'Mill-race',
+								differentiator: ''
+							}
+						},
+						{
+							time: {
+								name: '1885',
+								differentiator: ''
+							},
+							place: {
+								name: 'Rosmersholm',
+								differentiator: ''
+							},
+							locale: {
+								name: 'Country manor',
+								differentiator: ''
+							}
+						},
+						{
+							time: {
+								name: '1885',
+								differentiator: ''
+							}
+						},
+						{
+							place: {
+								name: 'Rosmersholm',
+								differentiator: ''
+							}
+						},
+						{
+							locale: {
+								name: 'Country manor',
+								differentiator: ''
+							}
+						}
+					]
+				});
+
+				const result = await instance[method]();
+
+				const expectedResponseBody = {
+					uuid: undefined,
+					name: 'Rosmersholm',
+					differentiator: '',
+					subtitle: '',
+					format: '',
+					year: '',
+					hasErrors: true,
+					errors: {},
+					originalVersionMaterial: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
+					},
+					writingCredits: [],
+					subMaterials: [],
+					settings: [
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '1885',
+								differentiator: '',
+								errors: {
+									name: ['This item has been duplicated within the group'],
+									differentiator: ['This item has been duplicated within the group']
+								}
+							},
+							place: {
+								uuid: undefined,
+								name: 'Rosmersholm',
+								differentiator: '',
+								errors: {
+									name: ['This item has been duplicated within the group'],
+									differentiator: ['This item has been duplicated within the group']
+								}
+							},
+							locale: {
+								uuid: undefined,
+								name: 'Country manor',
+								differentiator: '',
+								errors: {
+									name: ['This item has been duplicated within the group'],
+									differentiator: ['This item has been duplicated within the group']
+								}
+							}
+						},
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '1886',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: 'Fredrikstad',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: 'Mill-race',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '1885',
+								differentiator: '',
+								errors: {
+									name: ['This item has been duplicated within the group'],
+									differentiator: ['This item has been duplicated within the group']
+								}
+							},
+							place: {
+								uuid: undefined,
+								name: 'Rosmersholm',
+								differentiator: '',
+								errors: {
+									name: ['This item has been duplicated within the group'],
+									differentiator: ['This item has been duplicated within the group']
+								}
+							},
+							locale: {
+								uuid: undefined,
+								name: 'Country manor',
+								differentiator: '',
+								errors: {
+									name: ['This item has been duplicated within the group'],
+									differentiator: ['This item has been duplicated within the group']
+								}
+							}
+						},
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '1885',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: 'Rosmersholm',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							}
+						},
+						{
+							errors: {},
+							time: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							place: {
+								uuid: undefined,
+								name: '',
+								differentiator: '',
+								errors: {}
+							},
+							locale: {
+								uuid: undefined,
+								name: 'Country manor',
+								differentiator: '',
+								errors: {}
+							}
+						}
+					],
 					characterGroups: []
 				};
 
@@ -1252,6 +1913,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: ABOVE_MAX_LENGTH_STRING,
@@ -1303,6 +1965,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1364,6 +2027,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1425,6 +2089,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1486,6 +2151,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1547,6 +2213,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: '',
@@ -1620,6 +2287,7 @@ describe('Input validation failures: Material instance', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: [
 						{
 							name: '',

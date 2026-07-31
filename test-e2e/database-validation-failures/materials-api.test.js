@@ -87,6 +87,7 @@ describe('Database validation failures: Materials API', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -191,6 +192,7 @@ describe('Database validation failures: Materials API', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -279,6 +281,7 @@ describe('Database validation failures: Materials API', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -375,6 +378,7 @@ describe('Database validation failures: Materials API', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -488,6 +492,7 @@ describe('Database validation failures: Materials API', () => {
 							}
 						}
 					],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -601,6 +606,7 @@ describe('Database validation failures: Materials API', () => {
 								}
 							}
 						],
+						settings: [],
 						characterGroups: []
 					};
 
@@ -682,6 +688,7 @@ describe('Database validation failures: Materials API', () => {
 					},
 					writingCredits: [],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 
@@ -784,6 +791,7 @@ describe('Database validation failures: Materials API', () => {
 						}
 					],
 					subMaterials: [],
+					settings: [],
 					characterGroups: []
 				};
 

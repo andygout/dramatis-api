@@ -8,6 +8,7 @@ import {
 	CharacterGroup,
 	MaterialBase,
 	OriginalVersionMaterial,
+	Setting,
 	SubMaterial,
 	WritingCredit
 } from '../../../src/models/index.js';
@@ -24,6 +25,10 @@ describe('Material model', () => {
 		return createStubInstance(OriginalVersionMaterial);
 	};
 
+	const SettingStub = function () {
+		return createStubInstance(Setting);
+	};
+
 	const SubMaterialStub = function () {
 		return createStubInstance(SubMaterial);
 	};
@@ -36,7 +41,8 @@ describe('Material model', () => {
 		stubs = {
 			getDuplicateIndicesModule: {
 				getDuplicateBaseInstanceIndices: stub().returns([]),
-				getDuplicateNameIndices: stub().returns([])
+				getDuplicateNameIndices: stub().returns([]),
+				getDuplicateSettingIndices: stub().returns([])
 			},
 			isValidYear: stub().returns(false),
 			stringsModule: {
@@ -45,6 +51,7 @@ describe('Material model', () => {
 			models: {
 				CharacterGroup: CharacterGroupStub,
 				OriginalVersionMaterial: OriginalVersionMaterialStub,
+				Setting: SettingStub,
 				SubMaterial: SubMaterialStub,
 				WritingCredit: WritingCreditStub
 			}
@@ -216,6 +223,40 @@ describe('Material model', () => {
 			});
 		});
 
+		describe('settings property', () => {
+			it('assigns empty array if absent from props', async () => {
+				const instance = new Material({ name: 'Arcadia' });
+
+				assert.deepEqual(instance.settings, []);
+			});
+
+			it('assigns array of settings if included in props, retaining those that are objects without properties', async () => {
+				const instance = new Material({
+					name: '',
+					settings: [
+						{
+							time: {
+								name: '1809'
+							},
+							place: {
+								name: 'Derbyshire'
+							},
+							locale: {
+								name: 'Stately home'
+							}
+						},
+						{},
+						{}
+					]
+				});
+
+				assert.equal(instance.settings.length, 3);
+				assert.ok(instance.settings[0] instanceof Setting);
+				assert.ok(instance.settings[1] instanceof Setting);
+				assert.ok(instance.settings[2] instanceof Setting);
+			});
+		});
+
 		describe('characterGroups property', () => {
 			it('assigns empty array if absent from props', async () => {
 				const instance = new Material({ name: 'The Tragedy of Hamlet' });
@@ -263,6 +304,19 @@ describe('Material model', () => {
 						name: 'The Murder of Gonzago'
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '1300s'
+						},
+						place: {
+							name: 'Elsinore Castle'
+						},
+						locale: {
+							name: 'Castle'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						name: 'Court of Elsinore'
@@ -293,6 +347,8 @@ describe('Material model', () => {
 				instance.subMaterials[0].validateDifferentiator,
 				instance.subMaterials[0].validateNoAssociationWithSelf,
 				instance.subMaterials[0].validateUniquenessInGroup,
+				stubs.getDuplicateIndicesModule.getDuplicateSettingIndices,
+				instance.settings[0].runInputValidations,
 				instance.characterGroups[0].runInputValidations
 			);
 			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
@@ -326,6 +382,11 @@ describe('Material model', () => {
 			sinonAssert.calledOnceWithExactly(instance.subMaterials[0].validateUniquenessInGroup, {
 				isDuplicate: false
 			});
+			sinonAssert.calledOnceWithExactly(
+				stubs.getDuplicateIndicesModule.getDuplicateSettingIndices,
+				instance.settings
+			);
+			sinonAssert.calledOnceWithExactly(instance.settings[0].runInputValidations, { isDuplicate: false });
 			sinonAssert.calledOnceWithExactly(instance.characterGroups[0].runInputValidations);
 		});
 	});
