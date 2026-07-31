@@ -1239,6 +1239,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1274,6 +1294,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1309,6 +1349,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1355,6 +1415,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1390,6 +1470,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1425,6 +1525,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1471,6 +1591,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1506,6 +1646,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -1541,6 +1701,26 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',

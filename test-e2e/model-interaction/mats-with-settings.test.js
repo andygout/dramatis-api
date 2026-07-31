@@ -69,12 +69,22 @@ describe('Materials with settings', () => {
 					{
 						time: {
 							name: '1895'
+						}
+					},
+					{
+						time: {
+							name: '1895'
 						},
 						place: {
 							name: 'Romania'
 						},
 						locale: {
 							name: 'Country estate'
+						}
+					},
+					{
+						place: {
+							name: 'Russia'
 						}
 					},
 					{
@@ -86,6 +96,11 @@ describe('Materials with settings', () => {
 						},
 						locale: {
 							name: 'Hillside'
+						}
+					},
+					{
+						locale: {
+							name: 'Country estate'
 						}
 					}
 				]
@@ -132,12 +147,22 @@ describe('Materials with settings', () => {
 					{
 						time: {
 							name: '1895'
+						}
+					},
+					{
+						time: {
+							name: '1895'
 						},
 						place: {
 							name: 'Romania'
 						},
 						locale: {
 							name: 'Country estate'
+						}
+					},
+					{
+						place: {
+							name: 'Russia'
 						}
 					},
 					{
@@ -149,6 +174,11 @@ describe('Materials with settings', () => {
 						},
 						locale: {
 							name: 'Hillside'
+						}
+					},
+					{
+						locale: {
+							name: 'Country estate'
 						}
 					}
 				]
@@ -183,6 +213,11 @@ describe('Materials with settings', () => {
 					},
 					{
 						time: {
+							name: '1895'
+						}
+					},
+					{
+						time: {
 							name: '1896'
 						},
 						place: {
@@ -204,6 +239,11 @@ describe('Materials with settings', () => {
 						}
 					},
 					{
+						place: {
+							name: 'Russia'
+						}
+					},
+					{
 						time: {
 							name: '1895'
 						},
@@ -212,6 +252,11 @@ describe('Materials with settings', () => {
 						},
 						locale: {
 							name: 'Hillside'
+						}
+					},
+					{
+						locale: {
+							name: 'Country estate'
 						}
 					}
 				]
@@ -272,6 +317,16 @@ describe('Materials with settings', () => {
 						uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
 						name: '1895'
 					},
+					place: null,
+					locale: null
+				},
+				{
+					model: 'SETTING',
+					time: {
+						model: 'TIME',
+						uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+						name: '1895'
+					},
 					place: {
 						model: 'PLACE',
 						uuid: ROMANIA_PLACE_UUID,
@@ -282,6 +337,16 @@ describe('Materials with settings', () => {
 						uuid: COUNTRY_ESTATE_LOCALE_UUID,
 						name: 'Country estate'
 					}
+				},
+				{
+					model: 'SETTING',
+					time: null,
+					place: {
+						model: 'PLACE',
+						uuid: RUSSIA_PLACE_UUID,
+						name: 'Russia'
+					},
+					locale: null
 				},
 				{
 					model: 'SETTING',
@@ -299,6 +364,16 @@ describe('Materials with settings', () => {
 						model: 'LOCALE',
 						uuid: HILLSIDE_LOCALE_UUID,
 						name: 'Hillside'
+					}
+				},
+				{
+					model: 'SETTING',
+					time: null,
+					place: null,
+					locale: {
+						model: 'LOCALE',
+						uuid: COUNTRY_ESTATE_LOCALE_UUID,
+						name: 'Country estate'
 					}
 				}
 			];
@@ -331,6 +406,72 @@ describe('Materials with settings', () => {
 								}
 							]
 						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: null,
+							locale: null
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ROMANIA_PLACE_UUID,
+								name: 'Romania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
+						}
 					]
 				},
 				{
@@ -352,6 +493,72 @@ describe('Materials with settings', () => {
 								}
 							]
 						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: null,
+							locale: null
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ROMANIA_PLACE_UUID,
+								name: 'Romania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
+						}
 					]
 				},
 				{
@@ -372,6 +579,72 @@ describe('Materials with settings', () => {
 									name: 'Anton Chekhov'
 								}
 							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: null,
+							locale: null
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ROMANIA_PLACE_UUID,
+								name: 'Romania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
 						}
 					]
 				}
@@ -405,6 +678,72 @@ describe('Materials with settings', () => {
 								}
 							]
 						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+								name: '1896'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: null,
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: null
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
+						}
 					]
 				},
 				{
@@ -426,6 +765,72 @@ describe('Materials with settings', () => {
 								}
 							]
 						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+								name: '1896'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: null,
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: null
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
+						}
 					]
 				},
 				{
@@ -446,6 +851,72 @@ describe('Materials with settings', () => {
 									name: 'Anton Chekhov'
 								}
 							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+								name: '1896'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: null,
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: null
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
 						}
 					]
 				}
@@ -479,6 +950,72 @@ describe('Materials with settings', () => {
 								}
 							]
 						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+								name: '1896'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ROMANIA_PLACE_UUID,
+								name: 'Romania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: null,
+							place: null,
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						}
 					]
 				},
 				{
@@ -500,6 +1037,72 @@ describe('Materials with settings', () => {
 								}
 							]
 						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+								name: '1896'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ROMANIA_PLACE_UUID,
+								name: 'Romania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: null,
+							place: null,
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						}
 					]
 				},
 				{
@@ -520,6 +1123,72 @@ describe('Materials with settings', () => {
 									name: 'Anton Chekhov'
 								}
 							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_SIX_TIME_UUID,
+								name: '1896'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_NINETY_FIVE_TIME_UUID,
+								name: '1895'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ROMANIA_PLACE_UUID,
+								name: 'Romania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: null,
+							place: null,
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
 						}
 					]
 				}

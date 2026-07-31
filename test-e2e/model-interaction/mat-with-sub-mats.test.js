@@ -644,6 +644,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -675,6 +695,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -706,6 +746,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -748,6 +808,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -779,6 +859,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -810,6 +910,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -852,6 +972,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -883,6 +1023,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
@@ -914,6 +1074,26 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					],
 					writingCredits: [
 						{
 							model: 'WRITING_CREDIT',
