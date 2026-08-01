@@ -18,7 +18,7 @@ const THREE_SISTERS_MATERIAL_UUID = 'THREE_SISTERS_MATERIAL_UUID';
 const THE_CHERRY_ORCHARD_MATERIAL_UUID = 'THE_CHERRY_ORCHARD_MATERIAL_UUID';
 
 let uncleVanyaMaterial;
-let eighteenNinetiesTime;
+let eighteenNinetyFiveTime;
 let russiaPlace;
 let countryEstateLocale;
 
@@ -219,7 +219,7 @@ describe('Materials with settings', () => {
 
 		uncleVanyaMaterial = await request(app).get(`/materials/${UNCLE_VANYA_MATERIAL_UUID}`);
 
-		eighteenNinetiesTime = await request(app).get(`/times/${EIGHTEEN_NINETY_FIVE_TIME_UUID}`);
+		eighteenNinetyFiveTime = await request(app).get(`/times/${EIGHTEEN_NINETY_FIVE_TIME_UUID}`);
 
 		russiaPlace = await request(app).get(`/places/${RUSSIA_PLACE_UUID}`);
 
@@ -377,7 +377,7 @@ describe('Materials with settings', () => {
 				}
 			];
 
-			const { materials } = eighteenNinetiesTime.body;
+			const { materials } = eighteenNinetyFiveTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});
