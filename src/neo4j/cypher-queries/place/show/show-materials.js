@@ -6,9 +6,38 @@ export default () => `
 
 		OPTIONAL MATCH (place)<-[:HAS_SETTING]-(material:Material)
 
-		WITH COLLECT(DISTINCT(material)) AS materials
+		WITH place, COLLECT(DISTINCT(material)) AS materials
 
 		UNWIND (CASE materials WHEN [] THEN [null] ELSE materials END) AS material
+
+			OPTIONAL MATCH (material)-[placeSettingRel:HAS_SETTING]->(place)
+
+			OPTIONAL MATCH (time:Time { uuid: placeSettingRel.timeUuid })
+
+			OPTIONAL MATCH (locale:Locale { uuid: placeSettingRel.localeUuid })
+
+			WITH material, place, placeSettingRel, time, locale
+				ORDER BY placeSettingRel.position
+
+			WITH
+				material,
+				COLLECT(
+					CASE WHEN placeSettingRel IS NULL
+						THEN null
+						ELSE {
+							model: 'SETTING',
+							time: CASE WHEN time IS NULL
+								THEN null
+								ELSE time { model: 'TIME', .uuid, .name }
+							END,
+							place: place { model: 'PLACE', .uuid, .name },
+							locale: CASE WHEN locale IS NULL
+								THEN null
+								ELSE locale { model: 'LOCALE', .uuid, .name }
+							END
+						}
+					END
+				) AS settings
 
 			OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)
 
@@ -21,6 +50,7 @@ export default () => `
 
 			WITH
 				material,
+				settings,
 				entityRel,
 				entity,
 				entitySurMaterial,
@@ -31,6 +61,7 @@ export default () => `
 
 			WITH
 				material,
+				settings,
 				entityRel,
 				entity,
 				entitySurMaterial,
@@ -43,7 +74,7 @@ export default () => `
 					END
 				) AS sourceMaterialWriters
 
-			WITH material, entityRel, entity, entitySurMaterial, entitySurSurMaterial,
+			WITH material, settings, entityRel, entity, entitySurMaterial, entitySurSurMaterial,
 				COLLECT(
 					CASE SIZE(sourceMaterialWriters) WHEN 0
 						THEN null
@@ -56,7 +87,7 @@ export default () => `
 				) AS sourceMaterialWritingCredits
 				ORDER BY entityRel.creditPosition, entityRel.entityPosition
 
-			WITH material, entityRel.credit AS writingCreditName,
+			WITH material, settings, entityRel.credit AS writingCreditName,
 				COLLECT(
 					CASE WHEN entity IS NULL
 						THEN null
@@ -83,13 +114,13 @@ export default () => `
 					END
 				) AS entities
 
-			WITH material, writingCreditName,
+			WITH material, settings, writingCreditName,
 				[entity IN entities | CASE entity.model WHEN 'MATERIAL'
 					THEN entity
 					ELSE entity { .model, .uuid, .name }
 				END] AS entities
 
-			WITH material,
+			WITH material, settings,
 				COLLECT(
 					CASE SIZE(entities) WHEN 0
 						THEN null
@@ -105,7 +136,7 @@ export default () => `
 
 			OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
 
-			WITH material, writingCredits, surMaterial, surSurMaterial
+			WITH material, settings, writingCredits, surMaterial, surSurMaterial
 				ORDER BY
 					material.year DESC,
 					COALESCE(surSurMaterial.name, surMaterial.name, material.name),
@@ -135,7 +166,8 @@ export default () => `
 								END
 							}
 						END,
-						writingCredits
+						writingCredits,
+						settings
 					}
 				END
 			) AS materials
