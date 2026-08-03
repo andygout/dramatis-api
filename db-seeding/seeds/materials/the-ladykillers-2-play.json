@@ -32,6 +32,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "King's Cross"
+			},
+			"locale": {
+				"name": "Boarding house"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

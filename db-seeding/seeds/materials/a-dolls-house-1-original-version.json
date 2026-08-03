@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Late 1870s"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Middle-class home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

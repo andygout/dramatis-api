@@ -22,6 +22,217 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1912"
+			},
+			"place": {
+				"name": "Devon"
+			},
+			"locale": {
+				"name": "Farm"
+			}
+		},
+		{
+			"time": {
+				"name": "1912"
+			},
+			"place": {
+				"name": "Devon"
+			},
+			"locale": {
+				"name": "Horse auction"
+			}
+		},
+		{
+			"time": {
+				"name": "1914"
+			},
+			"place": {
+				"name": "Devon"
+			},
+			"locale": {
+				"name": "Military stables"
+			}
+		},
+		{
+			"time": {
+				"name": "1914"
+			},
+			"place": {
+				"name": "English Channel"
+			},
+			"locale": {
+				"name": "Troopship"
+			}
+		},
+		{
+			"time": {
+				"name": "1914"
+			},
+			"place": {
+				"name": "Calais"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1914"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1914"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1915"
+			},
+			"place": {
+				"name": "Calais"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1915"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Farm"
+			}
+		},
+		{
+			"time": {
+				"name": "1915"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1915"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Trench"
+			}
+		},
+		{
+			"time": {
+				"name": "1916"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1916"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Trench"
+			}
+		},
+		{
+			"time": {
+				"name": "1916"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Artillery position"
+			}
+		},
+		{
+			"time": {
+				"name": "1917"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1918"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1918"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "No man's land"
+			}
+		},
+		{
+			"time": {
+				"name": "1918"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Casualty clearing station"
+			}
+		},
+		{
+			"time": {
+				"name": "1918"
+			},
+			"place": {
+				"name": "Devon"
+			},
+			"locale": {
+				"name": "Farm"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

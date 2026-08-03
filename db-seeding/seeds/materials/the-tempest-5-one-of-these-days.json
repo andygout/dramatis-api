@@ -21,6 +21,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1775"
+			},
+			"place": {
+				"name": "Ireland"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -30,6 +30,13 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "Lahore"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Induction",

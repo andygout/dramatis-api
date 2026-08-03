@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2011"
+			},
+			"place": {
+				"name": "Wootton Bassett"
+			},
+			"locale": {
+				"name": "Classroom"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

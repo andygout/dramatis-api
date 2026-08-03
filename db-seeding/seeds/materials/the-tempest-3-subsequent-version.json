@@ -23,5 +23,15 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "5th century"
+			},
+			"place": {
+				"name": "Korea"
+			}
+		}
 	]
 }

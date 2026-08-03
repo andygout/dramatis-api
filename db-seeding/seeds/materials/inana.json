@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2003"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Hotel room"
+			}
+		},
+		{
+			"time": {
+				"name": "2003"
+			},
+			"place": {
+				"name": "Mosul"
+			},
+			"locale": {
+				"name": "Museum"
+			}
+		}
 	]
 }

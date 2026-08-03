@@ -12,6 +12,85 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Ducal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Marketplace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Priory grounds"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

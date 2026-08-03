@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th-17th century"
+			},
+			"place": {
+				"name": "Mediterranean Sea"
+			},
+			"locale": {
+				"name": "Ship"
+			}
+		},
+		{
+			"time": {
+				"name": "16th-17th century"
+			},
+			"place": {
+				"name": "Mediterranean Sea"
+			},
+			"locale": {
+				"name": "Island"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

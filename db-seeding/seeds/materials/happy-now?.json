@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Conference hotel"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		}
 	]
 }

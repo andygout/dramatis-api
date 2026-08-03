@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1998"
+			},
+			"place": {
+				"name": "Kabul"
+			},
+			"locale": {
+				"name": "Zoo"
+			}
+		}
 	]
 }

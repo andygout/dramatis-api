@@ -21,6 +21,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2006"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Market town"
+			}
+		},
+		{
+			"time": {
+				"name": "2006"
+			},
+			"place": {
+				"name": "Basra"
+			},
+			"locale": {
+				"name": "War zone"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

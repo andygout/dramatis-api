@@ -11,6 +11,129 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Easter 1962"
+			},
+			"place": {
+				"name": "Knightsbridge"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1943"
+			},
+			"place": {
+				"name": "St Benoît"
+			},
+			"locale": {
+				"name": "Woodland"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1947"
+			},
+			"place": {
+				"name": "Brussels"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		},
+		{
+			"time": {
+				"name": "September 1947"
+			},
+			"place": {
+				"name": "Pimlico"
+			},
+			"locale": {
+				"name": "Bedsit"
+			}
+		},
+		{
+			"time": {
+				"name": "May 1951"
+			},
+			"place": {
+				"name": "Temple"
+			},
+			"locale": {
+				"name": "Riverside"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1952"
+			},
+			"place": {
+				"name": "Pimlico"
+			},
+			"locale": {
+				"name": "Bedsit"
+			}
+		},
+		{
+			"time": {
+				"name": "October 1956"
+			},
+			"place": {
+				"name": "Knightsbridge"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "July 1961"
+			},
+			"place": {
+				"name": "Knightsbridge"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1962"
+			},
+			"place": {
+				"name": "Whitehall"
+			},
+			"locale": {
+				"name": "Government office waiting room"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1962"
+			},
+			"place": {
+				"name": "Blackpool"
+			},
+			"locale": {
+				"name": "Hotel room"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1944"
+			},
+			"place": {
+				"name": "St Benoît"
+			},
+			"locale": {
+				"name": "Hillside"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

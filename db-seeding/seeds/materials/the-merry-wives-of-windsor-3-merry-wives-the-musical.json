@@ -38,6 +38,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

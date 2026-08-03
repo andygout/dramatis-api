@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Liverpool"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Iraq"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
 	]
 }

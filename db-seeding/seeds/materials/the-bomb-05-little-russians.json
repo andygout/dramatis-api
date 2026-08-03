@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1993"
+			},
+			"place": {
+				"name": "Ukraine"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

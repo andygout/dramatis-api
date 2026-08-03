@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1968"
+			},
+			"place": {
+				"name": "India"
+			},
+			"locale": {
+				"name": "Nuclear facility"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

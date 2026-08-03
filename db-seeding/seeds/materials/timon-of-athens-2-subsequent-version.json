@@ -24,6 +24,80 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Banqueting room"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Senate house"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Woodland"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Cave"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Tomb"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

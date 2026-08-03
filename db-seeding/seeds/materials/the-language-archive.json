@@ -10,5 +10,62 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Laboratory"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Train station"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Bakery"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Hospital"
+			}
+		}
 	]
 }

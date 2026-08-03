@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1900"
+			},
+			"place": {
+				"name": "Russia"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "1900"
+			},
+			"place": {
+				"name": "Russia"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Prozorovs",

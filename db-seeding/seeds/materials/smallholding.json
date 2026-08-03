@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Northamptonshire"
+			},
+			"locale": {
+				"name": "Smallholding"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

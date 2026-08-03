@@ -35,6 +35,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "19th century"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		},
+		{
+			"time": {
+				"name": "19th century"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Mountain"
+			}
+		},
+		{
+			"time": {
+				"name": "19th century"
+			},
+			"place": {
+				"name": "North Africa"
+			},
+			"locale": {
+				"name": "Desert"
+			}
+		},
+		{
+			"time": {
+				"name": "19th century"
+			},
+			"place": {
+				"name": "Egypt"
+			},
+			"locale": {
+				"name": "Asylum"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

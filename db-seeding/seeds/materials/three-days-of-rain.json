@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960s"
+			},
+			"place": {
+				"name": "Greenwich Village"
+			},
+			"locale": {
+				"name": "Loft apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "1995"
+			},
+			"place": {
+				"name": "Greenwich Village"
+			},
+			"locale": {
+				"name": "Loft apartment"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

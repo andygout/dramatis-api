@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1929"
+			},
+			"place": {
+				"name": "Mayfair"
+			},
+			"locale": {
+				"name": "House"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

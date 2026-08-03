@@ -11,6 +11,261 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Summer 1833"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "Spring 1835"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "Autumn 1835"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "Spring 1836"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1836"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "Autumn 1836"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1837"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "Spring 1838"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "Autumn 1841"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "March 1834"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Zoo gardens"
+			}
+		},
+		{
+			"time": {
+				"name": "March 1835"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Summer 1835"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Magazine office"
+			}
+		},
+		{
+			"time": {
+				"name": "Spring 1836"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Magazine office"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1836"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Room"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1836"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Room"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1837"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Concert hall"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1837"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Room"
+			}
+		},
+		{
+			"time": {
+				"name": "March 1838"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Room"
+			}
+		},
+		{
+			"time": {
+				"name": "April 1838"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Room"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1840"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "River boat"
+			}
+		},
+		{
+			"time": {
+				"name": "July 1840"
+			},
+			"place": {
+				"name": "St Petersburg"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Spring 1843"
+			},
+			"place": {
+				"name": "St Petersburg"
+			},
+			"locale": {
+				"name": "Ballroom"
+			}
+		},
+		{
+			"time": {
+				"name": "Autumn 1844"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

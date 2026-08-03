@@ -24,6 +24,129 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "House hall"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Lane"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Friar's cell"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Bedchamber"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Mantua"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Churchyard"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Tomb"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Ruling house of Verona",

@@ -20,6 +20,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "Egypt"
+			},
+			"locale": {
+				"name": "Steamer"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

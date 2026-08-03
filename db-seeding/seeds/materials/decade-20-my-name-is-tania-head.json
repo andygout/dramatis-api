@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2001"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Hospital"
+			}
+		}
 	]
 }

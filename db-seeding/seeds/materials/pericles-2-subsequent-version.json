@@ -24,6 +24,162 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Antioch"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Tyre"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Tarsus"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Pentapolis"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Pentapolis"
+			},
+			"locale": {
+				"name": "Road"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Pentapolis"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Tyre"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Mediterranean Sea"
+			},
+			"locale": {
+				"name": "Ship"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Tarsus"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Mytilene"
+			},
+			"locale": {
+				"name": "Brothel"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Mytilene"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Mytilene"
+			},
+			"locale": {
+				"name": "Ship"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Temple"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2008"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Hotel room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

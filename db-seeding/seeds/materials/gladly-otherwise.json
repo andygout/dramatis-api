@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Suburban home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

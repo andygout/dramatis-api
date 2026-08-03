@@ -11,6 +11,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Near future"
+			},
+			"locale": {
+				"name": "Cosmetic surgery facility"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

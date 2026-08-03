@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Office"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Restaurant"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

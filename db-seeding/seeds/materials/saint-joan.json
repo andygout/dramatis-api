@@ -11,6 +11,74 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "23rd February 1429"
+			},
+			"place": {
+				"name": "Château de Vaucouleurs"
+			},
+			"locale": {
+				"name": "Garrison"
+			}
+		},
+		{
+			"time": {
+				"name": "8th March 1429"
+			},
+			"place": {
+				"name": "Château de Chinon"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "29th April 1429"
+			},
+			"place": {
+				"name": "Orleans"
+			},
+			"locale": {
+				"name": "Riverbank"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1429"
+			},
+			"place": {
+				"name": "Orleans"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "17th July 1429"
+			},
+			"place": {
+				"name": "Rheims Cathedral"
+			},
+			"locale": {
+				"name": "Cathedral"
+			}
+		},
+		{
+			"time": {
+				"name": "30th May 1431"
+			},
+			"place": {
+				"name": "Rouen"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

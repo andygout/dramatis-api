@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2001"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Mosque"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

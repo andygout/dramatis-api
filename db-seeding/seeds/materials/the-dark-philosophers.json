@@ -25,6 +25,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "20th century"
+			},
+			"place": {
+				"name": "Wales"
+			},
+			"locale": {
+				"name": "Terraced houses"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

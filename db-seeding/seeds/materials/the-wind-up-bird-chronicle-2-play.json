@@ -24,5 +24,73 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Tokyo"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Tokyo"
+			},
+			"locale": {
+				"name": "Neighbourhood alley"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Tokyo"
+			},
+			"locale": {
+				"name": "Abandoned house"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Tokyo"
+			},
+			"locale": {
+				"name": "Dry well"
+			}
+		},
+		{
+			"time": {
+				"name": "1930s–1940s"
+			},
+			"place": {
+				"name": "Manchuria"
+			},
+			"locale": {
+				"name": "Military base"
+			}
+		},
+		{
+			"time": {
+				"name": "1930s–1940s"
+			},
+			"place": {
+				"name": "Outer Mongolia"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		}
 	]
 }

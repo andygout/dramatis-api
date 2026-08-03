@@ -11,6 +11,43 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1963-1971"
+			},
+			"place": {
+				"name": "East Anglia"
+			}
+		},
+		{
+			"time": {
+				"name": "1963-1971"
+			},
+			"place": {
+				"name": "Saigon"
+			}
+		},
+		{
+			"time": {
+				"name": "1963-1971"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Television office"
+			}
+		},
+		{
+			"time": {
+				"name": "1963-1971"
+			},
+			"place": {
+				"name": "San Francisco"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

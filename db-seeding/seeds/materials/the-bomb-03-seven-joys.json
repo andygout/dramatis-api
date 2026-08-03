@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1940s"
+			},
+			"place": {
+				"name": "Washington, DC"
+			},
+			"locale": {
+				"name": "Gentleman's club"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

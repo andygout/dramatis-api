@@ -12,6 +12,206 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Scotland"
+			},
+			"locale": {
+				"name": "Wilderness"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Forres"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Forres"
+			},
+			"locale": {
+				"name": "Heath"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Forres"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Inverness"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Inverness"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Inverness"
+			},
+			"locale": {
+				"name": "Castle courtyard"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Forres"
+			},
+			"locale": {
+				"name": "Park"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Forres"
+			},
+			"locale": {
+				"name": "Palace hall"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Scotland"
+			},
+			"locale": {
+				"name": "Heath"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Scotland"
+			},
+			"locale": {
+				"name": "Cavern"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Fife"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Royal palace grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Dunsinane"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Dunsinane"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Birnam"
+			},
+			"locale": {
+				"name": "Woodland"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Dunsinane"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "11th century"
+			},
+			"place": {
+				"name": "Dunsinane"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

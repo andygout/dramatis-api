@@ -11,6 +11,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"locale": {
+				"name": "Writer's study"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,74 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Ducal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Illyria"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

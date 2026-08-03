@@ -11,6 +11,272 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "February 1853"
+			},
+			"place": {
+				"name": "Hampstead"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1853"
+			},
+			"place": {
+				"name": "Hampstead"
+			},
+			"locale": {
+				"name": "Schoolroom"
+			}
+		},
+		{
+			"time": {
+				"name": "May 1853"
+			},
+			"place": {
+				"name": "Hampstead"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "September 1853"
+			},
+			"place": {
+				"name": "Hampstead"
+			},
+			"locale": {
+				"name": "Schoolroom"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1853"
+			},
+			"place": {
+				"name": "Hampstead"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1854"
+			},
+			"place": {
+				"name": "Hampstead"
+			},
+			"locale": {
+				"name": "Dining room"
+			}
+		},
+		{
+			"time": {
+				"name": "31st December 1854"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "March 1855"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "April 1856"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1856"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1857"
+			},
+			"place": {
+				"name": "Highgate Cemetary"
+			},
+			"locale": {
+				"name": "Cemetery"
+			}
+		},
+		{
+			"time": {
+				"name": "May 1859"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1859"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Lodging"
+			}
+		},
+		{
+			"time": {
+				"name": "July 1859"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1860"
+			},
+			"place": {
+				"name": "Blackgang Chine"
+			},
+			"locale": {
+				"name": "Coast"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1860"
+			},
+			"place": {
+				"name": "Ventnor"
+			},
+			"locale": {
+				"name": "Beach"
+			}
+		},
+		{
+			"time": {
+				"name": "March 1861"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1861"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1862"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1862"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Spring 1864"
+			},
+			"place": {
+				"name": "Richmond"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "April 1866"
+			},
+			"place": {
+				"name": "St Petersburg"
+			},
+			"locale": {
+				"name": "Public place"
+			}
+		},
+		{
+			"time": {
+				"name": "May 1866"
+			},
+			"place": {
+				"name": "Geneva"
+			},
+			"locale": {
+				"name": "Bar"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1868"
+			},
+			"place": {
+				"name": "Switzerland"
+			},
+			"locale": {
+				"name": "House"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

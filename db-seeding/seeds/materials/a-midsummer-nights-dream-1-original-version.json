@@ -12,6 +12,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Woodland"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Athenians",

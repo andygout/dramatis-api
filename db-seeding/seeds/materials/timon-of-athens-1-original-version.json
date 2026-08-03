@@ -12,6 +12,107 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Banqueting room"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Senate house"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Woodland"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Cave"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Tomb"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

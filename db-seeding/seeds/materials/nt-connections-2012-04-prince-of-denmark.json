@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

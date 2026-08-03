@@ -12,6 +12,228 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1445"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1445"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "1445"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "1445"
+			},
+			"place": {
+				"name": "St Albans"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "1445"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Hall of justice"
+			}
+		},
+		{
+			"time": {
+				"name": "1445"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1447"
+			},
+			"place": {
+				"name": "Bury St Edmunds Abbey"
+			},
+			"locale": {
+				"name": "Abbey"
+			}
+		},
+		{
+			"time": {
+				"name": "1447"
+			},
+			"place": {
+				"name": "Bury St Edmunds"
+			},
+			"locale": {
+				"name": "Room of state"
+			}
+		},
+		{
+			"time": {
+				"name": "1447"
+			},
+			"place": {
+				"name": "Bury St Edmunds"
+			},
+			"locale": {
+				"name": "Bedchamber"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Kent"
+			},
+			"locale": {
+				"name": "Coast"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Blackheath"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Cannon Street"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Smithfield"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Southwark"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Kenilworth Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1450"
+			},
+			"place": {
+				"name": "Kent"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "1452"
+			},
+			"place": {
+				"name": "Between Dartford and Blackheath"
+			},
+			"locale": {
+				"name": "Field"
+			}
+		},
+		{
+			"time": {
+				"name": "1455"
+			},
+			"place": {
+				"name": "St Albans"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The King's party",

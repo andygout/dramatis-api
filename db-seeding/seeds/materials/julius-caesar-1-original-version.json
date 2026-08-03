@@ -12,6 +12,101 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "44 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "44 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Public place"
+			}
+		},
+		{
+			"time": {
+				"name": "44 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		},
+		{
+			"time": {
+				"name": "44 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "44 BCE"
+			},
+			"place": {
+				"name": "The Forum"
+			}
+		},
+		{
+			"time": {
+				"name": "44 BCE"
+			},
+			"place": {
+				"name": "The Capitol"
+			}
+		},
+		{
+			"time": {
+				"name": "42 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "42 BCE"
+			},
+			"place": {
+				"name": "Sardis"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "42 BCE"
+			},
+			"place": {
+				"name": "Philippi"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

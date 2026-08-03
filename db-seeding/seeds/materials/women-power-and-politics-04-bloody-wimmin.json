@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Greenham Common"
+			},
+			"locale": {
+				"name": "Protest camp"
+			}
+		},
+		{
+			"time": {
+				"name": "2009"
+			},
+			"place": {
+				"name": "Blackheath"
+			},
+			"locale": {
+				"name": "Protest camp"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

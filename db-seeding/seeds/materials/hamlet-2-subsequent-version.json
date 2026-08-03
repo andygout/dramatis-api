@@ -24,6 +24,107 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Battlements"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "State room"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Room"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Hall"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Queen's closet"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Passage"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore Castle"
+			},
+			"locale": {
+				"name": "Graveyard"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Danish royal family",

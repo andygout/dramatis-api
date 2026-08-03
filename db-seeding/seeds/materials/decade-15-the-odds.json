@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2001"
+			},
+			"place": {
+				"name": "World Trade Center"
+			},
+			"locale": {
+				"name": "Office"
+			}
+		}
 	]
 }

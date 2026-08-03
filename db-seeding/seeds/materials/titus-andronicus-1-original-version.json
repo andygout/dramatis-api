@@ -12,6 +12,104 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "The Capitol"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Palace grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Banqueting room"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Romans",

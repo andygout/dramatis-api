@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1970"
+			},
+			"place": {
+				"name": "Asunción"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "1980"
+			},
+			"place": {
+				"name": "West Berlin"
+			},
+			"locale": {
+				"name": "Archive"
+			}
+		}
 	]
 }
