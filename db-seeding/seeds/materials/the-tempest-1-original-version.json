@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Prospero's island"
+			},
+			"locale": {
+				"name": "Island"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,107 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Public place"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Wales"
+			},
+			"locale": {
+				"name": "Cave"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Milford Haven"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Public place"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Batllefield"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The British Royal Family",

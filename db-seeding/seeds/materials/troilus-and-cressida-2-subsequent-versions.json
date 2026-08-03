@@ -24,6 +24,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Trojan War"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Trojan War"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Greek camp"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Trojans",

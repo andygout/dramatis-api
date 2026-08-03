@@ -20,6 +20,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "Kent coast"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

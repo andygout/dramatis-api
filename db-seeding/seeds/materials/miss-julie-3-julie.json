@@ -22,6 +22,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Townhouse"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

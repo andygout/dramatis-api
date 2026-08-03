@@ -12,6 +12,151 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Southampton"
+			},
+			"locale": {
+				"name": "Council chamber"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Tavern"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Harfleur"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Harfleur"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Picardy"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Agincourt"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Agincourt"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1415"
+			},
+			"place": {
+				"name": "Agincourt"
+			},
+			"locale": {
+				"name": "Royal pavilion"
+			}
+		},
+		{
+			"time": {
+				"name": "1420"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1420"
+			},
+			"place": {
+				"name": "Troyes"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

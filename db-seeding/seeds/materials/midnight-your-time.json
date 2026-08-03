@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Islington"
+			},
+			"locale": {
+				"name": "Home office"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Palestine"
+			},
+			"locale": {
+				"name": "Aid project"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

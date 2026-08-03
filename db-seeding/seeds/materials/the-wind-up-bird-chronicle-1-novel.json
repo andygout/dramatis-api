@@ -11,5 +11,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Tokyo"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Tokyo"
+			},
+			"locale": {
+				"name": "Dry well"
+			}
+		}
 	]
 }

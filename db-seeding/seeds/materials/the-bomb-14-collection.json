@@ -12,5 +12,62 @@
 		{
 			"name": "ANADYR'"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1940-2012"
+			},
+			"place": {
+				"name": "Whitehall"
+			},
+			"locale": {
+				"name": "Waiting room"
+			}
+		},
+		{
+			"time": {
+				"name": "1940-2012"
+			},
+			"place": {
+				"name": "India"
+			},
+			"locale": {
+				"name": "Nuclear facility"
+			}
+		},
+		{
+			"time": {
+				"name": "1940-2012"
+			},
+			"place": {
+				"name": "Ukraine"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1940-2012"
+			},
+			"place": {
+				"name": "Iran"
+			},
+			"locale": {
+				"name": "Nuclear facility"
+			}
+		},
+		{
+			"time": {
+				"name": "1940-2012"
+			},
+			"place": {
+				"name": "North Korea"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
 	]
 }

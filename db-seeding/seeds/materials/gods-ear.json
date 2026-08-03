@@ -10,5 +10,40 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Airport"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Underworld"
+			},
+			"locale": {
+				"name": "Bar"
+			}
+		}
 	]
 }

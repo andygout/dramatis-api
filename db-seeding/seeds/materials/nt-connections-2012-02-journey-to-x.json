@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Ireland"
+			},
+			"locale": {
+				"name": "School"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Clinic"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

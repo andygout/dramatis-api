@@ -30,6 +30,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Milan"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Mantua"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

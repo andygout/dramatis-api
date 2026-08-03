@@ -23,6 +23,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Cincinnati"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "United States of America"
+			},
+			"locale": {
+				"name": "Road trip"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Las Vegas"
+			},
+			"locale": {
+				"name": "Casino"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Los Angeles"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

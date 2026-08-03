@@ -11,5 +11,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Boarding house"
+			}
+		}
 	]
 }

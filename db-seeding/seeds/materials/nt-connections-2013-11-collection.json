@@ -33,5 +33,51 @@
 		{
 			"name": "Forty-Five Minutes"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Shopping centre"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Circus"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "School computer room"
+			}
+		}
 	]
 }

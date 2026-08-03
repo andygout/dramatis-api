@@ -15,6 +15,151 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1520"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1527"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1527"
+			},
+			"place": {
+				"name": "York Place"
+			},
+			"locale": {
+				"name": "Hall"
+			}
+		},
+		{
+			"time": {
+				"name": "1529"
+			},
+			"place": {
+				"name": "Westminster"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1529"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1529"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Queen's apartments"
+			}
+		},
+		{
+			"time": {
+				"name": "1529"
+			},
+			"place": {
+				"name": "Blackfriars"
+			},
+			"locale": {
+				"name": "Hall"
+			}
+		},
+		{
+			"time": {
+				"name": "1530"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1533"
+			},
+			"place": {
+				"name": "Westminster"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1536"
+			},
+			"place": {
+				"name": "Kimbolton Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1533"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Gallery"
+			}
+		},
+		{
+			"time": {
+				"name": "1533"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Council chamber"
+			}
+		},
+		{
+			"time": {
+				"name": "1533"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace yard"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

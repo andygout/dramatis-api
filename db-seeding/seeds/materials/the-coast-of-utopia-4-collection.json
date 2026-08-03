@@ -21,5 +21,62 @@
 		{
 			"name": "Salvage"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1833-1844"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "1833-1868"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "1846-1868"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "1853-1868"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1853-1868"
+			},
+			"place": {
+				"name": "Geneva"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
 	]
 }

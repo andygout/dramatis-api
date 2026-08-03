@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Denmark"
+			},
+			"locale": {
+				"name": "Road"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Elsinore"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Ship at sea"
+			},
+			"locale": {
+				"name": "Ship"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

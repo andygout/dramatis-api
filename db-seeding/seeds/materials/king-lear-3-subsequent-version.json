@@ -24,6 +24,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Heath"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Britain"
+			},
+			"place": {
+				"name": "Dover"
+			},
+			"locale": {
+				"name": "Camp"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

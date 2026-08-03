@@ -18,5 +18,40 @@
 		{
 			"name": "Little Russians"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1940"
+			},
+			"place": {
+				"name": "Whitehall"
+			},
+			"locale": {
+				"name": "Waiting room"
+			}
+		},
+		{
+			"time": {
+				"name": "1968"
+			},
+			"place": {
+				"name": "India"
+			},
+			"locale": {
+				"name": "Nuclear facility"
+			}
+		},
+		{
+			"time": {
+				"name": "1993"
+			},
+			"place": {
+				"name": "Ukraine"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

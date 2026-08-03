@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Suburban home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

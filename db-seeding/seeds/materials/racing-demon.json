@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Church"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Clergy office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

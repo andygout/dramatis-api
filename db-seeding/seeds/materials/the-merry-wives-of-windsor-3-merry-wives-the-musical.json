@@ -38,6 +38,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Elizabethan period"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "Town"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

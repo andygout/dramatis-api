@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "Sussex"
+			},
+			"locale": {
+				"name": "Country house"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

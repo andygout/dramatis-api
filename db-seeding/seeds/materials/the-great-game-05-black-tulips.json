@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Military base"
+			}
+		}
 	]
 }

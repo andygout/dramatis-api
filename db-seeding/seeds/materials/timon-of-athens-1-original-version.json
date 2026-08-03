@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient Athens"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Athens"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

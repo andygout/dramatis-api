@@ -23,5 +23,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
 	]
 }

@@ -11,5 +11,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Collatium"
+			},
+			"locale": {
+				"name": "Bedroom"
+			}
+		}
 	]
 }

@@ -23,6 +23,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Knapeley"
+			},
+			"locale": {
+				"name": "Church hall"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Knapeley"
+			},
+			"locale": {
+				"name": "Hilltop"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "WI conference"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

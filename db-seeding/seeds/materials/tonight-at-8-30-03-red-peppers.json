@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Music hall dressing room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Elizabethan period"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "Town"
+			}
+		},
+		{
+			"time": {
+				"name": "Elizabethan period"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

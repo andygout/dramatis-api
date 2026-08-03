@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "1995"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

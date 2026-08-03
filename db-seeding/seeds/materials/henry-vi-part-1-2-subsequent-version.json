@@ -24,6 +24,239 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1422"
+			},
+			"place": {
+				"name": "Westminster Abbey"
+			},
+			"locale": {
+				"name": "Abbey"
+			}
+		},
+		{
+			"time": {
+				"name": "1428"
+			},
+			"place": {
+				"name": "Orleans"
+			},
+			"locale": {
+				"name": "City outskirts"
+			}
+		},
+		{
+			"time": {
+				"name": "1428"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"time": {
+				"name": "1429"
+			},
+			"place": {
+				"name": "Orleans"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1429"
+			},
+			"place": {
+				"name": "Orleans"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "1429"
+			},
+			"place": {
+				"name": "Auvergne"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1429"
+			},
+			"place": {
+				"name": "Middle Temple Gardens"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "1428"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"time": {
+				"name": "1429"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Parliament house"
+			}
+		},
+		{
+			"time": {
+				"name": "1431"
+			},
+			"place": {
+				"name": "Rouen"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		},
+		{
+			"time": {
+				"name": "1431"
+			},
+			"place": {
+				"name": "Rouen"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "1431"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1431"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Hall of state"
+			}
+		},
+		{
+			"time": {
+				"name": "1453"
+			},
+			"place": {
+				"name": "Bordeaux"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "1453"
+			},
+			"place": {
+				"name": "Gascony"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "1453"
+			},
+			"place": {
+				"name": "Bordeaux"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1453"
+			},
+			"place": {
+				"name": "Castillon"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1444"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1430"
+			},
+			"place": {
+				"name": "Anjou"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "1430"
+			},
+			"place": {
+				"name": "Angers"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1430"
+			},
+			"place": {
+				"name": "Anjou"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The English",

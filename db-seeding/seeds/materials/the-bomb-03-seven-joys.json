@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Cold War"
+			},
+			"place": {
+				"name": "Unspecified"
+			},
+			"locale": {
+				"name": "Members' club"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

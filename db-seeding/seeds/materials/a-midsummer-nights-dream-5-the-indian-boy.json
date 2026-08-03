@@ -21,6 +21,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Warwickshire"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

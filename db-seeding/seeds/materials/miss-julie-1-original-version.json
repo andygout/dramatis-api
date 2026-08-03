@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Midsummer Eve"
+			},
+			"place": {
+				"name": "Sweden"
+			},
+			"locale": {
+				"name": "Estate kitchen"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

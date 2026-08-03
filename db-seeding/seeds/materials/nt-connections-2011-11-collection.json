@@ -34,5 +34,95 @@
 		{
 			"name": "Too Fast"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2011"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "School"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Norfolk"
+			},
+			"locale": {
+				"name": "Classroom"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Norfolk"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		},
+		{
+			"time": {
+				"name": "Seventeenth century"
+			},
+			"place": {
+				"name": "Norfolk"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		},
+		{
+			"time": {
+				"name": "2011"
+			},
+			"place": {
+				"name": "Wootton Bassett"
+			},
+			"locale": {
+				"name": "Classroom"
+			}
+		},
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "Rwanda"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		},
+		{
+			"time": {
+				"name": "Near future"
+			},
+			"place": {
+				"name": "Unspecified"
+			},
+			"locale": {
+				"name": "Cosmetic surgery facility"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Church"
+			}
+		}
 	]
 }

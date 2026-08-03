@@ -11,5 +11,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2010s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Commuter train"
+			}
+		},
+		{
+			"time": {
+				"name": "2010s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

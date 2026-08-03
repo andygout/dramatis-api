@@ -36,6 +36,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Athenians",

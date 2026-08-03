@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Thames Estuary"
+			},
+			"locale": {
+				"name": "Riverbank"
+			}
+		}
 	]
 }

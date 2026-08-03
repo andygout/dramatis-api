@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Consulting room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Roussillon"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},,
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Marseille"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Florence"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

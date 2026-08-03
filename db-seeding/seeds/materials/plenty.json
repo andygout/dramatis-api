@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1943-1945"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Farmhouse"
+			}
+		},
+		{
+			"time": {
+				"name": "1945-1960s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1945-1960s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

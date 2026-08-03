@@ -24,6 +24,173 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "40 BCE"
+			},
+			"place": {
+				"name": "Alexandria"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "40 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "40 BCE"
+			},
+			"place": {
+				"name": "Messina"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "40 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "40 BCE"
+			},
+			"place": {
+				"name": "Misenum"
+			},
+			"locale": {
+				"name": "Galley"
+			}
+		},
+		{
+			"time": {
+				"name": "39-31 BCE"
+			},
+			"place": {
+				"name": "Syria"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "39-31 BCE"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "39-31 BCE"
+			},
+			"place": {
+				"name": "Alexandria"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "39-31 BCE"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "31 BCE"
+			},
+			"place": {
+				"name": "Actium"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "31 BCE"
+			},
+			"place": {
+				"name": "Actium"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "31 BCE"
+			},
+			"place": {
+				"name": "Egypt"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "30 BCE"
+			},
+			"place": {
+				"name": "Alexandria"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "30 BCE"
+			},
+			"place": {
+				"name": "Alexandria"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "30 BCE"
+			},
+			"place": {
+				"name": "Alexandria"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Triumvirs",

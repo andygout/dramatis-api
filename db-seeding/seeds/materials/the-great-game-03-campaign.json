@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2010"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		},
+		{
+			"time": {
+				"name": "1920s"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
 	]
 }

@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1968-1990"
+			},
+			"place": {
+				"name": "Cambridge"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1968-1990"
+			},
+			"place": {
+				"name": "Cambridge"
+			},
+			"locale": {
+				"name": "University"
+			}
+		},
+		{
+			"time": {
+				"name": "1968-1990"
+			},
+			"place": {
+				"name": "Prague"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

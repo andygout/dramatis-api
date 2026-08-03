@@ -32,6 +32,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Korea"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Korea"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Lovers",

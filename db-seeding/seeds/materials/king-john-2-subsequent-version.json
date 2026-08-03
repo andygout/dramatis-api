@@ -25,6 +25,140 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "Royal pavilion"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Bury St Edmunds"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Lincolnshire"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Lincolnshire"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Swinstead"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Swinstead Abbey"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The English Party",

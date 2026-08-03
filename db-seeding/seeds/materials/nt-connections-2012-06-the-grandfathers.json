@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Twenty-first century"
+			},
+			"place": {
+				"name": "Central Asia"
+			},
+			"locale": {
+				"name": "Hillside"
+			}
+		},
+		{
+			"time": {
+				"name": "Twenty-first century"
+			},
+			"place": {
+				"name": "Eastern Europe"
+			},
+			"locale": {
+				"name": "Barracks"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

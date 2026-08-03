@@ -24,6 +24,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Nineteenth century"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		},
+		{
+			"time": {
+				"name": "Nineteenth century"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Mountain"
+			}
+		},
+		{
+			"time": {
+				"name": "Nineteenth century"
+			},
+			"place": {
+				"name": "North Africa"
+			},
+			"locale": {
+				"name": "Desert"
+			}
+		},
+		{
+			"time": {
+				"name": "Nineteenth century"
+			},
+			"place": {
+				"name": "Egypt"
+			},
+			"locale": {
+				"name": "Asylum"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

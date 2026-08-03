@@ -33,5 +33,62 @@
 		{
 			"name": "The Ritual"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Ireland"
+			},
+			"locale": {
+				"name": "School"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Clinic"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "South Africa"
+			},
+			"locale": {
+				"name": "Cave"
+			}
+		},
+		{
+			"time": {
+				"name": "1966"
+			},
+			"place": {
+				"name": "China"
+			},
+			"locale": {
+				"name": "School"
+			}
+		},
+		{
+			"time": {
+				"name": "Twenty-first century"
+			},
+			"place": {
+				"name": "Eastern Europe"
+			},
+			"locale": {
+				"name": "Barracks"
+			}
+		}
 	]
 }

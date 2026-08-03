@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Elizabethan period"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

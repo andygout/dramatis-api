@@ -15,5 +15,29 @@
 		{
 			"name": "Now is the Time"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1842-1930"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Military outpost"
+			}
+		},
+		{
+			"time": {
+				"name": "1842-1930"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Diplomatic meeting"
+			}
+		}
 	]
 }

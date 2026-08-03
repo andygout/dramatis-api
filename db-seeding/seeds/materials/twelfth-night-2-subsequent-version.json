@@ -25,6 +25,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Seacoast"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1890s"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "1890s"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Hillside"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -24,6 +24,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Tomb"
+			}
+		},
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Mantua"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Ruling house of Verona",

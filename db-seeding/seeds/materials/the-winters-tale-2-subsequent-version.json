@@ -24,6 +24,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Bohemia"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Sicilia",

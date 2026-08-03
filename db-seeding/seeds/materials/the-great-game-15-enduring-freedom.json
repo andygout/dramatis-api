@@ -15,5 +15,18 @@
 		{
 			"name": "Canopy of Stars"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1996-2009"
+			},
+			"place": {
+				"name": "Kabul"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
 	]
 }

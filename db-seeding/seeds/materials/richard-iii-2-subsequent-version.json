@@ -24,6 +24,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1483-1485"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "1483-1485"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"time": {
+				"name": "1485"
+			},
+			"place": {
+				"name": "Bosworth Field"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "House of York",

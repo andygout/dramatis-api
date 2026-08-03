@@ -10,5 +10,40 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "War zone"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Pakistan"
+			},
+			"locale": {
+				"name": "Intelligence office"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Washington, D.C."
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
 	]
 }

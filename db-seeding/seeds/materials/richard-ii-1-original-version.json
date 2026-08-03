@@ -12,6 +12,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1398-1400"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "1398-1400"
+			},
+			"place": {
+				"name": "Wales"
+			},
+			"locale": {
+				"name": "Coast"
+			}
+		},
+		{
+			"time": {
+				"name": "1398-1400"
+			},
+			"place": {
+				"name": "Pomfret"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

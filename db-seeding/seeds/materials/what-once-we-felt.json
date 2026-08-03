@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Future"
+			},
+			"place": {
+				"name": "Parallel universe"
+			},
+			"locale": {
+				"name": "Publishing industry"
+			}
+		}
 	]
 }

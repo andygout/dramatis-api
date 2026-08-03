@@ -9,5 +9,106 @@
 		{
 			"name": "Now"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Early twentieth century"
+			},
+			"place": {
+				"name": "Ireland"
+			},
+			"locale": {
+				"name": "Political meeting"
+			}
+		},
+		{
+			"time": {
+				"name": "Elizabethan period"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "1979-1990"
+			},
+			"place": {
+				"name": "Buckingham Palace"
+			},
+			"locale": {
+				"name": "Audience room"
+			}
+		},
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Greenham Common"
+			},
+			"locale": {
+				"name": "Protest camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1994"
+			},
+			"place": {
+				"name": "Westminster"
+			},
+			"locale": {
+				"name": "Campaign office"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Selection panel"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Students' association"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Office"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Leicestershire"
+			},
+			"locale": {
+				"name": "Council house"
+			}
+		}
 	]
 }

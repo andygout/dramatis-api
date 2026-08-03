@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1846-1852"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "1846-1852"
+			},
+			"place": {
+				"name": "Dresden"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "1846-1852"
+			},
+			"place": {
+				"name": "Nice"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

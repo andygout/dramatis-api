@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "17th century"
+			},
+			"place": {
+				"name": "Spitalfields"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "19th century"
+			},
+			"place": {
+				"name": "Spitalfields"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Spitalfields"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

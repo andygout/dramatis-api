@@ -24,6 +24,162 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Warkworth Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Archbishop of York's Palace"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Eastcheap"
+			},
+			"locale": {
+				"name": "Tavern"
+			}
+		},
+		{
+			"time": {
+				"name": "1405"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1405"
+			},
+			"place": {
+				"name": "Gloucestershire"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "1405"
+			},
+			"place": {
+				"name": "Forest of Gaultree"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "Jerusalem Chamber"
+			},
+			"locale": {
+				"name": "Chamber"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "Westminster Abbey"
+			},
+			"locale": {
+				"name": "Chamber"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "Gloucestershire"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "Gloucestershire"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1413"
+			},
+			"place": {
+				"name": "Westminster Abbey"
+			},
+			"locale": {
+				"name": "Abbey"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The King's party",

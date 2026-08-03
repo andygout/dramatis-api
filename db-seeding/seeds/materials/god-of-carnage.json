@@ -19,6 +19,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

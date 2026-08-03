@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960s-1971"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "BBC office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

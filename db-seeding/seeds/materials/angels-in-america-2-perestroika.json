@@ -11,6 +11,233 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Kremlin"
+			},
+			"locale": {
+				"name": "Hall"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Antarctica"
+			},
+			"locale": {
+				"name": "Wilderness"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Manhattan"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Alphabetland"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Lower East Side"
+			},
+			"locale": {
+				"name": "Funeral parlor"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Alphabetland"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Brooklyn"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "St Vincent's Hospital"
+			},
+			"locale": {
+				"name": "Hospital room"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Mormon visitor center diorama room"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Jones Beach"
+			},
+			"locale": {
+				"name": "Oceanside"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Brooklyn Heights Promenade"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Park"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Brooklyn"
+			},
+			"locale": {
+				"name": "Courthouse office"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Bethesda Fountain"
+			},
+			"locale": {
+				"name": "Park"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "St Vincent's Hospital"
+			},
+			"locale": {
+				"name": "Hospital examination room"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Heaven"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Heaven"
+			},
+			"locale": {
+				"name": "Council room"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"place": {
+				"name": "Heaven"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1986"
+			},
+			"place": {
+				"name": "Heaven, or Hell or Purgatory"
+			},
+			"locale": {
+				"name": "Smoldering pit"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1986"
+			},
+			"locale": {
+				"name": "Jumbo jet window seat"
+			}
+		},
+		{
+			"time": {
+				"name": "February 1990"
+			},
+			"place": {
+				"name": "Bethesda Fountain"
+			},
+			"locale": {
+				"name": "Park"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

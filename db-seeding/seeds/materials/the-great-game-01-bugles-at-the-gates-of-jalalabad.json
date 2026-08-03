@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1842"
+			},
+			"place": {
+				"name": "Jalalabad"
+			},
+			"locale": {
+				"name": "Military outpost"
+			}
+		}
 	]
 }

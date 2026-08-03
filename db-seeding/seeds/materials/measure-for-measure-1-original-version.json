@@ -12,6 +12,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		},
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Convent"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -14,6 +14,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Thebes"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological"
+			},
+			"place": {
+				"name": "Athens"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -13,6 +13,74 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Antioch"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Tyre"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Tarsus"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Pentapolis"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Mytilene"
+			},
+			"locale": {
+				"name": "Brothel"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient period"
+			},
+			"place": {
+				"name": "Ephesus"
+			},
+			"locale": {
+				"name": "Temple"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

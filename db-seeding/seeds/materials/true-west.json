@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Southern California"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

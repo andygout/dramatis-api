@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Victorian era"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Drawing room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

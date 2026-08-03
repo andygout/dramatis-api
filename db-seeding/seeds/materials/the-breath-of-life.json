@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Isle of Wight"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

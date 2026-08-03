@@ -11,5 +11,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Martirio"
+			},
+			"locale": {
+				"name": "Town"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Texas"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		}
 	]
 }

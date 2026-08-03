@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1429-1431"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1429-1431"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		},
+		{
+			"time": {
+				"name": "1431"
+			},
+			"place": {
+				"name": "Rouen"
+			},
+			"locale": {
+				"name": "Trial room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

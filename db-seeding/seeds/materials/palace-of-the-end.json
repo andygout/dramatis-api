@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "Iraq"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		},
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

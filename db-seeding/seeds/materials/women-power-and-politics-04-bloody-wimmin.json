@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980s"
+			},
+			"place": {
+				"name": "Greenham Common"
+			},
+			"locale": {
+				"name": "Protest camp"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,156 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Corioli"
+			},
+			"locale": {
+				"name": "Senate house"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Corioli"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Corioli"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Corioli"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Corioli"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "The Capitol"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "The Forum"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Between Rome and Antium"
+			},
+			"locale": {
+				"name": "Highway"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Antium"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Antium"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Romans",

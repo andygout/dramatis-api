@@ -11,6 +11,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1945"
+			},
+			"place": {
+				"name": "Zagreb"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "1990"
+			},
+			"place": {
+				"name": "Zagreb"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "2011"
+			},
+			"place": {
+				"name": "Zagreb"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "2011",

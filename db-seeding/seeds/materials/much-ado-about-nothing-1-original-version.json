@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Unspecified"
+			},
+			"place": {
+				"name": "Messina"
+			},
+			"locale": {
+				"name": "Estate"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

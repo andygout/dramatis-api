@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1920s"
+			},
+			"place": {
+				"name": "Malaya"
+			},
+			"locale": {
+				"name": "Plantation"
+			}
+		},
+		{
+			"time": {
+				"name": "1920s"
+			},
+			"place": {
+				"name": "Singapore"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

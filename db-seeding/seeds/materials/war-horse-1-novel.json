@@ -11,5 +11,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1912-1914"
+			},
+			"place": {
+				"name": "Devon"
+			},
+			"locale": {
+				"name": "Farm"
+			}
+		},
+		{
+			"time": {
+				"name": "1914-1918"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
 	]
 }

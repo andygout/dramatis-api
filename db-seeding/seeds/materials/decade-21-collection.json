@@ -64,5 +64,18 @@
 		{
 			"name": "My Name is Tania Head"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2001-2011"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
 	]
 }

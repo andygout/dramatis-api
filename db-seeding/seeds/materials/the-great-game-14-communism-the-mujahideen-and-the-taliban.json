@@ -15,5 +15,29 @@
 		{
 			"name": "The Lion of Kabul"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1979-1996"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "War zone"
+			}
+		},
+		{
+			"time": {
+				"name": "1979-1996"
+			},
+			"place": {
+				"name": "Kabul"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		}
 	]
 }

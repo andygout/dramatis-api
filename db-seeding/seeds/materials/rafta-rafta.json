@@ -20,6 +20,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Bolton"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

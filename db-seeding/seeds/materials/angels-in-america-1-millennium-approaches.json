@@ -11,6 +11,280 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "October 1985"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Funeral home"
+			}
+		},
+		{
+			"time": {
+				"name": "October 1985"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Office"
+			}
+		},
+		{
+			"time": {
+				"name": "October 1985"
+			},
+			"place": {
+				"name": "Brooklyn"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "October 1985"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Cemetery"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1985"
+			},
+			"place": {
+				"name": "Brooklyn Federal Court of Appeals"
+			},
+			"locale": {
+				"name": "Office men's room"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1985"
+			},
+			"locale": {
+				"name": "Dream"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1985"
+			},
+			"place": {
+				"name": "Brooklyn"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1985"
+			},
+			"place": {
+				"name": "Manhattan"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1985"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Doctor's office"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1985"
+			},
+			"place": {
+				"name": "Manhattan"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1985"
+			},
+			"place": {
+				"name": "Brooklyn"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1985"
+			},
+			"place": {
+				"name": "St Vincent's Hospital"
+			},
+			"locale": {
+				"name": "Hospital room"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1985"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Bar"
+			}
+		},
+		{
+			"time": {
+				"name": "December 1985"
+			},
+			"place": {
+				"name": "The Ramble"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Manhattan"
+			},
+			"locale": {
+				"name": "Restaurant"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Brooklyn Hall of Justice"
+			},
+			"locale": {
+				"name": "Steps"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Salt Lake City"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "St Vincent's Hospital"
+			},
+			"locale": {
+				"name": "Hospital room"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Manhattan"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Coffee shop"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "St Vincent's Hospital"
+			},
+			"locale": {
+				"name": "Hospital outpatient clinic"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "Antarctica"
+			},
+			"locale": {
+				"name": "Wilderness"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "South Bronx"
+			},
+			"locale": {
+				"name": "Abandoned lot"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "The Ramble"
+			},
+			"locale": {
+				"name": "Woods"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1986"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Brownstone study"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

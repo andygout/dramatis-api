@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "South Pacific"
+			},
+			"locale": {
+				"name": "Hotel terrace"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

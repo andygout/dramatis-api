@@ -21,6 +21,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Persian Gulf"
+			},
+			"locale": {
+				"name": "Desert palace"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "House of York",

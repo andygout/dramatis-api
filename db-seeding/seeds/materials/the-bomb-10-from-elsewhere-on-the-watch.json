@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2010s"
+			},
+			"place": {
+				"name": "Iran"
+			},
+			"locale": {
+				"name": "Nuclear facility"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

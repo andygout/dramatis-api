@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Early twentieth century"
+			},
+			"place": {
+				"name": "Ireland"
+			},
+			"locale": {
+				"name": "Political meeting"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

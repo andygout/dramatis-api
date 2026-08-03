@@ -11,5 +11,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s-1940s"
+			},
+			"place": {
+				"name": "Ashington"
+			},
+			"locale": {
+				"name": "Miners' institute"
+			}
+		},
+		{
+			"time": {
+				"name": "1930s-1940s"
+			},
+			"place": {
+				"name": "Newcastle upon Tyne"
+			},
+			"locale": {
+				"name": "Art gallery"
+			}
+		}
 	]
 }

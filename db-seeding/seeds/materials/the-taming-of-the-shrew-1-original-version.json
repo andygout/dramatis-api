@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Padua"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Renaissance period"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "House"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Induction",

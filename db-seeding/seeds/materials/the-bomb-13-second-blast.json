@@ -18,5 +18,40 @@
 		{
 			"name": "From Elsewhere: On the Watch…"
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2002"
+			},
+			"place": {
+				"name": "North Korea"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		},
+		{
+			"time": {
+				"name": "2010s"
+			},
+			"place": {
+				"name": "Iran"
+			},
+			"locale": {
+				"name": "Nuclear facility"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
 	]
 }

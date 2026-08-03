@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1833-1844"
+			},
+			"place": {
+				"name": "Premukhino"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "1833-1844"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

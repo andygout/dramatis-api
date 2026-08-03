@@ -31,6 +31,41 @@
 			"name": "Part II"
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1830s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "1830s"
+			},
+			"place": {
+				"name": "Yorkshire"
+			},
+			"locale": {
+				"name": "School"
+			}
+		},
+		{
+			"time": {
+				"name": "1830s"
+			},
+			"place": {
+				"name": "Portsmouth"
+			},
+			"locale": {
+				"name": "Theatre"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Nickleby Family",

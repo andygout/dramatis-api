@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "House"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -24,6 +24,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Late Roman Empire"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Romans",

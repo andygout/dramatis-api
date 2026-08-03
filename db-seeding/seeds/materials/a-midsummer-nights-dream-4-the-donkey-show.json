@@ -25,6 +25,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1970s"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Nightclub"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

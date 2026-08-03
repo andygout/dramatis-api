@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1980"
+			},
+			"place": {
+				"name": "Derry"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Derry"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

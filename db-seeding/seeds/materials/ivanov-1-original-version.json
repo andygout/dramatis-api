@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1880s"
+			},
+			"place": {
+				"name": "Central Russia"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

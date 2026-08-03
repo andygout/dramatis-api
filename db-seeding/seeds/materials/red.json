@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1958-1959"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Art studio"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

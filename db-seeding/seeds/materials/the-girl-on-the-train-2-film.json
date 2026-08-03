@@ -22,5 +22,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2010s"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Commuter train"
+			}
+		},
+		{
+			"time": {
+				"name": "2010s"
+			},
+			"place": {
+				"name": "Westchester County"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

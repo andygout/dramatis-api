@@ -13,6 +13,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Sixteenth century"
+			},
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Sixteenth century"
+			},
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Military base"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Hotel"
+			}
+		},
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Brokerage office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

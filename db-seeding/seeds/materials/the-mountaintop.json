@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1968"
+			},
+			"place": {
+				"name": "Memphis"
+			},
+			"locale": {
+				"name": "Motel room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

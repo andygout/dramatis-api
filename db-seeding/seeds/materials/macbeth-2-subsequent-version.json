@@ -24,6 +24,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Eleventh century"
+			},
+			"place": {
+				"name": "Scotland"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "Eleventh century"
+			},
+			"place": {
+				"name": "Scotland"
+			},
+			"locale": {
+				"name": "Heath"
+			}
+		},
+		{
+			"time": {
+				"name": "Eleventh century"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Court"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

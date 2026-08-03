@@ -11,5 +11,40 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960s"
+			},
+			"place": {
+				"name": "Cambridge, Massachusetts"
+			},
+			"locale": {
+				"name": "University"
+			}
+		},
+		{
+			"time": {
+				"name": "1960s-1970s"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1960s-1970s"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Hospital"
+			}
+		}
 	]
 }
