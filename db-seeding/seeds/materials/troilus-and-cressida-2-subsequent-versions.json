@@ -39,16 +39,19 @@
 			"name": "The Trojans",
 			"characters": [
 				{
-					"name": "Priam, King of Troy"
+					"name": "Priam, King of Toroi",
+					"underlyingName": "Priam, King of Troy"
 				},
 				{
 					"name": "Hector"
 				},
 				{
-					"name": "Paris"
+					"name": "Parihi",
+					"underlyingName": "Paris"
 				},
 				{
-					"name": "Troilus"
+					"name": "Toroihi",
+					"underlyingName": "Troilus"
 				},
 				{
 					"name": "Aeneas"
@@ -66,7 +69,8 @@
 					"name": "Andromache"
 				},
 				{
-					"name": "Cressida"
+					"name": "Kahira",
+					"underlyingName": "Cressida"
 				},
 				{
 					"name": "Cassandra"
