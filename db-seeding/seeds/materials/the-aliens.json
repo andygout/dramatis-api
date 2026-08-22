@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Vermont"
+			},
+			"locale": {
+				"name": "Coffee shop"
+			}
+		}
 	]
 }

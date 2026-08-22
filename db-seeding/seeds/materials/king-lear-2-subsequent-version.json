@@ -24,6 +24,115 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Lujiazui"
+			},
+			"locale": {
+				"name": "Penthouse"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "French Concession"
+			},
+			"locale": {
+				"name": "Garden villa"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Huangpu River"
+			},
+			"locale": {
+				"name": "Penthouse"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Shanghai"
+			},
+			"locale": {
+				"name": "Skyscraper construction site"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Shanghai"
+			},
+			"locale": {
+				"name": "Construction site hut"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"locale": {
+				"name": "Private jet"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Shanghai"
+			},
+			"locale": {
+				"name": "Hotel roof garden"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Shanghai"
+			},
+			"locale": {
+				"name": "Hotel suite"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Shanghai Stock Exchange"
+			},
+			"locale": {
+				"name": "Stock exchange"
+			}
+		},
+		{
+			"time": {
+				"name": "2020"
+			},
+			"place": {
+				"name": "Shanghai Stock Exchange"
+			},
+			"locale": {
+				"name": "VIP room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

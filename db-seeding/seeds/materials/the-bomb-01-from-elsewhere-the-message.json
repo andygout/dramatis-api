@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1940"
+			},
+			"place": {
+				"name": "Whitehall"
+			},
+			"locale": {
+				"name": "Waiting room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

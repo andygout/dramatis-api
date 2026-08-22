@@ -35,6 +35,206 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1398"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1398"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1398"
+			},
+			"place": {
+				"name": "Coventry"
+			},
+			"locale": {
+				"name": "Tournament ground"
+			}
+		},
+		{
+			"time": {
+				"name": "1398"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Royal court"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Ely House"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Gloucestershire"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Wales"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Bristol Castle"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Wales"
+			},
+			"locale": {
+				"name": "Coast"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Flint Castle"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Langley"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Westminster Hall"
+			},
+			"locale": {
+				"name": "Hall"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Langley"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1399"
+			},
+			"place": {
+				"name": "Windsor Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1400"
+			},
+			"place": {
+				"name": "Pomfret Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1400"
+			},
+			"place": {
+				"name": "Windsor Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

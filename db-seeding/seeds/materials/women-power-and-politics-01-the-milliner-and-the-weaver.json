@@ -11,6 +11,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1914"
+			},
+			"place": {
+				"name": "Belfast"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

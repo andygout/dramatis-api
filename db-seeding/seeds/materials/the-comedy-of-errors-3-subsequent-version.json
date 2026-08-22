@@ -25,6 +25,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Kabul"
+			},
+			"locale": {
+				"name": "Backstreets"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

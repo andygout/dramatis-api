@@ -32,6 +32,151 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1402"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1402"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "1402"
+			},
+			"place": {
+				"name": "Rochester"
+			},
+			"locale": {
+				"name": "Inn yard"
+			}
+		},
+		{
+			"time": {
+				"name": "1402"
+			},
+			"place": {
+				"name": "Gadshill"
+			},
+			"locale": {
+				"name": "Highway"
+			}
+		},
+		{
+			"time": {
+				"name": "1402"
+			},
+			"place": {
+				"name": "Warkworth Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1402"
+			},
+			"place": {
+				"name": "Eastcheap"
+			},
+			"locale": {
+				"name": "Tavern"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Bangor"
+			},
+			"locale": {
+				"name": "Archdeacon's house"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Eastcheap"
+			},
+			"locale": {
+				"name": "Tavern"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Shrewsbury"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Coventry"
+			},
+			"locale": {
+				"name": "Road"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Archbishop of York's Palace"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1403"
+			},
+			"place": {
+				"name": "Shrewsbury"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The King's party",

@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1950s"
+			},
+			"place": {
+				"name": "Mississippi Delta"
+			},
+			"locale": {
+				"name": "Plantation house"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -11,6 +11,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

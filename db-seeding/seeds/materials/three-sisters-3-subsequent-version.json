@@ -24,6 +24,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1967-1970"
+			},
+			"place": {
+				"name": "Owerri"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

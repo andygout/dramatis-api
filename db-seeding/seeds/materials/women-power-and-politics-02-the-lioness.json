@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1560s"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

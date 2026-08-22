@@ -12,6 +12,74 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Roussillon"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Florence"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Florence"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Florence"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Medieval period"
+			},
+			"place": {
+				"name": "Marseille"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

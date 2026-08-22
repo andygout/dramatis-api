@@ -24,6 +24,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1890s"
+			},
+			"place": {
+				"name": "Russia"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

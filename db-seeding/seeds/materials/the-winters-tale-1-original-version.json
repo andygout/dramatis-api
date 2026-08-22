@@ -12,6 +12,118 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Seaport"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Courtroom"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Bohemia"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Bohemia"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Bohemia"
+			},
+			"locale": {
+				"name": "Road"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Bohemia"
+			},
+			"locale": {
+				"name": "Cottage"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Palace grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Classical antiquity"
+			},
+			"place": {
+				"name": "Sicilia"
+			},
+			"locale": {
+				"name": "Chapel"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Sicilia",

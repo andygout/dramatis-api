@@ -27,6 +27,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "Navarre"
+			},
+			"locale": {
+				"name": "Royal palace park"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

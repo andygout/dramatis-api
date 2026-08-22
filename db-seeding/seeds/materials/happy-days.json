@@ -11,6 +11,13 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"locale": {
+				"name": "Barren plain"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1940s"
+			},
+			"place": {
+				"name": "French Quarter"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -24,6 +24,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Pre-Pākehā"
+			},
+			"place": {
+				"name": "Polynesia"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Trojans",

@@ -25,6 +25,107 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Ducal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Monastery"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Nunnery"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Moated grange"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Vienna"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

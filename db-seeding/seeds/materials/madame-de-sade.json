@@ -19,6 +19,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1772"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Salon"
+			}
+		},
+		{
+			"time": {
+				"name": "1778"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Salon"
+			}
+		},
+		{
+			"time": {
+				"name": "1790"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Salon"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

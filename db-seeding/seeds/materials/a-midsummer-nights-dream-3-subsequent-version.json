@@ -32,6 +32,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Korea"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Korea"
+			},
+			"locale": {
+				"name": "Woodland"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Lovers",

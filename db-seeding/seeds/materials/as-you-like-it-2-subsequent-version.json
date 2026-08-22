@@ -24,6 +24,40 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		},
+		{
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"place": {
+				"name": "Forest of Arden"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Exiled court of Duke Senior in the Forest of Arden",

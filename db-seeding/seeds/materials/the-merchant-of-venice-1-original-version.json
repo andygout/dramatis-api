@@ -12,6 +12,96 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Belmont"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Belmont"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "Courtroom"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Belmont"
+			},
+			"locale": {
+				"name": "Estate grounds"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

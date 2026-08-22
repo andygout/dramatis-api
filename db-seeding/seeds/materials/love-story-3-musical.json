@@ -44,6 +44,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960s"
+			},
+			"place": {
+				"name": "Cambridge"
+			},
+			"locale": {
+				"name": "University"
+			}
+		},
+		{
+			"time": {
+				"name": "1960s-1970s"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "1960s-1970s"
+			},
+			"place": {
+				"name": "New York"
+			},
+			"locale": {
+				"name": "Hospital"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

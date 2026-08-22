@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1994"
+			},
+			"place": {
+				"name": "Westminster"
+			},
+			"locale": {
+				"name": "Campaign office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

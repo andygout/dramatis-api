@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Circus"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

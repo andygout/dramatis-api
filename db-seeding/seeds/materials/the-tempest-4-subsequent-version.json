@@ -24,6 +24,16 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "Mymensingh"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

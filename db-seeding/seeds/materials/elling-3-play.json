@@ -41,6 +41,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Norway"
+			},
+			"locale": {
+				"name": "Psychiatric institution"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Oslo"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

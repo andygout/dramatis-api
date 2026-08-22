@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Trench"
+			}
+		},
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "United Kingdom"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

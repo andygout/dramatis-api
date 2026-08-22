@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1979-1990"
+			},
+			"place": {
+				"name": "Buckingham Palace"
+			},
+			"locale": {
+				"name": "Audience room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

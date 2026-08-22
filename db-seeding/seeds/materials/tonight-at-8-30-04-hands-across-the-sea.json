@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "Mayfair"
+			},
+			"locale": {
+				"name": "Drawing room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

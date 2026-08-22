@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1945"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

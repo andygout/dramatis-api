@@ -24,6 +24,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Russia"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Russia"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

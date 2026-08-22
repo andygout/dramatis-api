@@ -18,5 +18,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1962"
+			},
+			"place": {
+				"name": "Moscow"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		},
+		{
+			"time": {
+				"name": "1962"
+			},
+			"place": {
+				"name": "Cuba"
+			},
+			"locale": {
+				"name": "Military base"
+			}
+		}
 	]
 }

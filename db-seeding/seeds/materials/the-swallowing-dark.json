@@ -10,5 +10,40 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Toxteth"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Immigration casework office"
+			}
+		},
+		{
+			"time": {
+				"name": "2002-2006"
+			},
+			"place": {
+				"name": "Zimbabwe"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		}
 	]
 }

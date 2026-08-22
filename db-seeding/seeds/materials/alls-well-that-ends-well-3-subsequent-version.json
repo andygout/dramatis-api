@@ -24,6 +24,41 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Early 1900s"
+			},
+			"place": {
+				"name": "Saurashtra"
+			},
+			"locale": {
+				"name": "Community"
+			}
+		},
+		{
+			"time": {
+				"name": "Early 1900s"
+			},
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Early 1900s"
+			},
+			"place": {
+				"name": "Rangoon"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

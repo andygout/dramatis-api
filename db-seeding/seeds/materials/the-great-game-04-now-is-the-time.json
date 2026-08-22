@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1929"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Road"
+			}
+		}
 	]
 }

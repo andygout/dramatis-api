@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2010"
+			},
+			"place": {
+				"name": "Whitehall"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
 	]
 }

@@ -12,6 +12,85 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "Inn"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "Field"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Frogmore"
+			},
+			"locale": {
+				"name": "Field"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Windsor Park"
+			},
+			"locale": {
+				"name": "Park"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -11,6 +11,116 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1968"
+			},
+			"place": {
+				"name": "Cambridge"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "1968"
+			},
+			"place": {
+				"name": "Prague"
+			}
+		},
+		{
+			"time": {
+				"name": "1976"
+			},
+			"place": {
+				"name": "Prague"
+			}
+		},
+		{
+			"time": {
+				"name": "May 1976"
+			},
+			"place": {
+				"name": "Cambridge"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1976"
+			},
+			"place": {
+				"name": "Prague"
+			}
+		},
+		{
+			"time": {
+				"name": "Summer 1977"
+			},
+			"place": {
+				"name": "Cambridge"
+			}
+		},
+		{
+			"time": {
+				"name": "Summer 1987"
+			},
+			"place": {
+				"name": "Cambridge"
+			}
+		},
+		{
+			"time": {
+				"name": "1987"
+			},
+			"place": {
+				"name": "Prague"
+			}
+		},
+		{
+			"time": {
+				"name": "1990"
+			},
+			"place": {
+				"name": "Cambridge"
+			}
+		},
+		{
+			"time": {
+				"name": "1990"
+			},
+			"place": {
+				"name": "Prague"
+			},
+			"locale": {
+				"name": "Bar"
+			}
+		},
+		{
+			"time": {
+				"name": "1990"
+			},
+			"place": {
+				"name": "Prague"
+			},
+			"locale": {
+				"name": "Restaurant"
+			}
+		},
+		{
+			"time": {
+				"name": "1990"
+			},
+			"place": {
+				"name": "Prague"
+			},
+			"locale": {
+				"name": "Music concert"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

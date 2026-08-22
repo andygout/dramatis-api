@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Post-2009"
+			},
+			"place": {
+				"name": "Greece"
+			},
+			"locale": {
+				"name": "Family estate"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

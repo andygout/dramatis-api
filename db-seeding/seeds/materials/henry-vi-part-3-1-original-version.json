@@ -12,6 +12,239 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1455"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Parliament house"
+			}
+		},
+		{
+			"time": {
+				"name": "1460"
+			},
+			"place": {
+				"name": "Sandal Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1460"
+			},
+			"place": {
+				"name": "Between Sandal Castle and Wakefield"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1461"
+			},
+			"place": {
+				"name": "Mortimer's Cross"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1461"
+			},
+			"place": {
+				"name": "York"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		},
+		{
+			"time": {
+				"name": "1461"
+			},
+			"place": {
+				"name": "Between Towton and Saxton"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1464"
+			},
+			"place": {
+				"name": "Northern England"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		},
+		{
+			"time": {
+				"name": "1464"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1464"
+			},
+			"place": {
+				"name": "France"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1467"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1470"
+			},
+			"place": {
+				"name": "Warwickshire"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "1470"
+			},
+			"place": {
+				"name": "Warwick"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1470"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1470"
+			},
+			"place": {
+				"name": "Middleham Castle"
+			},
+			"locale": {
+				"name": "Park"
+			}
+		},
+		{
+			"time": {
+				"name": "1470"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"time": {
+				"name": "1471"
+			},
+			"place": {
+				"name": "York"
+			},
+			"locale": {
+				"name": "City gates"
+			}
+		},
+		{
+			"time": {
+				"name": "1471"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1471"
+			},
+			"place": {
+				"name": "Coventry"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1471"
+			},
+			"place": {
+				"name": "Barnet"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1471"
+			},
+			"place": {
+				"name": "Tewkesbury"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1471"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The King's party",

@@ -24,6 +24,68 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"locale": {
+				"name": "House grounds"
+			}
+		},
+		{
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"locale": {
+				"name": "Tower walls"
+			}
+		},
+		{
+			"locale": {
+				"name": "Tower grounds"
+			}
+		},
+		{
+			"locale": {
+				"name": "Royal palace grounds"
+			}
+		},
+		{
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "House of York",

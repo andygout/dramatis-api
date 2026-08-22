@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "French Riviera"
+			},
+			"locale": {
+				"name": "Villa"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

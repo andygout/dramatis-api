@@ -11,6 +11,206 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Summer 1846"
+			},
+			"place": {
+				"name": "Sokolovo"
+			},
+			"locale": {
+				"name": "Country estate"
+			}
+		},
+		{
+			"time": {
+				"name": "July 1847"
+			},
+			"place": {
+				"name": "Salzbrunn"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "July 1847"
+			},
+			"place": {
+				"name": "Place de la Concorde"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "September 1847"
+			},
+			"place": {
+				"name": "Avenue Marigny"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "March 1848"
+			},
+			"place": {
+				"name": "Place de la Concorde"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "15th May 1848"
+			},
+			"place": {
+				"name": "Arc de Triomphe"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1848"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Boulevard"
+			}
+		},
+		{
+			"time": {
+				"name": "21st June 1848"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "27th June 1848"
+			},
+			"place": {
+				"name": "Avenue Marigny"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1849"
+			},
+			"place": {
+				"name": "Avenue Marigny"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "April 1849"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Artist's studio"
+			}
+		},
+		{
+			"time": {
+				"name": "May 1849"
+			},
+			"place": {
+				"name": "Dresden"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		},
+		{
+			"time": {
+				"name": "June 1849"
+			},
+			"place": {
+				"name": "Paris"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "September 1850"
+			},
+			"place": {
+				"name": "Nice"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1850"
+			},
+			"place": {
+				"name": "Nice"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1851"
+			},
+			"place": {
+				"name": "Nice"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1851"
+			},
+			"place": {
+				"name": "Nice"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "August 1852"
+			},
+			"place": {
+				"name": "English Channel"
+			},
+			"locale": {
+				"name": "Steamer"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

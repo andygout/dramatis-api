@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Suburban home"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

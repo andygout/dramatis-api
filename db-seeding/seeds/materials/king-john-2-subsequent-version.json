@@ -25,6 +25,140 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "City walls"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "Royal pavilion"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "Plain"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Angiers"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Bury St Edmunds"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Lincolnshire"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Lincolnshire"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Swinstead"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "13th century"
+			},
+			"place": {
+				"name": "Swinstead Abbey"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The English Party",

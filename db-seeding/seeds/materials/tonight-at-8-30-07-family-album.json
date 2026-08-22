@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Autumn 1860"
+			},
+			"place": {
+				"name": "Kent"
+			},
+			"locale": {
+				"name": "Drawing room"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -12,6 +12,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Nevada"
+			},
+			"locale": {
+				"name": "Trailer"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Nevada"
+			},
+			"locale": {
+				"name": "Military base"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Democratic Republic of the Congo"
+			},
+			"locale": {
+				"name": "Bar"
+			}
+		}
 	]
 }

@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1990s"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		}
 	]
 }

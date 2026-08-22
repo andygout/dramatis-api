@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2000-2011"
+			},
+			"place": {
+				"name": "New York City"
+			},
+			"locale": {
+				"name": "Coffee shop"
+			}
+		}
 	]
 }

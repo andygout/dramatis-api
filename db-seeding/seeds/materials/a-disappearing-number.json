@@ -20,5 +20,73 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "University lecture hall"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Los Angeles"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Chennai"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "CERN"
+			},
+			"locale": {
+				"name": "Laboratory"
+			}
+		},
+		{
+			"time": {
+				"name": "1913"
+			},
+			"place": {
+				"name": "Madras"
+			},
+			"locale": {
+				"name": "Office"
+			}
+		},
+		{
+			"time": {
+				"name": "1914-1919"
+			},
+			"place": {
+				"name": "Cambridge"
+			},
+			"locale": {
+				"name": "University"
+			}
+		}
 	]
 }

@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "Rwanda"
+			},
+			"locale": {
+				"name": "Village"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

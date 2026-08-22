@@ -22,6 +22,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1934"
+			},
+			"place": {
+				"name": "Ashington"
+			},
+			"locale": {
+				"name": "Miners' institute"
+			}
+		},
+		{
+			"time": {
+				"name": "1934"
+			},
+			"place": {
+				"name": "Newcastle upon Tyne"
+			},
+			"locale": {
+				"name": "Art gallery"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1966"
+			},
+			"place": {
+				"name": "China"
+			},
+			"locale": {
+				"name": "School"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

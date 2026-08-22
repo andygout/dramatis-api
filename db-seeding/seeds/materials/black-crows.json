@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1970s"
+			},
+			"place": {
+				"name": "Manchester"
+			},
+			"locale": {
+				"name": "Home"
+			}
+		}
 	]
 }

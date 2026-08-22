@@ -22,6 +22,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "July 1945"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Country house kitchen"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

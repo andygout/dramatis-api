@@ -12,6 +12,107 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Public place"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Wales"
+			},
+			"locale": {
+				"name": "Cave"
+			}
+		},
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Milford Haven"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "Ancient Rome"
+			},
+			"place": {
+				"name": "Rome"
+			},
+			"locale": {
+				"name": "Public place"
+			}
+		},
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		},
+		{
+			"time": {
+				"name": "1st century"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Prison"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The British Royal Family",

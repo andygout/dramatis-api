@@ -10,5 +10,29 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1990s"
+			},
+			"place": {
+				"name": "Afghanistan"
+			},
+			"locale": {
+				"name": "War zone"
+			}
+		},
+		{
+			"time": {
+				"name": "1990s"
+			},
+			"place": {
+				"name": "Panjshir Valley"
+			},
+			"locale": {
+				"name": "Military headquarters"
+			}
+		}
 	]
 }

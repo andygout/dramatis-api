@@ -12,6 +12,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1930s"
+			},
+			"place": {
+				"name": "West End"
+			},
+			"locale": {
+				"name": "Theatre stage"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

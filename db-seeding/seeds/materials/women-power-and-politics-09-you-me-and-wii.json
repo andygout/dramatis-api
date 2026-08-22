@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Leicestershire"
+			},
+			"locale": {
+				"name": "Council house"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

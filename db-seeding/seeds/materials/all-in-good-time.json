@@ -10,5 +10,18 @@
 				}
 			]
 		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "1960s"
+			},
+			"place": {
+				"name": "Bolton"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		}
 	]
 }

@@ -11,6 +11,19 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2006"
+			},
+			"place": {
+				"name": "Palace of Westminster"
+			},
+			"locale": {
+				"name": "Whips' office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

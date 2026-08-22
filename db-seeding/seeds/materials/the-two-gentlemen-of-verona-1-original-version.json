@@ -12,6 +12,107 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Milan"
+			},
+			"locale": {
+				"name": "Ducal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Verona"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Milan"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Mantua"
+			},
+			"locale": {
+				"name": "Forest"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Milan"
+			},
+			"locale": {
+				"name": "Palace grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "16th century"
+			},
+			"place": {
+				"name": "Milan"
+			},
+			"locale": {
+				"name": "Abbey"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

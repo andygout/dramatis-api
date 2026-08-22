@@ -11,6 +11,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "2004"
+			},
+			"place": {
+				"name": "Iraq"
+			},
+			"locale": {
+				"name": "Armoured personnel carrier"
+			}
+		},
+		{
+			"time": {
+				"name": "2004"
+			},
+			"place": {
+				"name": "Iraq"
+			},
+			"locale": {
+				"name": "Desert checkpoint"
+			}
+		},
+		{
+			"time": {
+				"name": "2004"
+			},
+			"place": {
+				"name": "Camp Dogwood"
+			},
+			"locale": {
+				"name": "Military base"
+			}
+		},
+		{
+			"time": {
+				"name": "Contemporary present day"
+			},
+			"place": {
+				"name": "Fife"
+			},
+			"locale": {
+				"name": "Pub"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

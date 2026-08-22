@@ -24,6 +24,162 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Gloucester"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Albany"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Albany"
+			},
+			"locale": {
+				"name": "Palace courtyard"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Gloucester"
+			},
+			"locale": {
+				"name": "Castle courtyard"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Gloucester"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Heath"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Britain"
+			},
+			"locale": {
+				"name": "Hovel"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Gloucester"
+			},
+			"locale": {
+				"name": "Farmhouse"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Dover"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Dover"
+			},
+			"locale": {
+				"name": "Countryside"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Dover"
+			},
+			"locale": {
+				"name": "Military tent"
+			}
+		},
+		{
+			"time": {
+				"name": "Legendary antiquity"
+			},
+			"place": {
+				"name": "Dover"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

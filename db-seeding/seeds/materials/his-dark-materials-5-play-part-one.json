@@ -22,6 +22,85 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Alternative Oxford"
+			},
+			"locale": {
+				"name": "College"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Alternative Oxford"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Trollesund"
+			},
+			"locale": {
+				"name": "Port"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Bolvangar"
+			},
+			"locale": {
+				"name": "Research station"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Svalbard"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Cittàgazze"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Oxford"
+			},
+			"locale": {
+				"name": "City"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Between the Worlds",

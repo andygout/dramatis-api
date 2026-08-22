@@ -14,6 +14,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1941"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Underground station"
+			}
+		},
+		{
+			"time": {
+				"name": "1941"
+			},
+			"place": {
+				"name": "Wonderland"
+			},
+			"locale": {
+				"name": "Fantasy world"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

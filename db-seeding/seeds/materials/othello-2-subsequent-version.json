@@ -27,6 +27,72 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"place": {
+				"name": "Venice"
+			},
+			"locale": {
+				"name": "Council chamber"
+			}
+		},
+		{
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Quay"
+			}
+		},
+		{
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Castle grounds"
+			}
+		},
+		{
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Castle garden"
+			}
+		},
+		{
+			"place": {
+				"name": "Cyprus"
+			},
+			"locale": {
+				"name": "Bedchamber"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

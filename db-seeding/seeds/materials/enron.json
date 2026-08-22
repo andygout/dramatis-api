@@ -11,6 +11,30 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1992-2001"
+			},
+			"place": {
+				"name": "Houston"
+			},
+			"locale": {
+				"name": "Office"
+			}
+		},
+		{
+			"time": {
+				"name": "1992-2001"
+			},
+			"place": {
+				"name": "Washington, DC"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

@@ -24,11 +24,61 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "Ducal palace"
+			}
+		},
+		{
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"place": {
+				"name": "Mumbai"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [
 				{
-					"name": "Orsino, Duke of Illyria"
+					"name": "Orsino, Duke of Mumbai"
 				}
 			]
 		},

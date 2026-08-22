@@ -25,6 +25,59 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Ducal palace"
+			}
+		},
+		{
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Seashore"
+			}
+		},
+		{
+			"time": {
+				"name": "Illyria"
+			},
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "Garden"
+			}
+		},
+		{
+			"place": {
+				"name": "Illyria"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

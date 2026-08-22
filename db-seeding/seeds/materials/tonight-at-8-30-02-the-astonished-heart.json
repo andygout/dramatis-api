@@ -12,6 +12,52 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "November 1935"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "November 1934"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "January 1935"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		},
+		{
+			"time": {
+				"name": "April 1935"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Apartment"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"characters": [

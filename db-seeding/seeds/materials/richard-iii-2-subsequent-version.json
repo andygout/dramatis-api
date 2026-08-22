@@ -24,6 +24,151 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Royal palace"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "Pomfret Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower walls"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "Baynard's Castle"
+			},
+			"locale": {
+				"name": "Castle"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "Tower of London"
+			},
+			"locale": {
+				"name": "Tower grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Royal palace grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "1483"
+			},
+			"place": {
+				"name": "Salisbury"
+			},
+			"locale": {
+				"name": "Public square"
+			}
+		},
+		{
+			"time": {
+				"name": "1485"
+			},
+			"place": {
+				"name": "Tamworth"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "1485"
+			},
+			"place": {
+				"name": "Bosworth Field"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "House of York",

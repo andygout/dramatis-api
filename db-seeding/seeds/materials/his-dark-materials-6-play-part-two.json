@@ -22,6 +22,65 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Alternative Oxford"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Alternative Geneva"
+			},
+			"locale": {
+				"name": "Laboratory"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"place": {
+				"name": "Cittàgazze"
+			},
+			"locale": {
+				"name": "City"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"locale": {
+				"name": "Fortress"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"locale": {
+				"name": "Underworld"
+			}
+		},
+		{
+			"time": {
+				"name": "Alternative present day"
+			},
+			"locale": {
+				"name": "Wilderness"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "Between the Worlds",

@@ -12,6 +12,118 @@
 			]
 		}
 	],
+	"settings": [
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Palace grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Palace"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Orchard"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Courtyard"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "House grounds"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Outside Troy"
+			},
+			"locale": {
+				"name": "Military camp"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Outside Troy"
+			},
+			"locale": {
+				"name": "Tournament ground"
+			}
+		},
+		{
+			"time": {
+				"name": "Mythological antiquity"
+			},
+			"place": {
+				"name": "Troy"
+			},
+			"locale": {
+				"name": "Battlefield"
+			}
+		}
+	],
 	"characterGroups": [
 		{
 			"name": "The Trojans",
