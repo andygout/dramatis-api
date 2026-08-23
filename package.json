@@ -25,10 +25,10 @@
     "start": "npm run setup && node --watch-path=src --watch-preserve-output src/server.js"
   },
   "lint-staged": {
-    "*.{js,jsx,json,css,md,yml}": [
+    "*.{js,json,md,yml}": [
       "prettier --write"
     ],
-    "*.{js,jsx}": [
+    "*.{js}": [
       "eslint"
     ],
     "*": [
