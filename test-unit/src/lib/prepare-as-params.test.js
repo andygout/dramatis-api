@@ -504,11 +504,19 @@ describe('Prepare As Params module', () => {
 		});
 
 		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
-			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+			it('does not filter out objects that do not have a name attribute', async () => {
 				const instance = {
 					productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-					subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }],
-					settings: [{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }]
+					reviews: [
+						{
+							url: 'https://www.foo.com',
+							date: '2024-04-03',
+							publication: { name: 'Financial Times' },
+							critic: { name: 'Sarah Hemming' }
+						}
+					],
+					settings: [{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }],
+					subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
 				};
 
 				const result = prepareAsParams(instance);
@@ -518,17 +526,20 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.productions.length, 1);
 				assert.equal(Object.hasOwn(result.productions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.productions[0], 'position'), false);
-				assert.equal(result.subProductions.length, 1);
-				assert.equal(Object.hasOwn(result.subProductions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.subProductions[0], 'position'), false);
+				assert.equal(result.reviews.length, 1);
+				assert.equal(Object.hasOwn(result.reviews[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.reviews[0], 'position'), false);
 				assert.equal(result.settings.length, 1);
 				assert.equal(Object.hasOwn(result.settings[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.settings[0], 'position'), false);
+				assert.equal(result.subProductions.length, 1);
+				assert.equal(Object.hasOwn(result.subProductions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.subProductions[0], 'position'), false);
 			});
 		});
 
 		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
-			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+			it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
 				const instance = {
 					characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
 					nominations: [{ entities: [{ name: 'Simon Baker' }] }],
@@ -929,14 +940,22 @@ describe('Prepare As Params module', () => {
 		});
 
 		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
-			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+			it('does not filter out objects that do not have a name attribute', async () => {
 				const instance = {
 					foo: {
 						productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }],
+						reviews: [
+							{
+								url: 'https://www.foo.com',
+								date: '2024-04-03',
+								publication: { name: 'Financial Times' },
+								critic: { name: 'Sarah Hemming' }
+							}
+						],
 						settings: [
 							{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
-						]
+						],
+						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
 					}
 				};
 
@@ -947,17 +966,20 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.foo.productions.length, 1);
 				assert.equal(Object.hasOwn(result.foo.productions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foo.productions[0], 'position'), false);
-				assert.equal(result.foo.subProductions.length, 1);
-				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'position'), false);
+				assert.equal(result.foo.reviews.length, 1);
+				assert.equal(Object.hasOwn(result.foo.reviews[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foo.reviews[0], 'position'), false);
 				assert.equal(result.foo.settings.length, 1);
 				assert.equal(Object.hasOwn(result.foo.settings[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foo.settings[0], 'position'), false);
+				assert.equal(result.foo.subProductions.length, 1);
+				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'position'), false);
 			});
 		});
 
 		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
-			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+			it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
 				const instance = {
 					foo: {
 						characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
@@ -1391,16 +1413,24 @@ describe('Prepare As Params module', () => {
 		});
 
 		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
-			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+			it('does not filter out objects that do not have a name attribute', async () => {
 				const instance = {
 					foos: [
 						{
 							name: 'Foobar',
 							productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }],
+							reviews: [
+								{
+									url: 'https://www.foo.com',
+									date: '2024-04-03',
+									publication: { name: 'Financial Times' },
+									critic: { name: 'Sarah Hemming' }
+								}
+							],
 							settings: [
 								{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
-							]
+							],
+							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
 						}
 					]
 				};
@@ -1412,17 +1442,20 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.foos[0].productions.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'position'), false);
-				assert.equal(result.foos[0].subProductions.length, 1);
-				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'position'), false);
+				assert.equal(result.foos[0].reviews.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].reviews[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foos[0].reviews[0], 'position'), false);
 				assert.equal(result.foos[0].settings.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].settings[0], 'name'), false);
 				assert.equal(Object.hasOwn(result.foos[0].settings[0], 'position'), false);
+				assert.equal(result.foos[0].subProductions.length, 1);
+				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'name'), false);
+				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'position'), false);
 			});
 		});
 
-		describe('object is in array where items are permitted an absent name property empty string name value providing they have named children', () => {
-			it('does not filter out objects that have a name attribute which is absent or is an empty string', async () => {
+		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
+			it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
 				const instance = {
 					foos: [
 						{
