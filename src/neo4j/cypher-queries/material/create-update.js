@@ -180,25 +180,25 @@ const getCreateUpdateQuery = (action) => {
 
 		WITH DISTINCT material
 
-			UNWIND (CASE $subMaterials WHEN [] THEN [null] ELSE $subMaterials END) AS subMaterialParam
+		UNWIND (CASE $subMaterials WHEN [] THEN [null] ELSE $subMaterials END) AS subMaterialParam
 
-				OPTIONAL MATCH (existingSubMaterial:Material { name: subMaterialParam.name })
-					WHERE
-						(subMaterialParam.differentiator IS NULL AND existingSubMaterial.differentiator IS NULL) OR
-						subMaterialParam.differentiator = existingSubMaterial.differentiator
+			OPTIONAL MATCH (existingSubMaterial:Material { name: subMaterialParam.name })
+				WHERE
+					(subMaterialParam.differentiator IS NULL AND existingSubMaterial.differentiator IS NULL) OR
+					subMaterialParam.differentiator = existingSubMaterial.differentiator
 
-				FOREACH (item IN CASE WHEN subMaterialParam IS NULL THEN [] ELSE [1] END |
-					MERGE (subMaterial:Material {
-						uuid: COALESCE(existingSubMaterial.uuid, subMaterialParam.uuid),
-						name: subMaterialParam.name
-					})
-						ON CREATE SET
-							subMaterial.differentiator = subMaterialParam.differentiator,
-							subMaterial.format = subMaterialParam.format,
-							subMaterial.year = subMaterialParam.year
+			FOREACH (item IN CASE WHEN subMaterialParam IS NULL THEN [] ELSE [1] END |
+				MERGE (subMaterial:Material {
+					uuid: COALESCE(existingSubMaterial.uuid, subMaterialParam.uuid),
+					name: subMaterialParam.name
+				})
+					ON CREATE SET
+						subMaterial.differentiator = subMaterialParam.differentiator,
+						subMaterial.format = subMaterialParam.format,
+						subMaterial.year = subMaterialParam.year
 
-					CREATE (material)-[:HAS_SUB_MATERIAL { position: subMaterialParam.position }]->(subMaterial)
-				)
+				CREATE (material)-[:HAS_SUB_MATERIAL { position: subMaterialParam.position }]->(subMaterial)
+			)
 
 		WITH DISTINCT material
 

@@ -105,14 +105,14 @@ const getCreateUpdateQuery = (action) => {
 
 		WITH DISTINCT production
 
-			UNWIND (CASE $subProductions WHEN [] THEN [null] ELSE $subProductions END) AS subProductionParam
+		UNWIND (CASE $subProductions WHEN [] THEN [null] ELSE $subProductions END) AS subProductionParam
 
-				OPTIONAL MATCH (existingSubProduction:Production { uuid: subProductionParam.uuid })
+			OPTIONAL MATCH (existingSubProduction:Production { uuid: subProductionParam.uuid })
 
-				FOREACH (item IN CASE WHEN existingSubProduction IS NULL THEN [] ELSE [1] END |
-					CREATE (production)-[:HAS_SUB_PRODUCTION { position: subProductionParam.position }]->
-						(existingSubProduction)
-				)
+			FOREACH (item IN CASE WHEN existingSubProduction IS NULL THEN [] ELSE [1] END |
+				CREATE (production)-[:HAS_SUB_PRODUCTION { position: subProductionParam.position }]->
+					(existingSubProduction)
+			)
 
 		WITH DISTINCT production
 
