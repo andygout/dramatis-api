@@ -21,7 +21,7 @@ export default () => `
 					entityRel.creditPosition = creditedMemberRel.creditPosition
 
 			WITH production, entityRel, entity, creditedMember
-				ORDER BY creditedMember.memberPosition
+				ORDER BY creditedMemberRel.memberPosition
 
 			WITH production, entityRel, entity,
 				COLLECT(DISTINCT(creditedMember {
