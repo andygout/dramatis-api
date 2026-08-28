@@ -1,3 +1,3 @@
-import getShowQueries from './show.js';
+import getShowQueries from './show/index.js';
 
 export { getShowQueries };
