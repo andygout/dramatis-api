@@ -1,5 +1,4 @@
-export default () => [
-	`
+export default () => `
 	MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
 	CALL {
@@ -293,5 +292,4 @@ export default () => [
 		ceremony.name AS name,
 		award,
 		categories
-`
-];
+`;
