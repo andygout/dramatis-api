@@ -430,11 +430,7 @@ export default () => `
 
 		OPTIONAL MATCH (company)<-[publicationRel:HAS_REVIEWER]-(production:Production)
 
-		OPTIONAL MATCH (production)-[criticRel:HAS_REVIEWER]->
-			(critic:Person { uuid: publicationRel.criticPersonUuid })
-			WHERE
-				publicationRel.position IS NULL OR
-				publicationRel.position = criticRel.position
+		OPTIONAL MATCH (critic:Person { uuid: publicationRel.criticPersonUuid })
 
 		OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
