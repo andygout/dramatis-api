@@ -4,7 +4,12 @@ export default () => `
 	CALL {
 		WITH time
 
-		OPTIONAL MATCH (time)<-[:HAS_SETTING]-(material:Material)
+		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(settingTime:Time)
+			WHERE settingTime = time OR
+				(
+					settingTime.fromDate >= time.fromDate AND
+					settingTime.toDate <= time.toDate
+				)
 
 		WITH DISTINCT time, material
 
@@ -114,13 +119,18 @@ export default () => `
 			CALL {
 				WITH material, time
 
-				OPTIONAL MATCH (material)-[timeSettingRel:HAS_SETTING]->(time)
+				OPTIONAL MATCH (material)-[timeSettingRel:HAS_SETTING]->(settingTime:Time)
+					WHERE settingTime = time OR
+						(
+							settingTime.fromDate >= time.fromDate AND
+							settingTime.toDate <= time.toDate
+						)
 
 				OPTIONAL MATCH (place:Place { uuid: timeSettingRel.placeUuid })
 
 				OPTIONAL MATCH (locale:Locale { uuid: timeSettingRel.localeUuid })
 
-				WITH timeSettingRel, time, place, locale
+				WITH timeSettingRel, settingTime, place, locale
 					ORDER BY timeSettingRel.position
 
 				RETURN
@@ -129,7 +139,7 @@ export default () => `
 							THEN null
 							ELSE {
 								model: 'SETTING',
-								time: time { model: 'TIME', .uuid, .name },
+								time: settingTime { model: 'TIME', .uuid, .name },
 								place: CASE WHEN place IS NULL
 									THEN null
 									ELSE place { model: 'PLACE', .uuid, .name }

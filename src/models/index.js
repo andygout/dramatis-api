@@ -32,6 +32,7 @@ import SubMaterial from './SubMaterial.js';
 import SubProductionIdentifier from './SubProductionIdentifier.js';
 import SubVenue from './SubVenue.js';
 import Time from './Time.js';
+import TimeBase from './TimeBase.js';
 import Venue from './Venue.js';
 import VenueBase from './VenueBase.js';
 import WritingCredit from './WritingCredit.js';
@@ -71,6 +72,7 @@ export {
 	SubProductionIdentifier,
 	SubVenue,
 	Time,
+	TimeBase,
 	Venue,
 	VenueBase,
 	WritingCredit

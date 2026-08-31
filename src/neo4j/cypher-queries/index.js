@@ -42,7 +42,13 @@ import {
 	getDeleteQuery as getSharedDeleteQuery,
 	getListQuery as getSharedListQuery
 } from './shared/index.js';
-import { getShowQueries as getTimeShowQueries } from './time/index.js';
+import {
+	getCreateQuery as getTimeCreateQuery,
+	getEditQuery as getTimeEditQuery,
+	getUpdateQuery as getTimeUpdateQuery,
+	getShowQueries as getTimeShowQueries,
+	getListQuery as getTimeListQuery
+} from './time/index.js';
 import {
 	getAwardContextualDuplicateRecordCheckQuery,
 	getDuplicateRecordCheckQuery,
@@ -67,6 +73,7 @@ const getCreateQueries = {
 	[MODELS.FESTIVAL]: getFestivalCreateQuery,
 	[MODELS.MATERIAL]: getMaterialCreateQuery,
 	[MODELS.PRODUCTION]: getProductionCreateQuery,
+	[MODELS.TIME]: getTimeCreateQuery,
 	[MODELS.VENUE]: getVenueCreateQuery
 };
 
@@ -75,6 +82,7 @@ const getEditQueries = {
 	[MODELS.FESTIVAL]: getFestivalEditQuery,
 	[MODELS.MATERIAL]: getMaterialEditQuery,
 	[MODELS.PRODUCTION]: getProductionEditQuery,
+	[MODELS.TIME]: getTimeEditQuery,
 	[MODELS.VENUE]: getVenueEditQuery
 };
 
@@ -83,6 +91,7 @@ const getUpdateQueries = {
 	[MODELS.FESTIVAL]: getFestivalUpdateQuery,
 	[MODELS.MATERIAL]: getMaterialUpdateQuery,
 	[MODELS.PRODUCTION]: getProductionUpdateQuery,
+	[MODELS.TIME]: getTimeUpdateQuery,
 	[MODELS.VENUE]: getVenueUpdateQuery
 };
 
@@ -108,6 +117,7 @@ const getListQueries = {
 	[MODELS.FESTIVAL]: getFestivalListQuery,
 	[MODELS.MATERIAL]: getMaterialListQuery,
 	[MODELS.PRODUCTION]: getProductionListQuery,
+	[MODELS.TIME]: getTimeListQuery,
 	[MODELS.VENUE]: getVenueListQuery
 };
 
