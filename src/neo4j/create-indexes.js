@@ -29,6 +29,29 @@ const createIndex = async (label) => {
 	}
 };
 
+// TODO: Refactor.
+const createTimeIndex = async () => {
+	const createTimeFromDateIndexQuery = `CREATE INDEX FOR (t:Time) ON (t.fromDate)`;
+
+	try {
+		await neo4jQuery({ query: createTimeFromDateIndexQuery }, { isOptionalResult: true });
+
+		console.log(`Neo4j database: Index on fromDate property created for Time`); // eslint-disable-line no-console
+	} catch (error) {
+		console.error(`Neo4j database: Error attempting query '${createTimeFromDateIndexQuery}': `, error); // eslint-disable-line no-console
+	}
+
+	const createTimeToDateIndexQuery = `CREATE INDEX FOR (t:Time) ON (t.toDate)`;
+
+	try {
+		await neo4jQuery({ query: createTimeToDateIndexQuery }, { isOptionalResult: true });
+
+		console.log(`Neo4j database: Index on toDate property created for Time`); // eslint-disable-line no-console
+	} catch (error) {
+		console.error(`Neo4j database: Error attempting query '${createTimeToDateIndexQuery}': `, error); // eslint-disable-line no-console
+	}
+};
+
 const createIndexes = async () => {
 	const callDbIndexesQuery = 'SHOW RANGE INDEXES WHERE owningConstraint IS NULL';
 
@@ -55,6 +78,9 @@ const createIndexes = async () => {
 		for (const label of labelsToIndex) {
 			await createIndex(label);
 		}
+
+		// TODO: Refactor.
+		await createTimeIndex();
 
 		console.log('Neo4j database: All indexes created'); // eslint-disable-line no-console
 	} catch (error) {

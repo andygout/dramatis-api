@@ -33,6 +33,8 @@ describe('Uniqueness in database: Times API', () => {
 			uuid: TIME_1_UUID,
 			name: 'Renaissance',
 			differentiator: '',
+			fromDate: '',
+			toDate: '',
 			errors: {}
 		};
 
@@ -52,6 +54,8 @@ describe('Uniqueness in database: Times API', () => {
 			model: 'TIME',
 			name: 'Renaissance',
 			differentiator: '',
+			fromDate: '',
+			toDate: '',
 			hasErrors: true,
 			errors: {
 				name: ['Name and differentiator combination already exists'],
@@ -77,6 +81,8 @@ describe('Uniqueness in database: Times API', () => {
 			uuid: TIME_2_UUID,
 			name: 'Renaissance',
 			differentiator: '1',
+			fromDate: '',
+			toDate: '',
 			errors: {}
 		};
 
@@ -98,6 +104,8 @@ describe('Uniqueness in database: Times API', () => {
 			uuid: TIME_1_UUID,
 			name: 'Renaissance',
 			differentiator: '1',
+			fromDate: '',
+			toDate: '',
 			hasErrors: true,
 			errors: {
 				name: ['Name and differentiator combination already exists'],
@@ -123,6 +131,8 @@ describe('Uniqueness in database: Times API', () => {
 			uuid: TIME_1_UUID,
 			name: 'Renaissance',
 			differentiator: '2',
+			fromDate: '',
+			toDate: '',
 			errors: {}
 		};
 
@@ -143,6 +153,8 @@ describe('Uniqueness in database: Times API', () => {
 			uuid: TIME_2_UUID,
 			name: 'Renaissance',
 			differentiator: '',
+			fromDate: '',
+			toDate: '',
 			errors: {}
 		};
 

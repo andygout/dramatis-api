@@ -1,5 +1,5 @@
 import Base from './Base.js';
-import { Locale, Place, Time } from './index.js';
+import { Locale, Place, TimeBase } from './index.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class Setting extends Base {
@@ -8,7 +8,7 @@ export default class Setting extends Base {
 
 		const { time, place, locale } = props;
 
-		this.time = new Time(time);
+		this.time = new TimeBase(time);
 
 		this.place = new Place(place);
 
