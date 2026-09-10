@@ -40,6 +40,8 @@ describe('Instance validation failures: Times API', () => {
 					model: 'TIME',
 					name: '',
 					differentiator: '',
+					fromDate: '',
+					toDate: '',
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
@@ -64,10 +66,43 @@ describe('Instance validation failures: Times API', () => {
 					model: 'TIME',
 					name: '1962',
 					differentiator: '',
+					fromDate: '',
+					toDate: '',
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
 						differentiator: ['Name and differentiator combination already exists']
+					}
+				};
+
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Time'), 1);
+			});
+		});
+
+		context('instance has both input and database validation failures', () => {
+			it('returns instance with appropriate errors attached', async () => {
+				assert.equal(await countNodesWithLabel('Time'), 1);
+
+				const response = await request(app).post('/times').send({
+					name: '1962',
+					fromDate: '1962-12-31',
+					toDate: '1962-01-01'
+				});
+
+				const expectedResponseBody = {
+					model: 'TIME',
+					name: '1962',
+					differentiator: '',
+					fromDate: '1962-12-31',
+					toDate: '1962-01-01',
+					hasErrors: true,
+					errors: {
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists'],
+						fromDate: ["'From' date must not be after 'to' date"],
+						toDate: ["'To' date must not be before 'from' date"]
 					}
 				};
 
@@ -111,6 +146,8 @@ describe('Instance validation failures: Times API', () => {
 					uuid: EIGHTEEN_ZERO_NINE_TIME_UUID,
 					name: '',
 					differentiator: '',
+					fromDate: '',
+					toDate: '',
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
@@ -144,6 +181,8 @@ describe('Instance validation failures: Times API', () => {
 					uuid: EIGHTEEN_ZERO_NINE_TIME_UUID,
 					name: '1962',
 					differentiator: '',
+					fromDate: '',
+					toDate: '',
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
@@ -162,6 +201,37 @@ describe('Instance validation failures: Times API', () => {
 					}),
 					true
 				);
+			});
+		});
+
+		context('instance has both input and database validation failures', () => {
+			it('returns instance with appropriate errors attached', async () => {
+				assert.equal(await countNodesWithLabel('Time'), 2);
+
+				const response = await request(app).post('/times').send({
+					name: '1962',
+					fromDate: '1962-12-31',
+					toDate: '1962-01-01'
+				});
+
+				const expectedResponseBody = {
+					model: 'TIME',
+					name: '1962',
+					differentiator: '',
+					fromDate: '1962-12-31',
+					toDate: '1962-01-01',
+					hasErrors: true,
+					errors: {
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists'],
+						fromDate: ["'From' date must not be after 'to' date"],
+						toDate: ["'To' date must not be before 'from' date"]
+					}
+				};
+
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Time'), 2);
 			});
 		});
 	});
@@ -205,6 +275,8 @@ describe('Instance validation failures: Times API', () => {
 					uuid: EIGHTEEN_ZERO_NINE_TIME_UUID,
 					name: '1809',
 					differentiator: null,
+					fromDate: '',
+					toDate: '',
 					hasErrors: true,
 					errors: {
 						associations: ['Material']

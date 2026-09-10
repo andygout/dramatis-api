@@ -1,7 +1,7 @@
 import { neo4jQuery } from './query.js';
 import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants.js';
 
-const INDEXABLE_LABELS = new Set([
+const LABELS_REQUIRING_NAME_PROPERTY_INDEX = new Set([
 	MODEL_TO_NODE_LABEL_MAP.AWARD,
 	MODEL_TO_NODE_LABEL_MAP.AWARD_CEREMONY,
 	MODEL_TO_NODE_LABEL_MAP.CHARACTER,
@@ -17,15 +17,47 @@ const INDEXABLE_LABELS = new Set([
 	MODEL_TO_NODE_LABEL_MAP.VENUE
 ]);
 
-const createIndex = async (label) => {
-	const createIndexQuery = `CREATE INDEX FOR (n:${label}) ON (n.name)`;
+const LABELS_REQUIRING_FROM_DATE_PROPERTY_INDEX = new Set([MODEL_TO_NODE_LABEL_MAP.TIME]);
+
+const LABELS_REQUIRING_TO_DATE_PROPERTY_INDEX = new Set([MODEL_TO_NODE_LABEL_MAP.TIME]);
+
+const propertyNameToLabelSetMap = {
+	name: LABELS_REQUIRING_NAME_PROPERTY_INDEX,
+	fromDate: LABELS_REQUIRING_FROM_DATE_PROPERTY_INDEX,
+	toDate: LABELS_REQUIRING_TO_DATE_PROPERTY_INDEX
+};
+
+const createIndexOnProperty = async (label, property) => {
+	const createIndexQuery = `CREATE INDEX FOR (n:${label}) ON (n.${property})`;
 
 	try {
 		await neo4jQuery({ query: createIndexQuery }, { isOptionalResult: true });
 
-		console.log(`Neo4j database: Index on name property created for ${label}`); // eslint-disable-line no-console
+		console.log(`Neo4j database: Index on ${property} property created for ${label}`); // eslint-disable-line no-console
 	} catch (error) {
 		console.error(`Neo4j database: Error attempting query '${createIndexQuery}': `, error); // eslint-disable-line no-console
+	}
+};
+
+const createIndexesOnProperty = async (existingIndexes, property) => {
+	const labelsWithPropertyIndex = existingIndexes
+		.filter((index) => index.properties?.includes(property))
+		.map((index) => index.labelsOrTypes[0]);
+
+	const labelsMissingPropertyIndex = [...propertyNameToLabelSetMap[property]].filter(
+		(label) => !labelsWithPropertyIndex.includes(label)
+	);
+
+	console.log(`Neo4j database: Creating ${property} property indexes…`); // eslint-disable-line no-console
+
+	if (!labelsMissingPropertyIndex.length) {
+		console.log(`Neo4j database: No ${property} property indexes required`); // eslint-disable-line no-console
+	} else {
+		for (const label of labelsMissingPropertyIndex) {
+			await createIndexOnProperty(label, property);
+		}
+
+		console.log(`Neo4j database: All ${property} property indexes created`); // eslint-disable-line no-console
 	}
 };
 
@@ -33,30 +65,18 @@ const createIndexes = async () => {
 	const callDbIndexesQuery = 'SHOW RANGE INDEXES WHERE owningConstraint IS NULL';
 
 	try {
-		const indexes = await neo4jQuery(
+		const existingIndexes = await neo4jQuery(
 			{ query: callDbIndexesQuery },
 			{ isOptionalResult: true, isArrayResult: true }
 		);
 
-		const labelsWithIndex = indexes
-			.filter((index) => index.properties?.includes('name'))
-			.map((index) => index.labelsOrTypes[0]);
+		await createIndexesOnProperty(existingIndexes, 'name');
 
-		const labelsToIndex = [...INDEXABLE_LABELS].filter((label) => !labelsWithIndex.includes(label));
+		await createIndexesOnProperty(existingIndexes, 'fromDate');
 
-		console.log('Neo4j database: Creating indexes…'); // eslint-disable-line no-console
+		await createIndexesOnProperty(existingIndexes, 'toDate');
 
-		if (!labelsToIndex.length) {
-			console.log('Neo4j database: No indexes required'); // eslint-disable-line no-console
-
-			return;
-		}
-
-		for (const label of labelsToIndex) {
-			await createIndex(label);
-		}
-
-		console.log('Neo4j database: All indexes created'); // eslint-disable-line no-console
+		console.log('Neo4j database: All indexing checks complete'); // eslint-disable-line no-console
 	} catch (error) {
 		console.error(`Neo4j database: Error attempting query '${callDbIndexesQuery}': `, error); // eslint-disable-line no-console
 	}

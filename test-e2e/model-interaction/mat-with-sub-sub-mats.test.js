@@ -54,6 +54,7 @@ const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGH
 let theGreatGameAfghanistanMaterial;
 let partOneInvasionsAndIndependenceMaterial;
 let buglesAtTheGatesOfJalalabadMaterial;
+let eighteenFortiesTime;
 let eighteenFortyTwoTime;
 let kabulPlace;
 let prisonCellLocale;
@@ -69,6 +70,18 @@ describe('Material with sub-sub-materials', () => {
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
+
+		await request(app).post('/times').send({
+			name: '1840s',
+			fromDate: '1840-01-01',
+			toDate: '1849-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1842',
+			fromDate: '1842-01-01',
+			toDate: '1842-12-31'
+		});
 
 		await request(app)
 			.post('/materials')
@@ -558,6 +571,8 @@ describe('Material with sub-sub-materials', () => {
 		buglesAtTheGatesOfJalalabadMaterial = await request(app).get(
 			`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`
 		);
+
+		eighteenFortiesTime = await request(app).get(`/times/${EIGHTEEN_FORTIES_TIME_UUID}`);
 
 		eighteenFortyTwoTime = await request(app).get(`/times/${EIGHTEEN_FORTY_TWO_TIME_UUID}`);
 
@@ -1217,6 +1232,216 @@ describe('Material with sub-sub-materials', () => {
 			const { surMaterial } = buglesAtTheGatesOfJalalabadMaterial.body;
 
 			assert.deepEqual(surMaterial, expectedSurMaterial);
+		});
+	});
+
+	describe('1840s (time)', () => {
+		it('includes materials for which it and its contained sub-times was a setting, including the sur-material and (where applicable) sur-sur-material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: MINISKIRTS_OF_KABUL_MATERIAL_UUID,
+					name: 'Miniskirts of Kabul',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
+					name: 'Part One — Invasions and Independence (1842-1930)',
+					format: 'sub-collection of plays',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					writingCredits: [],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTIES_TIME_UUID,
+								name: '1840s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: AFGHANISTAN_PLACE_UUID,
+								name: 'Afghanistan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_WING_LOCALE_UUID,
+								name: 'Prison wing'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = eighteenFortiesTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
