@@ -14,6 +14,7 @@ const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	festivals: '🎪',
 	materials: '📖',
 	productions: '🎭',
+	times: '🕰',
 	venues: '🏛️'
 };
 
@@ -106,6 +107,11 @@ async function seedDatabase() {
 
 	// eslint-disable-next-line no-console
 	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['venues']} Venue seeds sown`);
+
+	await seedInstances('times');
+
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['times']} Time seeds sown`);
 
 	await seedInstances('materials');
 
