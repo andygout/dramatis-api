@@ -119,10 +119,11 @@
 				},
 				{
 					"name": "Earl of Warwick",
-					"underlyingName": "Richard Beauchamp, Earl of Warwick"
+					"underlyingName": "Richard Beauchamp, 13th Earl of Warwick"
 				},
 				{
-					"name": "Dunois, Bastard of Orléans"
+					"name": "Dunois, Bastard of Orléans",
+					"underlyingName": "Jean de Dunois, Count of Dunois"
 				},
 				{
 					"name": "Page to Dunois"

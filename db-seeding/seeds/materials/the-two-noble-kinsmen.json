@@ -17,7 +17,7 @@
 	"settings": [
 		{
 			"time": {
-				"name": "Mythological"
+				"name": "Mythological antiquity"
 			},
 			"place": {
 				"name": "Athens"
@@ -28,7 +28,7 @@
 		},
 		{
 			"time": {
-				"name": "Mythological"
+				"name": "Mythological antiquity"
 			},
 			"place": {
 				"name": "Thebes"
@@ -39,7 +39,7 @@
 		},
 		{
 			"time": {
-				"name": "Mythological"
+				"name": "Mythological antiquity"
 			},
 			"place": {
 				"name": "Athens"
