@@ -1464,6 +1464,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1482,24 +1500,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				},
@@ -1519,6 +1519,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1537,24 +1555,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				},
@@ -1574,6 +1574,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1592,24 +1610,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				}
@@ -1640,6 +1640,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1658,24 +1676,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				},
@@ -1695,6 +1695,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1713,24 +1731,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				},
@@ -1750,6 +1750,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1768,24 +1786,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				}
@@ -1816,6 +1816,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1834,24 +1852,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				},
@@ -1871,6 +1871,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1889,24 +1907,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				},
@@ -1926,6 +1926,24 @@ describe('Material with sub-sub-materials', () => {
 							name: 'The Great Game: Afghanistan'
 						}
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								},
+								{
+									model: 'COMPANY',
+									uuid: FICTIONEERS_LTD_COMPANY_UUID,
+									name: 'Fictioneers Ltd'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1944,24 +1962,6 @@ describe('Material with sub-sub-materials', () => {
 								uuid: PRISON_CELL_LOCALE_UUID,
 								name: 'Prison cell'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: FERDINAND_FOO_PERSON_UUID,
-									name: 'Ferdinand Foo'
-								},
-								{
-									model: 'COMPANY',
-									uuid: FICTIONEERS_LTD_COMPANY_UUID,
-									name: 'Fictioneers Ltd'
-								}
-							]
 						}
 					]
 				}
