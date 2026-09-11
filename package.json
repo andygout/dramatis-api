@@ -51,7 +51,7 @@
   "dependencies": {
     "dotenv": "17.4.2",
     "express": "5.2.1",
-    "morgan": "1.10.1",
+    "morgan": "1.12.1",
     "neo4j-driver": "6.0.1"
   },
   "devDependencies": {
@@ -62,7 +62,7 @@
     "globals": "17.6.0",
     "jsonlint": "1.6.3",
     "lint-staged": "17.0.5",
-    "lintspaces-cli": "1.0.0",
+    "lintspaces-cli": "0.8.0",
     "node-mocks-http": "1.17.2",
     "pre-commit": "2.0.0",
     "prettier": "3.8.3",
