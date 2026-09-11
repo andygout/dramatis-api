@@ -159,7 +159,7 @@ describe('SubProductionIdentifier model', () => {
 			});
 		});
 
-		context('invalid data (instance is the sur-most production of a three-tiered production collection)', () => {
+		context('invalid data (instance is the sur-most production of a three-tiered production hierarchy)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
@@ -195,7 +195,7 @@ describe('SubProductionIdentifier model', () => {
 				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
-					'Production with this UUID is the sur-most production of a three-tiered production collection'
+					'Production with this UUID is the sur-most production of a three-tiered production hierarchy'
 				);
 			});
 		});
@@ -241,7 +241,7 @@ describe('SubProductionIdentifier model', () => {
 			});
 		});
 
-		context('invalid data (instance cannot be assigned to a three-tiered production collection)', () => {
+		context('invalid data (instance cannot be assigned to a three-tiered production hierarchy)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
@@ -277,7 +277,7 @@ describe('SubProductionIdentifier model', () => {
 				sinonAssert.calledOnceWithExactly(
 					instance.addPropertyError,
 					'uuid',
-					'Sub-production cannot be assigned to a three-tiered production collection'
+					'Sub-production cannot be assigned to a three-tiered production hierarchy'
 				);
 			});
 		});

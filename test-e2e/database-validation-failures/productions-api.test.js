@@ -194,7 +194,7 @@ describe('Database validation failures: Productions API', () => {
 			});
 		});
 
-		context('sub-production is the sur-most production of an existing three-tiered production collection', () => {
+		context('sub-production is the sur-most production of an existing three-tiered production hierarchy', () => {
 			const SUR_GRAULT_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 			const MID_GRAULT_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 			const SUB_GRAULT_PRODUCTION_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
@@ -290,7 +290,7 @@ describe('Database validation failures: Productions API', () => {
 							uuid: SUR_GRAULT_PRODUCTION_UUID,
 							errors: {
 								uuid: [
-									'Production with this UUID is the sur-most production of a three-tiered production collection'
+									'Production with this UUID is the sur-most production of a three-tiered production hierarchy'
 								]
 							}
 						}
@@ -627,7 +627,7 @@ describe('Database validation failures: Productions API', () => {
 			});
 		});
 
-		context('sub-production is the sur-most production of an existing three-tiered production collection', () => {
+		context('sub-production is the sur-most production of an existing three-tiered production hierarchy', () => {
 			const SUR_GRAULT_PRODUCTION_UUID = 'wwwwwwww-wwww-wwww-wwww-wwwwwwwwwwww';
 			const MID_GRAULT_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 			const SUB_GRAULT_PRODUCTION_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
@@ -731,7 +731,7 @@ describe('Database validation failures: Productions API', () => {
 							uuid: SUR_GRAULT_PRODUCTION_UUID,
 							errors: {
 								uuid: [
-									'Production with this UUID is the sur-most production of a three-tiered production collection'
+									'Production with this UUID is the sur-most production of a three-tiered production hierarchy'
 								]
 							}
 						}
@@ -758,7 +758,7 @@ describe('Database validation failures: Productions API', () => {
 		});
 
 		context(
-			'subject production is the sub-most production of an existing three-tiered production collection; a further sub-production tier is disallowed',
+			'subject production is the sub-most production of an existing three-tiered production hierarchy; a further sub-production tier is disallowed',
 			() => {
 				const SUR_GRAULT_PRODUCTION_UUID = 'wwwwwwww-wwww-wwww-wwww-wwwwwwwwwwww';
 				const MID_GRAULT_PRODUCTION_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
@@ -862,7 +862,7 @@ describe('Database validation failures: Productions API', () => {
 								model: 'PRODUCTION_IDENTIFIER',
 								uuid: SUB_SUB_GRAULT_PRODUCTION_UUID,
 								errors: {
-									uuid: ['Sub-production cannot be assigned to a three-tiered production collection']
+									uuid: ['Sub-production cannot be assigned to a three-tiered production hierarchy']
 								}
 							}
 						],

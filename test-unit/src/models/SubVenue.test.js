@@ -123,7 +123,7 @@ describe('SubVenue model', () => {
 			});
 		});
 
-		context('invalid data (instance is the sur-most venue of a two-tiered venue collection)', () => {
+		context('invalid data (instance is the sur-most venue of a two-tiered venue hierarchy)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
@@ -159,17 +159,17 @@ describe('SubVenue model', () => {
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
-					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 				);
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
-					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 				);
 			});
 		});
 
-		context('invalid data (instance cannot be assigned to a two-tiered venue collection)', () => {
+		context('invalid data (instance cannot be assigned to a two-tiered venue hierarchy)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
@@ -205,12 +205,12 @@ describe('SubVenue model', () => {
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
-					'Sub-venue cannot be assigned to a two-tiered venue collection'
+					'Sub-venue cannot be assigned to a two-tiered venue hierarchy'
 				);
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
-					'Sub-venue cannot be assigned to a two-tiered venue collection'
+					'Sub-venue cannot be assigned to a two-tiered venue hierarchy'
 				);
 			});
 		});
