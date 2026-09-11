@@ -90,7 +90,7 @@ describe('Database validation failures: Venues API', () => {
 			});
 		});
 
-		context('sub-venue is the sur-most venue of an existing two-tiered venue collection', () => {
+		context('sub-venue is the sur-most venue of an existing two-tiered venue hierarchy', () => {
 			const SUR_FOO_THEATRE_VENUE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 			const SUB_FOO_THEATRE_VENUE_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
 
@@ -145,10 +145,10 @@ describe('Database validation failures: Venues API', () => {
 							differentiator: '',
 							errors: {
 								name: [
-									'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+									'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 								],
 								differentiator: [
-									'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+									'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 								]
 							}
 						}
@@ -253,7 +253,7 @@ describe('Database validation failures: Venues API', () => {
 			});
 		});
 
-		context('sub-venue is the sur-most venue of an existing two-tiered venue collection', () => {
+		context('sub-venue is the sur-most venue of an existing two-tiered venue hierarchy', () => {
 			const SUR_FOO_THEATRE_VENUE_UUID = 'wwwwwwww-wwww-wwww-wwww-wwwwwwwwwwww';
 			const SUB_FOO_THEATRE_VENUE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 			const SUR_SUR_FOO_THEATRE_VENUE_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
@@ -316,10 +316,10 @@ describe('Database validation failures: Venues API', () => {
 							differentiator: '',
 							errors: {
 								name: [
-									'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+									'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 								],
 								differentiator: [
-									'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+									'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 								]
 							}
 						}
@@ -341,7 +341,7 @@ describe('Database validation failures: Venues API', () => {
 		});
 
 		context(
-			'subject venue is the sub-most venue of an existing two-tiered venue collection; a further sub-venue tier is disallowed',
+			'subject venue is the sub-most venue of an existing two-tiered venue hierarchy; a further sub-venue tier is disallowed',
 			() => {
 				const SUR_FOO_THEATRE_VENUE_UUID = 'wwwwwwww-wwww-wwww-wwww-wwwwwwwwwwww';
 				const SUB_FOO_THEATRE_VENUE_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
@@ -404,8 +404,8 @@ describe('Database validation failures: Venues API', () => {
 								name: 'Sub-Sub-Foo Theatre',
 								differentiator: '',
 								errors: {
-									name: ['Sub-venue cannot be assigned to a two-tiered venue collection'],
-									differentiator: ['Sub-venue cannot be assigned to a two-tiered venue collection']
+									name: ['Sub-venue cannot be assigned to a two-tiered venue hierarchy'],
+									differentiator: ['Sub-venue cannot be assigned to a two-tiered venue hierarchy']
 								}
 							}
 						]

@@ -104,7 +104,7 @@ describe('Database validation failures: Materials API', () => {
 			});
 		});
 
-		context('sub-material is the sur-most material of an existing three-tiered material collection', () => {
+		context('sub-material is the sur-most material of an existing three-tiered material hierarchy', () => {
 			const SUR_GRAULT_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 			const MID_GRAULT_MATERIAL_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
 			const SUB_GRAULT_MATERIAL_UUID = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz';
@@ -184,10 +184,10 @@ describe('Database validation failures: Materials API', () => {
 							differentiator: '',
 							errors: {
 								name: [
-									'Material with these attributes is the sur-most material of a three-tiered material collection'
+									'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 								],
 								differentiator: [
-									'Material with these attributes is the sur-most material of a three-tiered material collection'
+									'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 								]
 							}
 						}
@@ -396,7 +396,7 @@ describe('Database validation failures: Materials API', () => {
 			});
 		});
 
-		context('sub-material is the sur-most material of an existing three-tiered material collection', () => {
+		context('sub-material is the sur-most material of an existing three-tiered material hierarchy', () => {
 			const SUR_GRAULT_MATERIAL_UUID = 'wwwwwwww-wwww-wwww-wwww-wwwwwwwwwwww';
 			const MID_GRAULT_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
 			const SUB_GRAULT_MATERIAL_UUID = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy';
@@ -484,10 +484,10 @@ describe('Database validation failures: Materials API', () => {
 							differentiator: '',
 							errors: {
 								name: [
-									'Material with these attributes is the sur-most material of a three-tiered material collection'
+									'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 								],
 								differentiator: [
-									'Material with these attributes is the sur-most material of a three-tiered material collection'
+									'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 								]
 							}
 						}
@@ -511,7 +511,7 @@ describe('Database validation failures: Materials API', () => {
 		});
 
 		context(
-			'subject material is the sub-most material of an existing three-tiered material collection; a further sub-material tier is disallowed',
+			'subject material is the sub-most material of an existing three-tiered material hierarchy; a further sub-material tier is disallowed',
 			() => {
 				const SUR_GRAULT_MATERIAL_UUID = 'wwwwwwww-wwww-wwww-wwww-wwwwwwwwwwww';
 				const MID_GRAULT_MATERIAL_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
@@ -599,9 +599,9 @@ describe('Database validation failures: Materials API', () => {
 								name: 'Sub-Sub-Grault',
 								differentiator: '',
 								errors: {
-									name: ['Sub-material cannot be assigned to a three-tiered material collection'],
+									name: ['Sub-material cannot be assigned to a three-tiered material hierarchy'],
 									differentiator: [
-										'Sub-material cannot be assigned to a three-tiered material collection'
+										'Sub-material cannot be assigned to a three-tiered material hierarchy'
 									]
 								}
 							}

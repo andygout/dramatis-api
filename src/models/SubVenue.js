@@ -34,20 +34,17 @@ export default class SubVenue extends VenueBase {
 			if (isSurVenue) {
 				this.addPropertyError(
 					'name',
-					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 				);
 				this.addPropertyError(
 					'differentiator',
-					'Venue with these attributes is the sur-most venue of a two-tiered venue collection'
+					'Venue with these attributes is the sur-most venue of a two-tiered venue hierarchy'
 				);
 			}
 
 			if (isSubjectVenueASubVenue) {
-				this.addPropertyError('name', 'Sub-venue cannot be assigned to a two-tiered venue collection');
-				this.addPropertyError(
-					'differentiator',
-					'Sub-venue cannot be assigned to a two-tiered venue collection'
-				);
+				this.addPropertyError('name', 'Sub-venue cannot be assigned to a two-tiered venue hierarchy');
+				this.addPropertyError('differentiator', 'Sub-venue cannot be assigned to a two-tiered venue hierarchy');
 			}
 		}
 

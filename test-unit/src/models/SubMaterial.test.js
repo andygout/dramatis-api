@@ -129,7 +129,7 @@ describe('SubMaterial model', () => {
 			});
 		});
 
-		context('invalid data (instance is the sur-most material of a three-tiered material collection)', () => {
+		context('invalid data (instance is the sur-most material of a three-tiered material hierarchy)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
@@ -168,12 +168,12 @@ describe('SubMaterial model', () => {
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
-					'Material with these attributes is the sur-most material of a three-tiered material collection'
+					'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 				);
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
-					'Material with these attributes is the sur-most material of a three-tiered material collection'
+					'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 				);
 			});
 		});
@@ -227,7 +227,7 @@ describe('SubMaterial model', () => {
 			});
 		});
 
-		context('invalid data (instance cannot be assigned to a three-tiered material collection)', () => {
+		context('invalid data (instance cannot be assigned to a three-tiered material hierarchy)', () => {
 			it('will call addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
@@ -266,12 +266,12 @@ describe('SubMaterial model', () => {
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.firstCall,
 					'name',
-					'Sub-material cannot be assigned to a three-tiered material collection'
+					'Sub-material cannot be assigned to a three-tiered material hierarchy'
 				);
 				sinonAssert.calledWithExactly(
 					instance.addPropertyError.secondCall,
 					'differentiator',
-					'Sub-material cannot be assigned to a three-tiered material collection'
+					'Sub-material cannot be assigned to a three-tiered material hierarchy'
 				);
 			});
 		});

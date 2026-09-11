@@ -42,11 +42,11 @@ export default class SubMaterial extends MaterialBase {
 			if (isSurSurMaterial) {
 				this.addPropertyError(
 					'name',
-					'Material with these attributes is the sur-most material of a three-tiered material collection'
+					'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 				);
 				this.addPropertyError(
 					'differentiator',
-					'Material with these attributes is the sur-most material of a three-tiered material collection'
+					'Material with these attributes is the sur-most material of a three-tiered material hierarchy'
 				);
 			}
 
@@ -59,10 +59,10 @@ export default class SubMaterial extends MaterialBase {
 			}
 
 			if (isSubjectMaterialASubSubMaterial) {
-				this.addPropertyError('name', 'Sub-material cannot be assigned to a three-tiered material collection');
+				this.addPropertyError('name', 'Sub-material cannot be assigned to a three-tiered material hierarchy');
 				this.addPropertyError(
 					'differentiator',
-					'Sub-material cannot be assigned to a three-tiered material collection'
+					'Sub-material cannot be assigned to a three-tiered material hierarchy'
 				);
 			}
 		}

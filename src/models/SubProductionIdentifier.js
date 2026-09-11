@@ -36,7 +36,7 @@ export default class SubProductionIdentifier extends ProductionIdentifier {
 			if (isSurSurProduction) {
 				this.addPropertyError(
 					'uuid',
-					'Production with this UUID is the sur-most production of a three-tiered production collection'
+					'Production with this UUID is the sur-most production of a three-tiered production hierarchy'
 				);
 			}
 
@@ -47,7 +47,7 @@ export default class SubProductionIdentifier extends ProductionIdentifier {
 			if (isSubjectProductionASubSubProduction) {
 				this.addPropertyError(
 					'uuid',
-					'Sub-production cannot be assigned to a three-tiered production collection'
+					'Sub-production cannot be assigned to a three-tiered production hierarchy'
 				);
 			}
 		}
