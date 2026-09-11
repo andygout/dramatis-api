@@ -869,6 +869,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -887,24 +905,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				},
@@ -920,6 +920,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -938,24 +956,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				},
@@ -971,6 +971,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -989,24 +1007,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				}
@@ -1033,6 +1033,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1051,24 +1069,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				},
@@ -1084,6 +1084,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1102,24 +1120,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				},
@@ -1135,6 +1135,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1153,24 +1171,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				}
@@ -1197,6 +1197,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1215,24 +1233,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				},
@@ -1248,6 +1248,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1266,24 +1284,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				},
@@ -1299,6 +1299,24 @@ describe('Material with sub-materials', () => {
 						name: 'The Coast of Utopia',
 						surMaterial: null
 					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
 					settings: [
 						{
 							model: 'SETTING',
@@ -1317,24 +1335,6 @@ describe('Material with sub-materials', () => {
 								uuid: COUNTRY_HOUSE_LOCALE_UUID,
 								name: 'Country house'
 							}
-						}
-					],
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: TOM_STOPPARD_PERSON_UUID,
-									name: 'Tom Stoppard'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
-									name: 'The Sträussler Group'
-								}
-							]
 						}
 					]
 				}
