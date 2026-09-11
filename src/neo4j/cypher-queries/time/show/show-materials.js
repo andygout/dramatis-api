@@ -156,7 +156,7 @@ export default () => `
 			WITH material, surMaterial, surSurMaterial, writingCredits, settings
 				ORDER BY
 					material.year DESC,
-					COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+					COALESCE(surSurMaterial.name, surMaterial.name, material.name) DESC,
 					COALESCE(surSurMaterialRel.position, surMaterialRel.position, -1) DESC,
 					COALESCE(surSurMaterialRel.position, -1) DESC,
 					COALESCE(surMaterialRel.position, -1) DESC

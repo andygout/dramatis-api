@@ -57,7 +57,7 @@ export default () => `
 				CASE WHEN sourcingMaterialRel IS NULL THEN false ELSE true END AS usesSourcingMaterial
 				ORDER BY
 					production.startDate DESC,
-					COALESCE(surSurProduction.name, surProduction.name, production.name),
+					COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 					surSurProductionRel.position DESC,
 					surProductionRel.position DESC,
 					venue.name

@@ -5868,13 +5868,17 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 	describe('GET list endpoint', () => {
 		const MACBETH_GIELGUD_PRODUCTION_UUID = 'MACBETH_PRODUCTION_UUID';
 		const GIELGUD_THEATRE_VENUE_UUID = 'GIELGUD_THEATRE_VENUE_UUID';
+		const HENRY_VI_PART_1_COURTYARD_PRODUCTION_UUID = 'HENRY_VI_PART_1_PRODUCTION_UUID';
+		const COURTYARD_THEATRE_VENUE_UUID = 'COURTYARD_THEATRE_VENUE_UUID';
 		const HAMLET_NATIONAL_PRODUCTION_UUID = 'HAMLET_PRODUCTION_UUID';
 		const NATIONAL_THEATRE_VENUE_UUID = 'NATIONAL_THEATRE_VENUE_UUID';
+		const HENRY_VI_PART_3_COURTYARD_PRODUCTION_UUID = 'HENRY_VI_PART_3_PRODUCTION_UUID';
 		const MACBETH_ALMEIDA_PRODUCTION_UUID = 'MACBETH_PRODUCTION_2_UUID';
 		const ALMEIDA_THEATRE_VENUE_UUID = 'ALMEIDA_THEATRE_VENUE_UUID';
 		const HAMLET_WYNDHAMS_PRODUCTION_UUID = 'HAMLET_PRODUCTION_2_UUID';
 		const WYNDHAMS_THEATRE_VENUE_UUID = 'WYNDHAMS_THEATRE_VENUE_UUID';
 		const HAMLET_ALMEIDA_PRODUCTION_UUID = 'HAMLET_PRODUCTION_3_UUID';
+		const HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID = 'HENRY_VI_PART_2_PRODUCTION_UUID';
 
 		before(async () => {
 			stubUuidToCountMapClient.clear();
@@ -5896,12 +5900,36 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 			await request(app)
 				.post('/productions')
 				.send({
+					name: 'Henry VI, Part 1',
+					startDate: '2007-02-10',
+					pressDate: '2007-02-12',
+					endDate: '2007-02-17',
+					venue: {
+						name: 'Courtyard Theatre'
+					}
+				});
+
+			await request(app)
+				.post('/productions')
+				.send({
 					name: 'Hamlet',
 					startDate: '2010-09-30',
 					pressDate: '2010-10-07',
 					endDate: '2011-01-26',
 					venue: {
 						name: 'National Theatre'
+					}
+				});
+
+			await request(app)
+				.post('/productions')
+				.send({
+					name: 'Henry VI, Part 3',
+					startDate: '2007-02-10',
+					pressDate: '2007-02-12',
+					endDate: '2007-02-17',
+					venue: {
+						name: 'Courtyard Theatre'
 					}
 				});
 
@@ -5926,6 +5954,18 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 					endDate: '2009-08-22',
 					venue: {
 						name: "Wyndham's Theatre"
+					}
+				});
+
+			await request(app)
+				.post('/productions')
+				.send({
+					name: 'Henry VI, Part 2',
+					startDate: '2007-02-10',
+					pressDate: '2007-02-12',
+					endDate: '2007-02-17',
+					venue: {
+						name: 'Courtyard Theatre'
 					}
 				});
 
@@ -5962,20 +6002,6 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				{
 					model: 'PRODUCTION',
-					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
-					name: 'Hamlet',
-					startDate: '2010-09-30',
-					endDate: '2011-01-26',
-					venue: {
-						model: 'VENUE',
-						uuid: NATIONAL_THEATRE_VENUE_UUID,
-						name: 'National Theatre',
-						surVenue: null
-					},
-					surProduction: null
-				},
-				{
-					model: 'PRODUCTION',
 					uuid: MACBETH_ALMEIDA_PRODUCTION_UUID,
 					name: 'Macbeth',
 					startDate: '2010-09-30',
@@ -6004,6 +6030,20 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 				},
 				{
 					model: 'PRODUCTION',
+					uuid: HAMLET_NATIONAL_PRODUCTION_UUID,
+					name: 'Hamlet',
+					startDate: '2010-09-30',
+					endDate: '2011-01-26',
+					venue: {
+						model: 'VENUE',
+						uuid: NATIONAL_THEATRE_VENUE_UUID,
+						name: 'National Theatre',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
 					uuid: HAMLET_WYNDHAMS_PRODUCTION_UUID,
 					name: 'Hamlet',
 					startDate: '2009-05-29',
@@ -6012,6 +6052,48 @@ describe('CRUD (Create, Read, Update, Delete): Productions API', () => {
 						model: 'VENUE',
 						uuid: WYNDHAMS_THEATRE_VENUE_UUID,
 						name: "Wyndham's Theatre",
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_3_COURTYARD_PRODUCTION_UUID,
+					name: 'Henry VI, Part 3',
+					startDate: '2007-02-10',
+					endDate: '2007-02-17',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_2_COURTYARD_PRODUCTION_UUID,
+					name: 'Henry VI, Part 2',
+					startDate: '2007-02-10',
+					endDate: '2007-02-17',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
+						surVenue: null
+					},
+					surProduction: null
+				},
+				{
+					model: 'PRODUCTION',
+					uuid: HENRY_VI_PART_1_COURTYARD_PRODUCTION_UUID,
+					name: 'Henry VI, Part 1',
+					startDate: '2007-02-10',
+					endDate: '2007-02-17',
+					venue: {
+						model: 'VENUE',
+						uuid: COURTYARD_THEATRE_VENUE_UUID,
+						name: 'Courtyard Theatre',
 						surVenue: null
 					},
 					surProduction: null

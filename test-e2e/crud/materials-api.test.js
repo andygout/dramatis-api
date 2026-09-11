@@ -2929,9 +2929,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 
 	describe('GET list endpoint', () => {
 		const HAUNTING_JULIA_MATERIAL_UUID = 'HAUNTING_JULIA_MATERIAL_UUID';
+		const HENRY_VI_PART_1_MATERIAL_UUID = 'HENRY_VI_PART_1_MATERIAL_UUID';
 		const A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID = 'A_WORD_FROM_OUR_SPONSOR_MATERIAL_UUID';
+		const HENRY_VI_PART_3_MATERIAL_UUID = 'HENRY_VI_PART_3_MATERIAL_UUID';
 		const THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID = 'THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID';
 		const DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID = 'DREAMS_FROM_A_SUMMER_HOUSE_MATERIAL_UUID';
+		const HENRY_VI_PART_2_MATERIAL_UUID = 'HENRY_VI_PART_2_MATERIAL_UUID';
 		const COMMUNICATING_DOORS_MATERIAL_UUID = 'COMMUNICATING_DOORS_MATERIAL_UUID';
 
 		before(async () => {
@@ -2946,9 +2949,21 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 			});
 
 			await request(app).post('/materials').send({
+				name: 'Henry VI, Part 1',
+				format: 'play',
+				year: 1591
+			});
+
+			await request(app).post('/materials').send({
 				name: 'A Word from Our Sponsor',
 				format: 'play',
 				year: 1995
+			});
+
+			await request(app).post('/materials').send({
+				name: 'Henry VI, Part 3',
+				format: 'play',
+				year: 1591
 			});
 
 			await request(app).post('/materials').send({
@@ -2961,6 +2976,12 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				name: 'Dreams from a Summer House',
 				format: 'play',
 				year: 1992
+			});
+
+			await request(app).post('/materials').send({
+				name: 'Henry VI, Part 2',
+				format: 'play',
+				year: 1591
 			});
 
 			await request(app).post('/materials').send({
@@ -2985,8 +3006,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: COMMUNICATING_DOORS_MATERIAL_UUID,
-					name: 'Communicating Doors',
+					uuid: THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID,
+					name: 'The Musical Jigsaw Play',
 					format: 'play',
 					year: 1994,
 					surMaterial: null,
@@ -3003,8 +3024,8 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_MUSICAL_JIGSAW_PLAY_MATERIAL_UUID,
-					name: 'The Musical Jigsaw Play',
+					uuid: COMMUNICATING_DOORS_MATERIAL_UUID,
+					name: 'Communicating Doors',
 					format: 'play',
 					year: 1994,
 					surMaterial: null,
@@ -3016,6 +3037,33 @@ describe('CRUD (Create, Read, Update, Delete): Materials API', () => {
 					name: 'Dreams from a Summer House',
 					format: 'play',
 					year: 1992,
+					surMaterial: null,
+					writingCredits: []
+				},
+				{
+					model: 'MATERIAL',
+					uuid: HENRY_VI_PART_3_MATERIAL_UUID,
+					name: 'Henry VI, Part 3',
+					format: 'play',
+					year: 1591,
+					surMaterial: null,
+					writingCredits: []
+				},
+				{
+					model: 'MATERIAL',
+					uuid: HENRY_VI_PART_2_MATERIAL_UUID,
+					name: 'Henry VI, Part 2',
+					format: 'play',
+					year: 1591,
+					surMaterial: null,
+					writingCredits: []
+				},
+				{
+					model: 'MATERIAL',
+					uuid: HENRY_VI_PART_1_MATERIAL_UUID,
+					name: 'Henry VI, Part 1',
+					format: 'play',
+					year: 1591,
 					surMaterial: null,
 					writingCredits: []
 				}

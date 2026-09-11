@@ -72,7 +72,7 @@ export default () => `
 			surSurProductionRel
 			ORDER BY
 				production.startDate DESC,
-				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,
@@ -161,7 +161,7 @@ export default () => `
 			) AS roles
 			ORDER BY
 				production.startDate DESC,
-				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,
@@ -350,7 +350,7 @@ export default () => `
 			}) AS creativeCredits
 			ORDER BY
 				production.startDate DESC,
-				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,
@@ -539,7 +539,7 @@ export default () => `
 			}) AS crewCredits
 			ORDER BY
 				production.startDate DESC,
-				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,
@@ -625,7 +625,7 @@ export default () => `
 			ORDER BY
 				publicationRel.date DESC,
 				production.startDate DESC,
-				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,

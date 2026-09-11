@@ -416,6 +416,16 @@ describe('Character with variant depiction and portrayal names', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
+					uuid: HENRY_V_MATERIAL_UUID,
+					name: 'Henry V',
+					format: 'play',
+					year: 1599,
+					surMaterial: null,
+					writingCredits: [],
+					depictions: []
+				},
+				{
+					model: 'MATERIAL',
 					uuid: HENRY_IV_PART_2_MATERIAL_UUID,
 					name: 'Henry IV, Part 2',
 					format: 'play',
@@ -432,13 +442,19 @@ describe('Character with variant depiction and portrayal names', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: HENRY_V_MATERIAL_UUID,
-					name: 'Henry V',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
+					name: 'The Merry Wives of Windsor',
 					format: 'play',
-					year: 1599,
+					year: 1597,
 					surMaterial: null,
 					writingCredits: [],
-					depictions: []
+					depictions: [
+						{
+							displayName: 'Prince Hal',
+							qualifier: null,
+							group: null
+						}
+					]
 				},
 				{
 					model: 'MATERIAL',
@@ -451,22 +467,6 @@ describe('Character with variant depiction and portrayal names', () => {
 					depictions: [
 						{
 							displayName: 'Henry, Prince of Wales',
-							qualifier: null,
-							group: null
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
-					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
-					name: 'The Merry Wives of Windsor',
-					format: 'play',
-					year: 1597,
-					surMaterial: null,
-					writingCredits: [],
-					depictions: [
-						{
-							displayName: 'Prince Hal',
 							qualifier: null,
 							group: null
 						}

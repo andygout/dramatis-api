@@ -48,7 +48,7 @@ export default () => `
 				surSurProductionRel
 				ORDER BY
 					production.startDate DESC,
-					COALESCE(surSurProduction.name, surProduction.name, production.name),
+					COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 					surSurProductionRel.position DESC,
 					surProductionRel.position DESC,
 					venue.name
