@@ -337,8 +337,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
-					name: 'Henry IV, Part 1',
+					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
+					name: 'The Merry Wives of Windsor',
 					format: 'play',
 					year: 1597,
 					surMaterial: null,
@@ -347,8 +347,8 @@ describe('Character in multiple productions of multiple materials', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_MERRY_WIVES_OF_WINDSOR_MATERIAL_UUID,
-					name: 'The Merry Wives of Windsor',
+					uuid: HENRY_IV_PART_1_MATERIAL_UUID,
+					name: 'Henry IV, Part 1',
 					format: 'play',
 					year: 1597,
 					surMaterial: null,

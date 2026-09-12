@@ -102,7 +102,7 @@ export default () => `
 			}) AS performers
 			ORDER BY
 				production.startDate DESC,
-				COALESCE(surSurProduction.name, surProduction.name, production.name),
+				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,

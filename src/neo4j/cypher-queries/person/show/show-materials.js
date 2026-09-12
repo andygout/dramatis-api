@@ -165,7 +165,7 @@ export default () => `
 				) AS writingCredits
 				ORDER BY
 					material.year DESC,
-					COALESCE(surSurMaterial.name, surMaterial.name, material.name),
+					COALESCE(surSurMaterial.name, surMaterial.name, material.name) DESC,
 					surSurMaterialRel.position DESC,
 					surMaterialRel.position DESC
 
