@@ -11,12 +11,13 @@ export default () => `
 			WHERE
 				(NONE(rel IN RELATIONSHIPS(path)
 					WHERE COALESCE(rel.creditType IN ['NON_SPECIFIC_SOURCE_MATERIAL', 'RIGHTS_GRANTOR'], false)
-				)) AND
-				NOT EXISTS(
-					(person)
-					<-[:HAS_WRITING_ENTITY]-(:Material)
-					<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
-					<-[:HAS_NOMINEE]-(category)
+				)) AND (
+					NOT EXISTS(
+						(person)
+						<-[:HAS_WRITING_ENTITY]-(:Material)
+						<-[:SUBSEQUENT_VERSION_OF]-(:Material)-[:HAS_SUB_MATERIAL*0..2]-(:Material)
+						<-[:HAS_NOMINEE]-(category)
+					)
 				) AND (
 					(creditingMaterial)-[:HAS_SUB_MATERIAL*0..2]->(nominatedMaterial) OR
 					(creditingMaterial)<-[:HAS_SUB_MATERIAL*0..2]-(nominatedMaterial)
@@ -76,8 +77,9 @@ export default () => `
 				(
 					entityRel.nominationPosition IS NULL OR
 					entityRel.nominationPosition = coNominatedEntityRel.nominationPosition
-				) AND
-				coNominatedEntity.uuid <> entity.uuid
+				) AND (
+					coNominatedEntity.uuid <> entity.uuid
+				)
 
 		UNWIND (CASE WHEN coNominatedEntityRel IS NOT NULL AND coNominatedEntityRel.nominatedMemberUuids IS NOT NULL
 			THEN [uuid IN coNominatedEntityRel.nominatedMemberUuids]

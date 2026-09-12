@@ -17,8 +17,7 @@ describe('Cypher Queries Validation module', () => {
 						(
 							($differentiator IS NULL AND n.differentiator IS NULL) OR
 							$differentiator = n.differentiator
-						) AND
-						(
+						) AND (
 							$uuid IS NULL OR
 							$uuid <> n.uuid
 						)

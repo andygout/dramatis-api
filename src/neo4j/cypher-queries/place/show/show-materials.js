@@ -21,7 +21,8 @@ export default () => `
 			CALL {
 				WITH material
 
-				OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)
+				OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
+					(entity:Person|Company|Material)
 
 				OPTIONAL MATCH (entity:Material)-[sourceMaterialWriterRel:HAS_WRITING_ENTITY]->
 					(sourceMaterialWriter:Person|Company)
@@ -48,7 +49,11 @@ export default () => `
 					COLLECT(
 						CASE WHEN sourceMaterialWriter IS NULL
 							THEN null
-							ELSE sourceMaterialWriter { model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))), .uuid, .name }
+							ELSE sourceMaterialWriter {
+								model: TOUPPER(HEAD(LABELS(sourceMaterialWriter))),
+								.uuid,
+								.name
+							}
 						END
 					) AS sourceMaterialWriters
 
