@@ -71,8 +71,9 @@ const getCreateUpdateQuery = (action) => {
 				(
 					$originalVersionMaterial.differentiator IS NULL AND
 					existingOriginalVersionMaterial.differentiator IS NULL
-				) OR
-				$originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator
+				) OR (
+					$originalVersionMaterial.differentiator = existingOriginalVersionMaterial.differentiator
+				)
 
 		FOREACH (item IN CASE WHEN $originalVersionMaterial.name IS NULL THEN [] ELSE [1] END |
 			MERGE (originalVersionMaterial:Material {
@@ -128,8 +129,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							writingCompanyParam.differentiator IS NULL AND
 							existingWritingCompany.differentiator IS NULL
-						) OR
-						writingCompanyParam.differentiator = existingWritingCompany.differentiator
+						) OR (
+							writingCompanyParam.differentiator = existingWritingCompany.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN writingCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (writingCompany:Company {
@@ -160,8 +162,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							sourceMaterialParam.differentiator IS NULL AND
 							existingSourceMaterial.differentiator IS NULL
-						) OR
-						sourceMaterialParam.differentiator = existingSourceMaterial.differentiator
+						) OR (
+							sourceMaterialParam.differentiator = existingSourceMaterial.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN sourceMaterialParam IS NULL THEN [] ELSE [1] END |
 					MERGE (sourceMaterial:Material {

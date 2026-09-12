@@ -264,8 +264,9 @@ export default () => `
 				(
 					entityRel.creditPosition IS NULL OR
 					entityRel.creditPosition = coCreditedEntityRel.creditPosition
-				) AND
-				coCreditedEntity.uuid <> entity.uuid
+				) AND (
+					coCreditedEntity.uuid <> entity.uuid
+				)
 
 		UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND coCreditedEntityRel.creditedMemberUuids IS NOT NULL
 			THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]
@@ -453,8 +454,9 @@ export default () => `
 				(
 					entityRel.creditPosition IS NULL OR
 					entityRel.creditPosition = coCreditedEntityRel.creditPosition
-				) AND
-				coCreditedEntity.uuid <> entity.uuid
+				) AND (
+					coCreditedEntity.uuid <> entity.uuid
+				)
 
 		UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND coCreditedEntityRel.creditedMemberUuids IS NOT NULL
 			THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]

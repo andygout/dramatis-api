@@ -21,8 +21,7 @@ export default () => `
 				(
 					(nominatedEntity:Person AND nominatedEntityRel.nominatedCompanyUuid IS NULL) OR
 					nominatedEntity:Company
-				) AND
-				(
+				) AND (
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
@@ -121,9 +120,11 @@ export default () => `
 				(
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = coNominatedProductionRel.nominationPosition
-				) AND
-				coNominatedProduction.uuid <> production.uuid AND
-				NOT EXISTS((production)-[:HAS_SUB_PRODUCTION*1..2]-(coNominatedProduction))
+				) AND (
+					coNominatedProduction.uuid <> production.uuid
+				) AND (
+					NOT EXISTS((production)-[:HAS_SUB_PRODUCTION*1..2]-(coNominatedProduction))
+				)
 
 		OPTIONAL MATCH (coNominatedProduction)-[:PLAYS_AT]->(coNominatedProductionVenue:Venue)
 

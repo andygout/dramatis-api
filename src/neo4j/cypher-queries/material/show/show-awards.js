@@ -17,8 +17,7 @@ export default () => `
 				(
 					(nominatedEntity:Person AND nominatedEntityRel.nominatedCompanyUuid IS NULL) OR
 					nominatedEntity:Company
-				) AND
-				(
+				) AND (
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
@@ -174,9 +173,11 @@ export default () => `
 				(
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = coNominatedMaterialRel.nominationPosition
-				) AND
-				coNominatedMaterial.uuid <> material.uuid AND
-				NOT EXISTS((material)-[:HAS_SUB_MATERIAL*1..2]-(coNominatedMaterial))
+				) AND (
+					coNominatedMaterial.uuid <> material.uuid
+				) AND (
+					NOT EXISTS((material)-[:HAS_SUB_MATERIAL*1..2]-(coNominatedMaterial))
+				)
 
 		WITH
 			recipientMaterial,

@@ -129,8 +129,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							producerPersonParam.differentiator IS NULL AND
 							existingProducerPerson.differentiator IS NULL
-						) OR
-						producerPersonParam.differentiator = existingProducerPerson.differentiator
+						) OR (
+							producerPersonParam.differentiator = existingProducerPerson.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN producerPersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (producerPerson:Person {
@@ -160,8 +161,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							producerCompanyParam.differentiator IS NULL AND
 							existingProducerCompany.differentiator IS NULL
-						) OR
-						producerCompanyParam.differentiator = existingProducerCompany.differentiator
+						) OR (
+							producerCompanyParam.differentiator = existingProducerCompany.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN producerCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (producerCompany:Company {
@@ -268,8 +270,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							creativePersonParam.differentiator IS NULL AND
 							existingCreativePerson.differentiator IS NULL
-						) OR
-						creativePersonParam.differentiator = existingCreativePerson.differentiator
+						) OR (
+							creativePersonParam.differentiator = existingCreativePerson.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN creativePersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (creativePerson:Person {
@@ -299,8 +302,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							creativeCompanyParam.differentiator IS NULL AND
 							existingCreativeCompany.differentiator IS NULL
-						) OR
-						creativeCompanyParam.differentiator = existingCreativeCompany.differentiator
+						) OR (
+							creativeCompanyParam.differentiator = existingCreativeCompany.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN creativeCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (creativeCompany:Company {
@@ -377,8 +381,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							crewPersonParam.differentiator IS NULL AND
 							existingCrewPerson.differentiator IS NULL
-						) OR
-						crewPersonParam.differentiator = existingCrewPerson.differentiator
+						) OR (
+							crewPersonParam.differentiator = existingCrewPerson.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN crewPersonParam IS NULL THEN [] ELSE [1] END |
 					MERGE (crewPerson:Person {
@@ -408,8 +413,9 @@ const getCreateUpdateQuery = (action) => {
 						(
 							crewCompanyParam.differentiator IS NULL AND
 							existingCrewCompany.differentiator IS NULL
-						) OR
-						crewCompanyParam.differentiator = existingCrewCompany.differentiator
+						) OR (
+							crewCompanyParam.differentiator = existingCrewCompany.differentiator
+						)
 
 				FOREACH (item IN CASE WHEN crewCompanyParam IS NULL THEN [] ELSE [1] END |
 					MERGE (crewCompany:Company {

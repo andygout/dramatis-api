@@ -11,8 +11,7 @@ export default () => `
 				(
 					character.name = variantNamedPortrayal.characterName OR
 					depictionForVariantNamedPortrayal.displayName = variantNamedPortrayal.characterName
-				) AND
-				(
+				) AND (
 					variantNamedPortrayal.characterDifferentiator IS NULL OR
 					variantNamedPortrayal.characterDifferentiator = character.differentiator
 				)
@@ -33,8 +32,9 @@ export default () => `
 				(
 					character.name = COALESCE(role.characterName, role.roleName) OR
 					characterDepiction.displayName = COALESCE(role.characterName, role.roleName)
-				) AND
-				(role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator)
+				) AND (
+					role.characterDifferentiator IS NULL OR role.characterDifferentiator = character.differentiator
+				)
 
 		OPTIONAL MATCH (production)-[otherRole:HAS_CAST_MEMBER]->(person)
 			WHERE
@@ -51,8 +51,7 @@ export default () => `
 				(
 					otherCharacter.name = COALESCE(otherRole.characterName, otherRole.roleName) OR
 					otherCharacterDepiction.displayName = COALESCE(otherRole.characterName, otherRole.roleName)
-				) AND
-				(
+				) AND (
 					otherRole.characterDifferentiator IS NULL OR
 					otherRole.characterDifferentiator = otherCharacter.differentiator
 				)

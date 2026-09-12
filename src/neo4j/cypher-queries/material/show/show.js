@@ -234,7 +234,12 @@ export default () => `
 			writingCredits,
 			originalVersionMaterial,
 			COLLECT(
-				CASE WHEN settingPosition IS NULL AND timeSetting IS NULL AND placeSetting IS NULL AND localeSetting IS NULL
+				CASE
+					WHEN
+						settingPosition IS NULL AND
+						timeSetting IS NULL AND
+						placeSetting IS NULL AND
+						localeSetting IS NULL
 					THEN null
 					ELSE {
 						model: 'SETTING',

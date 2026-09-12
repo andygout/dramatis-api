@@ -75,8 +75,9 @@ const getCreateUpdateQuery = (action) => {
 							(
 								nomineePersonParam.differentiator IS NULL AND
 								existingNomineePerson.differentiator IS NULL
-							) OR
-							nomineePersonParam.differentiator = existingNomineePerson.differentiator
+							) OR (
+								nomineePersonParam.differentiator = existingNomineePerson.differentiator
+							)
 
 					FOREACH (item IN CASE WHEN nomineePersonParam IS NULL THEN [] ELSE [1] END |
 						MERGE (nomineePerson:Person {
@@ -107,8 +108,9 @@ const getCreateUpdateQuery = (action) => {
 							(
 								nomineeCompanyParam.differentiator IS NULL AND
 								existingNomineeCompany.differentiator IS NULL
-							) OR
-							nomineeCompanyParam.differentiator = existingNomineeCompany.differentiator
+							) OR (
+								nomineeCompanyParam.differentiator = existingNomineeCompany.differentiator
+							)
 
 					FOREACH (item IN CASE WHEN nomineeCompanyParam IS NULL THEN [] ELSE [1] END |
 						MERGE (nomineeCompany:Company {
@@ -139,8 +141,9 @@ const getCreateUpdateQuery = (action) => {
 								(
 									nomineeCompanyParam.differentiator IS NULL AND
 									nominatedCompany.differentiator IS NULL
-								) OR
-								nomineeCompanyParam.differentiator = nominatedCompany.differentiator
+								) OR (
+									nomineeCompanyParam.differentiator = nominatedCompany.differentiator
+								)
 
 						OPTIONAL MATCH (nominatedCompany)<-[nominatedCompanyRel:HAS_NOMINEE]-(category)
 							WHERE
@@ -152,8 +155,9 @@ const getCreateUpdateQuery = (action) => {
 								(
 									nominatedMemberParam.differentiator IS NULL AND
 									existingPerson.differentiator IS NULL
-								) OR
-								nominatedMemberParam.differentiator = existingPerson.differentiator
+								) OR (
+									nominatedMemberParam.differentiator = existingPerson.differentiator
+								)
 
 						FOREACH (item IN CASE WHEN SIZE(nomineeCompanyParam.members) > 0
 							THEN [1]
@@ -211,8 +215,9 @@ const getCreateUpdateQuery = (action) => {
 							(
 								nomineeMaterialParam.differentiator IS NULL AND
 								existingNomineeMaterial.differentiator IS NULL
-							) OR
-							nomineeMaterialParam.differentiator = existingNomineeMaterial.differentiator
+							) OR (
+								nomineeMaterialParam.differentiator = existingNomineeMaterial.differentiator
+							)
 
 					FOREACH (item IN CASE WHEN nomineeMaterialParam IS NULL THEN [] ELSE [1] END |
 						MERGE (nomineeMaterial:Material {

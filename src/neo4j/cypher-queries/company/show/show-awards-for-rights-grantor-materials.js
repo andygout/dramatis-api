@@ -6,7 +6,7 @@ export default () => `
 
 		OPTIONAL MATCH (company)
 			<-[:HAS_WRITING_ENTITY { creditType: 'RIGHTS_GRANTOR' }]
-			-(material:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
+				-(material:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)
 			<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 			<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)
 			WHERE
@@ -18,8 +18,7 @@ export default () => `
 				(
 					(nominatedEntity:Person AND nominatedEntityRel.nominatedCompanyUuid IS NULL) OR
 					nominatedEntity:Company
-				) AND
-				(
+				) AND (
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
@@ -161,8 +160,9 @@ export default () => `
 				(
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
-				) AND
-				nominatedMaterialRel.uuid <> nominatedRightsGrantorMaterial.uuid
+				) AND (
+					nominatedMaterialRel.uuid <> nominatedRightsGrantorMaterial.uuid
+				)
 
 		OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
 

@@ -5,7 +5,8 @@ export default () => `
 		WITH person
 
 		OPTIONAL MATCH (person)
-			<-[:HAS_WRITING_ENTITY]-(creditingMaterial:Material)-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial:Material)
+			<-[:HAS_WRITING_ENTITY]-(creditingMaterial:Material)
+				-[:HAS_SUB_MATERIAL*0..2]-(originalVersionMaterial:Material)
 			<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
 				-[:HAS_SUB_MATERIAL*0..2]-(nominatedSubsequentVersionMaterial:Material)
 			<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
@@ -27,8 +28,7 @@ export default () => `
 				(
 					(nominatedEntity:Person AND nominatedEntityRel.nominatedCompanyUuid IS NULL) OR
 					nominatedEntity:Company
-				) AND
-				(
+				) AND (
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedEntityRel.nominationPosition
 				)
@@ -170,8 +170,9 @@ export default () => `
 				(
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
-				) AND
-				nominatedMaterialRel.uuid <> nominatedSubsequentVersionMaterial.uuid
+				) AND (
+					nominatedMaterialRel.uuid <> nominatedSubsequentVersionMaterial.uuid
+				)
 
 		OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
 

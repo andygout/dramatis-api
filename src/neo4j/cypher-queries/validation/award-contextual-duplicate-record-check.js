@@ -4,8 +4,7 @@ export default () => `
 			(
 				$uuid IS NULL OR
 				$uuid <> ceremony.uuid
-			) AND
-			(
+			) AND (
 				($award.differentiator IS NULL AND award.differentiator IS NULL) OR
 				$award.differentiator = award.differentiator
 			)
