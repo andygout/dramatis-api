@@ -1,6 +1,12 @@
 import { neo4jQuery } from './query.js';
 import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants.js';
 
+const NAME_PROPERTY_NAME = 'name';
+const FROM_DATE_PROPERTY_NAME = 'fromDate';
+const TO_DATE_PROPERTY_NAME = 'toDate';
+
+const PROPERTIES_TO_INDEX = new Set([NAME_PROPERTY_NAME, FROM_DATE_PROPERTY_NAME, TO_DATE_PROPERTY_NAME]);
+
 const LABELS_REQUIRING_NAME_PROPERTY_INDEX = new Set([
 	MODEL_TO_NODE_LABEL_MAP.AWARD,
 	MODEL_TO_NODE_LABEL_MAP.AWARD_CEREMONY,
@@ -22,9 +28,9 @@ const LABELS_REQUIRING_FROM_DATE_PROPERTY_INDEX = new Set([MODEL_TO_NODE_LABEL_M
 const LABELS_REQUIRING_TO_DATE_PROPERTY_INDEX = new Set([MODEL_TO_NODE_LABEL_MAP.TIME]);
 
 const propertyNameToLabelSetMap = {
-	name: LABELS_REQUIRING_NAME_PROPERTY_INDEX,
-	fromDate: LABELS_REQUIRING_FROM_DATE_PROPERTY_INDEX,
-	toDate: LABELS_REQUIRING_TO_DATE_PROPERTY_INDEX
+	[NAME_PROPERTY_NAME]: LABELS_REQUIRING_NAME_PROPERTY_INDEX,
+	[FROM_DATE_PROPERTY_NAME]: LABELS_REQUIRING_FROM_DATE_PROPERTY_INDEX,
+	[TO_DATE_PROPERTY_NAME]: LABELS_REQUIRING_TO_DATE_PROPERTY_INDEX
 };
 
 const createIndexOnProperty = async (label, property) => {
@@ -70,11 +76,9 @@ const createIndexes = async () => {
 			{ isOptionalResult: true, isArrayResult: true }
 		);
 
-		await createIndexesOnProperty(existingIndexes, 'name');
-
-		await createIndexesOnProperty(existingIndexes, 'fromDate');
-
-		await createIndexesOnProperty(existingIndexes, 'toDate');
+		for (const property of [...PROPERTIES_TO_INDEX]) {
+			await createIndexesOnProperty(existingIndexes, property);
+		}
 
 		console.log('Neo4j database: All indexing checks complete'); // eslint-disable-line no-console
 	} catch (error) {
