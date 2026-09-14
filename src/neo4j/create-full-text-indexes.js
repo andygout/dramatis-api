@@ -3,6 +3,8 @@ import { MODEL_TO_NODE_LABEL_MAP } from '../utils/constants.js';
 
 const NAMES_FULL_TEXT_INDEX_NAME = 'names';
 
+const FULL_TEXT_INDEX_NAMES = new Set([NAMES_FULL_TEXT_INDEX_NAME]);
+
 const FULL_TEXT_INDEX_NAME_TO_PROPERTY_MAP = {
 	[NAMES_FULL_TEXT_INDEX_NAME]: 'name'
 };
@@ -25,8 +27,6 @@ const FULL_TEXT_INDEX_NAME_TO_LABELS_MAP = {
 		MODEL_TO_NODE_LABEL_MAP.VENUE
 	])
 };
-
-const FULL_TEXT_INDEX_NAMES = new Set([NAMES_FULL_TEXT_INDEX_NAME]);
 
 const createFullTextIndex = async (fullTextIndexName) => {
 	const dropFullTextIndexQuery = 'DROP INDEX $name IF EXISTS';
