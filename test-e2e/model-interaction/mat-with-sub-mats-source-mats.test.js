@@ -6,6 +6,8 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const FIFTEEN_THIRTIES_TIME_UUID = '1530S_TIME_UUID';
+const FIFTEEN_THIRTY_FIVE_TIME_UUID = '1535_TIME_UUID';
 const BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID = 'BRING_UP_THE_BODIES_MATERIAL_1_UUID';
 const HILARY_MANTEL_PERSON_UUID = 'HILARY_MANTEL_PERSON_UUID';
 const THE_MANTEL_GROUP_COMPANY_UUID = 'THE_MANTEL_GROUP_COMPANY_UUID';
@@ -13,8 +15,12 @@ const THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID = 'THE_WOLF_HALL_TRILOGY_MATERI
 const BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID = 'BRING_UP_THE_BODIES_MATERIAL_2_UUID';
 const MIKE_POULTON_PERSON_UUID = 'MIKE_POULTON_PERSON_UUID';
 const ROYAL_SHAKESPEARE_COMPANY_UUID = 'ROYAL_SHAKESPEARE_COMPANY_COMPANY_UUID';
+const TOWER_OF_LONDON_PLACE_UUID = 'TOWER_OF_LONDON_PLACE_UUID';
+const PRISON_CELL_LOCALE_UUID = 'PRISON_CELL_LOCALE_UUID';
 const THOMAS_CROMWELL_CHARACTER_UUID = 'THOMAS_CROMWELL_CHARACTER_UUID';
 const THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID = 'THE_WOLF_HALL_TRILOGY_MATERIAL_2_UUID';
+const TOWER_LIBERTY_PLACE_UUID = 'TOWER_LIBERTY_PLACE_UUID';
+const PRISON_LOCALE_UUID = 'PRISON_LOCALE_UUID';
 const BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID = 'BRING_UP_THE_BODIES_PRODUCTION_UUID';
 const SWAN_THEATRE_VENUE_UUID = 'SWAN_THEATRE_VENUE_UUID';
 const THE_WOLF_HALL_TRILOGY_SWAN_PRODUCTION_UUID = 'THE_WOLF_HALL_TRILOGY_PRODUCTION_UUID';
@@ -57,6 +63,9 @@ let mikePoultonPerson;
 let theMantelGroupCompany;
 let royalShakespeareCompany;
 let bringUpTheBodiesSwanTheatreProduction;
+let fifteenThirtiesTime;
+let towerLibertyPlace;
+let prisonLocale;
 let thomasCromwellCharacter;
 let theLifeAndAdventuresOfNicholasNicklebyNovelMaterial;
 let waldoMaterial;
@@ -68,6 +77,18 @@ describe('Material with sub-materials and source materials thereof', () => {
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
+
+		await request(app).post('/times').send({
+			name: '1530s',
+			fromDate: '1530-01-01',
+			toDate: '1539-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1535',
+			fromDate: '1535-01-01',
+			toDate: '1535-12-31'
+		});
 
 		await request(app)
 			.post('/materials')
@@ -149,6 +170,19 @@ describe('Material with sub-materials and source materials thereof', () => {
 						]
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '1535'
+						},
+						place: {
+							name: 'Tower of London'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -194,6 +228,19 @@ describe('Material with sub-materials and source materials thereof', () => {
 					{
 						name: 'Bring Up the Bodies',
 						differentiator: '2'
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '1530s'
+						},
+						place: {
+							name: 'Tower Liberty'
+						},
+						locale: {
+							name: 'Prison'
+						}
 					}
 				]
 			});
@@ -567,6 +614,12 @@ describe('Material with sub-materials and source materials thereof', () => {
 			`/productions/${BRING_UP_THE_BODIES_SWAN_PRODUCTION_UUID}`
 		);
 
+		fifteenThirtiesTime = await request(app).get(`/times/${FIFTEEN_THIRTIES_TIME_UUID}`);
+
+		towerLibertyPlace = await request(app).get(`/places/${TOWER_LIBERTY_PLACE_UUID}`);
+
+		prisonLocale = await request(app).get(`/locales/${PRISON_LOCALE_UUID}`);
+
 		thomasCromwellCharacter = await request(app).get(`/characters/${THOMAS_CROMWELL_CHARACTER_UUID}`);
 
 		theLifeAndAdventuresOfNicholasNicklebyNovelMaterial = await request(app).get(
@@ -829,7 +882,26 @@ describe('Material with sub-materials and source materials thereof', () => {
 				],
 				originalVersionMaterial: null,
 				surMaterial: null,
-				settings: [],
+				settings: [
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: FIFTEEN_THIRTIES_TIME_UUID,
+							name: '1530s'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: TOWER_LIBERTY_PLACE_UUID,
+							name: 'Tower Liberty'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: PRISON_LOCALE_UUID,
+							name: 'Prison'
+						}
+					}
+				],
 				characterGroups: []
 			};
 
@@ -1323,6 +1395,361 @@ describe('Material with sub-materials and source materials thereof', () => {
 			const { material } = bringUpTheBodiesSwanTheatreProduction.body;
 
 			assert.deepEqual(material, expectedMaterial);
+		});
+	});
+
+	describe('1530s (time)', () => {
+		it("includes in its (and its contained sub-times') material data the writers of the material and its source material (with corresponding sur-material)", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
+					name: 'The Wolf Hall Trilogy',
+					format: 'trilogy of plays',
+					year: 2021,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: MIKE_POULTON_PERSON_UUID,
+									name: 'Mike Poulton'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
+									name: 'The Wolf Hall Trilogy',
+									format: 'trilogy of novels',
+									year: 2020,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: HILARY_MANTEL_PERSON_UUID,
+													name: 'Hilary Mantel'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
+													name: 'The Mantel Group'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIFTEEN_THIRTIES_TIME_UUID,
+								name: '1530s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TOWER_LIBERTY_PLACE_UUID,
+								name: 'Tower Liberty'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_LOCALE_UUID,
+								name: 'Prison'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: BRING_UP_THE_BODIES_PLAY_MATERIAL_UUID,
+					name: 'Bring Up the Bodies',
+					format: 'play',
+					year: 2013,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
+						name: 'The Wolf Hall Trilogy',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: MIKE_POULTON_PERSON_UUID,
+									name: 'Mike Poulton'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: BRING_UP_THE_BODIES_NOVEL_MATERIAL_UUID,
+									name: 'Bring Up the Bodies',
+									format: 'novel',
+									year: 2012,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
+										name: 'The Wolf Hall Trilogy',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: HILARY_MANTEL_PERSON_UUID,
+													name: 'Hilary Mantel'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
+													name: 'The Mantel Group'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIFTEEN_THIRTY_FIVE_TIME_UUID,
+								name: '1535'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TOWER_OF_LONDON_PLACE_UUID,
+								name: 'Tower of London'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = fifteenThirtiesTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Tower Liberty (place)', () => {
+		it('includes in its material data the writers of the material and its source material (with corresponding sur-material)', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
+					name: 'The Wolf Hall Trilogy',
+					format: 'trilogy of plays',
+					year: 2021,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: MIKE_POULTON_PERSON_UUID,
+									name: 'Mike Poulton'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
+									name: 'The Wolf Hall Trilogy',
+									format: 'trilogy of novels',
+									year: 2020,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: HILARY_MANTEL_PERSON_UUID,
+													name: 'Hilary Mantel'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
+													name: 'The Mantel Group'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIFTEEN_THIRTIES_TIME_UUID,
+								name: '1530s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TOWER_LIBERTY_PLACE_UUID,
+								name: 'Tower Liberty'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_LOCALE_UUID,
+								name: 'Prison'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = towerLibertyPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Prison (locale)', () => {
+		it('includes in its material data the writers of the material and its source material (with corresponding sur-material)', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_WOLF_HALL_TRILOGY_PLAYS_MATERIAL_UUID,
+					name: 'The Wolf Hall Trilogy',
+					format: 'trilogy of plays',
+					year: 2021,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: MIKE_POULTON_PERSON_UUID,
+									name: 'Mike Poulton'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted from',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_WOLF_HALL_TRILOGY_NOVELS_MATERIAL_UUID,
+									name: 'The Wolf Hall Trilogy',
+									format: 'trilogy of novels',
+									year: 2020,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: HILARY_MANTEL_PERSON_UUID,
+													name: 'Hilary Mantel'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_MANTEL_GROUP_COMPANY_UUID,
+													name: 'The Mantel Group'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIFTEEN_THIRTIES_TIME_UUID,
+								name: '1530s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TOWER_LIBERTY_PLACE_UUID,
+								name: 'Tower Liberty'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_LOCALE_UUID,
+								name: 'Prison'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = prisonLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 

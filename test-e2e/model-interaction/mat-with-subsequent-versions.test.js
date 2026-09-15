@@ -13,6 +13,9 @@ const OLIVIER_THEATRE_VENUE_UUID = 'OLIVIER_THEATRE_VENUE_UUID';
 const PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID = 'PEER_GYNT_MATERIAL_1_UUID';
 const HENRIK_IBSEN_PERSON_UUID = 'HENRIK_IBSEN_PERSON_UUID';
 const IBSEN_THEATRE_COMPANY_UUID = 'IBSEN_THEATRE_COMPANY_COMPANY_UUID';
+const NINETEENTH_CENTURY_TIME_UUID = '19TH_CENTURY_TIME_UUID';
+const NORWAY_PLACE_UUID = 'NORWAY_PLACE_UUID';
+const MOUNTAIN_LOCALE_UUID = 'MOUNTAIN_LOCALE_UUID';
 const PEER_GYNT_CHARACTER_UUID = 'PEER_GYNT_CHARACTER_UUID';
 const PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID = 'PEER_GYNT_MATERIAL_2_UUID';
 const FRANK_MCGUINNESS_PERSON_UUID = 'FRANK_MCGUINNESS_PERSON_UUID';
@@ -34,6 +37,9 @@ let henrikIbsenPerson;
 let gerryBammanPerson;
 let ibsenTheatreCompany;
 let bammanTheatreCompany;
+let nineteenthCenturyTime;
+let norwayPlace;
+let mountainLocale;
 let peerGyntCharacter;
 let peerGyntBarbicanProduction;
 
@@ -85,6 +91,19 @@ describe('Material with subsequent versions', () => {
 						]
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '19th century'
+						},
+						place: {
+							name: 'Norway'
+						},
+						locale: {
+							name: 'Mountain'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -126,6 +145,19 @@ describe('Material with subsequent versions', () => {
 								name: 'Frank McGuinness'
 							}
 						]
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '19th century'
+						},
+						place: {
+							name: 'Norway'
+						},
+						locale: {
+							name: 'Mountain'
+						}
 					}
 				],
 				characterGroups: [
@@ -184,6 +216,19 @@ describe('Material with subsequent versions', () => {
 								name: 'Baltasar Kormákur'
 							}
 						]
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '19th century'
+						},
+						place: {
+							name: 'Norway'
+						},
+						locale: {
+							name: 'Mountain'
+						}
 					}
 				],
 				characterGroups: [
@@ -330,6 +375,12 @@ describe('Material with subsequent versions', () => {
 		ibsenTheatreCompany = await request(app).get(`/companies/${IBSEN_THEATRE_COMPANY_UUID}`);
 
 		bammanTheatreCompany = await request(app).get(`/companies/${BAMMAN_THEATRE_COMPANY_UUID}`);
+
+		nineteenthCenturyTime = await request(app).get(`/times/${NINETEENTH_CENTURY_TIME_UUID}`);
+
+		norwayPlace = await request(app).get(`/places/${NORWAY_PLACE_UUID}`);
+
+		mountainLocale = await request(app).get(`/locales/${MOUNTAIN_LOCALE_UUID}`);
 
 		peerGyntCharacter = await request(app).get(`/characters/${PEER_GYNT_CHARACTER_UUID}`);
 
@@ -1362,6 +1413,582 @@ describe('Material with subsequent versions', () => {
 			const { material } = peerGyntBarbicanProduction.body;
 
 			assert.deepEqual(material, expectedMaterial);
+		});
+	});
+
+	describe('19th century (time)', () => {
+		it('includes in its material data the writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 2007,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'translated by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'PERSON',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 2000,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'version by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 1867,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = nineteenthCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('19th century (time)', () => {
+		it('includes in its material data the writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 2007,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'translated by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'PERSON',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 2000,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'version by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 1867,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = nineteenthCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Mountain (locale)', () => {
+		it('includes in its material data the writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_2_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 2007,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'translated by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: GERRY_BAMMAN_PERSON_UUID,
+									name: 'Gerry Bamman'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BAMMAN_THEATRE_COMPANY_UUID,
+									name: 'Bamman Theatre Company'
+								},
+								{
+									model: 'PERSON',
+									uuid: IRENE_B_BERMAN_PERSON_UUID,
+									name: 'Irene B Berman'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BALTASAR_KORMÁKUR_PERSON_UUID,
+									name: 'Baltasar Kormákur'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_SUBSEQUENT_VERSION_1_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 2000,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'version by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FRANK_MCGUINNESS_PERSON_UUID,
+									name: 'Frank McGuinness'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PEER_GYNT_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Peer Gynt',
+					format: 'play',
+					year: 1867,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: HENRIK_IBSEN_PERSON_UUID,
+									name: 'Henrik Ibsen'
+								},
+								{
+									model: 'COMPANY',
+									uuid: IBSEN_THEATRE_COMPANY_UUID,
+									name: 'Ibsen Theatre Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NORWAY_PLACE_UUID,
+								name: 'Norway'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOUNTAIN_LOCALE_UUID,
+								name: 'Mountain'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = mountainLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
