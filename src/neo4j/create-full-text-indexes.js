@@ -52,7 +52,7 @@ const createFullTextIndex = async (fullTextIndexName) => {
 			}
 		);
 
-		console.log(`Neo4j database: Full-text index ${fullTextIndexName} has been dropped (if pre-existing)`); // eslint-disable-line no-console
+		console.log(`🗑️ Neo4j database: Full-text index '${fullTextIndexName}'' has been dropped (if pre-existing)`); // eslint-disable-line no-console
 
 		await neo4jQuery(
 			{
@@ -68,10 +68,10 @@ const createFullTextIndex = async (fullTextIndexName) => {
 
 		// eslint-disable-next-line no-console
 		console.log(
-			`Neo4j database: Full-text index '${fullTextIndexName}' has been created on the ${property} property for labels: ${commaSeparatedLabels}`
+			`✅ Neo4j database: Full-text index '${fullTextIndexName}' has been created on the ${property} property for labels: ${commaSeparatedLabels}`
 		);
 	} catch (error) {
-		console.error(`Neo4j database: Error attempting query '${createFullTextIndexQuery}': `, error); // eslint-disable-line no-console
+		console.error(`❌ Neo4j database: Error attempting query '${createFullTextIndexQuery}': `, error); // eslint-disable-line no-console
 	}
 };
 
@@ -98,21 +98,21 @@ const createFullTextIndexes = async () => {
 			return false;
 		});
 
-		console.log('Neo4j database: Creating full-text indexes…'); // eslint-disable-line no-console
+		console.log('🟢 Neo4j database: Creating full-text indexes…'); // eslint-disable-line no-console
 
 		if (!fullTextIndexesToCreate.length) {
-			console.log('Neo4j database: No full-text indexes required'); // eslint-disable-line no-console
+			console.log('⚪ Neo4j database: No full-text indexes required'); // eslint-disable-line no-console
+		} else {
+			for (const fullTextIndexName of fullTextIndexesToCreate) {
+				await createFullTextIndex(fullTextIndexName);
+			}
 
-			return;
+			console.log(`✔️  Neo4j database: All full-text indexes created`); // eslint-disable-line no-console
 		}
 
-		for (const fullTextIndexName of fullTextIndexesToCreate) {
-			await createFullTextIndex(fullTextIndexName);
-		}
-
-		console.log('Neo4j database: All full-text indexes created'); // eslint-disable-line no-console
+		console.log('🆗 Neo4j database: All full-text index checks complete'); // eslint-disable-line no-console
 	} catch (error) {
-		console.error(`Neo4j database: Error attempting query '${callDbIndexesQuery}': `, error); // eslint-disable-line no-console
+		console.error(`❌ Neo4j database: Error attempting query '${callDbIndexesQuery}': `, error); // eslint-disable-line no-console
 	}
 };
 

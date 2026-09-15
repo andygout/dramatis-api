@@ -32,9 +32,9 @@ const createConstraintOnProperty = async (label, property) => {
 	try {
 		await neo4jQuery({ query: createConstraintQuery }, { isOptionalResult: true });
 
-		console.log(`Neo4j database: Constraint on ${property} property created for ${label}`); // eslint-disable-line no-console
+		console.log(`✅ Neo4j database: Constraint on ${property} property created for ${label}`); // eslint-disable-line no-console
 	} catch (error) {
-		console.error(`Neo4j database: Error attempting query '${createConstraintQuery}': `, error); // eslint-disable-line no-console
+		console.error(`❌ Neo4j database: Error attempting query '${createConstraintQuery}': `, error); // eslint-disable-line no-console
 	}
 };
 
@@ -47,16 +47,16 @@ const createConstraintsOnProperty = async (existingConstraints, property) => {
 		(label) => !labelsWithPropertyConstraint.includes(label)
 	);
 
-	console.log('Neo4j database: Creating constraints…'); // eslint-disable-line no-console
+	console.log(`🟢 Neo4j database: Creating ${property} property constraints…`); // eslint-disable-line no-console
 
 	if (!labelsMissingPropertyConstraint.length) {
-		console.log(`Neo4j database: No ${property} property constraints required`); // eslint-disable-line no-console
+		console.log(`⚪ Neo4j database: No ${property} property constraints required`); // eslint-disable-line no-console
 	} else {
 		for (const label of labelsMissingPropertyConstraint) {
 			await createConstraintOnProperty(label, property);
 		}
 
-		console.log(`Neo4j database: All ${property} property constraints created`); // eslint-disable-line no-console
+		console.log(`✔️  Neo4j database: All ${property} property constraints created`); // eslint-disable-line no-console
 	}
 };
 
@@ -73,9 +73,9 @@ const createConstraints = async () => {
 			await createConstraintsOnProperty(existingConstraints, property);
 		}
 
-		console.log('Neo4j database: All constraint checks complete'); // eslint-disable-line no-console
+		console.log('🆗 Neo4j database: All constraint checks complete'); // eslint-disable-line no-console
 	} catch (error) {
-		console.error(`Neo4j database: Error attempting query '${callDbConstraintsQuery}': `, error); // eslint-disable-line no-console
+		console.error(`❌ Neo4j database: Error attempting query '${callDbConstraintsQuery}': `, error); // eslint-disable-line no-console
 	}
 };
 

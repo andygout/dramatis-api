@@ -39,9 +39,9 @@ const createRangeIndexOnProperty = async (label, property) => {
 	try {
 		await neo4jQuery({ query: createRangeIndexQuery }, { isOptionalResult: true });
 
-		console.log(`Neo4j database: Range index on ${property} property created for ${label}`); // eslint-disable-line no-console
+		console.log(`✅ Neo4j database: Range index on ${property} property created for ${label}`); // eslint-disable-line no-console
 	} catch (error) {
-		console.error(`Neo4j database: Error attempting query '${createRangeIndexQuery}': `, error); // eslint-disable-line no-console
+		console.error(`❌ Neo4j database: Error attempting query '${createRangeIndexQuery}': `, error); // eslint-disable-line no-console
 	}
 };
 
@@ -54,16 +54,16 @@ const createRangeIndexesOnProperty = async (existingRangeIndexes, property) => {
 		(label) => !labelsWithPropertyRangeIndex.includes(label)
 	);
 
-	console.log(`Neo4j database: Creating ${property} property range indexes…`); // eslint-disable-line no-console
+	console.log(`🟢 Neo4j database: Creating ${property} property range indexes…`); // eslint-disable-line no-console
 
 	if (!labelsMissingPropertyRangeIndex.length) {
-		console.log(`Neo4j database: No ${property} property range indexes required`); // eslint-disable-line no-console
+		console.log(`⚪ Neo4j database: No ${property} property range indexes required`); // eslint-disable-line no-console
 	} else {
 		for (const label of labelsMissingPropertyRangeIndex) {
 			await createRangeIndexOnProperty(label, property);
 		}
 
-		console.log(`Neo4j database: All ${property} property range indexes created`); // eslint-disable-line no-console
+		console.log(`✔️  Neo4j database: All ${property} property range indexes created`); // eslint-disable-line no-console
 	}
 };
 
@@ -80,9 +80,9 @@ const createRangeIndexes = async () => {
 			await createRangeIndexesOnProperty(existingRangeIndexes, property);
 		}
 
-		console.log('Neo4j database: All range indexing checks complete'); // eslint-disable-line no-console
+		console.log('🆗 Neo4j database: All range index checks complete'); // eslint-disable-line no-console
 	} catch (error) {
-		console.error(`Neo4j database: Error attempting query '${callDbRangeIndexesQuery}': `, error); // eslint-disable-line no-console
+		console.error(`❌ Neo4j database: Error attempting query '${callDbRangeIndexesQuery}': `, error); // eslint-disable-line no-console
 	}
 };
 
