@@ -6,10 +6,12 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const NINETEENTH_CENTURY_TIME_UUID = '19TH_CENTURY_TIME_UUID';
+const EIGHTEEN_FORTIES_TIME_UUID = '1840S_TIME_UUID';
+const EIGHTEEN_FORTY_TWO_TIME_UUID = '1842_TIME_UUID';
 const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
 const FICTIONEERS_LTD_COMPANY_UUID = 'FICTIONEERS_LTD_COMPANY_UUID';
-const EIGHTEEN_FORTY_TWO_TIME_UUID = '1842_TIME_UUID';
 const KABUL_PLACE_UUID = 'KABUL_PLACE_UUID';
 const PRISON_CELL_LOCALE_UUID = 'PRISON_CELL_LOCALE_UUID';
 const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
@@ -19,7 +21,6 @@ const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
 const AMIT_GUPTA_PERSON_UUID = 'AMIT_GUPTA_PERSON_UUID';
 const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID =
 	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
-const EIGHTEEN_FORTIES_TIME_UUID = '1840S_TIME_UUID';
 const AFGHANISTAN_PLACE_UUID = 'AFGHANISTAN_PLACE_UUID';
 const PRISON_WING_LOCALE_UUID = 'PRISON_WING_LOCALE_UUID';
 const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
@@ -36,7 +37,6 @@ const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATER
 const RICHARD_BEAN_PERSON_UUID = 'RICHARD_BEAN_PERSON_UUID';
 const PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID';
 const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = 'THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID';
-const NINETEENTH_CENTURY_TIME_UUID = '19TH_CENTURY_TIME_UUID';
 const CENTRAL_ASIA_PLACE_UUID = 'CENTRAL_ASIA_PLACE_UUID';
 const PRISON_LOCALE_UUID = 'PRISON_LOCALE_UUID';
 const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_PRODUCTION_UUID';
@@ -54,7 +54,7 @@ const THE_GREAT_GAME_AFGHANISTAN_TRICYCLE_PRODUCTION_UUID = 'THE_GREAT_GAME_AFGH
 let theGreatGameAfghanistanMaterial;
 let partOneInvasionsAndIndependenceMaterial;
 let buglesAtTheGatesOfJalalabadMaterial;
-let eighteenFortiesTime;
+let nineteenthCenturyTime;
 let eighteenFortyTwoTime;
 let kabulPlace;
 let prisonCellLocale;
@@ -70,6 +70,12 @@ describe('Material with sub-sub-materials', () => {
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
+
+		await request(app).post('/times').send({
+			name: '19th century',
+			fromDate: '1801-01-01',
+			toDate: '1900-12-31'
+		});
 
 		await request(app).post('/times').send({
 			name: '1840s',
@@ -572,7 +578,7 @@ describe('Material with sub-sub-materials', () => {
 			`/materials/${BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID}`
 		);
 
-		eighteenFortiesTime = await request(app).get(`/times/${EIGHTEEN_FORTIES_TIME_UUID}`);
+		nineteenthCenturyTime = await request(app).get(`/times/${NINETEENTH_CENTURY_TIME_UUID}`);
 
 		eighteenFortyTwoTime = await request(app).get(`/times/${EIGHTEEN_FORTY_TWO_TIME_UUID}`);
 
@@ -1235,8 +1241,8 @@ describe('Material with sub-sub-materials', () => {
 		});
 	});
 
-	describe('1840s (time)', () => {
-		it('includes materials for which it and its contained sub-times was a setting, including the sur-material and (where applicable) sur-sur-material', () => {
+	describe('19th century (time)', () => {
+		it('includes materials for which it and its contained sub-times were a setting, including the sur-material and sur-sur-material where applicable', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -1436,14 +1442,47 @@ describe('Material with sub-sub-materials', () => {
 							}
 						}
 					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+					name: 'The Great Game: Afghanistan',
+					format: 'collection of plays',
+					year: 2009,
+					surMaterial: null,
+					writingCredits: [],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CENTRAL_ASIA_PLACE_UUID,
+								name: 'Central Asia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_LOCALE_UUID,
+								name: 'Prison'
+							}
+						}
+					]
 				}
 			];
 
-			const { materials } = eighteenFortiesTime.body;
+			const { materials } = nineteenthCenturyTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
+
+	// Note: A test for "1840s (time)" which might appear here is unnecessary
+	// because the use cases it would test are already covered by the tests in
+	// mat-with-sub-mats.test.js.
 
 	describe('1842 (time)', () => {
 		it('includes materials for which it was a setting, including the sur-material and sur-sur-material', () => {

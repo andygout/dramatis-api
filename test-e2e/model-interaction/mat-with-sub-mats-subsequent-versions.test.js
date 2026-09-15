@@ -6,12 +6,18 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const TWELFTH_CENTURY_TIME_UUID = '12TH_CENTURY_TIME_UUID';
+const TWELVE_HUNDRED_TIME_UUID = '1200_TIME_UUID';
 const TRAFALGAR_STUDIOS_VENUE_UUID = 'TRAFALGAR_STUDIOS_VENUE_UUID';
 const STUDIO_1_VENUE_UUID = 'STUDIO_1_VENUE_UUID';
 const AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID = 'AGAMEMNON_MATERIAL_1_UUID';
 const AESCHYLUS_PERSON_UUID = 'AESCHYLUS_PERSON_UUID';
 const THE_FATHERS_OF_TRAGEDY_COMPANY_UUID = 'THE_FATHERS_OF_TRAGEDY_COMPANY_UUID';
+const ARGOS_PLACE_UUID = 'ARGOS_PLACE_UUID';
+const THRONE_ROOM_LOCALE_UUID = 'THRONE_ROOM_LOCALE_UUID';
 const THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_ORESTEIA_MATERIAL_1_UUID';
+const PELOPONNESE_PLACE_UUID = 'PELOPONNESE_PLACE_UUID';
+const ROYAL_PALACE_LOCALE_UUID = 'ROYAL_PALACE_LOCALE_UUID';
 const AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID = 'AGAMEMNON_MATERIAL_2_UUID';
 const ROBERT_ICKE_PERSON_UUID = 'ROBERT_ICKE_PERSON_UUID';
 const THE_GREAT_HOPE_COMPANY_UUID = 'THE_GREAT_HOPE_COMPANY_COMPANY_UUID';
@@ -40,6 +46,10 @@ let agamemnonSubsequentVersionMaterial;
 let theOresteiaSubsequentVersionMaterial;
 let aeschylusPerson;
 let theFathersOfTragedyCompany;
+let twelfthCenturyTime;
+let twelveHundredTime;
+let argosPlace;
+let throneRoomLocale;
 let urPlughOriginalVersionMaterial;
 let francisFlobPerson;
 let curtainUpLtdCompany;
@@ -49,6 +59,18 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
+
+		await request(app).post('/times').send({
+			name: '12th century',
+			fromDate: '1101-01-01',
+			toDate: '1200-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1200',
+			fromDate: '1200-01-01',
+			toDate: '1200-12-31'
+		});
 
 		await request(app)
 			.post('/venues')
@@ -80,6 +102,19 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							}
 						]
 					}
+				],
+				settings: [
+					{
+						time: {
+							name: '1200'
+						},
+						place: {
+							name: 'Argos'
+						},
+						locale: {
+							name: 'Throne room'
+						}
+					}
 				]
 			});
 
@@ -107,6 +142,19 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					{
 						name: 'Agamemnon',
 						differentiator: '1'
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '12th century'
+						},
+						place: {
+							name: 'Peloponnese'
+						},
+						locale: {
+							name: 'Royal palace'
+						}
 					}
 				]
 			});
@@ -145,6 +193,19 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 								name: 'The Great Hope Company'
 							}
 						]
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '1200'
+						},
+						place: {
+							name: 'Argos'
+						},
+						locale: {
+							name: 'Throne room'
+						}
 					}
 				]
 			});
@@ -189,6 +250,19 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					{
 						name: 'Agamemnon',
 						differentiator: '2'
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '12th century'
+						},
+						place: {
+							name: 'Peloponnese'
+						},
+						locale: {
+							name: 'Royal palace'
+						}
 					}
 				]
 			});
@@ -455,6 +529,14 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		theFathersOfTragedyCompany = await request(app).get(`/companies/${THE_FATHERS_OF_TRAGEDY_COMPANY_UUID}`);
 
+		twelfthCenturyTime = await request(app).get(`/times/${TWELFTH_CENTURY_TIME_UUID}`);
+
+		twelveHundredTime = await request(app).get(`/times/${TWELVE_HUNDRED_TIME_UUID}`);
+
+		argosPlace = await request(app).get(`/places/${ARGOS_PLACE_UUID}`);
+
+		throneRoomLocale = await request(app).get(`/locales/${THRONE_ROOM_LOCALE_UUID}`);
+
 		urPlughOriginalVersionMaterial = await request(app).get(
 			`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`
 		);
@@ -665,7 +747,26 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 					surMaterial: null
 				},
 				surMaterial: null,
-				settings: [],
+				settings: [
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: TWELFTH_CENTURY_TIME_UUID,
+							name: '12th century'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: PELOPONNESE_PLACE_UUID,
+							name: 'Peloponnese'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: ROYAL_PALACE_LOCALE_UUID,
+							name: 'Royal palace'
+						}
+					}
+				],
 				characterGroups: []
 			};
 
@@ -751,7 +852,26 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						}
 					},
 					subMaterials: [],
-					settings: [],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					],
 					characterGroups: []
 				}
 			];
@@ -945,6 +1065,630 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const { subsequentVersionMaterialProductions } = theFathersOfTragedyCompany.body;
 
 			assert.deepEqual(subsequentVersionMaterialProductions, expectedSubsequentVersionMaterialProductions);
+		});
+	});
+
+	describe('12th century (time)', () => {
+		it("includes in its and its contained sub-times' material data the writers and (for subsequent versions) original version writers of the material", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'The Oresteia',
+					format: 'trilogy of plays',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELFTH_CENTURY_TIME_UUID,
+								name: '12th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: PELOPONNESE_PLACE_UUID,
+								name: 'Peloponnese'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROYAL_PALACE_LOCALE_UUID,
+								name: 'Royal palace'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 2015,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'The Oresteia',
+					format: 'trilogy of plays',
+					year: 500,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELFTH_CENTURY_TIME_UUID,
+								name: '12th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: PELOPONNESE_PLACE_UUID,
+								name: 'Peloponnese'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROYAL_PALACE_LOCALE_UUID,
+								name: 'Royal palace'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 500,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = twelfthCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('1200 (time)', () => {
+		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 2015,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 500,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = twelveHundredTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Argos (place)', () => {
+		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 2015,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 500,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = argosPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Throne room (locale)', () => {
+		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 2015,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 500,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELVE_HUNDRED_TIME_UUID,
+								name: '1200'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ARGOS_PLACE_UUID,
+								name: 'Argos'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = throneRoomLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 

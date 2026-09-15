@@ -6,6 +6,9 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const TWENTY_FIRST_CENTURY_TIME_UUID = '21ST_CENTURY_TIME_UUID';
+const TWENTY_TENS_TIME_UUID = '2010S_TIME_UUID';
+const TWENTY_ELEVEN_TIME_UUID = '2011_TIME_UUID';
 const GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID = 'GENESIS_MATERIAL_UUID';
 const RICHARD_BANCROFT_PERSON_UUID = 'RICHARD_BANCROFT_PERSON_UUID';
 const THE_CANTERBURY_EDITORS_COMPANY_UUID = 'THE_CANTERBURY_EDITORS_COMPANY_UUID';
@@ -14,9 +17,15 @@ const THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID = 'THE_BIBLE_KIN
 const GODBLOG_PLAY_MATERIAL_UUID = 'GODBLOG_MATERIAL_UUID';
 const JEANETTE_WINTERSON_PERSON_UUID = 'JEANETTE_WINTERSON_PERSON_UUID';
 const ONLY_FRUITS_COMPANY_UUID = 'ONLY_FRUITS_COMPANY_UUID';
+const SHEPHERDS_BUSH_PLACE_UUID = 'SHEPHERDS_BUSH_PLACE_UUID';
+const INTERNET_CAFE_BOOTH_LOCALE_UUID = 'INTERNET_CAFE_BOOTH_LOCALE_UUID';
 const GOD_CHARACTER_UUID = 'GOD_CHARACTER_UUID';
 const THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_MATERIAL_UUID';
+const LONDON_BOROUGH_OF_HAMMERSMITH_AND_FULHAM_PLACE_UUID = 'LONDON_BOROUGH_OF_HAMMERSMITH_AND_FULHAM_PLACE_UUID';
+const INTERNET_CAFE_LOCALE_UUID = 'INTERNET_CAFE_LOCALE_UUID';
 const SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID = 'SIXTY_SIX_BOOKS_MATERIAL_UUID';
+const LONDON_PLACE_UUID = 'LONDON_PLACE_UUID';
+const SHOPPING_CENTRE_LOCALE_UUID = 'SHOPPING_CENTRE_LOCALE_UUID';
 const GODBLOG_BUSH_PRODUCTION_UUID = 'GODBLOG_PRODUCTION_UUID';
 const BUSH_THEATRE_VENUE_UUID = 'BUSH_THEATRE_VENUE_UUID';
 const THE_BOOKS_OF_THE_OLD_TESTAMENT_BUSH_PRODUCTION_UUID = 'THE_BOOKS_OF_THE_OLD_TESTAMENT_PRODUCTION_UUID';
@@ -35,6 +44,10 @@ let jeanetteWintersonPerson;
 let theCanterburyEditorsCompany;
 let onlyFruitsCompany;
 let godblogBushTheatreProduction;
+let twentyFirstCenturyTime;
+let twentyElevenTime;
+let shepherdsBushPlace;
+let internetCaféBoothLocale;
 let godCharacter;
 
 describe('Material with sub-sub-materials and source materials thereof', () => {
@@ -42,6 +55,24 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
+
+		await request(app).post('/times').send({
+			name: '21st century',
+			fromDate: '2001-01-01',
+			toDate: '2100-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '2010s',
+			fromDate: '2010-01-01',
+			toDate: '2019-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '2011',
+			fromDate: '2011-01-01',
+			toDate: '2011-12-31'
+		});
 
 		await request(app)
 			.post('/materials')
@@ -144,6 +175,19 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						]
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '2011'
+						},
+						place: {
+							name: "Shepherd's Bush"
+						},
+						locale: {
+							name: 'Internet café booth'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -176,6 +220,19 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 					{
 						name: 'Godblog'
 					}
+				],
+				settings: [
+					{
+						time: {
+							name: '2010s'
+						},
+						place: {
+							name: 'London Borough of Hammersmith and Fulham'
+						},
+						locale: {
+							name: 'Internet café'
+						}
+					}
 				]
 			});
 
@@ -199,6 +256,19 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				subMaterials: [
 					{
 						name: 'The Books of the Old Testament'
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '21st century'
+						},
+						place: {
+							name: 'London'
+						},
+						locale: {
+							name: 'Shopping centre'
+						}
 					}
 				]
 			});
@@ -330,6 +400,14 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 		onlyFruitsCompany = await request(app).get(`/companies/${ONLY_FRUITS_COMPANY_UUID}`);
 
 		godblogBushTheatreProduction = await request(app).get(`/productions/${GODBLOG_BUSH_PRODUCTION_UUID}`);
+
+		twentyFirstCenturyTime = await request(app).get(`/times/${TWENTY_FIRST_CENTURY_TIME_UUID}`);
+
+		twentyElevenTime = await request(app).get(`/times/${TWENTY_ELEVEN_TIME_UUID}`);
+
+		shepherdsBushPlace = await request(app).get(`/places/${SHEPHERDS_BUSH_PLACE_UUID}`);
+
+		internetCaféBoothLocale = await request(app).get(`/locales/${INTERNET_CAFE_BOOTH_LOCALE_UUID}`);
 
 		godCharacter = await request(app).get(`/characters/${GOD_CHARACTER_UUID}`);
 	});
@@ -633,10 +711,48 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 						}
 					],
 					originalVersionMaterial: null,
-					settings: [],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
+								name: '21st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: LONDON_PLACE_UUID,
+								name: 'London'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SHOPPING_CENTRE_LOCALE_UUID,
+								name: 'Shopping centre'
+							}
+						}
+					],
 					characterGroups: []
 				},
-				settings: [],
+				settings: [
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: TWENTY_TENS_TIME_UUID,
+							name: '2010s'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: LONDON_BOROUGH_OF_HAMMERSMITH_AND_FULHAM_PLACE_UUID,
+							name: 'London Borough of Hammersmith and Fulham'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: INTERNET_CAFE_LOCALE_UUID,
+							name: 'Internet café'
+						}
+					}
+				],
 				characterGroups: []
 			};
 
@@ -691,7 +807,26 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 				],
 				originalVersionMaterial: null,
 				surMaterial: null,
-				settings: [],
+				settings: [
+					{
+						model: 'SETTING',
+						time: {
+							model: 'TIME',
+							uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
+							name: '21st century'
+						},
+						place: {
+							model: 'PLACE',
+							uuid: LONDON_PLACE_UUID,
+							name: 'London'
+						},
+						locale: {
+							model: 'LOCALE',
+							uuid: SHOPPING_CENTRE_LOCALE_UUID,
+							name: 'Shopping centre'
+						}
+					}
+				],
 				characterGroups: []
 			};
 
@@ -1241,6 +1376,572 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const { material } = godblogBushTheatreProduction.body;
 
 			assert.deepEqual(material, expectedMaterial);
+		});
+	});
+
+	describe('21st century (time)', () => {
+		it("includes in its and its contained sub-times' material data the writers of the material and its source material (with corresponding sur-material and sur-sur-material)", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+					name: 'Sixty-Six Books',
+					format: 'collection of plays',
+					year: 2011,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'The Bible: King James Version',
+									format: 'collection of religious texts',
+									year: 1611,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
+								name: '21st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: LONDON_PLACE_UUID,
+								name: 'London'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SHOPPING_CENTRE_LOCALE_UUID,
+								name: 'Shopping centre'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GODBLOG_PLAY_MATERIAL_UUID,
+					name: 'Godblog',
+					format: 'play',
+					year: 2011,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+						name: 'The Books of the Old Testament',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+							name: 'Sixty-Six Books'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JEANETTE_WINTERSON_PERSON_UUID,
+									name: 'Jeanette Winterson'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ONLY_FRUITS_COMPANY_UUID,
+									name: 'Only Fruits'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'Genesis',
+									format: 'religious text',
+									year: 1611,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+										name: 'The Old Testament',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+											name: 'The Bible: King James Version'
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_ELEVEN_TIME_UUID,
+								name: '2011'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: SHEPHERDS_BUSH_PLACE_UUID,
+								name: "Shepherd's Bush"
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: INTERNET_CAFE_BOOTH_LOCALE_UUID,
+								name: 'Internet café booth'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+					name: 'The Books of the Old Testament',
+					format: 'sub-collection of plays',
+					year: 2011,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+						name: 'Sixty-Six Books',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'The Old Testament',
+									format: 'division of religious texts',
+									year: 1611,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+										name: 'The Bible: King James Version',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_TENS_TIME_UUID,
+								name: '2010s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: LONDON_BOROUGH_OF_HAMMERSMITH_AND_FULHAM_PLACE_UUID,
+								name: 'London Borough of Hammersmith and Fulham'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: INTERNET_CAFE_LOCALE_UUID,
+								name: 'Internet café'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = twentyFirstCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	// Note: A test for "2010s (time)" which might appear here is unnecessary
+	// because the use cases it would test are already covered by the tests in
+	// mat-with-sub-mats-source-mats.test.js.
+
+	describe('2011 (time)', () => {
+		it('includes in its material data the writers of the material and its source material (with corresponding sur-material and sur-sur-material)', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: GODBLOG_PLAY_MATERIAL_UUID,
+					name: 'Godblog',
+					format: 'play',
+					year: 2011,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+						name: 'The Books of the Old Testament',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+							name: 'Sixty-Six Books'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JEANETTE_WINTERSON_PERSON_UUID,
+									name: 'Jeanette Winterson'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ONLY_FRUITS_COMPANY_UUID,
+									name: 'Only Fruits'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'Genesis',
+									format: 'religious text',
+									year: 1611,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+										name: 'The Old Testament',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+											name: 'The Bible: King James Version'
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_ELEVEN_TIME_UUID,
+								name: '2011'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: SHEPHERDS_BUSH_PLACE_UUID,
+								name: "Shepherd's Bush"
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: INTERNET_CAFE_BOOTH_LOCALE_UUID,
+								name: 'Internet café booth'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = twentyElevenTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe("Shepherd's Bush (place)", () => {
+		it('includes in its material data the writers of the material and its source material (with corresponding sur-material and sur-sur-material)', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: GODBLOG_PLAY_MATERIAL_UUID,
+					name: 'Godblog',
+					format: 'play',
+					year: 2011,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+						name: 'The Books of the Old Testament',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+							name: 'Sixty-Six Books'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JEANETTE_WINTERSON_PERSON_UUID,
+									name: 'Jeanette Winterson'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ONLY_FRUITS_COMPANY_UUID,
+									name: 'Only Fruits'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'Genesis',
+									format: 'religious text',
+									year: 1611,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+										name: 'The Old Testament',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+											name: 'The Bible: King James Version'
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_ELEVEN_TIME_UUID,
+								name: '2011'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: SHEPHERDS_BUSH_PLACE_UUID,
+								name: "Shepherd's Bush"
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: INTERNET_CAFE_BOOTH_LOCALE_UUID,
+								name: 'Internet café booth'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = shepherdsBushPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Internet café booth (locale)', () => {
+		it('includes in its material data the writers of the material and its source material (with corresponding sur-material and sur-sur-material)', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: GODBLOG_PLAY_MATERIAL_UUID,
+					name: 'Godblog',
+					format: 'play',
+					year: 2011,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_BOOKS_OF_THE_OLD_TESTAMENT_PLAYS_MATERIAL_UUID,
+						name: 'The Books of the Old Testament',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+							name: 'Sixty-Six Books'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JEANETTE_WINTERSON_PERSON_UUID,
+									name: 'Jeanette Winterson'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ONLY_FRUITS_COMPANY_UUID,
+									name: 'Only Fruits'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: GENESIS_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'Genesis',
+									format: 'religious text',
+									year: 1611,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_OLD_TESTAMENT_RELIGIOUS_TEXT_MATERIAL_UUID,
+										name: 'The Old Testament',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+											name: 'The Bible: King James Version'
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_ELEVEN_TIME_UUID,
+								name: '2011'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: SHEPHERDS_BUSH_PLACE_UUID,
+								name: "Shepherd's Bush"
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: INTERNET_CAFE_BOOTH_LOCALE_UUID,
+								name: 'Internet café booth'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = internetCaféBoothLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 

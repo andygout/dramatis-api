@@ -17,10 +17,16 @@ const RANDY_WEINER_PERSON_UUID = 'RANDY_WEINER_PERSON_UUID';
 const THE_INDIAN_BOY_MATERIAL_UUID = 'THE_INDIAN_BOY_MATERIAL_UUID';
 const RONA_MUNRO_PERSON_UUID = 'RONA_MUNRO_PERSON_UUID';
 const ROYAL_SHAKESPEARE_COMPANY_UUID = 'ROYAL_SHAKESPEARE_COMPANY_COMPANY_UUID';
+const TWO_THOUSAND_AND_SIX_TIME_UUID = '2006_TIME_UUID';
+const WARWICKSHIRE_PLACE_UUID = 'WARWICKSHIRE_PLACE_UUID';
+const WOODLAND_LOCALE_UUID = 'WOODLAND_LOCALE_UUID';
 const THE_INDIAN_BOY_CHARACTER_UUID = 'THE_INDIAN_BOY_CHARACTER_UUID';
 const SHAKESPEARES_VILLAINS_MATERIAL_UUID = 'SHAKESPEARES_VILLAINS_MATERIAL_UUID';
 const STEVEN_BERKOFF_PERSON_UUID = 'STEVEN_BERKOFF_PERSON_UUID';
 const EAST_PRODUCTIONS_COMPANY_UUID = 'EAST_PRODUCTIONS_COMPANY_UUID';
+const SIXTEENTH_CENTURY_TIME_UUID = '16TH_CENTURY_TIME_UUID';
+const VENICE_PLACE_UUID = 'VENICE_PLACE_UUID';
+const COUNCIL_CHAMBER_LOCALE_UUID = 'COUNCIL_CHAMBER_LOCALE_UUID';
 const IAGO_CHARACTER_UUID = 'IAGO_CHARACTER_UUID';
 const A_MOORISH_CAPTAIN_MATERIAL_UUID = 'A_MOORISH_CAPTAIN_MATERIAL_UUID';
 const OTHELLO_MATERIAL_UUID = 'OTHELLO_MATERIAL_UUID';
@@ -48,6 +54,12 @@ let eastProductionsCompany;
 let theIndianBoyRoyalShakespeareTheatreProduction;
 let shakespearesVillainsTheatreRoyalHaymarketProduction;
 let othelloDonmarWarehouseProduction;
+let twoThousandAndSixTime;
+let warwickshirePlace;
+let woodlandLocale;
+let sixteenthCenturyTime;
+let venicePlace;
+let councilChamberLocale;
 let theIndianBoyCharacter;
 let iagoCharacter;
 
@@ -147,6 +159,19 @@ describe('Materials with source material', () => {
 						]
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '2006'
+						},
+						place: {
+							name: 'Warwickshire'
+						},
+						locale: {
+							name: 'Woodland'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -188,6 +213,19 @@ describe('Materials with source material', () => {
 								name: "The King's Men"
 							}
 						]
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '16th century'
+						},
+						place: {
+							name: 'Venice'
+						},
+						locale: {
+							name: 'Council chamber'
+						}
 					}
 				],
 				characterGroups: [
@@ -250,6 +288,19 @@ describe('Materials with source material', () => {
 								name: 'A Moorish Captain'
 							}
 						]
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '16th century'
+						},
+						place: {
+							name: 'Venice'
+						},
+						locale: {
+							name: 'Council chamber'
+						}
 					}
 				],
 				characterGroups: [
@@ -371,6 +422,18 @@ describe('Materials with source material', () => {
 		othelloDonmarWarehouseProduction = await request(app).get(
 			`/productions/${OTHELLO_DONMAR_WAREHOUSE_PRODUCTION_UUID}`
 		);
+
+		twoThousandAndSixTime = await request(app).get(`/times/${TWO_THOUSAND_AND_SIX_TIME_UUID}`);
+
+		warwickshirePlace = await request(app).get(`/places/${WARWICKSHIRE_PLACE_UUID}`);
+
+		woodlandLocale = await request(app).get(`/locales/${WOODLAND_LOCALE_UUID}`);
+
+		sixteenthCenturyTime = await request(app).get(`/times/${SIXTEENTH_CENTURY_TIME_UUID}`);
+
+		venicePlace = await request(app).get(`/places/${VENICE_PLACE_UUID}`);
+
+		councilChamberLocale = await request(app).get(`/locales/${COUNCIL_CHAMBER_LOCALE_UUID}`);
 
 		theIndianBoyCharacter = await request(app).get(`/characters/${THE_INDIAN_BOY_CHARACTER_UUID}`);
 
@@ -1839,6 +1902,726 @@ describe('Materials with source material', () => {
 			const { material } = othelloDonmarWarehouseProduction.body;
 
 			assert.deepEqual(material, expectedMaterial);
+		});
+	});
+
+	describe('2006 (time)', () => {
+		it('includes in its material data the writers of the material and its source material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
+					format: 'play',
+					year: 2006,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: "A Midsummer Night's Dream",
+									format: 'play',
+									year: 1595,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: "The King's Men"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWO_THOUSAND_AND_SIX_TIME_UUID,
+								name: '2006'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: WARWICKSHIRE_PLACE_UUID,
+								name: 'Warwickshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: WOODLAND_LOCALE_UUID,
+								name: 'Woodland'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = twoThousandAndSixTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Warwickshire (place)', () => {
+		it('includes in its material data the writers of the material and its source material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
+					format: 'play',
+					year: 2006,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: "A Midsummer Night's Dream",
+									format: 'play',
+									year: 1595,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: "The King's Men"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWO_THOUSAND_AND_SIX_TIME_UUID,
+								name: '2006'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: WARWICKSHIRE_PLACE_UUID,
+								name: 'Warwickshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: WOODLAND_LOCALE_UUID,
+								name: 'Woodland'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = warwickshirePlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Woodland (locale)', () => {
+		it('includes in its material data the writers of the material and its source material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_INDIAN_BOY_MATERIAL_UUID,
+					name: 'The Indian Boy',
+					format: 'play',
+					year: 2006,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: RONA_MUNRO_PERSON_UUID,
+									name: 'Rona Munro'
+								},
+								{
+									model: 'COMPANY',
+									uuid: ROYAL_SHAKESPEARE_COMPANY_UUID,
+									name: 'Royal Shakespeare Company'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'inspired by',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MIDSUMMER_NIGHTS_DREAM_MATERIAL_UUID,
+									name: "A Midsummer Night's Dream",
+									format: 'play',
+									year: 1595,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: "The King's Men"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWO_THOUSAND_AND_SIX_TIME_UUID,
+								name: '2006'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: WARWICKSHIRE_PLACE_UUID,
+								name: 'Warwickshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: WOODLAND_LOCALE_UUID,
+								name: 'Woodland'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = woodlandLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('16th century (time)', () => {
+		it('includes in its material data the writers of the material and its source material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: "Shakespeare's Villains",
+					format: 'play',
+					year: 1998,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff'
+								},
+								{
+									model: 'COMPANY',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on works by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SIXTEENTH_CENTURY_TIME_UUID,
+								name: '16th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: VENICE_PLACE_UUID,
+								name: 'Venice'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNCIL_CHAMBER_LOCALE_UUID,
+								name: 'Council chamber'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: "The King's Men"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SIXTEENTH_CENTURY_TIME_UUID,
+								name: '16th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: VENICE_PLACE_UUID,
+								name: 'Venice'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNCIL_CHAMBER_LOCALE_UUID,
+								name: 'Council chamber'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = sixteenthCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Venice (place)', () => {
+		it('includes in its material data the writers of the material and its source material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: "Shakespeare's Villains",
+					format: 'play',
+					year: 1998,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff'
+								},
+								{
+									model: 'COMPANY',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on works by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SIXTEENTH_CENTURY_TIME_UUID,
+								name: '16th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: VENICE_PLACE_UUID,
+								name: 'Venice'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNCIL_CHAMBER_LOCALE_UUID,
+								name: 'Council chamber'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: "The King's Men"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SIXTEENTH_CENTURY_TIME_UUID,
+								name: '16th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: VENICE_PLACE_UUID,
+								name: 'Venice'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNCIL_CHAMBER_LOCALE_UUID,
+								name: 'Council chamber'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = venicePlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Council chamber (locale)', () => {
+		it('includes in its material data the writers of the material and its source material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SHAKESPEARES_VILLAINS_MATERIAL_UUID,
+					name: "Shakespeare's Villains",
+					format: 'play',
+					year: 1998,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: STEVEN_BERKOFF_PERSON_UUID,
+									name: 'Steven Berkoff'
+								},
+								{
+									model: 'COMPANY',
+									uuid: EAST_PRODUCTIONS_COMPANY_UUID,
+									name: 'East Productions'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on works by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SIXTEENTH_CENTURY_TIME_UUID,
+								name: '16th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: VENICE_PLACE_UUID,
+								name: 'Venice'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNCIL_CHAMBER_LOCALE_UUID,
+								name: 'Council chamber'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: OTHELLO_MATERIAL_UUID,
+					name: 'Othello',
+					format: 'play',
+					year: 1603,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: A_MOORISH_CAPTAIN_MATERIAL_UUID,
+									name: 'A Moorish Captain',
+									format: 'tale',
+									year: 1565,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+													name: 'William Shakespeare'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_KINGS_MEN_COMPANY_UUID,
+													name: "The King's Men"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SIXTEENTH_CENTURY_TIME_UUID,
+								name: '16th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: VENICE_PLACE_UUID,
+								name: 'Venice'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNCIL_CHAMBER_LOCALE_UUID,
+								name: 'Council chamber'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = councilChamberLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 

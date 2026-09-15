@@ -6,17 +6,17 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const EIGHTEEN_THIRTIES_TIME_UUID = '1830S_TIME_UUID';
+const EIGHTEEN_THIRTY_THREE_TIME_UUID = '1833_TIME_UUID';
 const VOYAGE_MATERIAL_UUID = 'VOYAGE_MATERIAL_UUID';
 const TOM_STOPPARD_PERSON_UUID = 'TOM_STOPPARD_PERSON_UUID';
 const THE_STRÄUSSLER_GROUP_COMPANY_UUID = 'THE_STRAUSSLER_GROUP_COMPANY_UUID';
-const EIGHTEEN_THIRTY_THREE_TIME_UUID = '1833_TIME_UUID';
 const MOSCOW_PLACE_UUID = 'MOSCOW_PLACE_UUID';
 const COUNTRY_HOUSE_LOCALE_UUID = 'COUNTRY_HOUSE_LOCALE_UUID';
 const ALEXANDER_HERZEN_CHARACTER_UUID = 'ALEXANDER_HERZEN_CHARACTER_UUID';
 const SHIPWRECK_MATERIAL_UUID = 'SHIPWRECK_MATERIAL_UUID';
 const SALVAGE_MATERIAL_UUID = 'SALVAGE_MATERIAL_UUID';
 const THE_COAST_OF_UTOPIA_MATERIAL_UUID = 'THE_COAST_OF_UTOPIA_MATERIAL_UUID';
-const EIGHTEEN_THIRTIES_TIME_UUID = '1830S_TIME_UUID';
 const RUSSIA_PLACE_UUID = 'RUSSIA_PLACE_UUID';
 const COUNTRY_ESTATE_LOCALE_UUID = 'COUNTRY_ESTATE_LOCALE_UUID';
 const IVAN_TURGENEV_CHARACTER_UUID = 'IVAN_TURGENEV_CHARACTER_UUID';
@@ -644,8 +644,8 @@ describe('Material with sub-materials', () => {
 		});
 	});
 
-	describe.only('1830s (time)', () => {
-		it('includes materials for which it and its contained sub-times was a setting, including the sur-material where applicable', () => {
+	describe('1830s (time)', () => {
+		it('includes materials for which it and its contained sub-times were a setting, including the sur-material where applicable', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
