@@ -6,6 +6,8 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const NINETEEN_FORTIES_TIME_UUID = '1940S_TIME_UUID';
+const NINETEEN_FORTY_TIME_UUID = '1940_TIME_UUID';
 const BIRMINGHAM_REPERTORY_THEATRE_VENUE_UUID = 'BIRMINGHAM_REPERTORY_THEATRE_VENUE_UUID';
 const THE_HOUSE_VENUE_UUID = 'THE_HOUSE_VENUE_UUID';
 const THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_MATERIAL_1_UUID';
@@ -15,7 +17,11 @@ const THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID = 'THE_LION_THE_WIT
 const ADAM_PECK_PERSON_UUID = 'ADAM_PECK_PERSON_UUID';
 const C_S_LEWIS_SOCIETY_COMPANY_UUID = 'C_S_LEWIS_SOCIETY_COMPANY_UUID';
 const SARAH_SELDEN_PERSON_UUID = 'SARAH_SELDEN_PERSON_UUID';
+const OXFORDSHIRE_PLACE_UUID = 'OXFORDSHIRE_PLACE_UUID';
+const SPARE_ROOM_LOCALE_UUID = 'SPARE_ROOM_LOCALE_UUID';
 const THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID = 'THE_CHRONICLES_OF_NARNIA_MATERIAL_2_UUID';
+const ENGLAND_PLACE_UUID = 'ENGLAND_PLACE_UUID';
+const COUNTRY_HOUSE_LOCALE_UUID = 'COUNTRY_HOUSE_LOCALE_UUID';
 const THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID =
 	'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_UUID';
 const GILLIAN_LYNNE_THEATRE_VENUE_UUID = 'GILLIAN_LYNNE_THEATRE_VENUE_UUID';
@@ -33,12 +39,28 @@ let cSLewisSocietyCompany;
 let sarahSeldenPerson;
 let cinerightsLtdCompany;
 let talyseTataPerson;
+let nineteenFortiesTime;
+let nineteenFortyTime;
+let oxfordshirePlace;
+let spareRoomLocale;
 
 describe('Material with sub-materials and rights grantor credits thereof', () => {
 	before(async () => {
 		stubUuidToCountMapClient.clear();
 
 		await purgeDatabase();
+
+		await request(app).post('/times').send({
+			name: '1940s',
+			fromDate: '1940-01-01',
+			toDate: '1949-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1940',
+			fromDate: '1940-01-01',
+			toDate: '1940-12-31'
+		});
 
 		await request(app)
 			.post('/venues')
@@ -131,6 +153,19 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 							}
 						]
 					}
+				],
+				settings: [
+					{
+						time: {
+							name: '1940'
+						},
+						place: {
+							name: 'Oxfordshire'
+						},
+						locale: {
+							name: 'Spare room'
+						}
+					}
 				]
 			});
 
@@ -164,6 +199,19 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 					{
 						name: 'The Lion, the Witch and the Wardrobe',
 						differentiator: '2'
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '1940s'
+						},
+						place: {
+							name: 'England'
+						},
+						locale: {
+							name: 'Country house'
+						}
 					}
 				]
 			});
@@ -316,6 +364,14 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 		cinerightsLtdCompany = await request(app).get(`/companies/${CINERIGHTS_LTD_COMPANY_UUID}`);
 
 		talyseTataPerson = await request(app).get(`/people/${TALYSE_TATA_PERSON_UUID}`);
+
+		nineteenFortiesTime = await request(app).get(`/times/${NINETEEN_FORTIES_TIME_UUID}`);
+
+		nineteenFortyTime = await request(app).get(`/times/${NINETEEN_FORTY_TIME_UUID}`);
+
+		oxfordshirePlace = await request(app).get(`/places/${OXFORDSHIRE_PLACE_UUID}`);
+
+		spareRoomLocale = await request(app).get(`/locales/${SPARE_ROOM_LOCALE_UUID}`);
 	});
 
 	describe('C S Lewis Society (company)', () => {
@@ -647,6 +703,494 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const { rightsGrantorMaterialProductions } = talyseTataPerson.body;
 
 			assert.deepEqual(rightsGrantorMaterialProductions, expectedRightsGrantorMaterialProductions);
+		});
+	});
+
+	describe('1940s (time)', () => {
+		it("includes in its and its contained sub-times' material data the writers and rights grantors of the material", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+					name: 'The Chronicles of Narnia',
+					format: 'plays',
+					year: 2017,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+									name: 'The Chronicles of Narnia',
+									format: 'series of novels',
+									year: 1956,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTIES_TIME_UUID,
+								name: '1940s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ENGLAND_PLACE_UUID,
+								name: 'England'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
+					name: 'The Lion, the Witch and the Wardrobe',
+					format: 'play',
+					year: 2017,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
+									name: 'The Lion, the Witch and the Wardrobe',
+									format: 'novel',
+									year: 1950,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: C_S_LEWIS_SOCIETY_COMPANY_UUID,
+									name: 'C S Lewis Society'
+								},
+								{
+									model: 'PERSON',
+									uuid: SARAH_SELDEN_PERSON_UUID,
+									name: 'Sarah Selden'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTY_TIME_UUID,
+								name: '1940'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OXFORDSHIRE_PLACE_UUID,
+								name: 'Oxfordshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SPARE_ROOM_LOCALE_UUID,
+								name: 'Spare room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = nineteenFortiesTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('1940 (time)', () => {
+		it('includes in its material data the writers and rights grantors of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
+					name: 'The Lion, the Witch and the Wardrobe',
+					format: 'play',
+					year: 2017,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
+									name: 'The Lion, the Witch and the Wardrobe',
+									format: 'novel',
+									year: 1950,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: C_S_LEWIS_SOCIETY_COMPANY_UUID,
+									name: 'C S Lewis Society'
+								},
+								{
+									model: 'PERSON',
+									uuid: SARAH_SELDEN_PERSON_UUID,
+									name: 'Sarah Selden'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTY_TIME_UUID,
+								name: '1940'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OXFORDSHIRE_PLACE_UUID,
+								name: 'Oxfordshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SPARE_ROOM_LOCALE_UUID,
+								name: 'Spare room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = nineteenFortyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Oxfordshire (place)', () => {
+		it('includes in its material data the writers and rights grantors of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
+					name: 'The Lion, the Witch and the Wardrobe',
+					format: 'play',
+					year: 2017,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
+									name: 'The Lion, the Witch and the Wardrobe',
+									format: 'novel',
+									year: 1950,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: C_S_LEWIS_SOCIETY_COMPANY_UUID,
+									name: 'C S Lewis Society'
+								},
+								{
+									model: 'PERSON',
+									uuid: SARAH_SELDEN_PERSON_UUID,
+									name: 'Sarah Selden'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTY_TIME_UUID,
+								name: '1940'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OXFORDSHIRE_PLACE_UUID,
+								name: 'Oxfordshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SPARE_ROOM_LOCALE_UUID,
+								name: 'Spare room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = oxfordshirePlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Spare room (locale)', () => {
+		it('includes in its material data the writers and rights grantors of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
+					name: 'The Lion, the Witch and the Wardrobe',
+					format: 'play',
+					year: 2017,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
+									name: 'The Lion, the Witch and the Wardrobe',
+									format: 'novel',
+									year: 1950,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: C_S_LEWIS_SOCIETY_COMPANY_UUID,
+									name: 'C S Lewis Society'
+								},
+								{
+									model: 'PERSON',
+									uuid: SARAH_SELDEN_PERSON_UUID,
+									name: 'Sarah Selden'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTY_TIME_UUID,
+								name: '1940'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OXFORDSHIRE_PLACE_UUID,
+								name: 'Oxfordshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SPARE_ROOM_LOCALE_UUID,
+								name: 'Spare room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = spareRoomLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 });

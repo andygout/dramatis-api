@@ -6,12 +6,19 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const NINETEENTH_CENTURY_TIME_UUID = '19TH_CENTURY_TIME_UUID';
+const EIGHTEEN_FORTIES_TIME_UUID = '1840S_TIME_UUID';
+const EIGHTEEN_FORTY_TWO_TIME_UUID = '1842_TIME_UUID';
 const BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID';
+const KABUL_PLACE_UUID = 'KABUL_PLACE_UUID';
+const PRISON_CELL_LOCALE_UUID = 'PRISON_CELL_LOCALE_UUID';
 const BAR_CHARACTER_UUID = 'BAR_CHARACTER_UUID';
 const DURANDS_LINE_MATERIAL_UUID = 'DURANDS_LINE_MATERIAL_UUID';
 const CAMPAIGN_MATERIAL_UUID = 'CAMPAIGN_MATERIAL_UUID';
 const PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID =
 	'PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID';
+const AFGHANISTAN_PLACE_UUID = 'AFGHANISTAN_PLACE_UUID';
+const PRISON_WING_LOCALE_UUID = 'PRISON_WING_LOCALE_UUID';
 const BLACK_TULIPS_MATERIAL_UUID = 'BLACK_TULIPS_MATERIAL_UUID';
 const BLOOD_AND_GIFTS_MATERIAL_UUID = 'BLOOD_AND_GIFTS_MATERIAL_UUID';
 const MINISKIRTS_OF_KABUL_MATERIAL_UUID = 'MINISKIRTS_OF_KABUL_MATERIAL_UUID';
@@ -22,6 +29,8 @@ const THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID = 'THE_NIGHT_IS_DARKEST
 const ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID = 'ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID';
 const PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID = 'PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID';
 const THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID = 'THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID';
+const CENTRAL_ASIA_PLACE_UUID = 'CENTRAL_ASIA_PLACE_UUID';
+const PRISON_LOCALE_UUID = 'PRISON_LOCALE_UUID';
 const BUGLES_AT_THE_GATES_OF_JALALABAD_TRICYCLE_PRODUCTION_UUID = 'BUGLES_AT_THE_GATES_OF_JALALABAD_PRODUCTION_UUID';
 const TRICYCLE_THEATRE_VENUE_UUID = 'TRICYCLE_THEATRE_VENUE_UUID';
 const NICOLAS_KENT_PERSON_UUID = 'NICOLAS_KENT_PERSON_UUID';
@@ -61,6 +70,7 @@ let jackKnowlesPerson;
 let lizzieChapmanPerson;
 let stageManagementLtdCompany;
 let charlottePadghamPerson;
+let nineteenthCenturyTime;
 let barCharacter;
 
 describe('Ordering of multi-tiered materials/productions credits', () => {
@@ -69,12 +79,43 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 
 		await purgeDatabase();
 
+		await request(app).post('/times').send({
+			name: '19th century',
+			fromDate: '1801-01-01',
+			toDate: '1900-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1840s',
+			fromDate: '1840-01-01',
+			toDate: '1849-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1842',
+			fromDate: '1842-01-01',
+			toDate: '1842-12-31'
+		});
+
 		await request(app)
 			.post('/materials')
 			.send({
 				name: 'Bugles at the Gates of Jalalabad',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -92,6 +133,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: "Durand's Line",
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -109,6 +163,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'Campaign',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -137,6 +204,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 						name: 'Campaign'
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '1840s'
+						},
+						place: {
+							name: 'Afghanistan'
+						},
+						locale: {
+							name: 'Prison wing'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -154,6 +234,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'Black Tulips',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -171,6 +264,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'Blood and Gifts',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -188,6 +294,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'Miniskirts of Kabul',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -216,6 +335,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 						name: 'Miniskirts of Kabul'
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '1840s'
+						},
+						place: {
+							name: 'Afghanistan'
+						},
+						locale: {
+							name: 'Prison wing'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -233,6 +365,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'Honey',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -250,6 +395,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'The Night Is Darkest Before the Dawn',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -267,6 +425,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 				name: 'On the Side of the Angels',
 				format: 'play',
 				year: '2009',
+				settings: [
+					{
+						time: {
+							name: '1842'
+						},
+						place: {
+							name: 'Kabul'
+						},
+						locale: {
+							name: 'Prison cell'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -295,6 +466,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 						name: 'On the Side of the Angels'
 					}
 				],
+				settings: [
+					{
+						time: {
+							name: '1840s'
+						},
+						place: {
+							name: 'Afghanistan'
+						},
+						locale: {
+							name: 'Prison wing'
+						}
+					}
+				],
 				characterGroups: [
 					{
 						characters: [
@@ -321,6 +505,19 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 					},
 					{
 						name: 'Part Three — Enduring Freedom (1996-2009)'
+					}
+				],
+				settings: [
+					{
+						time: {
+							name: '19th century'
+						},
+						place: {
+							name: 'Central Asia'
+						},
+						locale: {
+							name: 'Prison'
+						}
 					}
 				],
 				characterGroups: [
@@ -1450,6 +1647,8 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 		stageManagementLtdCompany = await request(app).get(`/companies/${STAGE_MANAGEMENT_LTD_COMPANY_UUID}`);
 
 		charlottePadghamPerson = await request(app).get(`/people/${CHARLOTTE_PADGHAM_PERSON_UUID}`);
+
+		nineteenthCenturyTime = await request(app).get(`/times/${NINETEENTH_CENTURY_TIME_UUID}`);
 
 		barCharacter = await request(app).get(`/characters/${BAR_CHARACTER_UUID}`);
 	});
@@ -6993,6 +7192,490 @@ describe('Ordering of multi-tiered materials/productions credits', () => {
 			const { crewProductions } = charlottePadghamPerson.body;
 
 			assert.deepEqual(crewProductions, expectedCrewProductions);
+		});
+	});
+
+	describe('19th century (time)', () => {
+		it('includes materials for which it and its contained sub-times were a setting, including the sur-material and sur-sur-material as separate credits (ordered sub to sur ascending)', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: ON_THE_SIDE_OF_THE_ANGELS_MATERIAL_UUID,
+					name: 'On the Side of the Angels',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_NIGHT_IS_DARKEST_BEFORE_THE_DAWN_MATERIAL_UUID,
+					name: 'The Night Is Darkest Before the Dawn',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: HONEY_MATERIAL_UUID,
+					name: 'Honey',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
+						name: 'Part Three — Enduring Freedom (1996-2009)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PART_THREE_ENDURING_FREEDOM_1996_2009_MATERIAL_UUID,
+					name: 'Part Three — Enduring Freedom (1996-2009)',
+					format: 'sub-collection of plays',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTIES_TIME_UUID,
+								name: '1840s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: AFGHANISTAN_PLACE_UUID,
+								name: 'Afghanistan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_WING_LOCALE_UUID,
+								name: 'Prison wing'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: MINISKIRTS_OF_KABUL_MATERIAL_UUID,
+					name: 'Miniskirts of Kabul',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: BLOOD_AND_GIFTS_MATERIAL_UUID,
+					name: 'Blood and Gifts',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: BLACK_TULIPS_MATERIAL_UUID,
+					name: 'Black Tulips',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
+						name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PART_TWO_COMMUNISM_THE_MUJAHIDEEN_AND_THE_TALIBAN_1979_1996_MATERIAL_UUID,
+					name: 'Part Two — Communism, the Mujahideen and the Taliban (1979-1996)',
+					format: 'sub-collection of plays',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTIES_TIME_UUID,
+								name: '1840s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: AFGHANISTAN_PLACE_UUID,
+								name: 'Afghanistan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_WING_LOCALE_UUID,
+								name: 'Prison wing'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: CAMPAIGN_MATERIAL_UUID,
+					name: 'Campaign',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: DURANDS_LINE_MATERIAL_UUID,
+					name: "Durand's Line",
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: BUGLES_AT_THE_GATES_OF_JALALABAD_MATERIAL_UUID,
+					name: 'Bugles at the Gates of Jalalabad',
+					format: 'play',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
+						name: 'Part One — Invasions and Independence (1842-1930)',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+							name: 'The Great Game: Afghanistan'
+						}
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTY_TWO_TIME_UUID,
+								name: '1842'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: KABUL_PLACE_UUID,
+								name: 'Kabul'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_CELL_LOCALE_UUID,
+								name: 'Prison cell'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PART_ONE_INVASIONS_AND_INDEPENDENCE_1842_1930_MATERIAL_UUID,
+					name: 'Part One — Invasions and Independence (1842-1930)',
+					format: 'sub-collection of plays',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+						name: 'The Great Game: Afghanistan',
+						surMaterial: null
+					},
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_FORTIES_TIME_UUID,
+								name: '1840s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: AFGHANISTAN_PLACE_UUID,
+								name: 'Afghanistan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_WING_LOCALE_UUID,
+								name: 'Prison wing'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_GREAT_GAME_AFGHANISTAN_MATERIAL_UUID,
+					name: 'The Great Game: Afghanistan',
+					format: 'collection of plays',
+					year: 2009,
+					writingCredits: [],
+					surMaterial: null,
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEENTH_CENTURY_TIME_UUID,
+								name: '19th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CENTRAL_ASIA_PLACE_UUID,
+								name: 'Central Asia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PRISON_LOCALE_UUID,
+								name: 'Prison'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = nineteenthCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
