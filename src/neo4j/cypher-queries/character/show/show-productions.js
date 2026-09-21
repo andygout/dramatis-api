@@ -105,6 +105,8 @@ export default () => `
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,
 				COALESCE(surSurProductionRel.position, -1) DESC,
 				COALESCE(surProductionRel.position, -1) DESC,
+				surSurProduction IS NOT NULL DESC,
+				surProduction IS NOT NULL DESC,
 				venue.name
 
 		RETURN

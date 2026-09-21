@@ -1384,68 +1384,6 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
-					name: 'Sixty-Six Books',
-					format: 'collection of plays',
-					year: 2011,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'in response to',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
-									name: 'The Bible: King James Version',
-									format: 'collection of religious texts',
-									year: 1611,
-									surMaterial: null,
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: RICHARD_BANCROFT_PERSON_UUID,
-													name: 'Richard Bancroft'
-												},
-												{
-													model: 'COMPANY',
-													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
-													name: 'The Canterbury Editors'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					],
-					settings: [
-						{
-							model: 'SETTING',
-							time: {
-								model: 'TIME',
-								uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
-								name: '21st century'
-							},
-							place: {
-								model: 'PLACE',
-								uuid: LONDON_PLACE_UUID,
-								name: 'London'
-							},
-							locale: {
-								model: 'LOCALE',
-								uuid: SHOPPING_CENTRE_LOCALE_UUID,
-								name: 'Shopping centre'
-							}
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
 					uuid: GODBLOG_PLAY_MATERIAL_UUID,
 					name: 'Godblog',
 					format: 'play',
@@ -1608,6 +1546,68 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 								model: 'LOCALE',
 								uuid: INTERNET_CAFE_LOCALE_UUID,
 								name: 'Internet café'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: SIXTY_SIX_BOOKS_PLAYS_MATERIAL_UUID,
+					name: 'Sixty-Six Books',
+					format: 'collection of plays',
+					year: 2011,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'in response to',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_BIBLE_KING_JAMES_VERSION_RELIGIOUS_TEXT_MATERIAL_UUID,
+									name: 'The Bible: King James Version',
+									format: 'collection of religious texts',
+									year: 1611,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: RICHARD_BANCROFT_PERSON_UUID,
+													name: 'Richard Bancroft'
+												},
+												{
+													model: 'COMPANY',
+													uuid: THE_CANTERBURY_EDITORS_COMPANY_UUID,
+													name: 'The Canterbury Editors'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
+								name: '21st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: LONDON_PLACE_UUID,
+								name: 'London'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SHOPPING_CENTRE_LOCALE_UUID,
+								name: 'Shopping centre'
 							}
 						}
 					]
