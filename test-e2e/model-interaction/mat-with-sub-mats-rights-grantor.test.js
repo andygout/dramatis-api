@@ -711,74 +711,6 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
-					name: 'The Chronicles of Narnia',
-					format: 'plays',
-					year: 2017,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: ADAM_PECK_PERSON_UUID,
-									name: 'Adam Peck'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'based on',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
-									name: 'The Chronicles of Narnia',
-									format: 'series of novels',
-									year: 1956,
-									surMaterial: null,
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: C_S_LEWIS_PERSON_UUID,
-													name: 'C S Lewis'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					],
-					settings: [
-						{
-							model: 'SETTING',
-							time: {
-								model: 'TIME',
-								uuid: NINETEEN_FORTIES_TIME_UUID,
-								name: '1940s'
-							},
-							place: {
-								model: 'PLACE',
-								uuid: ENGLAND_PLACE_UUID,
-								name: 'England'
-							},
-							locale: {
-								model: 'LOCALE',
-								uuid: COUNTRY_HOUSE_LOCALE_UUID,
-								name: 'Country house'
-							}
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
 					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
 					name: 'The Lion, the Witch and the Wardrobe',
 					format: 'play',
@@ -867,6 +799,74 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 								model: 'LOCALE',
 								uuid: SPARE_ROOM_LOCALE_UUID,
 								name: 'Spare room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+					name: 'The Chronicles of Narnia',
+					format: 'plays',
+					year: 2017,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+									name: 'The Chronicles of Narnia',
+									format: 'series of novels',
+									year: 1956,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTIES_TIME_UUID,
+								name: '1940s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ENGLAND_PLACE_UUID,
+								name: 'England'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
 							}
 						}
 					]

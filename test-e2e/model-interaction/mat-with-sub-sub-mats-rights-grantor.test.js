@@ -710,74 +710,6 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
-					name: "Tolkien's Legendarium",
-					format: 'collection of plays',
-					year: 2007,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: SHAUN_MCKENNA_PERSON_UUID,
-									name: 'Shaun McKenna'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'based on',
-							entities: [
-								{
-									model: 'MATERIAL',
-									uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
-									name: "Tolkien's Legendarium",
-									format: 'body of writing',
-									year: 1977,
-									surMaterial: null,
-									writingCredits: [
-										{
-											model: 'WRITING_CREDIT',
-											name: 'by',
-											entities: [
-												{
-													model: 'PERSON',
-													uuid: J_R_R_TOLKIEN_PERSON_UUID,
-													name: 'J R R Tolkien'
-												}
-											]
-										}
-									]
-								}
-							]
-						}
-					],
-					settings: [
-						{
-							model: 'SETTING',
-							time: {
-								model: 'TIME',
-								uuid: THIRTY_FIRST_CENTURY_TIME_UUID,
-								name: '31st century'
-							},
-							place: {
-								model: 'PLACE',
-								uuid: THE_SHIRE_PLACE_UUID,
-								name: 'The Shire'
-							},
-							locale: {
-								model: 'LOCALE',
-								uuid: PARTY_FIELD_LOCALE_UUID,
-								name: 'Party field'
-							}
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
 					uuid: THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID,
 					name: 'The Fellowship of the Ring',
 					format: 'play',
@@ -952,6 +884,74 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 								model: 'LOCALE',
 								uuid: HOBBIT_HOLE_LOCALE_UUID,
 								name: 'Hobbit-hole'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
+					name: "Tolkien's Legendarium",
+					format: 'collection of plays',
+					year: 2007,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: SHAUN_MCKENNA_PERSON_UUID,
+									name: 'Shaun McKenna'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
+									name: "Tolkien's Legendarium",
+									format: 'body of writing',
+									year: 1977,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: J_R_R_TOLKIEN_PERSON_UUID,
+													name: 'J R R Tolkien'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTY_FIRST_CENTURY_TIME_UUID,
+								name: '31st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: THE_SHIRE_PLACE_UUID,
+								name: 'The Shire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PARTY_FIELD_LOCALE_UUID,
+								name: 'Party field'
 							}
 						}
 					]

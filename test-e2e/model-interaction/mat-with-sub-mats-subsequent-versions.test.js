@@ -1073,68 +1073,6 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
-					uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
-					name: 'The Oresteia',
-					format: 'trilogy of plays',
-					year: 2015,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: AESCHYLUS_PERSON_UUID,
-									name: 'Aeschylus'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
-									name: 'The Fathers of Tragedy'
-								}
-							]
-						},
-						{
-							model: 'WRITING_CREDIT',
-							name: 'adapted by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: ROBERT_ICKE_PERSON_UUID,
-									name: 'Robert Icke'
-								},
-								{
-									model: 'COMPANY',
-									uuid: THE_GREAT_HOPE_COMPANY_UUID,
-									name: 'The Great Hope Company'
-								}
-							]
-						}
-					],
-					settings: [
-						{
-							model: 'SETTING',
-							time: {
-								model: 'TIME',
-								uuid: TWELFTH_CENTURY_TIME_UUID,
-								name: '12th century'
-							},
-							place: {
-								model: 'PLACE',
-								uuid: PELOPONNESE_PLACE_UUID,
-								name: 'Peloponnese'
-							},
-							locale: {
-								model: 'LOCALE',
-								uuid: ROYAL_PALACE_LOCALE_UUID,
-								name: 'Royal palace'
-							}
-						}
-					]
-				},
-				{
-					model: 'MATERIAL',
 					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'Agamemnon',
 					format: 'play',
@@ -1202,10 +1140,10 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				},
 				{
 					model: 'MATERIAL',
-					uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+					uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
 					name: 'The Oresteia',
 					format: 'trilogy of plays',
-					year: 500,
+					year: 2015,
 					surMaterial: null,
 					writingCredits: [
 						{
@@ -1221,6 +1159,22 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 									model: 'COMPANY',
 									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
 									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
 								}
 							]
 						}
@@ -1293,6 +1247,52 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 								model: 'LOCALE',
 								uuid: THRONE_ROOM_LOCALE_UUID,
 								name: 'Throne room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'The Oresteia',
+					format: 'trilogy of plays',
+					year: 500,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWELFTH_CENTURY_TIME_UUID,
+								name: '12th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: PELOPONNESE_PLACE_UUID,
+								name: 'Peloponnese'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROYAL_PALACE_LOCALE_UUID,
+								name: 'Royal palace'
 							}
 						}
 					]

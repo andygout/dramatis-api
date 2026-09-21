@@ -164,7 +164,9 @@ export default () => `
 					COALESCE(surSurMaterial.name, surMaterial.name, material.name) DESC,
 					COALESCE(surSurMaterialRel.position, surMaterialRel.position, -1) DESC,
 					COALESCE(surSurMaterialRel.position, -1) DESC,
-					COALESCE(surMaterialRel.position, -1) DESC
+					COALESCE(surMaterialRel.position, -1) DESC,
+					surSurMaterial IS NOT NULL DESC,
+					surMaterial IS NOT NULL DESC
 
 		RETURN
 			COLLECT(
