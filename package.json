@@ -28,7 +28,7 @@
     "*.{js,json,md,yml}": [
       "prettier --write"
     ],
-    "*.{js}": [
+    "*.js": [
       "eslint"
     ],
     "*": [
