@@ -16,6 +16,7 @@ const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
 const THE_KINGS_MEN_COMPANY_UUID = 'THE_KINGS_MEN_COMPANY_UUID';
 const FLINT_CASTLE_PLACE_UUID = 'FLINT_CASTLE_PLACE_UUID';
 const CASTLE_ROOM_LOCALE_UUID = 'CASTLE_ROOM_LOCALE_UUID';
+const LORD_ROSS_CHARACTER_UUID = 'LORD_ROSS_CHARACTER_UUID';
 const THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_FIRST_HENRIAD_MATERIAL_1_UUID';
 const FLINT_PLACE_UUID = 'FLINT_PLACE_UUID';
 const CASTLE_LOCALE_UUID = 'CASTLE_LOCALE_UUID';
@@ -45,6 +46,7 @@ let fourteenthCenturyTime;
 let thirteenNinetyNineTime;
 let flintCastlePlace;
 let castleRoomLocale;
+let lordRossCharacter;
 
 describe('Material with sub-sub-materials and subsequent versions thereof', () => {
 	before(async () => {
@@ -112,6 +114,15 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						locale: {
 							name: 'Castle room'
 						}
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Lord Ross'
+							}
+						]
 					}
 				]
 			});
@@ -245,6 +256,15 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 						locale: {
 							name: 'Castle room'
 						}
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Lord Ross'
+							}
+						]
 					}
 				]
 			});
@@ -506,6 +526,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 		flintCastlePlace = await request(app).get(`/places/${FLINT_CASTLE_PLACE_UUID}`);
 
 		castleRoomLocale = await request(app).get(`/locales/${CASTLE_ROOM_LOCALE_UUID}`);
+
+		lordRossCharacter = await request(app).get(`/characters/${LORD_ROSS_CHARACTER_UUID}`);
 	});
 
 	describe('Richard II (original version) (material)', () => {
@@ -1044,7 +1066,21 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 							}
 						}
 					],
-					characterGroups: []
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: null,
+							position: null,
+							characters: [
+								{
+									model: 'CHARACTER',
+									uuid: LORD_ROSS_CHARACTER_UUID,
+									name: 'Lord Ross',
+									qualifier: null
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -1226,7 +1262,21 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 									}
 								}
 							],
-							characterGroups: []
+							characterGroups: [
+								{
+									model: 'CHARACTER_GROUP',
+									name: null,
+									position: null,
+									characters: [
+										{
+											model: 'CHARACTER',
+											uuid: LORD_ROSS_CHARACTER_UUID,
+											name: 'Lord Ross',
+											qualifier: null
+										}
+									]
+								}
+							]
 						}
 					],
 					settings: [
@@ -2242,6 +2292,105 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			];
 
 			const { materials } = castleRoomLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Lord Ross (character)', () => {
+		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Richard II',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The First Henriad',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+							name: 'The Henriad'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					depictions: []
+				},
+				{
+					model: 'MATERIAL',
+					uuid: RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Richard II',
+					format: 'play',
+					year: 1595,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The First Henriad',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+							name: 'The Henriad'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					depictions: []
+				}
+			];
+
+			const { materials } = lordRossCharacter.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

@@ -19,6 +19,7 @@ const THE_TOLKIEN_ESTATE_COMPANY_UUID = 'THE_TOLKIEN_ESTATE_COMPANY_UUID';
 const BAILLIE_TOLKIEN_PERSON_UUID = 'BAILLIE_TOLKIEN_PERSON_UUID';
 const HOBBITON_PLACE_UUID = 'HOBBITON_PLACE_UUID';
 const KITCHEN_LOCALE_UUID = 'KITCHEN_LOCALE_UUID';
+const BILBO_BAGGINS_CHARACTER_UUID = 'BILBO_BAGGINS_CHARACTER_UUID';
 const THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_MATERIAL_2_UUID';
 const WESTFARTHING_PLACE_UUID = 'WESTFARTHING_PLACE_UUID';
 const HOBBIT_HOLE_LOCALE_UUID = 'HOBBIT_HOLE_LOCALE_UUID';
@@ -41,6 +42,7 @@ let thirtyFirstCenturyTime;
 let thirtyEighteenTime;
 let hobbitonPlace;
 let kitchenLocale;
+let bilboBagginsCharacter;
 
 describe('Material with sub-sub-materials and rights grantor credits thereof', () => {
 	before(async () => {
@@ -182,6 +184,15 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 						locale: {
 							name: 'Kitchen'
 						}
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Bilbo Baggins'
+							}
+						]
 					}
 				]
 			});
@@ -407,6 +418,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 		hobbitonPlace = await request(app).get(`/places/${HOBBITON_PLACE_UUID}`);
 
 		kitchenLocale = await request(app).get(`/locales/${KITCHEN_LOCALE_UUID}`);
+
+		bilboBagginsCharacter = await request(app).get(`/characters/${BILBO_BAGGINS_CHARACTER_UUID}`);
 	});
 
 	describe('The Tolkien Estate (company)', () => {
@@ -1302,6 +1315,100 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			];
 
 			const { materials } = kitchenLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Bilbo Baggins (character)', () => {
+		it('includes in its material data the writers and rights grantors of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID,
+					name: 'The Fellowship of the Ring',
+					format: 'play',
+					year: 2007,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID,
+						name: 'The Lord of the Rings',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
+							name: "Tolkien's Legendarium"
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: SHAUN_MCKENNA_PERSON_UUID,
+									name: 'Shaun McKenna'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID,
+									name: 'The Fellowship of the Ring',
+									format: 'novel',
+									year: 1954,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_LORD_OF_THE_RINGS_TRILOGY_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Lord of the Rings',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
+											name: "Tolkien's Legendarium"
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: J_R_R_TOLKIEN_PERSON_UUID,
+													name: 'J R R Tolkien'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: THE_TOLKIEN_ESTATE_COMPANY_UUID,
+									name: 'The Tolkien Estate'
+								},
+								{
+									model: 'PERSON',
+									uuid: BAILLIE_TOLKIEN_PERSON_UUID,
+									name: 'Baillie Tolkien'
+								}
+							]
+						}
+					],
+					depictions: []
+				}
+			];
+
+			const { materials } = bilboBagginsCharacter.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

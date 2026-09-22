@@ -15,6 +15,7 @@ const AESCHYLUS_PERSON_UUID = 'AESCHYLUS_PERSON_UUID';
 const THE_FATHERS_OF_TRAGEDY_COMPANY_UUID = 'THE_FATHERS_OF_TRAGEDY_COMPANY_UUID';
 const ARGOS_PLACE_UUID = 'ARGOS_PLACE_UUID';
 const THRONE_ROOM_LOCALE_UUID = 'THRONE_ROOM_LOCALE_UUID';
+const CLYTEMNESTRA_CHARACTER_UUID = 'CLYTEMNESTRA_CHARACTER_UUID';
 const THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_ORESTEIA_MATERIAL_1_UUID';
 const PELOPONNESE_PLACE_UUID = 'PELOPONNESE_PLACE_UUID';
 const ROYAL_PALACE_LOCALE_UUID = 'ROYAL_PALACE_LOCALE_UUID';
@@ -50,6 +51,7 @@ let twelfthCenturyTime;
 let twelveHundredTime;
 let argosPlace;
 let throneRoomLocale;
+let clytemnestraCharacter;
 let urPlughOriginalVersionMaterial;
 let francisFlobPerson;
 let curtainUpLtdCompany;
@@ -114,6 +116,15 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						locale: {
 							name: 'Throne room'
 						}
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Clytemnestra'
+							}
+						]
 					}
 				]
 			});
@@ -206,6 +217,15 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						locale: {
 							name: 'Throne room'
 						}
+					}
+				],
+				characterGroups: [
+					{
+						characters: [
+							{
+								name: 'Clytemnestra'
+							}
+						]
 					}
 				]
 			});
@@ -536,6 +556,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		argosPlace = await request(app).get(`/places/${ARGOS_PLACE_UUID}`);
 
 		throneRoomLocale = await request(app).get(`/locales/${THRONE_ROOM_LOCALE_UUID}`);
+
+		clytemnestraCharacter = await request(app).get(`/characters/${CLYTEMNESTRA_CHARACTER_UUID}`);
 
 		urPlughOriginalVersionMaterial = await request(app).get(
 			`/materials/${UR_PLUGH_ORIGINAL_VERSION_MATERIAL_UUID}`
@@ -872,7 +894,21 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							}
 						}
 					],
-					characterGroups: []
+					characterGroups: [
+						{
+							model: 'CHARACTER_GROUP',
+							name: null,
+							position: null,
+							characters: [
+								{
+									model: 'CHARACTER',
+									uuid: CLYTEMNESTRA_CHARACTER_UUID,
+									name: 'Clytemnestra',
+									qualifier: null
+								}
+							]
+						}
+					]
 				}
 			];
 
@@ -1687,6 +1723,97 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 			];
 
 			const { materials } = throneRoomLocale.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Clytemnestra (character)', () => {
+		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 2015,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ROBERT_ICKE_PERSON_UUID,
+									name: 'Robert Icke'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_GREAT_HOPE_COMPANY_UUID,
+									name: 'The Great Hope Company'
+								}
+							]
+						}
+					],
+					depictions: []
+				},
+				{
+					model: 'MATERIAL',
+					uuid: AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Agamemnon',
+					format: 'play',
+					year: 500,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_ORESTEIA_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Oresteia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: AESCHYLUS_PERSON_UUID,
+									name: 'Aeschylus'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_FATHERS_OF_TRAGEDY_COMPANY_UUID,
+									name: 'The Fathers of Tragedy'
+								}
+							]
+						}
+					],
+					depictions: []
+				}
+			];
+
+			const { materials } = clytemnestraCharacter.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});
