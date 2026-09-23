@@ -152,9 +152,8 @@ export default () => `
 				(
 					creativeRel.creditPosition IS NULL OR
 					creativeRel.creditPosition = coCreditedEntityRel.creditPosition
-				) AND (
-					coCreditedEntity.uuid <> company.uuid
-				)
+				) AND
+				coCreditedEntity.uuid <> company.uuid
 
 		UNWIND (CASE WHEN coCreditedEntityRel IS NOT NULL AND coCreditedEntityRel.creditedMemberUuids IS NOT NULL
 			THEN [uuid IN coCreditedEntityRel.creditedMemberUuids]
