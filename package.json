@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Graph database-driven API for site of theatrical productions, materials, and associated data.",
   "author": "https://github.com/andygout",
-  "license": "SEE LICENSE IN LICENCE",
+  "license": "SEE LICENCE",
   "private": true,
   "main": "src/server.js",
   "scripts": {
