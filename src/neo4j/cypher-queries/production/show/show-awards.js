@@ -120,11 +120,9 @@ export default () => `
 				(
 					nomineeRel.nominationPosition IS NULL OR
 					nomineeRel.nominationPosition = coNominatedProductionRel.nominationPosition
-				) AND (
-					coNominatedProduction.uuid <> production.uuid
-				) AND (
-					NOT EXISTS((production)-[:HAS_SUB_PRODUCTION*1..2]-(coNominatedProduction))
-				)
+				) AND
+				coNominatedProduction.uuid <> production.uuid AND
+				NOT EXISTS((production)-[:HAS_SUB_PRODUCTION*1..2]-(coNominatedProduction))
 
 		OPTIONAL MATCH (coNominatedProduction)-[:PLAYS_AT]->(coNominatedProductionVenue:Venue)
 
@@ -190,10 +188,8 @@ export default () => `
 
 		OPTIONAL MATCH (category)-[nominatedMaterialRel:HAS_NOMINEE]->(nominatedMaterial:Material)
 			WHERE
-				(
-					nomineeRel.nominationPosition IS NULL OR
-					nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
-				)
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedMaterialRel.nominationPosition
 
 		OPTIONAL MATCH (nominatedMaterial)<-[:HAS_SUB_MATERIAL]-(nominatedSurMaterial:Material)
 

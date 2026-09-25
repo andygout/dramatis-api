@@ -99,10 +99,8 @@ export default () => `
 
 		OPTIONAL MATCH (category)-[nominatedProductionRel:HAS_NOMINEE]->(nominatedProduction:Production)
 			WHERE
-				(
-					nomineeRel.nominationPosition IS NULL OR
-					nomineeRel.nominationPosition = nominatedProductionRel.nominationPosition
-				)
+				nomineeRel.nominationPosition IS NULL OR
+				nomineeRel.nominationPosition = nominatedProductionRel.nominationPosition
 
 		OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(venue:Venue)
 

@@ -77,9 +77,8 @@ export default () => `
 				(
 					entityRel.nominationPosition IS NULL OR
 					entityRel.nominationPosition = coNominatedEntityRel.nominationPosition
-				) AND (
-					coNominatedEntity.uuid <> entity.uuid
-				)
+				) AND
+				coNominatedEntity.uuid <> entity.uuid
 
 		UNWIND (CASE WHEN coNominatedEntityRel IS NOT NULL AND coNominatedEntityRel.nominatedMemberUuids IS NOT NULL
 			THEN [uuid IN coNominatedEntityRel.nominatedMemberUuids]
@@ -137,10 +136,8 @@ export default () => `
 
 		OPTIONAL MATCH (category)-[nominatedProductionRel:HAS_NOMINEE]->(nominatedProduction:Production)
 			WHERE
-				(
-					entityRel.nominationPosition IS NULL OR
-					entityRel.nominationPosition = nominatedProductionRel.nominationPosition
-				)
+				entityRel.nominationPosition IS NULL OR
+				entityRel.nominationPosition = nominatedProductionRel.nominationPosition
 
 		OPTIONAL MATCH (nominatedProduction)-[:PLAYS_AT]->(venue:Venue)
 
@@ -205,10 +202,8 @@ export default () => `
 
 		OPTIONAL MATCH (category)-[nominatedMaterialRel:HAS_NOMINEE]->(nominatedMaterial:Material)
 			WHERE
-				(
-					entityRel.nominationPosition IS NULL OR
-					entityRel.nominationPosition = nominatedMaterialRel.nominationPosition
-				)
+				entityRel.nominationPosition IS NULL OR
+				entityRel.nominationPosition = nominatedMaterialRel.nominationPosition
 
 		WITH
 			entityRel,
