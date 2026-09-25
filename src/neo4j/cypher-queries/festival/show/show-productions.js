@@ -39,8 +39,8 @@ export default () => `
 						model: 'PRODUCTION',
 						.uuid,
 						.name,
-						.startDate,
-						.endDate,
+						startDate: toString(production.startDate),
+						endDate: toString(production.endDate),
 						venue: CASE WHEN venue IS NULL
 							THEN null
 							ELSE venue {

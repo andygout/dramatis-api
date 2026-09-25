@@ -16,9 +16,9 @@ describe('Cypher Queries Production module', () => {
 					uuid: $uuid,
 					name: $name,
 					subtitle: $subtitle,
-					startDate: $startDate,
-					pressDate: $pressDate,
-					endDate: $endDate
+					startDate: date($startDate),
+					pressDate: date($pressDate),
+					endDate: date($endDate)
 				})
 			`);
 
@@ -31,9 +31,9 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					production.subtitle AS subtitle,
-					production.startDate AS startDate,
-					production.pressDate AS pressDate,
-					production.endDate AS endDate,
+					toString(production.startDate) AS startDate,
+					toString(production.pressDate) AS pressDate,
+					toString(production.endDate) AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
 					{ name: COALESCE(season.name, ''), differentiator: COALESCE(season.differentiator, '') } AS season,
@@ -81,9 +81,9 @@ describe('Cypher Queries Production module', () => {
 				SET
 					production.name = $name,
 					production.subtitle = $subtitle,
-					production.startDate = $startDate,
-					production.pressDate = $pressDate,
-					production.endDate = $endDate
+					production.startDate = date($startDate),
+					production.pressDate = date($pressDate),
+					production.endDate = date($endDate)
 			`);
 
 			const middleSegment = removeExcessWhitespace(`
@@ -95,9 +95,9 @@ describe('Cypher Queries Production module', () => {
 					production.uuid AS uuid,
 					production.name AS name,
 					production.subtitle AS subtitle,
-					production.startDate AS startDate,
-					production.pressDate AS pressDate,
-					production.endDate AS endDate,
+					toString(production.startDate) AS startDate,
+					toString(production.pressDate) AS pressDate,
+					toString(production.endDate) AS endDate,
 					{ name: COALESCE(material.name, ''), differentiator: COALESCE(material.differentiator, '') } AS material,
 					{ name: COALESCE(venue.name, ''), differentiator: COALESCE(venue.differentiator, '') } AS venue,
 					{ name: COALESCE(season.name, ''), differentiator: COALESCE(season.differentiator, '') } AS season,

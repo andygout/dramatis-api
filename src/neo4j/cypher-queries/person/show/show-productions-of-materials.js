@@ -61,8 +61,8 @@ export default () => `
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							.startDate,
-							.endDate,
+							startDate: toString(production.startDate),
+							endDate: toString(production.endDate),
 							venue: CASE WHEN venue IS NULL
 								THEN null
 								ELSE venue {
@@ -101,21 +101,53 @@ export default () => `
 					production.hasDirectMaterialWriterCredit AND
 					NOT production.usesSubsequentVersion AND
 					production.materialWriterRelCreditType IS NULL |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS materialProductions,
 			[
 				production IN productions WHERE production.usesSubsequentVersion |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS subsequentVersionMaterialProductions,
 			[
 				production IN productions WHERE
 					production.usesSourcingMaterial OR
 					production.materialWriterRelCreditType = 'NON_SPECIFIC_SOURCE_MATERIAL' |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS sourcingMaterialProductions,
 			[
 				production IN productions WHERE production.materialWriterRelCreditType = 'RIGHTS_GRANTOR' |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS rightsGrantorMaterialProductions
 	}
 

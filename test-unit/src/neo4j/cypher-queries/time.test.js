@@ -16,8 +16,8 @@ describe('Cypher Queries Time module', () => {
 					uuid: $uuid,
 					name: $name,
 					differentiator: $differentiator,
-					fromDate: $fromDate,
-					toDate: $toDate
+					fromDate: date($fromDate),
+					toDate: date($toDate)
 				})
 			`);
 
@@ -28,8 +28,8 @@ describe('Cypher Queries Time module', () => {
 					time.uuid AS uuid,
 					time.name AS name,
 					time.differentiator AS differentiator,
-					time.fromDate AS fromDate,
-					time.toDate AS toDate
+					toString(time.fromDate) AS fromDate,
+					toString(time.toDate) AS toDate
 			`);
 
 			assert.equal(compactedResult.startsWith(startSegment), true);
@@ -50,8 +50,8 @@ describe('Cypher Queries Time module', () => {
 				SET
 					time.name = $name,
 					time.differentiator = $differentiator,
-					time.fromDate = $fromDate,
-					time.toDate = $toDate
+					time.fromDate = date($fromDate),
+					time.toDate = date($toDate)
 			`);
 
 			const middleSegment = removeExcessWhitespace(`WITH time`);
@@ -61,8 +61,8 @@ describe('Cypher Queries Time module', () => {
 					time.uuid AS uuid,
 					time.name AS name,
 					time.differentiator AS differentiator,
-					time.fromDate AS fromDate,
-					time.toDate AS toDate
+					toString(time.fromDate) AS fromDate,
+					toString(time.toDate) AS toDate
 			`);
 
 			assert.equal(compactedResult.startsWith(startSegment), true);

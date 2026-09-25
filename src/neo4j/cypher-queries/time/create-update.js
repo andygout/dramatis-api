@@ -8,8 +8,8 @@ const getCreateUpdateQuery = (action) => {
 				uuid: $uuid,
 				name: $name,
 				differentiator: $differentiator,
-				fromDate: $fromDate,
-				toDate: $toDate
+				fromDate: date($fromDate),
+				toDate: date($toDate)
 			})
 		`,
 		[ACTIONS.UPDATE]: `
@@ -18,8 +18,8 @@ const getCreateUpdateQuery = (action) => {
 			SET
 				time.name = $name,
 				time.differentiator = $differentiator,
-				time.fromDate = $fromDate,
-				time.toDate = $toDate
+				time.fromDate = date($fromDate),
+				time.toDate = date($toDate)
 		`
 	};
 

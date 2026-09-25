@@ -8,9 +8,9 @@ const getCreateUpdateQuery = (action) => {
 				uuid: $uuid,
 				name: $name,
 				subtitle: $subtitle,
-				startDate: $startDate,
-				pressDate: $pressDate,
-				endDate: $endDate
+				startDate: date($startDate),
+				pressDate: date($pressDate),
+				endDate: date($endDate)
 			})
 		`,
 		[ACTIONS.UPDATE]: `
@@ -26,9 +26,9 @@ const getCreateUpdateQuery = (action) => {
 			SET
 				production.name = $name,
 				production.subtitle = $subtitle,
-				production.startDate = $startDate,
-				production.pressDate = $pressDate,
-				production.endDate = $endDate
+				production.startDate = date($startDate),
+				production.pressDate = date($pressDate),
+				production.endDate = date($endDate)
 		`
 	};
 
