@@ -70,8 +70,8 @@ export default () => `
 							model: 'PRODUCTION',
 							.uuid,
 							.name,
-							.startDate,
-							.endDate,
+							startDate: toString(production.startDate),
+							endDate: toString(production.endDate),
 							usesSubsequentVersion,
 							usesSourcingMaterial,
 							venue: CASE WHEN venue IS NULL
@@ -107,15 +107,39 @@ export default () => `
 				production IN productions WHERE
 					NOT production.usesSubsequentVersion AND
 					NOT production.usesSourcingMaterial |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS productions,
 			[
 				production IN productions WHERE production.usesSubsequentVersion |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS subsequentVersionMaterialProductions,
 			[
 				production IN productions WHERE production.usesSourcingMaterial |
-				production { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
+				production {
+					.model,
+					.uuid,
+					.name,
+					startDate: toString(production.startDate),
+					endDate: toString(production.endDate),
+					.venue,
+					.surProduction
+				}
 			] AS sourcingMaterialProductions
 	}
 
