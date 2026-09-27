@@ -230,19 +230,19 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 			assert.equal(await countNodesWithLabel('Time'), 1);
 
 			const response = await request(app).put(`/times/${TIME_UUID}`).send({
-				name: '1963',
+				name: '1963 BCE',
 				differentiator: '1',
-				fromDate: '1963-01-01',
-				toDate: '1963-12-31'
+				fromDate: '-1963-01-01',
+				toDate: '-1963-12-31'
 			});
 
 			const expectedResponseBody = {
 				model: 'TIME',
 				uuid: TIME_UUID,
-				name: '1963',
+				name: '1963 BCE',
 				differentiator: '1',
-				fromDate: '1963-01-01',
-				toDate: '1963-12-31',
+				fromDate: '-1963-01-01',
+				toDate: '-1963-12-31',
 				errors: {}
 			};
 
@@ -257,7 +257,7 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 			const expectedResponseBody = {
 				model: 'TIME',
 				uuid: TIME_UUID,
-				name: '1963',
+				name: '1963 BCE',
 				differentiator: '1',
 				surTimes: [],
 				subTimes: [],
@@ -275,7 +275,7 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 
 			const expectedResponseBody = {
 				model: 'TIME',
-				name: '1963',
+				name: '1963 BCE',
 				differentiator: '1',
 				fromDate: '',
 				toDate: '',
@@ -289,19 +289,30 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 	});
 
 	describe('GET list endpoint', () => {
+		const NINETEEN_SIXTY_NINE_BCE_TIME_UUID = '1969_BCE_TIME_UUID';
 		const FIRST_JANUARY_NINETEEN_SIXTY_TIME_UUID = '1ST_JANUARY_1960_TIME_UUID';
 		const CLASSICAL_ANTIQUITY_TIME_UUID = 'CLASSICAL_ANTIQUITY_TIME_UUID';
+		const NINETEEN_SIXTIES_BCE_TIME_UUID = '1960S_BCE_TIME_UUID';
+		const THIRTY_FIRST_DECEMBER_NINETEEN_SIXTY_NINE_BCE_TIME_UUID = '31ST_DECEMBER_1969_BCE_TIME_UUID';
 		const NINETEEN_SIXTY_NINE_TIME_UUID = '1969_TIME_UUID';
+		const NINETEEN_SIXTY_BCE_TIME_UUID = '1960_BCE_TIME_UUID';
 		const NINETEEN_SIXTIES_TIME_UUID = '1960S_TIME_UUID';
 		const ANCIENT_ROME_TIME_UUID = 'ANCIENT_ROME_TIME_UUID';
 		const NINETEEN_SIXTY_TIME_UUID = '1960_TIME_UUID';
 		const EDWARDIAN_ERA_TIME_UUID = 'EDWARDIAN_ERA_TIME_UUID';
+		const FIRST_JANUARY_NINETEEN_SIXTY_BCE_TIME_UUID = '1ST_JANUARY_1960_BCE_TIME_UUID';
 		const THIRTY_FIRST_DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID = '31ST_DECEMBER_1969_TIME_UUID';
 
 		before(async () => {
 			stubUuidToCountMapClient.clear();
 
 			await purgeDatabase();
+
+			await request(app).post('/times').send({
+				name: '1969 BCE',
+				fromDate: '-1969-01-01',
+				toDate: '-1969-12-31'
+			});
 
 			await request(app).post('/times').send({
 				name: '1st January 1960',
@@ -314,9 +325,27 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 			});
 
 			await request(app).post('/times').send({
+				name: '1960s BCE',
+				fromDate: '-1969-01-01',
+				toDate: '-1960-12-31'
+			});
+
+			await request(app).post('/times').send({
+				name: '31st December 1969 BCE',
+				fromDate: '-1969-12-31',
+				toDate: '-1969-12-31'
+			});
+
+			await request(app).post('/times').send({
 				name: '1969',
 				fromDate: '1969-01-01',
 				toDate: '1969-12-31'
+			});
+
+			await request(app).post('/times').send({
+				name: '1960 BCE',
+				fromDate: '-1960-01-01',
+				toDate: '-1960-12-31'
 			});
 
 			await request(app).post('/times').send({
@@ -337,6 +366,12 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 
 			await request(app).post('/times').send({
 				name: 'Edwardian era'
+			});
+
+			await request(app).post('/times').send({
+				name: '1st January 1960 BCE',
+				fromDate: '-1960-01-01',
+				toDate: '-1960-01-01'
 			});
 
 			await request(app).post('/times').send({
@@ -374,6 +409,31 @@ describe('CRUD (Create, Read, Update, Delete): Times API', () => {
 					model: 'TIME',
 					uuid: FIRST_JANUARY_NINETEEN_SIXTY_TIME_UUID,
 					name: '1st January 1960'
+				},
+				{
+					model: 'TIME',
+					uuid: NINETEEN_SIXTIES_BCE_TIME_UUID,
+					name: '1960s BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: NINETEEN_SIXTY_BCE_TIME_UUID,
+					name: '1960 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: FIRST_JANUARY_NINETEEN_SIXTY_BCE_TIME_UUID,
+					name: '1st January 1960 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: NINETEEN_SIXTY_NINE_BCE_TIME_UUID,
+					name: '1969 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: THIRTY_FIRST_DECEMBER_NINETEEN_SIXTY_NINE_BCE_TIME_UUID,
+					name: '31st December 1969 BCE'
 				},
 				{
 					model: 'TIME',

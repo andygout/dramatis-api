@@ -32,8 +32,8 @@ export default () => `
 					model: 'PRODUCTION',
 					.uuid,
 					.name,
-					startDate: toString(nominatedProduction.startDate),
-					endDate: toString(nominatedProduction.endDate),
+					.startDate,
+					.endDate,
 					venue: CASE WHEN nominatedProductionVenue IS NULL
 						THEN null
 						ELSE nominatedProductionVenue {
@@ -156,8 +156,8 @@ export default () => `
 						model: 'PRODUCTION',
 						.uuid,
 						.name,
-						startDate: toString(coNominatedProduction.startDate),
-						endDate: toString(coNominatedProduction.endDate),
+						.startDate,
+						.endDate,
 						venue: CASE WHEN coNominatedProductionVenue IS NULL
 							THEN null
 							ELSE coNominatedProductionVenue {

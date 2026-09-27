@@ -5,6 +5,6 @@ export default () => `
 		time.uuid AS uuid,
 		time.name AS name,
 		time.differentiator AS differentiator,
-		toString(time.fromDate) AS fromDate,
-		toString(time.toDate) AS toDate
+		time.fromDate AS fromDate,
+		time.toDate AS toDate
 `;

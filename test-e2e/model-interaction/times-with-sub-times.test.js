@@ -6,12 +6,26 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
+const HAN_DYNASTY_TIME_UUID = 'HAN_DYNASTY_TIME_UUID';
+const WESTERN_HAN_DYNASTY_TIME_UUID = 'WESTERN_HAN_DYNASTY_TIME_UUID';
+const XIN_DYNASTY_TIME_UUID = 'XIN_DYNASTY_TIME_UUID';
+const EASTERN_HAN_DYNASTY_TIME_UUID = 'EASTERN_HAN_DYNASTY_TIME_UUID';
+const SECOND_CENTURY_BCE_TIME_UUID = '2ND_CENTURY_BCE_TIME_UUID';
+const FIRST_CENTURY_BCE_TIME_UUID = '1ST_CENTURY_BCE_TIME_UUID';
+const FIRST_CENTURY_TIME_UUID = '1ST_CENTURY_TIME_UUID';
+const SECOND_CENTURY_TIME_UUID = '2ND_CENTURY_TIME_UUID';
 const TWENTIETH_CENTURY_TIME_UUID = '20TH_CENTURY_TIME_UUID';
 const NINETEEN_FIFTIES_TIME_UUID = '1950S_TIME_UUID';
 const NINETEEN_SIXTIES_TIME_UUID = '1960S_TIME_UUID';
 const NINETEEN_SEVENTIES_TIME_UUID = '1970S_TIME_UUID';
 const NINETEEN_FIFTY_EIGHT_TO_NINETEEN_SIXTY_FIVE_TIME_UUID = '1958_1965_TIME_UUID';
 const NINETEEN_SIXTY_FIVE_TO_NINETEEN_SEVENTY_FOUR_TIME_UUID = '1965_1974_TIME_UUID';
+const TEN_BCE_TIME_UUID = '10_BCE_TIME_UUID';
+const NINE_BCE_TIME_UUID = '9_BCE_TIME_UUID';
+const EIGHT_BCE_TIME_UUID = '8_BCE_TIME_UUID';
+const EIGHT_TIME_UUID = '8_TIME_UUID';
+const NINE_TIME_UUID = '9_TIME_UUID';
+const TEN_TIME_UUID = '10_TIME_UUID';
 const NINETEEN_FIFTY_TWO_TIME_UUID = '1952_TIME_UUID';
 const NINETEEN_SIXTY_TIME_UUID = '1960_TIME_UUID';
 const NINETEEN_SIXTY_FIVE_TIME_UUID = '1965_TIME_UUID';
@@ -28,11 +42,19 @@ const DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID = 'DECEMBER_1969_TIME_UUID';
 const FEBRUARY_NINETEEN_SEVENTY_EIGHT_TIME_UUID = 'FEBRUARY_1978_TIME_UUID';
 const GRAULT_MATERIAL_UUID = 'GRAULT_MATERIAL_UUID';
 const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
+const XIANYANG_PLACE_UUID = 'XIANYANG_PLACE_UUID';
+const AUDIENCE_HALL_LOCALE_UUID = 'AUDIENCE_HALL_LOCALE_UUID';
 const ARGENTINA_PLACE_UUID = 'ARGENTINA_PLACE_UUID';
 const RIVERSIDE_LOCALE_UUID = 'RIVERSIDE_LOCALE_UUID';
 const GARPLY_MATERIAL_UUID = 'GARPLY_MATERIAL_UUID';
 const CONOR_CORGE_PERSON_UUID = 'CONOR_CORGE_PERSON_UUID';
 const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
+const CHANGAN_PLACE_UUID = 'CHANGAN_PLACE_UUID';
+const THRONE_ROOM_LOCALE_UUID = 'THRONE_ROOM_LOCALE_UUID';
+const NANYANG_PLACE_UUID = 'NANYANG_PLACE_UUID';
+const CITY_GATE_LOCALE_UUID = 'CITY_GATE_LOCALE_UUID';
+const LUOYANG_PLACE_UUID = 'LUOYANG_PLACE_UUID';
+const PALACE_LOCALE_UUID = 'PALACE_LOCALE_UUID';
 const MANCHESTER_PLACE_UUID = 'MANCHESTER_PLACE_UUID';
 const RAILWAY_STATION_LOCALE_UUID = 'RAILWAY_STATION_LOCALE_UUID';
 const ONTARIO_PLACE_UUID = 'ONTARIO_PLACE_UUID';
@@ -50,6 +72,14 @@ const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
 const EDINBURGH_CASTLE_PLACE_UUID = 'EDINBURGH_CASTLE_PLACE_UUID';
 const BARRACKS_LOCALE_UUID = 'BARRACKS_LOCALE_UUID';
 const PLUGH_MATERIAL_UUID = 'PLUGH_MATERIAL_UUID';
+const DELPHI_PLACE_UUID = 'DELPHI_PLACE_UUID';
+const PUBLIC_SQUARE_LOCALE_UUID = 'PUBLIC_SQUARE_LOCALE_UUID';
+const BRUNDISIUM_PLACE_UUID = 'BRUNDISIUM_PLACE_UUID';
+const FORUM_LOCALE_UUID = 'FORUM_LOCALE_UUID';
+const POMPEII_PLACE_UUID = 'POMPEII_PLACE_UUID';
+const VILLA_LOCALE_UUID = 'VILLA_LOCALE_UUID';
+const EPHESUS_PLACE_UUID = 'EPHESUS_PLACE_UUID';
+const LIBRARY_LOCALE_UUID = 'LIBRARY_LOCALE_UUID';
 const PARIS_PLACE_UUID = 'PARIS_PLACE_UUID';
 const CAFE_LOCALE_UUID = 'CAFE_LOCALE_UUID';
 const YORKSHIRE_PLACE_UUID = 'YORKSHIRE_PLACE_UUID';
@@ -63,6 +93,18 @@ const BEACH_LOCALE_UUID = 'BEACH_LOCALE_UUID';
 const BERLIN_PLACE_UUID = 'BERLIN_PLACE_UUID';
 const NIGHTCLUB_LOCALE_UUID = 'NIGHTCLUB_LOCALE_UUID';
 const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
+const NOLA_PLACE_UUID = 'NOLA_PLACE_UUID';
+const SENATE_CHAMBER_LOCALE_UUID = 'SENATE_CHAMBER_LOCALE_UUID';
+const TIBUR_PLACE_UUID = 'TIBUR_PLACE_UUID';
+const SHRINE_LOCALE_UUID = 'SHRINE_LOCALE_UUID';
+const ANTIUM_PLACE_UUID = 'ANTIUM_PLACE_UUID';
+const HILLSIDE_LOCALE_UUID = 'HILLSIDE_LOCALE_UUID';
+const RAVENNA_PLACE_UUID = 'RAVENNA_PLACE_UUID';
+const TEMPLE_LOCALE_UUID = 'TEMPLE_LOCALE_UUID';
+const OSTIA_PLACE_UUID = 'OSTIA_PLACE_UUID';
+const ROAD_LOCALE_UUID = 'ROAD_LOCALE_UUID';
+const CAPUA_PLACE_UUID = 'CAPUA_PLACE_UUID';
+const MARKET_LOCALE_UUID = 'MARKET_LOCALE_UUID';
 const LIVERPOOL_PLACE_UUID = 'LIVERPOOL_PLACE_UUID';
 const DOCKYARD_LOCALE_UUID = 'DOCKYARD_LOCALE_UUID';
 const ROME_PLACE_UUID = 'ROME_PLACE_UUID';
@@ -88,6 +130,10 @@ let twentiethCentury;
 let nineteenSixties;
 let nineteenSixtyFiveTime;
 let mayNineteenSixtyFiveTime;
+let hanDynastyTime;
+let westernHanDynastyTime;
+let firstCenturyTime;
+let nineTime;
 
 describe('Times with sub-times', () => {
 	before(async () => {
@@ -95,12 +141,63 @@ describe('Times with sub-times', () => {
 
 		await purgeDatabase();
 
+		// Historical eras
+		await request(app).post('/times').send({
+			name: 'Han dynasty',
+			fromDate: '-0202-01-01',
+			toDate: '0220-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: 'Western Han dynasty',
+			fromDate: '-0202-01-01',
+			toDate: '0009-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: 'Xin dynasty',
+			fromDate: '0009-01-01',
+			toDate: '0023-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: 'Eastern Han dynasty',
+			fromDate: '0025-01-01',
+			toDate: '0220-12-31'
+		});
+
+		// Centuries
+		await request(app).post('/times').send({
+			name: '2nd century BCE',
+			fromDate: '-0200-01-01',
+			toDate: '-0101-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1st century BCE',
+			fromDate: '-0100-01-01',
+			toDate: '-0001-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '1st century',
+			fromDate: '0001-01-01',
+			toDate: '0100-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '2nd century',
+			fromDate: '0101-01-01',
+			toDate: '0200-12-31'
+		});
+
 		await request(app).post('/times').send({
 			name: '20th century',
 			fromDate: '1901-01-01',
 			toDate: '2000-12-31'
 		});
 
+		// Decades
 		await request(app).post('/times').send({
 			name: '1950s',
 			fromDate: '1950-01-01',
@@ -119,6 +216,7 @@ describe('Times with sub-times', () => {
 			toDate: '1979-12-31'
 		});
 
+		// Year ranges
 		await request(app).post('/times').send({
 			name: '1958-1965',
 			fromDate: '1958-01-01',
@@ -129,6 +227,43 @@ describe('Times with sub-times', () => {
 			name: '1965-1974',
 			fromDate: '1965-01-01',
 			toDate: '1974-12-31'
+		});
+
+		// Years
+		await request(app).post('/times').send({
+			name: '10 BCE',
+			fromDate: '-0010-01-01',
+			toDate: '-0010-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '9 BCE',
+			fromDate: '-0009-01-01',
+			toDate: '-0009-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '8 BCE',
+			fromDate: '-0008-01-01',
+			toDate: '-0008-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '8',
+			fromDate: '0008-01-01',
+			toDate: '0008-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '9',
+			fromDate: '0009-01-01',
+			toDate: '0009-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '10',
+			fromDate: '0010-01-01',
+			toDate: '0010-12-31'
 		});
 
 		await request(app).post('/times').send({
@@ -161,6 +296,7 @@ describe('Times with sub-times', () => {
 			toDate: '1978-12-31'
 		});
 
+		// Months
 		await request(app).post('/times').send({
 			name: 'November 1952',
 			fromDate: '1952-11-01',
@@ -233,6 +369,17 @@ describe('Times with sub-times', () => {
 				settings: [
 					{
 						time: {
+							name: 'Han dynasty'
+						},
+						place: {
+							name: 'Xianyang'
+						},
+						locale: {
+							name: 'Audience hall'
+						}
+					},
+					{
+						time: {
 							name: '20th century'
 						},
 						place: {
@@ -265,6 +412,39 @@ describe('Times with sub-times', () => {
 					}
 				],
 				settings: [
+					{
+						time: {
+							name: 'Western Han dynasty'
+						},
+						place: {
+							name: "Chang'an"
+						},
+						locale: {
+							name: 'Throne room'
+						}
+					},
+					{
+						time: {
+							name: 'Xin dynasty'
+						},
+						place: {
+							name: 'Nanyang'
+						},
+						locale: {
+							name: 'City gate'
+						}
+					},
+					{
+						time: {
+							name: 'Eastern Han dynasty'
+						},
+						place: {
+							name: 'Luoyang'
+						},
+						locale: {
+							name: 'Palace'
+						}
+					},
 					{
 						time: {
 							name: '1950s'
@@ -391,6 +571,50 @@ describe('Times with sub-times', () => {
 				settings: [
 					{
 						time: {
+							name: '2nd century BCE'
+						},
+						place: {
+							name: 'Delphi'
+						},
+						locale: {
+							name: 'Public square'
+						}
+					},
+					{
+						time: {
+							name: '1st century BCE'
+						},
+						place: {
+							name: 'Brundisium'
+						},
+						locale: {
+							name: 'Forum'
+						}
+					},
+					{
+						time: {
+							name: '1st century'
+						},
+						place: {
+							name: 'Pompeii'
+						},
+						locale: {
+							name: 'Villa'
+						}
+					},
+					{
+						time: {
+							name: '2nd century'
+						},
+						place: {
+							name: 'Ephesus'
+						},
+						locale: {
+							name: 'Library'
+						}
+					},
+					{
+						time: {
 							name: '1952'
 						},
 						place: {
@@ -474,6 +698,72 @@ describe('Times with sub-times', () => {
 					}
 				],
 				settings: [
+					{
+						time: {
+							name: '10 BCE'
+						},
+						place: {
+							name: 'Nola'
+						},
+						locale: {
+							name: 'Senate chamber'
+						}
+					},
+					{
+						time: {
+							name: '9 BCE'
+						},
+						place: {
+							name: 'Tibur'
+						},
+						locale: {
+							name: 'Shrine'
+						}
+					},
+					{
+						time: {
+							name: '8 BCE'
+						},
+						place: {
+							name: 'Antium'
+						},
+						locale: {
+							name: 'Hillside'
+						}
+					},
+					{
+						time: {
+							name: '8'
+						},
+						place: {
+							name: 'Ravenna'
+						},
+						locale: {
+							name: 'Temple'
+						}
+					},
+					{
+						time: {
+							name: '9'
+						},
+						place: {
+							name: 'Ostia'
+						},
+						locale: {
+							name: 'Road'
+						}
+					},
+					{
+						time: {
+							name: '10'
+						},
+						place: {
+							name: 'Capua'
+						},
+						locale: {
+							name: 'Market'
+						}
+					},
 					{
 						time: {
 							name: 'November 1952'
@@ -594,6 +884,14 @@ describe('Times with sub-times', () => {
 		nineteenSixtyFiveTime = await request(app).get(`/times/${NINETEEN_SIXTY_FIVE_TIME_UUID}`);
 
 		mayNineteenSixtyFiveTime = await request(app).get(`/times/${MAY_NINETEEN_SIXTY_FIVE_TIME_UUID}`);
+
+		hanDynastyTime = await request(app).get(`/times/${HAN_DYNASTY_TIME_UUID}`);
+
+		westernHanDynastyTime = await request(app).get(`/times/${WESTERN_HAN_DYNASTY_TIME_UUID}`);
+
+		firstCenturyTime = await request(app).get(`/times/${FIRST_CENTURY_TIME_UUID}`);
+
+		nineTime = await request(app).get(`/times/${NINE_TIME_UUID}`);
 	});
 
 	describe('20th century (time)', () => {
@@ -2011,6 +2309,1042 @@ describe('Times with sub-times', () => {
 			];
 
 			const { materials } = mayNineteenSixtyFiveTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Han dynasty (time)', () => {
+		it('includes no containing sur-times as there are no broader periods available', async () => {
+			const expectedSurTimes = [];
+
+			const { surTimes } = hanDynastyTime.body;
+
+			assert.deepEqual(surTimes, expectedSurTimes);
+		});
+
+		it('includes contained sub-times', async () => {
+			const expectedSubTimes = [
+				{
+					model: 'TIME',
+					uuid: EASTERN_HAN_DYNASTY_TIME_UUID,
+					name: 'Eastern Han dynasty'
+				},
+				{
+					model: 'TIME',
+					uuid: SECOND_CENTURY_TIME_UUID,
+					name: '2nd century'
+				},
+				{
+					model: 'TIME',
+					uuid: FIRST_CENTURY_TIME_UUID,
+					name: '1st century'
+				},
+				{
+					model: 'TIME',
+					uuid: XIN_DYNASTY_TIME_UUID,
+					name: 'Xin dynasty'
+				},
+				{
+					model: 'TIME',
+					uuid: TEN_TIME_UUID,
+					name: '10'
+				},
+				{
+					model: 'TIME',
+					uuid: WESTERN_HAN_DYNASTY_TIME_UUID,
+					name: 'Western Han dynasty'
+				},
+				{
+					model: 'TIME',
+					uuid: NINE_TIME_UUID,
+					name: '9'
+				},
+				{
+					model: 'TIME',
+					uuid: EIGHT_TIME_UUID,
+					name: '8'
+				},
+				{
+					model: 'TIME',
+					uuid: FIRST_CENTURY_BCE_TIME_UUID,
+					name: '1st century BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: EIGHT_BCE_TIME_UUID,
+					name: '8 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: NINE_BCE_TIME_UUID,
+					name: '9 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: TEN_BCE_TIME_UUID,
+					name: '10 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: SECOND_CENTURY_BCE_TIME_UUID,
+					name: '2nd century BCE'
+				}
+			];
+
+			const { subTimes } = hanDynastyTime.body;
+
+			assert.deepEqual(subTimes, expectedSubTimes);
+		});
+
+		it('includes materials for which it and its contained sub-times were a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TEN_BCE_TIME_UUID,
+								name: '10 BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NOLA_PLACE_UUID,
+								name: 'Nola'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SENATE_CHAMBER_LOCALE_UUID,
+								name: 'Senate chamber'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINE_BCE_TIME_UUID,
+								name: '9 BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TIBUR_PLACE_UUID,
+								name: 'Tibur'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SHRINE_LOCALE_UUID,
+								name: 'Shrine'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHT_BCE_TIME_UUID,
+								name: '8 BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ANTIUM_PLACE_UUID,
+								name: 'Antium'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHT_TIME_UUID,
+								name: '8'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RAVENNA_PLACE_UUID,
+								name: 'Ravenna'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: TEMPLE_LOCALE_UUID,
+								name: 'Temple'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINE_TIME_UUID,
+								name: '9'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OSTIA_PLACE_UUID,
+								name: 'Ostia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROAD_LOCALE_UUID,
+								name: 'Road'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TEN_TIME_UUID,
+								name: '10'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CAPUA_PLACE_UUID,
+								name: 'Capua'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MARKET_LOCALE_UUID,
+								name: 'Market'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GRAULT_MATERIAL_UUID,
+					name: 'Grault',
+					format: 'play',
+					year: 2016,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BEATRICE_BAR_PERSON_UUID,
+									name: 'Beatrice Bar'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: HAN_DYNASTY_TIME_UUID,
+								name: 'Han dynasty'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: XIANYANG_PLACE_UUID,
+								name: 'Xianyang'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: AUDIENCE_HALL_LOCALE_UUID,
+								name: 'Audience hall'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_MATERIAL_UUID,
+					name: 'Plugh',
+					format: 'play',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SECOND_CENTURY_BCE_TIME_UUID,
+								name: '2nd century BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: DELPHI_PLACE_UUID,
+								name: 'Delphi'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PUBLIC_SQUARE_LOCALE_UUID,
+								name: 'Public square'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIRST_CENTURY_BCE_TIME_UUID,
+								name: '1st century BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BRUNDISIUM_PLACE_UUID,
+								name: 'Brundisium'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: FORUM_LOCALE_UUID,
+								name: 'Forum'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIRST_CENTURY_TIME_UUID,
+								name: '1st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: POMPEII_PLACE_UUID,
+								name: 'Pompeii'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: VILLA_LOCALE_UUID,
+								name: 'Villa'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SECOND_CENTURY_TIME_UUID,
+								name: '2nd century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: EPHESUS_PLACE_UUID,
+								name: 'Ephesus'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: LIBRARY_LOCALE_UUID,
+								name: 'Library'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GARPLY_MATERIAL_UUID,
+					name: 'Garply',
+					format: 'play',
+					year: 2014,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: WESTERN_HAN_DYNASTY_TIME_UUID,
+								name: 'Western Han dynasty'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CHANGAN_PLACE_UUID,
+								name: "Chang'an"
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: XIN_DYNASTY_TIME_UUID,
+								name: 'Xin dynasty'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NANYANG_PLACE_UUID,
+								name: 'Nanyang'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CITY_GATE_LOCALE_UUID,
+								name: 'City gate'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EASTERN_HAN_DYNASTY_TIME_UUID,
+								name: 'Eastern Han dynasty'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: LUOYANG_PLACE_UUID,
+								name: 'Luoyang'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PALACE_LOCALE_UUID,
+								name: 'Palace'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = hanDynastyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Western Han dynasty (time)', () => {
+		it('includes containing sur-times; excludes intersections (e.g. Xin dynasty)', async () => {
+			const expectedSurTimes = [
+				{
+					model: 'TIME',
+					uuid: HAN_DYNASTY_TIME_UUID,
+					name: 'Han dynasty'
+				}
+			];
+
+			const { surTimes } = westernHanDynastyTime.body;
+
+			assert.deepEqual(surTimes, expectedSurTimes);
+		});
+
+		it('includes contained sub-times; excludes intersections (e.g. Xin dynasty)', async () => {
+			const expectedSubTimes = [
+				{
+					model: 'TIME',
+					uuid: NINE_TIME_UUID,
+					name: '9'
+				},
+				{
+					model: 'TIME',
+					uuid: EIGHT_TIME_UUID,
+					name: '8'
+				},
+				{
+					model: 'TIME',
+					uuid: FIRST_CENTURY_BCE_TIME_UUID,
+					name: '1st century BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: EIGHT_BCE_TIME_UUID,
+					name: '8 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: NINE_BCE_TIME_UUID,
+					name: '9 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: TEN_BCE_TIME_UUID,
+					name: '10 BCE'
+				},
+				{
+					model: 'TIME',
+					uuid: SECOND_CENTURY_BCE_TIME_UUID,
+					name: '2nd century BCE'
+				}
+			];
+
+			const { subTimes } = westernHanDynastyTime.body;
+
+			assert.deepEqual(subTimes, expectedSubTimes);
+		});
+
+		it('includes materials for which it and its sub-times were a setting; excludes materials for which intersecting times (e.g. Xin dynasty) were a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TEN_BCE_TIME_UUID,
+								name: '10 BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NOLA_PLACE_UUID,
+								name: 'Nola'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SENATE_CHAMBER_LOCALE_UUID,
+								name: 'Senate chamber'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINE_BCE_TIME_UUID,
+								name: '9 BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TIBUR_PLACE_UUID,
+								name: 'Tibur'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SHRINE_LOCALE_UUID,
+								name: 'Shrine'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHT_BCE_TIME_UUID,
+								name: '8 BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ANTIUM_PLACE_UUID,
+								name: 'Antium'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HILLSIDE_LOCALE_UUID,
+								name: 'Hillside'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHT_TIME_UUID,
+								name: '8'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RAVENNA_PLACE_UUID,
+								name: 'Ravenna'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: TEMPLE_LOCALE_UUID,
+								name: 'Temple'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINE_TIME_UUID,
+								name: '9'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OSTIA_PLACE_UUID,
+								name: 'Ostia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROAD_LOCALE_UUID,
+								name: 'Road'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_MATERIAL_UUID,
+					name: 'Plugh',
+					format: 'play',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: SECOND_CENTURY_BCE_TIME_UUID,
+								name: '2nd century BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: DELPHI_PLACE_UUID,
+								name: 'Delphi'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PUBLIC_SQUARE_LOCALE_UUID,
+								name: 'Public square'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIRST_CENTURY_BCE_TIME_UUID,
+								name: '1st century BCE'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BRUNDISIUM_PLACE_UUID,
+								name: 'Brundisium'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: FORUM_LOCALE_UUID,
+								name: 'Forum'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GARPLY_MATERIAL_UUID,
+					name: 'Garply',
+					format: 'play',
+					year: 2014,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: WESTERN_HAN_DYNASTY_TIME_UUID,
+								name: 'Western Han dynasty'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CHANGAN_PLACE_UUID,
+								name: "Chang'an"
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: THRONE_ROOM_LOCALE_UUID,
+								name: 'Throne room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = westernHanDynastyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('1st century (time)', () => {
+		it('includes containing sur-times', async () => {
+			const expectedSurTimes = [
+				{
+					model: 'TIME',
+					uuid: HAN_DYNASTY_TIME_UUID,
+					name: 'Han dynasty'
+				}
+			];
+
+			const { surTimes } = firstCenturyTime.body;
+
+			assert.deepEqual(surTimes, expectedSurTimes);
+		});
+
+		it('includes contained sub-times', async () => {
+			const expectedSubTimes = [
+				{
+					model: 'TIME',
+					uuid: XIN_DYNASTY_TIME_UUID,
+					name: 'Xin dynasty'
+				},
+				{
+					model: 'TIME',
+					uuid: TEN_TIME_UUID,
+					name: '10'
+				},
+				{
+					model: 'TIME',
+					uuid: NINE_TIME_UUID,
+					name: '9'
+				},
+				{
+					model: 'TIME',
+					uuid: EIGHT_TIME_UUID,
+					name: '8'
+				}
+			];
+
+			const { subTimes } = firstCenturyTime.body;
+
+			assert.deepEqual(subTimes, expectedSubTimes);
+		});
+
+		it('includes materials for which it and its sub-times were a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHT_TIME_UUID,
+								name: '8'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RAVENNA_PLACE_UUID,
+								name: 'Ravenna'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: TEMPLE_LOCALE_UUID,
+								name: 'Temple'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINE_TIME_UUID,
+								name: '9'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OSTIA_PLACE_UUID,
+								name: 'Ostia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROAD_LOCALE_UUID,
+								name: 'Road'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TEN_TIME_UUID,
+								name: '10'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CAPUA_PLACE_UUID,
+								name: 'Capua'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MARKET_LOCALE_UUID,
+								name: 'Market'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_MATERIAL_UUID,
+					name: 'Plugh',
+					format: 'play',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FIRST_CENTURY_TIME_UUID,
+								name: '1st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: POMPEII_PLACE_UUID,
+								name: 'Pompeii'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: VILLA_LOCALE_UUID,
+								name: 'Villa'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GARPLY_MATERIAL_UUID,
+					name: 'Garply',
+					format: 'play',
+					year: 2014,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: XIN_DYNASTY_TIME_UUID,
+								name: 'Xin dynasty'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NANYANG_PLACE_UUID,
+								name: 'Nanyang'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CITY_GATE_LOCALE_UUID,
+								name: 'City gate'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = firstCenturyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('9 (time)', () => {
+		it('includes containing sur-times', async () => {
+			const expectedSurTimes = [
+				{
+					model: 'TIME',
+					uuid: HAN_DYNASTY_TIME_UUID,
+					name: 'Han dynasty'
+				},
+				{
+					model: 'TIME',
+					uuid: FIRST_CENTURY_TIME_UUID,
+					name: '1st century'
+				},
+				{
+					model: 'TIME',
+					uuid: XIN_DYNASTY_TIME_UUID,
+					name: 'Xin dynasty'
+				},
+				{
+					model: 'TIME',
+					uuid: WESTERN_HAN_DYNASTY_TIME_UUID,
+					name: 'Western Han dynasty'
+				}
+			];
+
+			const { surTimes } = nineTime.body;
+
+			assert.deepEqual(surTimes, expectedSurTimes);
+		});
+
+		it('includes no contained sub-times as there are no narrower periods', async () => {
+			const expectedSubTimes = [];
+
+			const { subTimes } = nineTime.body;
+
+			assert.deepEqual(subTimes, expectedSubTimes);
+		});
+
+		it('includes materials for which it was a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINE_TIME_UUID,
+								name: '9'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OSTIA_PLACE_UUID,
+								name: 'Ostia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: ROAD_LOCALE_UUID,
+								name: 'Road'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = nineTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

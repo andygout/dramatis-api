@@ -1,13 +1,19 @@
 import neo4j from 'neo4j-driver';
 
+import convertAstronomicalToHistoricalDate from './convert-astronomical-to-historical-date.js';
 import isObjectWithKeys from '../lib/is-object-with-keys.js';
 
-const convertNeo4jIntegersToNumbers = (inputValue) => {
+const convertNeo4jFieldsToJsValues = (inputValue) => {
 	const applyModifications = (object) => {
 		return Object.keys(object).reduce((accumulator, key) => {
 			const value = object[key];
 
-			if (neo4j.isInt(value)) {
+			// Note: Neo4j dates are returned as objects that contain integers
+			// to describe the year, month, and day, meaning that
+			// Neo4j dates must be converted before Neo4j integers.
+			if (neo4j.isDate(value)) {
+				accumulator[key] = convertAstronomicalToHistoricalDate(value);
+			} else if (neo4j.isInt(value)) {
 				const neo4jInteger = neo4j.int(value);
 
 				if (neo4jInteger.inSafeRange()) accumulator[key] = neo4jInteger.toNumber();
@@ -28,4 +34,4 @@ const convertNeo4jIntegersToNumbers = (inputValue) => {
 	return modifiedValue;
 };
 
-export default convertNeo4jIntegersToNumbers;
+export default convertNeo4jFieldsToJsValues;
