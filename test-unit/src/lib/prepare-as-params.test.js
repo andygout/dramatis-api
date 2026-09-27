@@ -15,12 +15,14 @@ describe('Prepare As Params module', () => {
 			neo4j: {
 				int: stub().returnsArg(0)
 			},
-			getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+			getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'),
+			convertHistoricalToAstronomicalDate: stub().returns('convertHistoricalToAstronomicalDate response')
 		};
 
 		prepareAsParams = await esmock('../../../src/lib/prepare-as-params.js', {
 			'neo4j-driver': stubs.neo4j,
-			'../../../src/lib/get-random-uuid.js': stubs.getRandomUuid
+			'../../../src/lib/get-random-uuid.js': stubs.getRandomUuid,
+			'../../../src/neo4j/convert-historical-to-astronomical-date.js': stubs.convertHistoricalToAstronomicalDate
 		});
 	});
 
@@ -220,6 +222,24 @@ describe('Prepare As Params module', () => {
 
 			assert.equal(result.model, 'BASE');
 		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			const instance = { fromDate: '1962-01-01' };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.fromDate, 'convertHistoricalToAstronomicalDate response');
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			const instance = { toDate: '1962-12-31' };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.toDate, 'convertHistoricalToAstronomicalDate response');
+		});
 	});
 
 	describe('nested level properties', () => {
@@ -366,6 +386,24 @@ describe('Prepare As Params module', () => {
 
 			assert.equal(result.venue.model, 'BASE');
 		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			const instance = { time: { fromDate: '1962-01-01' } };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.time.fromDate, 'convertHistoricalToAstronomicalDate response');
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			const instance = { time: { toDate: '1962-12-31' } };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.time.toDate, 'convertHistoricalToAstronomicalDate response');
+		});
 	});
 
 	describe('properties in arrays at top level', () => {
@@ -482,6 +520,24 @@ describe('Prepare As Params module', () => {
 
 				assert.equal(result.cast[0].model, 'BASE');
 			});
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			const instance = { settings: [{ fromDate: '1962-01-01' }] };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.settings[0].fromDate, 'convertHistoricalToAstronomicalDate response');
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			const instance = { settings: [{ toDate: '1962-12-31' }] };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.settings[0].toDate, 'convertHistoricalToAstronomicalDate response');
 		});
 
 		describe('object is in array whose items are not permitted an empty string name value', () => {
@@ -918,6 +974,24 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
+		it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			const instance = { material: { settings: [{ fromDate: '1962-01-01' }] } };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.material.settings[0].fromDate, 'convertHistoricalToAstronomicalDate response');
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			const instance = { material: { settings: [{ toDate: '1962-12-31' }] } };
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.material.settings[0].toDate, 'convertHistoricalToAstronomicalDate response');
+		});
+
 		describe('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
@@ -1340,6 +1414,38 @@ describe('Prepare As Params module', () => {
 
 				assert.equal(result.cast[0].roles[0].model, 'BASE');
 			});
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			const instance = {
+				materials: [
+					{
+						name: 'Plenty',
+						settings: [{ name: '1962', fromDate: '1962-01-01' }]
+					}
+				]
+			};
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.materials[0].settings[0].fromDate, 'convertHistoricalToAstronomicalDate response');
+		});
+
+		it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			const instance = {
+				materials: [
+					{
+						name: 'Plenty',
+						settings: [{ name: '1962', toDate: '1962-12-31' }]
+					}
+				]
+			};
+
+			const result = prepareAsParams(instance);
+
+			sinonAssert.calledOnce(stubs.convertHistoricalToAstronomicalDate);
+			assert.equal(result.materials[0].settings[0].toDate, 'convertHistoricalToAstronomicalDate response');
 		});
 
 		describe('array contains more than a single item', () => {

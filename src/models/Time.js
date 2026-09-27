@@ -1,4 +1,5 @@
 import TimeBase from './TimeBase.js';
+import isChronological from '../lib/is-chronological.js';
 import isValidDate from '../lib/is-valid-date.js';
 import { getTrimmedOrEmptyString } from '../lib/strings.js';
 
@@ -24,8 +25,8 @@ export default class Time extends TimeBase {
 	validateDates() {
 		const formatErrorText = 'Value must be in date format';
 
-		const isValidFromDate = isValidDate(this.fromDate);
-		const isValidToDate = isValidDate(this.toDate);
+		const isValidFromDate = isValidDate(this.fromDate, { includeBce: true });
+		const isValidToDate = isValidDate(this.toDate, { includeBce: true });
 
 		if (Boolean(this.fromDate) && !isValidFromDate) {
 			this.addPropertyError('fromDate', formatErrorText);
@@ -43,7 +44,7 @@ export default class Time extends TimeBase {
 			this.addPropertyError('toDate', "'From' date requires corresponding 'to' date");
 		}
 
-		if (isValidFromDate && isValidToDate && this.fromDate > this.toDate) {
+		if (isValidFromDate && isValidToDate && !isChronological(this.fromDate, this.toDate)) {
 			this.addPropertyError('fromDate', "'From' date must not be after 'to' date");
 			this.addPropertyError('toDate', "'To' date must not be before 'from' date");
 		}

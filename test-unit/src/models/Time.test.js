@@ -12,6 +12,7 @@ describe('Time model', () => {
 
 	beforeEach(async () => {
 		stubs = {
+			isChronological: stub().returns(false),
 			isValidDate: stub().returns(false),
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
@@ -24,6 +25,7 @@ describe('Time model', () => {
 			// globalmocks: mock definitions imported everywhere.
 			// Required for when functions are invoked by ancestor class methods.
 			{
+				'../../../src/lib/is-chronological.js': stubs.isChronological,
 				'../../../src/lib/is-valid-date.js': stubs.isValidDate,
 				'../../../src/lib/strings.js': stubs.stringsModule
 			}
@@ -80,8 +82,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
@@ -95,8 +98,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
@@ -110,8 +114,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
@@ -125,15 +130,17 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
 
-			context('fromDate and toDate with valid date format with fromDate before toDate', () => {
+			context('fromDate and toDate with valid date format and ordered chronologically', () => {
 				it('will not call addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
+					stubs.isChronological.returns(true);
 
 					const instance = new Time({
 						name: '1962',
@@ -146,29 +153,10 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-01-01');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-12-31');
-					sinonAssert.notCalled(instance.addPropertyError);
-				});
-			});
-
-			context('fromDate and toDate with valid date format with fromDate same as toDate', () => {
-				it('will not call addPropertyError method', async () => {
-					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
-
-					const instance = new Time({
-						name: '5th March 1962',
-						fromDate: '1962-03-05',
-						toDate: '1962-03-05'
-					});
-
-					spy(instance, 'addPropertyError');
-
-					instance.validateDates();
-
-					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-03-05');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-03-05');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-01-01', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-12-31', { includeBce: true });
+					sinonAssert.calledOnce(stubs.isChronological);
+					sinonAssert.calledWithExactly(stubs.isChronological, '1962-01-01', '1962-12-31');
 					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
@@ -184,8 +172,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, 'foobar');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, 'foobar', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'fromDate',
@@ -203,8 +192,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, 'foobar');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, 'foobar', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'toDate',
@@ -224,8 +214,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-12-31');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-12-31', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'fromDate',
@@ -245,8 +236,9 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-01-01');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-01-01', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '', { includeBce: true });
+					sinonAssert.notCalled(stubs.isChronological);
 					sinonAssert.calledOnceWithExactly(
 						instance.addPropertyError,
 						'toDate',
@@ -255,7 +247,7 @@ describe('Time model', () => {
 				});
 			});
 
-			context('fromDate and toDate with valid date format with fromDate after toDate', () => {
+			context('fromDate and toDate with valid date format and not ordered chronologically', () => {
 				it('will call addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
 
@@ -270,8 +262,10 @@ describe('Time model', () => {
 					instance.validateDates();
 
 					assert.equal(stubs.isValidDate.callCount, 2);
-					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-12-31');
-					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-01-01');
+					sinonAssert.calledWithExactly(stubs.isValidDate.firstCall, '1962-12-31', { includeBce: true });
+					sinonAssert.calledWithExactly(stubs.isValidDate.secondCall, '1962-01-01', { includeBce: true });
+					sinonAssert.calledOnce(stubs.isChronological);
+					sinonAssert.calledWithExactly(stubs.isChronological, '1962-12-31', '1962-01-01');
 					sinonAssert.calledTwice(instance.addPropertyError);
 					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,

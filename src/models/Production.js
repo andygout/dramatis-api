@@ -17,6 +17,7 @@ import {
 	getDuplicateUuidIndices,
 	getDuplicateUrlIndices
 } from '../lib/get-duplicate-indices.js';
+import isChronological from '../lib/is-chronological.js';
 import isValidDate from '../lib/is-valid-date.js';
 import { getTrimmedOrEmptyString } from '../lib/strings.js';
 import { MODELS } from '../utils/constants.js';
@@ -167,17 +168,17 @@ export default class Production extends Entity {
 			this.addPropertyError('endDate', formatErrorText);
 		}
 
-		if (isValidStartDate && isValidEndDate && this.startDate > this.endDate) {
+		if (isValidStartDate && isValidEndDate && !isChronological(this.startDate, this.endDate)) {
 			this.addPropertyError('startDate', 'Start date must not be after end date');
 			this.addPropertyError('endDate', 'End date must not be before start date');
 		}
 
-		if (isValidStartDate && isValidPressDate && this.startDate > this.pressDate) {
+		if (isValidStartDate && isValidPressDate && !isChronological(this.startDate, this.pressDate)) {
 			this.addPropertyError('startDate', 'Start date must not be after press date');
 			this.addPropertyError('pressDate', 'Press date must not be before start date');
 		}
 
-		if (isValidPressDate && isValidEndDate && this.pressDate > this.endDate) {
+		if (isValidPressDate && isValidEndDate && !isChronological(this.pressDate, this.endDate)) {
 			this.addPropertyError('pressDate', 'Press date must not be after end date');
 			this.addPropertyError('endDate', 'End date must not be before press date');
 		}
