@@ -6,8 +6,8 @@ import { stubUuidToCountMapClient } from '../test-helpers/index.js';
 import request from '../test-helpers/model-interaction-request.js';
 import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
-const TWELFTH_CENTURY_TIME_UUID = '12TH_CENTURY_TIME_UUID';
-const TWELVE_HUNDRED_TIME_UUID = '1200_TIME_UUID';
+const TWELFTH_CENTURY_BCE_TIME_UUID = '12TH_CENTURY_BCE_TIME_UUID';
+const TWELVE_HUNDRED_BCE_TIME_UUID = '1200_BCE_TIME_UUID';
 const TRAFALGAR_STUDIOS_VENUE_UUID = 'TRAFALGAR_STUDIOS_VENUE_UUID';
 const STUDIO_1_VENUE_UUID = 'STUDIO_1_VENUE_UUID';
 const AGAMEMNON_ORIGINAL_VERSION_MATERIAL_UUID = 'AGAMEMNON_MATERIAL_1_UUID';
@@ -47,8 +47,8 @@ let agamemnonSubsequentVersionMaterial;
 let theOresteiaSubsequentVersionMaterial;
 let aeschylusPerson;
 let theFathersOfTragedyCompany;
-let twelfthCenturyTime;
-let twelveHundredTime;
+let twelfthCenturyBceTime;
+let twelveHundredBceTime;
 let argosPlace;
 let throneRoomLocale;
 let clytemnestraCharacter;
@@ -63,15 +63,15 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		await purgeDatabase();
 
 		await request(app).post('/times').send({
-			name: '12th century',
-			fromDate: '1101-01-01',
-			toDate: '1200-12-31'
+			name: '12th century BCE',
+			fromDate: '-1200-01-01',
+			toDate: '-1101-12-31'
 		});
 
 		await request(app).post('/times').send({
-			name: '1200',
-			fromDate: '1200-01-01',
-			toDate: '1200-12-31'
+			name: '1200 BCE',
+			fromDate: '-1200-01-01',
+			toDate: '-1200-12-31'
 		});
 
 		await request(app)
@@ -108,7 +108,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				settings: [
 					{
 						time: {
-							name: '1200'
+							name: '1200 BCE'
 						},
 						place: {
 							name: 'Argos'
@@ -158,7 +158,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				settings: [
 					{
 						time: {
-							name: '12th century'
+							name: '12th century BCE'
 						},
 						place: {
 							name: 'Peloponnese'
@@ -209,7 +209,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				settings: [
 					{
 						time: {
-							name: '1200'
+							name: '1200 BCE'
 						},
 						place: {
 							name: 'Argos'
@@ -275,7 +275,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				settings: [
 					{
 						time: {
-							name: '12th century'
+							name: '12th century BCE'
 						},
 						place: {
 							name: 'Peloponnese'
@@ -549,9 +549,9 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 
 		theFathersOfTragedyCompany = await request(app).get(`/companies/${THE_FATHERS_OF_TRAGEDY_COMPANY_UUID}`);
 
-		twelfthCenturyTime = await request(app).get(`/times/${TWELFTH_CENTURY_TIME_UUID}`);
+		twelfthCenturyBceTime = await request(app).get(`/times/${TWELFTH_CENTURY_BCE_TIME_UUID}`);
 
-		twelveHundredTime = await request(app).get(`/times/${TWELVE_HUNDRED_TIME_UUID}`);
+		twelveHundredBceTime = await request(app).get(`/times/${TWELVE_HUNDRED_BCE_TIME_UUID}`);
 
 		argosPlace = await request(app).get(`/places/${ARGOS_PLACE_UUID}`);
 
@@ -774,8 +774,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 						model: 'SETTING',
 						time: {
 							model: 'TIME',
-							uuid: TWELFTH_CENTURY_TIME_UUID,
-							name: '12th century'
+							uuid: TWELFTH_CENTURY_BCE_TIME_UUID,
+							name: '12th century BCE'
 						},
 						place: {
 							model: 'PLACE',
@@ -879,8 +879,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1104,7 +1104,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		});
 	});
 
-	describe('12th century (time)', () => {
+	describe('12th century BCE (time)', () => {
 		it("includes in its and its contained sub-times' material data the writers and (for subsequent versions) original version writers of the material", () => {
 			const expectedMaterials = [
 				{
@@ -1158,8 +1158,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1220,8 +1220,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELFTH_CENTURY_TIME_UUID,
-								name: '12th century'
+								uuid: TWELFTH_CENTURY_BCE_TIME_UUID,
+								name: '12th century BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1271,8 +1271,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1317,8 +1317,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELFTH_CENTURY_TIME_UUID,
-								name: '12th century'
+								uuid: TWELFTH_CENTURY_BCE_TIME_UUID,
+								name: '12th century BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1335,13 +1335,13 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			];
 
-			const { materials } = twelfthCenturyTime.body;
+			const { materials } = twelfthCenturyBceTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
 
-	describe('1200 (time)', () => {
+	describe('1200 BCE (time)', () => {
 		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {
 			const expectedMaterials = [
 				{
@@ -1395,8 +1395,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1446,8 +1446,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1464,7 +1464,7 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 				}
 			];
 
-			const { materials } = twelveHundredTime.body;
+			const { materials } = twelveHundredBceTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});
@@ -1524,8 +1524,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1575,8 +1575,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1653,8 +1653,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',
@@ -1704,8 +1704,8 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 							model: 'SETTING',
 							time: {
 								model: 'TIME',
-								uuid: TWELVE_HUNDRED_TIME_UUID,
-								name: '1200'
+								uuid: TWELVE_HUNDRED_BCE_TIME_UUID,
+								name: '1200 BCE'
 							},
 							place: {
 								model: 'PLACE',

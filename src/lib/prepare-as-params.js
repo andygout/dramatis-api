@@ -2,6 +2,8 @@ import neo4j from 'neo4j-driver';
 
 import getRandomUuid from './get-random-uuid.js';
 import isObjectWithKeys from './is-object-with-keys.js';
+import isValidDate from './is-valid-date.js';
+import convertHistoricalToAstronomicalDate from '../neo4j/convert-historical-to-astronomical-date.js';
 
 const CHARACTER_GROUPS = 'characterGroups';
 const CREATIVE_CREDITS = 'creativeCredits';
@@ -13,6 +15,9 @@ const REVIEWS = 'reviews';
 const SETTINGS = 'settings';
 const SUB_PRODUCTIONS = 'subProductions';
 const WRITING_CREDITS = 'writingCredits';
+
+const FROM_DATE = 'fromDate';
+const TO_DATE = 'toDate';
 
 const EMPTY_NAME_EXCEPTION_KEYS = new Set([
 	CHARACTER_GROUPS,
@@ -37,6 +42,8 @@ const REQUIRES_NAMED_CHILDREN_KEYS = new Set([
 const REQUIRES_NON_EMPTY_URL_KEYS = new Set([REVIEWS]);
 
 const REQUIRES_NON_EMPTY_UUID_KEYS = new Set([PRODUCTIONS, SUB_PRODUCTIONS]);
+
+const POTENTIAL_BCE_DATE_VALUE_PROPERTIES = new Set([FROM_DATE, TO_DATE]);
 
 const prepareAsParams = (instance) => {
 	const recordedInstances = [];
@@ -119,6 +126,12 @@ const prepareAsParams = (instance) => {
 								differentiator: instance.differentiator
 							});
 						}
+					} else if (
+						POTENTIAL_BCE_DATE_VALUE_PROPERTIES.has(key) &&
+						// Invalid dates may be present when preparing params to run database validations.
+						isValidDate(value, { allowBce: true })
+					) {
+						accumulator[key] = convertHistoricalToAstronomicalDate(value);
 					} else if (typeof value === 'number') accumulator[key] = neo4j.int(value);
 					else if (value === '' || (typeof value === 'boolean' && !value)) accumulator[key] = null;
 					else accumulator[key] = value || null;

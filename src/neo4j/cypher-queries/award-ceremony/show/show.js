@@ -157,8 +157,8 @@ export default () => `
 				model: TOUPPER(HEAD(LABELS(nominee))),
 				.uuid,
 				.name,
-				startDate: toString(nominee.startDate),
-				endDate: toString(nominee.endDate),
+				.startDate,
+				.endDate,
 				nominatedMemberUuids: nomineeRel.nominatedMemberUuids,
 				venue: CASE WHEN venue IS NULL
 					THEN null
@@ -227,8 +227,8 @@ export default () => `
 						.uuid,
 						.name,
 						members: nominatedMembers,
-						startDate: toString(nominee.startDate),
-						endDate: toString(nominee.endDate),
+						.startDate,
+						.endDate,
 						.venue,
 						.surProduction,
 						.format,
@@ -248,15 +248,7 @@ export default () => `
 			[nominee IN nominees | CASE nominee.model
 				WHEN 'COMPANY' THEN nominee { .model, .uuid, .name, .members }
 				WHEN 'PERSON' THEN nominee { .model, .uuid, .name }
-				WHEN 'PRODUCTION' THEN nominee {
-					.model,
-					.uuid,
-					.name,
-					startDate: toString(nominee.startDate),
-					endDate: toString(nominee.endDate),
-					.venue,
-					.surProduction
-				}
+				WHEN 'PRODUCTION' THEN nominee { .model, .uuid, .name, .startDate, .endDate, .venue, .surProduction }
 				WHEN 'MATERIAL' THEN nominee { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 			END] AS nominees
 

@@ -10,11 +10,11 @@ describe('Convert Neo4j Records To Objects module', () => {
 
 	beforeEach(async () => {
 		stubs = {
-			convertNeo4jIntegersToNumbers: stub().returnsArg(0)
+			convertNeo4jFieldsToJsValues: stub().returnsArg(0)
 		};
 
 		convertNeo4jRecordsToObjects = await esmock('../../../src/neo4j/convert-neo4j-records-to-objects.js', {
-			'../../../src/neo4j/convert-neo4j-integers-to-numbers.js': stubs.convertNeo4jIntegersToNumbers
+			'../../../src/neo4j/convert-neo4j-fields-to-js-values.js': stubs.convertNeo4jFieldsToJsValues
 		});
 	});
 

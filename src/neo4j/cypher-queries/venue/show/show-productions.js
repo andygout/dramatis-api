@@ -37,8 +37,8 @@ export default () => `
 						model: 'PRODUCTION',
 						.uuid,
 						.name,
-						startDate: toString(production.startDate),
-						endDate: toString(production.endDate),
+						.startDate,
+						.endDate,
 						subVenue: CASE WHEN venue <> venueLinkedToProduction
 							THEN venueLinkedToProduction { model: 'VENUE', .uuid, .name }
 							ELSE null
