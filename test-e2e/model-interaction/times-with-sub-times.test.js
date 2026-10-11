@@ -126,8 +126,8 @@ const HARBOUR_LOCALE_UUID = 'HARBOUR_LOCALE_UUID';
 const MOSCOW_PLACE_UUID = 'MOSCOW_PLACE_UUID';
 const APARTMENT_LOCALE_UUID = 'APARTMENT_LOCALE_UUID';
 
-let twentiethCentury;
-let nineteenSixties;
+let twentiethCenturyTime;
+let nineteenSixtiesTime;
 let nineteenSixtyFiveTime;
 let mayNineteenSixtyFiveTime;
 let hanDynastyTime;
@@ -877,9 +877,9 @@ describe('Times with sub-times', () => {
 				]
 			});
 
-		twentiethCentury = await request(app).get(`/times/${TWENTIETH_CENTURY_TIME_UUID}`);
+		twentiethCenturyTime = await request(app).get(`/times/${TWENTIETH_CENTURY_TIME_UUID}`);
 
-		nineteenSixties = await request(app).get(`/times/${NINETEEN_SIXTIES_TIME_UUID}`);
+		nineteenSixtiesTime = await request(app).get(`/times/${NINETEEN_SIXTIES_TIME_UUID}`);
 
 		nineteenSixtyFiveTime = await request(app).get(`/times/${NINETEEN_SIXTY_FIVE_TIME_UUID}`);
 
@@ -898,7 +898,7 @@ describe('Times with sub-times', () => {
 		it('includes no containing sur-times as there are no broader periods available', async () => {
 			const expectedSurTimes = [];
 
-			const { surTimes } = twentiethCentury.body;
+			const { surTimes } = twentiethCenturyTime.body;
 
 			assert.deepEqual(surTimes, expectedSurTimes);
 		});
@@ -1002,7 +1002,7 @@ describe('Times with sub-times', () => {
 				}
 			];
 
-			const { subTimes } = twentiethCentury.body;
+			const { subTimes } = twentiethCenturyTime.body;
 
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
@@ -1568,7 +1568,7 @@ describe('Times with sub-times', () => {
 				}
 			];
 
-			const { materials } = twentiethCentury.body;
+			const { materials } = twentiethCenturyTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});
@@ -1584,7 +1584,7 @@ describe('Times with sub-times', () => {
 				}
 			];
 
-			const { surTimes } = nineteenSixties.body;
+			const { surTimes } = nineteenSixtiesTime.body;
 
 			assert.deepEqual(surTimes, expectedSurTimes);
 		});
@@ -1643,7 +1643,7 @@ describe('Times with sub-times', () => {
 				}
 			];
 
-			const { subTimes } = nineteenSixties.body;
+			const { subTimes } = nineteenSixtiesTime.body;
 
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
@@ -1978,7 +1978,7 @@ describe('Times with sub-times', () => {
 				}
 			];
 
-			const { materials } = nineteenSixties.body;
+			const { materials } = nineteenSixtiesTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

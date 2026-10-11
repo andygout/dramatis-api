@@ -24,7 +24,6 @@ describe('Setting model', () => {
 
 	beforeEach(async () => {
 		stubs = {
-			isValidDate: stub().returns(true),
 			stringsModule: {
 				getTrimmedOrEmptyString: stub().callsFake((arg) => arg?.trim() || '')
 			},
