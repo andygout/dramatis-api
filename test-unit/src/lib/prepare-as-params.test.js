@@ -852,6 +852,7 @@ describe('Prepare As Params module', () => {
 				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5)
 				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+
 			const instance = {
 				characters: [
 					applyModelGetter({
@@ -1350,6 +1351,7 @@ describe('Prepare As Params module', () => {
 				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5)
 				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+
 			const instance = {
 				production: {
 					cast: [
@@ -1879,6 +1881,7 @@ describe('Prepare As Params module', () => {
 				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5)
 				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+
 			const instance = {
 				characterGroups: [
 					{
@@ -1983,6 +1986,7 @@ describe('Prepare As Params module', () => {
 				.returns('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee')
 				.onCall(5)
 				.returns('ffffffff-ffff-ffff-ffff-ffffffffffff');
+
 			const instance = {
 				characterGroups: [
 					{
