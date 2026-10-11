@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   install:
     docker:
@@ -108,7 +108,6 @@ jobs:
               | xargs -r node --env-file=./test-e2e/.env --import=./test-e2e/per-test-file-teardown.js --test --test-global-setup=test-e2e/global-setup.js --test-timeout=60000 --test-concurrency=1
 
 workflows:
-  version: 2
   workflow:
     jobs:
       - install
