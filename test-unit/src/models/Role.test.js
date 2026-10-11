@@ -100,7 +100,7 @@ describe('Role model', () => {
 	});
 
 	describe('validateCharacterName method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new Role({ name: 'Hamlet, Prince of Denmark', characterName: 'Hamlet' });
 
 			spy(instance, 'validateStringForProperty');
@@ -114,7 +114,7 @@ describe('Role model', () => {
 	});
 
 	describe('validateCharacterDifferentiator method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new Role({ name: 'Cinna', characterDifferentiator: '1' });
 
 			spy(instance, 'validateStringForProperty');

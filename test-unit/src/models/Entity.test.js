@@ -184,7 +184,7 @@ describe('Entity model', () => {
 	});
 
 	describe('validateDifferentiator method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -200,7 +200,7 @@ describe('Entity model', () => {
 	});
 
 	describe('validateSubtitle method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -367,7 +367,7 @@ describe('Entity model', () => {
 
 	describe('runDatabaseValidations method', () => {
 		context('model is not exempt', () => {
-			it('will call validateUniquenessInDatabase method', async () => {
+			it('calls validateUniquenessInDatabase method', async () => {
 				const Entity = await createSubject();
 
 				const instance = new Entity({ name: 'Foobar', differentiator: '1' });
@@ -381,7 +381,7 @@ describe('Entity model', () => {
 		});
 
 		context('model is exempt', () => {
-			it('will return without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
+			it('returns without calling validateUniquenessInDatabase method (because when productions are created they are treated as unique)', async () => {
 				const Production = await createSubject('Production');
 
 				const instance = new Production();
@@ -436,7 +436,7 @@ describe('Entity model', () => {
 		});
 
 		context('invalid data (results returned that indicate name already exists)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.prepareAsParams.returns({
 					uuid: 'UUID_VALUE',
 					name: 'NAME_VALUE',
@@ -487,7 +487,7 @@ describe('Entity model', () => {
 	});
 
 	describe('setErrorStatus method', () => {
-		it("will call hasErrors function and assign its return value to the instance's hasErrors property", async () => {
+		it("calls hasErrors function and assign its return value to the instance's hasErrors property", async () => {
 			const Entity = await createSubject();
 
 			const instance = new Entity({ name: 'Foobar', differentiator: '1' });

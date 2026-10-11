@@ -81,7 +81,7 @@ describe('SubMaterial model', () => {
 		});
 
 		context('invalid data (instance is already assigned to another sur-material)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: true,
 					isSurSurMaterial: false,
@@ -130,7 +130,7 @@ describe('SubMaterial model', () => {
 		});
 
 		context('invalid data (instance is the sur-most material of a three-tiered material hierarchy)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: true,
@@ -179,7 +179,7 @@ describe('SubMaterial model', () => {
 		});
 
 		context("invalid data (instance is the subject material's sur-material)", () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,
@@ -228,7 +228,7 @@ describe('SubMaterial model', () => {
 		});
 
 		context('invalid data (instance cannot be assigned to a three-tiered material hierarchy)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurMaterial: false,
 					isSurSurMaterial: false,

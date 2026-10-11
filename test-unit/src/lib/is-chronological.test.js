@@ -3,9 +3,11 @@ import { describe, it } from 'node:test';
 
 import isChronological from '../../../src/lib/is-chronological.js';
 
+const context = describe;
+
 describe('Is Chronological module', () => {
-	describe('date x is not after date y', () => {
-		describe('BCE date is before BCE date', () => {
+	context('date x is not after date y', () => {
+		context('BCE date is before BCE date', () => {
 			it('returns true', () => {
 				assert.equal(isChronological('-2184-01-01', '-2183-01-01'), true);
 
@@ -19,13 +21,13 @@ describe('Is Chronological module', () => {
 			});
 		});
 
-		describe('BCE date is equal to BCE date', () => {
+		context('BCE date is equal to BCE date', () => {
 			it('returns true', () => {
 				assert.equal(isChronological('-2184-01-01', '-2184-01-01'), true);
 			});
 		});
 
-		describe('BCE date is before CE date', () => {
+		context('BCE date is before CE date', () => {
 			it('returns true', () => {
 				assert.equal(isChronological('-2184-01-01', '1962-01-01'), true);
 
@@ -34,7 +36,7 @@ describe('Is Chronological module', () => {
 			});
 		});
 
-		describe('non-BCE/CE date is before CE date', () => {
+		context('non-BCE/CE date is before CE date', () => {
 			it('returns true', () => {
 				// `new Date('-0000-01-01')` → Sat Jan 01 2000 00:00:00 GMT+0000 (GMT+00:00)
 				assert.equal(isChronological('-0000-01-01', '1962-01-01'), true);
@@ -44,7 +46,7 @@ describe('Is Chronological module', () => {
 			});
 		});
 
-		describe('CE date is before CE date', () => {
+		context('CE date is before CE date', () => {
 			it('returns true', () => {
 				assert.equal(isChronological('1962-01-01', '1963-01-01'), true);
 
@@ -53,27 +55,27 @@ describe('Is Chronological module', () => {
 			});
 		});
 
-		describe('CE date is equal to CE date', () => {
+		context('CE date is equal to CE date', () => {
 			it('returns true', () => {
 				assert.equal(isChronological('1962-01-01', '1962-01-01'), true);
 			});
 		});
 	});
 
-	describe('date x is after date y', () => {
-		describe('BCE date is after BCE date', () => {
+	context('date x is after date y', () => {
+		context('BCE date is after BCE date', () => {
 			it('returns false', () => {
 				assert.equal(isChronological('-2183-01-01', '-2184-01-01'), false);
 			});
 		});
 
-		describe('CE date is after BCE date', () => {
+		context('CE date is after BCE date', () => {
 			it('returns false', () => {
 				assert.equal(isChronological('1962-01-01', '-2184-01-01'), false);
 			});
 		});
 
-		describe('CE date is after CE date', () => {
+		context('CE date is after CE date', () => {
 			it('returns false', () => {
 				assert.equal(isChronological('1963-01-01', '1962-01-01'), false);
 			});

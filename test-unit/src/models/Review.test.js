@@ -184,7 +184,7 @@ describe('Review model', () => {
 	});
 
 	describe('validateUrl method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new Review({ url: 'https://www.foo.com' });
 
 			spy(instance, 'validateStringForProperty');
@@ -219,7 +219,7 @@ describe('Review model', () => {
 		});
 
 		context('url property is a non-empty string that is not a valid URL', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				const instance = new Review({ url: 'foobar' });
 
 				spy(instance, 'addPropertyError');
@@ -232,7 +232,7 @@ describe('Review model', () => {
 	});
 
 	describe('validateUrlPresenceIfNamedChildren method', () => {
-		it('will call validatePropertyPresenceIfNamedChildren', async () => {
+		it('calls validatePropertyPresenceIfNamedChildren', async () => {
 			const instance = new Review();
 
 			spy(instance, 'validatePropertyPresenceIfNamedChildren');
@@ -262,7 +262,7 @@ describe('Review model', () => {
 			});
 
 			context('date is in a valid date format', () => {
-				it('will call isValidDate; will not call addPropertyError method', async () => {
+				it('calls isValidDate; will not call addPropertyError method', async () => {
 					const instance = new Review({ date: '2024-04-03' });
 
 					spy(instance, 'addPropertyError');
@@ -277,7 +277,7 @@ describe('Review model', () => {
 
 		context('invalid data', () => {
 			context('date is in an invalid date format', () => {
-				it('will call isValidDate and addPropertyError method', async () => {
+				it('calls isValidDate and addPropertyError method', async () => {
 					stubs.isValidDate.returns(false);
 
 					const instance = new Review({ date: 'foobar' });

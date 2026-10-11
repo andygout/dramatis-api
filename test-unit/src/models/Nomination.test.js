@@ -310,7 +310,7 @@ describe('Nomination model', () => {
 	});
 
 	describe('validateCustomType method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new Nomination({ customType: 'Shortlisted' });
 
 			spy(instance, 'validateStringForProperty');

@@ -206,8 +206,8 @@ describe('AwardCeremony model', () => {
 			});
 		});
 
-		describe('invalid data (results returned that indicate name already exists  for given award)', () => {
-			it('will call addPropertyError method', async () => {
+		describe('invalid data (results returned that indicate name already exists for given award)', () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({ isDuplicateRecord: true });
 
 				const instance = new AwardCeremony();

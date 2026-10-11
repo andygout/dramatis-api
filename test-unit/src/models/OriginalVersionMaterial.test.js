@@ -80,7 +80,7 @@ describe('OriginalVersionMaterial model', () => {
 		});
 
 		context("invalid data (instance is the subject material's subsequent version material)", () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSubsequentVersionMaterialOfSubjectMaterial: true
 				});

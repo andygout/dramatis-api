@@ -781,7 +781,7 @@ describe('Production model', () => {
 
 		context('invalid data', () => {
 			context('startDate with invalid date format', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					const instance = new Production({ name: 'Hamlet', startDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -802,7 +802,7 @@ describe('Production model', () => {
 			});
 
 			context('pressDate with invalid date format', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					const instance = new Production({ name: 'Hamlet', pressDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -823,7 +823,7 @@ describe('Production model', () => {
 			});
 
 			context('endDate with invalid date format', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					const instance = new Production({ name: 'Hamlet', endDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -844,7 +844,7 @@ describe('Production model', () => {
 			});
 
 			context('startDate and endDate with valid date format and not ordered chronologically', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
@@ -878,7 +878,7 @@ describe('Production model', () => {
 			});
 
 			context('startDate and pressDate with valid date format and not ordered chronologically', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
 
 					const instance = new Production({
@@ -912,7 +912,7 @@ describe('Production model', () => {
 			});
 
 			context('pressDate and endDate with valid date format and not ordered chronologically', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate.onSecondCall().returns(true).onThirdCall().returns(true);
 
 					const instance = new Production({
@@ -946,7 +946,7 @@ describe('Production model', () => {
 			});
 
 			context('startDate, pressDate, and endDate with valid date format and not ordered chronologically', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate
 						.onFirstCall()
 						.returns(true)

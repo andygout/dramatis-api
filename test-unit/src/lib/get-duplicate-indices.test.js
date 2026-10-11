@@ -13,9 +13,11 @@ import {
 } from '../../../src/lib/get-duplicate-indices.js';
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
+const context = describe;
+
 describe('Get Duplicate Indices module', () => {
 	describe('getDuplicateBaseInstanceIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateBaseInstanceIndices([
 					{ name: 'Foo', differentiator: '1' },
@@ -30,7 +32,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 				const result = getDuplicateBaseInstanceIndices([
 					{ name: 'Foo', differentiator: '1' },
@@ -49,7 +51,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateCharacterIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateCharacterIndices([
 					{ name: 'Foo', underlyingName: '', differentiator: '', qualifier: '' },
@@ -76,7 +78,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 				const result = getDuplicateCharacterIndices([
 					{ name: 'Foo', underlyingName: '', differentiator: '1', qualifier: 'younger' },
@@ -116,7 +118,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateEntityIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateEntityIndices([
 					applyModelGetter({ name: 'Foo', differentiator: '' }, ''),
@@ -143,7 +145,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 				const result = getDuplicateEntityIndices([
 					applyModelGetter({ name: 'Foo', differentiator: '1' }, ''),
@@ -163,7 +165,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateNameIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateNameIndices([{ name: 'Foo' }, { name: 'Bar' }]);
 
@@ -171,7 +173,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 				const result = getDuplicateNameIndices([
 					{ name: 'Foo' },
@@ -186,7 +188,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateRoleIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateRoleIndices([
 					{ name: 'Foo', characterName: '', characterDifferentiator: '', qualifier: '' },
@@ -213,7 +215,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string name values', () => {
 				const result = getDuplicateRoleIndices([
 					{ name: 'Foo', characterName: '', characterDifferentiator: '1', qualifier: 'younger' },
@@ -253,7 +255,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateSettingIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateSettingIndices([
 					{
@@ -297,7 +299,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring objects where the time, place, and locale all have empty string name values', () => {
 				const result = getDuplicateSettingIndices([
 					{
@@ -348,7 +350,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateUrlIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateUrlIndices([{ url: 'https://www.foo.com' }, { url: 'https://www.bar.com' }]);
 
@@ -356,7 +358,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string url values', () => {
 				const result = getDuplicateUrlIndices([
 					{ url: 'https://www.foo.com' },
@@ -371,7 +373,7 @@ describe('Get Duplicate Indices module', () => {
 	});
 
 	describe('getDuplicateUuidIndices function', () => {
-		describe('duplicates do not exist', () => {
+		context('duplicates do not exist', () => {
 			it('returns an empty array', () => {
 				const result = getDuplicateUuidIndices([
 					{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },
@@ -382,7 +384,7 @@ describe('Get Duplicate Indices module', () => {
 			});
 		});
 
-		describe('duplicates exist', () => {
+		context('duplicates exist', () => {
 			it('returns an array of indices of duplicate items, ignoring items with empty string uuid values', () => {
 				const result = getDuplicateUuidIndices([
 					{ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' },

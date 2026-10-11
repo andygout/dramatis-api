@@ -164,7 +164,7 @@ describe('Time model', () => {
 
 		context('invalid data', () => {
 			context('fromDate with invalid date format', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					const instance = new Time({ name: '1962', fromDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -184,7 +184,7 @@ describe('Time model', () => {
 			});
 
 			context('toDate with invalid date format', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					const instance = new Time({ name: '1962', toDate: 'foobar' });
 
 					spy(instance, 'addPropertyError');
@@ -204,7 +204,7 @@ describe('Time model', () => {
 			});
 
 			context('valid toDate without corresponding fromDate', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(false).onSecondCall().returns(true);
 
 					const instance = new Time({ name: '1962', toDate: '1962-12-31' });
@@ -226,7 +226,7 @@ describe('Time model', () => {
 			});
 
 			context('valid fromDate without corresponding toDate', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(false);
 
 					const instance = new Time({ name: '1962', fromDate: '1962-01-01' });
@@ -248,7 +248,7 @@ describe('Time model', () => {
 			});
 
 			context('fromDate and toDate with valid date format and not ordered chronologically', () => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					stubs.isValidDate.onFirstCall().returns(true).onSecondCall().returns(true);
 
 					const instance = new Time({

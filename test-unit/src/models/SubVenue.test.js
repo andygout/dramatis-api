@@ -78,7 +78,7 @@ describe('SubVenue model', () => {
 		});
 
 		context('invalid data (instance is already assigned to another sur-venue)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: true,
 					isSurVenue: false,
@@ -124,7 +124,7 @@ describe('SubVenue model', () => {
 		});
 
 		context('invalid data (instance is the sur-most venue of a two-tiered venue hierarchy)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: true,
@@ -170,7 +170,7 @@ describe('SubVenue model', () => {
 		});
 
 		context('invalid data (instance cannot be assigned to a two-tiered venue hierarchy)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isAssignedToSurVenue: false,
 					isSurVenue: false,

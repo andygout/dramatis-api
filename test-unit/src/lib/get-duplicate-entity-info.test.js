@@ -4,9 +4,11 @@ import { describe, it } from 'node:test';
 import { getDuplicateEntities, isEntityInArray } from '../../../src/lib/get-duplicate-entity-info.js';
 import applyModelGetter from '../../test-helpers/apply-model-getter.js';
 
+const context = describe;
+
 describe('Get Duplicate Entity Info module', () => {
 	describe('getDuplicateEntities function', () => {
-		describe('duplicates exist at the top level', () => {
+		context('duplicates exist at the top level', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter({ name: 'Nicholas Hytner', differentiator: '' }, 'PERSON'),
@@ -30,7 +32,7 @@ describe('Get Duplicate Entity Info module', () => {
 			});
 		});
 
-		describe('duplicates exist at the nested level', () => {
+		context('duplicates exist at the nested level', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -86,7 +88,7 @@ describe('Get Duplicate Entity Info module', () => {
 			});
 		});
 
-		describe('duplicates exist at the top level and nested level', () => {
+		context('duplicates exist at the top level and nested level', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -142,7 +144,7 @@ describe('Get Duplicate Entity Info module', () => {
 			});
 		});
 
-		describe('duplicates exist at the nested level in separate arrays', () => {
+		context('duplicates exist at the nested level in separate arrays', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -221,7 +223,7 @@ describe('Get Duplicate Entity Info module', () => {
 			});
 		});
 
-		describe('multiple duplicates exist in various formations', () => {
+		context('multiple duplicates exist in various formations', () => {
 			it('returns an array of unique duplicates', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -326,7 +328,7 @@ describe('Get Duplicate Entity Info module', () => {
 			});
 		});
 
-		describe('duplicates exist of entities with empty string name values', () => {
+		context('duplicates exist of entities with empty string name values', () => {
 			it('ignores entities with empty string name values', () => {
 				const arrayOfEntities = [
 					applyModelGetter(
@@ -415,7 +417,7 @@ describe('Get Duplicate Entity Info module', () => {
 	});
 
 	describe('isEntityInArray function', () => {
-		describe('entity is in array', () => {
+		context('entity is in array', () => {
 			it('returns true', () => {
 				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON');
 
@@ -431,7 +433,7 @@ describe('Get Duplicate Entity Info module', () => {
 			});
 		});
 
-		describe('entity is not in array', () => {
+		context('entity is not in array', () => {
 			it('returns false', () => {
 				const entity = applyModelGetter({ name: 'Ian McKellen', differentiator: '' }, 'PERSON');
 

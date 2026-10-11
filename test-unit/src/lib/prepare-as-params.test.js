@@ -83,7 +83,7 @@ describe('Prepare As Params module', () => {
 	});
 
 	describe('top level properties', () => {
-		describe('name property and value is present', () => {
+		context('name property and value is present', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { uuid: '', name: 'Foo' };
 
@@ -115,7 +115,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('name property is present; its value is an empty string', () => {
+		context('name property is present; its value is an empty string', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { uuid: '', name: '' };
 
@@ -147,7 +147,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('name property is absent', () => {
+		context('name property is absent', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { uuid: '' };
 
@@ -179,7 +179,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
+		it('retains existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { foo: 'bar' };
 
 			const result = prepareAsParams(instance);
@@ -189,7 +189,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.foo, 'bar');
 		});
 
-		it('will assign null value to non-uuid properties with empty string values', async () => {
+		it('assigns null value to non-uuid properties with empty string values', async () => {
 			const instance = { foo: '' };
 
 			const result = prepareAsParams(instance);
@@ -199,7 +199,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.foo, null);
 		});
 
-		it('will assign null value to non-uuid properties with false values', async () => {
+		it('assigns null value to non-uuid properties with false values', async () => {
 			const instance = { foo: false };
 
 			const result = prepareAsParams(instance);
@@ -219,7 +219,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(Object.hasOwn(result, 'position'), false);
 		});
 
-		it('will add model property with value from model getter method', async () => {
+		it('adds model property with value from model getter method', async () => {
 			const instance = applyModelGetter({ foo: '' });
 
 			const result = prepareAsParams(instance);
@@ -277,7 +277,7 @@ describe('Prepare As Params module', () => {
 	});
 
 	describe('nested level properties', () => {
-		describe('name property and value is present', () => {
+		context('name property and value is present', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { venue: { uuid: '', name: 'Foo' } };
 
@@ -309,7 +309,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('name property is present; its value is an empty string', () => {
+		context('name property is present; its value is an empty string', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { venue: { uuid: '', name: '' } };
 
@@ -341,7 +341,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('name property is absent', () => {
+		context('name property is absent', () => {
 			it('assigns value to uuid property if empty string', async () => {
 				const instance = { venue: { uuid: '' } };
 
@@ -373,7 +373,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
+		it('retains existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { venue: { foo: 'bar' } };
 
 			const result = prepareAsParams(instance);
@@ -383,7 +383,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.venue.foo, 'bar');
 		});
 
-		it('will assign null value to non-uuid properties with empty string values', async () => {
+		it('assigns null value to non-uuid properties with empty string values', async () => {
 			const instance = { venue: { foo: '' } };
 
 			const result = prepareAsParams(instance);
@@ -393,7 +393,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.venue.foo, null);
 		});
 
-		it('will assign null value to non-uuid properties with false values', async () => {
+		it('assigns null value to non-uuid properties with false values', async () => {
 			const instance = { venue: { foo: false } };
 
 			const result = prepareAsParams(instance);
@@ -413,7 +413,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(Object.hasOwn(result.venue, 'position'), false);
 		});
 
-		it('will add model property with value from model getter method', async () => {
+		it('adds model property with value from model getter method', async () => {
 			const instance = { venue: applyModelGetter({ foo: '' }) };
 
 			const result = prepareAsParams(instance);
@@ -422,7 +422,7 @@ describe('Prepare As Params module', () => {
 		});
 
 		context('fromDate value is a valid date', async () => {
-			it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			it('assigns response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
 				const instance = { time: { fromDate: '1962-01-01' } };
 
 				const result = prepareAsParams(instance);
@@ -446,7 +446,7 @@ describe('Prepare As Params module', () => {
 		});
 
 		context('toDate value is a valid date', async () => {
-			it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			it('assigns response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
 				const instance = { time: { toDate: '1962-12-31' } };
 
 				const result = prepareAsParams(instance);
@@ -501,7 +501,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
-		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
+		it('retains existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { cast: [{ foo: 'bar', name: 'David Calder' }] };
 
 			const result = prepareAsParams(instance);
@@ -511,7 +511,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].foo, 'bar');
 		});
 
-		it('will assign null value to non-uuid properties with empty string values', async () => {
+		it('assigns null value to non-uuid properties with empty string values', async () => {
 			const instance = { cast: [{ foo: '', name: 'David Calder' }] };
 
 			const result = prepareAsParams(instance);
@@ -521,7 +521,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].foo, null);
 		});
 
-		it('will assign null value to non-uuid properties with false values', async () => {
+		it('assigns null value to non-uuid properties with false values', async () => {
 			const instance = { cast: [{ foo: false, name: 'David Calder' }] };
 
 			const result = prepareAsParams(instance);
@@ -531,7 +531,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].foo, null);
 		});
 
-		describe('array contains a single item', () => {
+		context('array contains a single item', () => {
 			it('will not add position property', async () => {
 				const instance = { cast: [{ uuid: '', name: 'David Calder' }] };
 
@@ -542,7 +542,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 			});
 
-			it('will add model property with value from model getter method', async () => {
+			it('adds model property with value from model getter method', async () => {
 				const instance = { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] };
 
 				const result = prepareAsParams(instance);
@@ -551,7 +551,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('array contains more than a single item', () => {
+		context('array contains more than a single item', () => {
 			it('adds position property with value of array index', async () => {
 				const instance = {
 					cast: [
@@ -572,7 +572,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.cast[1].position, 1);
 			});
 
-			it('will add model property with value from model getter method', async () => {
+			it('adds model property with value from model getter method', async () => {
 				const instance = {
 					cast: [
 						applyModelGetter({ foo: '', name: 'David Calder' }),
@@ -587,7 +587,7 @@ describe('Prepare As Params module', () => {
 		});
 
 		context('fromDate value is a valid date', async () => {
-			it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			it('assigns response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
 				const instance = { settings: [{ fromDate: '1962-01-01' }] };
 
 				const result = prepareAsParams(instance);
@@ -611,7 +611,7 @@ describe('Prepare As Params module', () => {
 		});
 
 		context('toDate value is a valid date', async () => {
-			it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			it('assigns response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
 				const instance = { settings: [{ toDate: '1962-12-31' }] };
 
 				const result = prepareAsParams(instance);
@@ -634,7 +634,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array whose items are not permitted an empty string name value', () => {
+		context('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
 					cast: [
@@ -653,70 +653,78 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
-			it('does not filter out objects that do not have a name attribute', async () => {
-				const instance = {
-					productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-					reviews: [
-						{
-							url: 'https://www.foo.com',
-							date: '2024-04-03',
-							publication: { name: 'Financial Times' },
-							critic: { name: 'Sarah Hemming' }
-						}
-					],
-					settings: [{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }],
-					subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
-				};
+		context(
+			'object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children',
+			() => {
+				it('does not filter out objects that do not have a name attribute', async () => {
+					const instance = {
+						productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
+						reviews: [
+							{
+								url: 'https://www.foo.com',
+								date: '2024-04-03',
+								publication: { name: 'Financial Times' },
+								critic: { name: 'Sarah Hemming' }
+							}
+						],
+						settings: [
+							{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
+						],
+						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+					};
 
-				const result = prepareAsParams(instance);
+					const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
-				assert.equal(result.productions.length, 1);
-				assert.equal(Object.hasOwn(result.productions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.productions[0], 'position'), false);
-				assert.equal(result.reviews.length, 1);
-				assert.equal(Object.hasOwn(result.reviews[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.reviews[0], 'position'), false);
-				assert.equal(result.settings.length, 1);
-				assert.equal(Object.hasOwn(result.settings[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.settings[0], 'position'), false);
-				assert.equal(result.subProductions.length, 1);
-				assert.equal(Object.hasOwn(result.subProductions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.subProductions[0], 'position'), false);
-			});
-		});
+					sinonAssert.notCalled(stubs.getRandomUuid);
+					sinonAssert.notCalled(stubs.neo4j.int);
+					assert.equal(result.productions.length, 1);
+					assert.equal(Object.hasOwn(result.productions[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.productions[0], 'position'), false);
+					assert.equal(result.reviews.length, 1);
+					assert.equal(Object.hasOwn(result.reviews[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.reviews[0], 'position'), false);
+					assert.equal(result.settings.length, 1);
+					assert.equal(Object.hasOwn(result.settings[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.settings[0], 'position'), false);
+					assert.equal(result.subProductions.length, 1);
+					assert.equal(Object.hasOwn(result.subProductions[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.subProductions[0], 'position'), false);
+				});
+			}
+		);
 
-		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
-			it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
-				const instance = {
-					characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
-					nominations: [{ entities: [{ name: 'Simon Baker' }] }],
-					producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
-					writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
-				};
+		context(
+			'object is in array where items are permitted an absent name property or empty string name value providing they have named children',
+			() => {
+				it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
+					const instance = {
+						characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
+						nominations: [{ entities: [{ name: 'Simon Baker' }] }],
+						producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
+						writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
+					};
 
-				const result = prepareAsParams(instance);
+					const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
-				assert.equal(result.characterGroups.length, 1);
-				assert.equal(result.characterGroups[0].name, null);
-				assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
-				assert.equal(result.nominations.length, 1);
-				assert.equal(Object.hasOwn(result.nominations[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.nominations[0], 'position'), false);
-				assert.equal(result.producerCredits.length, 1);
-				assert.equal(result.producerCredits[0].name, null);
-				assert.equal(Object.hasOwn(result.producerCredits[0], 'position'), false);
-				assert.equal(result.writingCredits.length, 1);
-				assert.equal(result.writingCredits[0].name, null);
-				assert.equal(Object.hasOwn(result.writingCredits[0], 'position'), false);
-			});
-		});
+					sinonAssert.notCalled(stubs.getRandomUuid);
+					sinonAssert.notCalled(stubs.neo4j.int);
+					assert.equal(result.characterGroups.length, 1);
+					assert.equal(result.characterGroups[0].name, null);
+					assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
+					assert.equal(result.nominations.length, 1);
+					assert.equal(Object.hasOwn(result.nominations[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.nominations[0], 'position'), false);
+					assert.equal(result.producerCredits.length, 1);
+					assert.equal(result.producerCredits[0].name, null);
+					assert.equal(Object.hasOwn(result.producerCredits[0], 'position'), false);
+					assert.equal(result.writingCredits.length, 1);
+					assert.equal(result.writingCredits[0].name, null);
+					assert.equal(Object.hasOwn(result.writingCredits[0], 'position'), false);
+				});
+			}
+		);
 
-		describe('object is in array where items must have at least one named child', () => {
+		context('object is in array where items must have at least one named child', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 				const instance = {
 					characterGroups: [
@@ -790,7 +798,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items do not require any named children', () => {
+		context('object is in array where items do not require any named children', () => {
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 				const instance = {
 					cast: [
@@ -808,7 +816,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items require a url', () => {
+		context('object is in array where items require a url', () => {
 			it('retains objects only if they have a non-empty url value', async () => {
 				const instance = {
 					reviews: [{ url: '' }, { url: 'https://www.foo.com' }, { url: '' }]
@@ -822,7 +830,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items require a uuid', () => {
+		context('object is in array where items require a uuid', () => {
 			it('retains objects only if they have a non-empty uuid value', async () => {
 				const instance = {
 					productions: [{ uuid: '' }, { uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }, { uuid: '' }],
@@ -980,7 +988,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.production.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
-		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
+		it('retains existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { production: { cast: [{ foo: 'bar', name: 'David Calder' }] } };
 
 			const result = prepareAsParams(instance);
@@ -990,7 +998,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.production.cast[0].foo, 'bar');
 		});
 
-		it('will assign null value to non-uuid properties with empty string values', async () => {
+		it('assigns null value to non-uuid properties with empty string values', async () => {
 			const instance = { production: { cast: [{ foo: '', name: 'David Calder' }] } };
 
 			const result = prepareAsParams(instance);
@@ -1000,7 +1008,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.production.cast[0].foo, null);
 		});
 
-		it('will assign null value to non-uuid properties with false values', async () => {
+		it('assigns null value to non-uuid properties with false values', async () => {
 			const instance = { production: { cast: [{ foo: false, name: 'David Calder' }] } };
 
 			const result = prepareAsParams(instance);
@@ -1010,7 +1018,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.production.cast[0].foo, null);
 		});
 
-		describe('array contains a single item', () => {
+		context('array contains a single item', () => {
 			it('will not add position property', async () => {
 				const instance = { production: { cast: [{ uuid: '', name: 'David Calder' }] } };
 
@@ -1021,7 +1029,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
 			});
 
-			it('will add model property with value from model getter method', async () => {
+			it('adds model property with value from model getter method', async () => {
 				const instance = { production: { cast: [applyModelGetter({ foo: '', name: 'David Calder' })] } };
 
 				const result = prepareAsParams(instance);
@@ -1030,7 +1038,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('array contains more than a single item', () => {
+		context('array contains more than a single item', () => {
 			it('adds position property with value of array index', async () => {
 				const instance = {
 					production: {
@@ -1053,7 +1061,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.production.cast[1].position, 1);
 			});
 
-			it('will add model property with value from model getter method', async () => {
+			it('adds model property with value from model getter method', async () => {
 				const instance = {
 					production: {
 						cast: [
@@ -1070,7 +1078,7 @@ describe('Prepare As Params module', () => {
 		});
 
 		context('fromDate value is a valid date', async () => {
-			it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+			it('assigns response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
 				const instance = { material: { settings: [{ fromDate: '1962-01-01' }] } };
 
 				const result = prepareAsParams(instance);
@@ -1094,7 +1102,7 @@ describe('Prepare As Params module', () => {
 		});
 
 		context('toDate value is a valid date', async () => {
-			it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+			it('assigns response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
 				const instance = { material: { settings: [{ toDate: '1962-12-31' }] } };
 
 				const result = prepareAsParams(instance);
@@ -1117,7 +1125,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array whose items are not permitted an empty string name value', () => {
+		context('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
 					production: {
@@ -1138,76 +1146,82 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
-			it('does not filter out objects that do not have a name attribute', async () => {
-				const instance = {
-					foo: {
-						productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-						reviews: [
-							{
-								url: 'https://www.foo.com',
-								date: '2024-04-03',
-								publication: { name: 'Financial Times' },
-								critic: { name: 'Sarah Hemming' }
-							}
-						],
-						settings: [
-							{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
-						],
-						subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
-					}
-				};
+		context(
+			'object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children',
+			() => {
+				it('does not filter out objects that do not have a name attribute', async () => {
+					const instance = {
+						foo: {
+							productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
+							reviews: [
+								{
+									url: 'https://www.foo.com',
+									date: '2024-04-03',
+									publication: { name: 'Financial Times' },
+									critic: { name: 'Sarah Hemming' }
+								}
+							],
+							settings: [
+								{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
+							],
+							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+						}
+					};
 
-				const result = prepareAsParams(instance);
+					const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
-				assert.equal(result.foo.productions.length, 1);
-				assert.equal(Object.hasOwn(result.foo.productions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foo.productions[0], 'position'), false);
-				assert.equal(result.foo.reviews.length, 1);
-				assert.equal(Object.hasOwn(result.foo.reviews[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foo.reviews[0], 'position'), false);
-				assert.equal(result.foo.settings.length, 1);
-				assert.equal(Object.hasOwn(result.foo.settings[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foo.settings[0], 'position'), false);
-				assert.equal(result.foo.subProductions.length, 1);
-				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foo.subProductions[0], 'position'), false);
-			});
-		});
+					sinonAssert.notCalled(stubs.getRandomUuid);
+					sinonAssert.notCalled(stubs.neo4j.int);
+					assert.equal(result.foo.productions.length, 1);
+					assert.equal(Object.hasOwn(result.foo.productions[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foo.productions[0], 'position'), false);
+					assert.equal(result.foo.reviews.length, 1);
+					assert.equal(Object.hasOwn(result.foo.reviews[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foo.reviews[0], 'position'), false);
+					assert.equal(result.foo.settings.length, 1);
+					assert.equal(Object.hasOwn(result.foo.settings[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foo.settings[0], 'position'), false);
+					assert.equal(result.foo.subProductions.length, 1);
+					assert.equal(Object.hasOwn(result.foo.subProductions[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foo.subProductions[0], 'position'), false);
+				});
+			}
+		);
 
-		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
-			it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
-				const instance = {
-					foo: {
-						characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
-						nominations: [{ entities: [{ name: 'Simon Baker' }] }],
-						producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
-						writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
-					}
-				};
+		context(
+			'object is in array where items are permitted an absent name property or empty string name value providing they have named children',
+			() => {
+				it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
+					const instance = {
+						foo: {
+							characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
+							nominations: [{ entities: [{ name: 'Simon Baker' }] }],
+							producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
+							writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
+						}
+					};
 
-				const result = prepareAsParams(instance);
+					const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
-				assert.equal(result.foo.characterGroups.length, 1);
-				assert.equal(result.foo.characterGroups[0].name, null);
-				assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
-				assert.equal(result.foo.nominations.length, 1);
-				assert.equal(Object.hasOwn(result.foo.nominations[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foo.nominations[0], 'position'), false);
-				assert.equal(result.foo.producerCredits.length, 1);
-				assert.equal(result.foo.producerCredits[0].name, null);
-				assert.equal(Object.hasOwn(result.foo.producerCredits[0], 'position'), false);
-				assert.equal(result.foo.writingCredits.length, 1);
-				assert.equal(result.foo.writingCredits[0].name, null);
-				assert.equal(Object.hasOwn(result.foo.writingCredits[0], 'position'), false);
-			});
-		});
+					sinonAssert.notCalled(stubs.getRandomUuid);
+					sinonAssert.notCalled(stubs.neo4j.int);
+					assert.equal(result.foo.characterGroups.length, 1);
+					assert.equal(result.foo.characterGroups[0].name, null);
+					assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
+					assert.equal(result.foo.nominations.length, 1);
+					assert.equal(Object.hasOwn(result.foo.nominations[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foo.nominations[0], 'position'), false);
+					assert.equal(result.foo.producerCredits.length, 1);
+					assert.equal(result.foo.producerCredits[0].name, null);
+					assert.equal(Object.hasOwn(result.foo.producerCredits[0], 'position'), false);
+					assert.equal(result.foo.writingCredits.length, 1);
+					assert.equal(result.foo.writingCredits[0].name, null);
+					assert.equal(Object.hasOwn(result.foo.writingCredits[0], 'position'), false);
+				});
+			}
+		);
 
-		describe('object is in array where items must have at least one named child', () => {
+		context('object is in array where items must have at least one named child', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 				const instance = {
 					foo: {
@@ -1283,7 +1297,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items do not require any named children', () => {
+		context('object is in array where items do not require any named children', () => {
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 				const instance = {
 					production: {
@@ -1303,7 +1317,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items require a url', () => {
+		context('object is in array where items require a url', () => {
 			it('retains objects only if they have a non-empty url value', async () => {
 				const instance = {
 					foo: {
@@ -1319,7 +1333,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items require a uuid', () => {
+		context('object is in array where items require a uuid', () => {
 			it('retains objects only if they have a non-empty uuid value', async () => {
 				const instance = {
 					foo: {
@@ -1484,7 +1498,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].roles[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
-		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
+		it('retains existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: 'bar', name: 'Polonius' }] }] };
 
 			const result = prepareAsParams(instance);
@@ -1494,7 +1508,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].roles[0].foo, 'bar');
 		});
 
-		it('will assign null value to non-uuid properties with empty string values', async () => {
+		it('assigns null value to non-uuid properties with empty string values', async () => {
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: '', name: 'Polonius' }] }] };
 
 			const result = prepareAsParams(instance);
@@ -1504,7 +1518,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
-		it('will assign null value to non-uuid properties with false values', async () => {
+		it('assigns null value to non-uuid properties with false values', async () => {
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: false, name: 'Polonius' }] }] };
 
 			const result = prepareAsParams(instance);
@@ -1514,7 +1528,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
-		describe('array contains a single item', () => {
+		context('array contains a single item', () => {
 			it('will not add position property', async () => {
 				const instance = { cast: [{ name: 'David Calder', roles: [{ uuid: '', name: 'Polonius' }] }] };
 
@@ -1526,7 +1540,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
 			});
 
-			it('will add model property with value from model getter method', async () => {
+			it('adds model property with value from model getter method', async () => {
 				const instance = {
 					cast: [
 						{
@@ -1542,7 +1556,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		it('will assign response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
+		it('assigns response of convertHistoricalToAstronomicalDate() to fromDate property', async () => {
 			const instance = {
 				materials: [
 					{
@@ -1558,7 +1572,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.materials[0].settings[0].fromDate, 'convertHistoricalToAstronomicalDate response');
 		});
 
-		it('will assign response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
+		it('assigns response of convertHistoricalToAstronomicalDate() to toDate property', async () => {
 			const instance = {
 				materials: [
 					{
@@ -1574,7 +1588,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.materials[0].settings[0].toDate, 'convertHistoricalToAstronomicalDate response');
 		});
 
-		describe('array contains more than a single item', () => {
+		context('array contains more than a single item', () => {
 			it('adds position property with value of array index', async () => {
 				const instance = {
 					cast: [
@@ -1601,7 +1615,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.cast[0].roles[1].position, 1);
 			});
 
-			it('will add model property with value from model getter method', async () => {
+			it('adds model property with value from model getter method', async () => {
 				const instance = {
 					cast: [
 						{
@@ -1620,7 +1634,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array whose items are not permitted an empty string name value', () => {
+		context('object is in array whose items are not permitted an empty string name value', () => {
 			it('filters out objects that have a name attribute which is an empty string', async () => {
 				const instance = {
 					cast: [
@@ -1644,82 +1658,92 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children', () => {
-			it('does not filter out objects that do not have a name attribute', async () => {
-				const instance = {
-					foos: [
-						{
-							name: 'Foobar',
-							productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
-							reviews: [
-								{
-									url: 'https://www.foo.com',
-									date: '2024-04-03',
-									publication: { name: 'Financial Times' },
-									critic: { name: 'Sarah Hemming' }
-								}
-							],
-							settings: [
-								{ time: { name: '1962' }, place: { name: 'Knightsbridge' }, locale: { name: 'House' } }
-							],
-							subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
-						}
-					]
-				};
+		context(
+			'object is in array where items are permitted an absent name property or empty string name value regardless of whether they have named children',
+			() => {
+				it('does not filter out objects that do not have a name attribute', async () => {
+					const instance = {
+						foos: [
+							{
+								name: 'Foobar',
+								productions: [{ uuid: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' }],
+								reviews: [
+									{
+										url: 'https://www.foo.com',
+										date: '2024-04-03',
+										publication: { name: 'Financial Times' },
+										critic: { name: 'Sarah Hemming' }
+									}
+								],
+								settings: [
+									{
+										time: { name: '1962' },
+										place: { name: 'Knightsbridge' },
+										locale: { name: 'House' }
+									}
+								],
+								subProductions: [{ uuid: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb' }]
+							}
+						]
+					};
 
-				const result = prepareAsParams(instance);
+					const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
-				assert.equal(result.foos[0].productions.length, 1);
-				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foos[0].productions[0], 'position'), false);
-				assert.equal(result.foos[0].reviews.length, 1);
-				assert.equal(Object.hasOwn(result.foos[0].reviews[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foos[0].reviews[0], 'position'), false);
-				assert.equal(result.foos[0].settings.length, 1);
-				assert.equal(Object.hasOwn(result.foos[0].settings[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foos[0].settings[0], 'position'), false);
-				assert.equal(result.foos[0].subProductions.length, 1);
-				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'position'), false);
-			});
-		});
+					sinonAssert.notCalled(stubs.getRandomUuid);
+					sinonAssert.notCalled(stubs.neo4j.int);
+					assert.equal(result.foos[0].productions.length, 1);
+					assert.equal(Object.hasOwn(result.foos[0].productions[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foos[0].productions[0], 'position'), false);
+					assert.equal(result.foos[0].reviews.length, 1);
+					assert.equal(Object.hasOwn(result.foos[0].reviews[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foos[0].reviews[0], 'position'), false);
+					assert.equal(result.foos[0].settings.length, 1);
+					assert.equal(Object.hasOwn(result.foos[0].settings[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foos[0].settings[0], 'position'), false);
+					assert.equal(result.foos[0].subProductions.length, 1);
+					assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foos[0].subProductions[0], 'position'), false);
+				});
+			}
+		);
 
-		describe('object is in array where items are permitted an absent name property or empty string name value providing they have named children', () => {
-			it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
-				const instance = {
-					foos: [
-						{
-							name: 'Foobar',
-							characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
-							nominations: [{ entities: [{ name: 'Simon Baker' }] }],
-							producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
-							writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
-						}
-					]
-				};
+		context(
+			'object is in array where items are permitted an absent name property or empty string name value providing they have named children',
+			() => {
+				it('does not filter out objects that do not have a name attribute or have one which is an empty string', async () => {
+					const instance = {
+						foos: [
+							{
+								name: 'Foobar',
+								characterGroups: [{ name: '', characters: [{ name: 'Malene' }] }],
+								nominations: [{ entities: [{ name: 'Simon Baker' }] }],
+								producerCredits: [{ name: '', entities: [{ name: 'National Theatre Company' }] }],
+								writingCredits: [{ name: '', entities: [{ name: 'Henrik Ibsen' }] }]
+							}
+						]
+					};
 
-				const result = prepareAsParams(instance);
+					const result = prepareAsParams(instance);
 
-				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
-				assert.equal(result.foos[0].characterGroups.length, 1);
-				assert.equal(result.foos[0].characterGroups[0].name, null);
-				assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
-				assert.equal(result.foos[0].nominations.length, 1);
-				assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'name'), false);
-				assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'position'), false);
-				assert.equal(result.foos[0].producerCredits.length, 1);
-				assert.equal(result.foos[0].producerCredits[0].name, null);
-				assert.equal(Object.hasOwn(result.foos[0].producerCredits[0], 'position'), false);
-				assert.equal(result.foos[0].writingCredits.length, 1);
-				assert.equal(result.foos[0].writingCredits[0].name, null);
-				assert.equal(Object.hasOwn(result.foos[0].writingCredits[0], 'position'), false);
-			});
-		});
+					sinonAssert.notCalled(stubs.getRandomUuid);
+					sinonAssert.notCalled(stubs.neo4j.int);
+					assert.equal(result.foos[0].characterGroups.length, 1);
+					assert.equal(result.foos[0].characterGroups[0].name, null);
+					assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
+					assert.equal(result.foos[0].nominations.length, 1);
+					assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'name'), false);
+					assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'position'), false);
+					assert.equal(result.foos[0].producerCredits.length, 1);
+					assert.equal(result.foos[0].producerCredits[0].name, null);
+					assert.equal(Object.hasOwn(result.foos[0].producerCredits[0], 'position'), false);
+					assert.equal(result.foos[0].writingCredits.length, 1);
+					assert.equal(result.foos[0].writingCredits[0].name, null);
+					assert.equal(Object.hasOwn(result.foos[0].writingCredits[0], 'position'), false);
+				});
+			}
+		);
 
-		describe('object is in array where items must have at least one named child', () => {
+		context('object is in array where items must have at least one named child', () => {
 			it('filters out objects that do not have any named children (e.g. entities, characters)', async () => {
 				const instance = {
 					foos: [
@@ -1798,7 +1822,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items do not require any named children', () => {
+		context('object is in array where items do not require any named children', () => {
 			it('retains objects whether they have named children (e.g. roles) or not', async () => {
 				const instance = {
 					productions: [
@@ -1821,7 +1845,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items require a url', () => {
+		context('object is in array where items require a url', () => {
 			it('retains objects only if they have a non-empty url value', async () => {
 				const instance = {
 					subProductions: [
@@ -1839,7 +1863,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		describe('object is in array where items require a uuid', () => {
+		context('object is in array where items require a uuid', () => {
 			it('retains objects only if they have a non-empty uuid value', async () => {
 				const instance = {
 					nominations: [

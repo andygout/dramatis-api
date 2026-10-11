@@ -78,7 +78,7 @@ describe('SourceMaterial model', () => {
 		});
 
 		context("invalid data (instance is the subject material's sourcing material)", () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isSourcingMaterialOfSubjectMaterial: true
 				});

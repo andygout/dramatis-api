@@ -52,7 +52,7 @@ describe('ProductionIdentifier model', () => {
 	});
 
 	describe('validateUuid method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new ProductionIdentifier({ uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' });
 
 			spy(instance, 'validateStringForProperty');
