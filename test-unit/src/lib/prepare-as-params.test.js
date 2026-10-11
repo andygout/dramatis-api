@@ -179,7 +179,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
+		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { foo: 'bar' };
 
 			const result = prepareAsParams(instance);
@@ -373,7 +373,7 @@ describe('Prepare As Params module', () => {
 			});
 		});
 
-		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
+		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { venue: { foo: 'bar' } };
 
 			const result = prepareAsParams(instance);
@@ -501,7 +501,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
-		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
+		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { cast: [{ foo: 'bar', name: 'David Calder' }] };
 
 			const result = prepareAsParams(instance);
@@ -979,7 +979,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.production.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
-		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
+		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { production: { cast: [{ foo: 'bar', name: 'David Calder' }] } };
 
 			const result = prepareAsParams(instance);
@@ -1482,7 +1482,7 @@ describe('Prepare As Params module', () => {
 			assert.equal(result.cast[0].roles[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
-		it('will retaining existing value for non-uuid properties with non-empty string values', async () => {
+		it('will retain existing value for non-uuid properties with non-empty string values', async () => {
 			const instance = { cast: [{ name: 'David Calder', roles: [{ foo: 'bar', name: 'Polonius' }] }] };
 
 			const result = prepareAsParams(instance);
