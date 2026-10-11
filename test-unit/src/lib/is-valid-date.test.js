@@ -7,58 +7,58 @@ const context = describe;
 
 describe('Is Valid Date module', () => {
 	context('BCE (Before Common Era) dates are disallowed (by omission of `allowBce` option)', () => {
-		context('valid date', () => {
-			describe('string is a date in YYYY-MM-DD format', () => {
+		context('input value is valid date', () => {
+			context('string is a date in YYYY-MM-DD format', () => {
 				it('returns true', () => {
 					assert.equal(isValidDate('2020-04-16'), true);
 				});
 			});
 		});
 
-		context('invalid date', () => {
-			describe('string is empty', () => {
+		context('input value is not valid date', () => {
+			context('string is empty', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate(''), false);
 				});
 			});
 
-			describe('string is not a date', () => {
+			context('string is not a date', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('foobar'), false);
 				});
 			});
 
-			describe('string is a date in DD-MM-YYYY format', () => {
+			context('string is a date in DD-MM-YYYY format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('16-04-2020'), false);
 				});
 			});
 
-			describe('string is a date in MM-DD-YYYY format', () => {
+			context('string is a date in MM-DD-YYYY format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('04-16-2020'), false);
 				});
 			});
 
-			describe('string is a date in YY-MM-DD format', () => {
+			context('string is a date in YY-MM-DD format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('20-04-16'), false);
 				});
 			});
 
-			describe('string is a date in -YYYY-MM-DD format', () => {
+			context('string is a date in -YYYY-MM-DD format', () => {
 				it('returns true', () => {
 					assert.equal(isValidDate('-1178-04-16'), false);
 				});
 			});
 
-			describe('string is a date in -YY-MM-DD format', () => {
+			context('string is a date in -YY-MM-DD format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('-44-03-15'), false);
 				});
 			});
 
-			describe('string is a date in YYYY-MM-DD format but month and date are invalid', () => {
+			context('string is a date in YYYY-MM-DD format but month and date are invalid', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('1962-00-00'), false); // Days and months cannot be zero.
 					assert.equal(isValidDate('1962-02-29'), false); // 1962 was not a leap year.
@@ -67,7 +67,7 @@ describe('Is Valid Date module', () => {
 				});
 			});
 
-			describe('string is a date in YYYY-MM-DD format but year is zero', () => {
+			context('string is a date in YYYY-MM-DD format but year is zero', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('0000-01-01'), false);
 					assert.equal(isValidDate('-0000-01-01'), false);
@@ -78,13 +78,13 @@ describe('Is Valid Date module', () => {
 
 	context('BCE (Before Common Era) dates are allowed (by presence of `allowBce` option set to `true`)', () => {
 		context('valid date', () => {
-			describe('string is a date in YYYY-MM-DD format', () => {
+			context('string is a date in YYYY-MM-DD format', () => {
 				it('returns true', () => {
 					assert.equal(isValidDate('2020-04-16', { allowBce: true }), true);
 				});
 			});
 
-			describe('string is a date in -YYYY-MM-DD format', () => {
+			context('string is a date in -YYYY-MM-DD format', () => {
 				it('returns true', () => {
 					assert.equal(isValidDate('-1178-04-16', { allowBce: true }), true);
 				});
@@ -92,43 +92,43 @@ describe('Is Valid Date module', () => {
 		});
 
 		context('invalid date', () => {
-			describe('string is empty', () => {
+			context('string is empty', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('', { allowBce: true }), false);
 				});
 			});
 
-			describe('string is not a date', () => {
+			context('string is not a date', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('foobar', { allowBce: true }), false);
 				});
 			});
 
-			describe('string is a date in DD-MM-YYYY format', () => {
+			context('string is a date in DD-MM-YYYY format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('16-04-2020', { allowBce: true }), false);
 				});
 			});
 
-			describe('string is a date in MM-DD-YYYY format', () => {
+			context('string is a date in MM-DD-YYYY format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('04-16-2020', { allowBce: true }), false);
 				});
 			});
 
-			describe('string is a date in YY-MM-DD format', () => {
+			context('string is a date in YY-MM-DD format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('20-04-16', { allowBce: true }), false);
 				});
 			});
 
-			describe('string is a date in -YY-MM-DD format', () => {
+			context('string is a date in -YY-MM-DD format', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('-44-03-15', { allowBce: true }), false);
 				});
 			});
 
-			describe('string is a date in YYYY-MM-DD format but month and date are invalid', () => {
+			context('string is a date in YYYY-MM-DD format but month and date are invalid', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('1962-00-00', { allowBce: true }), false); // Days and months cannot be zero.
 					assert.equal(isValidDate('1962-02-29', { allowBce: true }), false); // 1962 was not a leap year.
@@ -137,7 +137,7 @@ describe('Is Valid Date module', () => {
 				});
 			});
 
-			describe('string is a date in YYYY-MM-DD format but year is zero', () => {
+			context('string is a date in YYYY-MM-DD format but year is zero', () => {
 				it('returns false', () => {
 					assert.equal(isValidDate('0000-01-01', { allowBce: true }), false);
 					assert.equal(isValidDate('-0000-01-01', { allowBce: true }), false);

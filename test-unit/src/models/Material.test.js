@@ -392,7 +392,7 @@ describe('Material model', () => {
 	});
 
 	describe('validateFormat method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new Material({ name: 'The Tragedy of Hamlet', format: 'play' });
 
 			spy(instance, 'validateStringForProperty');
@@ -418,7 +418,7 @@ describe('Material model', () => {
 		});
 
 		describe('year value is not a valid year', () => {
-			it('will call isValidYear function and addPropertyError method', async () => {
+			it('calls isValidYear function and addPropertyError method', async () => {
 				const instance = new Material({ name: 'The Caretaker', year: 'Nineteen Fifty-Nine' });
 
 				spy(instance, 'addPropertyError');
@@ -431,7 +431,7 @@ describe('Material model', () => {
 		});
 
 		describe('year value is a valid year', () => {
-			it('will call isValidYear function but not addPropertyError method', async () => {
+			it('calls isValidYear function but not addPropertyError method', async () => {
 				const instance = new Material({ name: 'The Caretaker', year: 1959 });
 
 				spy(instance, 'addPropertyError');

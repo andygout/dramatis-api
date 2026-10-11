@@ -78,7 +78,7 @@ describe('SubProductionIdentifier model', () => {
 		});
 
 		context('invalid data (instance does not exist)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: false,
 					isAssignedToSurProduction: false,
@@ -119,7 +119,7 @@ describe('SubProductionIdentifier model', () => {
 		});
 
 		context('invalid data (instance is already assigned to another sur-production)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: true,
@@ -160,7 +160,7 @@ describe('SubProductionIdentifier model', () => {
 		});
 
 		context('invalid data (instance is the sur-most production of a three-tiered production hierarchy)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
@@ -201,7 +201,7 @@ describe('SubProductionIdentifier model', () => {
 		});
 
 		context("invalid data (instance is the subject production's sur-production)", () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,
@@ -242,7 +242,7 @@ describe('SubProductionIdentifier model', () => {
 		});
 
 		context('invalid data (instance cannot be assigned to a three-tiered production hierarchy)', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				stubs.neo4jQueryModule.neo4jQuery.resolves({
 					isExistent: true,
 					isAssignedToSurProduction: false,

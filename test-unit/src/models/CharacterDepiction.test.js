@@ -57,7 +57,7 @@ describe('CharacterDepiction model', () => {
 	});
 
 	describe('validateUnderlyingName method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const instance = new CharacterDepiction({ name: 'Prince Hal', underlyingName: 'King Henry V' });
 
 			spy(instance, 'validateStringForProperty');

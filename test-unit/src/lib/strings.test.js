@@ -3,26 +3,38 @@ import { describe, it } from 'node:test';
 
 import { getTrimmedOrEmptyString } from '../../../src/lib/strings.js';
 
+const context = describe;
+
 describe('Strings module', () => {
 	describe('getTrimmedOrEmptyString function', () => {
-		it('assigns empty string if value is undefined', () => {
-			assert.equal(getTrimmedOrEmptyString(undefined), '');
+		context('input value is undefined', () => {
+			it('returns empty string', () => {
+				assert.equal(getTrimmedOrEmptyString(undefined), '');
+			});
 		});
 
-		it('assigns empty string if value is empty string', () => {
-			assert.equal(getTrimmedOrEmptyString(''), '');
+		context('input value is empty string', () => {
+			it('returns empty string', () => {
+				assert.equal(getTrimmedOrEmptyString(''), '');
+			});
 		});
 
-		it('assigns empty string if value is whitespace-only string', () => {
-			assert.equal(getTrimmedOrEmptyString(' '), '');
+		context('input value is whitespace-only string', () => {
+			it('returns empty string', () => {
+				assert.equal(getTrimmedOrEmptyString(' '), '');
+			});
 		});
 
-		it('assigns value if value is string with length', () => {
-			assert.equal(getTrimmedOrEmptyString('foobar'), 'foobar');
+		context('input value is string with length', () => {
+			it('returns input value unchanged', () => {
+				assert.equal(getTrimmedOrEmptyString('foobar'), 'foobar');
+			});
 		});
 
-		it('assigns trimmed value if value is string with leading and trailing whitespace', () => {
-			assert.equal(getTrimmedOrEmptyString(' foobar '), 'foobar');
+		context('input value is string with leading and trailing whitespace', () => {
+			it('returns trimmed input value', () => {
+				assert.equal(getTrimmedOrEmptyString(' foobar '), 'foobar');
+			});
 		});
 	});
 });

@@ -35,7 +35,7 @@ describe('NominatedProductionIdentifier model', () => {
 		context(
 			'confirmExistenceInDatabase method resolves with false (i.e. production uuid does not exist in database)',
 			() => {
-				it('will call addPropertyError method', async () => {
+				it('calls addPropertyError method', async () => {
 					const instance = new NominatedProductionIdentifier({
 						uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 					});

@@ -106,7 +106,7 @@ describe('Base model', () => {
 	});
 
 	describe('validateName method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const Base = await createSubject();
 
 			const instance = new Base();
@@ -120,7 +120,7 @@ describe('Base model', () => {
 	});
 
 	describe('validateQualifier method', () => {
-		it('will call validateStringForProperty method', async () => {
+		it('calls validateStringForProperty method', async () => {
 			const Base = await createSubject();
 
 			const instance = new Base();
@@ -150,7 +150,7 @@ describe('Base model', () => {
 		});
 
 		describe('invalid data', () => {
-			it('will call addPropertyError method', async () => {
+			it('calls addPropertyError method', async () => {
 				const Base = await createSubject();
 
 				const instance = new Base({ name: '' });
@@ -185,7 +185,7 @@ describe('Base model', () => {
 
 		describe('invalid data', () => {
 			describe('instance does not have differentiator, characterDifferentiator, or qualifier property', () => {
-				it('will call addPropertyError method with group context error text for name property only', async () => {
+				it('calls addPropertyError method with group context error text for name property only', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -205,7 +205,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has underlyingName property', () => {
-				it('will call addPropertyError method with group context error text for name and underlyingName properties', async () => {
+				it('calls addPropertyError method with group context error text for name and underlyingName properties', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -233,7 +233,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has characterName property', () => {
-				it('will call addPropertyError method with group context error text for name and characterName properties', async () => {
+				it('calls addPropertyError method with group context error text for name and characterName properties', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -261,7 +261,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has differentiator property', () => {
-				it('will call addPropertyError method with group context error text for name and differentiator properties', async () => {
+				it('calls addPropertyError method with group context error text for name and differentiator properties', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -289,7 +289,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has characterDifferentiator property', () => {
-				it('will call addPropertyError method with group context error text for name and differentiator properties', async () => {
+				it('calls addPropertyError method with group context error text for name and differentiator properties', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -317,7 +317,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has qualifier property', () => {
-				it('will call addPropertyError method with group context error text for name and qualifier properties', async () => {
+				it('calls addPropertyError method with group context error text for name and qualifier properties', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -345,7 +345,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has differentiator, characterDifferentiator, and qualifier property', () => {
-				it('will call addPropertyError method with group context error text for name, differentiator, and qualifier properties', async () => {
+				it('calls addPropertyError method with group context error text for name, differentiator, and qualifier properties', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -385,7 +385,7 @@ describe('Base model', () => {
 			});
 
 			describe('instance has uuid property which is specified via opts argument as requiring an error assigned to it', () => {
-				it('will call addPropertyError method with group context error text for uuid property only (i.e. not name property)', async () => {
+				it('calls addPropertyError method with group context error text for uuid property only (i.e. not name property)', async () => {
 					const Base = await createSubject();
 
 					const instance = new Base({ name: 'Foobar' });
@@ -409,7 +409,7 @@ describe('Base model', () => {
 	});
 
 	describe('validateNamePresenceIfNamedChildren method', () => {
-		it('will call validatePropertyPresenceIfNamedChildren', async () => {
+		it('calls validatePropertyPresenceIfNamedChildren', async () => {
 			const Base = await createSubject();
 
 			const instance = new Base({ name: 'Foobar' });

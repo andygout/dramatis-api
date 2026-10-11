@@ -7,6 +7,8 @@ import { assert as sinonAssert, restore, stub } from 'sinon';
 
 import { Character } from '../../../src/models/index.js';
 
+const context = describe;
+
 describe('Call Class Methods module', () => {
 	let stubs;
 	let callClassMethods;
@@ -38,7 +40,7 @@ describe('Call Class Methods module', () => {
 			character = new Character();
 		});
 
-		describe('resolves with data', () => {
+		context('resolves with data', () => {
 			it('calls renderPage module', async () => {
 				const instanceMethodResponse = { property: 'value' };
 				stub(character, method).callsFake(() => {
@@ -53,7 +55,7 @@ describe('Call Class Methods module', () => {
 			});
 		});
 
-		describe('resolves with error', () => {
+		context('resolves with error', () => {
 			it('calls next() with error', async () => {
 				stub(character, method).callsFake(() => {
 					return Promise.reject(error);
@@ -66,7 +68,7 @@ describe('Call Class Methods module', () => {
 			});
 		});
 
-		describe("resolves with 'Not Found' error", () => {
+		context("resolves with 'Not Found' error", () => {
 			it('responds with 404 status and sends error message', async () => {
 				stub(character, method).callsFake(() => {
 					return Promise.reject(notFoundError);
@@ -89,7 +91,7 @@ describe('Call Class Methods module', () => {
 			Character[method].restore();
 		});
 
-		describe('resolves with data', () => {
+		context('resolves with data', () => {
 			it('calls renderPage module', async () => {
 				const staticListMethodResponse = [{ property: 'value' }];
 				stub(Character, method).callsFake(() => {
@@ -109,7 +111,7 @@ describe('Call Class Methods module', () => {
 			});
 		});
 
-		describe('resolves with error', () => {
+		context('resolves with error', () => {
 			it('calls next() with error', async () => {
 				stub(Character, method).callsFake(() => {
 					return Promise.reject(error);

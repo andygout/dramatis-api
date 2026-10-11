@@ -4,6 +4,8 @@ import { afterEach, beforeEach, describe, it } from 'node:test';
 import esmock from 'esmock';
 import { restore, stub } from 'sinon';
 
+const context = describe;
+
 describe('Convert Neo4j Records To Objects module', () => {
 	let stubs;
 	let convertNeo4jRecordsToObjects;
@@ -22,58 +24,60 @@ describe('Convert Neo4j Records To Objects module', () => {
 		restore();
 	});
 
-	it('returns false if no error values present', async () => {
-		const neo4Response = {
-			records: [
-				{
-					keys: ['model', 'uuid', 'name', 'differentiator', 'writingCredits'],
-					_fields: [
-						'MATERIAL',
-						'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-						'3 Winters',
-						null,
-						[
-							{
-								name: 'by',
-								model: 'WRITING_CREDIT',
-								entities: [
-									{
-										model: 'PERSON',
-										uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
-										name: 'Tena Štivičić'
-									}
-								]
-							}
-						]
-					]
-				}
-			]
-		};
-
-		const expectedResult = [
-			{
-				model: 'MATERIAL',
-				uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
-				name: '3 Winters',
-				differentiator: null,
-				writingCredits: [
+	context('no error values present', () => {
+		it('returns false', async () => {
+			const neo4Response = {
+				records: [
 					{
-						model: 'WRITING_CREDIT',
-						name: 'by',
-						entities: [
-							{
-								model: 'PERSON',
-								uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
-								name: 'Tena Štivičić'
-							}
+						keys: ['model', 'uuid', 'name', 'differentiator', 'writingCredits'],
+						_fields: [
+							'MATERIAL',
+							'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+							'3 Winters',
+							null,
+							[
+								{
+									name: 'by',
+									model: 'WRITING_CREDIT',
+									entities: [
+										{
+											model: 'PERSON',
+											uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+											name: 'Tena Štivičić'
+										}
+									]
+								}
+							]
 						]
 					}
 				]
-			}
-		];
+			};
 
-		const result = convertNeo4jRecordsToObjects(neo4Response);
+			const expectedResult = [
+				{
+					model: 'MATERIAL',
+					uuid: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+					name: '3 Winters',
+					differentiator: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy',
+									name: 'Tena Štivičić'
+								}
+							]
+						}
+					]
+				}
+			];
 
-		assert.deepEqual(result, expectedResult);
+			const result = convertNeo4jRecordsToObjects(neo4Response);
+
+			assert.deepEqual(result, expectedResult);
+		});
 	});
 });
