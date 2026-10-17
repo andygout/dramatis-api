@@ -5,9 +5,13 @@ import isObjectWithKeys from './is-object-with-keys.js';
 import isValidDate from './is-valid-date.js';
 import convertHistoricalToAstronomicalDate from '../neo4j/convert-historical-to-astronomical-date.js';
 
+// Model type properties.
 const CHARACTER_GROUPS = 'characterGroups';
+const CHARACTERS = 'characters';
 const CREATIVE_CREDITS = 'creativeCredits';
 const CREW_CREDITS = 'crewCredits';
+const ENTITIES = 'entities';
+const MATERIALS = 'materials';
 const NOMINATIONS = 'nominations';
 const PRODUCER_CREDITS = 'producerCredits';
 const PRODUCTIONS = 'productions';
@@ -16,8 +20,12 @@ const SETTINGS = 'settings';
 const SUB_PRODUCTIONS = 'subProductions';
 const WRITING_CREDITS = 'writingCredits';
 
+// Other properties.
 const FROM_DATE = 'fromDate';
+const MODEL = 'model';
 const TO_DATE = 'toDate';
+const URL = 'url';
+const UUID = 'uuid';
 
 const EMPTY_NAME_EXCEPTION_KEYS = new Set([
 	CHARACTER_GROUPS,
@@ -52,17 +60,17 @@ const prepareAsParams = (instance) => {
 
 	const hasNamedChildrenIfRequired = (key) => (item) =>
 		!REQUIRES_NAMED_CHILDREN_KEYS.has(key) ||
-		item[key === CHARACTER_GROUPS ? 'characters' : 'entities']?.some((child) => Boolean(child.name)) ||
+		item[key === CHARACTER_GROUPS ? CHARACTERS : ENTITIES]?.some((child) => Boolean(child.name)) ||
 		(key === NOMINATIONS &&
-			(item['entities']?.some((child) => Boolean(child.name)) ||
-				item['productions']?.some((child) => Boolean(child.uuid)) ||
-				item['materials']?.some((child) => Boolean(child.name))));
+			(item[ENTITIES]?.some((child) => Boolean(child.name)) ||
+				item[PRODUCTIONS]?.some((child) => Boolean(child.uuid)) ||
+				item[MATERIALS]?.some((child) => Boolean(child.name))));
 
 	const hasUrlIfRequired = (key) => (item) =>
-		!REQUIRES_NON_EMPTY_URL_KEYS.has(key) || !Object.hasOwn(item, 'url') || Boolean(item.url);
+		!REQUIRES_NON_EMPTY_URL_KEYS.has(key) || !Object.hasOwn(item, URL) || Boolean(item.url);
 
 	const hasUuidIfRequired = (key) => (item) =>
-		!REQUIRES_NON_EMPTY_UUID_KEYS.has(key) || !Object.hasOwn(item, 'uuid') || Boolean(item.uuid);
+		!REQUIRES_NON_EMPTY_UUID_KEYS.has(key) || !Object.hasOwn(item, UUID) || Boolean(item.uuid);
 
 	const applyPositionPropertyAndRecurseObject = (item, index, array) => {
 		if (isObjectWithKeys(item)) {
@@ -76,7 +84,7 @@ const prepareAsParams = (instance) => {
 
 	const applyModifications = (instance) => {
 		return Object.keys(instance)
-			.concat(['model'])
+			.concat([MODEL])
 			.reduce((accumulator, key) => {
 				const value = instance[key];
 
@@ -92,7 +100,7 @@ const prepareAsParams = (instance) => {
 						.filter(Boolean);
 				} else {
 					const requiresUuidValue =
-						key === 'uuid' && (value === undefined || !value.length) && Boolean(instance.name);
+						key === UUID && (value === undefined || !value.length) && Boolean(instance.name);
 
 					if (requiresUuidValue) {
 						const instanceWithShareableUuid = recordedInstances.find((recordedInstance) => {
