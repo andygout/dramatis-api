@@ -39,7 +39,7 @@ Graph database-driven API for site of theatrical productions, materials, and ass
 - Ensure that a local instance of Neo4j graph database and app are running
 - Run `$ npm run seed-db`
 
-## To edit content via CMS (content management system) (locally)
+## To manage content via CMS (content management system) (locally)
 
 - Run a local instance of [`dramatis-cms`](https://github.com/andygout/dramatis-cms) on `http://localhost:3001`, which will point at this API on port 3000
 
@@ -115,50 +115,129 @@ Using venue model as an example.
 
 ## Architecture
 
+[`dramatis-cms`](https://github.com/andygout/dramatis-cms) manages the content.
+
 ```mermaid
-flowchart LR
-  %% Containers and components
-  subgraph CLIENT_SIDE[Client-side]
-    BROWSER(Browser)
+---
+config:
+  theme: base
+  themeVariables:
+    actorBkg: "#E6E6E6"
+    actorBorder: "#808080"
+    actorTextColor: "#000000"
+---
+sequenceDiagram
+  %% Components and grouping boxes
+  actor CLIENT as Client
+
+  box rgb(245, 223, 238) CMS
+    participant DRAMATIS_CMS as dramatis-cms
   end
 
-  subgraph SERVER_SIDE[Server-side]
-    DRAMATIS_API(dramatis-api)
-    DRAMATIS_CMS(dramatis-cms)
-    DRAMATIS_SPA(dramatis-spa)
-    DRAMATIS_SSR(dramatis-ssr)
+  box rgb(218, 231, 242) API
+    participant DRAMATIS_API as dramatis-api
   end
 
-  NEO4J[(Neo4j database)]
+  box rgb(223, 240, 216) Database
+    participant NEO4J_DATABASE as Neo4j database
+  end
 
   %% Relationships
-  BROWSER -- CRUD operations --> DRAMATIS_CMS
+  CLIENT ->> DRAMATIS_CMS: GET/POST/PUT/DELETE request
 
-  BROWSER -- GET data --> DRAMATIS_SPA
+  DRAMATIS_CMS ->> DRAMATIS_API: GET/POST/PUT/DELETE request
 
-  BROWSER -- GET data --> DRAMATIS_SSR
+  DRAMATIS_API ->> NEO4J_DATABASE: CRUD operation
 
-  DRAMATIS_CMS -- CRUD operations --> DRAMATIS_API
+  NEO4J_DATABASE -->> DRAMATIS_API: Return data
 
-  DRAMATIS_SPA -- GET data --> DRAMATIS_API
+  DRAMATIS_API -->> DRAMATIS_CMS: Return data
 
-  DRAMATIS_SSR -- GET data --> DRAMATIS_API
+  DRAMATIS_CMS -->> CLIENT: Return data
+```
 
-  DRAMATIS_API -- CRUD operations --> NEO4J
+---
 
-  %% Style Definitions
-  classDef browser fill:#c2ad01,stroke:#625800,color:#FFFFFF
-  classDef dramatisApi fill:#006699,stroke:#042c53,color:#FFFFFF
-  classDef dramatisCms fill:#7A1158,stroke:#470330,color:#FFFFFF
-  classDef dramatisSpa fill:#478e84,stroke:#094a40,color:#FFFFFF
-  classDef dramatisSsr fill:#bc6e2a,stroke:#864206,color:#FFFFFF
-  classDef neo4j fill:#63ac44,stroke:#22590a,color:#FFFFFF
+[`dramatis-spa`](https://github.com/andygout/dramatis-spa) visualises the content.
 
-  %% Apply Styles
-  class BROWSER browser
-  class DRAMATIS_API dramatisApi
-  class DRAMATIS_CMS dramatisCms
-  class DRAMATIS_SPA dramatisSpa
-  class DRAMATIS_SSR dramatisSsr
-  class NEO4J neo4j
+```mermaid
+---
+config:
+  theme: base
+  themeVariables:
+    actorBkg: "#E6E6E6"
+    actorBorder: "#808080"
+    actorTextColor: "#000000"
+---
+sequenceDiagram
+  %% Components and grouping boxes
+  actor CLIENT as Client
+
+  box rgb(216, 240, 236) SPA
+    participant DRAMATIS_SPA as dramatis-spa
+  end
+
+  box rgb(218, 231, 242) API
+    participant DRAMATIS_API as dramatis-api
+  end
+
+  box rgb(223, 240, 216) Database
+    participant NEO4J_DATABASE as Neo4j database
+  end
+
+  %% Relationships
+  CLIENT ->> DRAMATIS_SPA: GET data
+
+  DRAMATIS_SPA ->> DRAMATIS_API: GET data
+
+  DRAMATIS_API ->> NEO4J_DATABASE: Retrieve data
+
+  NEO4J_DATABASE -->> DRAMATIS_API: Return data
+
+  DRAMATIS_API -->> DRAMATIS_SPA: Return data
+
+  DRAMATIS_SPA -->> CLIENT: Return data
+```
+
+---
+
+[`dramatis-ssr`](https://github.com/andygout/dramatis-ssr) visualises the content.
+
+```mermaid
+---
+config:
+  theme: base
+  themeVariables:
+    actorBkg: "#E6E6E6"
+    actorBorder: "#808080"
+    actorTextColor: "#000000"
+---
+sequenceDiagram
+  %% Components and grouping boxes
+  actor CLIENT as Client
+
+  box rgb(237, 223, 211) SSR
+    participant DRAMATIS_SSR as dramatis-ssr
+  end
+
+  box rgb(218, 231, 242) API
+    participant DRAMATIS_API as dramatis-api
+  end
+
+  box rgb(223, 240, 216) Database
+    participant NEO4J_DATABASE as Neo4j database
+  end
+
+  %% Relationships
+  CLIENT ->> DRAMATIS_SSR: GET data
+
+  DRAMATIS_SSR ->> DRAMATIS_API: GET data
+
+  DRAMATIS_API ->> NEO4J_DATABASE: Retrieve data
+
+  NEO4J_DATABASE -->> DRAMATIS_API: Return data
+
+  DRAMATIS_API -->> DRAMATIS_SSR: Return data
+
+  DRAMATIS_SSR -->> CLIENT: Return data
 ```
