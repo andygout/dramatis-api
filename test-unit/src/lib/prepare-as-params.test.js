@@ -14,19 +14,17 @@ describe('Prepare As Params module', () => {
 
 	beforeEach(async () => {
 		stubs = {
-			neo4j: {
-				int: stub().returnsArg(0)
-			},
 			getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'),
 			isValidDate: stub().returns(true),
-			convertHistoricalToAstronomicalDate: stub().returns('convertHistoricalToAstronomicalDate response')
+			convertHistoricalToAstronomicalDate: stub().returns('convertHistoricalToAstronomicalDate response'),
+			convertJsNumberToNeo4jInteger: stub().returnsArg(0)
 		};
 
 		prepareAsParams = await esmock('../../../src/lib/prepare-as-params.js', {
-			'neo4j-driver': stubs.neo4j,
 			'../../../src/lib/get-random-uuid.js': stubs.getRandomUuid,
 			'../../../src/lib/is-valid-date.js': stubs.isValidDate,
-			'../../../src/neo4j/convert-historical-to-astronomical-date.js': stubs.convertHistoricalToAstronomicalDate
+			'../../../src/neo4j/convert-historical-to-astronomical-date.js': stubs.convertHistoricalToAstronomicalDate,
+			'../../../src/neo4j/convert-js-number-to-neo4j-integer.js': stubs.convertJsNumberToNeo4jInteger
 		});
 	});
 
@@ -90,7 +88,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -100,7 +98,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -110,7 +108,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -122,7 +120,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, null);
 			});
 
@@ -132,7 +130,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, null);
 			});
 
@@ -142,7 +140,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -154,7 +152,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, null);
 			});
 
@@ -164,7 +162,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, null);
 			});
 
@@ -174,7 +172,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -185,7 +183,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.foo, 'bar');
 		});
 
@@ -195,7 +193,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.foo, null);
 		});
 
@@ -205,7 +203,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.foo, null);
 		});
 
@@ -215,7 +213,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(Object.hasOwn(result, 'position'), false);
 		});
 
@@ -284,7 +282,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -294,7 +292,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 			});
 
@@ -304,7 +302,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -316,7 +314,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -326,7 +324,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -336,7 +334,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -348,7 +346,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -358,7 +356,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, null);
 			});
 
@@ -368,7 +366,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.venue.uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 			});
 		});
@@ -379,7 +377,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.venue.foo, 'bar');
 		});
 
@@ -389,7 +387,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.venue.foo, null);
 		});
 
@@ -399,7 +397,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.venue.foo, null);
 		});
 
@@ -409,7 +407,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(Object.hasOwn(result.venue, 'position'), false);
 		});
 
@@ -477,7 +475,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -487,7 +485,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -497,7 +495,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
@@ -507,7 +505,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].foo, 'bar');
 		});
 
@@ -517,7 +515,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].foo, null);
 		});
 
@@ -527,7 +525,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].foo, null);
 		});
 
@@ -538,7 +536,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 			});
 
@@ -563,9 +561,9 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledTwice(stubs.getRandomUuid);
-				sinonAssert.calledTwice(stubs.neo4j.int);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				sinonAssert.calledTwice(stubs.convertJsNumberToNeo4jInteger);
+				sinonAssert.calledWithExactly(stubs.convertJsNumberToNeo4jInteger.firstCall, 0);
+				sinonAssert.calledWithExactly(stubs.convertJsNumberToNeo4jInteger.secondCall, 1);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), true);
 				assert.equal(result.cast[0].position, 0);
 				assert.equal(Object.hasOwn(result.cast[1], 'position'), true);
@@ -646,7 +644,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.cast.length, 1);
 				assert.equal(result.cast[0].name, 'David Calder');
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
@@ -676,7 +674,7 @@ describe('Prepare As Params module', () => {
 					const result = prepareAsParams(instance);
 
 					sinonAssert.notCalled(stubs.getRandomUuid);
-					sinonAssert.notCalled(stubs.neo4j.int);
+					sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 					assert.equal(result.productions.length, 1);
 					assert.equal(Object.hasOwn(result.productions[0], 'name'), false);
 					assert.equal(Object.hasOwn(result.productions[0], 'position'), false);
@@ -707,7 +705,7 @@ describe('Prepare As Params module', () => {
 					const result = prepareAsParams(instance);
 
 					sinonAssert.notCalled(stubs.getRandomUuid);
-					sinonAssert.notCalled(stubs.neo4j.int);
+					sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 					assert.equal(result.characterGroups.length, 1);
 					assert.equal(result.characterGroups[0].name, null);
 					assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
@@ -776,7 +774,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 4);
 				assert.equal(result.characterGroups.length, 1);
 				assert.equal(Object.hasOwn(result.characterGroups[0], 'position'), false);
 				assert.equal(result.characterGroups[0].name, 'The Borkmans');
@@ -811,7 +809,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.calledThrice(stubs.neo4j.int);
+				sinonAssert.calledThrice(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.cast.length, 3);
 			});
 		});
@@ -825,7 +823,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.reviews.length, 1);
 			});
 		});
@@ -840,7 +838,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.productions.length, 1);
 				assert.equal(result.subProductions.length, 1);
 			});
@@ -939,7 +937,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 10);
 			assert.equal(result.characters[0].uuid, result.characters[5].uuid);
 			assert.equal(result.characters[1].uuid, result.characters[6].uuid);
 			assert.equal(result.characters[2].uuid, result.characters[7].uuid);
@@ -955,7 +953,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.production.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -965,7 +963,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.production.cast[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -984,7 +982,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.production.cast[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
@@ -994,7 +992,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.production.cast[0].foo, 'bar');
 		});
 
@@ -1004,7 +1002,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.production.cast[0].foo, null);
 		});
 
@@ -1014,7 +1012,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.production.cast[0].foo, null);
 		});
 
@@ -1025,7 +1023,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
 			});
 
@@ -1052,9 +1050,9 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledTwice(stubs.getRandomUuid);
-				sinonAssert.calledTwice(stubs.neo4j.int);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				sinonAssert.calledTwice(stubs.convertJsNumberToNeo4jInteger);
+				sinonAssert.calledWithExactly(stubs.convertJsNumberToNeo4jInteger.firstCall, 0);
+				sinonAssert.calledWithExactly(stubs.convertJsNumberToNeo4jInteger.secondCall, 1);
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), true);
 				assert.equal(result.production.cast[0].position, 0);
 				assert.equal(Object.hasOwn(result.production.cast[1], 'position'), true);
@@ -1139,7 +1137,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.production.cast.length, 1);
 				assert.equal(result.production.cast[0].name, 'David Calder');
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), false);
@@ -1171,7 +1169,7 @@ describe('Prepare As Params module', () => {
 					const result = prepareAsParams(instance);
 
 					sinonAssert.notCalled(stubs.getRandomUuid);
-					sinonAssert.notCalled(stubs.neo4j.int);
+					sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 					assert.equal(result.foo.productions.length, 1);
 					assert.equal(Object.hasOwn(result.foo.productions[0], 'name'), false);
 					assert.equal(Object.hasOwn(result.foo.productions[0], 'position'), false);
@@ -1204,7 +1202,7 @@ describe('Prepare As Params module', () => {
 					const result = prepareAsParams(instance);
 
 					sinonAssert.notCalled(stubs.getRandomUuid);
-					sinonAssert.notCalled(stubs.neo4j.int);
+					sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 					assert.equal(result.foo.characterGroups.length, 1);
 					assert.equal(result.foo.characterGroups[0].name, null);
 					assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
@@ -1275,7 +1273,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 4);
 				assert.equal(result.foo.characterGroups.length, 1);
 				assert.equal(Object.hasOwn(result.foo.characterGroups[0], 'position'), false);
 				assert.equal(result.foo.characterGroups[0].name, 'The Borkmans');
@@ -1312,7 +1310,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.calledThrice(stubs.neo4j.int);
+				sinonAssert.calledThrice(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.production.cast.length, 3);
 			});
 		});
@@ -1328,7 +1326,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.foo.reviews.length, 1);
 			});
 		});
@@ -1345,7 +1343,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.foo.productions.length, 1);
 				assert.equal(result.foo.subProductions.length, 1);
 			});
@@ -1446,7 +1444,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 10);
 			assert.equal(result.production.cast[0].uuid, result.production.cast[5].uuid);
 			assert.equal(result.production.cast[1].uuid, result.production.cast[6].uuid);
 			assert.equal(result.production.cast[2].uuid, result.production.cast[7].uuid);
@@ -1462,7 +1460,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].roles[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -1472,7 +1470,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.calledOnce(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].roles[0].uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
 		});
 
@@ -1494,7 +1492,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].roles[0].uuid, 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy');
 		});
 
@@ -1504,7 +1502,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].roles[0].foo, 'bar');
 		});
 
@@ -1514,7 +1512,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
@@ -1524,7 +1522,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			sinonAssert.notCalled(stubs.getRandomUuid);
-			sinonAssert.notCalled(stubs.neo4j.int);
+			sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 			assert.equal(result.cast[0].roles[0].foo, null);
 		});
 
@@ -1535,7 +1533,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
 			});
@@ -1605,9 +1603,9 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledTwice(stubs.getRandomUuid);
-				sinonAssert.calledTwice(stubs.neo4j.int);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.firstCall, 0);
-				sinonAssert.calledWithExactly(stubs.neo4j.int.secondCall, 1);
+				sinonAssert.calledTwice(stubs.convertJsNumberToNeo4jInteger);
+				sinonAssert.calledWithExactly(stubs.convertJsNumberToNeo4jInteger.firstCall, 0);
+				sinonAssert.calledWithExactly(stubs.convertJsNumberToNeo4jInteger.secondCall, 1);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), true);
 				assert.equal(result.cast[0].roles[0].position, 0);
@@ -1651,7 +1649,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.calledOnce(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.cast[0].roles.length, 1);
 				assert.equal(result.cast[0].roles[0].name, 'Polonius');
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), false);
@@ -1690,7 +1688,7 @@ describe('Prepare As Params module', () => {
 					const result = prepareAsParams(instance);
 
 					sinonAssert.notCalled(stubs.getRandomUuid);
-					sinonAssert.notCalled(stubs.neo4j.int);
+					sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 					assert.equal(result.foos[0].productions.length, 1);
 					assert.equal(Object.hasOwn(result.foos[0].productions[0], 'name'), false);
 					assert.equal(Object.hasOwn(result.foos[0].productions[0], 'position'), false);
@@ -1726,7 +1724,7 @@ describe('Prepare As Params module', () => {
 					const result = prepareAsParams(instance);
 
 					sinonAssert.notCalled(stubs.getRandomUuid);
-					sinonAssert.notCalled(stubs.neo4j.int);
+					sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 					assert.equal(result.foos[0].characterGroups.length, 1);
 					assert.equal(result.foos[0].characterGroups[0].name, null);
 					assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
@@ -1800,7 +1798,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				assert.equal(stubs.neo4j.int.callCount, 4);
+				assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 4);
 				assert.equal(result.foos[0].characterGroups.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].characterGroups[0], 'position'), false);
 				assert.equal(result.foos[0].characterGroups[0].name, 'The Borkmans');
@@ -1840,7 +1838,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.calledThrice(stubs.neo4j.int);
+				sinonAssert.calledThrice(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.productions[0].cast.length, 3);
 			});
 		});
@@ -1858,7 +1856,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.subProductions[0].reviews.length, 1);
 			});
 		});
@@ -1885,7 +1883,7 @@ describe('Prepare As Params module', () => {
 				const result = prepareAsParams(instance);
 
 				sinonAssert.notCalled(stubs.getRandomUuid);
-				sinonAssert.notCalled(stubs.neo4j.int);
+				sinonAssert.notCalled(stubs.convertJsNumberToNeo4jInteger);
 				assert.equal(result.nominations[0].productions.length, 1);
 				assert.equal(result.productions[0].subProductions.length, 1);
 			});
@@ -1988,7 +1986,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 10);
+			assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 10);
 			assert.equal(result.characterGroups[0].characters[0].uuid, result.characterGroups[0].characters[5].uuid);
 			assert.equal(result.characterGroups[0].characters[1].uuid, result.characterGroups[0].characters[6].uuid);
 			assert.equal(result.characterGroups[0].characters[2].uuid, result.characterGroups[0].characters[7].uuid);
@@ -2099,7 +2097,7 @@ describe('Prepare As Params module', () => {
 			const result = prepareAsParams(instance);
 
 			assert.equal(stubs.getRandomUuid.callCount, 6);
-			assert.equal(stubs.neo4j.int.callCount, 12);
+			assert.equal(stubs.convertJsNumberToNeo4jInteger.callCount, 12);
 			assert.equal(result.characterGroups[0].characters[0].uuid, result.characterGroups[1].characters[0].uuid);
 			assert.equal(result.characterGroups[0].characters[1].uuid, result.characterGroups[1].characters[1].uuid);
 			assert.equal(result.characterGroups[0].characters[2].uuid, result.characterGroups[1].characters[2].uuid);
