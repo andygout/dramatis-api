@@ -132,9 +132,13 @@ const prepareAsParams = (instance) => {
 						isValidDate(value, { allowBce: true })
 					) {
 						accumulator[key] = convertHistoricalToAstronomicalDate(value);
-					} else if (typeof value === 'number') accumulator[key] = neo4j.int(value);
-					else if (value === '' || (typeof value === 'boolean' && !value)) accumulator[key] = null;
-					else accumulator[key] = value || null;
+					} else if (typeof value === 'number') {
+						accumulator[key] = neo4j.int(value);
+					} else if (value === '' || (typeof value === 'boolean' && !value)) {
+						accumulator[key] = null;
+					} else {
+						accumulator[key] = value || null;
+					}
 				}
 
 				return accumulator;
