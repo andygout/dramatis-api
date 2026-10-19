@@ -51,10 +51,12 @@
 		{
 			"characters": [
 				{
-					"name": "Betty"
+					"name": "Betty",
+					"differentiator": "Vernon God Little"
 				},
 				{
-					"name": "Pam"
+					"name": "Pam",
+					"differentiator": "Vernon God Little"
 				},
 				{
 					"name": "Abdini"

@@ -1,0 +1,56 @@
+{
+	"name": "Greenland",
+	"differentiator": "2",
+	"format": "play",
+	"year": "2009",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Nicolas Billon"
+				}
+			]
+		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "Canada"
+			},
+			"locale": {
+				"name": "Family home"
+			}
+		},
+		{
+			"time": {
+				"name": "2000s"
+			},
+			"place": {
+				"name": "Greenland"
+			},
+			"locale": {
+				"name": "Ice sheet"
+			}
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Jonathan",
+					"differentiator": "Greenland 2009"
+				},
+				{
+					"name": "Judith"
+				},
+				{
+					"name": "Tanya",
+					"differentiator": "Greenland 2009"
+				}
+			]
+		}
+	]
+}

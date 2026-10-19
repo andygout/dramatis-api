@@ -1,0 +1,130 @@
+{
+	"name": "Greenland",
+	"differentiator": "1",
+	"format": "play",
+	"year": "1988",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Howard Brenton"
+				}
+			]
+		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "11th June 1987"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Street"
+			}
+		},
+		{
+			"time": {
+				"name": "11th June 1987"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Polling station"
+			}
+		},
+		{
+			"time": {
+				"name": "11th June 1987"
+			},
+			"place": {
+				"name": "River Thames"
+			},
+			"locale": {
+				"name": "Riverside"
+			}
+		},
+		{
+			"time": {
+				"name": "2687"
+			},
+			"place": {
+				"name": "Greenland"
+			}
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Joan",
+					"differentiator": "Greenland 1988"
+				},
+				{
+					"name": "Mary",
+					"differentiator": "Greenland 1988"
+				},
+				{
+					"name": "Bill",
+					"differentiator": "Greenland 1988"
+				},
+				{
+					"name": "Centurion"
+				},
+				{
+					"name": "Jacko"
+				},
+				{
+					"name": "Betty",
+					"differentiator": "Greenland 1988"
+				},
+				{
+					"name": "Blaze"
+				},
+				{
+					"name": "Dot"
+				},
+				{
+					"name": "Judy",
+					"differentiator": "Greenland 1988"
+				},
+				{
+					"name": "Val",
+					"differentiator": "Greenland 1988"
+				},
+				{
+					"name": "Larry"
+				},
+				{
+					"name": "Brian"
+				},
+				{
+					"name": "Paul, Lord Ludlow"
+				},
+				{
+					"name": "Jeff"
+				},
+				{
+					"name": "Sister Anne"
+				},
+				{
+					"name": "Milly"
+				},
+				{
+					"name": "Roger"
+				},
+				{
+					"name": "Hugh Don"
+				},
+				{
+					"name": "Andrew"
+				},
+				{
+					"name": "Busker"
+				}
+			]
+		}
+	]
+}
