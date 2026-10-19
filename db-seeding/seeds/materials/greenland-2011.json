@@ -1,0 +1,198 @@
+{
+	"name": "Greenland",
+	"differentiator": "3",
+	"format": "play",
+	"year": "2011",
+	"writingCredits": [
+		{
+			"entities": [
+				{
+					"name": "Moira Buffini"
+				},
+				{
+					"name": "Matt Charman"
+				},
+				{
+					"name": "Penelope Skinner"
+				},
+				{
+					"name": "Jack Thorne"
+				}
+			]
+		}
+	],
+	"settings": [
+		{
+			"time": {
+				"name": "2009"
+			},
+			"place": {
+				"name": "Copenhagen"
+			},
+			"locale": {
+				"name": "Conference centre"
+			}
+		},
+		{
+			"time": {
+				"name": "2009"
+			},
+			"place": {
+				"name": "London"
+			},
+			"locale": {
+				"name": "Government office"
+			}
+		},
+		{
+			"time": {
+				"name": "2009"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "House"
+			}
+		},
+		{
+			"time": {
+				"name": "2009"
+			},
+			"place": {
+				"name": "England"
+			},
+			"locale": {
+				"name": "Supermarket"
+			}
+		},
+		{
+			"time": {
+				"name": "2009"
+			},
+			"place": {
+				"name": "Arctic"
+			},
+			"locale": {
+				"name": "Wilderness"
+			}
+		}
+	],
+	"characterGroups": [
+		{
+			"characters": [
+				{
+					"name": "Adeel"
+				},
+				{
+					"name": "Paula"
+				},
+				{
+					"name": "Lisa"
+				},
+				{
+					"name": "Shopper"
+				},
+				{
+					"name": "Dr Ray Boykin",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Robert",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Harold"
+				},
+				{
+					"name": "Harry",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Sarah",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Freya",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Al",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Naval cadet"
+				},
+				{
+					"name": "Phoebe Hammond"
+				},
+				{
+					"name": "Damien"
+				},
+				{
+					"name": "Bernice"
+				},
+				{
+					"name": "Natasha"
+				},
+				{
+					"name": "Dav"
+				},
+				{
+					"name": "Susie"
+				},
+				{
+					"name": "Peta"
+				},
+				{
+					"name": "Sam",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Claude"
+				},
+				{
+					"name": "Adam",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Pam",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Serena"
+				},
+				{
+					"name": "Celia",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Nigel",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Alamir"
+				},
+				{
+					"name": "Seydou Diakite"
+				},
+				{
+					"name": "Dr Joanna Depledge"
+				},
+				{
+					"name": "Oppenheim"
+				},
+				{
+					"name": "Jacobs"
+				},
+				{
+					"name": "Waiter",
+					"differentiator": "Greenland 2011"
+				},
+				{
+					"name": "Mac"
+				}
+			]
+		}
+	]
+}

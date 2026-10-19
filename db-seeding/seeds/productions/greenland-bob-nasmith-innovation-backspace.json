@@ -1,0 +1,106 @@
+{
+	"name": "Greenland",
+	"startDate": "2009-08-07",
+	"endDate": "2009-08-15",
+	"material": {
+		"name": "Greenland",
+		"differentiator": "2"
+	},
+	"venue": {
+		"name": "Bob Nasmith Innovation Backspace"
+	},
+	"producerCredits": [
+		{
+			"entities": [
+				{
+					"model": "COMPANY",
+					"name": "Greenland Collective"
+				},
+				{
+					"name": "Roxanne Duncan"
+				}
+			]
+		}
+	],
+	"cast": [
+		{
+			"name": "Claire Calnan",
+			"roles": [
+				{
+					"name": "Judith"
+				}
+			]
+		},
+		{
+			"name": "Jajube Mandiela",
+			"roles": [
+				{
+					"name": "Tanya"
+				}
+			]
+		},
+		{
+			"name": "Andrew Musselman",
+			"roles": [
+				{
+					"name": "Jonathan"
+				}
+			]
+		}
+	],
+	"creativeCredits": [
+		{
+			"name": "Director",
+			"entities": [
+				{
+					"name": "Ravi Jain"
+				}
+			]
+		},
+		{
+			"name": "Designer",
+			"entities": [
+				{
+					"name": "Ken MacKenzie"
+				}
+			]
+		},
+		{
+			"name": "Assistant Director",
+			"entities": [
+				{
+					"name": "Natalia Naranjo"
+				}
+			]
+		}
+	],
+	"crewCredits": [
+		{
+			"name": "Stage Manager",
+			"entities": [
+				{
+					"name": "Kat Chin"
+				}
+			]
+		},
+		{
+			"name": "Venue Technician",
+			"entities": [
+				{
+					"name": "David DeGrow"
+				},
+				{
+					"name": "Alicia Ho"
+				}
+			]
+		},
+		{
+			"name": "Festival Lighting Designer",
+			"entities": [
+				{
+					"name": "David DeGrow"
+				}
+			]
+		}
+	]
+}
