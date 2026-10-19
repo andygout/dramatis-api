@@ -348,11 +348,9 @@ export default () => `
 			END
 		) + [{ entities: [{}] }] AS crewCredits
 
-	OPTIONAL MATCH
-		(publication:Company)<-[publicationRel:HAS_REVIEWER]-(production)-[criticRel:HAS_REVIEWER]->(critic:Person)
-		WHERE
-			publicationRel.position IS NULL OR
-			publicationRel.position = criticRel.position
+	OPTIONAL MATCH (production)-[reviewRel:HAS_REVIEW]->(review:Review)
+
+	OPTIONAL MATCH (publication:Company)<-[:HAS_PUBLICATION]-(review)-[:HAS_CRITIC]->(critic:Person)
 
 	WITH
 		production,
@@ -365,10 +363,10 @@ export default () => `
 		cast,
 		creativeCredits,
 		crewCredits,
+		review,
 		publication,
-		publicationRel,
 		critic
-		ORDER BY publicationRel.position
+		ORDER BY reviewRel.position
 
 	RETURN
 		production.uuid AS uuid,
@@ -387,11 +385,11 @@ export default () => `
 		creativeCredits,
 		crewCredits,
 		COLLECT(
-			CASE WHEN publicationRel IS NULL
+			CASE WHEN review IS NULL
 				THEN null
 				ELSE {
-					url: publicationRel.url,
-					date: publicationRel.date,
+					url: review.url,
+					date: review.date,
 					publication: publication { .name, .differentiator },
 					critic: critic { .name, .differentiator }
 				}
