@@ -16,6 +16,12 @@ const getCreateUpdateQuery = (action) => {
 		[ACTIONS.UPDATE]: `
 			MATCH (production:Production { uuid: $uuid })
 
+			OPTIONAL MATCH (production)-[:HAS_REVIEW]-(review:Review)
+
+			DETACH DELETE review
+
+			WITH production
+
 			OPTIONAL MATCH (production)-[relationship]-()
 				WHERE NOT EXISTS((production)<-[relationship:HAS_SUB_PRODUCTION]-(:Production))
 
@@ -492,19 +498,16 @@ const getCreateUpdateQuery = (action) => {
 					reviewParam.critic.differentiator = existingPerson.differentiator
 
 			FOREACH (item IN CASE WHEN reviewParam IS NULL THEN [] ELSE [1] END |
+				CREATE (production)-[:HAS_REVIEW { position: reviewParam.position }]->
+					(review:Review { url: reviewParam.url, date: reviewParam.date })
+
 				MERGE (publication:Company {
 					uuid: COALESCE(existingCompany.uuid, reviewParam.publication.uuid),
 					name: reviewParam.publication.name
 				})
 					ON CREATE SET publication.differentiator = reviewParam.publication.differentiator
 
-				CREATE (production)-
-					[:HAS_REVIEWER {
-						position: reviewParam.position,
-						criticPersonUuid: COALESCE(existingPerson.uuid, reviewParam.critic.uuid),
-						url: reviewParam.url,
-						date: reviewParam.date
-					}]->(publication)
+				CREATE (review)-[:HAS_PUBLICATION]->(publication)
 
 				MERGE (critic:Person {
 					uuid: COALESCE(existingPerson.uuid, reviewParam.critic.uuid),
@@ -512,11 +515,7 @@ const getCreateUpdateQuery = (action) => {
 				})
 					ON CREATE SET critic.differentiator = reviewParam.critic.differentiator
 
-				CREATE (production)-
-					[:HAS_REVIEWER {
-						position: reviewParam.position,
-						publicationCompanyUuid: COALESCE(existingCompany.uuid, reviewParam.publication.uuid)
-					}]->(critic)
+				CREATE (review)-[:HAS_CRITIC]->(critic)
 			)
 
 		WITH DISTINCT production

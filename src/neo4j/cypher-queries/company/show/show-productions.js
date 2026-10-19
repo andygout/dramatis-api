@@ -434,9 +434,9 @@ export default () => `
 	CALL {
 		WITH company
 
-		OPTIONAL MATCH (company)<-[publicationRel:HAS_REVIEWER]-(production:Production)
+		OPTIONAL MATCH (company)<-[:HAS_PUBLICATION]-(review:Review)<-[:HAS_REVIEW]-(production:Production)
 
-		OPTIONAL MATCH (critic:Person { uuid: publicationRel.criticPersonUuid })
+		OPTIONAL MATCH (review)-[:HAS_CRITIC]->(critic:Person)
 
 		OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
 
@@ -456,8 +456,8 @@ export default () => `
 			surSurProductionRel,
 			{
 				model: 'REVIEW',
-				url: publicationRel.url,
-				date: publicationRel.date,
+				url: review.url,
+				date: review.date,
 				critic: critic {
 					model: 'PERSON',
 					.uuid,
@@ -465,7 +465,7 @@ export default () => `
 				}
 			} AS review
 			ORDER BY
-				publicationRel.date DESC,
+				review.date DESC,
 				production.startDate DESC,
 				COALESCE(surSurProduction.name, surProduction.name, production.name) DESC,
 				COALESCE(surSurProductionRel.position, surProductionRel.position, -1) DESC,

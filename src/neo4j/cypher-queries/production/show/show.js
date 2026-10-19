@@ -664,11 +664,9 @@ export default () => `
 				END
 			) AS crewCredits
 
-		OPTIONAL MATCH (publication:Company)
-			<-[publicationRel:HAS_REVIEWER]-(collectionProduction)-[criticRel:HAS_REVIEWER]->(critic:Person)
-			WHERE
-				publicationRel.position IS NULL OR
-				publicationRel.position = criticRel.position
+		OPTIONAL MATCH (collectionProduction)-[:HAS_REVIEW]->(review:Review)
+
+		OPTIONAL MATCH (publication:Company)<-[:HAS_PUBLICATION]-(review)-[:HAS_CRITIC]->(critic:Person)
 
 		WITH
 			production,
@@ -681,10 +679,10 @@ export default () => `
 			cast,
 			creativeCredits,
 			crewCredits,
+			review,
 			publication,
-			publicationRel,
 			critic
-			ORDER BY publicationRel.date, publication.name
+			ORDER BY review.date, publication.name
 
 		WITH
 			production,
@@ -698,12 +696,12 @@ export default () => `
 			creativeCredits,
 			crewCredits,
 			COLLECT(
-				CASE WHEN publicationRel IS NULL
+				CASE WHEN review IS NULL
 					THEN null
 					ELSE {
 						model: 'REVIEW',
-						url: publicationRel.url,
-						date: publicationRel.date,
+						url: review.url,
+						date: review.date,
 						publication: publication { model: 'COMPANY', .uuid, .name },
 						critic: critic { model: 'PERSON', .uuid, .name }
 					}

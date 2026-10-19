@@ -44,11 +44,11 @@ describe('Cypher Queries Production module', () => {
 					creativeCredits,
 					crewCredits,
 					COLLECT(
-						CASE WHEN publicationRel IS NULL
+						CASE WHEN review IS NULL
 							THEN null
 							ELSE {
-								url: publicationRel.url,
-								date: publicationRel.date,
+								url: review.url,
+								date: review.date,
 								publication: publication { .name, .differentiator },
 								critic: critic { .name, .differentiator }
 							}
@@ -70,6 +70,12 @@ describe('Cypher Queries Production module', () => {
 
 			const startSegment = removeExcessWhitespace(`
 				MATCH (production:Production { uuid: $uuid })
+
+				OPTIONAL MATCH (production)-[:HAS_REVIEW]-(review:Review)
+
+				DETACH DELETE review
+
+				WITH production
 
 				OPTIONAL MATCH (production)-[relationship]-()
 					WHERE NOT EXISTS((production)<-[relationship:HAS_SUB_PRODUCTION]-(:Production))
@@ -108,11 +114,11 @@ describe('Cypher Queries Production module', () => {
 					creativeCredits,
 					crewCredits,
 					COLLECT(
-						CASE WHEN publicationRel IS NULL
+						CASE WHEN review IS NULL
 							THEN null
 							ELSE {
-								url: publicationRel.url,
-								date: publicationRel.date,
+								url: review.url,
+								date: review.date,
 								publication: publication { .name, .differentiator },
 								critic: critic { .name, .differentiator }
 							}
