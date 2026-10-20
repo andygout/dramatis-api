@@ -4,7 +4,7 @@ export default () => `
 	CALL {
 		WITH time
 
-		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(settingTime:Time)
+		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(:Setting)-[:HAS_TIME]->(settingTime:Time)
 			WHERE settingTime = time OR
 				(
 					settingTime.fromDate >= time.fromDate AND
@@ -124,38 +124,33 @@ export default () => `
 			CALL {
 				WITH material, time
 
-				OPTIONAL MATCH (material)-[timeSettingRel:HAS_SETTING]->(settingTime:Time)
+				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_TIME]->(settingTime:Time)
 					WHERE settingTime = time OR
 						(
 							settingTime.fromDate >= time.fromDate AND
 							settingTime.toDate <= time.toDate
 						)
 
-				OPTIONAL MATCH (place:Place { uuid: timeSettingRel.placeUuid })
+				OPTIONAL MATCH (setting)-[:HAS_PLACE]->(place:Place)
 
-				OPTIONAL MATCH (locale:Locale { uuid: timeSettingRel.localeUuid })
+				OPTIONAL MATCH (setting)-[:HAS_LOCALE]->(locale:Locale)
 
-				WITH timeSettingRel, settingTime, place, locale
-					ORDER BY timeSettingRel.position
+				WITH settingTime, place, locale
+					ORDER BY settingRel.position
 
 				RETURN
-					COLLECT(
-						CASE WHEN timeSettingRel IS NULL
+					COLLECT({
+						model: 'SETTING',
+						time: settingTime { model: 'TIME', .uuid, .name },
+						place: CASE WHEN place IS NULL
 							THEN null
-							ELSE {
-								model: 'SETTING',
-								time: settingTime { model: 'TIME', .uuid, .name },
-								place: CASE WHEN place IS NULL
-									THEN null
-									ELSE place { model: 'PLACE', .uuid, .name }
-								END,
-								locale: CASE WHEN locale IS NULL
-									THEN null
-									ELSE locale { model: 'LOCALE', .uuid, .name }
-								END
-							}
+							ELSE place { model: 'PLACE', .uuid, .name }
+						END,
+						locale: CASE WHEN locale IS NULL
+							THEN null
+							ELSE locale { model: 'LOCALE', .uuid, .name }
 						END
-					) AS settings
+					}) AS settings
 			}
 
 			WITH material, surMaterial, surSurMaterial, writingCredits, settings

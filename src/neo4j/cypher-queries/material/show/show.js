@@ -198,35 +198,43 @@ export default () => `
 				relatedMaterial { .model, .uuid, .name, .format, .year, .surMaterial, .writingCredits }
 			]) AS originalVersionMaterial
 
-		OPTIONAL MATCH (collectionMaterial)-[settingRel:HAS_SETTING]->(setting:Time|Place|Locale)
+		OPTIONAL MATCH (collectionMaterial)-[settingRel:HAS_SETTING]->(setting:Setting)
+
+		OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)
+
+		OPTIONAL MATCH (setting)-[:HAS_PLACE]->(place:Place)
+
+		OPTIONAL MATCH (setting)-[:HAS_LOCALE]->(locale:Locale)
 
 		WITH
 			material,
 			collectionMaterial,
 			writingCredits,
 			originalVersionMaterial,
-			settingRel.position AS settingPosition,
-			COLLECT(setting) AS settings
-			ORDER BY settingPosition
+			setting,
+			time,
+			place,
+			locale
+			ORDER BY settingRel.position
 
 		WITH
 			material,
 			collectionMaterial,
 			writingCredits,
 			originalVersionMaterial,
-			settingPosition,
-			HEAD([
-				setting IN settings WHERE 'Time' IN LABELS(setting) |
-					setting { model: 'TIME', .uuid, .name }
-			]) AS timeSetting,
-			HEAD([
-				setting IN settings WHERE 'Place' IN LABELS(setting) |
-					setting { model: 'PLACE', .uuid, .name }
-			]) AS placeSetting,
-			HEAD([
-				setting IN settings WHERE 'Locale' IN LABELS(setting) |
-					setting { model: 'LOCALE', .uuid, .name }
-			]) AS localeSetting
+			setting,
+			CASE WHEN time IS NULL
+				THEN null
+				ELSE time { model: 'TIME', .uuid, .name }
+			END AS time,
+			CASE WHEN place IS NULL
+				THEN null
+				ELSE place { model: 'PLACE', .uuid, .name }
+			END AS place,
+			CASE WHEN locale IS NULL
+				THEN null
+				ELSE locale { model: 'LOCALE', .uuid, .name }
+			END AS locale
 
 		WITH
 			material,
@@ -234,18 +242,13 @@ export default () => `
 			writingCredits,
 			originalVersionMaterial,
 			COLLECT(
-				CASE
-					WHEN
-						settingPosition IS NULL AND
-						timeSetting IS NULL AND
-						placeSetting IS NULL AND
-						localeSetting IS NULL
+				CASE WHEN setting IS NULL
 					THEN null
 					ELSE {
 						model: 'SETTING',
-						time: timeSetting,
-						place: placeSetting,
-						locale: localeSetting
+						time: time,
+						place: place,
+						locale: locale
 					}
 				END
 			) AS settings

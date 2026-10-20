@@ -4,7 +4,7 @@ export default () => `
 	CALL {
 		WITH locale
 
-		OPTIONAL MATCH (locale)<-[:HAS_SETTING]-(material:Material)
+		OPTIONAL MATCH (locale)<-[:HAS_LOCALE]-(:Setting)<-[:HAS_SETTING]-(material:Material)
 
 		WITH DISTINCT locale, material
 
@@ -119,33 +119,28 @@ export default () => `
 			CALL {
 				WITH material, locale
 
-				OPTIONAL MATCH (material)-[localeSettingRel:HAS_SETTING]->(locale)
+				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_LOCALE]->(locale)
 
-				OPTIONAL MATCH (time:Time { uuid: localeSettingRel.timeUuid })
+				OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)
 
-				OPTIONAL MATCH (place:Place { uuid: localeSettingRel.placeUuid })
+				OPTIONAL MATCH (setting)-[:HAS_PLACE]->(place:Place)
 
-				WITH localeSettingRel, locale, time, place
-					ORDER BY localeSettingRel.position
+				WITH locale, time, place
+					ORDER BY settingRel.position
 
 				RETURN
-					COLLECT(
-						CASE WHEN localeSettingRel IS NULL
+					COLLECT({
+						model: 'SETTING',
+						time: CASE WHEN time IS NULL
 							THEN null
-							ELSE {
-								model: 'SETTING',
-								time: CASE WHEN time IS NULL
-									THEN null
-									ELSE time { model: 'TIME', .uuid, .name }
-								END,
-								place: CASE WHEN place IS NULL
-									THEN null
-									ELSE place { model: 'PLACE', .uuid, .name }
-								END,
-								locale: locale { model: 'LOCALE', .uuid, .name }
-							}
-						END
-					) AS settings
+							ELSE time { model: 'TIME', .uuid, .name }
+						END,
+						place: CASE WHEN place IS NULL
+							THEN null
+							ELSE place { model: 'PLACE', .uuid, .name }
+						END,
+						locale: locale { model: 'LOCALE', .uuid, .name }
+					}) AS settings
 			}
 
 			WITH material, surMaterial, surSurMaterial, writingCredits, settings

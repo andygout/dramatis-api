@@ -88,9 +88,9 @@ describe('Cypher Queries Material module', () => {
 
 				WITH DISTINCT material
 
-				OPTIONAL MATCH (material)-[settingRel:HAS_SETTING]->(:Time|Place|Locale)
+				OPTIONAL MATCH (material)-[:HAS_SETTING]-(setting:Setting)
 
-				DELETE settingRel
+				DETACH DELETE setting
 
 				WITH DISTINCT material
 
