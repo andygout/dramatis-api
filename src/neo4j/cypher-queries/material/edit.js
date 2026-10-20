@@ -45,35 +45,43 @@ export default () => `
 			END
 		) + [{}] AS subMaterials
 
-	OPTIONAL MATCH (material)-[settingRel:HAS_SETTING]->(setting:Time|Place|Locale)
+	OPTIONAL MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)
+
+	OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)
+
+	OPTIONAL MATCH (setting)-[:HAS_PLACE]->(place:Place)
+
+	OPTIONAL MATCH (setting)-[:HAS_LOCALE]->(locale:Locale)
 
 	WITH
 		material,
 		originalVersionMaterial,
 		writingCredits,
 		subMaterials,
-		settingRel.position AS settingPosition,
-		COLLECT(setting) AS settings
-		ORDER BY settingPosition
+		setting,
+		time,
+		place,
+		locale
+		ORDER BY settingRel.position
 
 	WITH
 		material,
 		originalVersionMaterial,
 		writingCredits,
 		subMaterials,
-		settingPosition,
-		HEAD([
-			setting IN settings WHERE 'Time' IN LABELS(setting) |
-				setting { .name, .differentiator }
-		]) AS timeSetting,
-		HEAD([
-			setting IN settings WHERE 'Place' IN LABELS(setting) |
-				setting { .name, .differentiator }
-		]) AS placeSetting,
-		HEAD([
-			setting IN settings WHERE 'Locale' IN LABELS(setting) |
-				setting { .name, .differentiator }
-		]) AS localeSetting
+		setting,
+		CASE WHEN time IS NULL
+			THEN null
+			ELSE time { .name, .differentiator }
+		END AS time,
+		CASE WHEN place IS NULL
+			THEN null
+			ELSE place { .name, .differentiator }
+		END AS place,
+		CASE WHEN locale IS NULL
+			THEN null
+			ELSE locale { .name, .differentiator }
+		END AS locale
 
 	WITH
 		material,
@@ -81,12 +89,12 @@ export default () => `
 		writingCredits,
 		subMaterials,
 		COLLECT(
-			CASE WHEN settingPosition IS NULL AND timeSetting IS NULL AND placeSetting IS NULL AND localeSetting IS NULL
+			CASE WHEN setting IS NULL
 				THEN null
 				ELSE {
-					time: COALESCE(timeSetting, {}),
-					place: COALESCE(placeSetting, {}),
-					locale: COALESCE(localeSetting, {})
+					time: COALESCE(time, {}),
+					place: COALESCE(place, {}),
+					locale: COALESCE(locale, {})
 				}
 			END
 		) + [{}] AS settings
