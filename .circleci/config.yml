@@ -60,7 +60,7 @@ jobs:
   e2e-tests:
     docker:
       - image: cimg/node:26.1.0
-      - image: neo4j:5.26.8
+      - image: neo4j:2025.10.1
         environment:
           NEO4J_AUTH: none
           NEO4J_server_memory_heap_initial__size: 512M
