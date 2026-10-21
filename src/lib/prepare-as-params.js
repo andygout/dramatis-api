@@ -2,7 +2,7 @@ import getRandomUuid from './get-random-uuid.js';
 import isObjectWithKeys from './is-object-with-keys.js';
 import isValidDate from './is-valid-date.js';
 import convertHistoricalToAstronomicalDate from '../neo4j/convert-historical-to-astronomical-date.js';
-import convertJsNumberToNeo4jInteger from '../neo4j/convert-js-number-to-neo4j-integer.js';
+import convertJsIntegerToNeo4jInteger from '../neo4j/convert-js-integer-to-neo4j-integer.js';
 
 // Model type properties.
 const CHARACTER_GROUPS = 'characterGroups';
@@ -139,8 +139,8 @@ const prepareAsParams = (instance) => {
 						isValidDate(value, { allowBce: true })
 					) {
 						accumulator[key] = convertHistoricalToAstronomicalDate(value);
-					} else if (typeof value === 'number') {
-						accumulator[key] = convertJsNumberToNeo4jInteger(value);
+					} else if (Number.isInteger(value)) {
+						accumulator[key] = convertJsIntegerToNeo4jInteger(value);
 					} else if (value === '' || (typeof value === 'boolean' && !value)) {
 						accumulator[key] = null;
 					} else {

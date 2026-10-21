@@ -4,7 +4,7 @@ import { afterEach, beforeEach, describe, it } from 'node:test';
 import esmock from 'esmock';
 import { assert as sinonAssert, createStubInstance, restore, stub } from 'sinon';
 
-import { Locale, Place, TimeBase } from '../../../src/models/index.js';
+import { Locale, PlaceBase, TimeBase } from '../../../src/models/index.js';
 
 describe('Setting model', () => {
 	let stubs;
@@ -14,8 +14,8 @@ describe('Setting model', () => {
 		return createStubInstance(Locale);
 	};
 
-	const PlaceStub = function () {
-		return createStubInstance(Place);
+	const PlaceBaseStub = function () {
+		return createStubInstance(PlaceBase);
 	};
 
 	const TimeBaseStub = function () {
@@ -29,7 +29,7 @@ describe('Setting model', () => {
 			},
 			models: {
 				Locale: LocaleStub,
-				Place: PlaceStub,
+				PlaceBase: PlaceBaseStub,
 				TimeBase: TimeBaseStub
 			}
 		};
@@ -72,7 +72,7 @@ describe('Setting model', () => {
 			it('assigns instance if absent from props', async () => {
 				const instance = new Setting();
 
-				assert.ok(instance.place instanceof Place);
+				assert.ok(instance.place instanceof PlaceBase);
 			});
 
 			it('assigns instance if included in props', async () => {
@@ -82,7 +82,7 @@ describe('Setting model', () => {
 					}
 				});
 
-				assert.ok(instance.place instanceof Place);
+				assert.ok(instance.place instanceof PlaceBase);
 			});
 		});
 

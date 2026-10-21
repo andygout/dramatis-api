@@ -40,11 +40,30 @@ const DECEMBER_NINETEEN_SIXTY_FIVE_TIME_UUID = 'DECEMBER_1965_TIME_UUID';
 const JANUARY_NINETEEN_SIXTY_NINE_TIME_UUID = 'JANUARY_1969_TIME_UUID';
 const DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID = 'DECEMBER_1969_TIME_UUID';
 const FEBRUARY_NINETEEN_SEVENTY_EIGHT_TIME_UUID = 'FEBRUARY_1978_TIME_UUID';
+const UNITED_STATES_OF_AMERICA_PLACE_UUID = 'UNITED_STATES_OF_AMERICA_PLACE_UUID';
+const NEW_JERSEY_PLACE_UUID = 'NEW_JERSEY_PLACE_UUID';
+const NEW_YORK_PLACE_UUID = 'NEW_YORK_PLACE_UUID';
+const PENNSYLVANIA_PLACE_UUID = 'PENNSYLVANIA_PLACE_UUID';
+const APPALACHIA_PLACE_UUID = 'APPALACHIA_PLACE_UUID';
+const TRI_STATE_AREA_PLACE_UUID = 'TRI_STATE_AREA_PLACE_UUID';
+const ATLANTIC_CITY_PLACE_UUID = 'ATLANTIC_CITY_PLACE_UUID';
+const ALBANY_PLACE_UUID = 'ALBANY_PLACE_UUID';
+const BUFFALO_PLACE_UUID = 'BUFFALO_PLACE_UUID';
+const NEW_YORK_CITY_PLACE_UUID = 'NEW_YORK_CITY_PLACE_UUID';
+const PHILADELPHIA_PLACE_UUID = 'PHILADELPHIA_PLACE_UUID';
+const DUCKTOWN_PLACE_UUID = 'DUCKTOWN_PLACE_UUID';
+const DOWNTOWN_PLACE_UUID = 'DOWNTOWN_PLACE_UUID';
+const CENTER_SQUARE_PLACE_UUID = 'CENTER_SQUARE_PLACE_UUID';
+const ALLENTOWN_PLACE_UUID = 'ALLENTOWN_PLACE_UUID';
+const ELMWOOD_VILLAGE_PLACE_UUID = 'ELMWOOD_VILLAGE_PLACE_UUID';
+const BROOKLYN_PLACE_UUID = 'BROOKLYN_PLACE_UUID';
+const MANHATTAN_PLACE_UUID = 'MANHATTAN_PLACE_UUID';
+const THE_BRONX_PLACE_UUID = 'THE_BRONX_PLACE_UUID';
+const CENTER_CITY_PLACE_UUID = 'CENTER_CITY_PLACE_UUID';
 const GRAULT_MATERIAL_UUID = 'GRAULT_MATERIAL_UUID';
 const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
 const XIANYANG_PLACE_UUID = 'XIANYANG_PLACE_UUID';
 const AUDIENCE_HALL_LOCALE_UUID = 'AUDIENCE_HALL_LOCALE_UUID';
-const ARGENTINA_PLACE_UUID = 'ARGENTINA_PLACE_UUID';
 const RIVERSIDE_LOCALE_UUID = 'RIVERSIDE_LOCALE_UUID';
 const GARPLY_MATERIAL_UUID = 'GARPLY_MATERIAL_UUID';
 const CONOR_CORGE_PERSON_UUID = 'CONOR_CORGE_PERSON_UUID';
@@ -55,21 +74,15 @@ const NANYANG_PLACE_UUID = 'NANYANG_PLACE_UUID';
 const CITY_GATE_LOCALE_UUID = 'CITY_GATE_LOCALE_UUID';
 const LUOYANG_PLACE_UUID = 'LUOYANG_PLACE_UUID';
 const PALACE_LOCALE_UUID = 'PALACE_LOCALE_UUID';
-const MANCHESTER_PLACE_UUID = 'MANCHESTER_PLACE_UUID';
 const RAILWAY_STATION_LOCALE_UUID = 'RAILWAY_STATION_LOCALE_UUID';
-const ONTARIO_PLACE_UUID = 'ONTARIO_PLACE_UUID';
 const HOSPITAL_WARD_LOCALE_UUID = 'HOSPITAL_WARD_LOCALE_UUID';
-const MEXICO_CITY_PLACE_UUID = 'MEXICO_CITY_PLACE_UUID';
 const UNIVERSITY_CAMPUS_LOCALE_UUID = 'UNIVERSITY_CAMPUS_LOCALE_UUID';
-const SYDNEY_PLACE_UUID = 'SYDNEY_PLACE_UUID';
 const COURTYARD_LOCALE_UUID = 'COURTYARD_LOCALE_UUID';
 const WALDO_MATERIAL_UUID = 'WALDO_MATERIAL_UUID';
 const JANE_ROE_PERSON_UUID = 'JANE_ROE_PERSON_UUID';
-const CALIFORNIA_PLACE_UUID = 'CALIFORNIA_PLACE_UUID';
 const MOTEL_ROOM_LOCALE_UUID = 'MOTEL_ROOM_LOCALE_UUID';
 const FRED_MATERIAL_UUID = 'FRED_MATERIAL_UUID';
 const FERDINAND_FOO_PERSON_UUID = 'FERDINAND_FOO_PERSON_UUID';
-const EDINBURGH_CASTLE_PLACE_UUID = 'EDINBURGH_CASTLE_PLACE_UUID';
 const BARRACKS_LOCALE_UUID = 'BARRACKS_LOCALE_UUID';
 const PLUGH_MATERIAL_UUID = 'PLUGH_MATERIAL_UUID';
 const DELPHI_PLACE_UUID = 'DELPHI_PLACE_UUID';
@@ -80,17 +93,11 @@ const POMPEII_PLACE_UUID = 'POMPEII_PLACE_UUID';
 const VILLA_LOCALE_UUID = 'VILLA_LOCALE_UUID';
 const EPHESUS_PLACE_UUID = 'EPHESUS_PLACE_UUID';
 const LIBRARY_LOCALE_UUID = 'LIBRARY_LOCALE_UUID';
-const PARIS_PLACE_UUID = 'PARIS_PLACE_UUID';
 const CAFE_LOCALE_UUID = 'CAFE_LOCALE_UUID';
-const YORKSHIRE_PLACE_UUID = 'YORKSHIRE_PLACE_UUID';
 const FARMHOUSE_LOCALE_UUID = 'FARMHOUSE_LOCALE_UUID';
-const TOKYO_PLACE_UUID = 'TOKYO_PLACE_UUID';
 const OFFICE_LOCALE_UUID = 'OFFICE_LOCALE_UUID';
-const BAVARIA_PLACE_UUID = 'BAVARIA_PLACE_UUID';
 const MONASTERY_LOCALE_UUID = 'MONASTERY_LOCALE_UUID';
-const FLORIDA_PLACE_UUID = 'FLORIDA_PLACE_UUID';
 const BEACH_LOCALE_UUID = 'BEACH_LOCALE_UUID';
-const BERLIN_PLACE_UUID = 'BERLIN_PLACE_UUID';
 const NIGHTCLUB_LOCALE_UUID = 'NIGHTCLUB_LOCALE_UUID';
 const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
 const NOLA_PLACE_UUID = 'NOLA_PLACE_UUID';
@@ -105,37 +112,31 @@ const OSTIA_PLACE_UUID = 'OSTIA_PLACE_UUID';
 const ROAD_LOCALE_UUID = 'ROAD_LOCALE_UUID';
 const CAPUA_PLACE_UUID = 'CAPUA_PLACE_UUID';
 const MARKET_LOCALE_UUID = 'MARKET_LOCALE_UUID';
-const LIVERPOOL_PLACE_UUID = 'LIVERPOOL_PLACE_UUID';
 const DOCKYARD_LOCALE_UUID = 'DOCKYARD_LOCALE_UUID';
-const ROME_PLACE_UUID = 'ROME_PLACE_UUID';
 const COURTHOUSE_LOCALE_UUID = 'COURTHOUSE_LOCALE_UUID';
-const BUCKINGHAM_PALACE_PLACE_UUID = 'BUCKINGHAM_PALACE_PLACE_UUID';
 const DRAWING_ROOM_LOCALE_UUID = 'DRAWING_ROOM_LOCALE_UUID';
-const QUEBEC_PLACE_UUID = 'QUEBEC_PLACE_UUID';
 const SCHOOL_CLASSROOM_LOCALE_UUID = 'SCHOOL_CLASSROOM_LOCALE_UUID';
-const ATHENS_PLACE_UUID = 'ATHENS_PLACE_UUID';
 const GARDEN_LOCALE_UUID = 'GARDEN_LOCALE_UUID';
-const NAIROBI_PLACE_UUID = 'NAIROBI_PLACE_UUID';
 const HOTEL_LOBBY_LOCALE_UUID = 'HOTEL_LOBBY_LOCALE_UUID';
-const NEW_YORK_CITY_PLACE_UUID = 'NEW_YORK_CITY_PLACE_UUID';
 const OPERATING_THEATRE_LOCALE_UUID = 'OPERATING_THEATRE_LOCALE_UUID';
-const SCOTLAND_PLACE_UUID = 'SCOTLAND_PLACE_UUID';
 const COUNTRY_HOUSE_LOCALE_UUID = 'COUNTRY_HOUSE_LOCALE_UUID';
-const CAPE_TOWN_PLACE_UUID = 'CAPE_TOWN_PLACE_UUID';
 const HARBOUR_LOCALE_UUID = 'HARBOUR_LOCALE_UUID';
-const MOSCOW_PLACE_UUID = 'MOSCOW_PLACE_UUID';
 const APARTMENT_LOCALE_UUID = 'APARTMENT_LOCALE_UUID';
 
 let twentiethCenturyTime;
 let nineteenSixtiesTime;
 let nineteenSixtyFiveTime;
 let mayNineteenSixtyFiveTime;
+let unitedStatesOfAmericaPlace;
+let newYorkPlace;
+let newYorkCityPlace;
+let manhattanPlace;
 let hanDynastyTime;
 let westernHanDynastyTime;
 let firstCenturyTime;
 let nineTime;
 
-describe('Times with sub-times', () => {
+describe('Settings with sub-settings', () => {
 	before(async () => {
 		stubUuidToCountMapClient.clear();
 
@@ -351,6 +352,189 @@ describe('Times with sub-times', () => {
 			toDate: '1978-02-28'
 		});
 
+		// Countries
+		await request(app).post('/places').send({
+			name: 'United States of America',
+			minLatitude: -14.7608358,
+			maxLatitude: 71.5889534,
+			minLongitude: -180,
+			maxLongitude: 180
+		});
+
+		// US states
+		await request(app).post('/places').send({
+			name: 'New Jersey',
+			minLatitude: 38.7911303,
+			maxLatitude: 41.357279,
+			minLongitude: -75.563386,
+			maxLongitude: -73.893628
+		});
+
+		await request(app).post('/places').send({
+			name: 'New York',
+			minLatitude: 40.476578,
+			maxLatitude: 45.0158611,
+			minLongitude: -79.7619758,
+			maxLongitude: -71.790972
+		});
+
+		await request(app).post('/places').send({
+			name: 'Pennsylvania',
+			minLatitude: 39.7197662,
+			maxLatitude: 42.5161334,
+			minLongitude: -80.5210906,
+			maxLongitude: -74.689672
+		});
+
+		// Regions
+		// Appalachian Regional Commission service-area bounds
+		// intersect New York (state), but exclude the rest of the state.
+		await request(app).post('/places').send({
+			name: 'Appalachia',
+			minLatitude: 32.231996,
+			maxLatitude: 42.908363,
+			minLongitude: -90.198631,
+			maxLongitude: -74.164678
+		});
+
+		// Approximate enclosing bounds for New Jersey and Connecticut,
+		// plus only southern New York (state).
+		await request(app).post('/places').send({
+			name: 'Tri-State Area',
+			minLatitude: 38.7911303,
+			maxLatitude: 42.0505827,
+			minLongitude: -75.563386,
+			maxLongitude: -71.787239
+		});
+
+		// Cities
+		// City in New Jersey
+		await request(app).post('/places').send({
+			name: 'Atlantic City',
+			minLatitude: 39.335544,
+			maxLatitude: 39.417678,
+			minLongitude: -74.501592,
+			maxLongitude: -74.4028862
+		});
+
+		// City in New York (state)
+		await request(app).post('/places').send({
+			name: 'Albany',
+			minLatitude: 42.613528,
+			maxLatitude: 42.7221258,
+			minLongitude: -73.897457,
+			maxLongitude: -73.723229
+		});
+
+		// City in New York (state)
+		await request(app).post('/places').send({
+			name: 'Buffalo',
+			minLatitude: 42.826006,
+			maxLatitude: 42.966449,
+			minLongitude: -78.9223535,
+			maxLongitude: -78.795121
+		});
+
+		// City in New York (state)
+		await request(app).post('/places').send({
+			name: 'New York City',
+			minLatitude: 40.476578,
+			maxLatitude: 40.91763,
+			minLongitude: -74.258843,
+			maxLongitude: -73.700233
+		});
+
+		// City in Pennsylvania
+		await request(app).post('/places').send({
+			name: 'Philadelphia',
+			minLatitude: 39.867005,
+			maxLatitude: 40.1379593,
+			minLongitude: -75.280266,
+			maxLongitude: -74.9558314
+		});
+
+		// Boroughs/neighbourhoods
+		// Neighbourhood in Atlantic City, NJ
+		await request(app).post('/places').send({
+			name: 'Ducktown',
+			minLatitude: 39.3465698,
+			maxLatitude: 39.3665698,
+			minLongitude: -74.4518901,
+			maxLongitude: -74.4318901
+		});
+
+		// Neighbourhood in Albany, NY
+		await request(app).post('/places').send({
+			name: 'Downtown',
+			minLatitude: 42.639977,
+			maxLatitude: 42.659977,
+			minLongitude: -73.7619821,
+			maxLongitude: -73.7419821
+		});
+
+		// Neighbourhood in Albany, NY
+		await request(app).post('/places').send({
+			name: 'Center Square',
+			minLatitude: 42.6516213,
+			maxLatitude: 42.6564989,
+			minLongitude: -73.766483,
+			maxLongitude: -73.7593863
+		});
+
+		// Neighbourhood in Buffalo, NY
+		await request(app).post('/places').send({
+			name: 'Allentown',
+			minLatitude: 42.8961208,
+			maxLatitude: 42.9030574,
+			minLongitude: -78.8841998,
+			maxLongitude: -78.8689729
+		});
+
+		// Neighbourhood in Buffalo, NY
+		await request(app).post('/places').send({
+			name: 'Elmwood Village',
+			minLatitude: 42.9022435,
+			maxLatitude: 42.9280381,
+			minLongitude: -78.88212,
+			maxLongitude: -78.8673261
+		});
+
+		// Borough in New York City, NY
+		await request(app).post('/places').send({
+			name: 'Brooklyn',
+			minLatitude: 40.550339,
+			maxLatitude: 40.739434,
+			minLongitude: -74.056688,
+			maxLongitude: -73.832945
+		});
+
+		// Borough in New York City, NY
+		await request(app).post('/places').send({
+			name: 'Manhattan',
+			minLatitude: 40.679654,
+			maxLatitude: 40.882012,
+			minLongitude: -74.0472219,
+			maxLongitude: -73.906769
+		});
+
+		// Borough in New York City, NY
+		await request(app).post('/places').send({
+			name: 'The Bronx',
+			minLatitude: 40.785739,
+			maxLatitude: 40.91763,
+			minLongitude: -73.933907,
+			maxLongitude: -73.748374
+		});
+
+		// Neighbourhood in Philadelphia, PA
+		await request(app).post('/places').send({
+			name: 'Center City',
+			minLatitude: 39.9400338,
+			maxLatitude: 39.9601535,
+			minLongitude: -75.1876267,
+			maxLongitude: -75.1338667
+		});
+
 		await request(app)
 			.post('/materials')
 			.send({
@@ -383,7 +567,7 @@ describe('Times with sub-times', () => {
 							name: '20th century'
 						},
 						place: {
-							name: 'Argentina'
+							name: 'United States of America'
 						},
 						locale: {
 							name: 'Riverside'
@@ -450,7 +634,7 @@ describe('Times with sub-times', () => {
 							name: '1950s'
 						},
 						place: {
-							name: 'Manchester'
+							name: 'New York'
 						},
 						locale: {
 							name: 'Railway station'
@@ -461,7 +645,7 @@ describe('Times with sub-times', () => {
 							name: '1960s'
 						},
 						place: {
-							name: 'Ontario'
+							name: 'New Jersey'
 						},
 						locale: {
 							name: 'Hospital ward'
@@ -472,7 +656,7 @@ describe('Times with sub-times', () => {
 							name: '1960s'
 						},
 						place: {
-							name: 'Mexico City'
+							name: 'New York'
 						},
 						locale: {
 							name: 'University campus'
@@ -483,7 +667,7 @@ describe('Times with sub-times', () => {
 							name: '1970s'
 						},
 						place: {
-							name: 'Sydney'
+							name: 'Pennsylvania'
 						},
 						locale: {
 							name: 'Courtyard'
@@ -513,7 +697,7 @@ describe('Times with sub-times', () => {
 							name: '1958-1965'
 						},
 						place: {
-							name: 'California'
+							name: 'Tri-State Area'
 						},
 						locale: {
 							name: 'Motel room'
@@ -543,7 +727,7 @@ describe('Times with sub-times', () => {
 							name: '1965-1974'
 						},
 						place: {
-							name: 'Edinburgh Castle'
+							name: 'Appalachia'
 						},
 						locale: {
 							name: 'Barracks'
@@ -618,7 +802,7 @@ describe('Times with sub-times', () => {
 							name: '1952'
 						},
 						place: {
-							name: 'Paris'
+							name: 'Atlantic City'
 						},
 						locale: {
 							name: 'Café'
@@ -629,7 +813,7 @@ describe('Times with sub-times', () => {
 							name: '1960'
 						},
 						place: {
-							name: 'Yorkshire'
+							name: 'New York City'
 						},
 						locale: {
 							name: 'Farmhouse'
@@ -640,7 +824,7 @@ describe('Times with sub-times', () => {
 							name: '1965'
 						},
 						place: {
-							name: 'Tokyo'
+							name: 'New York City'
 						},
 						locale: {
 							name: 'Office'
@@ -651,7 +835,7 @@ describe('Times with sub-times', () => {
 							name: '1965'
 						},
 						place: {
-							name: 'Bavaria'
+							name: 'Albany'
 						},
 						locale: {
 							name: 'Monastery'
@@ -662,7 +846,7 @@ describe('Times with sub-times', () => {
 							name: '1969'
 						},
 						place: {
-							name: 'Florida'
+							name: 'Buffalo'
 						},
 						locale: {
 							name: 'Beach'
@@ -673,7 +857,7 @@ describe('Times with sub-times', () => {
 							name: '1978'
 						},
 						place: {
-							name: 'Berlin'
+							name: 'Philadelphia'
 						},
 						locale: {
 							name: 'Nightclub'
@@ -769,7 +953,7 @@ describe('Times with sub-times', () => {
 							name: 'November 1952'
 						},
 						place: {
-							name: 'Liverpool'
+							name: 'Ducktown'
 						},
 						locale: {
 							name: 'Dockyard'
@@ -780,7 +964,7 @@ describe('Times with sub-times', () => {
 							name: 'January 1960'
 						},
 						place: {
-							name: 'Rome'
+							name: 'The Bronx'
 						},
 						locale: {
 							name: 'Courthouse'
@@ -791,7 +975,7 @@ describe('Times with sub-times', () => {
 							name: 'December 1960'
 						},
 						place: {
-							name: 'Buckingham Palace'
+							name: 'Downtown'
 						},
 						locale: {
 							name: 'Drawing room'
@@ -802,7 +986,7 @@ describe('Times with sub-times', () => {
 							name: 'January 1965'
 						},
 						place: {
-							name: 'Quebec'
+							name: 'Center Square'
 						},
 						locale: {
 							name: 'School classroom'
@@ -813,7 +997,7 @@ describe('Times with sub-times', () => {
 							name: 'May 1965'
 						},
 						place: {
-							name: 'Athens'
+							name: 'Brooklyn'
 						},
 						locale: {
 							name: 'Garden'
@@ -824,7 +1008,7 @@ describe('Times with sub-times', () => {
 							name: 'May 1965'
 						},
 						place: {
-							name: 'Nairobi'
+							name: 'Manhattan'
 						},
 						locale: {
 							name: 'Hotel lobby'
@@ -835,7 +1019,7 @@ describe('Times with sub-times', () => {
 							name: 'December 1965'
 						},
 						place: {
-							name: 'New York City'
+							name: 'Manhattan'
 						},
 						locale: {
 							name: 'Operating theatre'
@@ -846,7 +1030,7 @@ describe('Times with sub-times', () => {
 							name: 'January 1969'
 						},
 						place: {
-							name: 'Scotland'
+							name: 'Allentown'
 						},
 						locale: {
 							name: 'Country house'
@@ -857,7 +1041,7 @@ describe('Times with sub-times', () => {
 							name: 'December 1969'
 						},
 						place: {
-							name: 'Cape Town'
+							name: 'Elmwood Village'
 						},
 						locale: {
 							name: 'Harbour'
@@ -868,7 +1052,7 @@ describe('Times with sub-times', () => {
 							name: 'February 1978'
 						},
 						place: {
-							name: 'Moscow'
+							name: 'Center City'
 						},
 						locale: {
 							name: 'Apartment'
@@ -884,6 +1068,14 @@ describe('Times with sub-times', () => {
 		nineteenSixtyFiveTime = await request(app).get(`/times/${NINETEEN_SIXTY_FIVE_TIME_UUID}`);
 
 		mayNineteenSixtyFiveTime = await request(app).get(`/times/${MAY_NINETEEN_SIXTY_FIVE_TIME_UUID}`);
+
+		unitedStatesOfAmericaPlace = await request(app).get(`/places/${UNITED_STATES_OF_AMERICA_PLACE_UUID}`);
+
+		newYorkPlace = await request(app).get(`/places/${NEW_YORK_PLACE_UUID}`);
+
+		newYorkCityPlace = await request(app).get(`/places/${NEW_YORK_CITY_PLACE_UUID}`);
+
+		manhattanPlace = await request(app).get(`/places/${MANHATTAN_PLACE_UUID}`);
 
 		hanDynastyTime = await request(app).get(`/times/${HAN_DYNASTY_TIME_UUID}`);
 
@@ -1039,8 +1231,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: LIVERPOOL_PLACE_UUID,
-								name: 'Liverpool'
+								uuid: DUCKTOWN_PLACE_UUID,
+								name: 'Ducktown'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1057,8 +1249,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ROME_PLACE_UUID,
-								name: 'Rome'
+								uuid: THE_BRONX_PLACE_UUID,
+								name: 'The Bronx'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1075,8 +1267,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: BUCKINGHAM_PALACE_PLACE_UUID,
-								name: 'Buckingham Palace'
+								uuid: DOWNTOWN_PLACE_UUID,
+								name: 'Downtown'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1093,8 +1285,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: QUEBEC_PLACE_UUID,
-								name: 'Quebec'
+								uuid: CENTER_SQUARE_PLACE_UUID,
+								name: 'Center Square'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1111,8 +1303,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ATHENS_PLACE_UUID,
-								name: 'Athens'
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1129,8 +1321,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NAIROBI_PLACE_UUID,
-								name: 'Nairobi'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1147,8 +1339,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NEW_YORK_CITY_PLACE_UUID,
-								name: 'New York City'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1165,8 +1357,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: SCOTLAND_PLACE_UUID,
-								name: 'Scotland'
+								uuid: ALLENTOWN_PLACE_UUID,
+								name: 'Allentown'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1183,8 +1375,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: CAPE_TOWN_PLACE_UUID,
-								name: 'Cape Town'
+								uuid: ELMWOOD_VILLAGE_PLACE_UUID,
+								name: 'Elmwood Village'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1201,8 +1393,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: MOSCOW_PLACE_UUID,
-								name: 'Moscow'
+								uuid: CENTER_CITY_PLACE_UUID,
+								name: 'Center City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1242,8 +1434,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: CALIFORNIA_PLACE_UUID,
-								name: 'California'
+								uuid: TRI_STATE_AREA_PLACE_UUID,
+								name: 'Tri-State Area'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1283,8 +1475,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: EDINBURGH_CASTLE_PLACE_UUID,
-								name: 'Edinburgh Castle'
+								uuid: APPALACHIA_PLACE_UUID,
+								name: 'Appalachia'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1324,8 +1516,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ARGENTINA_PLACE_UUID,
-								name: 'Argentina'
+								uuid: UNITED_STATES_OF_AMERICA_PLACE_UUID,
+								name: 'United States of America'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1365,8 +1557,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: PARIS_PLACE_UUID,
-								name: 'Paris'
+								uuid: ATLANTIC_CITY_PLACE_UUID,
+								name: 'Atlantic City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1383,8 +1575,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: YORKSHIRE_PLACE_UUID,
-								name: 'Yorkshire'
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1401,8 +1593,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: TOKYO_PLACE_UUID,
-								name: 'Tokyo'
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1419,8 +1611,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: BAVARIA_PLACE_UUID,
-								name: 'Bavaria'
+								uuid: ALBANY_PLACE_UUID,
+								name: 'Albany'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1437,8 +1629,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: FLORIDA_PLACE_UUID,
-								name: 'Florida'
+								uuid: BUFFALO_PLACE_UUID,
+								name: 'Buffalo'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1455,8 +1647,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: BERLIN_PLACE_UUID,
-								name: 'Berlin'
+								uuid: PHILADELPHIA_PLACE_UUID,
+								name: 'Philadelphia'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1501,8 +1693,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: MANCHESTER_PLACE_UUID,
-								name: 'Manchester'
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1519,8 +1711,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ONTARIO_PLACE_UUID,
-								name: 'Ontario'
+								uuid: NEW_JERSEY_PLACE_UUID,
+								name: 'New Jersey'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1537,8 +1729,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: MEXICO_CITY_PLACE_UUID,
-								name: 'Mexico City'
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1555,8 +1747,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: SYDNEY_PLACE_UUID,
-								name: 'Sydney'
+								uuid: PENNSYLVANIA_PLACE_UUID,
+								name: 'Pennsylvania'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1680,8 +1872,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ROME_PLACE_UUID,
-								name: 'Rome'
+								uuid: THE_BRONX_PLACE_UUID,
+								name: 'The Bronx'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1698,8 +1890,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: BUCKINGHAM_PALACE_PLACE_UUID,
-								name: 'Buckingham Palace'
+								uuid: DOWNTOWN_PLACE_UUID,
+								name: 'Downtown'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1716,8 +1908,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: QUEBEC_PLACE_UUID,
-								name: 'Quebec'
+								uuid: CENTER_SQUARE_PLACE_UUID,
+								name: 'Center Square'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1734,8 +1926,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ATHENS_PLACE_UUID,
-								name: 'Athens'
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1752,8 +1944,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NAIROBI_PLACE_UUID,
-								name: 'Nairobi'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1770,8 +1962,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NEW_YORK_CITY_PLACE_UUID,
-								name: 'New York City'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1788,8 +1980,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: SCOTLAND_PLACE_UUID,
-								name: 'Scotland'
+								uuid: ALLENTOWN_PLACE_UUID,
+								name: 'Allentown'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1806,8 +1998,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: CAPE_TOWN_PLACE_UUID,
-								name: 'Cape Town'
+								uuid: ELMWOOD_VILLAGE_PLACE_UUID,
+								name: 'Elmwood Village'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1847,8 +2039,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: YORKSHIRE_PLACE_UUID,
-								name: 'Yorkshire'
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1865,8 +2057,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: TOKYO_PLACE_UUID,
-								name: 'Tokyo'
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1883,8 +2075,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: BAVARIA_PLACE_UUID,
-								name: 'Bavaria'
+								uuid: ALBANY_PLACE_UUID,
+								name: 'Albany'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1901,8 +2093,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: FLORIDA_PLACE_UUID,
-								name: 'Florida'
+								uuid: BUFFALO_PLACE_UUID,
+								name: 'Buffalo'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1947,8 +2139,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ONTARIO_PLACE_UUID,
-								name: 'Ontario'
+								uuid: NEW_JERSEY_PLACE_UUID,
+								name: 'New Jersey'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1965,8 +2157,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: MEXICO_CITY_PLACE_UUID,
-								name: 'Mexico City'
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2070,8 +2262,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: QUEBEC_PLACE_UUID,
-								name: 'Quebec'
+								uuid: CENTER_SQUARE_PLACE_UUID,
+								name: 'Center Square'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2088,8 +2280,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ATHENS_PLACE_UUID,
-								name: 'Athens'
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2106,8 +2298,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NAIROBI_PLACE_UUID,
-								name: 'Nairobi'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2124,8 +2316,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NEW_YORK_CITY_PLACE_UUID,
-								name: 'New York City'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2165,8 +2357,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: TOKYO_PLACE_UUID,
-								name: 'Tokyo'
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2183,8 +2375,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: BAVARIA_PLACE_UUID,
-								name: 'Bavaria'
+								uuid: ALBANY_PLACE_UUID,
+								name: 'Albany'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2277,8 +2469,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ATHENS_PLACE_UUID,
-								name: 'Athens'
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2295,8 +2487,8 @@ describe('Times with sub-times', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: NAIROBI_PLACE_UUID,
-								name: 'Nairobi'
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2309,6 +2501,1421 @@ describe('Times with sub-times', () => {
 			];
 
 			const { materials } = mayNineteenSixtyFiveTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('United States of America (place)', () => {
+		it('includes no containing sur-places as there are no broader places available', async () => {
+			const expectedSurPlaces = [];
+
+			const { surPlaces } = unitedStatesOfAmericaPlace.body;
+
+			assert.deepEqual(surPlaces, expectedSurPlaces);
+		});
+
+		it('includes contained sub-places', async () => {
+			const expectedSubPlaces = [
+				{
+					model: 'PLACE',
+					uuid: ALBANY_PLACE_UUID,
+					name: 'Albany'
+				},
+				{
+					model: 'PLACE',
+					uuid: ALLENTOWN_PLACE_UUID,
+					name: 'Allentown'
+				},
+				{
+					model: 'PLACE',
+					uuid: APPALACHIA_PLACE_UUID,
+					name: 'Appalachia'
+				},
+				{
+					model: 'PLACE',
+					uuid: ATLANTIC_CITY_PLACE_UUID,
+					name: 'Atlantic City'
+				},
+				{
+					model: 'PLACE',
+					uuid: BROOKLYN_PLACE_UUID,
+					name: 'Brooklyn'
+				},
+				{
+					model: 'PLACE',
+					uuid: BUFFALO_PLACE_UUID,
+					name: 'Buffalo'
+				},
+				{
+					model: 'PLACE',
+					uuid: CENTER_CITY_PLACE_UUID,
+					name: 'Center City'
+				},
+				{
+					model: 'PLACE',
+					uuid: CENTER_SQUARE_PLACE_UUID,
+					name: 'Center Square'
+				},
+				{
+					model: 'PLACE',
+					uuid: DOWNTOWN_PLACE_UUID,
+					name: 'Downtown'
+				},
+				{
+					model: 'PLACE',
+					uuid: DUCKTOWN_PLACE_UUID,
+					name: 'Ducktown'
+				},
+				{
+					model: 'PLACE',
+					uuid: ELMWOOD_VILLAGE_PLACE_UUID,
+					name: 'Elmwood Village'
+				},
+				{
+					model: 'PLACE',
+					uuid: MANHATTAN_PLACE_UUID,
+					name: 'Manhattan'
+				},
+				{
+					model: 'PLACE',
+					uuid: NEW_JERSEY_PLACE_UUID,
+					name: 'New Jersey'
+				},
+				{
+					model: 'PLACE',
+					uuid: NEW_YORK_PLACE_UUID,
+					name: 'New York'
+				},
+				{
+					model: 'PLACE',
+					uuid: NEW_YORK_CITY_PLACE_UUID,
+					name: 'New York City'
+				},
+				{
+					model: 'PLACE',
+					uuid: PENNSYLVANIA_PLACE_UUID,
+					name: 'Pennsylvania'
+				},
+				{
+					model: 'PLACE',
+					uuid: PHILADELPHIA_PLACE_UUID,
+					name: 'Philadelphia'
+				},
+				{
+					model: 'PLACE',
+					uuid: THE_BRONX_PLACE_UUID,
+					name: 'The Bronx'
+				},
+				{
+					model: 'PLACE',
+					uuid: TRI_STATE_AREA_PLACE_UUID,
+					name: 'Tri-State Area'
+				}
+			];
+
+			const { subPlaces } = unitedStatesOfAmericaPlace.body;
+
+			assert.deepEqual(subPlaces, expectedSubPlaces);
+		});
+
+		it('includes materials for which it and its contained sub-places were a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NOVEMBER_NINETEEN_FIFTY_TWO_TIME_UUID,
+								name: 'November 1952'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: DUCKTOWN_PLACE_UUID,
+								name: 'Ducktown'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: DOCKYARD_LOCALE_UUID,
+								name: 'Dockyard'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_TIME_UUID,
+								name: 'January 1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: THE_BRONX_PLACE_UUID,
+								name: 'The Bronx'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COURTHOUSE_LOCALE_UUID,
+								name: 'Courthouse'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_TIME_UUID,
+								name: 'December 1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: DOWNTOWN_PLACE_UUID,
+								name: 'Downtown'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: DRAWING_ROOM_LOCALE_UUID,
+								name: 'Drawing room'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'January 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CENTER_SQUARE_PLACE_UUID,
+								name: 'Center Square'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SCHOOL_CLASSROOM_LOCALE_UUID,
+								name: 'School classroom'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: GARDEN_LOCALE_UUID,
+								name: 'Garden'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HOTEL_LOBBY_LOCALE_UUID,
+								name: 'Hotel lobby'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'December 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OPERATING_THEATRE_LOCALE_UUID,
+								name: 'Operating theatre'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_NINE_TIME_UUID,
+								name: 'January 1969'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ALLENTOWN_PLACE_UUID,
+								name: 'Allentown'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID,
+								name: 'December 1969'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ELMWOOD_VILLAGE_PLACE_UUID,
+								name: 'Elmwood Village'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HARBOUR_LOCALE_UUID,
+								name: 'Harbour'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FEBRUARY_NINETEEN_SEVENTY_EIGHT_TIME_UUID,
+								name: 'February 1978'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CENTER_CITY_PLACE_UUID,
+								name: 'Center City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: APARTMENT_LOCALE_UUID,
+								name: 'Apartment'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: WALDO_MATERIAL_UUID,
+					name: 'Waldo',
+					format: 'play',
+					year: 2018,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: JANE_ROE_PERSON_UUID,
+									name: 'Jane Roe'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FIFTY_EIGHT_TO_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: '1958-1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: TRI_STATE_AREA_PLACE_UUID,
+								name: 'Tri-State Area'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MOTEL_ROOM_LOCALE_UUID,
+								name: 'Motel room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: FRED_MATERIAL_UUID,
+					name: 'Fred',
+					format: 'play',
+					year: 2017,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: FERDINAND_FOO_PERSON_UUID,
+									name: 'Ferdinand Foo'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_FIVE_TO_NINETEEN_SEVENTY_FOUR_TIME_UUID,
+								name: '1965-1974'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: APPALACHIA_PLACE_UUID,
+								name: 'Appalachia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: BARRACKS_LOCALE_UUID,
+								name: 'Barracks'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GRAULT_MATERIAL_UUID,
+					name: 'Grault',
+					format: 'play',
+					year: 2016,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BEATRICE_BAR_PERSON_UUID,
+									name: 'Beatrice Bar'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTIETH_CENTURY_TIME_UUID,
+								name: '20th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: UNITED_STATES_OF_AMERICA_PLACE_UUID,
+								name: 'United States of America'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: RIVERSIDE_LOCALE_UUID,
+								name: 'Riverside'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_MATERIAL_UUID,
+					name: 'Plugh',
+					format: 'play',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FIFTY_TWO_TIME_UUID,
+								name: '1952'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ATLANTIC_CITY_PLACE_UUID,
+								name: 'Atlantic City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CAFE_LOCALE_UUID,
+								name: 'Café'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_TIME_UUID,
+								name: '1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: FARMHOUSE_LOCALE_UUID,
+								name: 'Farmhouse'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: '1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OFFICE_LOCALE_UUID,
+								name: 'Office'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: '1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ALBANY_PLACE_UUID,
+								name: 'Albany'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MONASTERY_LOCALE_UUID,
+								name: 'Monastery'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_NINE_TIME_UUID,
+								name: '1969'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BUFFALO_PLACE_UUID,
+								name: 'Buffalo'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: BEACH_LOCALE_UUID,
+								name: 'Beach'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SEVENTY_EIGHT_TIME_UUID,
+								name: '1978'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: PHILADELPHIA_PLACE_UUID,
+								name: 'Philadelphia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: NIGHTCLUB_LOCALE_UUID,
+								name: 'Nightclub'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GARPLY_MATERIAL_UUID,
+					name: 'Garply',
+					format: 'play',
+					year: 2014,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FIFTIES_TIME_UUID,
+								name: '1950s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: RAILWAY_STATION_LOCALE_UUID,
+								name: 'Railway station'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTIES_TIME_UUID,
+								name: '1960s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_JERSEY_PLACE_UUID,
+								name: 'New Jersey'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HOSPITAL_WARD_LOCALE_UUID,
+								name: 'Hospital ward'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTIES_TIME_UUID,
+								name: '1960s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: UNIVERSITY_CAMPUS_LOCALE_UUID,
+								name: 'University campus'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SEVENTIES_TIME_UUID,
+								name: '1970s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: PENNSYLVANIA_PLACE_UUID,
+								name: 'Pennsylvania'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COURTYARD_LOCALE_UUID,
+								name: 'Courtyard'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = unitedStatesOfAmericaPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('New York (state) (place)', () => {
+		it('includes containing sur-places', async () => {
+			const expectedSurPlaces = [
+				{
+					model: 'PLACE',
+					uuid: UNITED_STATES_OF_AMERICA_PLACE_UUID,
+					name: 'United States of America'
+				}
+			];
+
+			const { surPlaces } = newYorkPlace.body;
+
+			assert.deepEqual(surPlaces, expectedSurPlaces);
+		});
+
+		it('includes contained sub-places', async () => {
+			const expectedSubPlaces = [
+				{
+					model: 'PLACE',
+					uuid: ALBANY_PLACE_UUID,
+					name: 'Albany'
+				},
+				{
+					model: 'PLACE',
+					uuid: ALLENTOWN_PLACE_UUID,
+					name: 'Allentown'
+				},
+				{
+					model: 'PLACE',
+					uuid: BROOKLYN_PLACE_UUID,
+					name: 'Brooklyn'
+				},
+				{
+					model: 'PLACE',
+					uuid: BUFFALO_PLACE_UUID,
+					name: 'Buffalo'
+				},
+				{
+					model: 'PLACE',
+					uuid: CENTER_SQUARE_PLACE_UUID,
+					name: 'Center Square'
+				},
+				{
+					model: 'PLACE',
+					uuid: DOWNTOWN_PLACE_UUID,
+					name: 'Downtown'
+				},
+				{
+					model: 'PLACE',
+					uuid: ELMWOOD_VILLAGE_PLACE_UUID,
+					name: 'Elmwood Village'
+				},
+				{
+					model: 'PLACE',
+					uuid: MANHATTAN_PLACE_UUID,
+					name: 'Manhattan'
+				},
+				{
+					model: 'PLACE',
+					uuid: NEW_YORK_CITY_PLACE_UUID,
+					name: 'New York City'
+				},
+				{
+					model: 'PLACE',
+					uuid: THE_BRONX_PLACE_UUID,
+					name: 'The Bronx'
+				}
+			];
+
+			const { subPlaces } = newYorkPlace.body;
+
+			assert.deepEqual(subPlaces, expectedSubPlaces);
+		});
+
+		it('includes materials for which it and its contained sub-places were a setting; excludes materials for which intersecting places (e.g. Appalachia and Tri-State Area) were a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_TIME_UUID,
+								name: 'January 1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: THE_BRONX_PLACE_UUID,
+								name: 'The Bronx'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COURTHOUSE_LOCALE_UUID,
+								name: 'Courthouse'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_TIME_UUID,
+								name: 'December 1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: DOWNTOWN_PLACE_UUID,
+								name: 'Downtown'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: DRAWING_ROOM_LOCALE_UUID,
+								name: 'Drawing room'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'January 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: CENTER_SQUARE_PLACE_UUID,
+								name: 'Center Square'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SCHOOL_CLASSROOM_LOCALE_UUID,
+								name: 'School classroom'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: GARDEN_LOCALE_UUID,
+								name: 'Garden'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HOTEL_LOBBY_LOCALE_UUID,
+								name: 'Hotel lobby'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'December 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OPERATING_THEATRE_LOCALE_UUID,
+								name: 'Operating theatre'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_NINE_TIME_UUID,
+								name: 'January 1969'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ALLENTOWN_PLACE_UUID,
+								name: 'Allentown'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID,
+								name: 'December 1969'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ELMWOOD_VILLAGE_PLACE_UUID,
+								name: 'Elmwood Village'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HARBOUR_LOCALE_UUID,
+								name: 'Harbour'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_MATERIAL_UUID,
+					name: 'Plugh',
+					format: 'play',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_TIME_UUID,
+								name: '1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: FARMHOUSE_LOCALE_UUID,
+								name: 'Farmhouse'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: '1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OFFICE_LOCALE_UUID,
+								name: 'Office'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: '1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ALBANY_PLACE_UUID,
+								name: 'Albany'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: MONASTERY_LOCALE_UUID,
+								name: 'Monastery'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_NINE_TIME_UUID,
+								name: '1969'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BUFFALO_PLACE_UUID,
+								name: 'Buffalo'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: BEACH_LOCALE_UUID,
+								name: 'Beach'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: GARPLY_MATERIAL_UUID,
+					name: 'Garply',
+					format: 'play',
+					year: 2014,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								},
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FIFTIES_TIME_UUID,
+								name: '1950s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: RAILWAY_STATION_LOCALE_UUID,
+								name: 'Railway station'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTIES_TIME_UUID,
+								name: '1960s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_PLACE_UUID,
+								name: 'New York'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: UNIVERSITY_CAMPUS_LOCALE_UUID,
+								name: 'University campus'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = newYorkPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('New York City (place)', () => {
+		it('includes containing sur-places', async () => {
+			const expectedSurPlaces = [
+				{
+					model: 'PLACE',
+					uuid: NEW_YORK_PLACE_UUID,
+					name: 'New York'
+				},
+				{
+					model: 'PLACE',
+					uuid: TRI_STATE_AREA_PLACE_UUID,
+					name: 'Tri-State Area'
+				},
+				{
+					model: 'PLACE',
+					uuid: UNITED_STATES_OF_AMERICA_PLACE_UUID,
+					name: 'United States of America'
+				}
+			];
+
+			const { surPlaces } = newYorkCityPlace.body;
+
+			assert.deepEqual(surPlaces, expectedSurPlaces);
+		});
+
+		it('includes contained sub-places', async () => {
+			const expectedSubPlaces = [
+				{
+					model: 'PLACE',
+					uuid: BROOKLYN_PLACE_UUID,
+					name: 'Brooklyn'
+				},
+				{
+					model: 'PLACE',
+					uuid: MANHATTAN_PLACE_UUID,
+					name: 'Manhattan'
+				},
+				{
+					model: 'PLACE',
+					uuid: THE_BRONX_PLACE_UUID,
+					name: 'The Bronx'
+				}
+			];
+
+			const { subPlaces } = newYorkCityPlace.body;
+
+			assert.deepEqual(subPlaces, expectedSubPlaces);
+		});
+
+		it('includes materials for which it and its contained sub-places were a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: JANUARY_NINETEEN_SIXTY_TIME_UUID,
+								name: 'January 1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: THE_BRONX_PLACE_UUID,
+								name: 'The Bronx'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COURTHOUSE_LOCALE_UUID,
+								name: 'Courthouse'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: BROOKLYN_PLACE_UUID,
+								name: 'Brooklyn'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: GARDEN_LOCALE_UUID,
+								name: 'Garden'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HOTEL_LOBBY_LOCALE_UUID,
+								name: 'Hotel lobby'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'December 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OPERATING_THEATRE_LOCALE_UUID,
+								name: 'Operating theatre'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: PLUGH_MATERIAL_UUID,
+					name: 'Plugh',
+					format: 'play',
+					year: 2015,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: STAGECRAFT_LTD_COMPANY_UUID,
+									name: 'Stagecraft Ltd'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_TIME_UUID,
+								name: '1960'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: FARMHOUSE_LOCALE_UUID,
+								name: 'Farmhouse'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: '1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: NEW_YORK_CITY_PLACE_UUID,
+								name: 'New York City'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OFFICE_LOCALE_UUID,
+								name: 'Office'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = newYorkCityPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Manhattan (place)', () => {
+		it('includes containing sur-places', async () => {
+			const expectedSurPlaces = [
+				{
+					model: 'PLACE',
+					uuid: NEW_JERSEY_PLACE_UUID,
+					name: 'New Jersey'
+				},
+				{
+					model: 'PLACE',
+					uuid: NEW_YORK_PLACE_UUID,
+					name: 'New York'
+				},
+				{
+					model: 'PLACE',
+					uuid: NEW_YORK_CITY_PLACE_UUID,
+					name: 'New York City'
+				},
+				{
+					model: 'PLACE',
+					uuid: TRI_STATE_AREA_PLACE_UUID,
+					name: 'Tri-State Area'
+				},
+				{
+					model: 'PLACE',
+					uuid: UNITED_STATES_OF_AMERICA_PLACE_UUID,
+					name: 'United States of America'
+				}
+			];
+
+			const { surPlaces } = manhattanPlace.body;
+
+			assert.deepEqual(surPlaces, expectedSurPlaces);
+		});
+
+		it('includes no contained sub-places as there are no narrower places', async () => {
+			const expectedSubPlaces = [];
+
+			const { subPlaces } = manhattanPlace.body;
+
+			assert.deepEqual(subPlaces, expectedSubPlaces);
+		});
+
+		it('includes materials for which it was a setting', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: XYZZY_MATERIAL_UUID,
+					name: 'Xyzzy',
+					format: 'play',
+					year: 2019,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CONOR_CORGE_PERSON_UUID,
+									name: 'Conor Corge'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: MAY_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'May 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HOTEL_LOBBY_LOCALE_UUID,
+								name: 'Hotel lobby'
+							}
+						},
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: DECEMBER_NINETEEN_SIXTY_FIVE_TIME_UUID,
+								name: 'December 1965'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MANHATTAN_PLACE_UUID,
+								name: 'Manhattan'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: OPERATING_THEATRE_LOCALE_UUID,
+								name: 'Operating theatre'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = manhattanPlace.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

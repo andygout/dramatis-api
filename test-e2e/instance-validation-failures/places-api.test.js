@@ -40,6 +40,10 @@ describe('Instance validation failures: Places API', () => {
 					model: 'PLACE',
 					name: '',
 					differentiator: '',
+					minLatitude: null,
+					maxLatitude: null,
+					minLongitude: null,
+					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
@@ -64,10 +68,48 @@ describe('Instance validation failures: Places API', () => {
 					model: 'PLACE',
 					name: 'Knightsbridge',
 					differentiator: '',
+					minLatitude: null,
+					maxLatitude: null,
+					minLongitude: null,
+					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
 						differentiator: ['Name and differentiator combination already exists']
+					}
+				};
+
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Place'), 1);
+			});
+		});
+
+		context('instance has both input and database validation failures', () => {
+			it('returns instance with appropriate errors attached', async () => {
+				assert.equal(await countNodesWithLabel('Place'), 1);
+
+				const response = await request(app).post('/places').send({
+					name: 'Knightsbridge',
+					minLatitude: 'foobar',
+					maxLatitude: 51.5208444,
+					minLongitude: -0.186965,
+					maxLongitude: -0.146965
+				});
+
+				const expectedResponseBody = {
+					model: 'PLACE',
+					name: 'Knightsbridge',
+					differentiator: '',
+					minLatitude: 'foobar',
+					maxLatitude: 51.5208444,
+					minLongitude: -0.186965,
+					maxLongitude: -0.146965,
+					hasErrors: true,
+					errors: {
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists'],
+						minLatitude: ['Value must be a number']
 					}
 				};
 
@@ -111,6 +153,10 @@ describe('Instance validation failures: Places API', () => {
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: '',
 					differentiator: '',
+					minLatitude: null,
+					maxLatitude: null,
+					minLongitude: null,
+					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
@@ -144,6 +190,10 @@ describe('Instance validation failures: Places API', () => {
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: 'Knightsbridge',
 					differentiator: '',
+					minLatitude: null,
+					maxLatitude: null,
+					minLongitude: null,
+					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
@@ -162,6 +212,41 @@ describe('Instance validation failures: Places API', () => {
 					}),
 					true
 				);
+			});
+		});
+
+		context('instance has both input and database validation failures', () => {
+			it('returns instance with appropriate errors attached', async () => {
+				assert.equal(await countNodesWithLabel('Place'), 2);
+
+				const response = await request(app).put(`/places/${DERBYSHIRE_PLACE_UUID}`).send({
+					name: 'Knightsbridge',
+					minLatitude: 'foobar',
+					maxLatitude: 51.5208444,
+					minLongitude: -0.186965,
+					maxLongitude: -0.146965
+				});
+
+				const expectedResponseBody = {
+					model: 'PLACE',
+					uuid: DERBYSHIRE_PLACE_UUID,
+					name: 'Knightsbridge',
+					differentiator: '',
+					minLatitude: 'foobar',
+					maxLatitude: 51.5208444,
+					minLongitude: -0.186965,
+					maxLongitude: -0.146965,
+					hasErrors: true,
+					errors: {
+						name: ['Name and differentiator combination already exists'],
+						differentiator: ['Name and differentiator combination already exists'],
+						minLatitude: ['Value must be a number']
+					}
+				};
+
+				assert.equal(response.status, 200);
+				assert.deepEqual(response.body, expectedResponseBody);
+				assert.equal(await countNodesWithLabel('Place'), 2);
 			});
 		});
 	});
@@ -205,6 +290,10 @@ describe('Instance validation failures: Places API', () => {
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: 'Derbyshire',
 					differentiator: null,
+					minLatitude: null,
+					maxLatitude: null,
+					minLongitude: null,
+					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						associations: ['Material']
