@@ -11,22 +11,27 @@ Graph database-driven API for site of theatrical productions, materials, and ass
 
 ## Database setup
 
-- Download the [Neo4j Desktop app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version)
+- Download the [Neo4j Desktop 2 app](https://neo4j.com/download) (the version of the Neo4j image in `docker/docker-compose.yml` will be a compatible version)
 - Create a local Neo4j graph database, configuring as to:
   - Neo4j user name matches `.env` `DATABASE_USERNAME` value
+    - For local instances this will be `neo4j`, which can be verified by viewing the `username` values returned by this Cypher query: `CALL dbms.listConnections()`
   - Neo4j local graph database password matches `.env` `DATABASE_PASSWORD` value
   - `.env` `DATABASE_URL` value is endpoint on which Neo4j local graph database is running
-  - N.B. Neo4j user name and Neo4j local graph database endpoint can be viewed via the Desktop app by running the local Neo4j graph database, then launching the Neo4j Browser and viewing its connection status, which is displayed upon opening the browser and can be returned via browser command `:server status`)
-- Open Neo4j Desktop app
-  - On the requisite database, click `…`, then `Settings…`, then edit the settings as below to avoid encountering `Neo4jError: There is not enough memory to perform the current task` when seeding the database:
-  - Uncomment and increase the value: `#server.memory.heap.initial_size=512m` -> `server.memory.heap.initial_size=5000m`
-  - Uncomment and increase the value: `#server.memory.heap.max_size=512m` -> `server.memory.heap.max_size=5000m`
-  - Press `Apply`
+    - The connection URI is viewable on the Neo4j Desktop 2 app by navigating to the applicable database and then: `…` → `Overview`
+
+> [!NOTE]
+> Should you encounter `Neo4jError: There is not enough memory to perform the current task` when seeding the database then perform the following steps:
+>
+> - Open the Neo4j Desktop 2 app
+> - For the applicable database, click `…` → `Open` → `neo4.conf` (opening with a text editor), then increase the memory allocation, e.g.
+>   - `server.memory.heap.initial_size=512m` → `server.memory.heap.initial_size=5000m`
+>   - `server.memory.heap.max_size=1G` → `server.memory.heap.max_size=2G`
+> - Save the file (and re-start the database instance if running)
 
 ## To run local Neo4j graph database
 
-- Open Neo4j Desktop app
-- Press `► Start` for requisite database
+- Open the Neo4j Desktop 2 app
+- Press `►` for the applicable database
 
 ## To run locally
 
@@ -66,10 +71,10 @@ or
 ## To run end-to-end tests
 
 - Download and run the [Docker Desktop app](https://www.docker.com/products/docker-desktop)
-- Stop any Neo4j databases running on the Neo4j Desktop app if they share the same port number as that used by the Docker-served Neo4j instance
+- Stop any Neo4j databases running on the Neo4j Desktop 2 app if they share the same port number as that used by the Docker-served Neo4j instance
 - Start the Docker-served resources by running `$ npm run e2e-test-resources` and wait until they are ready
 - In a separate CLI tab run `$ npm run e2e-test`
-- The Docker-served Neo4j database can be queried via the Neo4j browser by visiting `http://localhost:7474`
+- The Docker-served Neo4j database can be queried via the Neo4j Browser by visiting `http://localhost:7474`
 
 ## A note on data used for tests
 
