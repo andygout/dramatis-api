@@ -8,16 +8,16 @@ import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const EIGHTEEN_THIRTIES_TIME_UUID = '1830S_TIME_UUID';
 const EIGHTEEN_THIRTY_THREE_TIME_UUID = '1833_TIME_UUID';
+const RUSSIA_PLACE_UUID = 'RUSSIA_PLACE_UUID';
+const MOSCOW_PLACE_UUID = 'MOSCOW_PLACE_UUID';
 const VOYAGE_MATERIAL_UUID = 'VOYAGE_MATERIAL_UUID';
 const TOM_STOPPARD_PERSON_UUID = 'TOM_STOPPARD_PERSON_UUID';
 const THE_STRÄUSSLER_GROUP_COMPANY_UUID = 'THE_STRAUSSLER_GROUP_COMPANY_UUID';
-const MOSCOW_PLACE_UUID = 'MOSCOW_PLACE_UUID';
 const COUNTRY_HOUSE_LOCALE_UUID = 'COUNTRY_HOUSE_LOCALE_UUID';
 const ALEXANDER_HERZEN_CHARACTER_UUID = 'ALEXANDER_HERZEN_CHARACTER_UUID';
 const SHIPWRECK_MATERIAL_UUID = 'SHIPWRECK_MATERIAL_UUID';
 const SALVAGE_MATERIAL_UUID = 'SALVAGE_MATERIAL_UUID';
 const THE_COAST_OF_UTOPIA_MATERIAL_UUID = 'THE_COAST_OF_UTOPIA_MATERIAL_UUID';
-const RUSSIA_PLACE_UUID = 'RUSSIA_PLACE_UUID';
 const COUNTRY_ESTATE_LOCALE_UUID = 'COUNTRY_ESTATE_LOCALE_UUID';
 const IVAN_TURGENEV_CHARACTER_UUID = 'IVAN_TURGENEV_CHARACTER_UUID';
 const VOYAGE_OLIVIER_PRODUCTION_UUID = 'VOYAGE_PRODUCTION_UUID';
@@ -33,6 +33,7 @@ let theCoastOfUtopiaMaterial;
 let voyageMaterial;
 let eighteenThirtiesTime;
 let eighteenThirtyThreeTime;
+let russiaPlace;
 let moscowPlace;
 let countryHouseLocale;
 let alexanderHerzenCharacter;
@@ -61,6 +62,22 @@ describe('Material with sub-materials', () => {
 			name: '1833',
 			fromDate: '1833-01-01',
 			toDate: '1833-12-31'
+		});
+
+		await request(app).post('/places').send({
+			name: 'Russia',
+			minLatitude: 41.1850968,
+			maxLatitude: 82.0586232,
+			minLongitude: -180.0,
+			maxLongitude: 180.0
+		});
+
+		await request(app).post('/places').send({
+			name: 'Moscow',
+			minLatitude: 55.1421745,
+			maxLatitude: 56.0212238,
+			minLongitude: 36.8031012,
+			maxLongitude: 37.9674277
 		});
 
 		await request(app)
@@ -346,6 +363,8 @@ describe('Material with sub-materials', () => {
 		eighteenThirtiesTime = await request(app).get(`/times/${EIGHTEEN_THIRTIES_TIME_UUID}`);
 
 		eighteenThirtyThreeTime = await request(app).get(`/times/${EIGHTEEN_THIRTY_THREE_TIME_UUID}`);
+
+		russiaPlace = await request(app).get(`/places/${RUSSIA_PLACE_UUID}`);
 
 		moscowPlace = await request(app).get(`/places/${MOSCOW_PLACE_UUID}`);
 
@@ -1013,6 +1032,216 @@ describe('Material with sub-materials', () => {
 			];
 
 			const { materials } = eighteenThirtyThreeTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Russia (place)', () => {
+		it('includes materials for which it and its contained sub-places were a setting, including the sur-material where applicable', () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: SALVAGE_MATERIAL_UUID,
+					name: 'Salvage',
+					format: 'play',
+					year: 2002,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+						name: 'The Coast of Utopia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: SHIPWRECK_MATERIAL_UUID,
+					name: 'Shipwreck',
+					format: 'play',
+					year: 2002,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+						name: 'The Coast of Utopia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: VOYAGE_MATERIAL_UUID,
+					name: 'Voyage',
+					format: 'play',
+					year: 2002,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+						name: 'The Coast of Utopia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTY_THREE_TIME_UUID,
+								name: '1833'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: MOSCOW_PLACE_UUID,
+								name: 'Moscow'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_COAST_OF_UTOPIA_MATERIAL_UUID,
+					name: 'The Coast of Utopia',
+					format: 'trilogy of plays',
+					year: 2002,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: TOM_STOPPARD_PERSON_UUID,
+									name: 'Tom Stoppard'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_STRÄUSSLER_GROUP_COMPANY_UUID,
+									name: 'The Sträussler Group'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: EIGHTEEN_THIRTIES_TIME_UUID,
+								name: '1830s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_ESTATE_LOCALE_UUID,
+								name: 'Country estate'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = russiaPlace.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

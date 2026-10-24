@@ -1,5 +1,5 @@
 import prepareAsParams from '../../src/lib/prepare-as-params.js';
-import { AwardCeremony, Festival, Material, Production, Time, Venue } from '../../src/models/index.js';
+import { AwardCeremony, Festival, Material, Place, Production, Time, Venue } from '../../src/models/index.js';
 import { getCreateQueries, sharedQueries } from '../../src/neo4j/cypher-queries/index.js';
 import { neo4jQuery } from '../../src/neo4j/query.js';
 import { MODELS } from '../../src/utils/constants.js';
@@ -8,6 +8,7 @@ const PATH_TO_MODEL_MAP = new Map([
 	['/award-ceremonies', MODELS.AWARD_CEREMONY],
 	['/festivals', MODELS.FESTIVAL],
 	['/materials', MODELS.MATERIAL],
+	['/places', MODELS.PLACE],
 	['/productions', MODELS.PRODUCTION],
 	['/times', MODELS.TIME],
 	['/venues', MODELS.VENUE]
@@ -17,6 +18,7 @@ const MODEL_TO_CLASS_MAP = new Map([
 	[MODELS.AWARD_CEREMONY, AwardCeremony],
 	[MODELS.FESTIVAL, Festival],
 	[MODELS.MATERIAL, Material],
+	[MODELS.PLACE, Place],
 	[MODELS.PRODUCTION, Production],
 	[MODELS.TIME, Time],
 	[MODELS.VENUE, Venue]
@@ -26,6 +28,7 @@ const MODEL_TO_QUERY_SCOPE_VARIABLE_MAP = new Map([
 	[MODELS.AWARD_CEREMONY, 'ceremony'],
 	[MODELS.FESTIVAL, 'festival'],
 	[MODELS.MATERIAL, 'material'],
+	[MODELS.PLACE, 'place'],
 	[MODELS.PRODUCTION, 'production'],
 	[MODELS.TIME, 'time'],
 	[MODELS.VENUE, 'venue']

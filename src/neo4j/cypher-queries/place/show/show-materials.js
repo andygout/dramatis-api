@@ -4,7 +4,14 @@ export default () => `
 	CALL {
 		WITH place
 
-		OPTIONAL MATCH (place)<-[:HAS_PLACE]-(:Setting)<-[:HAS_SETTING]-(material:Material)
+		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(:Setting)-[:HAS_PLACE]->(settingPlace:Place)
+			WHERE settingPlace = place OR
+				(
+					settingPlace.minLatitude >= place.minLatitude
+					AND settingPlace.maxLatitude <= place.maxLatitude
+					AND settingPlace.minLongitude >= place.minLongitude
+					AND settingPlace.maxLongitude <= place.maxLongitude
+				)
 
 		WITH DISTINCT place, material
 
@@ -119,13 +126,20 @@ export default () => `
 			CALL {
 				WITH material, place
 
-				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_PLACE]->(place)
+				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_PLACE]->(settingPlace:Place)
+					WHERE settingPlace = place OR
+						(
+							settingPlace.minLatitude >= place.minLatitude
+							AND settingPlace.maxLatitude <= place.maxLatitude
+							AND settingPlace.minLongitude >= place.minLongitude
+							AND settingPlace.maxLongitude <= place.maxLongitude
+						)
 
 				OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)
 
 				OPTIONAL MATCH (setting)-[:HAS_LOCALE]->(locale:Locale)
 
-				WITH place, time, locale
+				WITH settingPlace, time, locale
 					ORDER BY settingRel.position
 
 				RETURN
@@ -135,7 +149,7 @@ export default () => `
 							THEN null
 							ELSE time { model: 'TIME', .uuid, .name }
 						END,
-						place: place { model: 'PLACE', .uuid, .name },
+						place: settingPlace { model: 'PLACE', .uuid, .name },
 						locale: CASE WHEN locale IS NULL
 							THEN null
 							ELSE locale { model: 'LOCALE', .uuid, .name }
