@@ -8,6 +8,8 @@ import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 
 const NINETEEN_FORTIES_TIME_UUID = '1940S_TIME_UUID';
 const NINETEEN_FORTY_TIME_UUID = '1940_TIME_UUID';
+const ENGLAND_PLACE_UUID = 'ENGLAND_PLACE_UUID';
+const OXFORDSHIRE_PLACE_UUID = 'OXFORDSHIRE_PLACE_UUID';
 const BIRMINGHAM_REPERTORY_THEATRE_VENUE_UUID = 'BIRMINGHAM_REPERTORY_THEATRE_VENUE_UUID';
 const THE_HOUSE_VENUE_UUID = 'THE_HOUSE_VENUE_UUID';
 const THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID = 'THE_LION_THE_WITCH_AND_THE_WARDROBE_MATERIAL_1_UUID';
@@ -17,11 +19,9 @@ const THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID = 'THE_LION_THE_WIT
 const ADAM_PECK_PERSON_UUID = 'ADAM_PECK_PERSON_UUID';
 const C_S_LEWIS_SOCIETY_COMPANY_UUID = 'C_S_LEWIS_SOCIETY_COMPANY_UUID';
 const SARAH_SELDEN_PERSON_UUID = 'SARAH_SELDEN_PERSON_UUID';
-const OXFORDSHIRE_PLACE_UUID = 'OXFORDSHIRE_PLACE_UUID';
 const SPARE_ROOM_LOCALE_UUID = 'SPARE_ROOM_LOCALE_UUID';
 const ASLAN_CHARACTER_UUID = 'ASLAN_CHARACTER_UUID';
 const THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID = 'THE_CHRONICLES_OF_NARNIA_MATERIAL_2_UUID';
-const ENGLAND_PLACE_UUID = 'ENGLAND_PLACE_UUID';
 const COUNTRY_HOUSE_LOCALE_UUID = 'COUNTRY_HOUSE_LOCALE_UUID';
 const THE_LION_THE_WITCH_AND_THE_WARDROBE_GILLIAN_LYNNE_PRODUCTION_UUID =
 	'THE_LION_THE_WITCH_AND_THE_WARDROBE_PRODUCTION_UUID';
@@ -42,6 +42,7 @@ let cinerightsLtdCompany;
 let talyseTataPerson;
 let nineteenFortiesTime;
 let nineteenFortyTime;
+let englandPlace;
 let oxfordshirePlace;
 let spareRoomLocale;
 let aslanCharacter;
@@ -62,6 +63,22 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			name: '1940',
 			fromDate: '1940-01-01',
 			toDate: '1940-12-31'
+		});
+
+		await request(app).post('/places').send({
+			name: 'England',
+			minLatitude: 49.674,
+			maxLatitude: 55.917,
+			minLongitude: -6.7047494,
+			maxLongitude: 2.0919117
+		});
+
+		await request(app).post('/places').send({
+			name: 'Oxfordshire',
+			minLatitude: 51.4594132,
+			maxLatitude: 52.1684702,
+			minLongitude: -1.7195008,
+			maxLongitude: -0.870066
 		});
 
 		await request(app)
@@ -379,6 +396,8 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 		nineteenFortiesTime = await request(app).get(`/times/${NINETEEN_FORTIES_TIME_UUID}`);
 
 		nineteenFortyTime = await request(app).get(`/times/${NINETEEN_FORTY_TIME_UUID}`);
+
+		englandPlace = await request(app).get(`/places/${ENGLAND_PLACE_UUID}`);
 
 		oxfordshirePlace = await request(app).get(`/places/${OXFORDSHIRE_PLACE_UUID}`);
 
@@ -992,6 +1011,179 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 			];
 
 			const { materials } = nineteenFortyTime.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('England (place)', () => {
+		it("includes in its and its contained sub-places' material data the writers and rights grantors of the material", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_PLAY_MATERIAL_UUID,
+					name: 'The Lion, the Witch and the Wardrobe',
+					format: 'play',
+					year: 2017,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+						name: 'The Chronicles of Narnia',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LION_THE_WITCH_AND_THE_WARDROBE_NOVEL_MATERIAL_UUID,
+									name: 'The Lion, the Witch and the Wardrobe',
+									format: 'novel',
+									year: 1950,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Chronicles of Narnia',
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: C_S_LEWIS_SOCIETY_COMPANY_UUID,
+									name: 'C S Lewis Society'
+								},
+								{
+									model: 'PERSON',
+									uuid: SARAH_SELDEN_PERSON_UUID,
+									name: 'Sarah Selden'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTY_TIME_UUID,
+								name: '1940'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: OXFORDSHIRE_PLACE_UUID,
+								name: 'Oxfordshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: SPARE_ROOM_LOCALE_UUID,
+								name: 'Spare room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_CHRONICLES_OF_NARNIA_PLAYS_MATERIAL_UUID,
+					name: 'The Chronicles of Narnia',
+					format: 'plays',
+					year: 2017,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: ADAM_PECK_PERSON_UUID,
+									name: 'Adam Peck'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_CHRONICLES_OF_NARNIA_SERIES_OF_NOVELS_MATERIAL_UUID,
+									name: 'The Chronicles of Narnia',
+									format: 'series of novels',
+									year: 1956,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: C_S_LEWIS_PERSON_UUID,
+													name: 'C S Lewis'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: NINETEEN_FORTIES_TIME_UUID,
+								name: '1940s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: ENGLAND_PLACE_UUID,
+								name: 'England'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: COUNTRY_HOUSE_LOCALE_UUID,
+								name: 'Country house'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = englandPlace.body;
 
 			assert.deepEqual(materials, expectedMaterials);
 		});

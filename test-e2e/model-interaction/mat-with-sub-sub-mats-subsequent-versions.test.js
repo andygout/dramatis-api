@@ -9,19 +9,19 @@ import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 const FOURTEENTH_CENTURY_TIME_UUID = '14TH_CENTURY_TIME_UUID';
 const THIRTEEN_NINETIES_TIME_UUID = '1390S_TIME_UUID';
 const THIRTEEN_NINETY_NINE_TIME_UUID = '1399_TIME_UUID';
+const FLINTSHIRE_PLACE_UUID = 'FLINTSHIRE_PLACE_UUID';
+const FLINT_PLACE_UUID = 'FLINT_PLACE_UUID';
+const FLINT_CASTLE_PLACE_UUID = 'FLINT_CASTLE_PLACE_UUID';
 const UNICORN_THEATRE_VENUE_UUID = 'UNICORN_THEATRE_VENUE_UUID';
 const WESTON_THEATRE_VENUE_UUID = 'WESTON_THEATRE_VENUE_UUID';
 const RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID = 'RICHARD_II_MATERIAL_1_UUID';
 const WILLIAM_SHAKESPEARE_PERSON_UUID = 'WILLIAM_SHAKESPEARE_PERSON_UUID';
 const THE_KINGS_MEN_COMPANY_UUID = 'THE_KINGS_MEN_COMPANY_UUID';
-const FLINT_CASTLE_PLACE_UUID = 'FLINT_CASTLE_PLACE_UUID';
 const CASTLE_ROOM_LOCALE_UUID = 'CASTLE_ROOM_LOCALE_UUID';
 const LORD_ROSS_CHARACTER_UUID = 'LORD_ROSS_CHARACTER_UUID';
 const THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_FIRST_HENRIAD_MATERIAL_1_UUID';
-const FLINT_PLACE_UUID = 'FLINT_PLACE_UUID';
 const CASTLE_LOCALE_UUID = 'CASTLE_LOCALE_UUID';
 const THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID = 'THE_HENRIAD_MATERIAL_1_UUID';
-const FLINTSHIRE_PLACE_UUID = 'FLINTSHIRE_PLACE_UUID';
 const CASTLE_GROUNDS_LOCALE_UUID = 'CASTLE_GROUNDS_LOCALE_UUID';
 const RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID = 'RICHARD_II_MATERIAL_2_UUID';
 const CARL_HEAP_PERSON_UUID = 'CARL_HEAP_PERSON_UUID';
@@ -44,6 +44,7 @@ let williamShakespearePerson;
 let theKingsMenCompany;
 let fourteenthCenturyTime;
 let thirteenNinetyNineTime;
+let flintshirePlace;
 let flintCastlePlace;
 let castleRoomLocale;
 let lordRossCharacter;
@@ -70,6 +71,30 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			name: '1399',
 			fromDate: '1399-01-01',
 			toDate: '1399-12-31'
+		});
+
+		await request(app).post('/places').send({
+			name: 'Flintshire',
+			minLatitude: 53.072126,
+			maxLatitude: 53.3607879,
+			minLongitude: -3.4006089,
+			maxLongitude: -2.9202758
+		});
+
+		await request(app).post('/places').send({
+			name: 'Flint',
+			minLatitude: 53.2092828,
+			maxLatitude: 53.2892828,
+			minLongitude: -3.1745262,
+			maxLongitude: -3.0945262
+		});
+
+		await request(app).post('/places').send({
+			name: 'Flint Castle',
+			minLatitude: 53.251714,
+			maxLatitude: 53.251814,
+			minLongitude: -3.1299573,
+			maxLongitude: -3.1298573
 		});
 
 		await request(app)
@@ -522,6 +547,8 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 		fourteenthCenturyTime = await request(app).get(`/times/${FOURTEENTH_CENTURY_TIME_UUID}`);
 
 		thirteenNinetyNineTime = await request(app).get(`/times/${THIRTEEN_NINETY_NINE_TIME_UUID}`);
+
+		flintshirePlace = await request(app).get(`/places/${FLINTSHIRE_PLACE_UUID}`);
 
 		flintCastlePlace = await request(app).get(`/places/${FLINT_CASTLE_PLACE_UUID}`);
 
@@ -2022,6 +2049,373 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
+
+	describe('Flintshire (place)', () => {
+		it("includes in its and its contained sub-places' material data the writers and (for subsequent versions) original version writers of the material", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: RICHARD_II_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'Richard II',
+					format: 'play',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The First Henriad',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+							name: 'The Henriad'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTEEN_NINETY_NINE_TIME_UUID,
+								name: '1399'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: FLINT_CASTLE_PLACE_UUID,
+								name: 'Flint Castle'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CASTLE_ROOM_LOCALE_UUID,
+								name: 'Castle room'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_FIRST_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'The First Henriad',
+					format: 'sub-group of plays',
+					year: 2009,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+						name: 'The Henriad',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTEEN_NINETIES_TIME_UUID,
+								name: '1390s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: FLINT_PLACE_UUID,
+								name: 'Flint'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CASTLE_LOCALE_UUID,
+								name: 'Castle'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_HENRIAD_SUBSEQUENT_VERSION_MATERIAL_UUID,
+					name: 'The Henriad',
+					format: 'group of plays',
+					year: 2009,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'adapted for young people by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: CARL_HEAP_PERSON_UUID,
+									name: 'Carl Heap'
+								},
+								{
+									model: 'COMPANY',
+									uuid: BEGGARS_BELIEF_THEATRE_COMPANY_UUID,
+									name: 'Beggars Belief Theatre Company'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FOURTEENTH_CENTURY_TIME_UUID,
+								name: '14th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: FLINTSHIRE_PLACE_UUID,
+								name: 'Flintshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CASTLE_GROUNDS_LOCALE_UUID,
+								name: 'Castle grounds'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'The First Henriad',
+					format: 'sub-group of plays',
+					year: 1599,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The Henriad',
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTEEN_NINETIES_TIME_UUID,
+								name: '1390s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: FLINT_PLACE_UUID,
+								name: 'Flint'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CASTLE_LOCALE_UUID,
+								name: 'Castle'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'The Henriad',
+					format: 'group of plays',
+					year: 1599,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: FOURTEENTH_CENTURY_TIME_UUID,
+								name: '14th century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: FLINTSHIRE_PLACE_UUID,
+								name: 'Flintshire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CASTLE_GROUNDS_LOCALE_UUID,
+								name: 'Castle grounds'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: RICHARD_II_ORIGINAL_VERSION_MATERIAL_UUID,
+					name: 'Richard II',
+					format: 'play',
+					year: 1595,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_FIRST_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+						name: 'The First Henriad',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: THE_HENRIAD_ORIGINAL_VERSION_MATERIAL_UUID,
+							name: 'The Henriad'
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: WILLIAM_SHAKESPEARE_PERSON_UUID,
+									name: 'William Shakespeare'
+								},
+								{
+									model: 'COMPANY',
+									uuid: THE_KINGS_MEN_COMPANY_UUID,
+									name: "The King's Men"
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTEEN_NINETY_NINE_TIME_UUID,
+								name: '1399'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: FLINT_CASTLE_PLACE_UUID,
+								name: 'Flint Castle'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: CASTLE_ROOM_LOCALE_UUID,
+								name: 'Castle room'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = flintshirePlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	// Note: A test for "Flint (place)" which might appear here is unnecessary
+	// because the use cases it would test are already covered by the tests in
+	// mat-with-sub-mats-subsequent-versions.test.js.
 
 	describe('Flint Castle (place)', () => {
 		it('includes in its material data the writers and (for subsequent versions) original version writers of the material', () => {

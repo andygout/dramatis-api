@@ -1,5 +1,5 @@
 import Base from './Base.js';
-import { Locale, Place, TimeBase } from './index.js';
+import { Locale, PlaceBase, TimeBase } from './index.js';
 import { MODELS } from '../utils/constants.js';
 
 export default class Setting extends Base {
@@ -10,7 +10,7 @@ export default class Setting extends Base {
 
 		this.time = new TimeBase(time);
 
-		this.place = new Place(place);
+		this.place = new PlaceBase(place);
 
 		this.locale = new Locale(locale);
 	}

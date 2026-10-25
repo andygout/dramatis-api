@@ -9,6 +9,9 @@ import { purgeDatabase } from '../test-helpers/neo4j/index.js';
 const THIRTY_FIRST_CENTURY_TIME_UUID = '31ST_CENTURY_TIME_UUID';
 const THIRTY_TENS_TIME_UUID = '3010S_TIME_UUID';
 const THIRTY_EIGHTEEN_TIME_UUID = '3018_TIME_UUID';
+const THE_SHIRE_PLACE_UUID = 'THE_SHIRE_PLACE_UUID';
+const WESTFARTHING_PLACE_UUID = 'WESTFARTHING_PLACE_UUID';
+const HOBBITON_PLACE_UUID = 'HOBBITON_PLACE_UUID';
 const THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID = 'THE_FELLOWSHIP_OF_THE_RING_MATERIAL_1_UUID';
 const J_R_R_TOLKIEN_PERSON_UUID = 'J_R_R_TOLKIEN_PERSON_UUID';
 const THE_LORD_OF_THE_RINGS_TRILOGY_OF_NOVELS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_MATERIAL_1_UUID';
@@ -17,14 +20,11 @@ const THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID = 'THE_FELLOWSHIP_OF_THE_RIN
 const SHAUN_MCKENNA_PERSON_UUID = 'SHAUN_MCKENNA_PERSON_UUID';
 const THE_TOLKIEN_ESTATE_COMPANY_UUID = 'THE_TOLKIEN_ESTATE_COMPANY_UUID';
 const BAILLIE_TOLKIEN_PERSON_UUID = 'BAILLIE_TOLKIEN_PERSON_UUID';
-const HOBBITON_PLACE_UUID = 'HOBBITON_PLACE_UUID';
 const KITCHEN_LOCALE_UUID = 'KITCHEN_LOCALE_UUID';
 const BILBO_BAGGINS_CHARACTER_UUID = 'BILBO_BAGGINS_CHARACTER_UUID';
 const THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID = 'THE_LORD_OF_THE_RINGS_MATERIAL_2_UUID';
-const WESTFARTHING_PLACE_UUID = 'WESTFARTHING_PLACE_UUID';
 const HOBBIT_HOLE_LOCALE_UUID = 'HOBBIT_HOLE_LOCALE_UUID';
 const TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID = 'TOLKIENS_LEGENDARIUM_MATERIAL_2_UUID';
-const THE_SHIRE_PLACE_UUID = 'THE_SHIRE_PLACE_UUID';
 const PARTY_FIELD_LOCALE_UUID = 'PARTY_FIELD_LOCALE_UUID';
 const THE_FELLOWSHIP_OF_THE_RING_THEATRE_ROYAL_DRURY_LANE_PRODUCTION_UUID =
 	'THE_FELLOWSHIP_OF_THE_RING_PRODUCTION_UUID';
@@ -40,6 +40,7 @@ let theTolkienEstateCompany;
 let baillieTolkienPerson;
 let thirtyFirstCenturyTime;
 let thirtyEighteenTime;
+let theShirePlace;
 let hobbitonPlace;
 let kitchenLocale;
 let bilboBagginsCharacter;
@@ -66,6 +67,33 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			name: '3018',
 			fromDate: '3011-01-01',
 			toDate: '3011-12-31'
+		});
+
+		// Coordinates for Waikato region, New Zealand.
+		await request(app).post('/places').send({
+			name: 'The Shire',
+			minLatitude: -39.3006524,
+			maxLatitude: -36.2582459,
+			minLongitude: 174.3137365,
+			maxLongitude: 176.5053248
+		});
+
+		// Coordinates for the Matamata-Piako District, New Zealand.
+		await request(app).post('/places').send({
+			name: 'Westfarthing',
+			minLatitude: -37.9521398,
+			maxLatitude: -37.4187676,
+			minLongitude: 175.3732312,
+			maxLongitude: 175.9549681
+		});
+
+		// Coordinates for the Hobbiton movie set in Matamata, New Zealand.
+		await request(app).post('/places').send({
+			name: 'Hobbiton',
+			minLatitude: -37.8600649,
+			maxLatitude: -37.8555245,
+			minLongitude: 175.6779447,
+			maxLongitude: 175.6840374
 		});
 
 		await request(app)
@@ -414,6 +442,8 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 		thirtyFirstCenturyTime = await request(app).get(`/times/${THIRTY_FIRST_CENTURY_TIME_UUID}`);
 
 		thirtyEighteenTime = await request(app).get(`/times/${THIRTY_EIGHTEEN_TIME_UUID}`);
+
+		theShirePlace = await request(app).get(`/places/${THE_SHIRE_PLACE_UUID}`);
 
 		hobbitonPlace = await request(app).get(`/places/${HOBBITON_PLACE_UUID}`);
 
@@ -1093,6 +1123,269 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 			assert.deepEqual(materials, expectedMaterials);
 		});
 	});
+
+	describe('The Shire (place)', () => {
+		it("includes in its and its contained sub-places' material data the writers and rights grantors of the material", () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: THE_FELLOWSHIP_OF_THE_RING_PLAY_MATERIAL_UUID,
+					name: 'The Fellowship of the Ring',
+					format: 'play',
+					year: 2007,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID,
+						name: 'The Lord of the Rings',
+						surMaterial: {
+							model: 'MATERIAL',
+							uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
+							name: "Tolkien's Legendarium"
+						}
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: SHAUN_MCKENNA_PERSON_UUID,
+									name: 'Shaun McKenna'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_FELLOWSHIP_OF_THE_RING_NOVEL_MATERIAL_UUID,
+									name: 'The Fellowship of the Ring',
+									format: 'novel',
+									year: 1954,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: THE_LORD_OF_THE_RINGS_TRILOGY_OF_NOVELS_MATERIAL_UUID,
+										name: 'The Lord of the Rings',
+										surMaterial: {
+											model: 'MATERIAL',
+											uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
+											name: "Tolkien's Legendarium"
+										}
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: J_R_R_TOLKIEN_PERSON_UUID,
+													name: 'J R R Tolkien'
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by special arrangement with',
+							entities: [
+								{
+									model: 'COMPANY',
+									uuid: THE_TOLKIEN_ESTATE_COMPANY_UUID,
+									name: 'The Tolkien Estate'
+								},
+								{
+									model: 'PERSON',
+									uuid: BAILLIE_TOLKIEN_PERSON_UUID,
+									name: 'Baillie Tolkien'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTY_EIGHTEEN_TIME_UUID,
+								name: '3018'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: HOBBITON_PLACE_UUID,
+								name: 'Hobbiton'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: KITCHEN_LOCALE_UUID,
+								name: 'Kitchen'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: THE_LORD_OF_THE_RINGS_TRILOGY_OF_PLAYS_MATERIAL_UUID,
+					name: 'The Lord of the Rings',
+					format: 'trilogy of plays',
+					year: 2007,
+					surMaterial: {
+						model: 'MATERIAL',
+						uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
+						name: "Tolkien's Legendarium",
+						surMaterial: null
+					},
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: SHAUN_MCKENNA_PERSON_UUID,
+									name: 'Shaun McKenna'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: THE_LORD_OF_THE_RINGS_TRILOGY_OF_NOVELS_MATERIAL_UUID,
+									name: 'The Lord of the Rings',
+									format: 'trilogy of novels',
+									year: 1955,
+									surMaterial: {
+										model: 'MATERIAL',
+										uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
+										name: "Tolkien's Legendarium",
+										surMaterial: null
+									},
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: J_R_R_TOLKIEN_PERSON_UUID,
+													name: 'J R R Tolkien'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTY_TENS_TIME_UUID,
+								name: '3010s'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: WESTFARTHING_PLACE_UUID,
+								name: 'Westfarthing'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: HOBBIT_HOLE_LOCALE_UUID,
+								name: 'Hobbit-hole'
+							}
+						}
+					]
+				},
+				{
+					model: 'MATERIAL',
+					uuid: TOLKIENS_LEGENDARIUM_COLLECTION_OF_PLAYS_MATERIAL_UUID,
+					name: "Tolkien's Legendarium",
+					format: 'collection of plays',
+					year: 2007,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: SHAUN_MCKENNA_PERSON_UUID,
+									name: 'Shaun McKenna'
+								}
+							]
+						},
+						{
+							model: 'WRITING_CREDIT',
+							name: 'based on',
+							entities: [
+								{
+									model: 'MATERIAL',
+									uuid: TOLKIENS_LEGENDARIUM_BODY_OF_WRITING_MATERIAL_UUID,
+									name: "Tolkien's Legendarium",
+									format: 'body of writing',
+									year: 1977,
+									surMaterial: null,
+									writingCredits: [
+										{
+											model: 'WRITING_CREDIT',
+											name: 'by',
+											entities: [
+												{
+													model: 'PERSON',
+													uuid: J_R_R_TOLKIEN_PERSON_UUID,
+													name: 'J R R Tolkien'
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: THIRTY_FIRST_CENTURY_TIME_UUID,
+								name: '31st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: THE_SHIRE_PLACE_UUID,
+								name: 'The Shire'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: PARTY_FIELD_LOCALE_UUID,
+								name: 'Party field'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = theShirePlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	// Note: A test for "Westfarthing (place)" which might appear here is unnecessary
+	// because the use cases it would test are already covered by the tests in
+	// mat-with-sub-mats-rights-grantor.test.js.
 
 	describe('Hobbiton (place)', () => {
 		it('includes in its material data the writers and rights grantors of the material', () => {

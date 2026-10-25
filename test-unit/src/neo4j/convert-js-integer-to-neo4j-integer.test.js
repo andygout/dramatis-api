@@ -6,7 +6,7 @@ import { assert as sinonAssert, restore, stub } from 'sinon';
 
 describe('Convert JavaScript Number To Neo4j Integer module', () => {
 	let stubs;
-	let convertJsNumberToNeo4jInteger;
+	let convertJsIntegerToNeo4jInteger;
 
 	beforeEach(async () => {
 		stubs = {
@@ -15,7 +15,7 @@ describe('Convert JavaScript Number To Neo4j Integer module', () => {
 			}
 		};
 
-		convertJsNumberToNeo4jInteger = await esmock('../../../src/neo4j/convert-js-number-to-neo4j-integer.js', {
+		convertJsIntegerToNeo4jInteger = await esmock('../../../src/neo4j/convert-js-integer-to-neo4j-integer.js', {
 			'neo4j-driver': stubs.neo4j
 		});
 	});
@@ -27,7 +27,7 @@ describe('Convert JavaScript Number To Neo4j Integer module', () => {
 	it('returns the return value of neo4j.int()', async () => {
 		const inputValue = 0;
 
-		const result = convertJsNumberToNeo4jInteger(inputValue);
+		const result = convertJsIntegerToNeo4jInteger(inputValue);
 
 		sinonAssert.calledOnce(stubs.neo4j.int);
 		sinonAssert.calledWithExactly(stubs.neo4j.int, inputValue);

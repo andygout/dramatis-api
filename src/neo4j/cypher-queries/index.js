@@ -25,7 +25,12 @@ import {
 	getListQuery as getMaterialListQuery
 } from './material/index.js';
 import { getShowQueries as getPersonShowQueries } from './person/index.js';
-import { getShowQueries as getPlaceShowQueries } from './place/index.js';
+import {
+	getCreateQuery as getPlaceCreateQuery,
+	getEditQuery as getPlaceEditQuery,
+	getUpdateQuery as getPlaceUpdateQuery,
+	getShowQueries as getPlaceShowQueries
+} from './place/index.js';
 import {
 	getCreateQuery as getProductionCreateQuery,
 	getEditQuery as getProductionEditQuery,
@@ -72,6 +77,7 @@ const getCreateQueries = {
 	[MODELS.AWARD_CEREMONY]: getAwardCeremonyCreateQuery,
 	[MODELS.FESTIVAL]: getFestivalCreateQuery,
 	[MODELS.MATERIAL]: getMaterialCreateQuery,
+	[MODELS.PLACE]: getPlaceCreateQuery,
 	[MODELS.PRODUCTION]: getProductionCreateQuery,
 	[MODELS.TIME]: getTimeCreateQuery,
 	[MODELS.VENUE]: getVenueCreateQuery
@@ -81,6 +87,7 @@ const getEditQueries = {
 	[MODELS.AWARD_CEREMONY]: getAwardCeremonyEditQuery,
 	[MODELS.FESTIVAL]: getFestivalEditQuery,
 	[MODELS.MATERIAL]: getMaterialEditQuery,
+	[MODELS.PLACE]: getPlaceEditQuery,
 	[MODELS.PRODUCTION]: getProductionEditQuery,
 	[MODELS.TIME]: getTimeEditQuery,
 	[MODELS.VENUE]: getVenueEditQuery
@@ -90,6 +97,7 @@ const getUpdateQueries = {
 	[MODELS.AWARD_CEREMONY]: getAwardCeremonyUpdateQuery,
 	[MODELS.FESTIVAL]: getFestivalUpdateQuery,
 	[MODELS.MATERIAL]: getMaterialUpdateQuery,
+	[MODELS.PLACE]: getPlaceUpdateQuery,
 	[MODELS.PRODUCTION]: getProductionUpdateQuery,
 	[MODELS.TIME]: getTimeUpdateQuery,
 	[MODELS.VENUE]: getVenueUpdateQuery
