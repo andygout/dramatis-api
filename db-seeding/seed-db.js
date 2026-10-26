@@ -13,6 +13,7 @@ const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	'award-ceremonies': '🏆',
 	festivals: '🎪',
 	materials: '📖',
+	places: '🌍',
 	productions: '🎭',
 	times: '🕰',
 	venues: '🏛️'
@@ -112,6 +113,11 @@ async function seedDatabase() {
 
 	// eslint-disable-next-line no-console
 	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['times']} Time seeds sown`);
+
+	await seedInstances('places');
+
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['places']} Place seeds sown`);
 
 	await seedInstances('materials');
 
