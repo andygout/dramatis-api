@@ -63,10 +63,14 @@ describe('Time model', () => {
 				toDate: '1962-12-31'
 			});
 
+			spy(instance, 'validateName');
+			spy(instance, 'validateDifferentiator');
 			spy(instance, 'validateDates');
 
 			instance.runInputValidations();
 
+			sinonAssert.calledOnceWithExactly(instance.validateName, { isRequired: true });
+			sinonAssert.calledOnceWithExactly(instance.validateDifferentiator);
 			sinonAssert.calledOnceWithExactly(instance.validateDates);
 		});
 	});
