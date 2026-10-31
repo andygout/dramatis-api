@@ -1840,7 +1840,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting; excludes materials for which intersecting times (e.g. 1958-1965 and 1965-1974) were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting; excludes materials for which intersecting times (e.g. 1958-1965 and 1965-1974) were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -2230,7 +2230,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -4422,7 +4422,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting; excludes materials for which intersecting times (e.g. Xin dynasty) were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting; excludes materials for which intersecting times (e.g. Xin dynasty) were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -4694,7 +4694,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
