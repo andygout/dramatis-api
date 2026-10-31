@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
-	CALL {
-		WITH material
-
+	CALL (material) {
 		OPTIONAL MATCH (material)<-[:SUBSEQUENT_VERSION_OF]-(subsequentVersionMaterial:Material)
 			WHERE NOT EXISTS(
 				(material)<-[:SUBSEQUENT_VERSION_OF]-(:Material)<-[:HAS_SUB_MATERIAL*1..2]-(subsequentVersionMaterial)

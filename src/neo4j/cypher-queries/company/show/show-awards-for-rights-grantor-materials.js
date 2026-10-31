@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
-	CALL {
-		WITH company
-
+	CALL (company) {
 		OPTIONAL MATCH (company)
 			<-[:HAS_WRITING_ENTITY { creditType: 'RIGHTS_GRANTOR' }]
 				-(material:Material)-[:HAS_SUB_MATERIAL*0..2]-(nominatedRightsGrantorMaterial:Material)

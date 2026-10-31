@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (time:Time { uuid: $uuid })
 
-	CALL {
-		WITH time
-
+	CALL (time) {
 		OPTIONAL MATCH (surTime:Time)
 			WHERE surTime <> time AND
 				(
@@ -23,9 +21,7 @@ export default () => `
 			) AS surTimes
 	}
 
-	CALL {
-		WITH time
-
+	CALL (time) {
 		OPTIONAL MATCH (subTime:Time)
 			WHERE subTime <> time AND
 				(

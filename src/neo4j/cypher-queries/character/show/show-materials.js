@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	CALL {
-		WITH character
-
+	CALL (character) {
 		OPTIONAL MATCH (character)
 			<-[variantNamedDepiction:DEPICTS WHERE variantNamedDepiction.displayName IS NOT NULL]-(:Material)
 
@@ -14,9 +12,7 @@ export default () => `
 			COLLECT(DISTINCT(variantNamedDepiction.displayName)) AS variantNamedDepictions
 	}
 
-	CALL {
-		WITH character
-
+	CALL (character) {
 		OPTIONAL MATCH (character)<-[materialRel:DEPICTS]-(material:Material)
 
 		OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->(entity:Person|Company|Material)

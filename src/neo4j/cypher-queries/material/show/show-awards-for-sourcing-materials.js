@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (material:Material { uuid: $uuid })
 
-	CALL {
-		WITH material
-
+	CALL (material) {
 		OPTIONAL MATCH (material)-[:HAS_SUB_MATERIAL*0..2]-(sourceMaterial:Material)
 			<-[:USES_SOURCE_MATERIAL]-(sourcingMaterial:Material)
 				-[:HAS_SUB_MATERIAL*0..2]-(nominatedSourcingMaterial:Material)
