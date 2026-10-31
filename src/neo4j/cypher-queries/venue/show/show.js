@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (venue:Venue { uuid: $uuid })
 
-	CALL {
-		WITH venue
-
+	CALL (venue) {
 		OPTIONAL MATCH (venue)<-[:HAS_SUB_VENUE]-(surVenue:Venue)
 
 		RETURN
@@ -13,9 +11,7 @@ export default () => `
 			END AS surVenue
 	}
 
-	CALL {
-		WITH venue
-
+	CALL (venue) {
 		OPTIONAL MATCH (venue)-[subVenueRel:HAS_SUB_VENUE]->(subVenue:Venue)
 
 		WITH subVenue

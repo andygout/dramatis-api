@@ -78,9 +78,7 @@ const getSeedQuery = (model) => {
 				WITH seedRow
 					ORDER BY seedRow.position
 
-				CALL {
-					WITH seedRow
-
+				CALL (seedRow) {
 					WITH seedRow.params AS row
 
 					${getCreateQuery(model)}

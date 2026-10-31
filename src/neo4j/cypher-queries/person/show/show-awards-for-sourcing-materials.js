@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH path=(person)
 			<-[writingRel:HAS_WRITING_ENTITY]-(creditingMaterial:Material)
 				-[:HAS_SUB_MATERIAL*0..2]-(sourceMaterial:Material)

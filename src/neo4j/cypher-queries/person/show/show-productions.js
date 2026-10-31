@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH (person)<-[:HAS_PRODUCER_ENTITY]-(production:Production)
 
 		OPTIONAL MATCH (production)-[entityRel:HAS_PRODUCER_ENTITY WHERE entityRel.creditedCompanyUuid IS NULL]->
@@ -120,9 +118,7 @@ export default () => `
 			) AS producerProductions
 	}
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH (person)<-[role:HAS_CAST_MEMBER]-(production:Production)
 
 		OPTIONAL MATCH (production)-[:PLAYS_AT]->(venue:Venue)
@@ -211,9 +207,7 @@ export default () => `
 			) AS castMemberProductions
 	}
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH (person)<-[creativeRel:HAS_CREATIVE_ENTITY]-(production:Production)
 
 		OPTIONAL MATCH (production)-[creativeCompanyRel:HAS_CREATIVE_ENTITY]->
@@ -402,9 +396,7 @@ export default () => `
 			) AS creativeProductions
 	}
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH (person)<-[crewRel:HAS_CREW_ENTITY]-(production:Production)
 
 		OPTIONAL MATCH (production)-[crewCompanyRel:HAS_CREW_ENTITY]->
@@ -593,9 +585,7 @@ export default () => `
 			) AS crewProductions
 	}
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH (person)<-[:HAS_CRITIC]-(review:Review)<-[:HAS_REVIEW]-(production:Production)
 
 		OPTIONAL MATCH (review)-[:HAS_PUBLICATION]->(publication:Company)

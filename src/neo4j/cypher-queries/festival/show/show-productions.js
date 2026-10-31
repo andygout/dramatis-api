@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (festival:Festival { uuid: $uuid })
 
-	CALL {
-		WITH festival
-
+	CALL (festival) {
 		OPTIONAL MATCH (festival)<-[:PART_OF_FESTIVAL]-(production:Production)
 			WHERE NOT EXISTS((festival)<-[:PART_OF_FESTIVAL]-(:Production)<-[:HAS_SUB_PRODUCTION*1..2]-(production))
 

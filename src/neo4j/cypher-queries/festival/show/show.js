@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (festival:Festival { uuid: $uuid })
 
-	CALL {
-		WITH festival
-
+	CALL (festival) {
 		OPTIONAL MATCH (festival)-[:PART_OF_FESTIVAL_SERIES]->(festivalSeries:FestivalSeries)
 
 		RETURN

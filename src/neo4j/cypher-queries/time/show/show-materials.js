@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (time:Time { uuid: $uuid })
 
-	CALL {
-		WITH time
-
+	CALL (time) {
 		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(:Setting)-[:HAS_TIME]->(settingTime:Time)
 			WHERE settingTime = time OR
 				(
@@ -13,9 +11,7 @@ export default () => `
 
 		WITH DISTINCT time, material
 
-			CALL {
-				WITH material
-
+			CALL (material) {
 				OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 				OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
@@ -23,9 +19,7 @@ export default () => `
 				RETURN surMaterial, surMaterialRel, surSurMaterial, surSurMaterialRel
 			}
 
-			CALL {
-				WITH material
-
+			CALL (material) {
 				OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
 					(entity:Person|Company|Material)
 
@@ -121,9 +115,7 @@ export default () => `
 					) AS writingCredits
 			}
 
-			CALL {
-				WITH material, time
-
+			CALL (material, time) {
 				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_TIME]->(settingTime:Time)
 					WHERE settingTime = time OR
 						(

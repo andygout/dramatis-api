@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (person:Person { uuid: $uuid })
 
-	CALL {
-		WITH person
-
+	CALL (person) {
 		OPTIONAL MATCH (person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
 			WHERE NOT EXISTS(
 				(person)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)

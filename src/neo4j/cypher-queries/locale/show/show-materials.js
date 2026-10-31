@@ -1,16 +1,12 @@
 export default () => `
 	MATCH (locale:Locale { uuid: $uuid })
 
-	CALL {
-		WITH locale
-
+	CALL (locale) {
 		OPTIONAL MATCH (locale)<-[:HAS_LOCALE]-(:Setting)<-[:HAS_SETTING]-(material:Material)
 
 		WITH DISTINCT locale, material
 
-			CALL {
-				WITH material
-
+			CALL (material) {
 				OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
 
 				OPTIONAL MATCH (surMaterial)<-[surSurMaterialRel:HAS_SUB_MATERIAL]-(surSurMaterial:Material)
@@ -18,9 +14,7 @@ export default () => `
 				RETURN surMaterial, surMaterialRel, surSurMaterial, surSurMaterialRel
 			}
 
-			CALL {
-				WITH material
-
+			CALL (material) {
 				OPTIONAL MATCH (material)-[entityRel:HAS_WRITING_ENTITY|USES_SOURCE_MATERIAL]->
 					(entity:Person|Company|Material)
 
@@ -116,9 +110,7 @@ export default () => `
 					) AS writingCredits
 			}
 
-			CALL {
-				WITH material, locale
-
+			CALL (material, locale) {
 				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_LOCALE]->(locale)
 
 				OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)

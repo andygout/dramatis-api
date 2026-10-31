@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (character:Character { uuid: $uuid })
 
-	CALL {
-		WITH character
-
+	CALL (character) {
 		OPTIONAL MATCH (character)<-[depictionForVariantNamedPortrayal:DEPICTS]-(:Material)
 			<-[:PRODUCTION_OF]-(:Production)-[variantNamedPortrayal:HAS_CAST_MEMBER]->(:Person)
 			WHERE
@@ -23,9 +21,7 @@ export default () => `
 			COLLECT(DISTINCT(variantNamedPortrayal.roleName)) AS variantNamedPortrayals
 	}
 
-	CALL {
-		WITH character
-
+	CALL (character) {
 		OPTIONAL MATCH (character)<-[characterDepiction:DEPICTS]-(materialForProduction:Material)
 			<-[productionRel:PRODUCTION_OF]-(production:Production)-[role:HAS_CAST_MEMBER]->(person:Person)
 			WHERE

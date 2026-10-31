@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (production:Production { uuid: $uuid })
 
-	CALL {
-		WITH production
-
+	CALL (production) {
 		OPTIONAL MATCH (production)-[:HAS_SUB_PRODUCTION*0..2]-(nominatedProduction:Production)
 			<-[nomineeRel:HAS_NOMINEE]-(category:AwardCeremonyCategory)
 			<-[categoryRel:PRESENTS_CATEGORY]-(ceremony:AwardCeremony)

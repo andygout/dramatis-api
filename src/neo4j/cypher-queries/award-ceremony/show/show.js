@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (ceremony:AwardCeremony { uuid: $uuid })
 
-	CALL {
-		WITH ceremony
-
+	CALL (ceremony) {
 		OPTIONAL MATCH (ceremony)<-[:PRESENTED_AT]-(award:Award)
 
 		RETURN
@@ -13,9 +11,7 @@ export default () => `
 			END AS award
 	}
 
-	CALL {
-		WITH ceremony
-
+	CALL (ceremony) {
 		OPTIONAL MATCH (ceremony)-[categoryRel:PRESENTS_CATEGORY]->(category:AwardCeremonyCategory)
 
 		OPTIONAL MATCH (category)-[nomineeRel:HAS_NOMINEE]->(nominee)

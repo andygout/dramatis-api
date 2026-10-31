@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (venue:Venue { uuid: $uuid })
 
-	CALL {
-		WITH venue
-
+	CALL (venue) {
 		OPTIONAL MATCH (venue)-[:HAS_SUB_VENUE*0..1]->
 			(venueLinkedToProduction:Venue)<-[:PLAYS_AT]-(production:Production)
 			WHERE NOT EXISTS(

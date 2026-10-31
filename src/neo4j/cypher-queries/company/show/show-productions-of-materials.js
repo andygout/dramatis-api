@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (company:Company { uuid: $uuid })
 
-	CALL {
-		WITH company
-
+	CALL (company) {
 		OPTIONAL MATCH (company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(material:Material)
 			WHERE NOT EXISTS(
 				(company)<-[:HAS_WRITING_ENTITY]-(:Material)<-[:USES_SOURCE_MATERIAL*0..1]-(:Material)

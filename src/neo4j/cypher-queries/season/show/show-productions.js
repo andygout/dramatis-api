@@ -1,9 +1,7 @@
 export default () => `
 	MATCH (season:Season { uuid: $uuid })
 
-	CALL {
-		WITH season
-
+	CALL (season) {
 		OPTIONAL MATCH (season)<-[:PART_OF_SEASON]-(production:Production)
 			WHERE NOT EXISTS((season)<-[:PART_OF_SEASON]-(:Production)<-[:HAS_SUB_PRODUCTION*1..2]-(production))
 
