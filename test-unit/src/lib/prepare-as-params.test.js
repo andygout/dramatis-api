@@ -17,7 +17,7 @@ describe('Prepare As Params module', () => {
 			getRandomUuid: stub().returns('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'),
 			isValidDate: stub().returns(true),
 			convertHistoricalToAstronomicalDate: stub().returns('convertHistoricalToAstronomicalDate response'),
-			convertJsIntegerToNeo4jInteger: stub().returnsArg(0)
+			convertJsIntegerToNeo4jInteger: stub().returns('convertJsIntegerToNeo4jInteger response')
 		};
 
 		prepareAsParams = await esmock('../../../src/lib/prepare-as-params.js', {
@@ -65,12 +65,12 @@ describe('Prepare As Params module', () => {
 		const result = prepareAsParams(instance);
 
 		assert.equal(result.uuid, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
-		assert.equal(result.items[0].position, 0);
-		assert.equal(result.items[0].nestedItems[0].position, 0);
-		assert.equal(result.items[0].nestedItems[1].position, 1);
-		assert.equal(result.items[1].position, 1);
-		assert.equal(result.items[1].nestedItems[0].position, 0);
-		assert.equal(result.items[1].nestedItems[1].position, 1);
+		assert.equal(result.items[0].position, 'convertJsIntegerToNeo4jInteger response');
+		assert.equal(result.items[0].nestedItems[0].position, 'convertJsIntegerToNeo4jInteger response');
+		assert.equal(result.items[0].nestedItems[1].position, 'convertJsIntegerToNeo4jInteger response');
+		assert.equal(result.items[1].position, 'convertJsIntegerToNeo4jInteger response');
+		assert.equal(result.items[1].nestedItems[0].position, 'convertJsIntegerToNeo4jInteger response');
+		assert.equal(result.items[1].nestedItems[1].position, 'convertJsIntegerToNeo4jInteger response');
 		assert.equal(instance.uuid, '');
 		assert.equal(Object.hasOwn(instance.items[0], 'position'), false);
 		assert.equal(Object.hasOwn(instance.items[0].nestedItems[0], 'position'), false);
@@ -292,7 +292,7 @@ describe('Prepare As Params module', () => {
 
 				sinonAssert.calledOnce(stubs.convertJsIntegerToNeo4jInteger);
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger, 51);
-				assert.equal(result.minLatitude, 51);
+				assert.equal(result.minLatitude, 'convertJsIntegerToNeo4jInteger response');
 			});
 		});
 	});
@@ -509,7 +509,7 @@ describe('Prepare As Params module', () => {
 
 				sinonAssert.calledOnce(stubs.convertJsIntegerToNeo4jInteger);
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger, 51);
-				assert.equal(result.place.minLatitude, 51);
+				assert.equal(result.place.minLatitude, 'convertJsIntegerToNeo4jInteger response');
 			});
 		});
 	});
@@ -611,9 +611,9 @@ describe('Prepare As Params module', () => {
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger.firstCall, 0);
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger.secondCall, 1);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), true);
-				assert.equal(result.cast[0].position, 0);
+				assert.equal(result.cast[0].position, 'convertJsIntegerToNeo4jInteger response');
 				assert.equal(Object.hasOwn(result.cast[1], 'position'), true);
-				assert.equal(result.cast[1].position, 1);
+				assert.equal(result.cast[1].position, 'convertJsIntegerToNeo4jInteger response');
 			});
 
 			it('adds model property with value from model getter method', async () => {
@@ -697,7 +697,7 @@ describe('Prepare As Params module', () => {
 
 				sinonAssert.calledOnce(stubs.convertJsIntegerToNeo4jInteger);
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger, 51);
-				assert.equal(result.settings[0].minLatitude, 51);
+				assert.equal(result.settings[0].minLatitude, 'convertJsIntegerToNeo4jInteger response');
 			});
 		});
 
@@ -855,7 +855,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.crewCredits[0].name, 'Stage Manager');
 				assert.equal(result.nominations.length, 4);
 				assert.equal(Object.hasOwn(result.nominations[0], 'name'), false);
-				assert.equal(result.nominations[0].position, 0);
+				assert.equal(result.nominations[0].position, 'convertJsIntegerToNeo4jInteger response');
 				assert.equal(result.producerCredits.length, 1);
 				assert.equal(Object.hasOwn(result.producerCredits[0], 'position'), false);
 				assert.equal(result.producerCredits[0].name, 'in association with');
@@ -1123,9 +1123,9 @@ describe('Prepare As Params module', () => {
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger.firstCall, 0);
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger.secondCall, 1);
 				assert.equal(Object.hasOwn(result.production.cast[0], 'position'), true);
-				assert.equal(result.production.cast[0].position, 0);
+				assert.equal(result.production.cast[0].position, 'convertJsIntegerToNeo4jInteger response');
 				assert.equal(Object.hasOwn(result.production.cast[1], 'position'), true);
-				assert.equal(result.production.cast[1].position, 1);
+				assert.equal(result.production.cast[1].position, 'convertJsIntegerToNeo4jInteger response');
 			});
 
 			it('adds model property with value from model getter method', async () => {
@@ -1211,7 +1211,7 @@ describe('Prepare As Params module', () => {
 
 				sinonAssert.calledOnce(stubs.convertJsIntegerToNeo4jInteger);
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger, 51);
-				assert.equal(result.material.settings[0].minLatitude, 51);
+				assert.equal(result.material.settings[0].minLatitude, 'convertJsIntegerToNeo4jInteger response');
 			});
 		});
 
@@ -1377,7 +1377,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.foo.crewCredits[0].name, 'Stage Manager');
 				assert.equal(result.foo.nominations.length, 4);
 				assert.equal(Object.hasOwn(result.foo.nominations[0], 'name'), false);
-				assert.equal(result.foo.nominations[0].position, 0);
+				assert.equal(result.foo.nominations[0].position, 'convertJsIntegerToNeo4jInteger response');
 				assert.equal(result.foo.producerCredits.length, 1);
 				assert.equal(Object.hasOwn(result.foo.producerCredits[0], 'position'), false);
 				assert.equal(result.foo.producerCredits[0].name, 'in association with');
@@ -1700,9 +1700,9 @@ describe('Prepare As Params module', () => {
 				sinonAssert.calledWithExactly(stubs.convertJsIntegerToNeo4jInteger.secondCall, 1);
 				assert.equal(Object.hasOwn(result.cast[0], 'position'), false);
 				assert.equal(Object.hasOwn(result.cast[0].roles[0], 'position'), true);
-				assert.equal(result.cast[0].roles[0].position, 0);
+				assert.equal(result.cast[0].roles[0].position, 'convertJsIntegerToNeo4jInteger response');
 				assert.equal(Object.hasOwn(result.cast[0].roles[1], 'position'), true);
-				assert.equal(result.cast[0].roles[1].position, 1);
+				assert.equal(result.cast[0].roles[1].position, 'convertJsIntegerToNeo4jInteger response');
 			});
 
 			it('adds model property with value from model getter method', async () => {
@@ -1902,7 +1902,7 @@ describe('Prepare As Params module', () => {
 				assert.equal(result.foos[0].crewCredits[0].name, 'Stage Manager');
 				assert.equal(result.foos[0].nominations.length, 4);
 				assert.equal(Object.hasOwn(result.foos[0].nominations[0], 'name'), false);
-				assert.equal(result.foos[0].nominations[0].position, 0);
+				assert.equal(result.foos[0].nominations[0].position, 'convertJsIntegerToNeo4jInteger response');
 				assert.equal(result.foos[0].producerCredits.length, 1);
 				assert.equal(Object.hasOwn(result.foos[0].producerCredits[0], 'position'), false);
 				assert.equal(result.foos[0].producerCredits[0].name, 'in association with');

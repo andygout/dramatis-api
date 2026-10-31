@@ -208,7 +208,7 @@ describe('Instance validation failures: Times API', () => {
 			it('returns instance with appropriate errors attached', async () => {
 				assert.equal(await countNodesWithLabel('Time'), 2);
 
-				const response = await request(app).post('/times').send({
+				const response = await request(app).put(`/times/${EIGHTEEN_ZERO_NINE_TIME_UUID}`).send({
 					name: '1962',
 					fromDate: '1962-12-31',
 					toDate: '1962-01-01'
@@ -216,6 +216,7 @@ describe('Instance validation failures: Times API', () => {
 
 				const expectedResponseBody = {
 					model: 'TIME',
+					uuid: EIGHTEEN_ZERO_NINE_TIME_UUID,
 					name: '1962',
 					differentiator: '',
 					fromDate: '1962-12-31',

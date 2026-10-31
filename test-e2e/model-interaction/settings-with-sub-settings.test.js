@@ -94,9 +94,9 @@ const VILLA_LOCALE_UUID = 'VILLA_LOCALE_UUID';
 const EPHESUS_PLACE_UUID = 'EPHESUS_PLACE_UUID';
 const LIBRARY_LOCALE_UUID = 'LIBRARY_LOCALE_UUID';
 const CAFE_LOCALE_UUID = 'CAFE_LOCALE_UUID';
-const FARMHOUSE_LOCALE_UUID = 'FARMHOUSE_LOCALE_UUID';
+const SUBWAY_PLATFORM_LOCALE_UUID = 'SUBWAY_PLATFORM_LOCALE_UUID';
 const OFFICE_LOCALE_UUID = 'OFFICE_LOCALE_UUID';
-const MONASTERY_LOCALE_UUID = 'MONASTERY_LOCALE_UUID';
+const DINER_LOCALE_UUID = 'DINER_LOCALE_UUID';
 const BEACH_LOCALE_UUID = 'BEACH_LOCALE_UUID';
 const NIGHTCLUB_LOCALE_UUID = 'NIGHTCLUB_LOCALE_UUID';
 const XYZZY_MATERIAL_UUID = 'XYZZY_MATERIAL_UUID';
@@ -816,7 +816,7 @@ describe('Settings with sub-settings', () => {
 							name: 'New York City'
 						},
 						locale: {
-							name: 'Farmhouse'
+							name: 'Subway platform'
 						}
 					},
 					{
@@ -838,7 +838,7 @@ describe('Settings with sub-settings', () => {
 							name: 'Albany'
 						},
 						locale: {
-							name: 'Monastery'
+							name: 'Diner'
 						}
 					},
 					{
@@ -1580,8 +1580,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: FARMHOUSE_LOCALE_UUID,
-								name: 'Farmhouse'
+								uuid: SUBWAY_PLATFORM_LOCALE_UUID,
+								name: 'Subway platform'
 							}
 						},
 						{
@@ -1616,8 +1616,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: MONASTERY_LOCALE_UUID,
-								name: 'Monastery'
+								uuid: DINER_LOCALE_UUID,
+								name: 'Diner'
 							}
 						},
 						{
@@ -1840,7 +1840,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting; excludes materials for which intersecting times (e.g. 1958-1965 and 1965-1974) were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting; excludes materials for which intersecting times (e.g. 1958-1965 and 1965-1974) were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -2044,8 +2044,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: FARMHOUSE_LOCALE_UUID,
-								name: 'Farmhouse'
+								uuid: SUBWAY_PLATFORM_LOCALE_UUID,
+								name: 'Subway platform'
 							}
 						},
 						{
@@ -2080,8 +2080,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: MONASTERY_LOCALE_UUID,
-								name: 'Monastery'
+								uuid: DINER_LOCALE_UUID,
+								name: 'Diner'
 							}
 						},
 						{
@@ -2230,7 +2230,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -2380,8 +2380,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: MONASTERY_LOCALE_UUID,
-								name: 'Monastery'
+								uuid: DINER_LOCALE_UUID,
+								name: 'Diner'
 							}
 						}
 					]
@@ -3000,8 +3000,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: FARMHOUSE_LOCALE_UUID,
-								name: 'Farmhouse'
+								uuid: SUBWAY_PLATFORM_LOCALE_UUID,
+								name: 'Subway platform'
 							}
 						},
 						{
@@ -3036,8 +3036,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: MONASTERY_LOCALE_UUID,
-								name: 'Monastery'
+								uuid: DINER_LOCALE_UUID,
+								name: 'Diner'
 							}
 						},
 						{
@@ -3464,8 +3464,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: FARMHOUSE_LOCALE_UUID,
-								name: 'Farmhouse'
+								uuid: SUBWAY_PLATFORM_LOCALE_UUID,
+								name: 'Subway platform'
 							}
 						},
 						{
@@ -3500,8 +3500,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: MONASTERY_LOCALE_UUID,
-								name: 'Monastery'
+								uuid: DINER_LOCALE_UUID,
+								name: 'Diner'
 							}
 						},
 						{
@@ -3777,8 +3777,8 @@ describe('Settings with sub-settings', () => {
 							},
 							locale: {
 								model: 'LOCALE',
-								uuid: FARMHOUSE_LOCALE_UUID,
-								name: 'Farmhouse'
+								uuid: SUBWAY_PLATFORM_LOCALE_UUID,
+								name: 'Subway platform'
 							}
 						},
 						{
@@ -4422,7 +4422,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting; excludes materials for which intersecting times (e.g. Xin dynasty) were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting; excludes materials for which intersecting times (e.g. Xin dynasty) were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -4694,7 +4694,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subTimes, expectedSubTimes);
 		});
 
-		it('includes materials for which it and its sub-times were a setting', async () => {
+		it('includes materials for which it and its contained sub-times were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
