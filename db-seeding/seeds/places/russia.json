@@ -1,3 +1,7 @@
 {
-	"name": "Russia"
+	"name": "Russia",
+	"minLatitude": 41.1850968,
+	"maxLatitude": 82.0586232,
+	"minLongitude": 19.64,
+	"maxLongitude": -169.05
 }
