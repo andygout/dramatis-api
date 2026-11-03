@@ -2,38 +2,8 @@ export default () => `
 	MATCH (place:Place { uuid: $uuid })
 
 	CALL (place) {
-		OPTIONAL MATCH (surPlace:Place)
-			WHERE surPlace <> place AND
-				(
-					surPlace.minLatitude <= place.minLatitude AND
-					surPlace.maxLatitude >= place.maxLatitude AND (
-						(
-							surPlace.minLongitude = -180 AND surPlace.maxLongitude = 180
-						) OR (
-							surPlace.minLongitude <= surPlace.maxLongitude AND
-							place.minLongitude <= place.maxLongitude AND
-							place.minLongitude >= surPlace.minLongitude AND
-							place.maxLongitude <= surPlace.maxLongitude
-						) OR (
-							(
-								surPlace.minLongitude > surPlace.maxLongitude
-							) AND (
-								(
-									place.minLongitude > place.maxLongitude AND
-									place.minLongitude >= surPlace.minLongitude AND
-									place.maxLongitude <= surPlace.maxLongitude
-								) OR (
-									(
-										place.minLongitude <= place.maxLongitude
-									) AND (
-										place.minLongitude >= surPlace.minLongitude OR
-										place.maxLongitude <= surPlace.maxLongitude
-									)
-								)
-							)
-						)
-					)
-				)
+		OPTIONAL MATCH (surPlace:Place)-[:CONTAINS]->(place)
+			WHERE surPlace <> place
 
 		WITH surPlace
 			ORDER BY surPlace.name
@@ -48,38 +18,8 @@ export default () => `
 	}
 
 	CALL (place) {
-		OPTIONAL MATCH (subPlace:Place)
-			WHERE subPlace <> place AND
-				(
-					subPlace.minLatitude >= place.minLatitude AND
-					subPlace.maxLatitude <= place.maxLatitude AND (
-						(
-							place.minLongitude = -180 AND place.maxLongitude = 180
-						) OR (
-							place.minLongitude <= place.maxLongitude AND
-							subPlace.minLongitude <= subPlace.maxLongitude AND
-							subPlace.minLongitude >= place.minLongitude AND
-							subPlace.maxLongitude <= place.maxLongitude
-						) OR (
-							(
-								place.minLongitude > place.maxLongitude
-							) AND (
-								(
-									subPlace.minLongitude > subPlace.maxLongitude AND
-									subPlace.minLongitude >= place.minLongitude AND
-									subPlace.maxLongitude <= place.maxLongitude
-								) OR (
-									(
-										subPlace.minLongitude <= subPlace.maxLongitude
-									) AND (
-										subPlace.minLongitude >= place.minLongitude OR
-										subPlace.maxLongitude <= place.maxLongitude
-									)
-								)
-							)
-						)
-					)
-				)
+		OPTIONAL MATCH (place)-[:CONTAINS]->(subPlace:Place)
+			WHERE subPlace <> place
 
 		WITH subPlace
 			ORDER BY subPlace.name

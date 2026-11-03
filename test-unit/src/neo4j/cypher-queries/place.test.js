@@ -51,6 +51,18 @@ describe('Cypher Queries Place module', () => {
 			const startSegment = removeExcessWhitespace(`
 				MATCH (place:Place { uuid: $uuid })
 
+				OPTIONAL MATCH (place)-[subPlaceRel:CONTAINS]->(:Place)
+
+				DELETE subPlaceRel
+
+				WITH DISTINCT place
+
+				OPTIONAL MATCH (:Place)-[surPlaceRel:CONTAINS]->(place)
+
+				DELETE surPlaceRel
+
+				WITH DISTINCT place
+
 				SET
 					place.name = $name,
 					place.differentiator = $differentiator,
