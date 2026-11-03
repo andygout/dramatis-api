@@ -160,6 +160,23 @@ describe('Place model', () => {
 					sinonAssert.notCalled(instance.addPropertyError);
 				});
 			});
+
+			context('antimeridian-crossing longitude bounds', () => {
+				it('accepts west longitude greater than east longitude', () => {
+					const instance = new Place({
+						minLatitude: 41,
+						maxLatitude: 82,
+						minLongitude: 19.64,
+						maxLongitude: -169.05
+					});
+
+					spy(instance, 'addPropertyError');
+
+					instance.validateBoundingBoxCoordinates();
+
+					sinonAssert.notCalled(instance.addPropertyError);
+				});
+			});
 		});
 
 		context('invalid data', () => {
@@ -269,8 +286,8 @@ describe('Place model', () => {
 				});
 			});
 
-			context('minimum bounding box coordinates exceed maximum bounding box coordinates', () => {
-				it('adds an error to both latitude and longitude coordinates', () => {
+			context('minimum latitude exceeds maximum latitude', () => {
+				it('adds an error to both latitude coordinates', () => {
 					const instance = new Place({
 						minLatitude: 52,
 						maxLatitude: 51,
@@ -282,7 +299,7 @@ describe('Place model', () => {
 
 					instance.validateBoundingBoxCoordinates();
 
-					assert.equal(instance.addPropertyError.callCount, 4);
+					assert.equal(instance.addPropertyError.callCount, 2);
 					sinonAssert.calledWithExactly(
 						instance.addPropertyError.firstCall,
 						'minLatitude',
@@ -292,16 +309,6 @@ describe('Place model', () => {
 						instance.addPropertyError.secondCall,
 						'maxLatitude',
 						'Maximum latitude must not be below minimum latitude'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.thirdCall,
-						'minLongitude',
-						'Minimum longitude must not exceed maximum longitude'
-					);
-					sinonAssert.calledWithExactly(
-						instance.addPropertyError.getCall(3),
-						'maxLongitude',
-						'Maximum longitude must not be below minimum longitude'
 					);
 				});
 			});

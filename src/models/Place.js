@@ -102,9 +102,7 @@ export default class Place extends PlaceBase {
 			this.addPropertyError('maxLatitude', 'Maximum latitude must not be below minimum latitude');
 		}
 
-		if (this.minLongitude > this.maxLongitude) {
-			this.addPropertyError('minLongitude', 'Minimum longitude must not exceed maximum longitude');
-			this.addPropertyError('maxLongitude', 'Maximum longitude must not be below minimum longitude');
-		}
+		// Unlike latitude bounds, minLongitude may exceed maxLongitude
+		// for antimeridian-crossing bounding boxes such as Russia.
 	}
 }

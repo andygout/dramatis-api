@@ -252,7 +252,7 @@ describe('Input validation failures: Place instance', () => {
 		}
 	});
 
-	describe('minimum bounding box coordinates exceed maximum bounding box coordinates', () => {
+	describe('minimum latitude exceeds maximum latitude', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
@@ -276,9 +276,7 @@ describe('Input validation failures: Place instance', () => {
 					hasErrors: true,
 					errors: {
 						minLatitude: ['Minimum latitude must not exceed maximum latitude'],
-						maxLatitude: ['Maximum latitude must not be below minimum latitude'],
-						minLongitude: ['Minimum longitude must not exceed maximum longitude'],
-						maxLongitude: ['Maximum longitude must not be below minimum longitude']
+						maxLatitude: ['Maximum latitude must not be below minimum latitude']
 					}
 				};
 

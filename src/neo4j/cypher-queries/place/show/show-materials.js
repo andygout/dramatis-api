@@ -5,10 +5,34 @@ export default () => `
 		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(:Setting)-[:HAS_PLACE]->(settingPlace:Place)
 			WHERE settingPlace = place OR
 				(
-					settingPlace.minLatitude >= place.minLatitude
-					AND settingPlace.maxLatitude <= place.maxLatitude
-					AND settingPlace.minLongitude >= place.minLongitude
-					AND settingPlace.maxLongitude <= place.maxLongitude
+					settingPlace.minLatitude >= place.minLatitude AND
+					settingPlace.maxLatitude <= place.maxLatitude AND (
+						(
+							place.minLongitude = -180 AND place.maxLongitude = 180
+						) OR (
+							place.minLongitude <= place.maxLongitude AND
+							settingPlace.minLongitude <= settingPlace.maxLongitude AND
+							settingPlace.minLongitude >= place.minLongitude AND
+							settingPlace.maxLongitude <= place.maxLongitude
+						) OR (
+							(
+								place.minLongitude > place.maxLongitude
+							) AND (
+								(
+									settingPlace.minLongitude > settingPlace.maxLongitude AND
+									settingPlace.minLongitude >= place.minLongitude AND
+									settingPlace.maxLongitude <= place.maxLongitude
+								) OR (
+									(
+										settingPlace.minLongitude <= settingPlace.maxLongitude
+									) AND (
+										settingPlace.minLongitude >= place.minLongitude OR
+										settingPlace.maxLongitude <= place.maxLongitude
+									)
+								)
+							)
+						)
+					)
 				)
 
 		WITH DISTINCT place, material
@@ -121,10 +145,34 @@ export default () => `
 				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_PLACE]->(settingPlace:Place)
 					WHERE settingPlace = place OR
 						(
-							settingPlace.minLatitude >= place.minLatitude
-							AND settingPlace.maxLatitude <= place.maxLatitude
-							AND settingPlace.minLongitude >= place.minLongitude
-							AND settingPlace.maxLongitude <= place.maxLongitude
+							settingPlace.minLatitude >= place.minLatitude AND
+							settingPlace.maxLatitude <= place.maxLatitude AND (
+								(
+									place.minLongitude = -180 AND place.maxLongitude = 180
+								) OR (
+									place.minLongitude <= place.maxLongitude AND
+									settingPlace.minLongitude <= settingPlace.maxLongitude AND
+									settingPlace.minLongitude >= place.minLongitude AND
+									settingPlace.maxLongitude <= place.maxLongitude
+								) OR (
+									(
+										place.minLongitude > place.maxLongitude
+									) AND (
+										(
+											settingPlace.minLongitude > settingPlace.maxLongitude AND
+											settingPlace.minLongitude >= place.minLongitude AND
+											settingPlace.maxLongitude <= place.maxLongitude
+										) OR (
+											(
+												settingPlace.minLongitude <= settingPlace.maxLongitude
+											) AND (
+												settingPlace.minLongitude >= place.minLongitude OR
+												settingPlace.maxLongitude <= place.maxLongitude
+											)
+										)
+									)
+								)
+							)
 						)
 
 				OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)

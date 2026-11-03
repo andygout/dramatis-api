@@ -15,6 +15,7 @@ const FIRST_CENTURY_BCE_TIME_UUID = '1ST_CENTURY_BCE_TIME_UUID';
 const FIRST_CENTURY_TIME_UUID = '1ST_CENTURY_TIME_UUID';
 const SECOND_CENTURY_TIME_UUID = '2ND_CENTURY_TIME_UUID';
 const TWENTIETH_CENTURY_TIME_UUID = '20TH_CENTURY_TIME_UUID';
+const TWENTY_FIRST_CENTURY_TIME_UUID = '21ST_CENTURY_TIME_UUID';
 const NINETEEN_FIFTIES_TIME_UUID = '1950S_TIME_UUID';
 const NINETEEN_SIXTIES_TIME_UUID = '1960S_TIME_UUID';
 const NINETEEN_SEVENTIES_TIME_UUID = '1970S_TIME_UUID';
@@ -41,6 +42,7 @@ const JANUARY_NINETEEN_SIXTY_NINE_TIME_UUID = 'JANUARY_1969_TIME_UUID';
 const DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID = 'DECEMBER_1969_TIME_UUID';
 const FEBRUARY_NINETEEN_SEVENTY_EIGHT_TIME_UUID = 'FEBRUARY_1978_TIME_UUID';
 const UNITED_STATES_OF_AMERICA_PLACE_UUID = 'UNITED_STATES_OF_AMERICA_PLACE_UUID';
+const RUSSIA_PLACE_UUID = 'RUSSIA_PLACE_UUID';
 const NEW_JERSEY_PLACE_UUID = 'NEW_JERSEY_PLACE_UUID';
 const NEW_YORK_PLACE_UUID = 'NEW_YORK_PLACE_UUID';
 const PENNSYLVANIA_PLACE_UUID = 'PENNSYLVANIA_PLACE_UUID';
@@ -51,6 +53,7 @@ const ALBANY_PLACE_UUID = 'ALBANY_PLACE_UUID';
 const BUFFALO_PLACE_UUID = 'BUFFALO_PLACE_UUID';
 const NEW_YORK_CITY_PLACE_UUID = 'NEW_YORK_CITY_PLACE_UUID';
 const PHILADELPHIA_PLACE_UUID = 'PHILADELPHIA_PLACE_UUID';
+const PARIS_PLACE_UUID = 'PARIS_PLACE_UUID';
 const DUCKTOWN_PLACE_UUID = 'DUCKTOWN_PLACE_UUID';
 const DOWNTOWN_PLACE_UUID = 'DOWNTOWN_PLACE_UUID';
 const CENTER_SQUARE_PLACE_UUID = 'CENTER_SQUARE_PLACE_UUID';
@@ -65,6 +68,7 @@ const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
 const XIANYANG_PLACE_UUID = 'XIANYANG_PLACE_UUID';
 const AUDIENCE_HALL_LOCALE_UUID = 'AUDIENCE_HALL_LOCALE_UUID';
 const RIVERSIDE_LOCALE_UUID = 'RIVERSIDE_LOCALE_UUID';
+const FOREST_LOCALE_UUID = 'FOREST_LOCALE_UUID';
 const GARPLY_MATERIAL_UUID = 'GARPLY_MATERIAL_UUID';
 const CONOR_CORGE_PERSON_UUID = 'CONOR_CORGE_PERSON_UUID';
 const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
@@ -135,6 +139,8 @@ let hanDynastyTime;
 let westernHanDynastyTime;
 let firstCenturyTime;
 let nineTime;
+let russiaPlace;
+let parisPlace;
 
 describe('Settings with sub-settings', () => {
 	before(async () => {
@@ -196,6 +202,12 @@ describe('Settings with sub-settings', () => {
 			name: '20th century',
 			fromDate: '1901-01-01',
 			toDate: '2000-12-31'
+		});
+
+		await request(app).post('/times').send({
+			name: '21st century',
+			fromDate: '2001-01-01',
+			toDate: '2100-12-31'
 		});
 
 		// Decades
@@ -355,10 +367,18 @@ describe('Settings with sub-settings', () => {
 		// Countries
 		await request(app).post('/places').send({
 			name: 'United States of America',
-			minLatitude: -14.7608358,
-			maxLatitude: 71.5889534,
-			minLongitude: -180,
-			maxLongitude: 180
+			minLatitude: 24.9493,
+			maxLatitude: 49.5904,
+			minLongitude: -125.0011,
+			maxLongitude: -66.9326
+		});
+
+		await request(app).post('/places').send({
+			name: 'Russia',
+			minLatitude: 41.1850968,
+			maxLatitude: 82.0586232,
+			minLongitude: 19.64,
+			maxLongitude: -169.05
 		});
 
 		// US states
@@ -451,6 +471,14 @@ describe('Settings with sub-settings', () => {
 			maxLatitude: 40.1379593,
 			minLongitude: -75.280266,
 			maxLongitude: -74.9558314
+		});
+
+		await request(app).post('/places').send({
+			name: 'Paris',
+			minLatitude: 48.8155755,
+			maxLatitude: 48.902156,
+			minLongitude: 2.224122,
+			maxLongitude: 2.4697602
 		});
 
 		// Boroughs/neighbourhoods
@@ -571,6 +599,17 @@ describe('Settings with sub-settings', () => {
 						},
 						locale: {
 							name: 'Riverside'
+						}
+					},
+					{
+						time: {
+							name: '21st century'
+						},
+						place: {
+							name: 'Russia'
+						},
+						locale: {
+							name: 'Forest'
 						}
 					}
 				]
@@ -862,6 +901,17 @@ describe('Settings with sub-settings', () => {
 						locale: {
 							name: 'Nightclub'
 						}
+					},
+					{
+						time: {
+							name: '1983'
+						},
+						place: {
+							name: 'Moscow'
+						},
+						locale: {
+							name: 'Art gallery'
+						}
 					}
 				]
 			});
@@ -1084,6 +1134,10 @@ describe('Settings with sub-settings', () => {
 		firstCenturyTime = await request(app).get(`/times/${FIRST_CENTURY_TIME_UUID}`);
 
 		nineTime = await request(app).get(`/times/${NINE_TIME_UUID}`);
+
+		russiaPlace = await request(app).get(`/places/${RUSSIA_PLACE_UUID}`);
+
+		parisPlace = await request(app).get(`/places/${PARIS_PLACE_UUID}`);
 	});
 
 	describe('20th century (time)', () => {
@@ -4954,6 +5008,76 @@ describe('Settings with sub-settings', () => {
 			const { materials } = nineTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Russia (place) (i.e. place whose boundary box crosses the antimeridian)', () => {
+		it('excludes places that are not contained sub-places (i.e. Paris)', async () => {
+			const expectedSubPlaces = [];
+
+			const { subPlaces } = russiaPlace.body;
+
+			assert.deepEqual(subPlaces, expectedSubPlaces);
+		});
+
+		it('includes materials for which it and its contained sub-places were a setting; excluding those of places that are not contained sub-places (i.e. Paris)', async () => {
+			const expectedMaterials = [
+				{
+					model: 'MATERIAL',
+					uuid: GRAULT_MATERIAL_UUID,
+					name: 'Grault',
+					format: 'play',
+					year: 2016,
+					surMaterial: null,
+					writingCredits: [
+						{
+							model: 'WRITING_CREDIT',
+							name: 'by',
+							entities: [
+								{
+									model: 'PERSON',
+									uuid: BEATRICE_BAR_PERSON_UUID,
+									name: 'Beatrice Bar'
+								}
+							]
+						}
+					],
+					settings: [
+						{
+							model: 'SETTING',
+							time: {
+								model: 'TIME',
+								uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
+								name: '21st century'
+							},
+							place: {
+								model: 'PLACE',
+								uuid: RUSSIA_PLACE_UUID,
+								name: 'Russia'
+							},
+							locale: {
+								model: 'LOCALE',
+								uuid: FOREST_LOCALE_UUID,
+								name: 'Forest'
+							}
+						}
+					]
+				}
+			];
+
+			const { materials } = russiaPlace.body;
+
+			assert.deepEqual(materials, expectedMaterials);
+		});
+	});
+
+	describe('Paris (place)', () => {
+		it('excludes places that are not containing sur-places (i.e. Russia)', async () => {
+			const expectedSurPlaces = [];
+
+			const { surPlaces } = parisPlace.body;
+
+			assert.deepEqual(surPlaces, expectedSurPlaces);
 		});
 	});
 });
