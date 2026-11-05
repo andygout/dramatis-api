@@ -47,6 +47,18 @@ describe('Cypher Queries Time module', () => {
 			const startSegment = removeExcessWhitespace(`
 				MATCH (time:Time { uuid: $uuid })
 
+				OPTIONAL MATCH (time)-[subTimeRel:CONTAINS]->(:Time)
+
+				DELETE subTimeRel
+
+				WITH DISTINCT time
+
+				OPTIONAL MATCH (:Time)-[surTimeRel:CONTAINS]->(time)
+
+				DELETE surTimeRel
+
+				WITH DISTINCT time
+
 				SET
 					time.name = $name,
 					time.differentiator = $differentiator,
