@@ -3,11 +3,11 @@ export default () => `
 
 	CALL (time) {
 		OPTIONAL MATCH (material:Material)-[:HAS_SETTING]->(:Setting)-[:HAS_TIME]->(settingTime:Time)
-			WHERE settingTime = time OR
-				(
-					settingTime.fromDate >= time.fromDate AND
-					settingTime.toDate <= time.toDate
-				)
+			WHERE
+				settingTime = time OR
+				EXISTS {
+					MATCH (time)-[:CONTAINS]->(settingTime)
+				}
 
 		WITH DISTINCT time, material
 
@@ -117,11 +117,11 @@ export default () => `
 
 			CALL (material, time) {
 				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_TIME]->(settingTime:Time)
-					WHERE settingTime = time OR
-						(
-							settingTime.fromDate >= time.fromDate AND
-							settingTime.toDate <= time.toDate
-						)
+					WHERE
+						settingTime = time OR
+						EXISTS {
+							MATCH (time)-[:CONTAINS]->(settingTime)
+						}
 
 				OPTIONAL MATCH (setting)-[:HAS_PLACE]->(place:Place)
 

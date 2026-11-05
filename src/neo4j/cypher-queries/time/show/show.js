@@ -2,12 +2,8 @@ export default () => `
 	MATCH (time:Time { uuid: $uuid })
 
 	CALL (time) {
-		OPTIONAL MATCH (surTime:Time)
-			WHERE surTime <> time AND
-				(
-					surTime.fromDate <= time.fromDate AND
-					surTime.toDate >= time.toDate
-				)
+		OPTIONAL MATCH (surTime:Time)-[:CONTAINS]->(time)
+			WHERE surTime <> time
 
 		WITH surTime
 			ORDER BY surTime.toDate DESC, surTime.fromDate
@@ -22,12 +18,8 @@ export default () => `
 	}
 
 	CALL (time) {
-		OPTIONAL MATCH (subTime:Time)
-			WHERE subTime <> time AND
-				(
-					subTime.fromDate >= time.fromDate AND
-					subTime.toDate <= time.toDate
-				)
+		OPTIONAL MATCH (time)-[:CONTAINS]->(subTime:Time)
+			WHERE subTime <> time
 
 		WITH subTime
 			ORDER BY subTime.toDate DESC, subTime.fromDate
