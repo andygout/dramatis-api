@@ -8,34 +8,77 @@ const getCreateUpdateQuery = (action) => {
 				uuid: $uuid,
 				name: $name,
 				differentiator: $differentiator,
-				minLatitude: $minLatitude,
-				maxLatitude: $maxLatitude,
-				minLongitude: $minLongitude,
-				maxLongitude: $maxLongitude
+				geometryWkt: $geometryWkt
 			})
+
+			WITH place
+
+			CALL (place) {
+				WITH place
+					WHERE $geometryWkt IS NOT NULL
+
+				CALL spatial.addNode('place-geometries', place) YIELD node
+
+				RETURN node
+
+				UNION
+
+				WITH place
+					WHERE $geometryWkt IS NULL
+
+				RETURN null AS node
+			}
 		`,
 		[ACTIONS.UPDATE]: `
 			MATCH (place:Place { uuid: $uuid })
+
+			WITH place, place.geometryWkt IS NOT NULL AS hadGeometry
 
 			OPTIONAL MATCH (place)-[subPlaceRel:CONTAINS]->(:Place)
 
 			DELETE subPlaceRel
 
-			WITH DISTINCT place
+			WITH DISTINCT place, hadGeometry
 
 			OPTIONAL MATCH (:Place)-[surPlaceRel:CONTAINS]->(place)
 
 			DELETE surPlaceRel
 
-			WITH DISTINCT place
+			WITH DISTINCT place, hadGeometry
 
 			SET
 				place.name = $name,
 				place.differentiator = $differentiator,
-				place.minLatitude = $minLatitude,
-				place.maxLatitude = $maxLatitude,
-				place.minLongitude = $minLongitude,
-				place.maxLongitude = $maxLongitude
+				place.geometryWkt = $geometryWkt
+
+			WITH place, hadGeometry
+
+			CALL (place, hadGeometry) {
+				WITH place, hadGeometry
+					WHERE hadGeometry = false AND $geometryWkt IS NOT NULL
+
+				CALL spatial.addNode('place-geometries', place) YIELD node
+
+				RETURN node
+
+				UNION
+
+				WITH place, hadGeometry
+					WHERE hadGeometry = true AND $geometryWkt IS NULL
+
+				CALL spatial.removeNode('place-geometries', place) YIELD nodeId
+
+				RETURN place AS node
+
+				UNION
+
+				WITH place, hadGeometry
+					WHERE
+						NOT (hadGeometry = false AND $geometryWkt IS NOT NULL) AND
+						NOT (hadGeometry = true AND $geometryWkt IS NULL)
+
+				RETURN place AS node
+			}
 		`
 	};
 
@@ -44,83 +87,51 @@ const getCreateUpdateQuery = (action) => {
 
 		WITH place
 
-		OPTIONAL MATCH (surPlace:Place)
-			WHERE surPlace <> place AND
-				(
-					surPlace.minLatitude <= place.minLatitude AND
-					surPlace.maxLatitude >= place.maxLatitude AND (
-						(
-							// 1. Antarctica contains McMurdo Station (about 78°S); its longitude is unrestricted.
-							surPlace.minLongitude = -180 AND surPlace.maxLongitude = 180
-						) OR (
-							// 2. France contains Paris; neither longitude interval crosses the antimeridian.
-							surPlace.minLongitude <= surPlace.maxLongitude AND
-							place.minLongitude <= place.maxLongitude AND
-							place.minLongitude >= surPlace.minLongitude AND
-							place.maxLongitude <= surPlace.maxLongitude
-						) OR (
-							// 3. The containing place crosses the antimeridian, e.g. Russia.
-							surPlace.minLongitude > surPlace.maxLongitude AND (
-								(
-									// 3.a. Russia contains Wrangel Island; both longitude intervals cross the antimeridian.
-									place.minLongitude > place.maxLongitude AND
-									place.minLongitude >= surPlace.minLongitude AND
-									place.maxLongitude <= surPlace.maxLongitude
-								) OR (
-									place.minLongitude <= place.maxLongitude AND (
-										// 3.b. Russia contains Moscow in its eastern longitude segment.
-										place.minLongitude >= surPlace.minLongitude OR
-										// 3.c. Russia contains Herald Island in its western longitude segment.
-										place.maxLongitude <= surPlace.maxLongitude
-									)
-								)
-							)
-						)
-					)
-				)
+		CALL (place) {
+			WITH place
+				WHERE $geometryWkt IS NOT NULL
 
-		FOREACH (surPlaceToConnect IN CASE WHEN surPlace IS NULL THEN [] ELSE [surPlace] END |
+			CALL spatial.cql(
+				'place-geometries',
+				"uuid <> '" + place.uuid + "' AND CONTAINS(the_geom, " + place.geometryWkt + ")"
+			) YIELD node
+
+			RETURN collect(node) AS surPlaces
+
+			UNION
+
+			WITH place
+				WHERE $geometryWkt IS NULL
+
+			RETURN [] AS surPlaces
+		}
+
+		FOREACH (surPlaceToConnect IN surPlaces |
 			CREATE (surPlaceToConnect)-[:CONTAINS]->(place)
 		)
 
 		WITH DISTINCT place
 
-		OPTIONAL MATCH (subPlace:Place)
-			WHERE subPlace <> place AND
-				(
-					subPlace.minLatitude >= place.minLatitude AND
-					subPlace.maxLatitude <= place.maxLatitude AND (
-						(
-							// 1. Antarctica contains McMurdo Station (about 78°S); its longitude is unrestricted.
-							place.minLongitude = -180 AND place.maxLongitude = 180
-						) OR (
-							// 2. France contains Paris; neither longitude interval crosses the antimeridian.
-							place.minLongitude <= place.maxLongitude AND
-							subPlace.minLongitude <= subPlace.maxLongitude AND
-							subPlace.minLongitude >= place.minLongitude AND
-							subPlace.maxLongitude <= place.maxLongitude
-						) OR (
-							// 3. The containing place crosses the antimeridian, e.g. Russia.
-							place.minLongitude > place.maxLongitude AND (
-								(
-									// 3.a. Russia contains Wrangel Island; both longitude intervals cross the antimeridian.
-									subPlace.minLongitude > subPlace.maxLongitude AND
-									subPlace.minLongitude >= place.minLongitude AND
-									subPlace.maxLongitude <= place.maxLongitude
-								) OR (
-									subPlace.minLongitude <= subPlace.maxLongitude AND (
-										// 3.b. Russia contains Moscow in its eastern longitude segment.
-										subPlace.minLongitude >= place.minLongitude OR
-										// 3.c. Russia contains Herald Island in its western longitude segment.
-										subPlace.maxLongitude <= place.maxLongitude
-									)
-								)
-							)
-						)
-					)
-				)
+		CALL (place) {
+			WITH place
+				WHERE $geometryWkt IS NOT NULL
 
-		FOREACH (subPlaceToConnect IN CASE WHEN subPlace IS NULL THEN [] ELSE [subPlace] END |
+			CALL spatial.cql(
+				'place-geometries',
+				"uuid <> '" + place.uuid + "' AND WITHIN(the_geom, " + place.geometryWkt + ")"
+			) YIELD node
+
+			RETURN collect(node) AS subPlaces
+
+			UNION
+
+			WITH place
+				WHERE $geometryWkt IS NULL
+
+			RETURN [] AS subPlaces
+		}
+
+		FOREACH (subPlaceToConnect IN subPlaces |
 			CREATE (place)-[:CONTAINS]->(subPlaceToConnect)
 		)
 

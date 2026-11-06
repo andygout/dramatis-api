@@ -27,6 +27,7 @@ import {
 import { getShowQueries as getPersonShowQueries } from './person/index.js';
 import {
 	getCreateQuery as getPlaceCreateQuery,
+	getDeleteQuery as getPlaceDeleteQuery,
 	getEditQuery as getPlaceEditQuery,
 	getUpdateQuery as getPlaceUpdateQuery,
 	getShowQueries as getPlaceShowQueries
@@ -120,6 +121,10 @@ const getShowQueries = {
 	[MODELS.VENUE]: getVenueShowQueries
 };
 
+const getDeleteQueries = {
+	[MODELS.PLACE]: getPlaceDeleteQuery
+};
+
 const getListQueries = {
 	[MODELS.AWARD_CEREMONY]: getAwardCeremonyListQuery,
 	[MODELS.FESTIVAL]: getFestivalListQuery,
@@ -157,6 +162,7 @@ export {
 	getEditQueries,
 	getUpdateQueries,
 	getShowQueries,
+	getDeleteQueries,
 	getListQueries,
 	searchQueries,
 	sharedQueries,

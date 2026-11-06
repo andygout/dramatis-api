@@ -61,10 +61,6 @@ describe('Database setup', () => {
 			{ labelsOrTypes: ['Material'], properties: ['uuid'] },
 			{ labelsOrTypes: ['Person'], properties: ['name'] },
 			{ labelsOrTypes: ['Person'], properties: ['uuid'] },
-			{ labelsOrTypes: ['Place'], properties: ['maxLatitude'] },
-			{ labelsOrTypes: ['Place'], properties: ['maxLongitude'] },
-			{ labelsOrTypes: ['Place'], properties: ['minLatitude'] },
-			{ labelsOrTypes: ['Place'], properties: ['minLongitude'] },
 			{ labelsOrTypes: ['Place'], properties: ['name'] },
 			{ labelsOrTypes: ['Place'], properties: ['uuid'] },
 			{ labelsOrTypes: ['Production'], properties: ['uuid'] },
@@ -129,5 +125,23 @@ describe('Database setup', () => {
 			})),
 			expectedFullTextIndexes
 		);
+	});
+
+	it('creates the place geometries WKT layer', async () => {
+		const query = `
+			MATCH (layer:SpatialLayer { layer: 'place-geometries' })
+			RETURN
+				layer.geomencoder AS geometryEncoder,
+				layer.geomencoder_config AS geometryProperty
+		`;
+
+		const spatialLayers = await neo4jQuery({ query, params: {} }, { isArrayResult: true });
+
+		assert.deepEqual(spatialLayers, [
+			{
+				geometryEncoder: 'WKTGeometryEncoder',
+				geometryProperty: 'geometryWkt'
+			}
+		]);
 	});
 });
