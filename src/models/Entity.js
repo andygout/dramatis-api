@@ -7,6 +7,7 @@ import {
 	getEditQueries,
 	getUpdateQueries,
 	getShowQueries,
+	getDeleteQueries,
 	getListQueries,
 	sharedQueries,
 	validationQueries
@@ -151,8 +152,10 @@ export default class Entity extends Base {
 	async delete() {
 		const { getDeleteQuery } = sharedQueries;
 
+		const deleteQuery = getDeleteQueries[this.model]() || getDeleteQuery(this.model);
+
 		const { name, differentiator, isDeleted, associatedModels } = await neo4jQuery({
-			query: getDeleteQuery(this.model),
+			query: deleteQuery,
 			params: { uuid: this.uuid }
 		});
 

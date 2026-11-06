@@ -16,10 +16,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: '',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
+				geometryWkt: null,
 				errors: {}
 			};
 
@@ -49,10 +46,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
+				geometryWkt: null,
 				errors: {}
 			};
 
@@ -69,10 +63,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
+				geometryWkt: null,
 				errors: {}
 			};
 
@@ -92,10 +83,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Belgravia',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
+				geometryWkt: null,
 				errors: {}
 			};
 
@@ -130,10 +118,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: 'Belgravia',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
+				geometryWkt: null,
 				errors: {}
 			};
 
@@ -145,6 +130,10 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 		const PLACE_UUID = 'KNIGHTSBRIDGE_PLACE_1_UUID';
+		const KNIGHTSBRIDGE_GEOMETRY_WKT =
+			'POLYGON ((-0.186965 51.4808444, -0.146965 51.4808444, -0.146965 51.5208444, -0.186965 51.5208444, -0.186965 51.4808444))';
+		const BELGRAVIA_GEOMETRY_WKT =
+			'POLYGON ((-0.1734998 51.4782128, -0.1334998 51.4782128, -0.1334998 51.5182128, -0.1734998 51.5182128, -0.1734998 51.4782128))';
 
 		before(async () => {
 			stubUuidToCountMapClient.clear();
@@ -158,10 +147,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const response = await request(app).post('/places').send({
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965
+				geometryWkt: KNIGHTSBRIDGE_GEOMETRY_WKT
 			});
 
 			const expectedResponseBody = {
@@ -169,10 +155,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
+				geometryWkt: KNIGHTSBRIDGE_GEOMETRY_WKT,
 				errors: {}
 			};
 
@@ -206,10 +189,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
+				geometryWkt: KNIGHTSBRIDGE_GEOMETRY_WKT,
 				errors: {}
 			};
 
@@ -223,10 +203,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965
+				geometryWkt: KNIGHTSBRIDGE_GEOMETRY_WKT
 			});
 
 			const expectedResponseBody = {
@@ -234,10 +211,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
+				geometryWkt: KNIGHTSBRIDGE_GEOMETRY_WKT,
 				errors: {}
 			};
 
@@ -252,10 +226,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
 				name: 'Belgravia',
 				differentiator: '1',
-				minLatitude: 51.4782128,
-				maxLatitude: 51.5182128,
-				minLongitude: -0.1734998,
-				maxLongitude: -0.1334998
+				geometryWkt: BELGRAVIA_GEOMETRY_WKT
 			});
 
 			const expectedResponseBody = {
@@ -263,10 +234,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Belgravia',
 				differentiator: '1',
-				minLatitude: 51.4782128,
-				maxLatitude: 51.5182128,
-				minLongitude: -0.1734998,
-				maxLongitude: -0.1334998,
+				geometryWkt: BELGRAVIA_GEOMETRY_WKT,
 				errors: {}
 			};
 
@@ -301,10 +269,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: 'Belgravia',
 				differentiator: '1',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
+				geometryWkt: null,
 				errors: {}
 			};
 

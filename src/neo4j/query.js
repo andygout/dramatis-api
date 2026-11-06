@@ -1,6 +1,8 @@
 import convertNeo4jRecordsToObjects from './convert-neo4j-records-to-objects.js';
 import { getDriver } from './get-driver.js';
 
+const { DATABASE_NAME } = process.env;
+
 const driver = getDriver();
 
 export const neo4jQuery = async (queryData, opts = {}) => {
@@ -9,7 +11,7 @@ export const neo4jQuery = async (queryData, opts = {}) => {
 	const isOptionalResult = Boolean(opts.isOptionalResult);
 	const isArrayResult = Boolean(opts.isArrayResult);
 
-	const session = driver.session();
+	const session = driver.session({ database: DATABASE_NAME });
 
 	const response = await session.run(query, params);
 

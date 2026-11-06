@@ -1,6 +1,7 @@
 import createNeo4jConstraints from '../src/neo4j/create-constraints.js';
 import createNeo4jFullTextIndexes from '../src/neo4j/create-full-text-indexes.js';
 import createNeo4jRangeIndexes from '../src/neo4j/create-range-indexes.js';
+import createNeo4jSpatialWktLayer from './neo4j/create-spatial-wkt-layer.js';
 import { getDriver as getNeo4jDriver } from '../src/neo4j/get-driver.js';
 
 export async function globalSetup() {
@@ -9,6 +10,8 @@ export async function globalSetup() {
 	await createNeo4jRangeIndexes();
 
 	await createNeo4jFullTextIndexes();
+
+	await createNeo4jSpatialWktLayer();
 }
 
 export async function globalTeardown() {
