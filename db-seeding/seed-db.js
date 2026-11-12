@@ -7,6 +7,9 @@ const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore
 
 import jsonlint from 'jsonlint';
 
+import placesQuery from './seed-queries/places.js';
+import { neo4jQuery } from '../src/neo4j/query.js';
+
 const BASE_URL = 'http://localhost:3000';
 
 const PLURALISED_MODEL_TO_EMOJI_MAP = {
@@ -114,7 +117,10 @@ async function seedDatabase() {
 	// eslint-disable-next-line no-console
 	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['times']} Time seeds sown`);
 
-	await seedInstances('places');
+	// eslint-disable-next-line no-console
+	console.log(`🟢 Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['places']} Commenced sowing place seeds`);
+
+	await neo4jQuery({ query: placesQuery() }, { isOptionalResult: true });
 
 	// eslint-disable-next-line no-console
 	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['places']} Place seeds sown`);

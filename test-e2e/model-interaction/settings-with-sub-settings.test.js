@@ -15,7 +15,6 @@ const FIRST_CENTURY_BCE_TIME_UUID = '1ST_CENTURY_BCE_TIME_UUID';
 const FIRST_CENTURY_TIME_UUID = '1ST_CENTURY_TIME_UUID';
 const SECOND_CENTURY_TIME_UUID = '2ND_CENTURY_TIME_UUID';
 const TWENTIETH_CENTURY_TIME_UUID = '20TH_CENTURY_TIME_UUID';
-const TWENTY_FIRST_CENTURY_TIME_UUID = '21ST_CENTURY_TIME_UUID';
 const NINETEEN_FIFTIES_TIME_UUID = '1950S_TIME_UUID';
 const NINETEEN_SIXTIES_TIME_UUID = '1960S_TIME_UUID';
 const NINETEEN_SEVENTIES_TIME_UUID = '1970S_TIME_UUID';
@@ -42,19 +41,17 @@ const JANUARY_NINETEEN_SIXTY_NINE_TIME_UUID = 'JANUARY_1969_TIME_UUID';
 const DECEMBER_NINETEEN_SIXTY_NINE_TIME_UUID = 'DECEMBER_1969_TIME_UUID';
 const FEBRUARY_NINETEEN_SEVENTY_EIGHT_TIME_UUID = 'FEBRUARY_1978_TIME_UUID';
 const UNITED_STATES_OF_AMERICA_PLACE_UUID = 'UNITED_STATES_OF_AMERICA_PLACE_UUID';
-const RUSSIA_PLACE_UUID = 'RUSSIA_PLACE_UUID';
 const NEW_JERSEY_PLACE_UUID = 'NEW_JERSEY_PLACE_UUID';
 const NEW_YORK_PLACE_UUID = 'NEW_YORK_PLACE_UUID';
 const PENNSYLVANIA_PLACE_UUID = 'PENNSYLVANIA_PLACE_UUID';
 const APPALACHIA_PLACE_UUID = 'APPALACHIA_PLACE_UUID';
 const TRI_STATE_AREA_PLACE_UUID = 'TRI_STATE_AREA_PLACE_UUID';
-const ATLANTIC_CITY_PLACE_UUID = 'ATLANTIC_CITY_PLACE_UUID';
+const NEWARK_PLACE_UUID = 'NEWARK_PLACE_UUID';
 const ALBANY_PLACE_UUID = 'ALBANY_PLACE_UUID';
 const BUFFALO_PLACE_UUID = 'BUFFALO_PLACE_UUID';
 const NEW_YORK_CITY_PLACE_UUID = 'NEW_YORK_CITY_PLACE_UUID';
 const PHILADELPHIA_PLACE_UUID = 'PHILADELPHIA_PLACE_UUID';
-const PARIS_PLACE_UUID = 'PARIS_PLACE_UUID';
-const DUCKTOWN_PLACE_UUID = 'DUCKTOWN_PLACE_UUID';
+const THE_IRONBOUND_PLACE_UUID = 'THE_IRONBOUND_PLACE_UUID';
 const DOWNTOWN_PLACE_UUID = 'DOWNTOWN_PLACE_UUID';
 const CENTER_SQUARE_PLACE_UUID = 'CENTER_SQUARE_PLACE_UUID';
 const ALLENTOWN_PLACE_UUID = 'ALLENTOWN_PLACE_UUID';
@@ -68,7 +65,6 @@ const BEATRICE_BAR_PERSON_UUID = 'BEATRICE_BAR_PERSON_UUID';
 const XIANYANG_PLACE_UUID = 'XIANYANG_PLACE_UUID';
 const AUDIENCE_HALL_LOCALE_UUID = 'AUDIENCE_HALL_LOCALE_UUID';
 const RIVERSIDE_LOCALE_UUID = 'RIVERSIDE_LOCALE_UUID';
-const FOREST_LOCALE_UUID = 'FOREST_LOCALE_UUID';
 const GARPLY_MATERIAL_UUID = 'GARPLY_MATERIAL_UUID';
 const CONOR_CORGE_PERSON_UUID = 'CONOR_CORGE_PERSON_UUID';
 const STAGECRAFT_LTD_COMPANY_UUID = 'STAGECRAFT_LTD_COMPANY_UUID';
@@ -139,8 +135,6 @@ let hanDynastyTime;
 let westernHanDynastyTime;
 let firstCenturyTime;
 let nineTime;
-let russiaPlace;
-let parisPlace;
 
 describe('Settings with sub-settings', () => {
 	before(async () => {
@@ -202,12 +196,6 @@ describe('Settings with sub-settings', () => {
 			name: '20th century',
 			fromDate: '1901-01-01',
 			toDate: '2000-12-31'
-		});
-
-		await request(app).post('/times').send({
-			name: '21st century',
-			fromDate: '2001-01-01',
-			toDate: '2100-12-31'
 		});
 
 		// Decades
@@ -366,202 +354,183 @@ describe('Settings with sub-settings', () => {
 
 		// Countries
 		await request(app).post('/places').send({
-			name: 'United States of America',
-			minLatitude: 24.9493,
-			maxLatitude: 49.5904,
-			minLongitude: -125.0011,
-			maxLongitude: -66.9326
-		});
-
-		await request(app).post('/places').send({
-			name: 'Russia',
-			minLatitude: 41.1850968,
-			maxLatitude: 82.0586232,
-			minLongitude: 19.64,
-			maxLongitude: -169.05
+			name: 'United States of America'
 		});
 
 		// US states
-		await request(app).post('/places').send({
-			name: 'New Jersey',
-			minLatitude: 38.7911303,
-			maxLatitude: 41.357279,
-			minLongitude: -75.563386,
-			maxLongitude: -73.893628
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'New Jersey',
+				surPlace: {
+					name: 'United States of America'
+				}
+			});
 
-		await request(app).post('/places').send({
-			name: 'New York',
-			minLatitude: 40.476578,
-			maxLatitude: 45.0158611,
-			minLongitude: -79.7619758,
-			maxLongitude: -71.790972
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'New York',
+				surPlace: {
+					name: 'United States of America'
+				}
+			});
 
-		await request(app).post('/places').send({
-			name: 'Pennsylvania',
-			minLatitude: 39.7197662,
-			maxLatitude: 42.5161334,
-			minLongitude: -80.5210906,
-			maxLongitude: -74.689672
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Pennsylvania',
+				surPlace: {
+					name: 'United States of America'
+				}
+			});
 
 		// Regions
-		// Appalachian Regional Commission service-area bounds
-		// intersect New York (state), but exclude the rest of the state.
-		await request(app).post('/places').send({
-			name: 'Appalachia',
-			minLatitude: 32.231996,
-			maxLatitude: 42.908363,
-			minLongitude: -90.198631,
-			maxLongitude: -74.164678
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Appalachia',
+				surPlace: {
+					name: 'United States of America'
+				}
+			});
 
-		// Approximate enclosing bounds for New Jersey and Connecticut,
-		// plus only southern New York (state).
-		await request(app).post('/places').send({
-			name: 'Tri-State Area',
-			minLatitude: 38.7911303,
-			maxLatitude: 42.0505827,
-			minLongitude: -75.563386,
-			maxLongitude: -71.787239
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Tri-State Area',
+				surPlace: {
+					name: 'United States of America'
+				}
+			});
 
 		// Cities
-		// City in New Jersey
-		await request(app).post('/places').send({
-			name: 'Atlantic City',
-			minLatitude: 39.335544,
-			maxLatitude: 39.417678,
-			minLongitude: -74.501592,
-			maxLongitude: -74.4028862
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Newark',
+				surPlace: {
+					name: 'New Jersey'
+				}
+			});
 
-		// City in New York (state)
-		await request(app).post('/places').send({
-			name: 'Albany',
-			minLatitude: 42.613528,
-			maxLatitude: 42.7221258,
-			minLongitude: -73.897457,
-			maxLongitude: -73.723229
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Albany',
+				surPlace: {
+					name: 'New York'
+				}
+			});
 
-		// City in New York (state)
-		await request(app).post('/places').send({
-			name: 'Buffalo',
-			minLatitude: 42.826006,
-			maxLatitude: 42.966449,
-			minLongitude: -78.9223535,
-			maxLongitude: -78.795121
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Buffalo',
+				surPlace: {
+					name: 'New York'
+				}
+			});
 
-		// City in New York (state)
-		await request(app).post('/places').send({
-			name: 'New York City',
-			minLatitude: 40.476578,
-			maxLatitude: 40.91763,
-			minLongitude: -74.258843,
-			maxLongitude: -73.700233
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'New York City',
+				surPlace: {
+					name: 'New York'
+				}
+			});
 
-		// City in Pennsylvania
-		await request(app).post('/places').send({
-			name: 'Philadelphia',
-			minLatitude: 39.867005,
-			maxLatitude: 40.1379593,
-			minLongitude: -75.280266,
-			maxLongitude: -74.9558314
-		});
-
-		await request(app).post('/places').send({
-			name: 'Paris',
-			minLatitude: 48.8155755,
-			maxLatitude: 48.902156,
-			minLongitude: 2.224122,
-			maxLongitude: 2.4697602
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Philadelphia',
+				surPlace: {
+					name: 'Pennsylvania'
+				}
+			});
 
 		// Boroughs/neighbourhoods
-		// Neighbourhood in Atlantic City, NJ
-		await request(app).post('/places').send({
-			name: 'Ducktown',
-			minLatitude: 39.3465698,
-			maxLatitude: 39.3665698,
-			minLongitude: -74.4518901,
-			maxLongitude: -74.4318901
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'The Ironbound',
+				surPlace: {
+					name: 'Newark'
+				}
+			});
 
-		// Neighbourhood in Albany, NY
-		await request(app).post('/places').send({
-			name: 'Downtown',
-			minLatitude: 42.639977,
-			maxLatitude: 42.659977,
-			minLongitude: -73.7619821,
-			maxLongitude: -73.7419821
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Downtown',
+				surPlace: {
+					name: 'Albany'
+				}
+			});
 
-		// Neighbourhood in Albany, NY
-		await request(app).post('/places').send({
-			name: 'Center Square',
-			minLatitude: 42.6516213,
-			maxLatitude: 42.6564989,
-			minLongitude: -73.766483,
-			maxLongitude: -73.7593863
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Center Square',
+				surPlace: {
+					name: 'Albany'
+				}
+			});
 
-		// Neighbourhood in Buffalo, NY
-		await request(app).post('/places').send({
-			name: 'Allentown',
-			minLatitude: 42.8961208,
-			maxLatitude: 42.9030574,
-			minLongitude: -78.8841998,
-			maxLongitude: -78.8689729
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Allentown',
+				surPlace: {
+					name: 'Buffalo'
+				}
+			});
 
-		// Neighbourhood in Buffalo, NY
-		await request(app).post('/places').send({
-			name: 'Elmwood Village',
-			minLatitude: 42.9022435,
-			maxLatitude: 42.9280381,
-			minLongitude: -78.88212,
-			maxLongitude: -78.8673261
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Elmwood Village',
+				surPlace: {
+					name: 'Buffalo'
+				}
+			});
 
-		// Borough in New York City, NY
-		await request(app).post('/places').send({
-			name: 'Brooklyn',
-			minLatitude: 40.550339,
-			maxLatitude: 40.739434,
-			minLongitude: -74.056688,
-			maxLongitude: -73.832945
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Brooklyn',
+				surPlace: {
+					name: 'New York City'
+				}
+			});
 
-		// Borough in New York City, NY
-		await request(app).post('/places').send({
-			name: 'Manhattan',
-			minLatitude: 40.679654,
-			maxLatitude: 40.882012,
-			minLongitude: -74.0472219,
-			maxLongitude: -73.906769
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Manhattan',
+				surPlace: {
+					name: 'New York City'
+				}
+			});
 
-		// Borough in New York City, NY
-		await request(app).post('/places').send({
-			name: 'The Bronx',
-			minLatitude: 40.785739,
-			maxLatitude: 40.91763,
-			minLongitude: -73.933907,
-			maxLongitude: -73.748374
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'The Bronx',
+				surPlace: {
+					name: 'New York City'
+				}
+			});
 
-		// Neighbourhood in Philadelphia, PA
-		await request(app).post('/places').send({
-			name: 'Center City',
-			minLatitude: 39.9400338,
-			maxLatitude: 39.9601535,
-			minLongitude: -75.1876267,
-			maxLongitude: -75.1338667
-		});
+		await request(app)
+			.post('/places')
+			.send({
+				name: 'Center City',
+				surPlace: {
+					name: 'Philadelphia'
+				}
+			});
 
 		await request(app)
 			.post('/materials')
@@ -599,17 +568,6 @@ describe('Settings with sub-settings', () => {
 						},
 						locale: {
 							name: 'Riverside'
-						}
-					},
-					{
-						time: {
-							name: '21st century'
-						},
-						place: {
-							name: 'Russia'
-						},
-						locale: {
-							name: 'Forest'
 						}
 					}
 				]
@@ -841,7 +799,7 @@ describe('Settings with sub-settings', () => {
 							name: '1952'
 						},
 						place: {
-							name: 'Atlantic City'
+							name: 'Newark'
 						},
 						locale: {
 							name: 'Café'
@@ -1003,7 +961,7 @@ describe('Settings with sub-settings', () => {
 							name: 'November 1952'
 						},
 						place: {
-							name: 'Ducktown'
+							name: 'The Ironbound'
 						},
 						locale: {
 							name: 'Dockyard'
@@ -1134,10 +1092,6 @@ describe('Settings with sub-settings', () => {
 		firstCenturyTime = await request(app).get(`/times/${FIRST_CENTURY_TIME_UUID}`);
 
 		nineTime = await request(app).get(`/times/${NINE_TIME_UUID}`);
-
-		russiaPlace = await request(app).get(`/places/${RUSSIA_PLACE_UUID}`);
-
-		parisPlace = await request(app).get(`/places/${PARIS_PLACE_UUID}`);
 	});
 
 	describe('20th century (time)', () => {
@@ -1285,8 +1239,8 @@ describe('Settings with sub-settings', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: DUCKTOWN_PLACE_UUID,
-								name: 'Ducktown'
+								uuid: THE_IRONBOUND_PLACE_UUID,
+								name: 'The Ironbound'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -1611,8 +1565,8 @@ describe('Settings with sub-settings', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ATLANTIC_CITY_PLACE_UUID,
-								name: 'Atlantic City'
+								uuid: NEWARK_PLACE_UUID,
+								name: 'Newark'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -2561,7 +2515,7 @@ describe('Settings with sub-settings', () => {
 	});
 
 	describe('United States of America (place)', () => {
-		it('includes no containing sur-places as there are no broader places available', async () => {
+		it('includes no sur-places as there are no broader places available', async () => {
 			const expectedSurPlaces = [];
 
 			const { surPlaces } = unitedStatesOfAmericaPlace.body;
@@ -2569,7 +2523,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(surPlaces, expectedSurPlaces);
 		});
 
-		it('includes contained sub-places', async () => {
+		it('includes all descendent sub-places', async () => {
 			const expectedSubPlaces = [
 				{
 					model: 'PLACE',
@@ -2585,11 +2539,6 @@ describe('Settings with sub-settings', () => {
 					model: 'PLACE',
 					uuid: APPALACHIA_PLACE_UUID,
 					name: 'Appalachia'
-				},
-				{
-					model: 'PLACE',
-					uuid: ATLANTIC_CITY_PLACE_UUID,
-					name: 'Atlantic City'
 				},
 				{
 					model: 'PLACE',
@@ -2618,11 +2567,6 @@ describe('Settings with sub-settings', () => {
 				},
 				{
 					model: 'PLACE',
-					uuid: DUCKTOWN_PLACE_UUID,
-					name: 'Ducktown'
-				},
-				{
-					model: 'PLACE',
 					uuid: ELMWOOD_VILLAGE_PLACE_UUID,
 					name: 'Elmwood Village'
 				},
@@ -2648,6 +2592,11 @@ describe('Settings with sub-settings', () => {
 				},
 				{
 					model: 'PLACE',
+					uuid: NEWARK_PLACE_UUID,
+					name: 'Newark'
+				},
+				{
+					model: 'PLACE',
 					uuid: PENNSYLVANIA_PLACE_UUID,
 					name: 'Pennsylvania'
 				},
@@ -2663,6 +2612,11 @@ describe('Settings with sub-settings', () => {
 				},
 				{
 					model: 'PLACE',
+					uuid: THE_IRONBOUND_PLACE_UUID,
+					name: 'The Ironbound'
+				},
+				{
+					model: 'PLACE',
 					uuid: TRI_STATE_AREA_PLACE_UUID,
 					name: 'Tri-State Area'
 				}
@@ -2673,7 +2627,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subPlaces, expectedSubPlaces);
 		});
 
-		it('includes materials for which it and its contained sub-places were a setting', async () => {
+		it('includes materials for which it and all its descendent sub-places were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -2705,8 +2659,8 @@ describe('Settings with sub-settings', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: DUCKTOWN_PLACE_UUID,
-								name: 'Ducktown'
+								uuid: THE_IRONBOUND_PLACE_UUID,
+								name: 'The Ironbound'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -3031,8 +2985,8 @@ describe('Settings with sub-settings', () => {
 							},
 							place: {
 								model: 'PLACE',
-								uuid: ATLANTIC_CITY_PLACE_UUID,
-								name: 'Atlantic City'
+								uuid: NEWARK_PLACE_UUID,
+								name: 'Newark'
 							},
 							locale: {
 								model: 'LOCALE',
@@ -3241,7 +3195,7 @@ describe('Settings with sub-settings', () => {
 	});
 
 	describe('New York (state) (place)', () => {
-		it('includes containing sur-places', async () => {
+		it('includes sur-places', async () => {
 			const expectedSurPlaces = [
 				{
 					model: 'PLACE',
@@ -3255,7 +3209,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(surPlaces, expectedSurPlaces);
 		});
 
-		it('includes contained sub-places', async () => {
+		it('includes all descendent sub-places', async () => {
 			const expectedSubPlaces = [
 				{
 					model: 'PLACE',
@@ -3314,7 +3268,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subPlaces, expectedSubPlaces);
 		});
 
-		it('includes materials for which it and its contained sub-places were a setting; excludes materials for which intersecting places (e.g. Appalachia and Tri-State Area) were a setting', async () => {
+		it('includes materials for which it and all its descendent sub-places were a setting; excludes materials for which intersecting places (e.g. Appalachia and Tri-State Area) were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -3651,17 +3605,12 @@ describe('Settings with sub-settings', () => {
 	});
 
 	describe('New York City (place)', () => {
-		it('includes containing sur-places', async () => {
+		it('includes all ancestor sur-places', async () => {
 			const expectedSurPlaces = [
 				{
 					model: 'PLACE',
 					uuid: NEW_YORK_PLACE_UUID,
 					name: 'New York'
-				},
-				{
-					model: 'PLACE',
-					uuid: TRI_STATE_AREA_PLACE_UUID,
-					name: 'Tri-State Area'
 				},
 				{
 					model: 'PLACE',
@@ -3675,7 +3624,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(surPlaces, expectedSurPlaces);
 		});
 
-		it('includes contained sub-places', async () => {
+		it('includes sub-places', async () => {
 			const expectedSubPlaces = [
 				{
 					model: 'PLACE',
@@ -3699,7 +3648,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(subPlaces, expectedSubPlaces);
 		});
 
-		it('includes materials for which it and its contained sub-places were a setting', async () => {
+		it('includes materials for which it and its sub-places were a setting', async () => {
 			const expectedMaterials = [
 				{
 					model: 'MATERIAL',
@@ -3864,13 +3813,8 @@ describe('Settings with sub-settings', () => {
 	});
 
 	describe('Manhattan (place)', () => {
-		it('includes containing sur-places', async () => {
+		it('includes all ancestor sur-places', async () => {
 			const expectedSurPlaces = [
-				{
-					model: 'PLACE',
-					uuid: NEW_JERSEY_PLACE_UUID,
-					name: 'New Jersey'
-				},
 				{
 					model: 'PLACE',
 					uuid: NEW_YORK_PLACE_UUID,
@@ -3880,11 +3824,6 @@ describe('Settings with sub-settings', () => {
 					model: 'PLACE',
 					uuid: NEW_YORK_CITY_PLACE_UUID,
 					name: 'New York City'
-				},
-				{
-					model: 'PLACE',
-					uuid: TRI_STATE_AREA_PLACE_UUID,
-					name: 'Tri-State Area'
 				},
 				{
 					model: 'PLACE',
@@ -3898,7 +3837,7 @@ describe('Settings with sub-settings', () => {
 			assert.deepEqual(surPlaces, expectedSurPlaces);
 		});
 
-		it('includes no contained sub-places as there are no narrower places', async () => {
+		it('includes no sub-places as there are no narrower places', async () => {
 			const expectedSubPlaces = [];
 
 			const { subPlaces } = manhattanPlace.body;
@@ -5008,76 +4947,6 @@ describe('Settings with sub-settings', () => {
 			const { materials } = nineTime.body;
 
 			assert.deepEqual(materials, expectedMaterials);
-		});
-	});
-
-	describe('Russia (place) (i.e. place whose boundary box crosses the antimeridian)', () => {
-		it('excludes places that are not contained sub-places (i.e. Paris)', async () => {
-			const expectedSubPlaces = [];
-
-			const { subPlaces } = russiaPlace.body;
-
-			assert.deepEqual(subPlaces, expectedSubPlaces);
-		});
-
-		it('includes materials for which it and its contained sub-places were a setting; excluding those of places that are not contained sub-places (i.e. Paris)', async () => {
-			const expectedMaterials = [
-				{
-					model: 'MATERIAL',
-					uuid: GRAULT_MATERIAL_UUID,
-					name: 'Grault',
-					format: 'play',
-					year: 2016,
-					surMaterial: null,
-					writingCredits: [
-						{
-							model: 'WRITING_CREDIT',
-							name: 'by',
-							entities: [
-								{
-									model: 'PERSON',
-									uuid: BEATRICE_BAR_PERSON_UUID,
-									name: 'Beatrice Bar'
-								}
-							]
-						}
-					],
-					settings: [
-						{
-							model: 'SETTING',
-							time: {
-								model: 'TIME',
-								uuid: TWENTY_FIRST_CENTURY_TIME_UUID,
-								name: '21st century'
-							},
-							place: {
-								model: 'PLACE',
-								uuid: RUSSIA_PLACE_UUID,
-								name: 'Russia'
-							},
-							locale: {
-								model: 'LOCALE',
-								uuid: FOREST_LOCALE_UUID,
-								name: 'Forest'
-							}
-						}
-					]
-				}
-			];
-
-			const { materials } = russiaPlace.body;
-
-			assert.deepEqual(materials, expectedMaterials);
-		});
-	});
-
-	describe('Paris (place)', () => {
-		it('excludes places that are not containing sur-places (i.e. Russia)', async () => {
-			const expectedSurPlaces = [];
-
-			const { surPlaces } = parisPlace.body;
-
-			assert.deepEqual(surPlaces, expectedSurPlaces);
 		});
 	});
 });

@@ -6,7 +6,7 @@ export default () => `
 			WHERE
 				settingPlace = place OR
 				EXISTS {
-					MATCH (place)-[:CONTAINS]->(settingPlace)
+					MATCH (place)-[:CONTAINS*1..]->(settingPlace)
 				}
 
 		WITH DISTINCT place, material
@@ -120,7 +120,7 @@ export default () => `
 					WHERE
 						settingPlace = place OR
 						EXISTS {
-							MATCH (place)-[:CONTAINS]->(settingPlace)
+							MATCH (place)-[:CONTAINS*1..]->(settingPlace)
 						}
 
 				OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)

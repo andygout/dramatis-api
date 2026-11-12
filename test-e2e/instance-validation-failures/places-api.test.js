@@ -14,6 +14,9 @@ import {
 
 const context = describe;
 
+const STRING_MAX_LENGTH = 1000;
+const ABOVE_MAX_LENGTH_STRING = 'a'.repeat(STRING_MAX_LENGTH + 1);
+
 describe('Instance validation failures: Places API', () => {
 	describe('attempt to create instance', () => {
 		const KNIGHTSBRIDGE_PLACE_UUID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
@@ -40,13 +43,15 @@ describe('Instance validation failures: Places API', () => {
 					model: 'PLACE',
 					name: '',
 					differentiator: '',
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -68,14 +73,16 @@ describe('Instance validation failures: Places API', () => {
 					model: 'PLACE',
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
 						differentiator: ['Name and differentiator combination already exists']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -89,27 +96,31 @@ describe('Instance validation failures: Places API', () => {
 			it('returns instance with appropriate errors attached', async () => {
 				assert.equal(await countNodesWithLabel('Place'), 1);
 
-				const response = await request(app).post('/places').send({
-					name: 'Knightsbridge',
-					minLatitude: 'foobar',
-					maxLatitude: 51.5208444,
-					minLongitude: -0.186965,
-					maxLongitude: -0.146965
-				});
+				const response = await request(app)
+					.post('/places')
+					.send({
+						name: 'Knightsbridge',
+						surPlace: {
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					});
 
 				const expectedResponseBody = {
 					model: 'PLACE',
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: 'foobar',
-					maxLatitude: 51.5208444,
-					minLongitude: -0.186965,
-					maxLongitude: -0.146965,
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
-						differentiator: ['Name and differentiator combination already exists'],
-						minLatitude: ['Value must be a number']
+						differentiator: ['Name and differentiator combination already exists']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: ['Value is too long']
+						}
 					}
 				};
 
@@ -153,13 +164,15 @@ describe('Instance validation failures: Places API', () => {
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: '',
 					differentiator: '',
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -190,14 +203,16 @@ describe('Instance validation failures: Places API', () => {
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
 						differentiator: ['Name and differentiator combination already exists']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -219,28 +234,32 @@ describe('Instance validation failures: Places API', () => {
 			it('returns instance with appropriate errors attached', async () => {
 				assert.equal(await countNodesWithLabel('Place'), 2);
 
-				const response = await request(app).put(`/places/${DERBYSHIRE_PLACE_UUID}`).send({
-					name: 'Knightsbridge',
-					minLatitude: 'foobar',
-					maxLatitude: 51.5208444,
-					minLongitude: -0.186965,
-					maxLongitude: -0.146965
-				});
+				const response = await request(app)
+					.put(`/places/${DERBYSHIRE_PLACE_UUID}`)
+					.send({
+						name: 'Knightsbridge',
+						surPlace: {
+							name: ABOVE_MAX_LENGTH_STRING
+						}
+					});
 
 				const expectedResponseBody = {
 					model: 'PLACE',
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: 'foobar',
-					maxLatitude: 51.5208444,
-					minLongitude: -0.186965,
-					maxLongitude: -0.146965,
 					hasErrors: true,
 					errors: {
 						name: ['Name and differentiator combination already exists'],
-						differentiator: ['Name and differentiator combination already exists'],
-						minLatitude: ['Value must be a number']
+						differentiator: ['Name and differentiator combination already exists']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: ['Value is too long']
+						}
 					}
 				};
 
@@ -290,13 +309,15 @@ describe('Instance validation failures: Places API', () => {
 					uuid: DERBYSHIRE_PLACE_UUID,
 					name: 'Derbyshire',
 					differentiator: null,
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						associations: ['Material']
+					},
+					surPlace: {
+						model: 'PLACE',
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
