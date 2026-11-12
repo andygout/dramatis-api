@@ -74,27 +74,15 @@ describe('Material with sub-sub-materials and subsequent versions thereof', () =
 		});
 
 		await request(app).post('/places').send({
-			name: 'Flintshire',
-			minLatitude: 53.072126,
-			maxLatitude: 53.3607879,
-			minLongitude: -3.4006089,
-			maxLongitude: -2.9202758
+			name: 'Flintshire'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Flint',
-			minLatitude: 53.2092828,
-			maxLatitude: 53.2892828,
-			minLongitude: -3.1745262,
-			maxLongitude: -3.0945262
+			name: 'Flint'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Flint Castle',
-			minLatitude: 53.251714,
-			maxLatitude: 53.251814,
-			minLongitude: -3.1299573,
-			maxLongitude: -3.1298573
+			name: 'Flint Castle'
 		});
 
 		await request(app)

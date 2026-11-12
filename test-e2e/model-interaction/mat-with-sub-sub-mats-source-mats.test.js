@@ -76,27 +76,15 @@ describe('Material with sub-sub-materials and source materials thereof', () => {
 		});
 
 		await request(app).post('/places').send({
-			name: 'London',
-			minLatitude: 51.2867601,
-			maxLatitude: 51.6918741,
-			minLongitude: -0.5103751,
-			maxLongitude: 0.3340155
+			name: 'London'
 		});
 
 		await request(app).post('/places').send({
-			name: 'London Borough of Hammersmith and Fulham',
-			minLatitude: 51.4638978,
-			maxLatitude: 51.5327358,
-			minLongitude: -0.2550873,
-			maxLongitude: -0.1776273
+			name: 'London Borough of Hammersmith and Fulham'
 		});
 
 		await request(app).post('/places').send({
-			name: "Shepherd's Bush",
-			minLatitude: 51.4853155,
-			maxLatitude: 51.5253155,
-			minLongitude: -0.2429856,
-			maxLongitude: -0.2029856
+			name: "Shepherd's Bush"
 		});
 
 		await request(app)

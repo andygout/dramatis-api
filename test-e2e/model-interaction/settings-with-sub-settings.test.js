@@ -366,201 +366,113 @@ describe('Settings with sub-settings', () => {
 
 		// Countries
 		await request(app).post('/places').send({
-			name: 'United States of America',
-			minLatitude: 24.9493,
-			maxLatitude: 49.5904,
-			minLongitude: -125.0011,
-			maxLongitude: -66.9326
+			name: 'United States of America'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Russia',
-			minLatitude: 41.1850968,
-			maxLatitude: 82.0586232,
-			minLongitude: 19.64,
-			maxLongitude: -169.05
+			name: 'Russia'
 		});
 
 		// US states
 		await request(app).post('/places').send({
-			name: 'New Jersey',
-			minLatitude: 38.7911303,
-			maxLatitude: 41.357279,
-			minLongitude: -75.563386,
-			maxLongitude: -73.893628
+			name: 'New Jersey'
 		});
 
 		await request(app).post('/places').send({
-			name: 'New York',
-			minLatitude: 40.476578,
-			maxLatitude: 45.0158611,
-			minLongitude: -79.7619758,
-			maxLongitude: -71.790972
+			name: 'New York'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Pennsylvania',
-			minLatitude: 39.7197662,
-			maxLatitude: 42.5161334,
-			minLongitude: -80.5210906,
-			maxLongitude: -74.689672
+			name: 'Pennsylvania'
 		});
 
 		// Regions
 		// Appalachian Regional Commission service-area bounds
 		// intersect New York (state), but exclude the rest of the state.
 		await request(app).post('/places').send({
-			name: 'Appalachia',
-			minLatitude: 32.231996,
-			maxLatitude: 42.908363,
-			minLongitude: -90.198631,
-			maxLongitude: -74.164678
+			name: 'Appalachia'
 		});
 
 		// Approximate enclosing bounds for New Jersey and Connecticut,
 		// plus only southern New York (state).
 		await request(app).post('/places').send({
-			name: 'Tri-State Area',
-			minLatitude: 38.7911303,
-			maxLatitude: 42.0505827,
-			minLongitude: -75.563386,
-			maxLongitude: -71.787239
+			name: 'Tri-State Area'
 		});
 
 		// Cities
 		// City in New Jersey
 		await request(app).post('/places').send({
-			name: 'Atlantic City',
-			minLatitude: 39.335544,
-			maxLatitude: 39.417678,
-			minLongitude: -74.501592,
-			maxLongitude: -74.4028862
+			name: 'Atlantic City'
 		});
 
 		// City in New York (state)
 		await request(app).post('/places').send({
-			name: 'Albany',
-			minLatitude: 42.613528,
-			maxLatitude: 42.7221258,
-			minLongitude: -73.897457,
-			maxLongitude: -73.723229
+			name: 'Albany'
 		});
 
 		// City in New York (state)
 		await request(app).post('/places').send({
-			name: 'Buffalo',
-			minLatitude: 42.826006,
-			maxLatitude: 42.966449,
-			minLongitude: -78.9223535,
-			maxLongitude: -78.795121
+			name: 'Buffalo'
 		});
 
 		// City in New York (state)
 		await request(app).post('/places').send({
-			name: 'New York City',
-			minLatitude: 40.476578,
-			maxLatitude: 40.91763,
-			minLongitude: -74.258843,
-			maxLongitude: -73.700233
+			name: 'New York City'
 		});
 
 		// City in Pennsylvania
 		await request(app).post('/places').send({
-			name: 'Philadelphia',
-			minLatitude: 39.867005,
-			maxLatitude: 40.1379593,
-			minLongitude: -75.280266,
-			maxLongitude: -74.9558314
+			name: 'Philadelphia'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Paris',
-			minLatitude: 48.8155755,
-			maxLatitude: 48.902156,
-			minLongitude: 2.224122,
-			maxLongitude: 2.4697602
+			name: 'Paris'
 		});
 
 		// Boroughs/neighbourhoods
 		// Neighbourhood in Atlantic City, NJ
 		await request(app).post('/places').send({
-			name: 'Ducktown',
-			minLatitude: 39.3465698,
-			maxLatitude: 39.3665698,
-			minLongitude: -74.4518901,
-			maxLongitude: -74.4318901
+			name: 'Ducktown'
 		});
 
 		// Neighbourhood in Albany, NY
 		await request(app).post('/places').send({
-			name: 'Downtown',
-			minLatitude: 42.639977,
-			maxLatitude: 42.659977,
-			minLongitude: -73.7619821,
-			maxLongitude: -73.7419821
+			name: 'Downtown'
 		});
 
 		// Neighbourhood in Albany, NY
 		await request(app).post('/places').send({
-			name: 'Center Square',
-			minLatitude: 42.6516213,
-			maxLatitude: 42.6564989,
-			minLongitude: -73.766483,
-			maxLongitude: -73.7593863
+			name: 'Center Square'
 		});
 
 		// Neighbourhood in Buffalo, NY
 		await request(app).post('/places').send({
-			name: 'Allentown',
-			minLatitude: 42.8961208,
-			maxLatitude: 42.9030574,
-			minLongitude: -78.8841998,
-			maxLongitude: -78.8689729
+			name: 'Allentown'
 		});
 
 		// Neighbourhood in Buffalo, NY
 		await request(app).post('/places').send({
-			name: 'Elmwood Village',
-			minLatitude: 42.9022435,
-			maxLatitude: 42.9280381,
-			minLongitude: -78.88212,
-			maxLongitude: -78.8673261
+			name: 'Elmwood Village'
 		});
 
 		// Borough in New York City, NY
 		await request(app).post('/places').send({
-			name: 'Brooklyn',
-			minLatitude: 40.550339,
-			maxLatitude: 40.739434,
-			minLongitude: -74.056688,
-			maxLongitude: -73.832945
+			name: 'Brooklyn'
 		});
 
 		// Borough in New York City, NY
 		await request(app).post('/places').send({
-			name: 'Manhattan',
-			minLatitude: 40.679654,
-			maxLatitude: 40.882012,
-			minLongitude: -74.0472219,
-			maxLongitude: -73.906769
+			name: 'Manhattan'
 		});
 
 		// Borough in New York City, NY
 		await request(app).post('/places').send({
-			name: 'The Bronx',
-			minLatitude: 40.785739,
-			maxLatitude: 40.91763,
-			minLongitude: -73.933907,
-			maxLongitude: -73.748374
+			name: 'The Bronx'
 		});
 
 		// Neighbourhood in Philadelphia, PA
 		await request(app).post('/places').send({
-			name: 'Center City',
-			minLatitude: 39.9400338,
-			maxLatitude: 39.9601535,
-			minLongitude: -75.1876267,
-			maxLongitude: -75.1338667
+			name: 'Center City'
 		});
 
 		await request(app)

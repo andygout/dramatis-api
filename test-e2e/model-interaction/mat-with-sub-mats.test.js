@@ -65,19 +65,11 @@ describe('Material with sub-materials', () => {
 		});
 
 		await request(app).post('/places').send({
-			name: 'Russia',
-			minLatitude: 41.1850968,
-			maxLatitude: 82.0586232,
-			minLongitude: -180.0,
-			maxLongitude: 180.0
+			name: 'Russia'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Moscow',
-			minLatitude: 55.1421745,
-			maxLatitude: 56.0212238,
-			minLongitude: 36.8031012,
-			maxLongitude: 37.9674277
+			name: 'Moscow'
 		});
 
 		await request(app)

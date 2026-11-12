@@ -33,10 +33,6 @@ describe('Uniqueness in database: Places API', () => {
 			uuid: PLACE_1_UUID,
 			name: 'London',
 			differentiator: '',
-			minLatitude: null,
-			maxLatitude: null,
-			minLongitude: null,
-			maxLongitude: null,
 			errors: {}
 		};
 
@@ -56,10 +52,6 @@ describe('Uniqueness in database: Places API', () => {
 			model: 'PLACE',
 			name: 'London',
 			differentiator: '',
-			minLatitude: null,
-			maxLatitude: null,
-			minLongitude: null,
-			maxLongitude: null,
 			hasErrors: true,
 			errors: {
 				name: ['Name and differentiator combination already exists'],
@@ -85,10 +77,6 @@ describe('Uniqueness in database: Places API', () => {
 			uuid: PLACE_2_UUID,
 			name: 'London',
 			differentiator: '1',
-			minLatitude: null,
-			maxLatitude: null,
-			minLongitude: null,
-			maxLongitude: null,
 			errors: {}
 		};
 
@@ -110,10 +98,6 @@ describe('Uniqueness in database: Places API', () => {
 			uuid: PLACE_1_UUID,
 			name: 'London',
 			differentiator: '1',
-			minLatitude: null,
-			maxLatitude: null,
-			minLongitude: null,
-			maxLongitude: null,
 			hasErrors: true,
 			errors: {
 				name: ['Name and differentiator combination already exists'],
@@ -139,10 +123,6 @@ describe('Uniqueness in database: Places API', () => {
 			uuid: PLACE_1_UUID,
 			name: 'London',
 			differentiator: '2',
-			minLatitude: null,
-			maxLatitude: null,
-			minLongitude: null,
-			maxLongitude: null,
 			errors: {}
 		};
 
@@ -163,10 +143,6 @@ describe('Uniqueness in database: Places API', () => {
 			uuid: PLACE_2_UUID,
 			name: 'London',
 			differentiator: '',
-			minLatitude: null,
-			maxLatitude: null,
-			minLongitude: null,
-			maxLongitude: null,
 			errors: {}
 		};
 

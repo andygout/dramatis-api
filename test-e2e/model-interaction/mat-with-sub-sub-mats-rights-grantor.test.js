@@ -71,29 +71,17 @@ describe('Material with sub-sub-materials and rights grantor credits thereof', (
 
 		// Coordinates for Waikato region, New Zealand.
 		await request(app).post('/places').send({
-			name: 'The Shire',
-			minLatitude: -39.3006524,
-			maxLatitude: -36.2582459,
-			minLongitude: 174.3137365,
-			maxLongitude: 176.5053248
+			name: 'The Shire'
 		});
 
 		// Coordinates for the Matamata-Piako District, New Zealand.
 		await request(app).post('/places').send({
-			name: 'Westfarthing',
-			minLatitude: -37.9521398,
-			maxLatitude: -37.4187676,
-			minLongitude: 175.3732312,
-			maxLongitude: 175.9549681
+			name: 'Westfarthing'
 		});
 
 		// Coordinates for the Hobbiton movie set in Matamata, New Zealand.
 		await request(app).post('/places').send({
-			name: 'Hobbiton',
-			minLatitude: -37.8600649,
-			maxLatitude: -37.8555245,
-			minLongitude: 175.6779447,
-			maxLongitude: 175.6840374
+			name: 'Hobbiton'
 		});
 
 		await request(app)

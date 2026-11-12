@@ -16,10 +16,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: '',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
 				errors: {}
 			};
 
@@ -49,10 +45,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
 				errors: {}
 			};
 
@@ -69,10 +61,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
 				errors: {}
 			};
 
@@ -92,10 +80,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Belgravia',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
 				errors: {}
 			};
 
@@ -130,10 +114,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: 'Belgravia',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
 				errors: {}
 			};
 
@@ -158,10 +138,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const response = await request(app).post('/places').send({
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965
 			});
 
 			const expectedResponseBody = {
@@ -169,10 +145,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
 				errors: {}
 			};
 
@@ -206,10 +178,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
 				errors: {}
 			};
 
@@ -223,10 +191,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965
 			});
 
 			const expectedResponseBody = {
@@ -234,10 +198,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
 				errors: {}
 			};
 
@@ -252,10 +212,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
 				name: 'Belgravia',
 				differentiator: '1',
-				minLatitude: 51.4782128,
-				maxLatitude: 51.5182128,
-				minLongitude: -0.1734998,
-				maxLongitude: -0.1334998
 			});
 
 			const expectedResponseBody = {
@@ -263,10 +219,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Belgravia',
 				differentiator: '1',
-				minLatitude: 51.4782128,
-				maxLatitude: 51.5182128,
-				minLongitude: -0.1734998,
-				maxLongitude: -0.1334998,
 				errors: {}
 			};
 
@@ -301,10 +253,6 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: 'Belgravia',
 				differentiator: '1',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
 				errors: {}
 			};
 

@@ -93,19 +93,11 @@ describe('Material with sub-materials and source materials thereof', () => {
 		});
 
 		await request(app).post('/places').send({
-			name: 'Tower Liberty',
-			minLatitude: 51.505,
-			maxLatitude: 51.515,
-			minLongitude: -0.085,
-			maxLongitude: -0.065
+			name: 'Tower Liberty'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Tower of London',
-			minLatitude: 51.5071555,
-			maxLatitude: 51.5091106,
-			minLongitude: -0.0780521,
-			maxLongitude: -0.0745206
+			name: 'Tower of London'
 		});
 
 		await request(app)

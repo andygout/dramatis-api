@@ -76,19 +76,11 @@ describe('Material with sub-materials and subsequent versions thereof', () => {
 		});
 
 		await request(app).post('/places').send({
-			name: 'Peloponnese',
-			minLatitude: 36.3853354,
-			maxLatitude: 38.341405,
-			minLongitude: 21.1050727,
-			maxLongitude: 23.5245191
+			name: 'Peloponnese'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Argos',
-			minLatitude: 37.4749668,
-			maxLatitude: 37.7949668,
-			minLongitude: 22.5685084,
-			maxLongitude: 22.8885084
+			name: 'Argos'
 		});
 
 		await request(app)

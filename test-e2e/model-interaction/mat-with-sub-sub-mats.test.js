@@ -91,27 +91,15 @@ describe('Material with sub-sub-materials', () => {
 		});
 
 		await request(app).post('/places').send({
-			name: 'Central Asia',
-			minLatitude: 29.3,
-			maxLatitude: 55.5,
-			minLongitude: 46.5,
-			maxLongitude: 87.5
+			name: 'Central Asia'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Afghanistan',
-			minLatitude: 29.3772926,
-			maxLatitude: 38.4910682,
-			minLongitude: 60.5176034,
-			maxLongitude: 74.889862
+			name: 'Afghanistan'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Kabul',
-			minLatitude: 34.3669503,
-			maxLatitude: 34.6869503,
-			minLongitude: 69.0250584,
-			maxLongitude: 69.3450584
+			name: 'Kabul'
 		});
 
 		await request(app)

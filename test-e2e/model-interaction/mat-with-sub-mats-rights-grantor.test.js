@@ -66,19 +66,11 @@ describe('Material with sub-materials and rights grantor credits thereof', () =>
 		});
 
 		await request(app).post('/places').send({
-			name: 'England',
-			minLatitude: 49.674,
-			maxLatitude: 55.917,
-			minLongitude: -6.7047494,
-			maxLongitude: 2.0919117
+			name: 'England'
 		});
 
 		await request(app).post('/places').send({
-			name: 'Oxfordshire',
-			minLatitude: 51.4594132,
-			maxLatitude: 52.1684702,
-			minLongitude: -1.7195008,
-			maxLongitude: -0.870066
+			name: 'Oxfordshire'
 		});
 
 		await request(app)
