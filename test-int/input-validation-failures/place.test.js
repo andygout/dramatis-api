@@ -50,13 +50,15 @@ describe('Input validation failures: Place instance', () => {
 					uuid: undefined,
 					name: '',
 					differentiator: '',
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Value is too short']
+					},
+					surPlace: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -78,13 +80,15 @@ describe('Input validation failures: Place instance', () => {
 					uuid: undefined,
 					name: ABOVE_MAX_LENGTH_STRING,
 					differentiator: '',
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						name: ['Value is too long']
+					},
+					surPlace: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -107,13 +111,15 @@ describe('Input validation failures: Place instance', () => {
 					uuid: undefined,
 					name: 'Knightsbridge',
 					differentiator: ABOVE_MAX_LENGTH_STRING,
-					minLatitude: null,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
 					errors: {
 						differentiator: ['Value is too long']
+					},
+					surPlace: {
+						uuid: undefined,
+						name: '',
+						differentiator: '',
+						errors: {}
 					}
 				};
 
@@ -122,12 +128,14 @@ describe('Input validation failures: Place instance', () => {
 		}
 	});
 
-	describe('only some bounding box coordinates are provided', () => {
+	describe('sur-place name value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
 					name: 'Knightsbridge',
-					minLatitude: 51.2867601
+					surPlace: {
+						name: ABOVE_MAX_LENGTH_STRING
+					}
 				});
 
 				const result = await instance[method]();
@@ -136,15 +144,15 @@ describe('Input validation failures: Place instance', () => {
 					uuid: undefined,
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: 51.2867601,
-					maxLatitude: null,
-					minLongitude: null,
-					maxLongitude: null,
 					hasErrors: true,
-					errors: {
-						maxLatitude: ['All four bounding box coordinates must be provided'],
-						minLongitude: ['All four bounding box coordinates must be provided'],
-						maxLongitude: ['All four bounding box coordinates must be provided']
+					errors: {},
+					surPlace: {
+						uuid: undefined,
+						name: ABOVE_MAX_LENGTH_STRING,
+						differentiator: '',
+						errors: {
+							name: ['Value is too long']
+						}
 					}
 				};
 
@@ -153,15 +161,15 @@ describe('Input validation failures: Place instance', () => {
 		}
 	});
 
-	describe('bounding box coordinate that cannot be parsed as a number', () => {
+	describe('sur-place differentiator value exceeds maximum limit', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
 					name: 'Knightsbridge',
-					minLatitude: 'foobar',
-					maxLatitude: 51.6918741,
-					minLongitude: -0.5103751,
-					maxLongitude: 0.3340155
+					surPlace: {
+						name: 'London',
+						differentiator: ABOVE_MAX_LENGTH_STRING
+					}
 				});
 
 				const result = await instance[method]();
@@ -170,13 +178,15 @@ describe('Input validation failures: Place instance', () => {
 					uuid: undefined,
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: 'foobar',
-					maxLatitude: 51.6918741,
-					minLongitude: -0.5103751,
-					maxLongitude: 0.3340155,
 					hasErrors: true,
-					errors: {
-						minLatitude: ['Value must be a number']
+					errors: {},
+					surPlace: {
+						uuid: undefined,
+						name: 'London',
+						differentiator: ABOVE_MAX_LENGTH_STRING,
+						errors: {
+							differentiator: ['Value is too long']
+						}
 					}
 				};
 
@@ -185,47 +195,14 @@ describe('Input validation failures: Place instance', () => {
 		}
 	});
 
-	describe('bounding box coordinate that is infinite', () => {
+	describe('place instance assigns itself as the sur-place', () => {
 		for (const method of methods) {
 			it(`assigns appropriate error (${method} method)`, async () => {
 				const instance = createInstance({
 					name: 'Knightsbridge',
-					minLatitude: Infinity,
-					maxLatitude: 51.6918741,
-					minLongitude: -0.5103751,
-					maxLongitude: 0.3340155
-				});
-
-				const result = await instance[method]();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'Knightsbridge',
-					differentiator: '',
-					minLatitude: Infinity,
-					maxLatitude: 51.6918741,
-					minLongitude: -0.5103751,
-					maxLongitude: 0.3340155,
-					hasErrors: true,
-					errors: {
-						minLatitude: ['Value must be a finite number']
+					surPlace: {
+						name: 'Knightsbridge'
 					}
-				};
-
-				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
-			});
-		}
-	});
-
-	describe('bounding box coordinates that are outside their valid geographic ranges', () => {
-		for (const method of methods) {
-			it(`assigns appropriate error (${method} method)`, async () => {
-				const instance = createInstance({
-					name: 'Knightsbridge',
-					minLatitude: -91,
-					maxLatitude: 91,
-					minLongitude: -181,
-					maxLongitude: 181
 				});
 
 				const result = await instance[method]();
@@ -234,49 +211,16 @@ describe('Input validation failures: Place instance', () => {
 					uuid: undefined,
 					name: 'Knightsbridge',
 					differentiator: '',
-					minLatitude: -91,
-					maxLatitude: 91,
-					minLongitude: -181,
-					maxLongitude: 181,
 					hasErrors: true,
-					errors: {
-						minLatitude: ['Latitude must be between -90 and 90'],
-						maxLatitude: ['Latitude must be between -90 and 90'],
-						minLongitude: ['Longitude must be between -180 and 180'],
-						maxLongitude: ['Longitude must be between -180 and 180']
-					}
-				};
-
-				assert.deepStrictEqual(toPlainObject(result), expectedResponseBody);
-			});
-		}
-	});
-
-	describe('minimum latitude exceeds maximum latitude', () => {
-		for (const method of methods) {
-			it(`assigns appropriate error (${method} method)`, async () => {
-				const instance = createInstance({
-					name: 'Knightsbridge',
-					minLatitude: 52,
-					maxLatitude: 51,
-					minLongitude: 1,
-					maxLongitude: 0
-				});
-
-				const result = await instance[method]();
-
-				const expectedResponseBody = {
-					uuid: undefined,
-					name: 'Knightsbridge',
-					differentiator: '',
-					minLatitude: 52,
-					maxLatitude: 51,
-					minLongitude: 1,
-					maxLongitude: 0,
-					hasErrors: true,
-					errors: {
-						minLatitude: ['Minimum latitude must not exceed maximum latitude'],
-						maxLatitude: ['Maximum latitude must not be below minimum latitude']
+					errors: {},
+					surPlace: {
+						uuid: undefined,
+						name: 'Knightsbridge',
+						differentiator: '',
+						errors: {
+							name: ['Instance cannot form association with itself'],
+							differentiator: ['Instance cannot form association with itself']
+						}
 					}
 				};
 

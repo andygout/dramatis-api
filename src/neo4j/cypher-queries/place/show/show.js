@@ -2,7 +2,7 @@ export default () => `
 	MATCH (place:Place { uuid: $uuid })
 
 	CALL (place) {
-		OPTIONAL MATCH (surPlace:Place)-[:CONTAINS]->(place)
+		OPTIONAL MATCH (surPlace:Place)-[:CONTAINS*1..]->(place)
 			WHERE surPlace <> place
 
 		WITH surPlace
@@ -18,7 +18,7 @@ export default () => `
 	}
 
 	CALL (place) {
-		OPTIONAL MATCH (place)-[:CONTAINS]->(subPlace:Place)
+		OPTIONAL MATCH (place)-[:CONTAINS*1..]->(subPlace:Place)
 			WHERE subPlace <> place
 
 		WITH subPlace

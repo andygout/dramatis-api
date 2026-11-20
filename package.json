@@ -19,7 +19,7 @@
     "int-test": "node --env-file=./test-int/.env --test test-int/**/*.test.js",
     "e2e-test-resources": "docker compose -f docker/docker-compose.yml up",
     "e2e-test": "node --env-file=./test-e2e/.env --import=./test-e2e/per-test-file-teardown.js --test --test-global-setup=test-e2e/global-setup.js --test-timeout=60000 --test-concurrency=1 test-e2e/**/*.test.js",
-    "seed-db": "node db-seeding/seed-db",
+    "seed-db": "node --env-file=.env db-seeding/seed-db.js",
     "transfer-env-dev": "node transfer-env-dev",
     "setup": "node src/setup.js",
     "start": "npm run setup && node --watch-path=src --watch-preserve-output src/server.js"

@@ -6,6 +6,7 @@ import getSourceMaterialChecksQuery from './source-material-checks.js';
 import getSubMaterialChecksQuery from './sub-material-checks.js';
 import getSubProductionChecksQuery from './sub-production-checks.js';
 import getSubVenueChecksQuery from './sub-venue-checks.js';
+import getSurPlaceChecksQuery from './sur-place-checks.js';
 
 export {
 	getAwardContextualDuplicateRecordCheckQuery,
@@ -15,5 +16,6 @@ export {
 	getSourceMaterialChecksQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
-	getSubVenueChecksQuery
+	getSubVenueChecksQuery,
+	getSurPlaceChecksQuery
 };
