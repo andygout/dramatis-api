@@ -15,11 +15,7 @@ describe('Cypher Queries Place module', () => {
 				CREATE (place:Place {
 					uuid: $uuid,
 					name: $name,
-					differentiator: $differentiator,
-					minLatitude: $minLatitude,
-					maxLatitude: $maxLatitude,
-					minLongitude: $minLongitude,
-					maxLongitude: $maxLongitude
+					differentiator: $differentiator
 				})
 			`);
 
@@ -30,10 +26,10 @@ describe('Cypher Queries Place module', () => {
 					place.uuid AS uuid,
 					place.name AS name,
 					place.differentiator AS differentiator,
-					place.minLatitude AS minLatitude,
-					place.maxLatitude AS maxLatitude,
-					place.minLongitude AS minLongitude,
-					place.maxLongitude AS maxLongitude
+					{
+						name: COALESCE(surPlace.name, ''),
+						differentiator: COALESCE(surPlace.differentiator, '')
+					} AS surPlace
 			`);
 
 			assert.equal(compactedResult.startsWith(startSegment), true);
@@ -51,12 +47,6 @@ describe('Cypher Queries Place module', () => {
 			const startSegment = removeExcessWhitespace(`
 				MATCH (place:Place { uuid: $uuid })
 
-				OPTIONAL MATCH (place)-[subPlaceRel:CONTAINS]->(:Place)
-
-				DELETE subPlaceRel
-
-				WITH DISTINCT place
-
 				OPTIONAL MATCH (:Place)-[surPlaceRel:CONTAINS]->(place)
 
 				DELETE surPlaceRel
@@ -65,11 +55,7 @@ describe('Cypher Queries Place module', () => {
 
 				SET
 					place.name = $name,
-					place.differentiator = $differentiator,
-					place.minLatitude = $minLatitude,
-					place.maxLatitude = $maxLatitude,
-					place.minLongitude = $minLongitude,
-					place.maxLongitude = $maxLongitude
+					place.differentiator = $differentiator
 			`);
 
 			const middleSegment = removeExcessWhitespace(`WITH place`);
@@ -79,10 +65,10 @@ describe('Cypher Queries Place module', () => {
 					place.uuid AS uuid,
 					place.name AS name,
 					place.differentiator AS differentiator,
-					place.minLatitude AS minLatitude,
-					place.maxLatitude AS maxLatitude,
-					place.minLongitude AS minLongitude,
-					place.maxLongitude AS maxLongitude
+					{
+						name: COALESCE(surPlace.name, ''),
+						differentiator: COALESCE(surPlace.differentiator, '')
+					} AS surPlace
 			`);
 
 			assert.equal(compactedResult.startsWith(startSegment), true);

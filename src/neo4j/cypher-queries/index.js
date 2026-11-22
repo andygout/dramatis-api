@@ -62,7 +62,8 @@ import {
 	getSourceMaterialChecksQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
-	getSubVenueChecksQuery
+	getSubVenueChecksQuery,
+	getSurPlaceChecksQuery
 } from './validation/index.js';
 import {
 	getCreateQuery as getVenueCreateQuery,
@@ -145,7 +146,8 @@ const validationQueries = {
 	getSourceMaterialChecksQuery,
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
-	getSubVenueChecksQuery
+	getSubVenueChecksQuery,
+	getSurPlaceChecksQuery
 };
 
 const searchQueries = {

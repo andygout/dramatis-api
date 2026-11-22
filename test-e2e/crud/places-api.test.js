@@ -16,11 +16,13 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				model: 'PLACE',
 				name: '',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
@@ -49,11 +51,13 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
@@ -69,11 +73,13 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
@@ -84,19 +90,21 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			assert.equal(await countNodesWithLabel('Place'), 1);
 
 			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
-				name: 'Belgravia'
+				name: 'Saint-Germain-des-Prés'
 			});
 
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
-				name: 'Belgravia',
+				name: 'Saint-Germain-des-Prés',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
@@ -110,7 +118,7 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
-				name: 'Belgravia',
+				name: 'Saint-Germain-des-Prés',
 				differentiator: null,
 				surPlaces: [],
 				subPlaces: [],
@@ -128,13 +136,15 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 
 			const expectedResponseBody = {
 				model: 'PLACE',
-				name: 'Belgravia',
+				name: 'Saint-Germain-des-Prés',
 				differentiator: '',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
@@ -145,6 +155,8 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 
 	describe('CRUD with full range of attributes assigned values', () => {
 		const PLACE_UUID = 'KNIGHTSBRIDGE_PLACE_1_UUID';
+		const LONDON_PLACE_UUID = 'LONDON_PLACE_1_UUID';
+		const PARIS_PLACE_UUID = 'PARIS_PLACE_1_UUID';
 
 		before(async () => {
 			stubUuidToCountMapClient.clear();
@@ -155,30 +167,34 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 		it('creates place', async () => {
 			assert.equal(await countNodesWithLabel('Place'), 0);
 
-			const response = await request(app).post('/places').send({
-				name: 'Knightsbridge',
-				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965
-			});
+			const response = await request(app)
+				.post('/places')
+				.send({
+					name: 'Knightsbridge',
+					differentiator: '1',
+					surPlace: {
+						name: 'London',
+						differentiator: '1'
+					}
+				});
 
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: 'London',
+					differentiator: '1',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
 			assert.deepEqual(response.body, expectedResponseBody);
-			assert.equal(await countNodesWithLabel('Place'), 1);
+			assert.equal(await countNodesWithLabel('Place'), 2);
 		});
 
 		it('shows place (post-creation)', async () => {
@@ -189,7 +205,13 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				surPlaces: [],
+				surPlaces: [
+					{
+						model: 'PLACE',
+						uuid: LONDON_PLACE_UUID,
+						name: 'London'
+					}
+				],
 				subPlaces: [],
 				materials: []
 			};
@@ -206,11 +228,13 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: 'London',
+					differentiator: '1',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
@@ -218,61 +242,69 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 		});
 
 		it('updates place (with existing data)', async () => {
-			assert.equal(await countNodesWithLabel('Place'), 1);
+			assert.equal(await countNodesWithLabel('Place'), 2);
 
-			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
-				name: 'Knightsbridge',
-				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965
-			});
+			const response = await request(app)
+				.put(`/places/${PLACE_UUID}`)
+				.send({
+					name: 'Knightsbridge',
+					differentiator: '1',
+					surPlace: {
+						name: 'London',
+						differentiator: '1'
+					}
+				});
 
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
 				name: 'Knightsbridge',
 				differentiator: '1',
-				minLatitude: 51.4808444,
-				maxLatitude: 51.5208444,
-				minLongitude: -0.186965,
-				maxLongitude: -0.146965,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: 'London',
+					differentiator: '1',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
 			assert.deepEqual(response.body, expectedResponseBody);
-			assert.equal(await countNodesWithLabel('Place'), 1);
+			assert.equal(await countNodesWithLabel('Place'), 2);
 		});
 
 		it('updates place (with new data)', async () => {
-			assert.equal(await countNodesWithLabel('Place'), 1);
+			assert.equal(await countNodesWithLabel('Place'), 2);
 
-			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
-				name: 'Belgravia',
-				differentiator: '1',
-				minLatitude: 51.4782128,
-				maxLatitude: 51.5182128,
-				minLongitude: -0.1734998,
-				maxLongitude: -0.1334998
-			});
+			const response = await request(app)
+				.put(`/places/${PLACE_UUID}`)
+				.send({
+					name: 'Saint-Germain-des-Prés',
+					differentiator: '1',
+					surPlace: {
+						name: 'Paris',
+						differentiator: '1'
+					}
+				});
 
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
-				name: 'Belgravia',
+				name: 'Saint-Germain-des-Prés',
 				differentiator: '1',
-				minLatitude: 51.4782128,
-				maxLatitude: 51.5182128,
-				minLongitude: -0.1734998,
-				maxLongitude: -0.1334998,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: 'Paris',
+					differentiator: '1',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
 			assert.deepEqual(response.body, expectedResponseBody);
-			assert.equal(await countNodesWithLabel('Place'), 1);
+			assert.equal(await countNodesWithLabel('Place'), 3);
 		});
 
 		it('shows place (post-update)', async () => {
@@ -281,9 +313,15 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			const expectedResponseBody = {
 				model: 'PLACE',
 				uuid: PLACE_UUID,
-				name: 'Belgravia',
+				name: 'Saint-Germain-des-Prés',
 				differentiator: '1',
-				surPlaces: [],
+				surPlaces: [
+					{
+						model: 'PLACE',
+						uuid: PARIS_PLACE_UUID,
+						name: 'Paris'
+					}
+				],
 				subPlaces: [],
 				materials: []
 			};
@@ -292,25 +330,54 @@ describe('CRUD (Create, Read, Update, Delete): Places API', () => {
 			assert.deepEqual(response.body, expectedResponseBody);
 		});
 
+		it('updates place to remove all associations prior to deletion', async () => {
+			assert.equal(await countNodesWithLabel('Place'), 3);
+
+			const response = await request(app).put(`/places/${PLACE_UUID}`).send({
+				name: 'Saint-Germain-des-Prés',
+				differentiator: '1'
+			});
+
+			const expectedResponseBody = {
+				model: 'PLACE',
+				uuid: PLACE_UUID,
+				name: 'Saint-Germain-des-Prés',
+				differentiator: '1',
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
+			};
+
+			assert.equal(response.status, 200);
+			assert.deepEqual(response.body, expectedResponseBody);
+			assert.equal(await countNodesWithLabel('Place'), 3);
+		});
+
 		it('deletes place', async () => {
-			assert.equal(await countNodesWithLabel('Place'), 1);
+			assert.equal(await countNodesWithLabel('Place'), 3);
 
 			const response = await request(app).delete(`/places/${PLACE_UUID}`);
 
 			const expectedResponseBody = {
 				model: 'PLACE',
-				name: 'Belgravia',
+				name: 'Saint-Germain-des-Prés',
 				differentiator: '1',
-				minLatitude: null,
-				maxLatitude: null,
-				minLongitude: null,
-				maxLongitude: null,
-				errors: {}
+				errors: {},
+				surPlace: {
+					model: 'PLACE',
+					name: '',
+					differentiator: '',
+					errors: {}
+				}
 			};
 
 			assert.equal(response.status, 200);
 			assert.deepEqual(response.body, expectedResponseBody);
-			assert.equal(await countNodesWithLabel('Place'), 0);
+			assert.equal(await countNodesWithLabel('Place'), 2);
 		});
 	});
 
