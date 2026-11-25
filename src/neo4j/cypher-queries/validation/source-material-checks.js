@@ -1,14 +1,14 @@
 export default () => `
-	MATCH (m:Material { name: $name })
+	MATCH (material:Material { name: $name })
 		WHERE
 			(
-				($differentiator IS NULL AND m.differentiator IS NULL) OR
-				$differentiator = m.differentiator
+				($differentiator IS NULL AND material.differentiator IS NULL) OR
+				$differentiator = material.differentiator
 			)
 
 	OPTIONAL MATCH (subjectMaterial:Material { uuid: $subjectMaterialUuid })
 
-	OPTIONAL MATCH (m)-[sourceMaterialRelWithSubjectMaterial:USES_SOURCE_MATERIAL]->(subjectMaterial)
+	OPTIONAL MATCH (material)-[sourceMaterialRelWithSubjectMaterial:USES_SOURCE_MATERIAL]->(subjectMaterial)
 
 	RETURN
 		TOBOOLEAN(COUNT(sourceMaterialRelWithSubjectMaterial)) AS isSourcingMaterialOfSubjectMaterial

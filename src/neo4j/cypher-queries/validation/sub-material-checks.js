@@ -1,23 +1,23 @@
 export default () => `
-	MATCH (m:Material { name: $name })
+	MATCH (material:Material { name: $name })
 		WHERE
 			(
-				($differentiator IS NULL AND m.differentiator IS NULL) OR
-				$differentiator = m.differentiator
+				($differentiator IS NULL AND material.differentiator IS NULL) OR
+				$differentiator = material.differentiator
 			)
 
 	OPTIONAL MATCH (subjectMaterial:Material { uuid: $subjectMaterialUuid })
 
-	OPTIONAL MATCH (m)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+	OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
 		WHERE
 			$subjectMaterialUuid IS NULL OR
 			$subjectMaterialUuid <> surMaterial.uuid
 
-	OPTIONAL MATCH (m)
+	OPTIONAL MATCH (material)
 		-[:HAS_SUB_MATERIAL]->(:Material)
 		-[subSubMaterialRel:HAS_SUB_MATERIAL]->(:Material)
 
-	OPTIONAL MATCH (m)-[subMaterialRelWithSubjectMaterial:HAS_SUB_MATERIAL]->(subjectMaterial)
+	OPTIONAL MATCH (material)-[subMaterialRelWithSubjectMaterial:HAS_SUB_MATERIAL]->(subjectMaterial)
 
 	OPTIONAL MATCH (subjectMaterial)
 		<-[:HAS_SUB_MATERIAL]-(:Material)
