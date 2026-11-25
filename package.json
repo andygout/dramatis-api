@@ -21,8 +21,8 @@
     "e2e-test": "node --env-file=./test-e2e/.env --import=./test-e2e/per-test-file-teardown.js --test --test-global-setup=test-e2e/global-setup.js --test-timeout=60000 --test-concurrency=1 test-e2e/**/*.test.js",
     "seed-db": "node --env-file=.env db-seeding/seed-db.js",
     "transfer-env-dev": "node transfer-env-dev",
-    "setup": "node src/setup.js",
-    "start": "npm run setup && node --watch-path=src --watch-preserve-output src/server.js"
+    "setup": "node --env-file=.env src/setup.js",
+    "start": "npm run setup && node --env-file=.env --watch-path=src --watch-preserve-output src/server.js"
   },
   "lint-staged": {
     "*.{js,json,md,yml}": [
@@ -49,7 +49,6 @@
     "npm": "11.14.1"
   },
   "dependencies": {
-    "dotenv": "17.4.2",
     "express": "5.2.1",
     "morgan": "1.12.1",
     "neo4j-driver": "6.0.1"

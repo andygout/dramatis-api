@@ -1,5 +1,3 @@
-import './dotenv.js';
-
 import createNeo4jConstraints from './neo4j/create-constraints.js';
 import createNeo4jFullTextIndexes from './neo4j/create-full-text-indexes.js';
 import createNeo4jRangeIndexes from './neo4j/create-range-indexes.js';
