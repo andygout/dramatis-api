@@ -50,25 +50,25 @@ describe('Cypher Queries Validation module', () => {
 			assert.equal(
 				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
-				MATCH (m:Material { name: $name })
+				MATCH (material:Material { name: $name })
 					WHERE
 						(
-							($differentiator IS NULL AND m.differentiator IS NULL) OR
-							$differentiator = m.differentiator
+							($differentiator IS NULL AND material.differentiator IS NULL) OR
+							$differentiator = material.differentiator
 						)
 
 				OPTIONAL MATCH (subjectMaterial:Material { uuid: $subjectMaterialUuid })
 
-				OPTIONAL MATCH (m)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
+				OPTIONAL MATCH (material)<-[surMaterialRel:HAS_SUB_MATERIAL]-(surMaterial:Material)
 					WHERE
 						$subjectMaterialUuid IS NULL OR
 						$subjectMaterialUuid <> surMaterial.uuid
 
-				OPTIONAL MATCH (m)
+				OPTIONAL MATCH (material)
 					-[:HAS_SUB_MATERIAL]->(:Material)
 					-[subSubMaterialRel:HAS_SUB_MATERIAL]->(:Material)
 
-				OPTIONAL MATCH (m)-[subMaterialRelWithSubjectMaterial:HAS_SUB_MATERIAL]->(subjectMaterial)
+				OPTIONAL MATCH (material)-[subMaterialRelWithSubjectMaterial:HAS_SUB_MATERIAL]->(subjectMaterial)
 
 				OPTIONAL MATCH (subjectMaterial)
 					<-[:HAS_SUB_MATERIAL]-(:Material)
@@ -91,27 +91,27 @@ describe('Cypher Queries Validation module', () => {
 			assert.equal(
 				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
-				MATCH (p:Production { uuid: $uuid })
+				MATCH (production:Production { uuid: $uuid })
 
 				OPTIONAL MATCH (subjectProduction:Production { uuid: $subjectProductionUuid })
 
-				OPTIONAL MATCH (p)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
+				OPTIONAL MATCH (production)<-[surProductionRel:HAS_SUB_PRODUCTION]-(surProduction:Production)
 					WHERE
 						$subjectProductionUuid IS NULL OR
 						$subjectProductionUuid <> surProduction.uuid
 
-				OPTIONAL MATCH (p)
+				OPTIONAL MATCH (production)
 					-[:HAS_SUB_PRODUCTION]->(:Production)
 					-[subSubProductionRel:HAS_SUB_PRODUCTION]->(:Production)
 
-				OPTIONAL MATCH (p)-[subProductionRelWithSubjectProduction:HAS_SUB_PRODUCTION]->(subjectProduction)
+				OPTIONAL MATCH (production)-[subProductionRelWithSubjectProduction:HAS_SUB_PRODUCTION]->(subjectProduction)
 
 				OPTIONAL MATCH (subjectProduction)
 					<-[:HAS_SUB_PRODUCTION]-(:Production)
 					<-[subjectProductionSurSurProductionRel:HAS_SUB_PRODUCTION]-(:Production)
 
 				RETURN
-					TOBOOLEAN(COUNT(p)) AS isExistent,
+					TOBOOLEAN(COUNT(production)) AS isExistent,
 					TOBOOLEAN(COUNT(surProductionRel)) AS isAssignedToSurProduction,
 					TOBOOLEAN(COUNT(subSubProductionRel)) AS isSurSurProduction,
 					TOBOOLEAN(COUNT(subProductionRelWithSubjectProduction)) AS isSurProductionOfSubjectProduction,
@@ -128,21 +128,21 @@ describe('Cypher Queries Validation module', () => {
 			assert.equal(
 				removeExcessWhitespace(result),
 				removeExcessWhitespace(`
-				MATCH (v:Venue { name: $name })
+				MATCH (venue:Venue { name: $name })
 					WHERE
 						(
-							($differentiator IS NULL AND v.differentiator IS NULL) OR
-							$differentiator = v.differentiator
+							($differentiator IS NULL AND venue.differentiator IS NULL) OR
+							$differentiator = venue.differentiator
 						)
 
 				OPTIONAL MATCH (subjectVenue:Venue { uuid: $subjectVenueUuid })
 
-				OPTIONAL MATCH (v)<-[surVenueRel:HAS_SUB_VENUE]-(surVenue:Venue)
+				OPTIONAL MATCH (venue)<-[surVenueRel:HAS_SUB_VENUE]-(surVenue:Venue)
 					WHERE
 						$subjectVenueUuid IS NULL OR
 						$subjectVenueUuid <> surVenue.uuid
 
-				OPTIONAL MATCH (v)-[subVenueRel:HAS_SUB_VENUE]->(:Venue)
+				OPTIONAL MATCH (venue)-[subVenueRel:HAS_SUB_VENUE]->(:Venue)
 
 				OPTIONAL MATCH (subjectVenue)<-[subjectVenueSurVenueRel:HAS_SUB_VENUE]-(:Venue)
 

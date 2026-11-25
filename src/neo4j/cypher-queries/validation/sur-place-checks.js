@@ -1,14 +1,14 @@
 export default () => `
-	MATCH (p:Place { name: $name })
+	MATCH (place:Place { name: $name })
 		WHERE
 			(
-				($differentiator IS NULL AND p.differentiator IS NULL) OR
-				$differentiator = p.differentiator
+				($differentiator IS NULL AND place.differentiator IS NULL) OR
+				$differentiator = place.differentiator
 			)
 
 	OPTIONAL MATCH (subjectPlace:Place { uuid: $subjectPlaceUuid })
 
-	OPTIONAL MATCH (subjectPlace)-[surPlaceRelWithSubjectPlace:CONTAINS*1..]->(p)
+	OPTIONAL MATCH (subjectPlace)-[surPlaceRelWithSubjectPlace:CONTAINS*1..]->(place)
 
 	RETURN
 		TOBOOLEAN(COUNT(surPlaceRelWithSubjectPlace)) AS isSubPlaceOfSubjectPlace
