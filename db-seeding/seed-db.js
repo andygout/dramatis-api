@@ -96,6 +96,9 @@ async function seedInstances(pluralisedModel) {
 		await performFetch(url, instance, modelEmoji, filenamePathSlug);
 	}
 
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${modelEmoji} Finished sowing ${pluralisedModel} seeds`);
+
 	return;
 }
 
@@ -105,18 +108,9 @@ async function seedDatabase() {
 
 	await seedInstances('festivals');
 
-	// eslint-disable-next-line no-console
-	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['festivals']} Festival seeds sown`);
-
 	await seedInstances('venues');
 
-	// eslint-disable-next-line no-console
-	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['venues']} Venue seeds sown`);
-
 	await seedInstances('times');
-
-	// eslint-disable-next-line no-console
-	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['times']} Time seeds sown`);
 
 	// eslint-disable-next-line no-console
 	console.log(`🟢 Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['places']} Commenced sowing place seeds`);
@@ -128,20 +122,9 @@ async function seedDatabase() {
 
 	await seedInstances('materials');
 
-	// eslint-disable-next-line no-console
-	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['materials']} Material seeds sown`);
-
 	await seedInstances('productions');
 
-	// eslint-disable-next-line no-console
-	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['productions']} Production seeds sown`);
-
 	await seedInstances('award-ceremonies');
-
-	// eslint-disable-next-line no-console
-	console.log(
-		`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['award-ceremonies']} Award ceremony seeds sown`
-	);
 
 	// eslint-disable-next-line no-console
 	console.log('🆗 Seeding Neo4j database: Complete');
