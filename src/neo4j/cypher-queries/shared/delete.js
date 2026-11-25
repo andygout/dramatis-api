@@ -29,7 +29,7 @@ export default (model) => {
 				deletableInstance,
 				deletableInstance IS NOT NULL AS isDeleted,
 				deletableInstance.name AS deletableInstanceName,
-				deletableInstance.differentiator AS deletableInstancedifferentiator,
+				deletableInstance.differentiator AS deletableInstanceDifferentiator,
 				COLLECT(distinctAssociateLabel) AS associatedModels
 
 			DETACH DELETE deletableInstance
@@ -40,7 +40,7 @@ export default (model) => {
 				ELSE undeletableInstance.name
 			END AS name,
 			CASE WHEN isDeleted
-				THEN deletableInstancedifferentiator
+				THEN deletableInstanceDifferentiator
 				ELSE undeletableInstance.differentiator
 			END AS differentiator,
 			isDeleted,
