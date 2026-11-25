@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore
 import jsonlint from 'jsonlint';
 
 import placesQuery from './seed-queries/places.js';
+import { getDriver } from '../src/neo4j/get-driver.js';
 import { neo4jQuery } from '../src/neo4j/query.js';
 
 const BASE_URL = 'http://localhost:3000';
@@ -148,4 +149,8 @@ async function seedDatabase() {
 	return;
 }
 
-seedDatabase();
+try {
+	await seedDatabase();
+} finally {
+	await getDriver().close();
+}
