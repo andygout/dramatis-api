@@ -6,6 +6,7 @@ import getSourceMaterialChecksQuery from './source-material-checks.js';
 import getSubMaterialChecksQuery from './sub-material-checks.js';
 import getSubProductionChecksQuery from './sub-production-checks.js';
 import getSubVenueChecksQuery from './sub-venue-checks.js';
+import getSurLocaleChecksQuery from './sur-locale-checks.js';
 import getSurPlaceChecksQuery from './sur-place-checks.js';
 
 export {
@@ -17,5 +18,6 @@ export {
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery,
+	getSurLocaleChecksQuery,
 	getSurPlaceChecksQuery
 };

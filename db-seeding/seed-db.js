@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename); // eslint-disable-line no-underscore
 
 import jsonlint from 'jsonlint';
 
+import localesQuery from './seed-queries/locales.js';
 import placesQuery from './seed-queries/places.js';
 import { getDriver } from '../src/neo4j/get-driver.js';
 import { neo4jQuery } from '../src/neo4j/query.js';
@@ -16,6 +17,7 @@ const BASE_URL = 'http://localhost:3000';
 const PLURALISED_MODEL_TO_EMOJI_MAP = {
 	'award-ceremonies': '🏆',
 	festivals: '🎪',
+	locales: '🏡',
 	materials: '📖',
 	places: '🌍',
 	productions: '🎭',
@@ -119,6 +121,14 @@ async function seedDatabase() {
 
 	// eslint-disable-next-line no-console
 	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['places']} Place seeds sown`);
+
+	// eslint-disable-next-line no-console
+	console.log(`🟢 Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['locales']} Commenced sowing locale seeds`);
+
+	await neo4jQuery({ query: localesQuery() }, { isOptionalResult: true });
+
+	// eslint-disable-next-line no-console
+	console.log(`✔️  Seeding Neo4j database: ${PLURALISED_MODEL_TO_EMOJI_MAP['locales']} Locale seeds sown`);
 
 	await seedInstances('materials');
 

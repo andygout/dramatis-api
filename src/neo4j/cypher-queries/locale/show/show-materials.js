@@ -2,7 +2,12 @@ export default () => `
 	MATCH (locale:Locale { uuid: $uuid })
 
 	CALL (locale) {
-		OPTIONAL MATCH (locale)<-[:HAS_LOCALE]-(:Setting)<-[:HAS_SETTING]-(material:Material)
+		OPTIONAL MATCH (locale:Locale)-[:HAS_SETTING]->(:Setting)-[:HAS_LOCALE]->(settingLocale:Locale)
+			WHERE
+				settingLocale = locale OR
+				EXISTS {
+					MATCH (locale)-[:CONTAINS*1..]->(settingLocale)
+				}
 
 		WITH DISTINCT locale, material
 
@@ -111,7 +116,12 @@ export default () => `
 			}
 
 			CALL (material, locale) {
-				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_LOCALE]->(locale)
+				MATCH (material)-[settingRel:HAS_SETTING]->(setting:Setting)-[:HAS_LOCALE]->(settingLocale:Locale)
+					WHERE
+						settingLocale = locale OR
+						EXISTS {
+							MATCH (locale)-[:CONTAINS*1..]->(settingLocale)
+						}
 
 				OPTIONAL MATCH (setting)-[:HAS_TIME]->(time:Time)
 

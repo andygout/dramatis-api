@@ -1,12 +1,33 @@
-import Entity from './Entity.js';
-import { MODELS } from '../utils/constants.js';
+import { SurLocale } from './index.js';
+import LocaleBase from './LocaleBase.js';
 
-export default class Locale extends Entity {
+export default class Locale extends LocaleBase {
 	constructor(props = {}) {
 		super(props);
+
+		const { surLocale } = props;
+
+		this.surLocale = new SurLocale(surLocale);
 	}
 
-	get model() {
-		return MODELS.LOCALE;
+	runInputValidations() {
+		this.validateName({ isRequired: true });
+
+		this.validateDifferentiator();
+
+		this.surLocale.validateName({ isRequired: false });
+
+		this.surLocale.validateDifferentiator();
+
+		this.surLocale.validateNoAssociationWithSelf({
+			name: this.name,
+			differentiator: this.differentiator
+		});
+	}
+
+	async runDatabaseValidations() {
+		await this.validateUniquenessInDatabase();
+
+		await this.surLocale.runDatabaseValidations({ subjectLocaleUuid: this.uuid });
 	}
 }

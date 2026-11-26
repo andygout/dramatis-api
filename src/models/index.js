@@ -32,6 +32,7 @@ import SourceMaterial from './SourceMaterial.js';
 import SubMaterial from './SubMaterial.js';
 import SubProductionIdentifier from './SubProductionIdentifier.js';
 import SubVenue from './SubVenue.js';
+import SurLocale from './SurLocale.js';
 import SurPlace from './SurPlace.js';
 import Time from './Time.js';
 import TimeBase from './TimeBase.js';
@@ -74,6 +75,7 @@ export {
 	SubMaterial,
 	SubProductionIdentifier,
 	SubVenue,
+	SurLocale,
 	SurPlace,
 	Time,
 	TimeBase,

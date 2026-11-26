@@ -63,6 +63,7 @@ import {
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery,
+	getSurLocaleChecksQuery,
 	getSurPlaceChecksQuery
 } from './validation/index.js';
 import {
@@ -147,6 +148,7 @@ const validationQueries = {
 	getSubMaterialChecksQuery,
 	getSubProductionChecksQuery,
 	getSubVenueChecksQuery,
+	getSurLocaleChecksQuery,
 	getSurPlaceChecksQuery
 };
 
